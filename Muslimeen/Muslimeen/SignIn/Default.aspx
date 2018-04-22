@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8"/>
+        <meta charset="utf-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 	
@@ -14,10 +14,10 @@
 		
 		<title> Muslimeen - Sign In </title>
 	
-		<link href="SignIn_Bootstrap/css/Signin.css" rel="stylesheet"/>
+		<link href="SignIn_Bootstrap/css/signin.css" rel="stylesheet"/>
 </head>
-<body class="text-center">
-		<form class="form-Signin" runat="server">
+    <body class="text-center">
+		<form class="form-signin" runat="server">
 			<img class="mb-4" src="SignIn_Bootstrap\logo.png" width="220" height="130"/>
 			<h1 class="h3 mb-3 font-weigth-normal"> Please sign in </h1>
 			<label for="inputEmail" class="sr-only"> Email address </label>
