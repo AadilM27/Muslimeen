@@ -18,12 +18,12 @@
 </head>
     <body class="text-center">
 		<form class="form-signin" runat="server">
-			<asp:image CssClass="mb-4" runat="server" ImageUrl="SignIn_Bootstrap\logo.png" width="120" height="95"/>
-			<h1 class="h3 mb-3 font-weigth-normal"> Welcome to Muslimeen </h1>
-			<asp:label runat="server" for="inputEmail" CssClass="sr-only" Text="Email address"></asp:label>
-			<asp:TextBox runat="server" type="email" ID="inputEmail" CssClass="form-control" placeholder="Email address"/> <%--Put required validation--%>
-			<asp:label runat="server" for="inputPassword" CssClass="sr-only" Text="Password"></asp:label>
-			<asp:TextBox runat="server" type="password" ID="inputPassword" CssClass="form-control" placeholder="Password"/> <%--Put required validation--%>
+			<img class="mb-4" src="SignIn_Bootstrap\logo.png" width="220" height="130"/>
+			<h1 class="h3 mb-3 font-weigth-normal"> Please sign in </h1>
+			<label for="inputEmail" class="sr-only"> Email address </label>
+			<input type="email" id="inputEmail" class="form-control" placeholder="Email address"/> <%--Put required validation--%>
+			<label for="inputPassword" class="sr-only"> Password </label>
+			<input type="password" id="inputPassword" class="form-control" placeholder="Password"/> <%--Put required validation--%>
 			
 			<div class="checkbox mb-3">
 				<label>
@@ -32,7 +32,6 @@
 			</div>
 			
 			<asp:button runat="server" CssClass="btn btn-lg btn-primary btn-block" ID="btnSignIn" Text="Sign In"></asp:button>
-            
 		</form>
 	</body>
 </html>
