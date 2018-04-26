@@ -1,0 +1,72 @@
+html{
+    height: 100%;
+}
+
+body {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #256297;
+    height: 100%;
+}
+
+.form-logIn {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  background-color:;
+}
+.form-logIn .checkbox {
+  font-weight: 400;
+}
+.form-logIn .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-logIn .form-control:focus {
+  z-index: 2;
+}
+.form-logIn input[type="email"] {
+  margin-bottom: -1px;
+}
+.form-logIn input[type="password"] {
+  margin-bottom: 10px;
+}
+.main-div {
+    background-color: #ffffff;
+    border-radius: 8px;
+    position: relative;
+    text-align: center;
+    width: 404px;
+    margin: auto;
+    min-height: 520px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.45);
+}
+.main-btn {
+    background-color: #256297;
+    border-color: #256297;
+}
+.main-txtb:focus {
+    background-color: #d7e7f5;
+    text-decoration-color:black;
+}
+
+
+
+
+
+/*
+    colours scheme
+    #3F84C1;
+    #256297
+
+    #256297
+    #9ac2e5
+*/
