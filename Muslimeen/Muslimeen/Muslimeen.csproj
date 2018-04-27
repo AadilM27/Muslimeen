@@ -67,17 +67,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="SignIn\Default.aspx" />
-    <Content Include="SignIn\SignIn_Bootstrap\css\bootstrap-grid.css.map" />
-    <Content Include="SignIn\SignIn_Bootstrap\css\bootstrap-grid.min.css.map" />
-    <Content Include="SignIn\SignIn_Bootstrap\css\bootstrap-reboot.css.map" />
-    <Content Include="SignIn\SignIn_Bootstrap\css\bootstrap-reboot.min.css.map" />
-    <Content Include="SignIn\SignIn_Bootstrap\css\bootstrap.css.map" />
-    <Content Include="SignIn\SignIn_Bootstrap\css\bootstrap.min.css.map" />
-    <Content Include="SignIn\SignIn_Bootstrap\js\bootstrap.bundle.js.map" />
-    <Content Include="SignIn\SignIn_Bootstrap\js\bootstrap.bundle.min.js.map" />
-    <Content Include="SignIn\SignIn_Bootstrap\js\bootstrap.js.map" />
-    <Content Include="SignIn\SignIn_Bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="Default.aspx" />
+    <Content Include="Login\Login.aspx" />
+    <Content Include="Login\LogIn_Bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Login\LogIn_Bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Login\LogIn_Bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Login\LogIn_Bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Login\LogIn_Bootstrap\css\bootstrap.css.map" />
+    <Content Include="Login\LogIn_Bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Login\LogIn_Bootstrap\css\register.css" />
+    <Content Include="Login\LogIn_Bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="Login\LogIn_Bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Login\LogIn_Bootstrap\js\bootstrap.js.map" />
+    <Content Include="Login\LogIn_Bootstrap\js\bootstrap.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -86,31 +88,46 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SignIn\SignIn_Bootstrap\css\bootstrap-grid.css" />
-    <Content Include="SignIn\SignIn_Bootstrap\css\bootstrap-grid.min.css" />
-    <Content Include="SignIn\SignIn_Bootstrap\css\bootstrap-reboot.css" />
-    <Content Include="SignIn\SignIn_Bootstrap\css\bootstrap-reboot.min.css" />
-    <Content Include="SignIn\SignIn_Bootstrap\css\bootstrap.css" />
-    <Content Include="SignIn\SignIn_Bootstrap\css\bootstrap.min.css" />
-    <Content Include="SignIn\SignIn_Bootstrap\css\signin.css" />
-    <Content Include="SignIn\SignIn_Bootstrap\js\bootstrap.bundle.js" />
-    <Content Include="SignIn\SignIn_Bootstrap\js\bootstrap.bundle.min.js" />
-    <Content Include="SignIn\SignIn_Bootstrap\js\bootstrap.js" />
-    <Content Include="SignIn\SignIn_Bootstrap\js\bootstrap.min.js" />
-    <Content Include="SignIn\SignIn_Bootstrap\js\jquery-3.3.1.min.js" />
-    <Content Include="SignIn\SignIn_Bootstrap\js\popper.min.js" />
-    <Content Include="SignIn\SignIn_Bootstrap\logo.png" />
-    <Content Include="SignIn\SignIn_Bootstrap\muslimeen.ico" />
+    <Content Include="Login\LogIn_Bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Login\LogIn_Bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Login\LogIn_Bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Login\LogIn_Bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Login\LogIn_Bootstrap\css\bootstrap.css" />
+    <Content Include="Login\LogIn_Bootstrap\css\bootstrap.min.css" />
+    <Content Include="Login\LogIn_Bootstrap\css\logIn.css" />
+    <Content Include="Login\LogIn_Bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="Login\LogIn_Bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Login\LogIn_Bootstrap\js\bootstrap.js" />
+    <Content Include="Login\LogIn_Bootstrap\js\bootstrap.min.js" />
+    <Content Include="Login\LogIn_Bootstrap\js\jquery-3.3.1.min.js" />
+    <Content Include="Login\LogIn_Bootstrap\js\popper.min.js" />
+    <Content Include="Login\LogIn_Bootstrap\logo.png" />
+    <Content Include="Login\LogIn_Bootstrap\muslimeen.ico" />
+    <Content Include="Register\Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SignIn\Default.aspx.cs">
+    <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SignIn\Default.aspx.designer.cs">
+    <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +135,9 @@
       <Project>{0eb059c9-f1b3-4264-9678-8a285ae4aa19}</Project>
       <Name>Muslimeen.DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CSS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
