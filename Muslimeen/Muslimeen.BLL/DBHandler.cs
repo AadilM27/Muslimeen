@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Muslimeen.DAL
+namespace Muslimeen.BLL
 {
-    public interface IDBAccess
+    class DBHandler
     {
-
-
-
     }
 }
