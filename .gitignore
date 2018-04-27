@@ -2,5 +2,21 @@
 Muslimeen/.vs/Muslimeen/v15/.suo
 Muslimeen/.vs/Muslimeen/v15/Server/sqlite3/storage.ide
 Muslimeen/Muslimeen/obj/Debug/Muslimeen.csprojResolveAssemblyReference.cache
+<<<<<<< HEAD
+Muslimeen/.vs/Muslimeen/v15/.suo
+Muslimeen/.vs/config/applicationhost.config
+Muslimeen/.vs/Muslimeen/v15/.suo
+Muslimeen/Muslimeen.DAL/obj/Debug/CoreCompileInputs.cache
+*.cache
+*.cache
+*.cache
+*.htm
+Muslimeen/.vs/Muslimeen/v15/.suo
+Muslimeen/Muslimeen.DAL/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Muslimeen/Muslimeen/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Muslimeen/.vs/config/applicationhost.config
+=======
 *.ide-shm
 *.ide-wal
+>>>>>>> 4b922b96ab4a5660f8664d1bb38665a908c5173d
+*.config
