@@ -66,8 +66,38 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Home\fonts\fontawesome-webfont.eot" />
+    <Content Include="Home\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Home\fonts\fontawesome-webfont.woff" />
+    <Content Include="Home\fonts\FontAwesome.otf" />
+    <Content Include="Home\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Home\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Home\fonts\glyphicons-halflings-regular.woff" />
     <None Include="packages.config" />
     <Content Include="Default.aspx" />
+    <Content Include="Home\css\animate.min.css" />
+    <Content Include="Home\css\bootstrap.min.css" />
+    <Content Include="Home\css\font-awesome.css" />
+    <Content Include="Home\css\font-awesome.min.css" />
+    <Content Include="Home\css\main.css" />
+    <Content Include="Home\css\prettyPhoto.css" />
+    <Content Include="Home\css\responsive.css" />
+    <Content Include="Home\Default.aspx" />
+    <Content Include="Home\fonts\fontawesome-webfont.svg" />
+    <Content Include="Home\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Home\images\Final Logo.png" />
+    <Content Include="Home\images\ico\logo.ico" />
+    <Content Include="Home\js\bootstrap.min.js" />
+    <Content Include="Home\js\html5shiv.js" />
+    <Content Include="Home\js\jquery-3.3.1.min.js" />
+    <Content Include="Home\js\jquery.isotope.min.js" />
+    <Content Include="Home\js\jquery.js" />
+    <Content Include="Home\js\jquery.prettyPhoto.js" />
+    <Content Include="Home\js\main.js" />
+    <Content Include="Home\js\popper.min.js" />
+    <Content Include="Home\js\respond.min.js" />
+    <Content Include="Home\js\wow.min.js" />
+    <Content Include="Home\Mosque.aspx" />
     <Content Include="Login\Login.aspx" />
     <Content Include="Login\LogIn_Bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="Login\LogIn_Bootstrap\css\bootstrap-grid.min.css.map" />
@@ -107,6 +137,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Home\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home\Mosque.aspx.cs">
+      <DependentUpon>Mosque.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home\Mosque.aspx.designer.cs">
+      <DependentUpon>Mosque.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -138,6 +182,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CSS\" />
+    <Folder Include="Home\images\blog\" />
+    <Folder Include="Home\images\partners\" />
+    <Folder Include="Home\images\prettyPhoto\dark_rounded\" />
+    <Folder Include="Home\images\prettyPhoto\dark_square\" />
+    <Folder Include="Home\images\prettyPhoto\default\" />
+    <Folder Include="Home\images\prettyPhoto\facebook\" />
+    <Folder Include="Home\images\prettyPhoto\light_rounded\" />
+    <Folder Include="Home\images\prettyPhoto\light_square\" />
+    <Folder Include="Home\images\services\" />
+    <Folder Include="Home\images\service\" />
+    <Folder Include="Home\images\slider\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
