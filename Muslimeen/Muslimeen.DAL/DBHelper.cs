@@ -11,7 +11,7 @@ namespace Muslimeen.DAL
 {
     internal class DBHelper
     {
-        private static string connString = ConfigurationManager.ConnectionStrings["MuslimeenDB"].ConnectionString;
+        private static string connString = ConfigurationManager.ConnectionStrings["conMuslimeen"].ConnectionString;
 
         #region ParamSelect()
         internal static DataTable ParamSelect(string commandName, CommandType cmdType,
