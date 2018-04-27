@@ -25,13 +25,13 @@
 			<asp:Image runat="server" CssClass="mb-2" src="LogIn_Bootstrap\logo.png" width="220" height="130"/>
 			<h1 class="h3 mb-1 mt-2 font-weight-bold">Log in to Muslimeen</h1>
             <h1 class="h6 text-black-50 mt-2 mb-3">Access Muslimeen with<br /> a free account</h1>
-            <div class=" mb-3">
+            <div class=" mb-2">
                 <asp:TextBox runat="server" ID="inputEmail" CssClass=" form-control main-txtb" placeholder="Email address"/>
             </div>
-			<div class="mb-3">
+			<div class="mb-2">
                 <asp:TextBox runat="server" ID="inputPassword" CssClass="form-control main-txtb" placeholder="Password"/>
 			</div>
-			<div class=" form-check mt-2 mb-3">
+			<div class=" form-check mt-3 mb-3">
                 <asp:CheckBox runat="server" CssClass="form-check-input position-static"/>
 				<asp:Label runat="server" CssClass="form-check-label" Text="Remember me">
 				</asp:Label>
@@ -41,7 +41,7 @@
             <div class="mb-2 mt-2">
                 <asp:Label runat="server" Text="OR" Style="font-weight:bold; font-size:smaller;"></asp:Label>
             </div>
-            <asp:button runat="server" CssClass="btn btn-primary btn-lg btn-block main-btn " ID="btnRegister" Text="Register"></asp:button>
+            <asp:button runat="server" CssClass="btn btn-primary btn-lg btn-block main-btn " ID="btnRegister" Text="Register" OnClick="btnRegister_Click"></asp:button>
 
 		</form>
         </div>

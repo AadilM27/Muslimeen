@@ -75,6 +75,7 @@
     <Content Include="Login\LogIn_Bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Login\LogIn_Bootstrap\css\bootstrap.css.map" />
     <Content Include="Login\LogIn_Bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Login\LogIn_Bootstrap\css\register.css" />
     <Content Include="Login\LogIn_Bootstrap\js\bootstrap.bundle.js.map" />
     <Content Include="Login\LogIn_Bootstrap\js\bootstrap.bundle.min.js.map" />
     <Content Include="Login\LogIn_Bootstrap\js\bootstrap.js.map" />
@@ -102,6 +103,7 @@
     <Content Include="Login\LogIn_Bootstrap\js\popper.min.js" />
     <Content Include="Login\LogIn_Bootstrap\logo.png" />
     <Content Include="Login\LogIn_Bootstrap\muslimeen.ico" />
+    <Content Include="Register\Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +122,13 @@
     <Compile Include="Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Register\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Muslimeen.DAL\Muslimeen.DAL.csproj">
@@ -127,7 +136,9 @@
       <Name>Muslimeen.DAL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="CSS\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
