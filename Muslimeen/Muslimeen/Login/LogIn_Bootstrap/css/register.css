@@ -15,7 +15,7 @@ body {
 
 .form-logIn {
     width: 100%;
-    max-width: 330px;
+    max-width: 630px;
     padding: 15px;
     margin: auto;
 }
@@ -24,14 +24,14 @@ body {
     font-weight: 400;
 }
 
-.form-logIn .form-control {
+.form-logIn {
     position: relative;
     height: auto;
-    padding: 10px;
+    padding: 15px;
     font-size: 16px;
 }
 
-.form-logIn .form-control:focus {
+.form-logIn{
     z-index: 2;
 }
 
@@ -45,18 +45,19 @@ body {
 
 .main-div {
     background-color: #ffffff;
-    border-radius: 8px;
     position: relative;
     text-align: center;
-    width: 404px;
+    max-width: 704px;
     margin: auto;
-    min-height: 520px;
+    min-height: 220px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.45);
+    border-radius: 8px;
 }
 
 .main-btn {
     background-color: #256297;
     border-color: #256297;
+    width:150px;
 }
 
 .main-txtb:focus {

@@ -11,7 +11,21 @@ namespace Muslimeen.Register
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        protected void ddUsertype_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if(ddUsertype.Text == "Scholar")
+            {
+                txtScholarQual.Visible = true;
+            }
+            else
+            {
+                txtScholarQual.Visible = false;
+            }
+                
         }
     }
 }
