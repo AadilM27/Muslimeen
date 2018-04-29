@@ -1,0 +1,6 @@
+C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.BLL.dll
+C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.BLL.pdb
+C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.csprojResolveAssemblyReference.cache
+C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.dll
+C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.pdb

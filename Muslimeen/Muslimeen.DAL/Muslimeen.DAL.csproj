@@ -43,12 +43,7 @@
   <ItemGroup>
     <Compile Include="DBAccess.cs" />
     <Compile Include="DBHelper.cs" />
-    <Compile Include="IDBAccess.cs" />
-    <Compile Include="Models\Article.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

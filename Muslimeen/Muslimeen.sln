@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Muslimeen", "Muslimeen\Musl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Muslimeen.DAL", "Muslimeen.DAL\Muslimeen.DAL.csproj", "{0EB059C9-F1B3-4264-9678-8A285AE4AA19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeLib", "TypeLib\TypeLib.csproj", "{65A1BC31-6A0A-4500-983B-5C31F4CD9F98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Muslimeen.BLL", "Muslimeen.BLL\Muslimeen.BLL.csproj", "{2E565E3B-41AF-426F-BCB8-762386783B06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{0EB059C9-F1B3-4264-9678-8A285AE4AA19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EB059C9-F1B3-4264-9678-8A285AE4AA19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EB059C9-F1B3-4264-9678-8A285AE4AA19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65A1BC31-6A0A-4500-983B-5C31F4CD9F98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65A1BC31-6A0A-4500-983B-5C31F4CD9F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65A1BC31-6A0A-4500-983B-5C31F4CD9F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65A1BC31-6A0A-4500-983B-5C31F4CD9F98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E565E3B-41AF-426F-BCB8-762386783B06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E565E3B-41AF-426F-BCB8-762386783B06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E565E3B-41AF-426F-BCB8-762386783B06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E565E3B-41AF-426F-BCB8-762386783B06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
