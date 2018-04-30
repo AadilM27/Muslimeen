@@ -97,7 +97,6 @@
     <Content Include="Home\js\popper.min.js" />
     <Content Include="Home\js\respond.min.js" />
     <Content Include="Home\js\wow.min.js" />
-    <Content Include="Home\Mosque.aspx" />
     <Content Include="Login\Login.aspx" />
     <Content Include="Login\LogIn_Bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="Login\LogIn_Bootstrap\css\bootstrap-grid.min.css.map" />
@@ -143,13 +142,6 @@
     </Compile>
     <Compile Include="Home\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Home\Mosque.aspx.cs">
-      <DependentUpon>Mosque.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Home\Mosque.aspx.designer.cs">
-      <DependentUpon>Mosque.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
