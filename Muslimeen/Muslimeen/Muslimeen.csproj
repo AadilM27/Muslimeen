@@ -73,6 +73,7 @@
     <Content Include="Home\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Home\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Home\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Master.Master" />
     <None Include="packages.config" />
     <Content Include="Home\css\animate.min.css" />
     <Content Include="Home\css\bootstrap.min.css" />
@@ -149,6 +150,13 @@
     </Compile>
     <Compile Include="Home\Mosque.aspx.designer.cs">
       <DependentUpon>Mosque.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master.Master.cs">
+      <DependentUpon>Master.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master.Master.designer.cs">
+      <DependentUpon>Master.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Login\Login.aspx.cs">
