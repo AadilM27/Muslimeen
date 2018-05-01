@@ -31,13 +31,13 @@ namespace Muslimeen.Register {
         protected global::System.Web.UI.WebControls.TextBox txtLName;
         
         /// <summary>
-        /// txtContactNum control.
+        /// TextBox2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContactNum;
+        protected global::System.Web.UI.WebControls.TextBox TextBox2;
         
         /// <summary>
         /// txtDD control.
@@ -103,6 +103,15 @@ namespace Muslimeen.Register {
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
         
         /// <summary>
+        /// btnShowPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnShowPass;
+        
+        /// <summary>
         /// txtRetypePass control.
         /// </summary>
         /// <remarks>
@@ -110,24 +119,6 @@ namespace Muslimeen.Register {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRetypePass;
-        
-        /// <summary>
-        /// chkShowPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkShowPassword;
-        
-        /// <summary>
-        /// lblErrorPass control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblErrorPass;
         
         /// <summary>
         /// btnRegister control.
