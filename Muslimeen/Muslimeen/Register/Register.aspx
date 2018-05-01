@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-sm-5  mb-0 mt-1">
+                <div class="form-group col-sm-5 mb-0 mt-1">
                  <asp:TextBox CssClass="form-control col main-txtb" AutoPostBack="true" runat="server" ID="txtUserEmail" placeholder="Email Address*"></asp:TextBox>
                 </div>
                 <div class="form-group col-sm-7 mb-0 mt-1">
@@ -59,7 +59,7 @@
             </div>
             <div class="form-row">
                 <div class=" form-group col-sm-12 mb-1" aria-disabled="false" id="divScholarQual" >
-                    <asp:TextBox runat="server" CssClass=" form-control main-txtb" Visible="false" ID="txtScholarQual" placeholder="Qualification description:"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass=" form-control main-txtb mt-2" Visible="false" ID="txtScholarQual" placeholder="Qualification description:"></asp:TextBox>
                 </div>
                 <div class="form-group col-sm-12 mb-1 mt-1">
                     <asp:TextBox runat="server" CssClass="form-control main-txtb" ID="txtPassword" TextMode="Password" placeholder="Password*"></asp:TextBox>
