@@ -8,7 +8,7 @@ namespace TypeLib.Models
 {
     class Qualification
     { 
-        public string QualificationID { get; set; }
+        public int QualificationID { get; set; }
         public string QualificationDescription { get; set; }
     }
 }

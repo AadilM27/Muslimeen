@@ -5,23 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
-using Muslimeen.BLL;
-using TypeLib.Models;
-using TypeLib.ViewModels;
-using System.Security.Cryptography;
-
-
 
 namespace Muslimeen.Register
 {
-    
     public partial class Register : System.Web.UI.Page
     {
-        DBHandler handler = new DBHandler();
-
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void ddUsertype_SelectedIndexChanged(object sender, EventArgs e)
@@ -29,21 +20,12 @@ namespace Muslimeen.Register
 
             if(ddUsertype.Text == "Scholar")
             {
-                ddScholarQual.Visible = true;
-
-                List<uspGetQualification> list = handler.BLL_GetQualification();
-
-                foreach (uspGetQualification qual in list)
-                {
-              
-                    ddScholarQual.Items.Add(qual.QualificationDescription.ToString());
-                }
-
+                txtScholarQual.Visible = true;
+                
             }
             else
             {
-                ddScholarQual.Visible = false;
-                ddScholarQual.Items.Clear();
+                txtScholarQual.Visible = false;
             }
                 
         }
@@ -93,11 +75,6 @@ namespace Muslimeen.Register
                 txtPassword.TextMode = TextBoxMode.Password;
                 txtRetypePass.TextMode = TextBoxMode.Password;
             }
-        }
-
-        protected void txtPassword_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -45,11 +45,5 @@
     <Compile Include="DBHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TypeLib\TypeLib.csproj">
-      <Project>{65a1bc31-6a0a-4500-983b-5c31f4cd9f98}</Project>
-      <Name>TypeLib</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

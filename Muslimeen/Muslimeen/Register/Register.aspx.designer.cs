@@ -85,13 +85,13 @@ namespace Muslimeen.Register {
         protected global::System.Web.UI.WebControls.DropDownList ddUsertype;
         
         /// <summary>
-        /// ddScholarQual control.
+        /// txtScholarQual control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddScholarQual;
+        protected global::System.Web.UI.WebControls.TextBox txtScholarQual;
         
         /// <summary>
         /// txtPassword control.

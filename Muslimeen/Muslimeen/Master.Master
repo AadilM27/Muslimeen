@@ -1,31 +1,32 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Zakaah.aspx.cs" Inherits="Muslimeen.Zakaah" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="Muslimeen.Master" %>
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-     <meta charset="utf-8"/>
+<html>
+<head>
+        <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta name="description" content=""/>
         <meta name="author" content=""/>
 
         <title> Muslimeen - Homepage </title> <!--Tab title-->
 
-        <link href="../Home/css/bootstrap.min.css" rel="stylesheet"/>
-        <link href="../Home/css/font-awesome.min.css" rel="stylesheet"/>
-        <link href="../Home/css/animate.min.css" rel="stylesheet"/>
-        <link href="../Home/css/prettyPhoto.css" rel="stylesheet"/>
-        <link href="../Home/css/main.css" rel="stylesheet"/>
-        <link href="../Home/css/responsive.css" rel="stylesheet"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="css/animate.min.css" rel="stylesheet"/>
+        <link href="css/prettyPhoto.css" rel="stylesheet"/>
+        <link href="css/main.css" rel="stylesheet"/>
+        <link href="css/responsive.css" rel="stylesheet"/>
 
         <!--[if lt IE 9]>
             <script src="js/html5shiv.js"></script>
             <script src="js/respond.min.js"></script>
             <![endif]-->
 
-        <link rel="shortcut icon" href="../Home/images/ico/logo.ico"/> <!--Logo on the tab-->
+        <link rel="shortcut icon" href="images/ico/logo.ico"/> <!--Logo on the tab-->
+
 </head>
- <body class="homepage">
+<body class="homepage">
         <form role="form" runat="server">
         <header id="header">
             <div class="top-bar">
@@ -56,7 +57,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         
-                        <a class="navbar-brand" href="index.html"><img src="../Home/images/Final Logo.png" alt="logo" width="110" height="70"/></a>
+                        <a class="navbar-brand" href="index.html"><img src="images/Final Logo.png" alt="logo" width="110" height="70"/></a>
                     
                     </div>
                     <div class="collapse navbar-collapse navbar-right">
@@ -72,11 +73,7 @@
                 </div>
             </nav>
         </header>
-<div class ="container-fluid">
-    <div class ="jumbotron" style ="border:1px solid thin">
-        <h1>Zakaah </h1>
-    </div>
-</div>
+
         <!--START INSERTING CODE FROM THIS POINT ON-->
         
         <footer id="footer" class="midnight-blue">

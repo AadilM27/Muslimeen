@@ -19,7 +19,7 @@
 <body class="text-center">
     <div class="main-div">
 			<asp:Image runat="server" CssClass="mb-2" src="/Login/LogIn_Bootstrap\logo.png" width="220" height="130"/>
-			<h1 class="h3 mb-1 mt-2 font-weight-bold ">Register on Muslimeen</h1>
+			<h1 class="h3 mb-1 mt-2 font-weight-bold">Register on Muslimeen</h1>
             <h1 class="h6 text-black-50 mt-2 mb-3">Access Muslimeen with<br />a free account</h1>
             
         <form class="form-logIn" runat="server">
@@ -46,11 +46,11 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-sm-5 mb-0 mt-1">
+                <div class="form-group col-sm-5  mb-0 mt-1">
                  <asp:TextBox CssClass="form-control col main-txtb" AutoPostBack="true" runat="server" ID="txtUserEmail" placeholder="Email Address*"></asp:TextBox>
                 </div>
                 <div class="form-group col-sm-7 mb-0 mt-1">
-                    <asp:DropDownList CssClass="form-control col" runat="server" ID="ddUsertype" AutoPostBack="true" OnSelectedIndexChanged="ddUsertype_SelectedIndexChanged">
+                    <asp:DropDownList CssClass="form-control col" runat="server" ID="ddUsertype" AutoPostBack="true" OnSelectedIndexChanged="ddUsertype_SelectedIndexChanged" OnTextChanged="ddUsertype_SelectedIndexChanged" >
                         <asp:ListItem Selected="True" Value="">Registration type . . .*</asp:ListItem>
                         <asp:ListItem Value="Member" >Member</asp:ListItem>
                         <asp:ListItem Value="Scholar">Scholar</asp:ListItem>
@@ -59,10 +59,10 @@
             </div>
             <div class="form-row">
                 <div class=" form-group col-sm-12 mb-1" aria-disabled="false" id="divScholarQual" >
-                    <asp:DropDownList runat="server" CssClass=" form-control main-txtb mt-2" Visible="false" ID="ddScholarQual" placeholder="Qualification description:"></asp:DropDownList>
+                    <asp:TextBox runat="server" CssClass=" form-control main-txtb" Visible="false" ID="txtScholarQual" placeholder="Qualification description:"></asp:TextBox>
                 </div>
                 <div class="form-group col-sm-12 mb-1 mt-1">
-                    <asp:TextBox runat="server" CssClass="form-control main-txtb" ID="txtPassword" TextMode="Password" placeholder="Password*" OnTextChanged="txtPassword_TextChanged"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control main-txtb" ID="txtPassword" TextMode="Password" placeholder="Password*"></asp:TextBox>
                 </div>
                 <div class=" form-group col-sm-12 mt-1 mb-2">
                     <asp:TextBox runat="server" CssClass="form-control" ID="txtRetypePass" TextMode="Password" placeholder="Retype Password*"></asp:TextBox>
