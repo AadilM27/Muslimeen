@@ -16,7 +16,11 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <StartPageUrl>Content/Zakaah.aspx</StartPageUrl>
+=======
+          <StartPageUrl>Register/Register.aspx</StartPageUrl>
+>>>>>>> 91bd283a94ce5e8f5d0a1f4fb839beed9d441681
 =======
           <StartPageUrl>Register/Register.aspx</StartPageUrl>
 >>>>>>> 91bd283a94ce5e8f5d0a1f4fb839beed9d441681
