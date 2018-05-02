@@ -176,3 +176,7 @@ C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen\bin\Microsoft.CodeD
 C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen\obj\Debug\Muslimeen.csprojResolveAssemblyReference.cache
 C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen\obj\Debug\Muslimeen.dll
 C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen\obj\Debug\Muslimeen.pdb
+C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen\bin\TypeLib.dll
+C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen\bin\TypeLib.pdb
+C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen\bin\Muslimeen.BLL.dll
+C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen\bin\Muslimeen.BLL.pdb

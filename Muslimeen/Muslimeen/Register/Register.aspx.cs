@@ -5,6 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
+using TypeLib.ViewModels;
+using TypeLib.Models;
+using Muslimeen.BLL;
+
+
 
 namespace Muslimeen.Register
 {
@@ -20,12 +25,24 @@ namespace Muslimeen.Register
 
             if(ddUsertype.Text == "Scholar")
             {
-                txtScholarQual.Visible = true;
-                
+                DBHandler dBHandler = new DBHandler();
+
+                ddScholarQual.Dispose();
+                ddScholarQual.Items.Clear();
+                ddScholarQual.Visible = true;
+
+                List<uspGetQualification> list = dBHandler.BLL_uspGetQualification();
+
+                foreach (uspGetQualification qual in list)
+                {
+                    ddScholarQual.Items.Add(qual.QualificationDescription.ToString());
+                }
             }
             else
             {
-                txtScholarQual.Visible = false;
+                ddScholarQual.Visible = false;
+                ddScholarQual.Items.Clear();
+                ddScholarQual.Dispose();
             }
                 
         }
