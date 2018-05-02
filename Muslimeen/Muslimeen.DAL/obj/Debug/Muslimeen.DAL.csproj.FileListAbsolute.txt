@@ -4,3 +4,8 @@ C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.dll
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.pdb
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Muslimeen.DAL.dll
+C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Muslimeen.DAL.pdb
+C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.dll
+C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.pdb
