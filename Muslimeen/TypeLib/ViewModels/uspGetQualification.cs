@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TypeLib.Models
+namespace TypeLib.ViewModels
 {
-    class Qualification
-    { 
+    public class uspGetQualification
+    {
         public string QualificationID { get; set; }
         public string QualificationDescription { get; set; }
     }

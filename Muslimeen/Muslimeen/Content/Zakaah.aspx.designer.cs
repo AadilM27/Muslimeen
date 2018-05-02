@@ -10,7 +10,7 @@
 namespace Muslimeen {
     
     
-    public partial class Master {
+    public partial class Zakaah {
         
         /// <summary>
         /// txtSearch control.
