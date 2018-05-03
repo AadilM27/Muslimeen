@@ -25,7 +25,7 @@ namespace Muslimeen.BLL
 
         public bool AddMember(Member member)
         {
-            return dbAccess.AddUser();
+            return  false;
         }
     }
 }
