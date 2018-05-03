@@ -73,6 +73,8 @@
     <Content Include="Home\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Home\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Home\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Login\LogIn_Bootstrap\css\Zakaah.css" />
+    <Content Include="Zakaah.aspx" />
     <None Include="packages.config" />
     <Content Include="Home\css\animate.min.css" />
     <Content Include="Home\css\bootstrap.min.css" />
@@ -86,6 +88,9 @@
     <Content Include="Home\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Home\images\Final Logo.png" />
     <Content Include="Home\images\ico\logo.ico" />
+    <Content Include="Login\LogIn_Bootstrap\zakaat 3.jpg" />
+    <Content Include="Login\LogIn_Bootstrap\zakat 2.jpg" />
+    <Content Include="Login\LogIn_Bootstrap\zakat.jpg" />
     <Content Include="Home\js\bootstrap.min.js" />
     <Content Include="Home\js\html5shiv.js" />
     <Content Include="Home\js\jquery-3.3.1.min.js" />
@@ -164,6 +169,13 @@
     </Compile>
     <Compile Include="Register\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Zakaah.aspx.cs">
+      <DependentUpon>Zakaah.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Zakaah.aspx.designer.cs">
+      <DependentUpon>Zakaah.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
