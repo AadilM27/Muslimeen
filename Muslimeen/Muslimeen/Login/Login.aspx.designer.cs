@@ -22,13 +22,13 @@ namespace Muslimeen.SignIn {
         protected global::System.Web.UI.WebControls.TextBox inputEmail;
         
         /// <summary>
-        /// inputPassword control.
+        /// txtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox inputPassword;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
         
         /// <summary>
         /// btnLogIn control.

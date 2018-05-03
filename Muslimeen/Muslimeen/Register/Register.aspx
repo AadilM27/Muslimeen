@@ -22,7 +22,7 @@
 			<h1 class="h3 mb-1 mt-2 font-weight-bold">Register on Muslimeen</h1>
             <h1 class="h6 text-black-50 mt-2 mb-3">Access Muslimeen with<br />a free account</h1>
             
-        <form class="form-logIn" runat="server">
+        <form class="form-logIn" runat="server" id="frmRegister">
             <div class="form-row">
                 <div class="form-group col-sm-5 mb-1 mt-1">
                     <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtName" placeholder="First Name*"></asp:TextBox>
@@ -65,7 +65,7 @@
                     <asp:TextBox runat="server" CssClass="form-control main-txtb" ID="txtPassword" TextMode="Password" placeholder="Password*"></asp:TextBox>
                 </div>
                 <div class=" form-group col-sm-12 mt-1 mb-2">
-                    <asp:TextBox runat="server" CssClass="form-control" ID="txtRetypePass" TextMode="Password" placeholder="Retype Password*"></asp:TextBox>
+                    <asp:TextBox runat="server"  CssClass="form-control" ID="txtRetypePass" TextMode="Password" placeholder="Retype Password*"></asp:TextBox>
                 </div>
                 <div style="text-align:left; padding-left:10px;" class=" form-group col-sm-12 mt-0 mb-0">
                     <asp:CheckBox runat="server" AutoPostBack="true" ID="chkShowPassword" OnCheckedChanged="chkShowPassword_CheckedChanged"/>
@@ -75,7 +75,9 @@
                     <asp:Label CssClass="lblErrorPass" runat="server" Text="" ID="lblErrorPass"></asp:Label>
                 </div>
             </div>
-                <asp:button runat="server" CssClass="btn btn-primary main-btn mt-2 " ID="btnRegister" Text="Register" OnClick="btnRegister_Click"></asp:button>
+                <asp:button runat="server" CssClass="btn btn-primary main-btn mt-2 " ID="btnRegister" Text="Register" OnClick="btnRegister_Click" UseSubmitBehavior="True"></asp:button>
+
+            <p class="mt-3">Have a account? <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="~/Login/Login.aspx"  Text="Log in"></asp:HyperLink></p>
         </form>
      </div>
 </body>

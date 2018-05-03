@@ -9,7 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 
-namespace Muslimeen.DAL
+namespace Muslimeen.BLL
 {
     public class DBAccess
     {
@@ -33,6 +33,20 @@ namespace Muslimeen.DAL
                 }
             }
             return list;
+        }
+
+        public bool AddUser(Member user)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach(var prop in user.GetType().GetProperties())
+            {
+                if(prop.GetValue(user) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(user)));
+                }
+            }
+            return DBHelper.NonQuery("usp", CommandType.StoredProcedure, parameters.ToArray());
         }
 
     }

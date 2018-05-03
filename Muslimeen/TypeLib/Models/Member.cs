@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace TypeLib.Models
 {
-    class User
+    public class Member
     {
-        public int UserID { get; set; }
-        public string UserName { get; set; }
-        public string UserLastName { get; set; }
-        public DateTime UserDate { get; set; }
-        public string password { get; set; }
-        public string UserType { get; set; }
+        public int MemberID { get; set; }
+        public string MemberName { get; set; }
+        public string MemberLastName { get; set; }
+        public DateTime MemberDOB { get; set; }
+        public string Password { get; set; }
+        public string MemberType { get; set; }
         public string Active { get; set; }
         public string Email { get; set; }
         public string ContactNo { get; set; }

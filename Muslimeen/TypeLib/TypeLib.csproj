@@ -52,7 +52,7 @@
     <Compile Include="Models\Qualification.cs" />
     <Compile Include="Models\Scholar.cs" />
     <Compile Include="Models\Topic.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Video.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\uspGetQualification.cs" />

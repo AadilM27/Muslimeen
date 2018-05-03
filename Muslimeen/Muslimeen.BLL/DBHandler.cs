@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TypeLib.ViewModels;
 using TypeLib.Models;
-using Muslimeen.DAL;
+using Muslimeen.BLL;
 
 namespace Muslimeen.BLL
 {
@@ -21,6 +21,11 @@ namespace Muslimeen.BLL
         public List<uspGetQualification> BLL_uspGetQualification()
         {
             return dbAccess.GetQualification();
+        }
+
+        public bool AddMember(Member member)
+        {
+            return dbAccess.AddUser();
         }
     }
 }
