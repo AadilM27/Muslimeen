@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<head runat="server">
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta name="description" content=""/>
@@ -83,6 +83,51 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div>
+                <asp:Menu ID="Menu1" Orientation="Horizontal" StaticMenuItemStyle-CssClass="tab" Font-Size="Large" StaticSelectedStyle-CssClass="selectedtab" StaticMenuItemStyle-HorizontalPadding="50px" StaticSelectedStyle-BackColor="White" CssClass="tabs" runat="server" height="0px" vertical-align="top" align ="center" OnMenuItemClick="Menu1_MenuItemClick">
+                    <Items>
+                    <asp:MenuItem Text="What is Zakaah?" Value="0" Selected="true"></asp:MenuItem>
+                        <asp:MenuItem Text="Zakaah Calculator" Value="1"></asp:MenuItem>
+                        <asp:MenuItem Text="Organizations" Value="2"></asp:MenuItem>
+                        <asp:MenuItem Text="Contact Us" Value="3"></asp:MenuItem>    
+                </Items>
+                </asp:Menu>
+
+                <div class="tabcontents">
+                    <asp:MultiView ID="MultiView1" ActiveViewIndex="0" runat="server">
+                    <asp:View ID="View1" runat="server">
+                     <div class="container ">
+                         <div class="row">
+                            <div class ="jumbotron2">
+                             <h1>What is Zakaah?</h1>
+                                <p>
+                                   "Take from their wealth so that you might purify and sanctify them"
+                                </p>
+                                <p>(Quran 9:103)</p>
+                                <p>The word means 'purity' or 'to purify';all Muslims who are wealthy
+                                    enough,must purify their wealth through the act of giving charity.
+                                </p>
+                            </div>
+
+                         </div>
+                     </div>
+                    </asp:View>
+                    <asp:View ID="View2" runat="server">
+                   <br />
+                        tab1
+                    </asp:View>
+                    <asp:View ID="View3" runat="server">
+                   <br /> tab 2
+                    </asp:View>
+                    <asp:View ID="View4" runat="server">
+                   <br /> tab3
+                    </asp:View>
+
+                    </asp:MultiView>
+                   
+                </div>
+                
             </div>
 
         <!--START INSERTING CODE FROM THIS POINT ON-->
