@@ -11,7 +11,7 @@ namespace TypeLib.Models
         public int NoticeID { get; set; }
         public string NoticeDescription { get; set; }
         public DateTime NoticeDate { get; set; }
-        public int UserID{get; set;}
+        public string MemberID{get; set;}
 
     }
 }

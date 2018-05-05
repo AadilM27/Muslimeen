@@ -11,21 +11,31 @@ namespace Muslimeen.BLL
 {
     public class DBHandler
     {
-        DBAccess dbAccess = new DBAccess();
+        DBAccess dBAccess = new DBAccess();
 
         public DBHandler()
         {
 
         }
 
-        public List<uspGetQualification> BLL_uspGetQualification()
+        public List<uspGetQualification> BLL_GetQualification()
         {
-            return dbAccess.GetQualification();
+            return dBAccess.GetQualification();
         }
 
-        public bool AddMember(Member member)
+        public bool BLL_AddMember(Member member)
         {
-            return  false;
+            return dBAccess.AddMember(member);
+        }
+
+        public bool BLL_AddScholarQualification(Scholar scholar)
+        {
+            return dBAccess.AddScholarQualification(scholar);
+        }
+
+        public uspGetMember BLL_GetMember(string memberID)
+        {
+            return dBAccess.GetMember(memberID);
         }
     }
 }

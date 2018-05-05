@@ -74,6 +74,7 @@
     <Content Include="Home\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Home\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Login\LogIn_Bootstrap\css\Zakaah.css" />
+    <Content Include="Register\Register.js" />
     <Content Include="Zakaah.aspx" />
     <None Include="packages.config" />
     <Content Include="Home\css\animate.min.css" />

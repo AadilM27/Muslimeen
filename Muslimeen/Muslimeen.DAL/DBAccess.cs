@@ -25,8 +25,8 @@ namespace Muslimeen.BLL
                     {
                         uspGetQualification quali = new uspGetQualification
                         {
-                            QualificationID = row["QualificationID"].ToString(),
-                            QualificationDescription = row["QualificationDescription"].ToString()
+                            QualificationID = Convert.ToString(row["QualificationID"]),
+                            QualificationDescription = Convert.ToString(row["QualificationDescription"])
                         };
                         list.Add(quali);
                     }
@@ -35,19 +35,64 @@ namespace Muslimeen.BLL
             return list;
         }
 
-        public bool AddUser(Member user)
+        public bool AddMember(Member member)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
 
-            foreach(var prop in user.GetType().GetProperties())
+            foreach(var prop in member.GetType().GetProperties())
             {
-                if(prop.GetValue(user) != null)
+                if(prop.GetValue(member) != null)
                 {
-                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(user)));
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(member)));
                 }
             }
-            return DBHelper.NonQuery("usp", CommandType.StoredProcedure, parameters.ToArray());
+            return DBHelper.NonQuery("uspAddMember", CommandType.StoredProcedure, parameters.ToArray());
         }
 
+        public bool AddScholarQualification(Scholar scholar)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var prop in scholar.GetType().GetProperties())
+            {
+                if (prop.GetValue(scholar) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(scholar)));
+                }
+            }
+            return DBHelper.NonQuery("uspAddScholarQualification", CommandType.StoredProcedure, parameters.ToArray());
+
+        }
+
+        public uspGetMember GetMember(string memberID)
+        {
+            uspGetMember getMember = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@MemberID", memberID),
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetMember", CommandType.StoredProcedure, pars))
+            { 
+                if(table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    getMember = new uspGetMember
+                    {
+                        MemberID = Convert.ToString(row["MemberID"]),
+                        MemberName = Convert.ToString(row["MemberName"]),
+                        MemberLastName = Convert.ToString(row["MemberLastName"]),
+                        MemberDOB = Convert.ToDateTime("MemberDOB"),
+                        Password = Convert.ToString("Password"),
+                        MemberType = Convert.ToChar("MemberType"),
+                        Active = Convert.ToChar("Active"),
+                        Email = Convert.ToString("Email"),
+                        ContactNo = Convert.ToString("ContactNo"),
+                        MosqueID = Convert.ToInt32("MosqueID")
+
+                    };
+                }
+            }
+            return getMember;
+        }
     }
 }
