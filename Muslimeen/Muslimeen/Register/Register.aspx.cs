@@ -37,7 +37,6 @@ namespace Muslimeen.Register
             {
                 DBHandler dBHandler = new DBHandler();
 
-
                 ddScholarQual.Items.Clear();
                 ddScholarQual.Dispose();
                 ddScholarQual.Visible = true;
@@ -180,6 +179,10 @@ namespace Muslimeen.Register
 
                         dBHandler.BLL_AddScholarQualification(scholar);
                     }
+
+                    EmailService emailService = new EmailService();
+
+                    emailService.AutoEmailService(txtUserEmail.Text.ToString(), ddUsertype.SelectedItem.ToString());
                 }
                 catch(Exception ex)
                 {
