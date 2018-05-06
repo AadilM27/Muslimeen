@@ -21,8 +21,8 @@ namespace Muslimeen.Register
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            txtDOB.MaxLength = 15;
-
+            txtDOB.MaxLength = 10;
+            
             if (IsPostBack)
             {
                 txtPassword.Attributes["Value"] = txtPassword.Text;
@@ -127,6 +127,11 @@ namespace Muslimeen.Register
                 txtDOB.BorderColor = Color.IndianRed;
                 continueProcess += 1;
             }
+            if(txtDOB.Text.Length > 10)
+            {
+                txtDOB.BorderColor = Color.IndianRed;
+                continueProcess += 1;
+            }
             if (txtUserEmail.Text == "" || txtUserEmail == null)
             {
                 txtUserEmail.BorderColor = Color.IndianRed;
@@ -152,6 +157,14 @@ namespace Muslimeen.Register
                 txtRetypePass.BorderColor = Color.Empty;
                 lblErrorPass.Text = "";
 
+                //make sure the DOB is in corrct format yyy-mm-dd.
+                if (txtDOB.Text.IndexOf('-', 4) == -1 || txtDOB.Text.IndexOf('-', 7) == -1)
+                {
+                    txtDOB.Text = txtDOB.Text.Insert(4, "-");
+                    txtDOB.Text = txtDOB.Text.Insert(7, "-");
+                }
+
+
                 try
                 {
                     Member member = new Member
@@ -162,9 +175,11 @@ namespace Muslimeen.Register
                         MemberDOB = Convert.ToDateTime(txtDOB.Text.ToString()),
                         Password = Convert.ToString(txtPassword.Text),
                         MemberType = Convert.ToChar(ddUsertype.SelectedValue),
-                        Active = 'Y',
+                        ActiveTypeID = 'T',
                         Email = Convert.ToString(txtUserEmail.Text),
-                        ContactNo = Convert.ToString(txtContactNum.Text)
+                        ContactNo = Convert.ToString(txtContactNum.Text),
+                        ActivationExpiry = Convert.ToDateTime(DateTime.Today.AddDays(1)),
+                        ActivationDate = Convert.ToDateTime(DateTime.Today)
                     };
 
                     bool success = dBHandler.BLL_AddMember(member);
@@ -194,6 +209,7 @@ namespace Muslimeen.Register
                 
 
         }
+
     }
 
 

@@ -43,7 +43,7 @@
                     <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtContactNum" placeholder="Contact Number"></asp:TextBox>
                 </div>
                 <div class="form-group col-sm-7 mb-1 mt-1">
-                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtDOB" placeholder="YYYY-MM-DD*"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtDOB" placeholder="yyyy-mm-dd*"></asp:TextBox>
                 </div>
             </div>
             <div class="form-row">

@@ -73,8 +73,10 @@
     <Content Include="Home\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Home\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Home\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Login\LogIn_Bootstrap\css\Verification.css" />
     <Content Include="Login\LogIn_Bootstrap\css\Zakaah.css" />
     <Content Include="Register\Register.js" />
+    <Content Include="Register\Verification.aspx" />
     <Content Include="Zakaah.aspx" />
     <None Include="packages.config" />
     <Content Include="Home\css\animate.min.css" />
@@ -170,6 +172,13 @@
     </Compile>
     <Compile Include="Register\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register\Verification.aspx.cs">
+      <DependentUpon>Verification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register\Verification.aspx.designer.cs">
+      <DependentUpon>Verification.aspx</DependentUpon>
     </Compile>
     <Compile Include="Zakaah.aspx.cs">
       <DependentUpon>Zakaah.aspx</DependentUpon>

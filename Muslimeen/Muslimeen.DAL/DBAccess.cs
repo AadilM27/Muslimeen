@@ -7,6 +7,7 @@ using TypeLib.ViewModels;
 using TypeLib.Models;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 
 
 namespace Muslimeen.BLL
@@ -75,24 +76,41 @@ namespace Muslimeen.BLL
             { 
                 if(table.Rows.Count == 1)
                 {
+
                     DataRow row = table.Rows[0];
                     getMember = new uspGetMember
                     {
                         MemberID = Convert.ToString(row["MemberID"]),
                         MemberName = Convert.ToString(row["MemberName"]),
                         MemberLastName = Convert.ToString(row["MemberLastName"]),
-                        MemberDOB = Convert.ToDateTime("MemberDOB"),
-                        Password = Convert.ToString("Password"),
-                        MemberType = Convert.ToChar("MemberType"),
-                        Active = Convert.ToChar("Active"),
-                        Email = Convert.ToString("Email"),
-                        ContactNo = Convert.ToString("ContactNo"),
-                        MosqueID = Convert.ToInt32("MosqueID")
-
+                        MemberDOB = Convert.ToDateTime(row["MemberDOB"]),
+                        Password = Convert.ToString(row["Password"]),
+                        MemberType = Convert.ToChar(row["MemberType"]),
+                        ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]),
+                        Email = Convert.ToString(row["Email"]),
+                        ContactNo = Convert.ToString(row["ContactNo"]),
+                        MosqueID = Convert.ToInt32(row["MosqueID"]),
+                        ActivationExpiry = Convert.ToDateTime(row["ActivationExpiry"]),
+                        ActivationDate = Convert.ToDateTime(row["ActivationDate"])
+                        
                     };
                 }
             }
             return getMember;
+        }
+
+        public bool VerifyMember(uspVerifyMember uspVerifyMember)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var property in uspVerifyMember.GetType().GetProperties())
+            {
+                if (property.GetValue(uspVerifyMember) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + property.Name.ToString(), property.GetValue(uspVerifyMember)));
+                }
+            }
+            return DBHelper.NonQuery("uspVerifyMember", CommandType.StoredProcedure, parameters.ToArray());
         }
     }
 }

@@ -37,5 +37,10 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetMember(memberID);
         }
+
+        public bool BLL_VerifyMember(uspVerifyMember uspVerifyMember)
+        {
+            return dBAccess.VerifyMember(uspVerifyMember);
+        }
     }
 }
