@@ -36,21 +36,34 @@ namespace Muslimeen.Register
             {
                 try
                 {
+                    string memberPassword = Convert.ToString(txtPassword.Text);
+                    string encryptionPass = "NexTech";
+                    Encryption encryption = new Encryption();
                     DBHandler dBHandler = new DBHandler();
                     uspGetMember uspGetMember = new uspGetMember();
 
                     uspGetMember = dBHandler.BLL_GetMember(txtMemberID.Text.ToString());
 
-                    if (uspGetMember.MemberID == txtMemberID.Text.ToString() && uspGetMember.Password == Convert.ToString(txtPassword.Text))
+                    string decryptedString = encryption.Decrypt(encryptionPass, Convert.ToString(uspGetMember.Password));
+
+                    if (uspGetMember.MemberID == txtMemberID.Text.ToString())
                     {
-                        uspVerifyMember uspVerifyMember = new uspVerifyMember()
+                        if (decryptedString == Convert.ToString(txtPassword.Text))
                         {
-                            MemberID = Convert.ToString(txtMemberID.Text.ToString())
-                        };
+                            uspVerifyMember uspVerifyMember = new uspVerifyMember()
+                            {
+                                MemberID = Convert.ToString(txtMemberID.Text.ToString())
+                            };
 
-                        dBHandler.BLL_VerifyMember(uspVerifyMember);
+                            dBHandler.BLL_VerifyMember(uspVerifyMember);//Change the Expiry date to NULL and Active Status to Y.
 
-                        lblErrorPass.Text = "";
+                            lblErrorPass.Text = "";
+                        }
+                        else
+                        {
+                            lblErrorPass.Text = "Decryption failier";
+                        }
+
                     }
                     else
                     {
@@ -58,8 +71,8 @@ namespace Muslimeen.Register
                     }
                 }
                 catch (InvalidCastException)
-                {
-                    lblErrorPass.Text = "Incorrect Password or Member is already verified";
+                {   //ActivationExpiry will be Null, this is why
+                   lblErrorPass.Text = "Incorrect Password or Member is already verified";
                 }
                 catch(NullReferenceException)
                 {

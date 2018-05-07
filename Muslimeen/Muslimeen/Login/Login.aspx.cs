@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TypeLib.ViewModels;
+using TypeLib.Models;
+using Muslimeen.BLL;
 
 namespace Muslimeen.SignIn
 {
@@ -21,6 +24,10 @@ namespace Muslimeen.SignIn
 
         protected void btnLogIn_Click(object sender, EventArgs e)
         {
+            DBHandler dBHandler = new DBHandler();
+            uspGetMember uspGetMember = new uspGetMember();
+
+            
 
         }
     }

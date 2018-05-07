@@ -78,22 +78,36 @@ namespace Muslimeen.BLL
                 {
 
                     DataRow row = table.Rows[0];
-                    getMember = new uspGetMember
+                    getMember = new uspGetMember();
+
+                    getMember.MemberID = Convert.ToString(row["MemberID"]);
+                    getMember.MemberName = Convert.ToString(row["MemberName"]);
+                    getMember.MemberLastName = Convert.ToString(row["MemberLastName"]);
+                    getMember.MemberDOB = Convert.ToDateTime(row["MemberDOB"]);
+                    getMember.Password = Convert.ToString(row["Password"]);
+                    getMember.MemberType = Convert.ToChar(row["MemberType"]);
+                    getMember.ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]);
+                    getMember.Email = Convert.ToString(row["Email"]);
+                    getMember.ContactNo = Convert.ToString(row["ContactNo"]);
+                    if (!(row["MosqueID"] is DBNull))
                     {
-                        MemberID = Convert.ToString(row["MemberID"]),
-                        MemberName = Convert.ToString(row["MemberName"]),
-                        MemberLastName = Convert.ToString(row["MemberLastName"]),
-                        MemberDOB = Convert.ToDateTime(row["MemberDOB"]),
-                        Password = Convert.ToString(row["Password"]),
-                        MemberType = Convert.ToChar(row["MemberType"]),
-                        ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]),
-                        Email = Convert.ToString(row["Email"]),
-                        ContactNo = Convert.ToString(row["ContactNo"]),
-                        MosqueID = Convert.ToInt32(row["MosqueID"]),
-                        ActivationExpiry = Convert.ToDateTime(row["ActivationExpiry"]),
-                        ActivationDate = Convert.ToDateTime(row["ActivationDate"])
+                        getMember.MosqueID = Convert.ToInt32(row["MosqueID"]);
+                    }
+                    else
+                    {
+                        getMember.MosqueID = null;
+                    }
+                    if (!(row["ActivationExpiry"] is DBNull))
+                    {
+                        getMember.ActivationExpiry = Convert.ToDateTime(row["ActivationExpiry"]);
+                    }
+                    else
+                    {
+                        getMember.ActivationExpiry = null;
+                    }
+                    getMember.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
                         
-                    };
+                    
                 }
             }
             return getMember;
