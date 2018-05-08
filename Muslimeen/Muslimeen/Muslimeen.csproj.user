@@ -15,7 +15,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
+<<<<<<< HEAD
+          <StartPageUrl>Content/Zakaah.aspx</StartPageUrl>
+=======
           <StartPageUrl>Register/Verification.aspx</StartPageUrl>
+>>>>>>> 4b3c85a1945d8b8eaa724aefc7ce6870145a7c89
           <StartAction>SpecificPage</StartAction>
           <AspNetDebugging>True</AspNetDebugging>
           <SilverlightDebugging>False</SilverlightDebugging>
