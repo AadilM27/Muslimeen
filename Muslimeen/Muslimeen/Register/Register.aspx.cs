@@ -22,11 +22,36 @@ namespace Muslimeen.Register
         protected void Page_Load(object sender, EventArgs e)
         {
             txtDOB.MaxLength = 10;
-            
+            if (!IsPostBack)
+            {
+                ddUsertype.ClearSelection();
+            }
+
             if (IsPostBack)
             {
                 txtPassword.Attributes["Value"] = txtPassword.Text;
                 txtRetypePass.Attributes["Value"] = txtRetypePass.Text;
+
+                txtMemberID.BorderColor = Color.Empty;
+                txtName.BorderColor = Color.Empty;
+                txtLName.BorderColor = Color.Empty;
+                txtContactNum.BorderColor = Color.Empty;
+                txtDOB.BorderColor = Color.Empty;
+                txtUserEmail.BorderColor = Color.Empty;
+                ddUsertype.BorderColor = Color.Empty;
+                txtPassword.BorderColor = Color.Empty;
+                txtRetypePass.BorderColor = Color.Empty;
+                lblErrorPass.Text = "";
+                txtMemberID.BorderColor = Color.Empty;
+                txtName.BorderColor = Color.Empty;
+                txtLName.BorderColor = Color.Empty;
+                txtUserEmail.BorderColor = Color.Empty;
+                ddUsertype.BorderColor = Color.Empty;
+                txtDOB.BorderColor = Color.Empty;
+                txtPassword.BorderColor = Color.Empty;
+                txtRetypePass.BorderColor = Color.Empty;
+                txtContactNum.BorderColor = Color.Empty;
+                txtUserEmail.BorderColor = Color.Empty;
             }
 
         }
@@ -117,11 +142,6 @@ namespace Muslimeen.Register
                 txtLName.BorderColor = Color.IndianRed;
                 continueProcess += 1;
             }
-            if (txtContactNum.Text == "" || txtContactNum == null)
-            {
-                txtContactNum.BorderColor = Color.IndianRed;
-                continueProcess += 1;
-            }
             if (txtDOB.Text == "" || txtDOB == null)
             {
                 txtDOB.BorderColor = Color.IndianRed;
@@ -142,20 +162,17 @@ namespace Muslimeen.Register
                 ddScholarQual.BorderColor = Color.IndianRed;
                 continueProcess += 1;
             }
+            if(ddUsertype.SelectedValue == "None")
+            {
+                ddScholarQual.BorderColor = Color.Red;
+                continueProcess += 1;
+                lblErrorPass.Text = "Error- Please select a registration type";
+            }
 
             if (continueProcess == 0)
             {
 
-                txtMemberID.BorderColor = Color.Empty;
-                txtName.BorderColor = Color.Empty;
-                txtLName.BorderColor = Color.Empty;
-                txtContactNum.BorderColor = Color.Empty;
-                txtDOB.BorderColor = Color.Empty;
-                txtUserEmail.BorderColor = Color.Empty;
-                ddUsertype.BorderColor = Color.Empty;
-                txtPassword.BorderColor = Color.Empty;
-                txtRetypePass.BorderColor = Color.Empty;
-                lblErrorPass.Text = "";
+                
 
                 //make sure the DOB is in corrct format yyy-mm-dd.
                 if (txtDOB.Text.IndexOf('-', 4) == -1 || txtDOB.Text.IndexOf('-', 7) == -1)
@@ -202,6 +219,9 @@ namespace Muslimeen.Register
                     EmailService emailService = new EmailService();
 
                     emailService.AutoEmailService(txtUserEmail.Text.ToString(), ddUsertype.SelectedItem.ToString());
+
+
+                    
                 }
                 catch(Exception ex)
                 {

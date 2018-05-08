@@ -64,6 +64,10 @@ namespace Muslimeen.Register
                             lblErrorPass.Text = "Decryption failier";
                         }
 
+                        txtMemberID.Enabled = false;
+                        txtPassword.Enabled = false;
+                        lblErrorPass.Text = "Thank you";
+
                     }
                     else
                     {

@@ -52,7 +52,8 @@
                 </div>
                 <div class="form-group col-sm-7 mb-1 mt-1">
                     <asp:DropDownList CssClass="form-control col" runat="server" ID="ddUsertype" AutoPostBack="true" OnSelectedIndexChanged="ddUsertype_SelectedIndexChanged" OnTextChanged="ddUsertype_SelectedIndexChanged" >
-                        <asp:ListItem Value="M" Selected="True" >Member</asp:ListItem>
+                        <asp:ListItem Selected disabled Value="None" >Registration Type*</asp:ListItem>
+                        <asp:ListItem Value="M">Member</asp:ListItem>
                         <asp:ListItem Value="S">Scholar</asp:ListItem>
                     </asp:DropDownList>
                 </div>
