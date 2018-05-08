@@ -66,7 +66,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Zakaah\images\Final Logo.png" />
     <Content Include="Home\fonts\fontawesome-webfont.eot" />
     <Content Include="Home\fonts\fontawesome-webfont.ttf" />
     <Content Include="Home\fonts\fontawesome-webfont.woff" />
@@ -74,18 +73,11 @@
     <Content Include="Home\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Home\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Home\fonts\glyphicons-halflings-regular.woff" />
-<<<<<<< HEAD
-    <Content Include="Content\Zakaah\images\calculator.jpg" />
-    <Content Include="Content\Zakaah\css\Zakaah.css" />
-    <Content Include="Register\Register.js" />
-    <Content Include="Content\Zakaah.aspx" />
-=======
     <Content Include="Login\LogIn_Bootstrap\css\Verification.css" />
     <Content Include="Login\LogIn_Bootstrap\css\Zakaah.css" />
     <Content Include="Register\Register.js" />
     <Content Include="Register\Verification.aspx" />
     <Content Include="Zakaah.aspx" />
->>>>>>> 4b3c85a1945d8b8eaa724aefc7ce6870145a7c89
     <None Include="packages.config" />
     <Content Include="Home\css\animate.min.css" />
     <Content Include="Home\css\bootstrap.min.css" />
@@ -99,9 +91,9 @@
     <Content Include="Home\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Home\images\Final Logo.png" />
     <Content Include="Home\images\ico\logo.ico" />
-    <Content Include="Content\Zakaah\images\zakaat 3.jpg" />
-    <Content Include="Content\Zakaah\images\zakat 2.jpg" />
-    <Content Include="Content\Zakaah\images\zakat.jpg" />
+    <Content Include="Login\LogIn_Bootstrap\zakaat 3.jpg" />
+    <Content Include="Login\LogIn_Bootstrap\zakat 2.jpg" />
+    <Content Include="Login\LogIn_Bootstrap\zakat.jpg" />
     <Content Include="Home\js\bootstrap.min.js" />
     <Content Include="Home\js\html5shiv.js" />
     <Content Include="Home\js\jquery-3.3.1.min.js" />
@@ -181,9 +173,6 @@
     <Compile Include="Register\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="Content\Zakaah.aspx.cs">
-=======
     <Compile Include="Register\Verification.aspx.cs">
       <DependentUpon>Verification.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -192,11 +181,10 @@
       <DependentUpon>Verification.aspx</DependentUpon>
     </Compile>
     <Compile Include="Zakaah.aspx.cs">
->>>>>>> 4b3c85a1945d8b8eaa724aefc7ce6870145a7c89
       <DependentUpon>Zakaah.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Content\Zakaah.aspx.designer.cs">
+    <Compile Include="Zakaah.aspx.designer.cs">
       <DependentUpon>Zakaah.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
