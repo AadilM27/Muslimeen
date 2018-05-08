@@ -7,6 +7,7 @@ using TypeLib.ViewModels;
 using TypeLib.Models;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 
 
 namespace Muslimeen.BLL
@@ -75,24 +76,55 @@ namespace Muslimeen.BLL
             { 
                 if(table.Rows.Count == 1)
                 {
-                    DataRow row = table.Rows[0];
-                    getMember = new uspGetMember
-                    {
-                        MemberID = Convert.ToString(row["MemberID"]),
-                        MemberName = Convert.ToString(row["MemberName"]),
-                        MemberLastName = Convert.ToString(row["MemberLastName"]),
-                        MemberDOB = Convert.ToDateTime("MemberDOB"),
-                        Password = Convert.ToString("Password"),
-                        MemberType = Convert.ToChar("MemberType"),
-                        Active = Convert.ToChar("Active"),
-                        Email = Convert.ToString("Email"),
-                        ContactNo = Convert.ToString("ContactNo"),
-                        MosqueID = Convert.ToInt32("MosqueID")
 
-                    };
+                    DataRow row = table.Rows[0];
+                    getMember = new uspGetMember();
+
+                    getMember.MemberID = Convert.ToString(row["MemberID"]);
+                    getMember.MemberName = Convert.ToString(row["MemberName"]);
+                    getMember.MemberLastName = Convert.ToString(row["MemberLastName"]);
+                    getMember.MemberDOB = Convert.ToDateTime(row["MemberDOB"]);
+                    getMember.Password = Convert.ToString(row["Password"]);
+                    getMember.MemberType = Convert.ToChar(row["MemberType"]);
+                    getMember.ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]);
+                    getMember.Email = Convert.ToString(row["Email"]);
+                    getMember.ContactNo = Convert.ToString(row["ContactNo"]);
+                    if (!(row["MosqueID"] is DBNull))
+                    {
+                        getMember.MosqueID = Convert.ToInt32(row["MosqueID"]);
+                    }
+                    else
+                    {
+                        getMember.MosqueID = null;
+                    }
+                    if (!(row["ActivationExpiry"] is DBNull))
+                    {
+                        getMember.ActivationExpiry = Convert.ToDateTime(row["ActivationExpiry"]);
+                    }
+                    else
+                    {
+                        getMember.ActivationExpiry = null;
+                    }
+                    getMember.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
+                        
+                    
                 }
             }
             return getMember;
+        }
+
+        public bool VerifyMember(uspVerifyMember uspVerifyMember)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var property in uspVerifyMember.GetType().GetProperties())
+            {
+                if (property.GetValue(uspVerifyMember) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + property.Name.ToString(), property.GetValue(uspVerifyMember)));
+                }
+            }
+            return DBHelper.NonQuery("uspVerifyMember", CommandType.StoredProcedure, parameters.ToArray());
         }
     }
 }

@@ -14,9 +14,12 @@ namespace TypeLib.Models
         public DateTime MemberDOB { get; set; }
         public string Password { get; set; }
         public char MemberType { get; set; }
-        public char Active { get; set; }
+        public char ActiveTypeID { get; set; }
         public string Email { get; set; }
         public string ContactNo { get; set; }
         public int? MosqueID { get; set; }
+        public DateTime? ActivationExpiry { get; set; }
+        public DateTime ActivationDate { get; set; }
+
     }
 }

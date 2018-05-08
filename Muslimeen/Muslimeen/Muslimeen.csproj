@@ -74,10 +74,18 @@
     <Content Include="Home\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Home\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Home\fonts\glyphicons-halflings-regular.woff" />
+<<<<<<< HEAD
     <Content Include="Content\Zakaah\images\calculator.jpg" />
     <Content Include="Content\Zakaah\css\Zakaah.css" />
     <Content Include="Register\Register.js" />
     <Content Include="Content\Zakaah.aspx" />
+=======
+    <Content Include="Login\LogIn_Bootstrap\css\Verification.css" />
+    <Content Include="Login\LogIn_Bootstrap\css\Zakaah.css" />
+    <Content Include="Register\Register.js" />
+    <Content Include="Register\Verification.aspx" />
+    <Content Include="Zakaah.aspx" />
+>>>>>>> 4b3c85a1945d8b8eaa724aefc7ce6870145a7c89
     <None Include="packages.config" />
     <Content Include="Home\css\animate.min.css" />
     <Content Include="Home\css\bootstrap.min.css" />
@@ -173,7 +181,18 @@
     <Compile Include="Register\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Content\Zakaah.aspx.cs">
+=======
+    <Compile Include="Register\Verification.aspx.cs">
+      <DependentUpon>Verification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register\Verification.aspx.designer.cs">
+      <DependentUpon>Verification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Zakaah.aspx.cs">
+>>>>>>> 4b3c85a1945d8b8eaa724aefc7ce6870145a7c89
       <DependentUpon>Zakaah.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
