@@ -1,0 +1,95 @@
+﻿.jumbotron
+{ 
+  color:white;
+ 
+  background-repeat:no-repeat;
+ background-size: 100% 100%; 
+ height:250px;
+}
+.background {
+    background-color: steelblue;
+}
+.tabs
+{
+position:relative;
+top:1px;
+left:10px;
+}
+.tab
+{
+border:solid 1px black;
+background-color:black;
+padding:5px 10px;
+}
+.selectedtab
+{
+    background-color:steelblue;
+    border-bottom:solid 1px white;
+
+}
+.tabcontents
+{
+    border:solid 1px black;
+    padding:10px;
+    background-color:steelblue;
+   
+
+}
+.jumbotron2 {
+    background-image: url('../../../Content/Zakaah/images/zakaat 3.jpg');
+    color: white;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    height: 208px;
+    margin: 0 -2.07%;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+.post-title {
+    font-family: 'Cabin';
+    color: #000000;
+    font-size: 32px;
+    font-weight: normal;
+}
+
+.post-title {
+    font-family: BebasNeueRegular, arial, Georgia, serif;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+ h2 {
+    font-weight: normal;
+    background-color:ActiveBorder;
+    width: 693px;
+}
+ .h3{
+     font-weight:normal;
+     background-color:ActiveBorder;
+    height: 36px;
+    width: 713px;
+}
+.calculator {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    vertical-align:middle;
+     height: 208px;
+    margin: 0 -2.07%;
+    position: relative;
+    font-weight: bold;
+    color: white;
+    background-image: url('../../../Content/Zakaah/images/calculator.jpg');
+}
+.h1b{
+    font-size:70px;
+    text-align:left;
+    margin-left:20px;
+}
+.newcon{
+    margin-left:0px;
+    margin-right:70px;
+    margin-bottom:25px;
+}
