@@ -1,35 +1,26 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="HomePage.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="Muslimeen.HomePage" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta name="description" content=""/>
-        <meta name="author" content=""/>
+<head runat="server">
 
-        <title> Muslimeen - Homepage </title> <!--Tab title-->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-        <link href="css/bootstrap.min.css" rel="stylesheet"/>
-        <link href="css/font-awesome.min.css" rel="stylesheet"/>
-        <link href="css/animate.min.css" rel="stylesheet"/>
-        <link href="css/prettyPhoto.css" rel="stylesheet"/>
-        <link href="css/main.css" rel="stylesheet"/>
-        <link href="css/responsive.css" rel="stylesheet"/>
+    <title>Muslimeen - Homepage</title>
 
-        <!--[if lt IE 9]>
-            <script src="js/html5shiv.js"></script>
-            <script src="js/respond.min.js"></script>
-            <![endif]-->
-
-        <link rel="shortcut icon" href="images/ico/logo.ico"/> <!--Logo on the tab-->
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="css/animate.min.css" rel="stylesheet"/>
+    <link href="css/responsive.css" rel="stylesheet"/>
+    <link href="css/main.css" rel="stylesheet" />
 
 </head>
-
-    <body class="homepage">
-        <form role="form" runat="server">
-        <header id="header">
+<body>
+    <form role="form" runat="server">
+                <header id="header">
             <div class="top-bar">
                 <div class="container">
                     <div class="row">
@@ -40,7 +31,7 @@
                             <div class="social">
                                 <div class="search">                                 
                                     <asp:TextBox ID="txtSearch" runat="server" class="search-form" autocomplete="off" placeholder="Search"></asp:TextBox>
-                                    <i class="fa fa-search"></i>                                    
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>                                    
                                 </div>
                             </div>
                         </div>
@@ -58,7 +49,9 @@
                             <span class="icon-bar"></span>
                         </button>
                         
-                        <a class="navbar-brand" href="index.html"><img src="images/Final Logo.png" alt="logo" width="110" height="70"/></a>
+                        <a class="navbar-brand" href="index.html">
+                            <img src="Final%20Logo.png" width="110" height="70"/>
+                        </a>
                     
                     </div>
                     <div class="collapse navbar-collapse navbar-right">
@@ -103,6 +96,6 @@
         <script src="js/jquery.isotope.min.js"></script>
         <script src="js/main.js"></script>
         <script src="js/wow.min.js"></script>
-        </form>
-    </body>
+    </form>
+</body>
 </html>
