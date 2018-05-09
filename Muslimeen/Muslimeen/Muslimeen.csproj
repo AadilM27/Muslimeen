@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\MyMuslimeen%28User%29.aspx" />
     <Content Include="Home\fonts\fontawesome-webfont.eot" />
     <Content Include="Home\fonts\fontawesome-webfont.ttf" />
     <Content Include="Home\fonts\fontawesome-webfont.woff" />
@@ -136,6 +137,13 @@
     <Content Include="Register\Register.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Content\MyMuslimeen%28User%29.aspx.cs">
+      <DependentUpon>MyMuslimeen%28User%29.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\MyMuslimeen%28User%29.aspx.designer.cs">
+      <DependentUpon>MyMuslimeen%28User%29.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Home\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
