@@ -13,6 +13,24 @@ namespace Muslimeen.Register {
     public partial class Register {
         
         /// <summary>
+        /// frmRegister control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm frmRegister;
+        
+        /// <summary>
+        /// txtMemberID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMemberID;
+        
+        /// <summary>
         /// txtName control.
         /// </summary>
         /// <remarks>
@@ -40,31 +58,13 @@ namespace Muslimeen.Register {
         protected global::System.Web.UI.WebControls.TextBox txtContactNum;
         
         /// <summary>
-        /// txtDD control.
+        /// txtDOB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDD;
-        
-        /// <summary>
-        /// txtMM control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMM;
-        
-        /// <summary>
-        /// txtYYYY control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtYYYY;
+        protected global::System.Web.UI.WebControls.TextBox txtDOB;
         
         /// <summary>
         /// txtUserEmail control.
@@ -110,15 +110,6 @@ namespace Muslimeen.Register {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRetypePass;
-        
-        /// <summary>
-        /// chkShowPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkShowPassword;
         
         /// <summary>
         /// lblErrorPass control.

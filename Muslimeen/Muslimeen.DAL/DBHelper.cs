@@ -7,7 +7,7 @@ using System.Data;
 using System.Configuration;
 using System.Data.SqlClient;
 
-namespace Muslimeen.DAL
+namespace Muslimeen.BLL
 {
     internal class DBHelper
     {

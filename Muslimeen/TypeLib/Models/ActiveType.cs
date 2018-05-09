@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace TypeLib.Models
 {
-    class Moderator
+    public class ActiveType
     {
-        public int ModeratorID { get; set; }
-        public char QualificationID { get; set; }
+        public char ActiveTypeID {get;set;}
+        public string ActiveDescription { get; set; }
+
     }
 }

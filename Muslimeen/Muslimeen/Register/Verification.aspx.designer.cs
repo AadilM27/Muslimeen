@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Muslimeen.SignIn {
+namespace Muslimeen.Register {
     
     
-    public partial class Login {
+    public partial class Verification {
         
         /// <summary>
-        /// inputEmail control.
+        /// txtMemberID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox inputEmail;
+        protected global::System.Web.UI.WebControls.TextBox txtMemberID;
         
         /// <summary>
         /// txtPassword control.
@@ -31,21 +31,21 @@ namespace Muslimeen.SignIn {
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
         
         /// <summary>
-        /// btnLogIn control.
+        /// lblErrorPass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogIn;
+        protected global::System.Web.UI.WebControls.Label lblErrorPass;
         
         /// <summary>
-        /// btnRegister control.
+        /// btnVerify control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegister;
+        protected global::System.Web.UI.WebControls.Button btnVerify;
     }
 }

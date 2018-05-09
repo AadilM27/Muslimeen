@@ -8,6 +8,8 @@ using System.Drawing;
 using TypeLib.ViewModels;
 using TypeLib.Models;
 using Muslimeen.BLL;
+using System.Security.Cryptography;
+using System.Data;
 
 
 
@@ -15,27 +17,60 @@ namespace Muslimeen.Register
 {
     public partial class Register : System.Web.UI.Page
     {
+        Encryption encryption = new Encryption();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            txtDOB.MaxLength = 10;
+            if (!IsPostBack)
+            {
+                ddUsertype.ClearSelection();
+            }
+
+            if (IsPostBack)
+            {
+                txtPassword.Attributes["Value"] = txtPassword.Text;
+                txtRetypePass.Attributes["Value"] = txtRetypePass.Text;
+
+                txtMemberID.BorderColor = Color.Empty;
+                txtName.BorderColor = Color.Empty;
+                txtLName.BorderColor = Color.Empty;
+                txtContactNum.BorderColor = Color.Empty;
+                txtDOB.BorderColor = Color.Empty;
+                txtUserEmail.BorderColor = Color.Empty;
+                ddUsertype.BorderColor = Color.Empty;
+                txtPassword.BorderColor = Color.Empty;
+                txtRetypePass.BorderColor = Color.Empty;
+                lblErrorPass.Text = "";
+                txtMemberID.BorderColor = Color.Empty;
+                txtName.BorderColor = Color.Empty;
+                txtLName.BorderColor = Color.Empty;
+                txtUserEmail.BorderColor = Color.Empty;
+                ddUsertype.BorderColor = Color.Empty;
+                txtDOB.BorderColor = Color.Empty;
+                txtPassword.BorderColor = Color.Empty;
+                txtRetypePass.BorderColor = Color.Empty;
+                txtContactNum.BorderColor = Color.Empty;
+                txtUserEmail.BorderColor = Color.Empty;
+            }
+
         }
 
         protected void ddUsertype_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            if(ddUsertype.Text == "Scholar")
+            if (ddUsertype.SelectedValue == "S")
             {
                 DBHandler dBHandler = new DBHandler();
 
-                ddScholarQual.Dispose();
                 ddScholarQual.Items.Clear();
+                ddScholarQual.Dispose();
                 ddScholarQual.Visible = true;
 
-                List<uspGetQualification> list = dBHandler.BLL_uspGetQualification();
+                List<uspGetQualification> list = dBHandler.BLL_GetQualification();
 
                 foreach (uspGetQualification qual in list)
                 {
-                    ddScholarQual.Items.Add(qual.QualificationDescription.ToString());
+                    ddScholarQual.Items.Add(new ListItem(qual.QualificationDescription.ToString(), qual.QualificationID.ToString()));
                 }
             }
             else
@@ -44,54 +79,168 @@ namespace Muslimeen.Register
                 ddScholarQual.Items.Clear();
                 ddScholarQual.Dispose();
             }
-                
+
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            if (txtPassword.Text.ToString() != txtRetypePass.Text.ToString())
+            DBHandler dBHandler = new DBHandler();
+            int continueProcess=0;//if more than 1 then member will not be added.
+
+            
+            if (txtPassword.Text.ToString() != txtRetypePass.Text.ToString() ||
+                txtPassword.Text == null || txtRetypePass == null)
             {
                 txtRetypePass.BorderColor = Color.IndianRed;
                 txtPassword.BorderColor = Color.IndianRed;
                 lblErrorPass.Text = "Passwords do not match";
                 lblErrorPass.ForeColor = Color.Red;
+                continueProcess += 1;
             }
-            else if (txtPassword.Text.ToString() == txtRetypePass.Text.ToString())
+
+            if (txtMemberID.Text == "" || txtMemberID.Text == null)
             {
-                txtRetypePass.BorderColor = Color.Empty;
-                txtPassword.BorderColor = Color.Empty;
-                lblErrorPass.Text = "";
+                txtMemberID.BorderColor = Color.IndianRed;
+                lblErrorPass.Text = "Member ID field can not be empty";
+                continueProcess += 1;
+            }
+            else if (txtMemberID.Text.Length > 15 || txtMemberID.Text.Length < 5)
+            {
+                txtMemberID.BackColor = Color.IndianRed;
+                lblErrorPass.Text = "Member ID is too long or too short";
+                continueProcess += 1;
+            }
+
+            if (txtMemberID.Text != "" || txtMemberID.Text != null)
+            {
+                try
+                {
+                    if (dBHandler.BLL_GetMember(txtMemberID.Text.ToString()) != null)
+                    {
+                        lblErrorPass.Text = "Error- Member ID taken";
+                        txtMemberID.BorderColor = Color.IndianRed;
+                        lblErrorPass.ForeColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    txtMemberID.BorderColor = Color.IndianRed;
+                    lblErrorPass.Text = ex.Message;
+                    lblErrorPass.ForeColor = Color.Red;
+                    continueProcess += 1;
+                }
+            }
+            
+            if (txtName.Text == "" || txtName.Text == null)
+            {
+                txtName.BorderColor = Color.IndianRed;
+                continueProcess += 1;
+            }
+            if (txtLName.Text == "" || txtLName.Text == null)
+            {
+                txtLName.BorderColor = Color.IndianRed;
+                continueProcess += 1;
+            }
+            if (txtDOB.Text == "" || txtDOB == null)
+            {
+                txtDOB.BorderColor = Color.IndianRed;
+                continueProcess += 1;
+            }
+            if(txtDOB.Text.Length > 10)
+            {
+                txtDOB.BorderColor = Color.IndianRed;
+                continueProcess += 1;
+            }
+            if (txtUserEmail.Text == "" || txtUserEmail == null)
+            {
+                txtUserEmail.BorderColor = Color.IndianRed;
+                continueProcess += 1;
+            }
+            if (ddScholarQual.SelectedValue == "None")
+            {
+                ddScholarQual.BorderColor = Color.IndianRed;
+                continueProcess += 1;
+            }
+            if(ddUsertype.SelectedValue == "None")
+            {
+                ddScholarQual.BorderColor = Color.Red;
+                continueProcess += 1;
+                lblErrorPass.Text = "Error- Please select a registration type";
+            }
+
+            if (continueProcess == 0)
+            {
+
+                
+
+                //make sure the DOB is in corrct format yyy-mm-dd.
+                if (txtDOB.Text.IndexOf('-', 4) == -1 || txtDOB.Text.IndexOf('-', 7) == -1)
+                {
+                    txtDOB.Text = txtDOB.Text.Insert(4, "-");
+                    txtDOB.Text = txtDOB.Text.Insert(7, "-");
+                }
+
+
+                try
+                {
+                    string encryptionPass = "NexTech";
+                    Encryption encryption = new Encryption();
+                    Member member = new Member();
+
+                    string encryptedString = encryption.Encrypt(encryptionPass, Convert.ToString(txtPassword.Text));
+
+                    member.MemberID = Convert.ToString(txtMemberID.Text);
+                    member.MemberName = Convert.ToString(txtName.Text);
+                    member.MemberLastName = Convert.ToString(txtLName.Text);
+                    member.MemberDOB = Convert.ToDateTime(txtDOB.Text.ToString());
+                    member.Password = Convert.ToString(encryptedString);
+                    member.MemberType = Convert.ToChar(ddUsertype.SelectedValue);
+                    member.ActiveTypeID = 'T';
+                    member.Email = Convert.ToString(txtUserEmail.Text);
+                    member.ContactNo = Convert.ToString(txtContactNum.Text);
+                    member.ActivationExpiry = Convert.ToDateTime(DateTime.Today.AddDays(1));
+                    member.ActivationDate = Convert.ToDateTime(DateTime.Today);
+                    
+
+                    bool success = dBHandler.BLL_AddMember(member);
+
+                    if (ddUsertype.SelectedValue == "S")
+                    {
+                        Scholar scholar = new Scholar
+                        {
+                            ScholarID = Convert.ToString(txtMemberID.Text),
+                            QualificationID = Convert.ToString(ddScholarQual.SelectedValue)
+                        };
+
+                        dBHandler.BLL_AddScholarQualification(scholar);
+                    }
+
+                    EmailService emailService = new EmailService();
+
+                    emailService.AutoEmailService(txtUserEmail.Text.ToString(), ddUsertype.SelectedItem.ToString());
+
+
+                    
+                }
+                catch(Exception ex)
+                {
+                    lblErrorPass.Text = ex.Message;
+                }
+
 
             }
+                
+
         }
 
-        protected void btnShowPass_Click(object sender, EventArgs e)
-        {
-            if (txtPassword.TextMode == TextBoxMode.Password && txtRetypePass.TextMode == TextBoxMode.Password)
-            {
-                txtPassword.TextMode = TextBoxMode.SingleLine;
-                txtRetypePass.TextMode = TextBoxMode.SingleLine;
-            }
-            else if (txtPassword.TextMode == TextBoxMode.SingleLine && txtRetypePass.TextMode == TextBoxMode.SingleLine)
-            {
-                txtPassword.TextMode = TextBoxMode.Password;
-                txtRetypePass.TextMode = TextBoxMode.Password;
-            }
-
-        }
-
-        protected void chkShowPassword_CheckedChanged(object sender, EventArgs e)
-        {
-            if (txtPassword.TextMode == TextBoxMode.Password && txtRetypePass.TextMode == TextBoxMode.Password)
-            {
-                txtPassword.TextMode = TextBoxMode.SingleLine;
-                txtRetypePass.TextMode = TextBoxMode.SingleLine;
-            }
-            else if (txtPassword.TextMode == TextBoxMode.SingleLine && txtRetypePass.TextMode == TextBoxMode.SingleLine)
-            {
-                txtPassword.TextMode = TextBoxMode.Password;
-                txtRetypePass.TextMode = TextBoxMode.Password;
-            }
-        }
     }
+
+
 }
+
+
+
+
+
+    
