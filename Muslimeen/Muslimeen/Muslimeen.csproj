@@ -66,7 +66,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\MyMuslimeen%28User%29.aspx" />
+    <Content Include="Content\Zakaah.aspx" />
+    <Content Include="Content\Zakaah\css\Zakaah.css" />
+    <Content Include="Content\Zakaah\images\calculator.jpg" />
+    <Content Include="Content\Zakaah\images\Final Logo.png" />
+    <Content Include="Content\Zakaah\images\zakaat 3.jpg" />
+    <Content Include="Content\Zakaah\images\zakat 2.jpg" />
+    <Content Include="Content\Zakaah\images\zakat.jpg" />
     <Content Include="Home\fonts\fontawesome-webfont.eot" />
     <Content Include="Home\fonts\fontawesome-webfont.ttf" />
     <Content Include="Home\fonts\fontawesome-webfont.woff" />
@@ -74,6 +80,9 @@
     <Content Include="Home\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Home\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Home\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Login\LogIn_Bootstrap\css\Verification.css" />
+    <Content Include="Register\Register.js" />
+    <Content Include="Register\Verification.aspx" />
     <None Include="packages.config" />
     <Content Include="Home\css\animate.min.css" />
     <Content Include="Home\css\bootstrap.min.css" />
@@ -137,12 +146,13 @@
     <Content Include="Register\Register.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Content\MyMuslimeen%28User%29.aspx.cs">
-      <DependentUpon>MyMuslimeen%28User%29.aspx</DependentUpon>
+
+    <Compile Include="Content\Zakaah.aspx.cs">
+      <DependentUpon>Zakaah.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Content\MyMuslimeen%28User%29.aspx.designer.cs">
-      <DependentUpon>MyMuslimeen%28User%29.aspx</DependentUpon>
+    <Compile Include="Content\Zakaah.aspx.designer.cs">
+      <DependentUpon>Zakaah.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -172,6 +182,13 @@
     </Compile>
     <Compile Include="Register\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register\Verification.aspx.cs">
+      <DependentUpon>Verification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register\Verification.aspx.designer.cs">
+      <DependentUpon>Verification.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

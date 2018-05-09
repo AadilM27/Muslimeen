@@ -1,12 +1,6 @@
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\bin\Debug\TypeLib.dll
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\bin\Debug\TypeLib.pdb
-C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csproj.CoreCompileInputs.cache
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.dll
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.pdb
-C:\Users\haani_000\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\bin\Debug\TypeLib.dll
-C:\Users\haani_000\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\bin\Debug\TypeLib.pdb
-C:\Users\haani_000\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
-C:\Users\haani_000\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csproj.CoreCompileInputs.cache
-C:\Users\haani_000\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.dll
-C:\Users\haani_000\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.pdb
+C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
