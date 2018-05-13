@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using TypeLib.ViewModels;
 using TypeLib.Models;
 using Muslimeen.BLL;
+using System.Drawing;
 
 namespace Muslimeen.Register
 {
@@ -14,7 +15,7 @@ namespace Muslimeen.Register
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            lblErrorPass.BackColor = Color.IndianRed;
         }
 
         protected void btnVerify_Click(object sender, EventArgs e)
@@ -75,7 +76,7 @@ namespace Muslimeen.Register
                     }
                 }
                 catch (InvalidCastException)
-                {   //ActivationExpiry will be Null, this is why
+                {   //ActivationExpiry will be Null, this is why it will catch here.
                    lblErrorPass.Text = "Incorrect Password or Member is already verified";
                 }
                 catch(NullReferenceException)

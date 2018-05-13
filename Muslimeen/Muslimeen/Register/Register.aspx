@@ -20,7 +20,7 @@
 </head>
 <body class="text-center">
     <div class="main-div">
-			<asp:Image runat="server" CssClass="mb-2" src="/Login/LogIn_Bootstrap\logo.png" width="220" height="130"/>
+			<asp:Image runat="server" CssClass="mb-2" src="/Login/LogIn_Bootstrap\logo.png" width="200" height="130"/>
 			<h1 class="h3 mb-1 mt-2 font-weight-bold">Register on Muslimeen</h1>
             <h1 class="h6 text-black-50 mt-2 mb-3">Access Muslimeen with<br />a free account</h1>
             

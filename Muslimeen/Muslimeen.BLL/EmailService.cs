@@ -10,7 +10,7 @@ namespace Muslimeen.BLL
 {
     public class EmailService
     {
-        public bool AutoEmailService(string MemberEmail, string MemberType)
+        public bool AutoEmailService(string memberEmail, string memberType, string webpageLink)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace Muslimeen.BLL
                 }
 
                 MailAddress fromAddress = new MailAddress("nextechgrp@gmail.com", "Muslimeen");
-                MailAddress toAddress = new MailAddress(MemberEmail);
+                MailAddress toAddress = new MailAddress(memberEmail);
                 //MailAddress ccAddress = new MailAddress("");
 
                 //Passing values to smtp object
@@ -46,14 +46,14 @@ namespace Muslimeen.BLL
                                                         <div style=""background-color:#ffffff; text-align:center;"">
                                                             <hr/>
                                                             <h3>Congratulations you are now a {0} of Muslimeen.</h3><br/><br/><p>Click below to verify your registration</p><br/>
-                                                            <a style=""font-size:15px;"" href=""https://www.google.co.za"">Verify now</a><br/><hr/>
+                                                            <a style=""font-size:15px;"" href=""{1}"">Verify now</a><br/><hr/>
                                                         </div>
                                                         <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
                                                             <h2>Thank you</h2>
                                                         </div>
                                                     </body>
                                                 </html>
-                                                ", MemberType);
+                                                ", memberType, webpageLink);
 
                 //Send email
                 smtp.Send(message);

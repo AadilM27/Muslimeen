@@ -218,7 +218,7 @@ namespace Muslimeen.Register
 
                     EmailService emailService = new EmailService();
 
-                    emailService.AutoEmailService(txtUserEmail.Text.ToString(), ddUsertype.SelectedItem.ToString());
+                    emailService.AutoEmailService(txtUserEmail.Text.ToString(), ddUsertype.SelectedItem.ToString(), " ");
 
 
                     
