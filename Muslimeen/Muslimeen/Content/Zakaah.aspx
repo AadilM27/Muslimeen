@@ -34,6 +34,9 @@
             .post-inner {
                 margin-right: 0px;
             }
+            #Form1 {
+                width: 949px;
+            }
         </style>
 
 </head>
@@ -186,15 +189,106 @@ Likewise precious stones may have more value than gold. Yet, the obligation of Z
                      </div>
                     </asp:View>
                     <asp:View ID="View2" runat="server">
-                  <div class ="newcon">
-                <div class ="row">
-                    <div >
-                        <div class ="calculator" >
-                            <h1 class="h1b" >ZAKAAH <br />CALCULATOR</h1>
+                      <p class="margain"><strong style="color:white; font-size: 22px; font-weight:200; line-height: 10px;">
+    In order to calculate your Zakat, please fill all of the fields below:
+   </strong></p>
+    <div id="zform" style="padding: 10px 0 10px 0;">
+        <div class="style9 jqtransformdone" id="Form1" >
+            <div style="width: 580px; height: 50px; clear: both;">
+                <div style="float: left; color:white;font-size: 22px;font-weight: bold;line-height: 22px;">
+                    <strong>Assets and Liabilities</strong></div><div style="float: right; color:white;font-size: 22px;font-weight: bold;line-height: 22px;">
+                        <strong>Value in ZAR</strong></div></div><div style="width: 580px; height: 50px; clear: both;"><div style="float: left;">Cash at Home</div><div style="float: right;">
+                            <asp:TextBox ID="txtCashAtHome" runat="server"></asp:TextBox>  
                         </div>
-                    </div>
+                        </div>
+            <div style="width: 580px; height: 50px; clear: both;"><div style="float: left;">
+                Balance Held in Bank Accounts</div>
+                <div style="float: right;">
+                    <asp:TextBox ID="txtBankAccount" runat="server"></asp:TextBox>
+
                 </div>
+
             </div>
+            <div style="width: 580px; height: 50px; clear: both;">
+                <div style="float: left;">Market value of short term investments</div>
+                <div style="float: right;"><asp:TextBox ID="txtInvestment" runat="server"></asp:TextBox>
+
+                </div>
+
+            </div><div style="width: 580px; height: 50px; clear: both;"><div style="float: left;">Business Merchandise</div>
+                <div style="float: right;" >
+                    <asp:TextBox ID="txtMerchandise" runat="server"></asp:TextBox></div>
+
+                  </div>
+            <div style="width: 580px; height: 50px; clear: both;">
+                <div style="float: left;">Gold &amp; Silver (at current value)</div>
+                <div style="float: right;">
+                    <asp:TextBox ID="txtGoldSilver" runat="server"></asp:TextBox></div>
+            </div><div style="width: 580px; height: 50px; clear: both;">
+                <div style="float: left; color:white;font-size: 15px;"><strong>Total of Assets Liable for <em>Zakah</em></strong>
+                    
+                </div>
+                <div style="float: right;">
+                    <asp:TextBox ID="txtTotalAssets" runat="server" OnTextChanged="txtTotalAssets_TextChanged" ></asp:TextBox></div>
+
+                  </div>
+            <div style="width: 580px; height: 50px; clear: both;"><div style="float: left;">Deduct Debts</div>
+                <div style="float: right;">
+                    <asp:TextBox ID="txtDebts" runat="server"></asp:TextBox></div>
+
+            </div><div style="width: 580px; height: 50px; clear: both;"><div style="float: left; color:white;font-size: 15px;"><strong><em>Zakah-Eligible</em> Total</strong></div>
+                <div style="float: right;">
+                    <asp:TextBox ID="txtEligibleZakaah" runat="server" OnTextChanged="txtEligibleZakaah_TextChanged"></asp:TextBox></div>
+
+                  </div>
+            <div style="width: 580px; height: 50px; clear: both;"><div style="float: left;color: #007bb7;font-size: 15px;"><strong>Ensure that <em>Zakah-Eligible</em> Total Exceeds <em>Nisab</em></strong>
+             </div><div style="float: right;">
+                 <asp:TextBox ID="txtNisab" runat="server" value="4404">R4404</asp:TextBox></div>
+
+            </div>
+            <div style="width: 580px; height: 50px; clear: both;">
+                <div style="float: left;color: #007bb7;font-size: 15px;"><strong>Your <em>Zakah</em></strong><strong>(0.025 x <em>Zakah-Eligible</em> Total)</strong></div><div style="float: right;">
+                    <asp:TextBox ID="txtCalculatedZakaah" runat="server"></asp:TextBox> </div>
+
+            </div>
+            <div class="button">
+                            <asp:Button ID="Button1" runat="server" Text="Calculate Assets" BackColor="#CCCCCC" BorderColor="#CCCCCC" BorderStyle="Solid" ForeColor="#000066" ToolTip="click here to calculate your total Assets" OnClick="Button1_Click1" autopostback="true" /> 
+                        </div>
+            <div class="button2">
+                <asp:Button ID="Button2" runat="server" Text="Calculate Eligible Zakaah" ToolTip="Calculate your zakaah after deductions" autopostback="true" OnClick="Button2_Click"/>
+
+            </div>
+           
+            <div class="lbl">
+                <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+            </div>
+            </div>
+                   </div> 
+                    <div class="col-md-auto move">
+                  <aside id="nav_menu-4" class="widget widget_nav_menu">
+            <h3 class="widgettitle fontsize" >Related Links</h3>
+            <div class="menu-ramadan-container">
+                <ul id="menu-ramadan" class="menu">
+                    <li id="menu-item-11284" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11284"><a href="https://www.islamic-relief.org.za/zakat/">Zakat</a></li>
+                    <li id="menu-item-11283" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-6843 current_page_item menu-item-11283"><a href="https://www.islamic-relief.org.za/zakat-calculator/">Zakat Calculator</a></li>
+                    <li id="menu-item-11285" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11285"><a href="https://www.islamic-relief.org.za/ramadan/">Ramadan</a></li>
+                    <li id="menu-item-11282" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11282"><a href="https://www.islamic-relief.org.za/zakat-al-fitrah/">Zakat-ul-Fitrah</a></li>
+                    <li id="menu-item-11300" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11300"><a href="https://www.islamic-relief.org.za/fidyah-and-kaffarah/">Fidyah and Kaffarah</a></li>
+                </ul>
+            </div>
+        </aside>
+                   </div>
+                        
+                  
+
+
+        
+        
+        <div class="cl">
+        </div>
+    
+
+
                         
                         
                     </asp:View>

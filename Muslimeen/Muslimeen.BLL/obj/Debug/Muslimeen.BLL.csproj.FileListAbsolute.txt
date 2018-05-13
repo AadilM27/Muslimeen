@@ -9,7 +9,6 @@ C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\bin\
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.DAL.pdb
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\TypeLib.pdb
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.csproj.CopyComplete
-
 C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.BLL.dll
 C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.BLL.pdb
 C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.DAL.dll
