@@ -198,32 +198,32 @@ Likewise precious stones may have more value than gold. Yet, the obligation of Z
                 <div style="float: left; color:white;font-size: 22px;font-weight: bold;line-height: 22px;">
                     <strong>Assets and Liabilities</strong></div><div style="float: right; color:white;font-size: 22px;font-weight: bold;line-height: 22px;">
                         <strong>Value in ZAR</strong></div></div><div style="width: 580px; height: 50px; clear: both;"><div style="float: left;">Cash at Home</div><div style="float: right;">
-                            <asp:TextBox ID="txtCashAtHome" runat="server"></asp:TextBox>  
+                            <asp:TextBox ID="txtCashAtHome" runat="server" OnTextChanged="txtCashAtHome_TextChanged"></asp:TextBox>  
                         </div>
                         </div>
             <div style="width: 580px; height: 50px; clear: both;"><div style="float: left;">
                 Balance Held in Bank Accounts</div>
                 <div style="float: right;">
-                    <asp:TextBox ID="txtBankAccount" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtBankAccount" runat="server" OnTextChanged="txtBankAccount_TextChanged"></asp:TextBox>
 
                 </div>
 
             </div>
             <div style="width: 580px; height: 50px; clear: both;">
                 <div style="float: left;">Market value of short term investments</div>
-                <div style="float: right;"><asp:TextBox ID="txtInvestment" runat="server"></asp:TextBox>
+                <div style="float: right;"><asp:TextBox ID="txtInvestment" runat="server" OnTextChanged="txtInvestment_TextChanged"></asp:TextBox>
 
                 </div>
 
             </div><div style="width: 580px; height: 50px; clear: both;"><div style="float: left;">Business Merchandise</div>
                 <div style="float: right;" >
-                    <asp:TextBox ID="txtMerchandise" runat="server"></asp:TextBox></div>
+                    <asp:TextBox ID="txtMerchandise" runat="server" OnTextChanged="txtMerchandise_TextChanged"></asp:TextBox></div>
 
                   </div>
             <div style="width: 580px; height: 50px; clear: both;">
                 <div style="float: left;">Gold &amp; Silver (at current value)</div>
                 <div style="float: right;">
-                    <asp:TextBox ID="txtGoldSilver" runat="server"></asp:TextBox></div>
+                    <asp:TextBox ID="txtGoldSilver" runat="server" OnTextChanged="txtGoldSilver_TextChanged"></asp:TextBox></div>
             </div><div style="width: 580px; height: 50px; clear: both;">
                 <div style="float: left; color:white;font-size: 15px;"><strong>Total of Assets Liable for <em>Zakah</em></strong>
                     
@@ -234,7 +234,7 @@ Likewise precious stones may have more value than gold. Yet, the obligation of Z
                   </div>
             <div style="width: 580px; height: 50px; clear: both;"><div style="float: left;">Deduct Debts</div>
                 <div style="float: right;">
-                    <asp:TextBox ID="txtDebts" runat="server"></asp:TextBox></div>
+                    <asp:TextBox ID="txtDebts" runat="server" OnTextChanged="txtDebts_TextChanged"></asp:TextBox></div>
 
             </div><div style="width: 580px; height: 50px; clear: both;"><div style="float: left; color:white;font-size: 15px;"><strong><em>Zakah-Eligible</em> Total</strong></div>
                 <div style="float: right;">
@@ -248,7 +248,7 @@ Likewise precious stones may have more value than gold. Yet, the obligation of Z
             </div>
             <div style="width: 580px; height: 50px; clear: both;">
                 <div style="float: left;color: #007bb7;font-size: 15px;"><strong>Your <em>Zakah</em></strong><strong>(0.025 x <em>Zakah-Eligible</em> Total)</strong></div><div style="float: right;">
-                    <asp:TextBox ID="txtCalculatedZakaah" runat="server"></asp:TextBox> </div>
+                    <asp:TextBox ID="txtCalculatedZakaah" runat="server" OnTextChanged="txtCalculatedZakaah_TextChanged"></asp:TextBox> </div>
 
             </div>
             <div class="button">
