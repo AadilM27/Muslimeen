@@ -14,3 +14,12 @@ C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csproj.CopyComplete
 C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\TypeLib.dll
 C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\TypeLib.pdb
+C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Muslimeen.DAL.dll
+C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Muslimeen.DAL.pdb
+C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\TypeLib.dll
+C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\TypeLib.pdb
+C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csproj.CopyComplete
+C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.dll
+C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.pdb

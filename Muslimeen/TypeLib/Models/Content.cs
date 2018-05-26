@@ -16,7 +16,7 @@ namespace TypeLib.Models
         public string ContentRejectionReason { get; set; }
         public string ContentRemovalReason { get; set; }
         public string Active { get; set; }
-        public int ScholarID{ get;set;}
+        public string ScholarID{ get;set;}
         public int? moderatorID { get; set; }
     }
 }

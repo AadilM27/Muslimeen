@@ -12,7 +12,7 @@ namespace TypeLib.Models
         public int ContentID { get; set; }
         public DateTime DateTimeCommented { get; set; }
         public int? CommentRating { get; set; }
-        public int UserID { get; set; }
+        public string MemberID { get; set; }
         public string CommentContent { get; set; }
     }
 }

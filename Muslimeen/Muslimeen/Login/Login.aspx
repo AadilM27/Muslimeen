@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
 
+<head runat="server"><!-- Abdul-Hadi Bhat-->
         <meta charset="utf-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -26,7 +26,7 @@
 			<h1 class="h3 mb-1 mt-2 font-weight-bold">Log in to Muslimeen</h1>
             <h1 class="h6 text-black-50 mt-2 mb-3">Access Muslimeen with<br /> a free account</h1>
             <div class=" mb-2">
-                <asp:TextBox runat="server" ID="inputEmail" CssClass=" form-control main-txtb" placeholder="Email address"/>
+                <asp:TextBox runat="server" ID="inputEmail" CssClass=" form-control main-txtb" placeholder="Member ID"/>
             </div>
 			<div class="mb-2">
                 <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" CssClass="form-control main-txtb" placeholder="Password"/>

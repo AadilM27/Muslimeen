@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TypeLib.Models
 {
-    class Scholar
+    public class Scholar
     {
-        public int ScholarID { get; set; }
-        public int QualificationID { get; set; }
+        public string ScholarID { get; set; }
+        public string QualificationID { get; set; }
     }
 }

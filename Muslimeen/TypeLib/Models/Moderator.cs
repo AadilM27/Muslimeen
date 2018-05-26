@@ -9,6 +9,6 @@ namespace TypeLib.Models
     class Moderator
     {
         public int ModeratorID { get; set; }
-        public int QualificationID { get; set; }
+        public char QualificationID { get; set; }
     }
 }
