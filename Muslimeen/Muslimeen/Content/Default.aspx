@@ -9,19 +9,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
     <title>MyMuslimeen - Home</title>
-    <!--Aadilmuzavar-->
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="Default/Default.css" rel="stylesheet" />
-
 </head>
     <body>
         <form id="frmScholar" runat="server" class=" ">   
             <header >
-                <nav class="navFixed" >
+                <nav class="navFixed">
                     <div class="row align-self-end">
                         <ul class=" col-7 navbar-nav flex-row justify-content-start">
-                            <li class="nav-item ml-3 mr-0"><p>07 May 2018 | 21 Sha’ban 1439 AH</p></li>
+                            <asp:HiddenField runat="server" ID="hfAdjustDate" Value="-2" /> <!--Need to get value from DB let admin adjust this -->
+                            <li class="nav-item ml-3 mr-0"> <p id="lstIslamicDate"></p></li>
+                            <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
                         </ul>
                         <ul class="navbar-nav flex-row justify-content-end col-5">
                             <li class="nav-item ml-0 mr-0">
@@ -68,10 +68,10 @@
                     </div>
                 </div>
             </header>
-        <div class="content">
-            <div class="row mt-4 countDown-div">
+        <div class="content"><!--add content here -->
+            <div class=" mt-4 countDown-div">
                 <div id="clockdiv" class="col">
-                    <h1 style="font-family:'Dr Sugiyama',Arial; color:#3F84C1" id="title">Ramadaan Count down</h1>
+                    <h2 style="font-family: Arial; color:#3F84C1" id="title">Ramadaan Count down</h2>
                   <div class="">
                     <span id="spDays" class="days"></span>
                     <div class="smalltext">Days</div>
@@ -89,7 +89,7 @@
                     <div class="smalltext">Seconds</div>
                   </div>
                 </div>
-                <asp:HiddenField ID="hfRamadaanDate" runat="server" Value="2018-05-17 20:30:00" />
+                <asp:HiddenField ID="hfRamadaanDate" runat="server" Value="2019-05-17 24:00:00" /> <!--updated by the admin yyyy-mm-dd-->
                 <script src="Default/CountDown.js" type="text/javascript"></script>
             </div>
             <div class="footerr">

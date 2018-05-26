@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="Content\Default.aspx" />
     <Content Include="Content\Default\CountDown.js" />
+    <Content Include="Content\Default\DatesEnglishHijri.js" />
     <Content Include="Content\Default\Default.css" />
     <Content Include="Content\Default\Default.js" />
     <Content Include="Content\MyScholar.aspx" />
