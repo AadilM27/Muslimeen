@@ -1519,18 +1519,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Mosque\" />
-    <Folder Include="CSS\" />
-    <Folder Include="Home\images\blog\" />
-    <Folder Include="Home\images\partners\" />
-    <Folder Include="Home\images\prettyPhoto\dark_rounded\" />
-    <Folder Include="Home\images\prettyPhoto\dark_square\" />
-    <Folder Include="Home\images\prettyPhoto\default\" />
-    <Folder Include="Home\images\prettyPhoto\facebook\" />
-    <Folder Include="Home\images\prettyPhoto\light_rounded\" />
-    <Folder Include="Home\images\prettyPhoto\light_square\" />
-    <Folder Include="Home\images\services\" />
-    <Folder Include="Home\images\service\" />
-    <Folder Include="Home\images\slider\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Muslimeen.BLL\Muslimeen.BLL.csproj">
