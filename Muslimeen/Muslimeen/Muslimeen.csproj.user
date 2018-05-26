@@ -15,8 +15,13 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
+<<<<<<< HEAD
           <StartPageUrl>Content/Mosque.aspx</StartPageUrl>
           <StartAction>SpecificPage</StartAction>
+=======
+          <StartPageUrl>Home/Mosque.aspx</StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+>>>>>>> 10e3ab361810baa6435750fdc1929fba69818618
           <AspNetDebugging>True</AspNetDebugging>
           <SilverlightDebugging>False</SilverlightDebugging>
           <NativeDebugging>False</NativeDebugging>

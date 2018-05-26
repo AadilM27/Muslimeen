@@ -11,7 +11,7 @@
     <title>MyMuslimeen - Home</title>
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="Default/Default.css" rel="stylesheet" />
+    <link href="Default/css/Default.css" rel="stylesheet" />
 </head>
     <body>
         <form id="frmScholar" runat="server" class=" ">   
