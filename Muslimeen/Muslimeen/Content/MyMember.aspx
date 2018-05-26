@@ -1,17 +1,19 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Muslimeen.Content.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MyMember.aspx.cs" Inherits="Muslimeen.Content.MyMuslimeen_User_" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
+    
 <head runat="server">
     <meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-    <title>MyMuslimeen - Home</title>
+    <title>My Muslimeen</title>
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="Default/css/Default.css" rel="stylesheet" />
+    <link href="MyMember/css/MyMember.css" rel="stylesheet" />
 </head>
     <body>
         <form id="frmScholar" runat="server" class=" ">   
@@ -68,32 +70,33 @@
                     </div>
                 </div>
             </header>
-        <div class="content"><!--add content here -->
-            <div class=" mt-4 countDown-div">
-                <div id="clockdiv" class="col">
-                    <h2 style="font-family: Arial; color:#3F84C1" id="title">Ramadaan Count down</h2>
-                  <div class="">
-                    <span id="spDays" class="days"></span>
-                    <div class="smalltext">Days</div>
-                  </div>
-                  <div class="">
-                    <span id="spHours" class="hours"></span>
-                    <div class="smalltext">Hours</div>
-                  </div>
-                  <div class="">
-                    <span id="spMinutes" class="minutes"></span>
-                    <div class="smalltext">Minutes</div>
-                  </div>
-                  <div class="">
-                    <span id="spSeconds" class="seconds"></span>
-                    <div class="smalltext">Seconds</div>
-                  </div>
-                </div>
-                <asp:HiddenField ID="hfRamadaanDate" runat="server" Value="2019-05-17 24:00:00" /> <!--updated by the admin yyyy-mm-dd-->
-                <script src="Default/CountDown.js" type="text/javascript"></script>
+        <div class="content"><!--add content here --> 
+        <!--START INSERTING CODE FROM THIS POINT ON-->
+            <!--add your custom styling in MyMember.css in MyMember/css-->
+            <hr class ="midnight-blue" />
+         <div class="container">
+             
+            <div class =" col-md-4">
+                <h4 class="text-center">Salaah Times</h4>
             </div>
-        </div>
-              <div class="footerr"> <!--End of content, start of footer-->
+
+
+            <div class =" col-md-4">
+                <h4 class="text-center">View Events &nbsp;&nbsp;&nbsp; <asp:RadioButton ID="MyMosque" runat="server" text="My Mosque"/>
+            &nbsp;&nbsp;&nbsp; <asp:RadioButton ID="AllMosques" runat="server" text="All Mosques "/> </h4> 
+                <div>
+                    <p>
+                        <
+                    </p>
+                </div>
+            </div>
+            </div>
+            <div class =" col-md-4">
+               <h4 class="text-center">Notifications</h4> 
+            </div>
+          </div>
+
+          <div class="footerr"><!--End content her, start of footer-->
                 <div class="row">
                     <div class="col text-center">
                        <h5>Content</h5>
@@ -146,6 +149,5 @@
                 </div>
             </div>
         </form>
-        <script src="Default/Default.js" type="text/javascript"></script>
     </body>
 </html>

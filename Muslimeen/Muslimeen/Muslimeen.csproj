@@ -72,6 +72,8 @@
     <Content Include="Content\Default\css\Default.css" />
     <Content Include="Content\Default\Default.js" />
     <Content Include="Content\Mosque.aspx" />
+    <Content Include="Content\MyMember.aspx" />
+    <Content Include="Content\MyMember\css\MyMember.css" />
     <Content Include="Content\MyScholar.aspx" />
     <Content Include="Content\MyScholar\css\MyScholar.css" />
     <Content Include="Content\Zakaah.aspx" />
@@ -1479,6 +1481,13 @@
     </Compile>
     <Compile Include="Content\Mosque.aspx.designer.cs">
       <DependentUpon>Mosque.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\MyMember.aspx.cs">
+      <DependentUpon>MyMember.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\MyMember.aspx.designer.cs">
+      <DependentUpon>MyMember.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\MyScholar.aspx.cs">
       <DependentUpon>MyScholar.aspx</DependentUpon>
