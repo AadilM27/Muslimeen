@@ -1517,7 +1517,6 @@
       <DependentUpon>Verification.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-<<<<<<< HEAD
   <ItemGroup>
     <Folder Include="Content\Mosque\" />
     <Folder Include="CSS\" />
@@ -1533,9 +1532,6 @@
     <Folder Include="Home\images\service\" />
     <Folder Include="Home\images\slider\" />
   </ItemGroup>
-=======
-  <ItemGroup />
->>>>>>> 10e3ab361810baa6435750fdc1929fba69818618
   <ItemGroup>
     <ProjectReference Include="..\Muslimeen.BLL\Muslimeen.BLL.csproj">
       <Project>{2e565e3b-41af-426f-bcb8-762386783b06}</Project>
