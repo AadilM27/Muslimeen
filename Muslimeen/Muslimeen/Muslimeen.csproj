@@ -69,7 +69,7 @@
     <Content Include="Content\Default.aspx" />
     <Content Include="Content\Default\CountDown.js" />
     <Content Include="Content\Default\DatesEnglishHijri.js" />
-    <Content Include="Content\Default\Default.css" />
+    <Content Include="Content\Default\css\Default.css" />
     <Content Include="Content\Default\Default.js" />
     <Content Include="Content\MyScholar.aspx" />
     <Content Include="Content\MyScholar\css\MyScholar.css" />
@@ -80,13 +80,6 @@
     <Content Include="Content\Zakaah\images\zakaat 3.jpg" />
     <Content Include="Content\Zakaah\images\zakat 2.jpg" />
     <Content Include="Content\Zakaah\images\zakat.jpg" />
-    <Content Include="Home\fonts\fontawesome-webfont.eot" />
-    <Content Include="Home\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Home\fonts\fontawesome-webfont.woff" />
-    <Content Include="Home\fonts\FontAwesome.otf" />
-    <Content Include="Home\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Home\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Home\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Login\LogIn_Bootstrap\css\Verification.css" />
     <Content Include="Login\LogIn_Bootstrap\icons\png\account-login-2x.png" />
     <Content Include="Login\LogIn_Bootstrap\icons\png\account-login-3x.png" />
@@ -1433,29 +1426,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
-    <Content Include="Home\css\animate.min.css" />
-    <Content Include="Home\css\bootstrap.min.css" />
-    <Content Include="Home\css\font-awesome.css" />
-    <Content Include="Home\css\font-awesome.min.css" />
-    <Content Include="Home\css\main.css" />
-    <Content Include="Home\css\prettyPhoto.css" />
-    <Content Include="Home\css\responsive.css" />
-    <Content Include="Home\DefaultOld.aspx" />
-    <Content Include="Home\fonts\fontawesome-webfont.svg" />
-    <Content Include="Home\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Home\images\Final Logo.png" />
-    <Content Include="Home\images\ico\logo.ico" />
-    <Content Include="Home\js\bootstrap.min.js" />
-    <Content Include="Home\js\html5shiv.js" />
-    <Content Include="Home\js\jquery-3.3.1.min.js" />
-    <Content Include="Home\js\jquery.isotope.min.js" />
-    <Content Include="Home\js\jquery.js" />
-    <Content Include="Home\js\jquery.prettyPhoto.js" />
-    <Content Include="Home\js\main.js" />
-    <Content Include="Home\js\popper.min.js" />
-    <Content Include="Home\js\respond.min.js" />
-    <Content Include="Home\js\wow.min.js" />
-    <Content Include="Home\Mosque.aspx" />
     <Content Include="Login\Login.aspx" />
     <Content Include="Login\LogIn_Bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="Login\LogIn_Bootstrap\css\bootstrap-grid.min.css.map" />
@@ -1516,20 +1486,6 @@
     <Compile Include="Content\Zakaah.aspx.designer.cs">
       <DependentUpon>Zakaah.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Home\DefaultOld.aspx.cs">
-      <DependentUpon>DefaultOld.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Home\DefaultOld.aspx.designer.cs">
-      <DependentUpon>DefaultOld.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Home\Mosque.aspx.cs">
-      <DependentUpon>Mosque.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Home\Mosque.aspx.designer.cs">
-      <DependentUpon>Mosque.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Login\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -1553,20 +1509,7 @@
       <DependentUpon>Verification.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CSS\" />
-    <Folder Include="Home\images\blog\" />
-    <Folder Include="Home\images\partners\" />
-    <Folder Include="Home\images\prettyPhoto\dark_rounded\" />
-    <Folder Include="Home\images\prettyPhoto\dark_square\" />
-    <Folder Include="Home\images\prettyPhoto\default\" />
-    <Folder Include="Home\images\prettyPhoto\facebook\" />
-    <Folder Include="Home\images\prettyPhoto\light_rounded\" />
-    <Folder Include="Home\images\prettyPhoto\light_square\" />
-    <Folder Include="Home\images\services\" />
-    <Folder Include="Home\images\service\" />
-    <Folder Include="Home\images\slider\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Muslimeen.BLL\Muslimeen.BLL.csproj">
       <Project>{2e565e3b-41af-426f-bcb8-762386783b06}</Project>
