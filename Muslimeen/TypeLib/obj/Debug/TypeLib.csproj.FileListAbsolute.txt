@@ -8,3 +8,9 @@ C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\bin\Debug\TypeLib.pdb
 C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.dll
 C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.pdb
 C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
+C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\bin\Debug\TypeLib.dll
+C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\bin\Debug\TypeLib.pdb
+C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
+C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csproj.CoreCompileInputs.cache
+C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.dll
+C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.pdb

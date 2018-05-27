@@ -72,6 +72,7 @@
     <Content Include="Content\Default\css\Default.css" />
     <Content Include="Content\Default\Default.js" />
     <Content Include="Content\Mosque.aspx" />
+    <Content Include="Content\Mosque\Mosque.css" />
     <Content Include="Content\MyMember.aspx" />
     <Content Include="Content\MyMember\css\MyMember.css" />
     <Content Include="Content\MyScholar.aspx" />
@@ -1526,9 +1527,7 @@
       <DependentUpon>Verification.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\Mosque\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Muslimeen.BLL\Muslimeen.BLL.csproj">
       <Project>{2e565e3b-41af-426f-bcb8-762386783b06}</Project>

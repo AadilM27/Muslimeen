@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Mosque.aspx.cs" Inherits="Muslimeen.Content.Mosque" %>
 
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,7 +11,7 @@
     <title>MyMuslimeen - Home</title>
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="Default/Default.css" rel="stylesheet" />
+    <link href="Mosque/Mosque.css" rel="stylesheet" />
 </head>
     <body>
         <form id="frmMosque" runat="server">   
@@ -71,9 +70,9 @@
             </header>
         <div class="content"><!--add content here -->
                         <!-- ================================================================================================-->
-             <asp:Repeater ID="Repeater1" runat="server">
+             <asp:Repeater ID="rptMosque" runat="server">
             <ItemTemplate>
-                <div class="container">
+                <div class="container" style="background-color:#256297">
                     <div class="jumbotron">
                         <table class="table table-active align-content-center shadow-lg" style="color: gray">
                             <tr>
@@ -89,7 +88,7 @@
                                             <asp:Label ID="lblmosqueType" runat="server" Text='<%#Eval("MosqueType")%>'></asp:Label></td>
                                             <td rowspan="3">
                                     
-                                            <asp:HyperLink CssClass="image" ID="Location" runat="server" ImageUrl='<%#Eval("LocationIMG")%>' NavigateUrl='<%#Eval("MosqueLocation")%>' ImageWidth="200px" ImageHeight="140px" />
+                                            <asp:HyperLink CssClass="image" ID="Location" runat="server" ImageUrl='<%#Eval("LocationIMG")%>' NavigateUrl='<%#Eval("LocationLink")%>' ImageWidth="200px" ImageHeight="140px" />
                                             </td>
 
                                         </tr>
@@ -119,7 +118,7 @@
                 <div class="divider" style="height: 1em"></div>
             </SeparatorTemplate>
         </asp:Repeater>
-            <!-- ================================================================================================-->
+          <!--  ================================================================================================-->
             </div>
    
             <div class="footerr">
