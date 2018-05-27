@@ -14,7 +14,7 @@
     <link href="Default/css/Default.css" rel="stylesheet" />
 </head>
     <body>
-        <form id="frmScholar" runat="server" class=" ">   
+        <form id="frmScholar" runat="server" class=" ">
             <header >
                 <nav class="navFixed">
                     <div class="row align-self-end">
@@ -68,8 +68,8 @@
                     </div>
                 </div>
             </header>
-        <div class="content"><!--add content here -->
-            <div class=" mt-4 countDown-div">
+        <div class="content" id="content"><!--add content here -->
+            <div class=" pt-2 countDown-div">
                 <div id="clockdiv" class="col">
                     <h2 style="font-family: Arial; color:#3F84C1" id="title">Ramadaan Count down</h2>
                   <div class="">
@@ -99,10 +99,10 @@
                        <h5>Content</h5>
                         <ul class="navbar-nav">
                            <li class="nav-item">
-                               <a href="#">Home</a>
+                               <a href="Default.aspx">Home</a>
                            </li>
                            <li class="nav-item">
-                               <a href="#">Mosques</a>
+                               <a href="Mosque.aspx">Mosques</a>
                            </li>
                            <li class="nav-item">
                                <a href="#">Scholars</a>
@@ -111,7 +111,7 @@
                                <a href="#">Learn Islam</a>
                            </li>
                            <li class="nav-item">
-                               <a href="#">Zakaah</a>
+                               <a href="Zakaah.aspx">Zakaah</a>
                            </li>
                         </ul>
                     </div>

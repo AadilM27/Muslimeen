@@ -39,16 +39,19 @@
     padding:15px;
 }
 
-.content{
-    background-color:red;
+.content {
+    background-color: #256297;
 }
 
 .sticky {
-    position:fixed;
+    position: fixed;
     width: 100%;
-    top: 0;
+    top: 0px;
 }
 
+.contentPad{ 
+    padding-top:155px;
+}
 .navbtn {
     text-decoration-color:#256297;
 }
