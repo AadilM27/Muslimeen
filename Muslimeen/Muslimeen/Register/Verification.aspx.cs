@@ -65,8 +65,6 @@ namespace Muslimeen.Register
                             lblErrorPass.Text = "Decryption failier";
                         }
 
-                        txtMemberID.Enabled = false;
-                        txtPassword.Enabled = false;
                         lblErrorPass.Text = "Thank you";
 
                     }
@@ -83,6 +81,11 @@ namespace Muslimeen.Register
                 {
                     lblErrorPass.Text = "Incorrect Member ID";
                 }
+                catch(Exception ex)
+                {
+                    lblErrorPass.Text = ex.Message;
+                }
+
             }
         }
     }

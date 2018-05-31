@@ -8,3 +8,4 @@ C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\bin\Debug\TypeLib.pdb
 C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.dll
 C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.pdb
 C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
+C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache

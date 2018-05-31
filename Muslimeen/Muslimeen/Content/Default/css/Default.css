@@ -1,11 +1,26 @@
-﻿body {
-    background-color:#256297;
-    height:100%;
+﻿/* Start coping from here to get heade and footer styling*/
+body {
+    background-color: #256297;
+    height: 100%;
+    width:inherit;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+html {
+    width: auto;
+}
+.frmDefault{
+    width:unset;
 }
 
 .navv {
     background-color: white;
-    border-color: white;
+}
+.user{
+    color: #256297;
+}
+.user:hover{
+    font-weight:500;
 }
 
 .navbaritems {
@@ -36,7 +51,7 @@
     width:100%;
     background-color: white;
     border-color: white;
-    padding:15px;
+    padding:10px;
 }
 
 .content {
@@ -50,7 +65,7 @@
 }
 
 .contentPad{ 
-    padding-top:155px;
+    padding-top:125px;
 }
 .navbtn {
     text-decoration-color:#256297;
@@ -116,8 +131,9 @@
 }
 
 .footerr-text {
-    text-decoration-color: #3F84C1;
+    color: #3F84C1;
     text-decoration:none;
+    font-size:13px;
 }
 
 .h1header {
@@ -126,6 +142,15 @@
     color: #3F84C1;
 }
 
+.IslamicDate {
+    color: #256297;
+}
+
+.NavDevider {
+    color: #256297;
+    align-self:center;
+}
+/*End copying from here for Header and footer*/
 /*Start Coundown styling*/
 #clockdiv {
     font-family: sans-serif;
@@ -134,7 +159,7 @@
     font-weight: 100;
     text-align: center;
     font-size: 30px;
-    position:static;
+    position: static;
 }
 
 #clockdiv > div {
