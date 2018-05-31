@@ -47,7 +47,8 @@
     }
 
 * {
-    box-sizing: border-box
+    box-sizing: border-box 
+      
 }
 
 /* Set height of body and the document to 100% */
@@ -55,6 +56,7 @@ body, html {
     height: 100%;
     margin: 0;
     font-family: Arial;
+    
 }
 
 /* Style tab links */
@@ -82,19 +84,19 @@ body, html {
     height: 100%;
 }
 
-#Home {
-    background-color: red;
+#Zakaah {
+    background-color:red;
 }
 
-#News {
+#Calculator {
     background-color: green;
 }
 
-#Contact {
+#Facts {
     background-color: blue;
 }
 
-#About {
+#Organizations {
     background-color: orange;
 }
 
