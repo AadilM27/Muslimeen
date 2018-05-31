@@ -29,3 +29,14 @@ C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Musli
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.csproj.CopyComplete
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.dll
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.pdb
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.BLL.dll
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.BLL.pdb
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.DAL.dll
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\TypeLib.dll
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.DAL.pdb
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\TypeLib.pdb
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.csprojAssemblyReference.cache
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.csproj.CopyComplete
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.dll
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.pdb

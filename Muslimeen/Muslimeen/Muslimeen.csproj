@@ -76,13 +76,16 @@
     <Content Include="Content\MyMember\css\MyMember.css" />
     <Content Include="Content\MyScholar.aspx" />
     <Content Include="Content\MyScholar\css\MyScholar.css" />
+    <Content Include="Content\newZakaah.aspx" />
     <Content Include="Content\Zakaah.aspx" />
+    <Content Include="Content\Zakaah\css\newZakaah.css" />
     <Content Include="Content\Zakaah\css\Zakaah.css" />
     <Content Include="Content\Zakaah\images\calculator.jpg" />
     <Content Include="Content\Zakaah\images\Final Logo.png" />
     <Content Include="Content\Zakaah\images\zakaat 3.jpg" />
     <Content Include="Content\Zakaah\images\zakat 2.jpg" />
     <Content Include="Content\Zakaah\images\zakat.jpg" />
+    <Content Include="Content\Zakaah\newZakaah.js" />
     <Content Include="Login\LogIn_Bootstrap\css\Verification.css" />
     <Content Include="Login\LogIn_Bootstrap\icons\png\account-login-2x.png" />
     <Content Include="Login\LogIn_Bootstrap\icons\png\account-login-3x.png" />
@@ -1495,6 +1498,13 @@
     </Compile>
     <Compile Include="Content\MyScholar.aspx.designer.cs">
       <DependentUpon>MyScholar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\newZakaah.aspx.cs">
+      <DependentUpon>newZakaah.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\newZakaah.aspx.designer.cs">
+      <DependentUpon>newZakaah.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\Zakaah.aspx.cs">
       <DependentUpon>Zakaah.aspx</DependentUpon>
