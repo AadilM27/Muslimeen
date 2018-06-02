@@ -69,7 +69,7 @@
                 </div>
             </header>
         <div class="content"><!--add content here -->
-                        <!-- ================================================================================================-->
+                        <!-- =================================================================================================-->
              <asp:Repeater ID="rptMosque" runat="server">
             <ItemTemplate>
                 <div class="container" style="background-color:#256297">
