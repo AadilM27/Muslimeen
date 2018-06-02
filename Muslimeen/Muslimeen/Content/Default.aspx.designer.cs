@@ -13,13 +13,13 @@ namespace Muslimeen.Content {
     public partial class Default {
         
         /// <summary>
-        /// frmDefault control.
+        /// frmScholar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm frmDefault;
+        protected global::System.Web.UI.HtmlControls.HtmlForm frmScholar;
         
         /// <summary>
         /// hfAdjustDate control.

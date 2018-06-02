@@ -107,17 +107,10 @@
                        <h6>Content</h6>
                         <ul class="navbar-nav">
                            <li class="nav-item">
-<<<<<<< HEAD
-                               <a href="#">Home</a>
-                           </li>
-                           <li class="nav-item">
-                               <a href="#">Mosques</a>
-=======
                                <a class="footerr-text" href="Default.aspx">Home</a>
                            </li>
                            <li class="nav-item">
                                <a class="footerr-text" href="Mosque.aspx">Mosques</a>
->>>>>>> 07bf2adf895a5dcb1bf8b6c3db6b3d543af13759
                            </li>
                            <li class="nav-item">
                                <a class="footerr-text" href="#">Scholars</a>
@@ -126,11 +119,7 @@
                                <a class="footerr-text" href="#">Learn Islam</a>
                            </li>
                            <li class="nav-item">
-<<<<<<< HEAD
-                               <a href="#">Zakaah</a>
-=======
                                <a class="footerr-text" href="Zakaah.aspx">Zakaah</a>
->>>>>>> 07bf2adf895a5dcb1bf8b6c3db6b3d543af13759
                            </li>
                         </ul>
                     </div>
