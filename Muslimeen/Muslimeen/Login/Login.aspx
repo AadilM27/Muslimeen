@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Muslimeen.SignIn.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Muslimeen.Login.Login" %>
 
 <!DOCTYPE html>
 
@@ -22,17 +22,17 @@
     <div class="main-div">
 
 		<form class="form-logIn" runat="server">
-			<asp:Image runat="server" CssClass="mb-2" src="LogIn_Bootstrap\logo.png" width="220" height="130"/>
-			<h1 class="h3 mb-1 mt-2 font-weight-bold">Log in to Muslimeen</h1>
-            <h1 class="h6 text-black-50 mt-2 mb-3">Access Muslimeen with<br /> a free account</h1>
+			<asp:Image runat="server" CssClass="mb-2 mt-2" src="LogIn_Bootstrap\logo.png" width="220" height="130"/>
+			<h1 class="h3 mb-1 mt-2 font-weight-bold">Log into Muslimeen</h1>
+            <h1 class="h6 text-black-50 mt-2 mb-3">Access Muslimeen with<br /> your account</h1>
             <div class=" mb-2">
-                <asp:TextBox runat="server" ID="inputEmail" CssClass=" form-control main-txtb" placeholder="Member ID"/>
+                <asp:TextBox runat="server" ID="txtUserName" CssClass=" form-control main-txtb" placeholder="User name"/>
             </div>
 			<div class="mb-2">
                 <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" CssClass="form-control main-txtb" placeholder="Password"/>
 			</div>
 			<div class=" form-check mt-3 mb-3">
-                <asp:CheckBox runat="server" CssClass="form-check-input position-static"/>
+                <asp:CheckBox runat="server" AutoPostBack="true" ID="chkRememberMe" CssClass="form-check-input position-static" OnCheckedChanged="chkRememberMe_CheckedChanged"/>
 				<asp:Label runat="server" CssClass="form-check-label" Text="Remember me">
 				</asp:Label>
 			</div>
@@ -42,6 +42,9 @@
                 <asp:Label runat="server" Text="OR" Style="font-weight:bold; font-size:smaller;"></asp:Label>
             </div>
             <asp:button runat="server" CssClass="btn btn-primary btn-lg btn-block main-btn " ID="btnRegister" Text="Register" OnClick="btnRegister_Click"></asp:button>
+            <div class=" mt-3 form-group col " style="text-align:center;">
+                <asp:Label CssClass="lblError" runat="server" ID="lblErrorPass"></asp:Label>
+            </div>
 
 		</form>
         </div>
