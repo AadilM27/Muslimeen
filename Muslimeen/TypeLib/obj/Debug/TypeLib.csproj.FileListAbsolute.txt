@@ -8,13 +8,10 @@ C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\bin\Debug\TypeLib.pdb
 C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.dll
 C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.pdb
 C:\Users\User\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
-<<<<<<< HEAD
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\bin\Debug\TypeLib.dll
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\bin\Debug\TypeLib.pdb
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csproj.CoreCompileInputs.cache
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.dll
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.pdb
-=======
-C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
->>>>>>> 07bf2adf895a5dcb1bf8b6c3db6b3d543af13759
+

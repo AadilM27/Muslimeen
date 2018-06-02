@@ -13,13 +13,8 @@
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="Default/css/Default.css" rel="stylesheet" />
 </head>
-<<<<<<< HEAD
     <body>
         <form id="frmScholar" runat="server" class=" ">   
-=======
-    <body class="pr-0">
-        <form id="frmDefault" runat="server" class="frmDefault" aria-atomic="False">
->>>>>>> 07bf2adf895a5dcb1bf8b6c3db6b3d543af13759
             <header >
                 <nav class="navFixed">
                     <div class="row align-self-end">
