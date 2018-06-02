@@ -12,7 +12,7 @@
 	
 		<link href="/Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 		
-		<title> Muslimeen - Register </title>
+		<title> Muslimeen - Register a account </title>
 
         <script src="/Register/Register.js" type="text/javascript"></script>
 
