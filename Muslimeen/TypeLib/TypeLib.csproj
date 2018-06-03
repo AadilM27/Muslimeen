@@ -61,6 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\uspGetCalAdjustValue.cs" />
     <Compile Include="ViewModels\uspGetMember.cs" />
+    <Compile Include="ViewModels\uspGetMosque.cs" />
     <Compile Include="ViewModels\uspGetQualification.cs" />
     <Compile Include="ViewModels\uspGetRamadaanDate.cs" />
     <Compile Include="Models\uspVerifyMember.cs" />

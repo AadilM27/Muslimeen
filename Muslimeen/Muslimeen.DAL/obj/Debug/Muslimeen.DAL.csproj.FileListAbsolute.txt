@@ -31,3 +31,4 @@ C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen
 C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csproj.CoreCompileInputs.cache
 C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.dll
 C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.pdb
+

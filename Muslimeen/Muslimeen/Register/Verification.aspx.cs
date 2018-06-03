@@ -15,12 +15,13 @@ namespace Muslimeen.Register
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblErrorPass.BackColor = Color.IndianRed;
+            lblErrorPass.Text = "";
         }
 
         protected void btnVerify_Click(object sender, EventArgs e)
         {
             int ContProcess = 0;
+            bool success = false;
 
             if (txtMemberID.Text == null || txtMemberID.Text == "")
             {
@@ -57,31 +58,37 @@ namespace Muslimeen.Register
                             };
 
                             dBHandler.BLL_VerifyMember(uspVerifyMember);//Change the Expiry date to NULL and Active Status to Y.
-
-                            lblErrorPass.Text = "";
+                            success = true;
                         }
                         else
                         {
-                            lblErrorPass.Text = "Decryption failier";
+                            lblErrorPass.Text = "Incorrect Password or User Name";
                         }
-
-                        txtMemberID.Enabled = false;
-                        txtPassword.Enabled = false;
-                        lblErrorPass.Text = "Thank you";
-
                     }
                     else
                     {
-                        lblErrorPass.Text = "Wrong Password or Member ID";
+                        lblErrorPass.Text = "Incorrect Password or User Name";
                     }
                 }
                 catch (InvalidCastException)
-                {   //ActivationExpiry will be Null, this is why it will catch here.
+                {   //ActivationExpiry returns null.
                    lblErrorPass.Text = "Incorrect Password or Member is already verified";
                 }
                 catch(NullReferenceException)
+                {   //No User Name does not exist in database.
+                    lblErrorPass.Text = "Incorrect Password or User Name";
+                }
+                catch(Exception ex)
                 {
-                    lblErrorPass.Text = "Incorrect Member ID";
+                    lblErrorPass.Text = ex.Message + "\nContact Muslimeen for help, copy the above error information.";
+                }
+
+
+                if(success == true)
+                {
+                    lblErrorPass.ForeColor = Color.Black;
+                    lblErrorPass.Text = "Thank you";
+                    Response.Redirect("~/Content/Default.aspx");
                 }
             }
         }

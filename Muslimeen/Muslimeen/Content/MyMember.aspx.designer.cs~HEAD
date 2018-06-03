@@ -10,16 +10,16 @@
 namespace Muslimeen.Content {
     
     
-    public partial class Mosque {
+    public partial class MyMuslimeen_User_ {
         
         /// <summary>
-        /// frmMosque control.
+        /// frmScholar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm frmMosque;
+        protected global::System.Web.UI.HtmlControls.HtmlForm frmScholar;
         
         /// <summary>
         /// hfAdjustDate control.
@@ -40,12 +40,21 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
         
         /// <summary>
-        /// rptMosque control.
+        /// Mosque1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptMosque;
+        protected global::System.Web.UI.WebControls.RadioButton Mosque1;
+        
+        /// <summary>
+        /// Mosque control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton Mosque;
     }
 }

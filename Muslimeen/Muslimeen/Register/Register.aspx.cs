@@ -32,7 +32,7 @@ namespace Muslimeen.Register
                 txtPassword.Attributes["Value"] = txtPassword.Text;
                 txtRetypePass.Attributes["Value"] = txtRetypePass.Text;
 
-                txtMemberID.BorderColor = Color.Empty;
+                txtUserName.BorderColor = Color.Empty;
                 txtName.BorderColor = Color.Empty;
                 txtLName.BorderColor = Color.Empty;
                 txtContactNum.BorderColor = Color.Empty;
@@ -42,7 +42,7 @@ namespace Muslimeen.Register
                 txtPassword.BorderColor = Color.Empty;
                 txtRetypePass.BorderColor = Color.Empty;
                 lblErrorPass.Text = "";
-                txtMemberID.BorderColor = Color.Empty;
+                txtUserName.BorderColor = Color.Empty;
                 txtName.BorderColor = Color.Empty;
                 txtLName.BorderColor = Color.Empty;
                 txtUserEmail.BorderColor = Color.Empty;
@@ -70,7 +70,8 @@ namespace Muslimeen.Register
 
                 foreach (uspGetQualification qual in list)
                 {
-                    ddScholarQual.Items.Add(new ListItem(qual.QualificationDescription.ToString(), qual.QualificationID.ToString()));
+                    ddScholarQual.Items.Add(new ListItem(qual.QualificationDescription.ToString(), 
+                        qual.QualificationID.ToString()));
                 }
             }
             else
@@ -97,35 +98,33 @@ namespace Muslimeen.Register
                 lblErrorPass.ForeColor = Color.Red;
                 continueProcess += 1;
             }
-
-            if (txtMemberID.Text == "" || txtMemberID.Text == null)
+            else if (txtUserName.Text == "" || txtUserName.Text == null)
             {
-                txtMemberID.BorderColor = Color.IndianRed;
-                lblErrorPass.Text = "Member ID field can not be empty";
+                txtUserName.BorderColor = Color.IndianRed;
+                lblErrorPass.Text = "User name field can not be empty";
                 continueProcess += 1;
             }
-            else if (txtMemberID.Text.Length > 15 || txtMemberID.Text.Length < 5)
+            else if (txtUserName.Text.Length > 15 || txtUserName.Text.Length < 5)
             {
-                txtMemberID.BackColor = Color.IndianRed;
-                lblErrorPass.Text = "Member ID is too long or too short";
+                txtUserName.BackColor = Color.IndianRed;
+                lblErrorPass.Text = "User Name is too long or too short";
                 continueProcess += 1;
             }
-
-            if (txtMemberID.Text != "" || txtMemberID.Text != null)
+            else if (txtUserName.Text != "" || txtUserName.Text != null)
             {
                 try
                 {
-                    if (dBHandler.BLL_GetMember(txtMemberID.Text.ToString()) != null)
+                    if (dBHandler.BLL_GetMember(txtUserName.Text.ToString()) != null)
                     {
-                        lblErrorPass.Text = "Error- Member ID taken";
-                        txtMemberID.BorderColor = Color.IndianRed;
+                        lblErrorPass.Text = "User Name taken, Please retype a new one";
+                        txtUserName.BorderColor = Color.IndianRed;
                         lblErrorPass.ForeColor = Color.Red;
                         continueProcess += 1;
                     }
                 }
                 catch (Exception ex)
                 {
-                    txtMemberID.BorderColor = Color.IndianRed;
+                    txtUserName.BorderColor = Color.IndianRed;
                     lblErrorPass.Text = ex.Message;
                     lblErrorPass.ForeColor = Color.Red;
                     continueProcess += 1;
@@ -137,43 +136,52 @@ namespace Muslimeen.Register
                 txtName.BorderColor = Color.IndianRed;
                 continueProcess += 1;
             }
-            if (txtLName.Text == "" || txtLName.Text == null)
+            else if (txtLName.Text == "" || txtLName.Text == null)
             {
                 txtLName.BorderColor = Color.IndianRed;
                 continueProcess += 1;
             }
-            if (txtDOB.Text == "" || txtDOB == null)
+            else if (txtDOB.Text == "" || txtDOB == null)
             {
                 txtDOB.BorderColor = Color.IndianRed;
                 continueProcess += 1;
             }
-            if(txtDOB.Text.Length > 10)
+            else if(txtDOB.Text.Length > 10)
             {
                 txtDOB.BorderColor = Color.IndianRed;
                 continueProcess += 1;
             }
-            if (txtUserEmail.Text == "" || txtUserEmail == null)
+            else if (txtUserEmail.Text == "" || txtUserEmail == null)
             {
                 txtUserEmail.BorderColor = Color.IndianRed;
                 continueProcess += 1;
             }
-            if (ddScholarQual.SelectedValue == "None")
+            else if (ddScholarQual.SelectedValue == "None")
             {
                 ddScholarQual.BorderColor = Color.IndianRed;
                 continueProcess += 1;
             }
-            if(ddUsertype.SelectedValue == "None")
+            else if(ddUsertype.SelectedValue == "None")
             {
                 ddScholarQual.BorderColor = Color.Red;
                 continueProcess += 1;
-                lblErrorPass.Text = "Error- Please select a registration type";
+                lblErrorPass.Text = "Registration type not selected";
+            }
+            else if(txtPassword.Text == null || txtPassword.Text == "")
+            {
+                lblErrorPass.Text = "Please create a Password";
+                continueProcess += 1;
+                txtPassword.BorderColor = Color.Red;
+            }
+            else if(txtRetypePass.Text == null || txtRetypePass.Text == "")
+            {
+                lblErrorPass.Text = "Please retype your Password";
+                continueProcess += 1;
+                txtRetypePass.BorderColor = Color.Red;
             }
 
             if (continueProcess == 0)
             {
-
-                
-
                 //make sure the DOB is in corrct format yyy-mm-dd.
                 if (txtDOB.Text.IndexOf('-', 4) == -1 || txtDOB.Text.IndexOf('-', 7) == -1)
                 {
@@ -181,16 +189,16 @@ namespace Muslimeen.Register
                     txtDOB.Text = txtDOB.Text.Insert(7, "-");
                 }
 
-
                 try
                 {
                     string encryptionPass = "NexTech";
                     Encryption encryption = new Encryption();
                     Member member = new Member();
 
-                    string encryptedString = encryption.Encrypt(encryptionPass, Convert.ToString(txtPassword.Text));
+                    string encryptedString = encryption.Encrypt(encryptionPass, 
+                        Convert.ToString(txtPassword.Text));
 
-                    member.MemberID = Convert.ToString(txtMemberID.Text);
+                    member.MemberID = Convert.ToString(txtUserName.Text);
                     member.MemberName = Convert.ToString(txtName.Text);
                     member.MemberLastName = Convert.ToString(txtLName.Text);
                     member.MemberDOB = Convert.ToDateTime(txtDOB.Text.ToString());
@@ -209,7 +217,7 @@ namespace Muslimeen.Register
                     {
                         Scholar scholar = new Scholar
                         {
-                            ScholarID = Convert.ToString(txtMemberID.Text),
+                            ScholarID = Convert.ToString(txtUserName.Text),
                             QualificationID = Convert.ToString(ddScholarQual.SelectedValue)
                         };
 
@@ -218,10 +226,9 @@ namespace Muslimeen.Register
 
                     EmailService emailService = new EmailService();
 
-                    emailService.AutoEmailService(txtUserEmail.Text.ToString(), ddUsertype.SelectedItem.ToString(), " ");
+                    emailService.AutoEmailService(txtUserEmail.Text.ToString(), 
+                        ddUsertype.SelectedItem.ToString(), "http://www.google.co.za");
 
-
-                    
                 }
                 catch(Exception ex)
                 {

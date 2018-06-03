@@ -126,5 +126,32 @@ namespace Muslimeen.BLL
             }
             return DBHelper.NonQuery("uspVerifyMember", CommandType.StoredProcedure, parameters.ToArray());
         }
+        public List<uspGetMosque> GetMosque()
+        {
+            List<uspGetMosque> list = new List<uspGetMosque>();
+            using (DataTable table = DBHelper.Select("uspGetMosque", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetMosque mosque = new uspGetMosque
+                        {
+                            MosqueName = Convert.ToString(row["MosqueName"]),
+                            MosqueType = Convert.ToString(row["MosqueType"]),
+                            MosqueAddress=Convert.ToString(row["MosqueAddress"]),
+                            MosqueSize=Convert.ToString(row["MosqueSize"]),
+                            MosqueImage=Convert.ToString(row["MosqueImage"]),
+                            LocationIMG=Convert.ToString(row["LocationIMG"]),
+                            LocationLink=Convert.ToString(row["LocationLink"])
+                            
+                        };
+                        list.Add(mosque);
+                    }
+                }
+            }
+            return list;
+        }
+
     }
 }
