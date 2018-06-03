@@ -10,7 +10,7 @@
 namespace Muslimeen.Content {
     
     
-    public partial class MyMuslimeen_User_ {
+    public partial class AboutUs {
         
         /// <summary>
         /// frmScholar control.
@@ -38,23 +38,5 @@ namespace Muslimeen.Content {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
-        
-        /// <summary>
-        /// Mosque1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton Mosque1;
-        
-        /// <summary>
-        /// Mosque control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton Mosque;
     }
 }

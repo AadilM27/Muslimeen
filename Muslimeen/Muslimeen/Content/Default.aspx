@@ -75,8 +75,8 @@
                     </div>
                 </div>
             </header>
-        <div class="content"><!--add content here -->
-            <div class=" mt-4 countDown-div">
+        <div class="content" id="content"><!--add content here -->
+            <div class=" pt-2 countDown-div">
                 <div id="clockdiv" class="col">
                     <h2 style="font-family: Arial; color:#3F84C1" id="title">Ramadaan Count down</h2>
                   <div class="">
@@ -153,6 +153,7 @@
                     </div>
                 </div>
             </div>
+        <script src="Default/Default.js" type="text/javascript"></script>
     </body>
         <script src="Default/Default.js" type="text/javascript"></script>
 </html>

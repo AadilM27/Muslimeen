@@ -42,9 +42,5 @@ namespace Muslimeen.BLL
         {
             return dBAccess.VerifyMember(uspVerifyMember);
         }
-        public List<uspGetMosque> BLL_GetMosque()
-        {
-            return dBAccess.GetMosque();
-        }
     }
 }

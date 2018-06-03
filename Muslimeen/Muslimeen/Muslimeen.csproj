@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AboutUs.aspx" />
     <Content Include="Content\Default.aspx" />
     <Content Include="Content\Default\CountDown.js" />
     <Content Include="Content\Default\DatesEnglishHijri.js" />
@@ -1472,6 +1473,13 @@
     <Content Include="Register\Register.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Content\AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Content\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

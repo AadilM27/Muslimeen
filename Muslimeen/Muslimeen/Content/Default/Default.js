@@ -2,7 +2,7 @@
 
 // Get the navbar
 var navbar = document.getElementById("navbar");
-
+var content = document.getElementById("content");
 // Get the offset position of the navbar
 var sticky = navbar.offsetTop;
 
@@ -10,8 +10,10 @@ var sticky = navbar.offsetTop;
 function myFunction() {
     if (window.pageYOffset >= sticky) {
         navbar.classList.add("sticky")
+        content.classList.add("contentPad");
     } else {
         navbar.classList.remove("sticky");
+        content.classList.remove("contentPad");
     }
 }
 

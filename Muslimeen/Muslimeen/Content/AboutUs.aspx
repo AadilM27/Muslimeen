@@ -1,16 +1,15 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MyMember.aspx.cs" Inherits="Muslimeen.Content.MyMuslimeen_User_" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AboutUs.aspx.cs" Inherits="Muslimeen.Content.AboutUs" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-    
 <head runat="server">
     <meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-    <title>My Muslimeen</title>
+    <title>About Us</title>
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="MyMember/css/MyMember.css" rel="stylesheet" />
@@ -70,36 +69,30 @@
                     </div>
                 </div>
             </header>
-        <div class="content"><!--add content here --> 
+            <div class="content"><!--add content here --> 
         <!--START INSERTING CODE FROM THIS POINT ON-->
             <!--add your custom styling in MyMember.css in MyMember/css-->
-            <hr class ="midnight-blue" />
-          <div class="row">
-            <!--Salaah times-->
-              <div class =" col text-center">
-                <h4 class="text-center">Salaah Times</h4>
-                <p>Salaah times here</p>
-              </div>
+                <h1 class="text-center">About us</h1>
+                <hr />
+                <div class="container">
+                <p> There  is  a  need  for  communication  within  our  Muslim  community.  Therefore, the NexTech team created a website that all members can
+                    access at anytime. 
+                </p>
+                <p>
+                    This website caters for those who would like to view information about mosques or scholars, learn more about Islam through our
+                    Learn Islam page or calculate and learn more about Zakaah.
+                </p>
+                <p>
+                    You may assign yourself to the mosque which you attend. From there, you will be able to view your mosque salaah details or mosque
+                    information and events. You will also have an option of viewing all mosque events, incase you would like to view more.
 
-              <!--view events--> 
-            <div class =" col text-center">
-                <h4 class="text-center">View Events</h4> <h5><asp:RadioButton  ID= "Mosque1" GroupName="AllMosque" runat="server" text="My Mosque"/>
-                 &nbsp;&nbsp;&nbsp; <asp:RadioButton ID="Mosque" GroupName="AllMosques" runat="server" text="All Mosques"/></h5>  
-                
-                    <p>
-                        paragraph
-                    </p>
-             </div>
-            
-             <!--notifications-->
-            <div class ="col text-center">
-               <h4 class="text-center">Notifications</h4> 
-                <p>add notifications here</p>
-            </div>
 
-          </div> <!--close Row-->
-        </div> <!--close content-->
-          <div class="footerr"><!--End content her, start of footer-->
+                    
+                </p>
+                </div>
+
+                </div>
+            <div class="footerr"><!--End content her, start of footer-->
                 <div class="row">
                     <div class="col text-center">
                        <h5>Content</h5>
@@ -154,3 +147,5 @@
         </form>
     </body>
 </html>
+
+
