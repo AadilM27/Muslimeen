@@ -115,7 +115,7 @@ function displayHijriDate(adjustment) {
 	var outputIslamicDate = wdNames[iDate[4]] + ", "
 	+ iDate[5] + " " + iMonthNames[iDate[6]] + " " + iDate[7] + " AH";
 	*/
-    var outputIslamicDate = iDate[7] + " AH" + " - " + iMonthNames[iDate[6]] + " - " + iDate[5];
+    var outputIslamicDate = iDate[7] + " - " + iMonthNames[iDate[6]] + " - " + iDate[5];
 
 	return outputIslamicDate;
 }

@@ -41,20 +41,10 @@
                 <div class="form-group col-sm-5 mb-1 mt-1">
                     <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtContactNum" placeholder="Contact Number"></asp:TextBox>
                 </div>
-                <div class="form-group col-sm-7 mb-1 mt-1">
-                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtDOB" placeholder="yyyy-mm-dd*"></asp:TextBox>
-                </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-sm-5  mb-1 mt-1">
                  <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtUserEmail" placeholder="Email Address*"></asp:TextBox>
-                </div>
-                <div class="form-group col-sm-7 mb-1 mt-1">
-                    <asp:DropDownList CssClass="form-control col" runat="server" ID="ddUsertype" AutoPostBack="true" >
-                        <asp:ListItem Selected disabled Value="None" >Registration Type*</asp:ListItem>
-                        <asp:ListItem Value="M">Member</asp:ListItem>
-                        <asp:ListItem Value="S">Scholar</asp:ListItem>
-                    </asp:DropDownList>
                 </div>
             </div>
             <div class="form-row">
@@ -62,10 +52,13 @@
                     <asp:DropDownList runat="server" CssClass=" form-control main-txtb" Visible="false" ID="ddScholarQual" placeholder="Qualification description:"></asp:DropDownList>
                 </div>
                 <div class="form-group col-sm-12 mb-1 mt-1">
-                    <asp:TextBox runat="server" CssClass="form-control main-txtb" ID="txtPassword" type="password" placeholder="Password*"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control main-txtb" ID="TextBox1" type="password" placeholder="Old Password*"></asp:TextBox>
+                </div>
+                <div class="form-group col-sm-12 mb-1 mt-1">
+                    <asp:TextBox runat="server" CssClass="form-control main-txtb" ID="txtPassword" type="password" placeholder="New Password*"></asp:TextBox>
                 </div>
                 <div class=" form-group col-sm-12 mt-1 mb-2">
-                    <asp:TextBox runat="server"  CssClass="form-control" ID="txtRetypePass" type="password" placeholder="Retype Password*"></asp:TextBox>
+                    <asp:TextBox runat="server"  CssClass="form-control" ID="txtRetypePass" type="password" placeholder="Retype New Password*"></asp:TextBox>
                 </div>
                 <div style="text-align:left; padding-left:10px;" class=" form-group col-sm-12 mt-0 mb-0">
                     <input type="checkbox" id="chkShowPassword" onclick="CheckPassword()"/>
@@ -76,7 +69,6 @@
                 </div>
             </div>
                 <asp:button runat="server" CssClass="btn btn-primary main-btn mt-2 " ID="btnRegister" Text="Register"></asp:button>
-
             <p class=" text-center mt-3">Go back to the <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="~/Content/Default.aspx"  Text="Home page"></asp:HyperLink></p>
             <input type="hidden" id="hfdPassword" value=""/>
         </form>

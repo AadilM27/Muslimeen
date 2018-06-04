@@ -82,13 +82,8 @@ body, html {
 .fakeimg {
     height: 100px;
     background: #aaa;
-    background-attachment:scroll;
 }
 .rightposition{
-  left:25%;
+  left:50%;
   position:relative;
-}
-.leftposition {
-    right:50%;
-    position: relative;
 }
