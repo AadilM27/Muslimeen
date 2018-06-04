@@ -4,59 +4,56 @@
     text-align:center;
    
 }
-.tabContainer 
-{
-    width:100%;
-    height: 350px;
+
+
+
+ #Zakaah {
+    background-color: #256297;
    
 }
 
- .tabContainer .buttonContainer
- {
-        height: 15%;
-        
-    }
-
- .tabContainer .buttonContainer button
- {
-        width: 25%;
-        height: 70%;
-        float: left;
-        outline: none;
-        cursor: pointer;
-        padding: 10px;
-        font-family: sans-serif;
-        font-size: 18px;
-        background-color:#eee;
-        
-    }
-    .tabContainer .buttonContainer button:hover
-    {
-        background-color:#0094ff;
-    }
-    .tabContainer .tabPanel{
-        height:85%;
-        background-color:white;
-        color:black;
-        text-align:center;
-        padding-top:105px;
-        box-sizing:border-box;
-        font-family:sans-serif;
-        font-size:22px;
-        display:none;
-    }
-
-* {
-    box-sizing: border-box 
-      
+#Calculator {
+    background-color: green;
 }
 
+#Facts {
+    background-color: blue;
+}
+
+#Organizations {
+    background-color: orange;
+    
+}
+.footerr {
+    width: 100%;
+    background-color: white;
+    border-color: white;
+    bottom: 0;
+    left: 0;
+    padding: 25px;
+    position:relative;
+    
+}
+
+.footerr-text {
+    color: #3F84C1;
+    text-decoration: none;
+    font-size: 13px;
+}
+.header{
+    position:relative;
+}
+.box {
+    box-sizing: border-box;
+    width:auto;
+    background-color:white;
+
+}
 /* Set height of body and the document to 100% */
 body, html {
     height: 100%;
     margin: 0;
     font-family: Arial;
-    
 }
 
 /* Style tab links */
@@ -78,25 +75,15 @@ body, html {
 
 /* Style the tab content (and add height:100% for full page content) */
 .tabcontent {
-    color: white;
     display: none;
     padding: 100px 20px;
     height: 100%;
 }
-
-#Zakaah {
-    background-color:red;
+.fakeimg {
+    height: 100px;
+    background: #aaa;
 }
-
-#Calculator {
-    background-color: green;
+.rightposition{
+  left:50%;
+  position:relative;
 }
-
-#Facts {
-    background-color: blue;
-}
-
-#Organizations {
-    background-color: orange;
-}
-

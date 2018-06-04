@@ -31,3 +31,12 @@ C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen
 C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csproj.CoreCompileInputs.cache
 C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.dll
 C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.pdb
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Muslimeen.DAL.dll
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Muslimeen.DAL.pdb
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\TypeLib.dll
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\TypeLib.pdb
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csprojAssemblyReference.cache
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csproj.CopyComplete
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.dll
+C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.pdb

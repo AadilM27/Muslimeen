@@ -1545,7 +1545,9 @@
       <DependentUpon>Verification.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\Zakaah\js\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Muslimeen.BLL\Muslimeen.BLL.csproj">
       <Project>{2e565e3b-41af-426f-bcb8-762386783b06}</Project>
