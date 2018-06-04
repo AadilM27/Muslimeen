@@ -79,6 +79,8 @@
     <Content Include="Content\MyScholar.aspx" />
     <Content Include="Content\MyScholar\css\MyScholar.css" />
     <Content Include="Content\newZakaah.aspx" />
+    <Content Include="Content\ProfileEditer.aspx" />
+    <Content Include="Content\ProfileEditer\css\ProfileEditer.css" />
     <Content Include="Content\Zakaah.aspx" />
     <Content Include="Content\Zakaah\css\newZakaah.css" />
     <Content Include="Content\Zakaah\css\Zakaah.css" />
@@ -1514,6 +1516,13 @@
     </Compile>
     <Compile Include="Content\newZakaah.aspx.designer.cs">
       <DependentUpon>newZakaah.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\ProfileEditer.aspx.cs">
+      <DependentUpon>ProfileEditer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\ProfileEditer.aspx.designer.cs">
+      <DependentUpon>ProfileEditer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\Zakaah.aspx.cs">
       <DependentUpon>Zakaah.aspx</DependentUpon>

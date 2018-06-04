@@ -13,29 +13,29 @@ body {
     height: 100%;
 }
 
-.form-register {
+.form-profileEditer {
     width: 100%;
     max-width: 630px;
     padding: 15px;
     margin: auto;
 }
 
-.form-register {
+.form-profileEditer {
     position: relative;
     height: auto;
     padding: 15px;
     font-size: 16px;
 }
 
-.form-register{
+.form-profileEditer {
     z-index: 2;
 }
 
-.form-register input[type="email"] {
+.form-profileEditer input[type="email"] {
     margin-bottom: -1px;
 }
 
-.form-register input[type="password"] {
+.form-profileEditer input[type="password"] {
     margin-bottom: 10px;
 }
 
@@ -53,7 +53,7 @@ body {
 .main-btn {
     background-color: #256297;
     border-color: #256297;
-    width:150px;
+    width: 150px;
 }
 
 .main-txtb:focus {
@@ -64,6 +64,7 @@ body {
 .btn:hover {
     background-color: #3F84C1;
 }
-.lblError{
-    color:red;
+
+.lblError {
+    color: red;
 }

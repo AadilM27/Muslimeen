@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="Muslimeen.Register.Register" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProfileEditer.aspx.cs" Inherits="Muslimeen.Content.ProfileEditer" %>
 
 <!DOCTYPE html>
 
@@ -12,22 +12,21 @@
 	
 		<link href="/Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 		
-		<title> Muslimeen - Register a account </title>
+		<title> Muslimeen - Edit Profile</title>
 
         <script src="/Register/Register.js" type="text/javascript"></script>
 
-		<link href="/Login/LogIn_Bootstrap/css/register.css" rel="stylesheet"/>
+		<link href="..\Content\ProfileEditer\css\ProfileEditer.css" rel="stylesheet"/>
 </head>
 <body class="text-center">
     <div class="main-div">
-			<asp:Image runat="server" CssClass="mb-2 mt-2" src="/Login/LogIn_Bootstrap/logo.png" width="200" height="130"/>
-			<h1 class="h3 mb-1 mt-2 font-weight-bold">Register on Muslimeen</h1>
-            <h1 class="h6 text-black-50 mt-2 mb-3">Access Muslimeen with<br />a free account</h1>
-            
-        <form class="form-register" runat="server" id="frmRegister" method="post">
+			<asp:Image runat="server" CssClass="mb-2 mt-2" src="../Login/LogIn_Bootstrap/logo.png" width="200" height="130"/>
+			<h1 class="h3 mb-1 mt-2 font-weight-bold">Update your profile</h1>
+            <h1 class="h6 text-black-50 mt-2 mb-3">Update your profile as desired</h1>
+        
+        <form class=" form-profileEditer" runat="server" id="frmRegister" method="post">
             <div class="form-row">
                 <div class="form-group col-sm-12 mb-1 mt-1">
-                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtUserName" placeholder="User Name*"></asp:TextBox>
                 </div>
             </div>
             <div class="form-row">
@@ -51,7 +50,7 @@
                  <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtUserEmail" placeholder="Email Address*"></asp:TextBox>
                 </div>
                 <div class="form-group col-sm-7 mb-1 mt-1">
-                    <asp:DropDownList CssClass="form-control col" runat="server" ID="ddUsertype" AutoPostBack="true" OnSelectedIndexChanged="ddUsertype_SelectedIndexChanged" OnTextChanged="ddUsertype_SelectedIndexChanged" >
+                    <asp:DropDownList CssClass="form-control col" runat="server" ID="ddUsertype" AutoPostBack="true" >
                         <asp:ListItem Selected disabled Value="None" >Registration Type*</asp:ListItem>
                         <asp:ListItem Value="M">Member</asp:ListItem>
                         <asp:ListItem Value="S">Scholar</asp:ListItem>
@@ -76,11 +75,9 @@
                     <asp:Label CssClass="lblError" runat="server" ID="lblErrorPass"></asp:Label>
                 </div>
             </div>
-                <asp:button runat="server" CssClass="btn btn-primary main-btn mt-2 " ID="btnRegister" Text="Register" OnClick="btnRegister_Click"></asp:button>
+                <asp:button runat="server" CssClass="btn btn-primary main-btn mt-2 " ID="btnRegister" Text="Register"></asp:button>
 
-            <p class="mt-3 mb-0">Have a account ? <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="~/Login/Login.aspx"  Text="Log in"></asp:HyperLink></p>
-            <asp:Label CssClass="" runat="server" Text="OR" Style="font-size:smaller;"></asp:Label>
-            <p class=" text-center">Go back to the <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="~/Content/Default.aspx"  Text="Home page"></asp:HyperLink></p>
+            <p class=" text-center mt-3">Go back to the <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="~/Content/Default.aspx"  Text="Home page"></asp:HyperLink></p>
             <input type="hidden" id="hfdPassword" value=""/>
         </form>
      </div>
