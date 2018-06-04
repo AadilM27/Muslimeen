@@ -92,7 +92,7 @@
               <div class="container" style="margin-top:30px">
                  
   <div class="row">
-    <div >
+    <div class="col-sm-4">
       <h2>About Me</h2>
       <h5>Photo of me:</h5>
       <div class="fakeimg">Fake Image</div>
@@ -113,9 +113,9 @@
           <a class="nav-link disabled" href="#">Disabled</a>
         </li>
       </ul>
-      <hr class="d-sm-none" />
+      
     </div>
-    <div class="rightposition">
+    <div class="col-sm-8">
       <h2>TITLE HEADING</h2>
       <h5>Title description, Dec 7, 2017</h5>
       <div class="fakeimg">Fake Image</div>
