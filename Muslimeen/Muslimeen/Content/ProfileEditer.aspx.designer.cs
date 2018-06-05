@@ -49,15 +49,6 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.TextBox txtContactNum;
         
         /// <summary>
-        /// txtDOB control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDOB;
-        
-        /// <summary>
         /// txtUserEmail control.
         /// </summary>
         /// <remarks>
@@ -67,15 +58,6 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.TextBox txtUserEmail;
         
         /// <summary>
-        /// ddUsertype control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddUsertype;
-        
-        /// <summary>
         /// ddScholarQual control.
         /// </summary>
         /// <remarks>
@@ -83,6 +65,15 @@ namespace Muslimeen.Content {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddScholarQual;
+        
+        /// <summary>
+        /// TextBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
         /// txtPassword control.

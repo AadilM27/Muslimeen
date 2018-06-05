@@ -58,7 +58,7 @@ namespace Muslimeen.Login
                     if (decryptedString == Convert.ToString(txtPassword.Text))
                     {
                         Session["UserName"] = txtUserName.Text.ToString();
-                        Session.Timeout = 1;
+                        Session.Timeout = 30;
                         Response.Redirect("~/Content/Default.aspx");
                     }
                     else
@@ -86,20 +86,32 @@ namespace Muslimeen.Login
 
         protected void chkRememberMe_CheckedChanged(object sender, EventArgs e)
         {
-            if(chkRememberMe.Checked)
+            if (txtUserName.Text == "" || txtUserName.Text == null) //this is to avoid storing a null in cookie
             {
-                HttpCookie httpCookie = new HttpCookie("RememberMe"); //create the cookie.
-
-                httpCookie["UserName"] = Convert.ToString(txtUserName.Text);
-                httpCookie["DoRemember"] = "Yes";
-                httpCookie.Expires = DateTime.Now.AddYears(1);
-                Response.Cookies.Add(httpCookie);
+                lblErrorPass.Text = "Please enter your User name first";
+                
+                if (chkRememberMe.Checked)
+                {
+                    chkRememberMe.Checked = false;
+                }
             }
-            else if(!chkRememberMe.Checked)
+            else if (txtUserName.Text != "" || txtUserName.Text != null)
             {
-                HttpCookie httpCookie = new HttpCookie("RememberMe"); //remove the cookie.
-                httpCookie.Expires = DateTime.Now.AddYears(-1);
-                Response.Cookies.Add(httpCookie);
+                if (chkRememberMe.Checked)
+                {
+                    HttpCookie httpCookie = new HttpCookie("RememberMe"); //create the cookie.
+
+                    httpCookie["UserName"] = Convert.ToString(txtUserName.Text);
+                    httpCookie["DoRemember"] = "Yes";
+                    httpCookie.Expires = DateTime.Now.AddYears(1);
+                    Response.Cookies.Add(httpCookie);
+                }
+                else if (!chkRememberMe.Checked)
+                {
+                    HttpCookie httpCookie = new HttpCookie("RememberMe"); //remove the cookie.
+                    httpCookie.Expires = DateTime.Now.AddYears(-1);
+                    Response.Cookies.Add(httpCookie);
+                }
             }
         }
     }
