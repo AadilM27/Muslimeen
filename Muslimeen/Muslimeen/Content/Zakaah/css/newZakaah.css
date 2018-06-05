@@ -7,23 +7,6 @@
 
 
 
- #Zakaah {
-    background-color: #256297;
-   
-}
-
-#Calculator {
-    background-color: green;
-}
-
-#Facts {
-    background-color: blue;
-}
-
-#Organizations {
-    background-color: orange;
-    
-}
 .footerr {
     width: 100%;
     background-color: white;
@@ -55,35 +38,8 @@ body, html {
     margin: 0;
     font-family: Arial;
 }
-
-/* Style tab links */
-.tablink {
-    background-color: #555;
-    color: white;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
-    width: 25%;
+.navText{
+    color:white;
 }
 
-    .tablink:hover {
-        background-color: #777;
-    }
 
-/* Style the tab content (and add height:100% for full page content) */
-.tabcontent {
-    display: none;
-    padding: 100px 20px;
-    height: 100%;
-}
-.fakeimg {
-    height: 100px;
-    background: #aaa;
-}
-.rightposition{
-  left:50%;
-  position:relative;
-}
