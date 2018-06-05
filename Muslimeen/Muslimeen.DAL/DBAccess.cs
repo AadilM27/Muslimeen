@@ -153,5 +153,105 @@ namespace Muslimeen.BLL
             return list;
         }
 
+        public List<uspGetAllMosques> GetAllMosques()
+        {
+            List<uspGetAllMosques> list = new List<uspGetAllMosques>();
+            using (DataTable table = DBHelper.Select("uspGetAllMosques", CommandType.StoredProcedure))
+            {
+                if(table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetAllMosques mosque = new uspGetAllMosques
+                        {
+                            MosqueID = Convert.ToInt32(row["MosqueID"]),
+                            MosqueName = Convert.ToString(row["MosqueName"])
+                        };
+                        list.Add(mosque);
+                    }
+                }
+            }
+            return list;
+        }
+
+        public uspGetModeratorDetails GetModeratorDetails(string memberID)
+        {
+            uspGetModeratorDetails getModerator = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@MemberID", memberID)
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetModeratorDetails", CommandType.StoredProcedure, pars))
+            {
+                if(table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    getModerator = new uspGetModeratorDetails();
+
+
+                    getModerator.ModeratorID = Convert.ToString(row["ModeratorID"]);
+                    getModerator.MemberName = Convert.ToString(row["MemberName"]);
+                    getModerator.MemberLastName = Convert.ToString(row["MemberLastName"]);
+                    getModerator.ContactNo = Convert.ToString(row["ContactNo"]);
+                    getModerator.MemberDOB = Convert.ToDateTime(row["MemberDOB"]);
+                    getModerator.Email = Convert.ToString(row["Email"]);
+                    getModerator.MemberType = Convert.ToChar(row["MemberType"]);
+                    getModerator.QualificationDescription = Convert.ToString(row["QualificationDescription"]);
+                    if (!(row["MosqueID"] is DBNull))
+                    {
+                        getModerator.MosqueID = Convert.ToInt32(row["MosqueID"]);
+                    }
+                    else
+                    {
+                        getModerator.MosqueID = null;
+                    }
+                    getModerator.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
+                    getModerator.Password = Convert.ToString(row["Password"]);
+                    
+                }
+            }
+            return getModerator;
+        }
+
+        public uspGetScholarDetails GetScholarDetails(string memberID)
+        {
+            uspGetScholarDetails getScholarDetails = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@MemberID", memberID)
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetScholarDetails", CommandType.StoredProcedure, pars))
+            {
+                if(table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    getScholarDetails = new uspGetScholarDetails();
+
+                    getScholarDetails.ScholarID = Convert.ToString(row["ScholarID"]);
+                    getScholarDetails.MemberName = Convert.ToString(row["MemberName"]);
+                    getScholarDetails.MemberLastName = Convert.ToString(row["MemberLastName"]);
+                    getScholarDetails.ContactNo = Convert.ToString(row["ContactNo"]);
+                    getScholarDetails.MemberDOB = Convert.ToDateTime(row["MemberDOB"]);
+                    getScholarDetails.Email = Convert.ToString(row["Email"]);
+                    getScholarDetails.MemberType = Convert.ToChar(row["MemberType"]);
+                    getScholarDetails.QualificationDescription = Convert.ToString(row["QualificationDescription"]);
+                    if (!(row["MosqueID"] is DBNull))
+                    {
+                        getScholarDetails.MosqueID = Convert.ToInt32(row["MosqueID"]);
+                    }
+                    else
+                    {
+                        getScholarDetails.MosqueID = null;
+                    }
+                    getScholarDetails.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
+                    getScholarDetails.Password = Convert.ToString(row["Password"]);
+                    
+                }
+            }
+            return getScholarDetails;
+        }
+
+
+
     }
 }

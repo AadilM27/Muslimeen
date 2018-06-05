@@ -22,6 +22,15 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.HtmlControls.HtmlForm frmRegister;
         
         /// <summary>
+        /// txtUserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUserName;
+        
+        /// <summary>
         /// txtName control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.TextBox txtContactNum;
         
         /// <summary>
+        /// txtDOB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDOB;
+        
+        /// <summary>
         /// txtUserEmail control.
         /// </summary>
         /// <remarks>
@@ -58,22 +76,76 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.TextBox txtUserEmail;
         
         /// <summary>
-        /// ddScholarQual control.
+        /// txtMemberType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddScholarQual;
+        protected global::System.Web.UI.WebControls.TextBox txtMemberType;
         
         /// <summary>
-        /// TextBox1 control.
+        /// divQual control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divQual;
+        
+        /// <summary>
+        /// txtQual control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtQual;
+        
+        /// <summary>
+        /// ddAssignedMosques control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddAssignedMosques;
+        
+        /// <summary>
+        /// txtActivationDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtActivationDate;
+        
+        /// <summary>
+        /// chkChangePassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkChangePassword;
+        
+        /// <summary>
+        /// divChangePassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divChangePassword;
+        
+        /// <summary>
+        /// txtOldPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOldPassword;
         
         /// <summary>
         /// txtPassword control.
@@ -103,12 +175,12 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Label lblErrorPass;
         
         /// <summary>
-        /// btnRegister control.
+        /// btnUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegister;
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
     }
 }

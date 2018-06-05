@@ -25,34 +25,97 @@
             <h1 class="h6 text-black-50 mt-2 mb-3">Update your profile as desired</h1>
         
         <form class=" form-profileEditer" runat="server" id="frmRegister" method="post">
-            <div class="form-row">
-                <div class="form-group col-sm-12 mb-1 mt-1">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-sm-5 mb-1 mt-1">
-                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtName" placeholder="First Name*"></asp:TextBox>
+            <div class="form-row field-div">
+                <div class="form-group text-left col-sm-5 mb-1 mt-1">
+                    <label>User Name: </label>
                 </div>
                 <div class="form-group col-sm-7 mb-1 mt-1">
-                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtLName" placeholder="Last Name*"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtUserName"></asp:TextBox>
+                </div>
+            </div>
+            <div class="form-row field-div">
+                <div class="form-group text-left col-sm-5 mb-1 mt-1">
+                    <label>First Name: </label>
+                </div>
+                <div class="form-group col-sm-7 mb-1 mt-1">
+                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtName"></asp:TextBox>
+                </div>
+            </div>
+            <div class="form-row field-div">
+                <div class="form-group text-left col-sm-5 mb-1 mt-1">
+                    <label>Last Name: </label>
+                </div>
+                <div class="form-group col-sm-7 mb-1 mt-1">
+                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtLName"></asp:TextBox>
+                </div>
+            </div>
+            <div class="form-row field-div">
+                <div class="form-group text-left col-sm-5 mb-1 mt-1">
+                    <label>Contact Number: </label>
+                </div>
+                <div class="form-group text-left col-sm-7 mb-1 mt-1">
+                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtContactNum"></asp:TextBox>
+                </div>
+            </div>
+            <div class="form-row field-div">
+                <div class="form-group text-left col-sm-5 mb-1 mt-1">
+                    <label>Date Of Birth: </label>
+                </div>
+                <div class="form-group col-sm-7 mb-1 mt-1">
+                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtDOB"></asp:TextBox>
+                </div>
+            </div>
+            <div class="form-row field-div">
+                <div class="form-group text-left col-sm-5 mb-1 mt-1">
+                    <label>Email Address: </label>
+                </div>
+                <div class="form-group col-sm-7  mb-1 mt-1">
+                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtUserEmail"></asp:TextBox>
+                </div>
+            </div>
+            <div class="form-row field-div">
+                <div class="form-group text-left col-sm-5 mb-1 mt-1">
+                    <label>Member Type: </label>
+                </div>
+                <div class="form-group col-sm-7 mb-1 mt-1">
+                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtMemberType"></asp:TextBox>
+                </div>
+            </div>
+            <div class="form-row field-div">
+                <div class="form-group text-left col-sm-5 mb-1 mt-1">
+                    <label>Qualification: </label>
+                </div>
+                <div class=" form-group col-sm-7 mt-1 mb-1" runat="server" id="divQual" >
+                    <asp:TextBox runat="server" CssClass=" form-control main-txtb" ID="txtQual" ></asp:TextBox>
+                </div>
+            </div>
+            <div class="form-row field-div">
+                <div class="form-group text-left col-sm-5 mb-1 mt-1">
+                    <label>Assigned Mosque: </label>
+                </div>
+                <div class=" form-group col-sm-7 mt-1 mb-1" id="">
+                    <asp:DropDownList runat="server" CssClass=" form-control main-txtb" ID="ddAssignedMosques"></asp:DropDownList>
+                </div>
+            </div>
+            <div class="form-row field-div">
+                <div class="form-group text-left col-sm-5 mb-1 mt-1">
+                    <label>Activation Date: </label>
+                </div>
+                <div class=" form-group col-sm-7 mt-1 mb-1" id="">
+                    <asp:TextBox runat="server" CssClass=" form-control main-txtb" ID="txtActivationDate"></asp:TextBox>
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-sm-5 mb-1 mt-1">
-                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtContactNum" placeholder="Contact Number"></asp:TextBox>
+                <div class=" form-group col-sm-12 mt-2 mb-1 text-left">
+                    <asp:CheckBox runat="server" autopostback="true" ID="chkChangePassword" OnCheckedChanged="chkChangePassword_CheckedChanged"/>
+                    <asp:label runat="server" AssociatedControlID="chkChangePassword">Change Password</asp:label>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-sm-5  mb-1 mt-1">
-                 <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtUserEmail" placeholder="Email Address*"></asp:TextBox>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class=" form-group col-sm-12 mt-1 mb-1" id="divScholarQual" >
-                    <asp:DropDownList runat="server" CssClass=" form-control main-txtb" Visible="false" ID="ddScholarQual" placeholder="Qualification description:"></asp:DropDownList>
-                </div>
+
+            <!--HIDE FROM HERE -->
+            <div class="form-row field-div" runat="server" id="divChangePassword">
                 <div class="form-group col-sm-12 mb-1 mt-1">
-                    <asp:TextBox runat="server" CssClass="form-control main-txtb" ID="TextBox1" type="password" placeholder="Old Password*"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control main-txtb" ID="txtOldPassword" type="password" placeholder="Old Password*"></asp:TextBox>
                 </div>
                 <div class="form-group col-sm-12 mb-1 mt-1">
                     <asp:TextBox runat="server" CssClass="form-control main-txtb" ID="txtPassword" type="password" placeholder="New Password*"></asp:TextBox>
@@ -68,7 +131,7 @@
                     <asp:Label CssClass="lblError" runat="server" ID="lblErrorPass"></asp:Label>
                 </div>
             </div>
-                <asp:button runat="server" CssClass="btn btn-primary main-btn mt-2 " ID="btnRegister" Text="Register"></asp:button>
+                <asp:button runat="server" CssClass="btn btn-primary main-btn mt-2 " ID="btnUpdate" Text="Update"></asp:button>
             <p class=" text-center mt-3">Go back to the <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="~/Content/Default.aspx"  Text="Home page"></asp:HyperLink></p>
             <input type="hidden" id="hfdPassword" value=""/>
         </form>
