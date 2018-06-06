@@ -44,11 +44,11 @@
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\CalenderInfo.cs" />
     <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\Content.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Moderator.cs" />
     <Compile Include="Models\Mosque.cs" />
     <Compile Include="Models\Notice.cs" />
+    <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\Prayer.cs" />
     <Compile Include="Models\PrayerType.cs" />
     <Compile Include="Models\Qualification.cs" />
@@ -57,7 +57,7 @@
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\UpdateCalAdjustValue.cs" />
     <Compile Include="Models\UpdateRamadaanDate.cs" />
-    <Compile Include="Models\Video.cs" />
+    <Compile Include="Models\Zakaah.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\uspGetAllMosques.cs" />
     <Compile Include="ViewModels\uspGetCalAdjustValue.cs" />
