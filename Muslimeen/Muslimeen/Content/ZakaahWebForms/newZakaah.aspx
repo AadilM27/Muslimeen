@@ -86,7 +86,7 @@ h1 {
     color: white;
     cursor: pointer;
     padding: 18px;
-    width:60%;
+    width:80%;
     border: none;
     text-align: left;
     outline: none;
@@ -199,7 +199,7 @@ h1 {
 </nav>
 
 <div class="container" style="margin-top:10px">
-  <div class="row" style="position:relative;right:40px">
+  <div class="row" style="position:relative;right:50px">
       <div class="col-md-8">
           <button class="collapsible" style="background-color:#256297;width:100%">What is Zakaah or Zakat?</button>
 <div class="content">
@@ -231,22 +231,27 @@ Individuals experiencing difficulty in discharging their Zakaat may forward thei
 </div>
 
           <!----javascript code for collapsible-->
-<script>
-var coll = document.getElementsByClassName("collapsible");
-var i;
+       <script>
+       var coll = document.getElementsByClassName("collapsible");
+       var i;
 
-for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.display === "block") {
-            content.style.display = "none";
-        } else {
-            content.style.display = "block";
+           for (i = 0; i < coll.length; i++)
+           {
+               coll[i].addEventListener("click", function ()
+               {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                   if (content.style.display === "block")
+                   {
+                        content.style.display = "none";
+                   }
+                   else
+                   {
+                        content.style.display = "block";
+                   }
+            });
         }
-    });
-}
-</script><!--end of javascript code--->
+           </script><!--end of javascript code--->
           </div>
    
       <div class="col-md-4">
