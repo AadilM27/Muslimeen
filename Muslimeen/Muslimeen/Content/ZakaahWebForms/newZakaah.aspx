@@ -13,93 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
         
-  <style>
-  * {
-    box-sizing: border-box;
-}
-
-
-
-/* Center website */
-.main {
-    max-width: 1000px;
-    margin: auto;
-}
-
-h1 {
-    font-size: 50px;
-    word-break: break-all;
-}
-
-.row {
-    margin: 8px -16px;
-}
-
-/* Add padding BETWEEN each column */
-.row,
-.row > .column {
-    padding: 8px;
-}
-
-/* Create four equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 25%;
-}
-
-/* Clear floats after rows */ 
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* Content */
-.content {
-    background-color: white;
-    padding: 10px;
-}
-
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 900px) {
-    .column {
-        width: 50%;
-    }
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-    .column {
-        width: 100%;
-    }
-}
-      .fakeimg {
-      height: 200px;
-      background: #aaa;
-  }
-  .collapsible {
-    background-color: #777;
-    color: white;
-    cursor: pointer;
-    padding: 18px;
-    width:80%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    
-    
-}
-
-.active, .collapsible:hover {
-    background-color: #555;
-}
-
-.content2 {
-    padding: 0 18px;
-    background-color: #f1f1f1;
-}
-</style>
+  
     <title>MyMuslimeen -Zakaah</title>
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -226,29 +140,8 @@ h1 {
                     <p>A.  Zakaat is Fard on a Muslim male or female who is mature (Baaligh) and sane. He/she must also be the owner of Nisaab. Nisaab is the minimum amount of wealth which makes a person liable for Zakaat. If one is the owner of Nisaab after one lunar year, then Zakaat will be Fardh upon him. The Zakaat should be paid annually on the Islamic date of a lunar year.</p>
                     </div>
 
-                              <!----javascript code for collapsible-->
-                           <script>
-                           var coll = document.getElementsByClassName("collapsible");
-                           var i;
-
-                               for (i = 0; i < coll.length; i++)
-                               {
-                                   coll[i].addEventListener("click", function ()
-                                   {
-                                    this.classList.toggle("active");
-                                    var content = this.nextElementSibling;
-                                       if (content.style.display === "block")
-                                       {
-                                            content.style.display = "none";
-                                       }
-                                       else
-                                       {
-                                            content.style.display = "block";
-                                       }
-                                });
-                            }
-                               </script><!--end of javascript code--->
-                              </div>
+                    <script src="../Zakaah/newZakaah.js"></script>
+                    </div>
    
                           <div class="col-md-4" style="position:static;">
                           <h2>About Me</h2>
