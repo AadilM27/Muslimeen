@@ -97,9 +97,64 @@
                 </li>
             </ul>
          </div>
-    
-        <!--Footer-->
 
-    </form>
+    </form>    
+    
+    <!--Footer-->
+    <div class="footerr"> <!--End of content, start of footer-->
+                <div class="row">
+                    <div class="col text-center position-static">
+                       <h6>Content</h6>
+                        <ul class="navbar-nav">
+                           <li class="nav-item">
+                               <a class="footerr-text" href="Default.aspx">Home</a>
+                           </li>
+                           <li class="nav-item">
+                               <a class="footerr-text" href="Mosque.aspx">Mosques</a>
+                           </li>
+                           <li class="nav-item">
+                               <a class="footerr-text" href="#">Scholars</a>
+                           </li>
+                           <li class="nav-item">
+                               <a class="footerr-text" href="#">Learn Islam</a>
+                           </li>
+                           <li class="nav-item">
+                               <a class="footerr-text" href="Zakaah.aspx">Zakaah</a>
+                           </li>
+                        </ul>
+                    </div>
+                    <div class="col  text-center position-static">
+                        <h6>About us</h6>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="footerr-text" href="#">Content</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="footerr-text" href="#">Content</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="footerr-text" href="#">Content</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col  text-center position-static">
+                        <h6>Contact us</h6>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="footerr-text" href="#">Content</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="footerr-text" href="#">Content</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="footerr-text" href="#">Content</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+    <script src="../Default/Default.js"></script>
+    <script src="../Default/DatesEnglishHijri.js"></script>
 </body>
 </html>
