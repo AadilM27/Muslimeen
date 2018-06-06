@@ -20,6 +20,3 @@ C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csp
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csproj.CoreCompileInputs.cache
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.dll
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.pdb
-
-C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
-
