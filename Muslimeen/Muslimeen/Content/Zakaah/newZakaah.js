@@ -1,21 +1,22 @@
 ﻿
-    var slideIndex = 1;
-    showSlides(slideIndex);
-    
-function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
-    
-function currentSlide(n) {
-        showSlides(slideIndex = n);
-    }
-    
-// When the user scrolls the page, execute myFunction 
-window.onscroll = function () { myFunction() };
 
-function myFunction() {
-    var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    var scrolled = (winScroll / height) * 100;
-    document.getElementById("myBar").style.width = scrolled + "%";
-}
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++)
+    {
+        coll[i].addEventListener("click", function ()
+        {
+            this.classList.toggle("active");
+            var content2 = this.nextElementSibling;
+            if (content2.style.display === "block")
+            {
+                content2.style.display = "none";
+            }
+            else
+            {
+                content2.style.display = "block";
+            }
+        });
+    }
+                             
