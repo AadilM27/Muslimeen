@@ -380,3 +380,8 @@ C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen\obj\Debug
 C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen\obj\Debug\Muslimeen.csproj.CopyComplete
 C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen\obj\Debug\Muslimeen.dll
 C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen\obj\Debug\Muslimeen.pdb
+C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen\bin\Login\LogIn_Bootstrap\icons\fonts\Dr Sugiyama.ttf
+C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen\bin\Muslimeen.BLL.dll
+C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen\bin\TypeLib.dll
+C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen\bin\Muslimeen.BLL.pdb
+C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen\bin\TypeLib.pdb

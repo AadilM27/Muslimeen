@@ -152,6 +152,5 @@ namespace Muslimeen.BLL
             }
             return list;
         }
-
     }
 }
