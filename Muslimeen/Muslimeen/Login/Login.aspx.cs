@@ -80,14 +80,19 @@ namespace Muslimeen.Login
                     lblErrorPass.Text = "Please verify your account first";
                 }
             }
-            catch(System.NullReferenceException)
+            catch (System.NullReferenceException)
             {
                 lblErrorPass.Text = "User name does not exist or is incorrect";
             }
-            catch(Exception ex)
+            catch (System.Data.SqlClient.SqlException)
             {
-                lblErrorPass.Text = ex.Message;
+                lblErrorPass.Text = "Server might be offline, please try again later";
             }
+            catch (Exception ex)
+            {
+                lblErrorPass.Text = ex.Message + "\n Contact Muslimeen for more Information.";
+            }
+
 
 
         }
