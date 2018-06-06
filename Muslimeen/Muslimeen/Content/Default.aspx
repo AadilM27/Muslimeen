@@ -40,7 +40,7 @@
                     </div>
                     <div class="row">
                         <ul class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
-                            <li><asp:HyperLink ToolTip="Edit user profile" runat="server" ID="hplUserProfile" href="../Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-3 user"></asp:HyperLink></li>
+                            <li><asp:HyperLink ToolTip="Edit user profile" runat="server" ID="hplUserProfile" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-3 user"></asp:HyperLink></li>
                         </ul>
                     </div>
                 </nav>

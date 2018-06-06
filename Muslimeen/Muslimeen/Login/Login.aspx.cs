@@ -51,25 +51,33 @@ namespace Muslimeen.Login
             {
                 uspGetMember = dBHandler.BLL_GetMember(txtUserName.Text.ToString());
 
-                if (uspGetMember.MemberID == txtUserName.Text.ToString())
+                if (uspGetMember.ActiveTypeID == 'Y')
                 {
-                    string decryptedString = encryption.Decrypt(encryptionPass, Convert.ToString(uspGetMember.Password));
 
-                    if (decryptedString == Convert.ToString(txtPassword.Text))
+                    if (uspGetMember.MemberID == txtUserName.Text.ToString())
                     {
-                        Session["UserName"] = txtUserName.Text.ToString();
-                        Session.Timeout = 30;
-                        Response.Redirect("~/Content/Default.aspx");
+                        string decryptedString = encryption.Decrypt(encryptionPass, Convert.ToString(uspGetMember.Password));
+
+                        if (decryptedString == Convert.ToString(txtPassword.Text))
+                        {
+                            Session["UserName"] = txtUserName.Text.ToString();
+                            Session.Timeout = 30;
+                            Response.Redirect("~/Content/Default.aspx");
+                        }
+                        else
+                        {
+                            lblErrorPass.Text = "Incorrect password or Username";
+                        }
+
                     }
                     else
                     {
-                        lblErrorPass.Text = "Incorrect password or Username";
+                        lblErrorPass.Text = " Incorrect password or Username";
                     }
-
                 }
                 else
                 {
-                    lblErrorPass.Text = " Incorrect password or Username";
+                    lblErrorPass.Text = "Please verify your account first";
                 }
             }
             catch(System.NullReferenceException)
