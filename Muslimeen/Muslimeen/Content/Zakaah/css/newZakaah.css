@@ -5,7 +5,139 @@
    
 }
 
+body {
+    background-color: #256297;
+    height: 100%;
+    width: inherit;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 
+html {
+    width: auto;
+}
+
+.frmDefault {
+    width: unset;
+}
+
+.navv {
+    background-color: white;
+}
+
+.user {
+    color: #256297;
+}
+
+    .user:hover {
+        font-weight: 500;
+    }
+
+.navbaritems {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    border-radius: 2px;
+}
+
+.navText {
+    font-size: large;
+    font-weight: 500;
+    color: #256297;
+}
+
+    .navText:hover {
+        color: white;
+        background-color: #3F84C1;
+        text-decoration: none;
+        border-radius: 2px;
+    }
+
+.navbar {
+    background-color: white;
+    border-color: white;
+    overflow: hidden;
+}
+
+.navFixed {
+    width: 100%;
+    background-color: white;
+    border-color: white;
+    padding: 10px;
+}
+
+.content {
+    background-color: white;
+
+.sticky {
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.contentPad {
+    padding-top: 125px;
+}
+
+.navbtn {
+    text-decoration-color: #256297;
+}
+
+.navbtn:hover {
+    color: white;
+    background-color: #3F84C1;
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+.topnav {
+    border-color: #3F84C1;
+    font-weight: 400;
+    color: #256297;
+}
+
+.topnav:hover {
+    color: white;
+    background-color: #3F84C1;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.search-btn {
+    border-bottom-color: #3F84C1;
+    border-top-color: #3F84C1;
+    border-left-color: white;
+    border-right-color: #3F84C1;
+    border-left: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    width: 35px;
+    background-color: none;
+}
+
+.search-box:focus.search-btn:hover {
+    box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+}
+
+.search-box {
+    width: 110px;
+    float: right;
+    transition: width 0.2s ease-out;
+    -webkit-transition: width 0.2s ease-out;
+    border-bottom-color: #3F84C1;
+    border-top-color: #3F84C1;
+    border-left-color: #3F84C1;
+    border-right-color: white;
+    border-right: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+    .search-box:focus {
+        width: 100%;
+        box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+    }
 
 .footerr {
     width: 100%;
@@ -14,8 +146,6 @@
     bottom: 0;
     left: 0;
     padding: 25px;
-    position:relative;
-    
 }
 
 .footerr-text {
@@ -23,23 +153,24 @@
     text-decoration: none;
     font-size: 13px;
 }
-.header{
-    position:relative;
-}
-.box {
-    box-sizing: border-box;
-    width:auto;
-    background-color:white;
 
-}
-/* Set height of body and the document to 100% */
-body, html {
-    height: 100%;
-    margin: 0;
-    font-family: Arial;
-}
-.navText{
-    color:white;
+.h1header {
+    font-family: 'Dr Sugiyama',Arial;
+    font-size: 65px;
+    color: #3F84C1;
 }
 
+.IslamicDate {
+    color: #256297;
+}
+
+.NavDevider {
+    color: #256297;
+    align-self: center;
+}
+/*End copying from here for Header and footer*/
+
+.zakaah-content{
+    position:static;
+}
 
