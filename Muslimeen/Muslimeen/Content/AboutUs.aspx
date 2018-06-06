@@ -13,6 +13,7 @@
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="MyMember/css/MyMember.css" rel="stylesheet" />
+    <link href="../Content/AboutUs/AboutUs.css" rel="stylesheet" />
 </head>
     <body>
         <form id="frmScholar" runat="server" class=" ">   
@@ -72,27 +73,68 @@
             <div class="content"><!--add content here --> 
         <!--START INSERTING CODE FROM THIS POINT ON-->
             <!--add your custom styling in MyMember.css in MyMember/css-->
-                <h1 class="text-center">About us</h1>
+                <h1 class="title">About us</h1>
                 <hr />
-                <div class="container">
-                <p> There  is  a  need  for  communication  within  our  Muslim  community.  Therefore, the NexTech team created a website that all members can
-                    access at anytime. 
-                </p>
-                <p>
-                    This website caters for those who would like to view information about mosques or scholars, learn more about Islam through our
-                    Learn Islam page or calculate and learn more about Zakaah.
-                </p>
-                <p>
-                    You may assign yourself to the mosque which you attend. From there, you will be able to view your mosque salaah details or mosque
-                    information and events. You will also have an option of viewing all mosque events, incase you would like to view more.
+                
+               <div class="container">
+                
+                   <h4 class="text-center"> Our Mission:  <br/></h4>
+                    <h5 class="text-center">
+                        Enhance communication
+                        within our community <br />
+                        And educate our users more about Islam
+                        
+                    </h5>
+                    <hr />
 
 
-                    
+                <p class="paragraphDisplay">
+                    Our mission is what drives us to do everything possible to increase the unity within our community. We do this by having
+                    a centralised database where all members can access our safe and secure website anywhere, and at anytime. <br />
+                    This website caters for those who would like to view events and salaah times or any other information about the mosque they attend or 
+                    other mosques they are interested in. Our users may view scholar details to personally contact them for islamic advice
+                    or simply learn more about Islam through our Learn Islam page. Our website strives for convenience where we don't only provide
+                    zakaah information, but also allow members to calculate the amounts by using our zakaah calculator.
                 </p>
+               <hr />
+                    <h4 class="text-center"> Innovation: <br/></h4>
+                    <h5 class="text-center">
+                        The big leap, the big risk<br />
+                        the big change
+                    </h5>
+                <hr />
+
+                   <p class="paragraphDisplay">
+                       We are in the process of increasing the communication platform to increase our users satisfaction.
+                       Our future communication platform will include a Muslimeen forum page where members may start a 
+                       thread by asking questions as well as respond to a thread which was created.
+                       We are also planning to create a direct messenger where we could communicate directly with our scholars, instead of using
+                       another app.
+                   </p>
+                     <hr />
+                    <h4 class="text-center"> Our Team: <br/></h4>
+                    <h5 class="text-center">
+                        A team that is empowered, diverse<br />
+                        and inclusive
+                        
+                    </h5>
+                <hr />
+
+                   <p class="paragraphDisplay">
+                       No matter where we come from, the love for Islam and helping others unites us.
+                       Our team shares a singular goal: to inform members about what is happening within our community, foster convenience and help those
+                       who would like to know more about Islam.
+                       The world is contantly curious about Islam, and we've got a team of scholars which we are truly inspired by.
+                   </p>
+                    <!--<h4 class="text-center"> We dare to enhance our communication platform  <br/></h4>
+                    <p>The world is our community. We are in the process of creating a forum platform to increase our
+                       means of communication and learning.
+                    </p>-->
+                    </div>
+                
+
                 </div>
-
-                </div>
-            <div class="footerr"><!--End content her, start of footer-->
+            <div class="footerr"><!--End content here, start of footer-->
                 <div class="row">
                     <div class="col text-center">
                        <h5>Content</h5>

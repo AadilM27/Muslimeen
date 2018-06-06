@@ -67,23 +67,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AboutUs.aspx" />
+    <Content Include="Content\AboutUs\AboutUs.css" />
     <Content Include="Content\Default.aspx" />
     <Content Include="Content\Default\CountDown.js" />
     <Content Include="Content\Default\DatesEnglishHijri.js" />
     <Content Include="Content\Default\css\Default.css" />
     <Content Include="Content\Default\Default.js" />
+    <Content Include="Content\HelpPage.aspx" />
     <Content Include="Content\Mosque.aspx" />
     <Content Include="Content\Mosque\Mosque.css" />
     <Content Include="Content\MyMember.aspx" />
     <Content Include="Content\MyMember\css\MyMember.css" />
     <Content Include="Content\MyScholar\AddArticle.aspx" />
     <Content Include="Content\MyScholar\css\MyScholar.css" />
-
     <Content Include="Content\MyScholar\MosqueEvents.aspx" />
     <Content Include="Content\MyScholar\PendingArticle.aspx" />
     <Content Include="Content\MyScholar\Previous Code.txt" />
     <Content Include="Content\MyScholar\RejectedArticle.aspx" />
-
     <Content Include="Content\ZakaahWebForms\newZakaah.aspx" />
     <Content Include="Content\ProfileEditer.aspx" />
     <Content Include="Content\ProfileEditer\css\ProfileEditer.css" />
@@ -1506,6 +1506,13 @@
     </Compile>
     <Compile Include="Content\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\HelpPage.aspx.cs">
+      <DependentUpon>HelpPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\HelpPage.aspx.designer.cs">
+      <DependentUpon>HelpPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\Mosque.aspx.cs">
       <DependentUpon>Mosque.aspx</DependentUpon>
