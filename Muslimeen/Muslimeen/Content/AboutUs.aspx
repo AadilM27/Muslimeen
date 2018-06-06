@@ -134,7 +134,7 @@
                 
 
                 </div>
-            <div class="footerr"><!--End content her, start of footer-->
+            <div class="footerr"><!--End content here, start of footer-->
                 <div class="row">
                     <div class="col text-center">
                        <h5>Content</h5>
