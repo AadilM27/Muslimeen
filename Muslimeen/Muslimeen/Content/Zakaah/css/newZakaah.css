@@ -29,9 +29,9 @@ html {
     color: #256297;
 }
 
-    .user:hover {
-        font-weight: 500;
-    }
+.user:hover {
+    font-weight: 500;
+}
 
 .navbaritems {
     padding-right: 10px;
@@ -47,12 +47,12 @@ html {
     color: #256297;
 }
 
-    .navText:hover {
-        color: white;
-        background-color: #3F84C1;
-        text-decoration: none;
-        border-radius: 2px;
-    }
+.navText:hover {
+    color: white;
+    background-color: #3F84C1;
+    text-decoration: none;
+    border-radius: 2px;
+}
 
 .navbar {
     background-color: white;
@@ -65,11 +65,12 @@ html {
     background-color: white;
     border-color: white;
     padding: 10px;
+    z-index:3;
 }
 
 .content {
     background-color: white;
-
+}
 .sticky {
     position: fixed;
     width: 100%;
@@ -172,5 +173,6 @@ html {
 
 .zakaah-content{
     position:static;
+    overflow:visible;
 }
 

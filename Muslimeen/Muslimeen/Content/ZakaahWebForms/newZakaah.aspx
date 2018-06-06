@@ -102,7 +102,7 @@ h1 {
 </style>
     <title>MyMuslimeen -Zakaah</title>
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
-    <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="Default/css/Default.css" rel="stylesheet" />
     <link href="../Zakaah/css/newZakaah.css" rel="stylesheet" />
 </head>
@@ -128,7 +128,7 @@ h1 {
                             <asp:Button runat="server" Text="Login" ID="btnLogin" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnLogin_Click" />
                             </li>
                             <li class="nav-item mr-2">
-                            <asp:Button runat="server" Text="Register" ID="btnRegister" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnRegister_Click" />
+                            <asp:Button runat="server" Text="Register" ID="btnRegister" CssClass=" topnav btn btn-sm btn-outline-light" OnClick="btnRegister_Click" />
                             </li>
                         </ul>
                     </div>
@@ -173,8 +173,8 @@ h1 {
 
         <div class="content" id="content"><!--add content here -->
            
-        <div class="zakaah-content">
-            <nav class="navbar navbar-expand-sm navbar-dark " style="background-color:#256297;">
+        <div class="zakaah-content" style="position:static;">
+            <nav class="navbar navbar-expand-sm navbar-dark" style="position:static; background-color:#256297;">
               <a class="navbar-brand navt " href="newZakaah.aspx" >Zakaah</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -194,9 +194,9 @@ h1 {
               </div>  
             </nav>
 
-                    <div class="container" style="margin-top:10px">
-                      <div class="row" style="position:relative;right:50px">
-                          <div class="col-md-8">
+                    <div class="container" style="margin-top:10px; position:static;">
+                      <div class="row" style="position:static;right:50px">
+                          <div class="col-md-8" style="position:static;">
                               <button class="collapsible" style="background-color:#256297;width:100%">What is Zakaah or Zakat?</button>
                     <div class="content2">
                         <br />
@@ -250,11 +250,11 @@ h1 {
                                </script><!--end of javascript code--->
                               </div>
    
-                          <div class="col-md-4">
+                          <div class="col-md-4" style="position:static;">
                           <h2>About Me</h2>
                           <h5>Photo of me:</h5>
                           <!-- MAIN (Center website) -->
-                    <div class="main">
+                    <div class="main" style="position:static;">
 
                     <h2>MYLOGO.COM</h2>
                     <hr />
@@ -263,7 +263,7 @@ h1 {
                     <p>Resize the browser window to see the responsive effect.</p>
 
                     <!-- Portfolio Gallery Grid -->
-                    <div class="row">
+                    <div class="row" style="position:static;">
                       <div class="column">
                         <div class="content2">
                           <img src="../Zakaah/ZakaahPics/Zakat-Image.jpg" alt="Mountains" style="width:100%;" />
@@ -295,7 +295,7 @@ h1 {
                     <!-- END GRID -->
                     </div>
 
-                    <div class="content2">
+                    <div class="content2" style="position:static;">
                       <img src="/w3images/p3.jpg" alt="Bear" style="width:100%" />
                       <h3>Some Other Work</h3>
                       <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
