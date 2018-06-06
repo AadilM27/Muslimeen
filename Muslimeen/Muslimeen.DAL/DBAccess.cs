@@ -160,7 +160,7 @@ namespace Muslimeen.BLL
             {
                 if(table.Rows.Count > 0)
                 {
-                    foreach (DataRow row in table.Rows)
+                    foreach(DataRow row in table.Rows)
                     {
                         uspGetAllMosques mosque = new uspGetAllMosques
                         {
@@ -250,8 +250,5 @@ namespace Muslimeen.BLL
             }
             return getScholarDetails;
         }
-
-
-
     }
 }
