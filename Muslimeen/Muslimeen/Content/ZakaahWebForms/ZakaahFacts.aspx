@@ -1,13 +1,27 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="newZakaah.aspx.cs" Inherits="Muslimeen.Content.newZakaah" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ZakaahFacts.aspx.cs" Inherits="Muslimeen.Content.ZakaahWebForms.ZakaahFacts" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <head runat="server">
+     <head runat="server">
     <meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-       
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <style>
+  .fakeimg {
+      height: 200px;
+      background: #aaa;
+  }
+  </style>
+  
+  
+ 
+
+ 
 
     <title>MyMuslimeen -Zakaah</title>
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
@@ -15,11 +29,10 @@
     <link href="Default/css/Default.css" rel="stylesheet" />
         <link href="../Content/Zakaah/css/newZakaah.css" rel="stylesheet" />
     
-       
 </head>
-    <body >
-
-        <form id="newZakaah" runat="server" class=" ">
+    <body style="background-color:white">
+        
+        <form id="newZakaah" runat="server" class="">
             <header >
                 <nav class="navFixed">
                     <div class="row align-self-end">
@@ -73,37 +86,8 @@
                     </div>
                 </div>
             </header>
-            </form><!----content starts--->
-            <h1 class="title">Zakaah-Alms Giving</h1>
-            <button class="tablink" onclick="openPage('Zakaah', this, '')" id="defaultOpen">Zakaah</button>
-            <button class="tablink" onclick="openPage('Calculator', this, '')" >Zakaah-Calculator</button>
-            <button class="tablink" onclick="openPage('Facts', this, '')">Facts</button>
-            <button class="tablink" onclick="openPage('Organizations', this, '')">Organizations</button>
-
-            <div id="Zakaah" class="tabcontent">
-            <h3>What is Zakaah?</h3>
-            <p>Home is where the heart is..</p>
-            </div>
-
-          <div id="Calculator" class="tabcontent">
-          <h3>Calculate your Zakaah here:</h3>
-          <p>Some news this fine day!</p> 
-          </div>
-
-          <div id="Facts" class="tabcontent">
-          <h3>Facts</h3>
-          <p>Get in touch, or swing by for a cup of coffee.</p>
-          </div>
-
-          <div id="Organizations" class="tabcontent">
-          <h3>Organizations</h3>
-          <p>Who we are and what we do.</p>
-          </div>
-
-         <script src="Zakaah/newZakaah.js"></script>
-       
-            
-            <div class="footerr"> <!--End of content, start of footer-->
+            </form><!--content starts here--->
+          <div class="footerr" > <!--End of content, start of footer-->
                 <div class="row">
                     <div class="col text-center">
                        <h5>Content</h5>
@@ -157,5 +141,7 @@
             </div>
         
         <script src="Default/Default.js" type="text/javascript"></script>
-    </body>
+
+            </body>
+
 </html>

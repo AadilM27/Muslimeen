@@ -22,7 +22,7 @@ namespace Muslimeen.Content
                 uspGetMember uspGetMember = new uspGetMember();
 
                 uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
-                hplUserProfile.Text = uspGetMember.MemberLastName + " " + uspGetMember.MemberName;
+                hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
 
                 btnLogin.Text = "Log out";
                 btnRegister.Visible = false;

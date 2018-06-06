@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Muslimeen.Content {
+namespace Muslimeen.Content.ZakaahWebForms {
     
     
-    public partial class MyMuslimeen_User_ {
+    public partial class ZakaahCalculator {
         
         /// <summary>
-        /// frmScholar control.
+        /// newZakaah control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm frmScholar;
+        protected global::System.Web.UI.HtmlControls.HtmlForm newZakaah;
         
         /// <summary>
         /// hfAdjustDate control.
@@ -38,23 +38,5 @@ namespace Muslimeen.Content {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
-        
-        /// <summary>
-        /// MyMosque control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton MyMosque;
-        
-        /// <summary>
-        /// AllMosques control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton AllMosques;
     }
 }

@@ -24,7 +24,7 @@
 			<h1 class="h3 mb-1 mt-2 font-weight-bold">Register on Muslimeen</h1>
             <h1 class="h6 text-black-50 mt-2 mb-3">Access Muslimeen with<br />a free account</h1>
             
-        <form class="form-logIn" runat="server" id="frmRegister" method="post">
+        <form class="form-register" runat="server" id="frmRegister" method="post">
             <div class="form-row">
                 <div class="form-group col-sm-12 mb-1 mt-1">
                     <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtUserName" placeholder="User Name*"></asp:TextBox>

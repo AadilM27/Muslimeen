@@ -42,5 +42,24 @@ namespace Muslimeen.BLL
         {
             return dBAccess.VerifyMember(uspVerifyMember);
         }
+
+        public List<uspGetMosque> BLL_GetMosque()
+        {
+            return dBAccess.GetMosque();
+        }
+
+        public List<uspGetAllMosques> BLL_GetAllMosques()
+        {
+            return dBAccess.GetAllMosques();
+        }
+        public uspGetModeratorDetails BLL_GetModeratorDetails(string memberID)
+        {
+            return dBAccess.GetModeratorDetails(memberID);
+        }
+
+        public uspGetScholarDetails BLL_GetScholarDetails(string memberID)
+        {
+            return dBAccess.GetScholarDetails(memberID);
+        }
     }
 }

@@ -1,20 +1,21 @@
 ﻿
-
-    function openPage(pageName,elmnt,color) {
-        var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++)
-        {
-        tabcontent[i].style.display = "none";
+    var slideIndex = 1;
+    showSlides(slideIndex);
+    
+function plusSlides(n) {
+        showSlides(slideIndex += n);
     }
-    tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < tablinks.length; i++)
-        {
-        tablinks[i].style.backgroundColor = "";
+    
+function currentSlide(n) {
+        showSlides(slideIndex = n);
     }
-    document.getElementById(pageName).style.display = "block";
-    elmnt.style.backgroundColor = color;
+    
+// When the user scrolls the page, execute myFunction 
+window.onscroll = function () { myFunction() };
 
+function myFunction() {
+    var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var scrolled = (winScroll / height) * 100;
+    document.getElementById("myBar").style.width = scrolled + "%";
 }
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();

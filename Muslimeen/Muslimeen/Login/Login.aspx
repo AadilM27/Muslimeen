@@ -42,7 +42,9 @@
                 <asp:Label runat="server" Text="OR" Style="font-weight:bold; font-size:smaller;"></asp:Label>
             </div>
             <asp:button runat="server" CssClass="btn btn-primary btn-lg btn-block main-btn " ID="btnRegister" Text="Register" OnClick="btnRegister_Click"></asp:button>
-            <p class="mt-3 mb-0" style="font-size:smaller;">Didn't verify your account yet ?<br /><asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="~/Register/Verification.aspx" Text="Very now"></asp:HyperLink></p>
+            <p class="mt-3 mb-0" style="font-size:smaller;">Didn't verify your account yet ?<br /><asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="~/Register/Verification.aspx" Text="Verify now"></asp:HyperLink></p>
+            <asp:Label CssClass="" runat="server" Text="OR" Style="font-size:smaller;"></asp:Label>
+            <p class="mt-1 mb-0" style="font-size:smaller;">Go back to <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="~/Content/Default.aspx" Text="Home page"></asp:HyperLink></p>
             <div class=" mt-3 form-group col " style="text-align:center;">
                 <asp:Label CssClass="lblError" runat="server" ID="lblErrorPass"></asp:Label>
             </div>

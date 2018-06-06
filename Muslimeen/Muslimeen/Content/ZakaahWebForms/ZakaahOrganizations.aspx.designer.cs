@@ -7,10 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Muslimeen.Content {
+namespace Muslimeen.Content.ZakaahWebForms {
     
     
-    public partial class newZakaah {
+    public partial class ZakaahOrganizations {
+        
+        /// <summary>
+        /// newZakaah control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm newZakaah;
         
         /// <summary>
         /// hfAdjustDate control.
