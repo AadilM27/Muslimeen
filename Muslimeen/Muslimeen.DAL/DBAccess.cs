@@ -139,12 +139,12 @@ namespace Muslimeen.BLL
                         {
                             MosqueName = Convert.ToString(row["MosqueName"]),
                             MosqueType = Convert.ToString(row["MosqueType"]),
-                            MosqueAddress=Convert.ToString(row["MosqueAddress"]),
-                            MosqueSize=Convert.ToString(row["MosqueSize"]),
-                            MosqueImage=Convert.ToString(row["MosqueImage"]),
-                            LocationIMG=Convert.ToString(row["LocationIMG"]),
-                            LocationLink=Convert.ToString(row["LocationLink"])
-                            
+                            MosqueAddress = Convert.ToString(row["MosqueAddress"]),
+                            MosqueSize = Convert.ToString(row["MosqueSize"]),
+                            MosqueImage = Convert.ToString(row["MosqueImage"]),
+                            LocationIMG = Convert.ToString(row["LocationIMG"]),
+                            LocationLink = Convert.ToString(row["LocationLink"])
+
                         };
                         list.Add(mosque);
                     }

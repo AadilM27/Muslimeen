@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AboutUs.aspx" />
+    <Content Include="Content\AboutUs\AboutUs.css" />
     <Content Include="Content\Default.aspx" />
     <Content Include="Content\Default\CountDown.js" />
     <Content Include="Content\Default\DatesEnglishHijri.js" />
