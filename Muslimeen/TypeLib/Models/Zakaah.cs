@@ -16,6 +16,5 @@ namespace TypeLib.Models
         public string CautionsOfZakaah { get; set; }
         public string AssetsOfZakaah { get; set; }
         public string ApplicableZakaah { get; set; }
-
     }
 }

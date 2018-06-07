@@ -61,5 +61,13 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetScholarDetails(memberID);
         }
+        public Zakaah BLL_GetZakaah()
+        {
+             return dBAccess.GetZakaah();
+        }
+        public Organization BLL_GetOrganization()
+        {
+            return dBAccess.GetOrganization();
+        }
     }
 }
