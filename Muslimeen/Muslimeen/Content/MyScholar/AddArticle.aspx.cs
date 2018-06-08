@@ -89,6 +89,11 @@ namespace Muslimeen.Content.MyScholar
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            DBHandler han = new DBHandler();
+            Article art = new Article();
+
+            art.ArticleTitle = txtHeading.Text.ToString();
+            art.ArticleContent = txtContent.Text.ToString();
 
         }
     }

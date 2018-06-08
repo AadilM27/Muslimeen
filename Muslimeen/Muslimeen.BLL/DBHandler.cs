@@ -61,5 +61,11 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetScholarDetails(memberID);
         }
+
+        //Adding a new Article by the Scholar...
+        public bool BLL_AddArticle(Article article)
+        {
+            return dBAccess.AddArticle(article);
+        }
     }
 }

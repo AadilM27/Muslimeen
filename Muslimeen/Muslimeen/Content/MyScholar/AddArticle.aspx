@@ -96,14 +96,13 @@
                     <a href="MosqueEvents.aspx" class="nav-link" data-toggle="tab" role="tab" aria-controls="sit-amet">Mosque Events</a>
                 </li>
             </ul>
-            
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="EditProfile" role="tabpanel">
+                <div class="tab-pane fade show active" role="tabpanel">
                     <h2 class="text-center">Add Article</h2>    
                     <div class="form-group row"> 
                         <asp:Label CssClass="col-sm-5 col-form-label" ID="Label1" runat="server" Text="Heading:"></asp:Label> 
                         <div class="col-sm-7">
-                            <asp:TextBox CssClass="form-control" ID="txtHeading" runat="server" Width="300%"></asp:TextBox>  
+                            <asp:TextBox CssClass="form-control" D="txtHeading" runat="server" Width="300%"></asp:TextBox>  
                         </div>
                     </div>   
                     <div class="form-group row">
@@ -119,7 +118,7 @@
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>         
 
     </form>
 

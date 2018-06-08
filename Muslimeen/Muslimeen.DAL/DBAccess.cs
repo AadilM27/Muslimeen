@@ -250,5 +250,19 @@ namespace Muslimeen.BLL
             }
             return getScholarDetails;
         }
+
+        //Adding Article...
+        public bool AddArticle(Article article)
+        {
+            List<SqlParameter> par = new List<SqlParameter>();
+            foreach (var p in article.GetType().GetProperties())
+            {
+                if (p.GetValue(article) != null)
+                {
+                    par.Add(new SqlParameter("@" + p.Name.ToString(), p.GetValue(article)));
+                }
+            }
+            return DBHelper.NonQuery("uspInsertArticle", CommandType.StoredProcedure, par.ToArray());
+        }
     }
 }

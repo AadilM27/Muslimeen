@@ -95,8 +95,14 @@
                     <a href="MosqueEvents.aspx" class="nav-link active" data-toggle="tab" role="tab" aria-controls="sit-amet">Mosque Events</a>
                 </li>
             </ul>
-         </div>
+            
+            <div class="tab-content">
+                <div class="tab-pane fade show active" role="tabpanel">
+                    <h2 class="text-center">Mosque Events</h2>                        
+                </div>
+            </div>
 
+         </div>
     </form>    
     
     <!--Footer-->
