@@ -325,7 +325,8 @@ namespace Muslimeen.BLL
                     {
                         uspGetTopics tops = new uspGetTopics
                         {
-                            TopicDescription = Convert.ToString(row["TopicDescription"])
+                            TopicID = Convert.ToInt32(row["TopicID"]),
+                            TopicDescription = Convert.ToString(row["TopicDescription"])                           
                         };
                         list.Add(tops);
                     }
@@ -336,7 +337,7 @@ namespace Muslimeen.BLL
         public List<uspGetOrganizations> GetOrganization()
         {
             List<uspGetOrganizations> list = new List<uspGetOrganizations>();
-            using (DataTable table = DBHelper.Select("uspOrganization", CommandType.StoredProcedure))
+            using (DataTable table = DBHelper.Select("uspOrganizations", CommandType.StoredProcedure))
             {
                 if (table.Rows.Count > 0)
                 {

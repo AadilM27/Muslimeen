@@ -41,12 +41,18 @@ namespace Muslimeen.Content.MyScholar
                 divUserProfile.Visible = false;
                 Session.Clear();
             }
-            //Populating dropdown box wiht values
-            drpTopics.DataSource = dBHandler.BLL_GetTopics();
-            drpTopics.DataTextField = "TopicDescription";
-            drpTopics.DataValueField = "TopicID";
-            drpTopics.DataBind();
 
+            if (!IsPostBack)
+            {
+                //Populating dropdown box wiht values
+                List<uspGetTopics> tops = dBHandler.BLL_GetTopics();
+
+                foreach (uspGetTopics qual in tops)
+                {
+                    drpTopics.Items.Add(new ListItem(qual.TopicDescription.ToString(),
+                        qual.TopicID.ToString()));
+                }
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -136,22 +142,24 @@ namespace Muslimeen.Content.MyScholar
 
             try
             {
-                art.DateCreated = DateTime.Now;
+                art.DateCreated = Convert.ToDateTime(DateTime.Today);
                 art.Status = Convert.ToChar("P");
                 art.RejectionReason = Convert.ToString(" ");
                 art.Active = Convert.ToChar("I");
                 art.RemovalReason = Convert.ToString(" ");
 
                 //Scholar ID input with session...
-                art.ScholarID = Convert.ToString(" ");
+                art.ScholarID = Convert.ToString(Session["UserName"]);
 
                 art.ModeratorID = Convert.ToString(" ");
-                art.TopicID = Convert.ToInt32(drpTopics.SelectedItem.Value);
+                art.TopicID = Convert.ToInt32(drpTopics.SelectedValue);
 
                 art.ArticleTitle = Convert.ToString(txtHeading.Text);
                 art.ArticleContent = Convert.ToString(txtContent.Text);
 
-                han.BLL_AddArticle(art);
+                bool success = han.BLL_AddArticle(art);
+
+
             }
             catch
             {
