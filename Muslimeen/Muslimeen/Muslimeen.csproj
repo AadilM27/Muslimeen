@@ -73,9 +73,13 @@
     <Content Include="Content\Default\DatesEnglishHijri.js" />
     <Content Include="Content\Default\css\Default.css" />
     <Content Include="Content\Default\Default.js" />
+    <Content Include="Content\Default\icons\EditProfile.png" />
+    <Content Include="Content\Default\icons\Search.png" />
     <Content Include="Content\HelpPage.aspx" />
     <Content Include="Content\Mosque.aspx" />
     <Content Include="Content\Mosque\Mosque.css" />
+    <Content Include="Content\MyAdmin.aspx" />
+    <Content Include="Content\MyAdmin\css\MyAdmin.css" />
     <Content Include="Content\MyMember.aspx" />
     <Content Include="Content\MyMember\css\MyMember.css" />
     <Content Include="Content\MyScholar\AddArticle.aspx" />
@@ -1520,6 +1524,13 @@
     </Compile>
     <Compile Include="Content\Mosque.aspx.designer.cs">
       <DependentUpon>Mosque.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\MyAdmin.aspx.cs">
+      <DependentUpon>MyAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\MyAdmin.aspx.designer.cs">
+      <DependentUpon>MyAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\MyMember.aspx.cs">
       <DependentUpon>MyMember.aspx</DependentUpon>

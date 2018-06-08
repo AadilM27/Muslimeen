@@ -10,7 +10,7 @@
 namespace Muslimeen.Content {
     
     
-    public partial class Default {
+    public partial class MyAdmin {
         
         /// <summary>
         /// frmScholar control.
@@ -164,14 +164,5 @@ namespace Muslimeen.Content {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAboutUs;
-        
-        /// <summary>
-        /// hfRamadaanDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfRamadaanDate;
     }
 }

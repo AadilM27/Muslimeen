@@ -1,12 +1,30 @@
-﻿body {
+﻿/*Start styling for header and footer.*/
+body {
     background-color: #256297;
     height: 100%;
+    width: inherit;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
- /* start code for header and footer */
+html {
+    width: auto;
+}
+
+.frmDefault {
+    width: unset;
+}
+
 .navv {
     background-color: white;
-    border-color: white;
+}
+
+.user {
+    color: #256297;
+}
+
+.user:hover {
+    font-weight: 500;
 }
 
 .navbaritems {
@@ -40,17 +58,21 @@
     width: 100%;
     background-color: white;
     border-color: white;
-    padding: 15px;
+    padding: 10px;
 }
 
 .content {
-    background-color: none;
+    background-color: red;
 }
 
 .sticky {
     position: fixed;
     width: 100%;
     top: 0;
+}
+
+.contentPad {
+    padding-top: 125px;
 }
 
 .navbtn {
@@ -122,8 +144,9 @@
 }
 
 .footerr-text {
-    text-decoration-color: #3F84C1;
+    color: #3F84C1;
     text-decoration: none;
+    font-size: 13px;
 }
 
 .h1header {
@@ -131,8 +154,16 @@
     font-size: 65px;
     color: #3F84C1;
 }
+
+.IslamicDate {
+    color: #256297;
+}
+
 .NavDevider {
     color: #256297;
     align-self: center;
 }
-/*END code for header and footer*/
+
+/*end styling for header and footer.*/
+
+

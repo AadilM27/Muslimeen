@@ -61,5 +61,15 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetScholarDetails(memberID);
         }
+
+        public bool BLL_UpdateMember(UpdateMember updateMember)
+        {
+            return dBAccess.UpdateMember(updateMember);
+        }
+
+        public bool BLL_UpdateMemberPassword(UpdateMemberPassword updateMemberPassword)
+        {
+            return dBAccess.UpdateMemberPassword(updateMemberPassword);
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Muslimeen.Content.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MyAdmin.aspx.cs" Inherits="Muslimeen.Content.MyAdmin" %>
 
 <!DOCTYPE html>
 
@@ -11,7 +11,7 @@
     <title>MyMuslimeen - Home</title>
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="Default/css/Default.css" rel="stylesheet" />
+    <link href="MyAdmin/css/MyAdmin.css" rel="stylesheet" />
 </head>
     <body>
         <form id="frmScholar" runat="server" class=" ">   
@@ -56,7 +56,7 @@
                             </li><li class="NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems" runat="server" id="liMyMusbtn">
                                 <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen"  CssClass=" btn btn-link nav-item navText" OnClick="btnMyMuslimeen_Click"/>
-                            </li><li runat="server" id="liMyMusDivi" class=" NavDevider">|</li><!--deviders-->
+                            </li><li runat="server" id="liMyMusDivi" class="NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems">
                                 <asp:Button runat="server" ID="btnMosques" Text="Mosques"  CssClass="nav-item navText btn-link btn" OnClick="btnMosques_Click"/>
                             </li><li class="NavDevider">|</li><!--deviders-->
@@ -76,85 +76,63 @@
                     </div>
                 </div>
             </header>
-        <div class="content" id="content"><!--add content here -->
-            <div class=" pt-2 countDown-div">
-                <div id="clockdiv" class="col">
-                    <h2 style="font-family: Arial; color:#3F84C1" id="title">Ramadaan Count down</h2>
-                  <div class="">
-                    <span id="spDays" class="days"></span>
-                    <div class="smalltext">Days</div>
-                  </div>
-                  <div class="">
-                    <span id="spHours" class="hours"></span>
-                    <div class="smalltext">Hours</div>
-                  </div>
-                  <div class="">
-                    <span id="spMinutes" class="minutes"></span>
-                    <div class="smalltext">Minutes</div>
-                  </div>
-                  <div class="">
-                    <span id="spSeconds" class="seconds"></span>
-                    <div class="smalltext">Seconds</div>
-                  </div>
+            <div class="content" id="content"><!--add content here -->
+
+            </div>
+        </form>
+            <div class="footerr"> <!--End of content, start of footer-->
+            <div class="row">
+                <div class="col text-center position-static">
+                    <h6>Content</h6>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="footerr-text" href="Default.aspx">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="footerr-text" href="Mosque.aspx">Mosques</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="footerr-text" href="#">Scholars</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="footerr-text" href="#">Learn Islam</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="footerr-text" href="Zakaah.aspx">Zakaah</a>
+                        </li>
+                    </ul>
                 </div>
-                <asp:HiddenField ID="hfRamadaanDate" runat="server" Value="2019-05-17 24:00:00" /> <!--updated by the admin yyyy-mm-dd-->
-                <script src="Default/CountDown.js" type="text/javascript"></script>
+                <div class="col  text-center position-static">
+                    <h6>About us</h6>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="footerr-text" href="#">Content</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="footerr-text" href="#">Content</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="footerr-text" href="#">Content</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col  text-center position-static">
+                    <h6>Contact us</h6>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="footerr-text" href="#">Content</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="footerr-text" href="#">Content</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="footerr-text" href="#">Content</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </form>
-              <div class="footerr"> <!--End of content, start of footer-->
-                <div class="row">
-                    <div class="col text-center position-static">
-                       <h6>Content</h6>
-                        <ul class="navbar-nav">
-                           <li class="nav-item">
-                               <a class="footerr-text" href="Default.aspx">Home</a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="footerr-text" href="Mosque.aspx">Mosques</a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="footerr-text" href="#">Scholars</a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="footerr-text" href="#">Learn Islam</a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="footerr-text" href="Zakaah.aspx">Zakaah</a>
-                           </li>
-                        </ul>
-                    </div>
-                    <div class="col  text-center position-static">
-                        <h6>About us</h6>
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="footerr-text" href="#">Content</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="#">Content</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="#">Content</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col  text-center position-static">
-                        <h6>Contact us</h6>
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="footerr-text" href="#">Content</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="#">Content</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="#">Content</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        <script src="Default/Default.js" type="text/javascript"></script>
+            <script src="Default/Default.js" type="text/javascript"></script>
+            <script src="Default/Default.js" type="text/javascript"></script>
     </body>
-        <script src="Default/Default.js" type="text/javascript"></script>
 </html>

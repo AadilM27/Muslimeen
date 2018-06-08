@@ -10,7 +10,7 @@ using Muslimeen.BLL;
 
 namespace Muslimeen.Content
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class MyAdmin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,7 +40,7 @@ namespace Muslimeen.Content
                 divUserProfile.Visible = false;
                 Session.Clear();
             }
-            
+
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -49,12 +49,12 @@ namespace Muslimeen.Content
             {
                 Response.Redirect("~/Login/Login.aspx");
             }
-            else if(btnLogin.Text == "Log out")
+            else if (btnLogin.Text == "Log out")
             {
 
                 Session.Clear();
                 Session.Abandon();
-                Response.Redirect("~/Content/Default.aspx");
+                Response.Redirect("~/Content/MyAdmin.aspx");
                 btnLogin.Text = "Login";
                 btnRegister.Visible = true;
             }
@@ -107,7 +107,7 @@ namespace Muslimeen.Content
             {
                 Response.Redirect("~/Content/MyAdmin.aspx");
             }
-            else if(uspGetMember.MemberType == 'M')
+            else if (uspGetMember.MemberType == 'M')
             {
                 Response.Redirect("~/Content/MyMember.aspx");
             }
@@ -119,8 +119,7 @@ namespace Muslimeen.Content
             {
                 Response.Redirect("~/Content/MyScholar.aspx");
             }
-
-
         }
+
     }
 }

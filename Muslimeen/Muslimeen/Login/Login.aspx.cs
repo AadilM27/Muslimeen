@@ -41,7 +41,7 @@ namespace Muslimeen.Login
         protected void btnLogIn_Click(object sender, EventArgs e)
         {
             Encryption encryption = new Encryption();
-            string encryptionPass = "NexTech";
+            string encryptionPass = Convert.ToString(txtUserName.Text);
             DBHandler dBHandler = new DBHandler();
             uspGetMember uspGetMember = new uspGetMember();
 
