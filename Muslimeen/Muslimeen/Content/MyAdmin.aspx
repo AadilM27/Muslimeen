@@ -36,7 +36,7 @@
                             <li class="nav-item mr-2">
                             <asp:Button runat="server" Text="Register" ID="btnRegister" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnRegister_Click" />
                             </li>
-                        </ul> <!---->
+                        </ul>
                     </div>
                     <div class="row" runat="server" id="divUserProfile" >
                         <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
@@ -77,7 +77,25 @@
                 </div>
             </header>
             <div class="content" id="content"><!--add content here -->
+                <div class="row">
+                    <div class="col-3" style="background-color:yellow; height:90px;">
+                        <div class="row" style="background-color:green; height:20px;">
 
+                        </div>
+                        <div class="row" style="background-color:green; height:20px;">
+
+                        </div>
+                    </div>
+                    <div class="col-9" style="background-color:blue; height:90px;">
+                        <div class="row" style="background-color:pink; height:80px;">
+
+                        </div>
+                        <div class="row" style="background-color:pink; height:80px;">
+
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </form>
             <div class="footerr"> <!--End of content, start of footer-->
@@ -134,5 +152,6 @@
         </div>
             <script src="Default/Default.js" type="text/javascript"></script>
             <script src="Default/Default.js" type="text/javascript"></script>
+            <script src="MyAdmin/js/MyAdmin.js"></script>
     </body>
 </html>
