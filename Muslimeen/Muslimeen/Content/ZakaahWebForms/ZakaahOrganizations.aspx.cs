@@ -16,6 +16,8 @@ namespace Muslimeen.Content.ZakaahWebForms
         {
             DBHandler dBHandler = new DBHandler();
 
+            rptOrganization.DataSource = dBHandler.BLL_GetOrganization();
+            rptOrganization.DataBind();
 
             if (Session["UserName"] != null)
             {

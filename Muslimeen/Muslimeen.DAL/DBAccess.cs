@@ -336,7 +336,7 @@ namespace Muslimeen.BLL
         public List<uspGetOrganizations> GetOrganization()
         {
             List<uspGetOrganizations> list = new List<uspGetOrganizations>();
-            using (DataTable table = DBHelper.Select("uspOrganization", CommandType.StoredProcedure))
+            using (DataTable table = DBHelper.Select("uspOrganizations", CommandType.StoredProcedure))
             {
                 if (table.Rows.Count > 0)
                 {
