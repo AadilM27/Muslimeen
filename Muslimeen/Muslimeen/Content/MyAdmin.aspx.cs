@@ -46,7 +46,15 @@ namespace Muslimeen.Content
 
         private void LnkViewwPendingMod_ServerClick(object sender, EventArgs e)
         {
+            DBHandler dBHandler = new DBHandler();
             divViewPendingMod.Visible = false;
+
+            uspGetMember uspGetMember = new uspGetMember();
+            Table table = new Table();
+
+            uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
+
+           // rptViewPendingSch.DataSource = 
         }
 
         private void LnkViewwPendingSch_ServerClick(object sender, EventArgs e)
@@ -132,5 +140,9 @@ namespace Muslimeen.Content
             }
         }
 
+        protected void rptViewPendingSch_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+
+        }
     }
 }

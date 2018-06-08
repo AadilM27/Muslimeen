@@ -78,17 +78,19 @@
             </header>
             <div class="content" id="content"><!--add content here -->
                 <div class="row">
-                    <div class="col-3" style="background-color:yellow; height:90px;">
+                    <div class="col-3 justify-content-end position-static" style="background-color:yellow;">
                         <div runat="server"  class="row justify-content-around align-content-center" style="background-color:green; height:auto;">
-                            <a runat="server" id="lnkViewwPendingSch" class="btn btn-block lnkPendingReg">View Pending reg</a>
+                            <a runat="server" id="lnkViewwPendingSch" class=" btn btn-block lnkPendingReg">View Pending reg</a>
                         </div>
                         <div class="row justify-content-around align-content-center" style="background-color:green; height:auto;">
                             <a runat="server" id="lnkViewwPendingMod" class="btn btn-block lnkPendingReg">View Pending Mod</a>
                         </div>
                     </div>
-                    <div class="col-9" style="background-color:blue; height:90px;">
+                    <div class="col-9 justify-content-end position-static" style="background-color:blue;">
                         <div class="row divContainers" runat="server" id="divViewPendingSch" style="background-color:pink; height:80px;">
+                            <asp:Repeater ID="rptViewPendingSch" runat="server" OnItemCommand="rptViewPendingSch_ItemCommand">
 
+                            </asp:Repeater>
                         </div>
                         <div runat="server" id="divViewPendingMod" class="row divContainers" style="background-color:pink; height:80px;">
 

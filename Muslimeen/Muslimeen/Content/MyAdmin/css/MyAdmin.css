@@ -165,15 +165,27 @@ html {
 }
 /*end styling for header and footer.*/
 .lnkPendingReg {
-    background-color: #256297;
+    background-color: white;
     border-color: #256297;
+    border-top-width:2px;
+    border-bottom-width:0;
+    border-left-width:2px;
+    border-right-width:2px;
+    border-radius:0;
+    font-weight:500;
+    
+}
+
+.lnkPendingReg:hover {
+    background-color: #3F84C1;
+    color:white;
 }
 
 .divContainers {
     overflow: hidden;
 }
 
-btn:hover {
-    background-color: #3F84C1;
+.lnkBtn{
+
 }
 
