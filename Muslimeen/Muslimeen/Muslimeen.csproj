@@ -66,8 +66,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Muslimeen.dll" />
-    <Content Include="bin\Muslimeen.pdb" />
     <Content Include="Content\AboutUs.aspx" />
     <Content Include="Content\AboutUs\AboutUs.css" />
     <Content Include="Content\Default.aspx" />
@@ -1467,11 +1465,6 @@
     <Content Include="Login\LogIn_Bootstrap\icons\fonts\Dr Sugiyama.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include=".vs\config\applicationhost.config" />
-    <Content Include=".vs\Signin Page\v15\.suo" />
-    <Content Include="obj\Release\Muslimeen.csproj.CoreCompileInputs.cache" />
-    <Content Include="obj\Release\Signin Page.csproj.CoreCompileInputs.cache" />
-    <None Include="packages.config" />
     <Content Include="Login\Login.aspx" />
     <Content Include="Login\LogIn_Bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="Login\LogIn_Bootstrap\css\bootstrap-grid.min.css.map" />
@@ -1484,9 +1477,6 @@
     <Content Include="Login\LogIn_Bootstrap\js\bootstrap.bundle.min.js.map" />
     <Content Include="Login\LogIn_Bootstrap\js\bootstrap.js.map" />
     <Content Include="Login\LogIn_Bootstrap\js\bootstrap.min.js.map" />
-    <Content Include="Signin Page.csproj" />
-    <Content Include="Signin Page.csproj.user" />
-    <Content Include="SignInPage.aspx" />
     <Content Include="Signin_Bootstrap\css\bootstrap-grid.css" />
     <Content Include="Signin_Bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="Signin_Bootstrap\css\bootstrap-reboot.css" />
@@ -1514,6 +1504,7 @@
     <Content Include="Signin_Bootstrap\js\bootstrap.bundle.min.js.map" />
     <Content Include="Signin_Bootstrap\js\bootstrap.js.map" />
     <Content Include="Signin_Bootstrap\js\bootstrap.min.js.map" />
+    <None Include="packages.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -1666,9 +1657,6 @@
     <Compile Include="Content\ZakaahWebForms\ZakaahOrganizations.aspx.designer.cs">
       <DependentUpon>ZakaahOrganizations.aspx</DependentUpon>
     </Compile>
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Content\PrivacyAndSafety.aspx.cs">
       <DependentUpon>PrivacyAndSafety.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1697,13 +1685,6 @@
     </Compile>
     <Compile Include="Register\Verification.aspx.designer.cs">
       <DependentUpon>Verification.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SignInPage.aspx.cs">
-      <DependentUpon>SignInPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SignInPage.aspx.designer.cs">
-      <DependentUpon>SignInPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\TermsOfService.aspx.cs">
       <DependentUpon>TermsOfService.aspx</DependentUpon>
