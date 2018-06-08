@@ -311,29 +311,8 @@ namespace Muslimeen.BLL
             }
             return zk;
         }
-        public Organization GetOrganization()
-        {
-            Organization og = new Organization();
-            using (DataTable table = DBHelper.Select("uspGetOrganizations", CommandType.StoredProcedure))
-            {
-                if (table.Rows.Count > 0)
-                {
-                    foreach (DataRow row in table.Rows)
-                    {
-                        Organization org = new Organization
-                        {
-                            OrganizationID = Convert.ToInt32(row["Organization"]),
-                            OrgName = Convert.ToString(row["OrgName"]),
-                            Address = Convert.ToString(row["Address"]),
-                            OrgImageUrl = Convert.ToString(row["OrgImageUrl"])
-                        };
 
-                    }
-                }
-                return og;
-            }
-
-        }
+        
         //Get All Topics 
         public List<uspGetTopics> GetTopics()
         {
@@ -349,6 +328,29 @@ namespace Muslimeen.BLL
                             TopicDescription = Convert.ToString(row["TopicDescription"])
                         };
                         list.Add(tops);
+                    }
+                }
+            }
+            return list;
+        }
+        public List<uspGetOrganizations> GetOrganization()
+        {
+            List<uspGetOrganizations> list = new List<uspGetOrganizations>();
+            using (DataTable table = DBHelper.Select("uspOrganization", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetOrganizations org = new uspGetOrganizations
+                        {
+                            OrgName = Convert.ToString(row["OrgName"]),
+                            Address = Convert.ToString(row["Address"]),
+                            OrgImageUrl = Convert.ToString(row["OrgImageUrl"]),
+                            ContactNo=Convert.ToString(row["ContactNo"])
+                            
+                        };
+                        list.Add(org);
                     }
                 }
             }

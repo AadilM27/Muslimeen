@@ -80,7 +80,7 @@ namespace Muslimeen.BLL
         {
              return dBAccess.GetZakaah();
         }
-        public Organization BLL_GetOrganization()
+        public List<uspGetOrganizations> BLL_GetOrganization()
         {
             return dBAccess.GetOrganization();
         }
