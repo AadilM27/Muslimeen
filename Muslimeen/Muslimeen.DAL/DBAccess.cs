@@ -250,8 +250,6 @@ namespace Muslimeen.BLL
             }
             return getScholarDetails;
         }
-
-<<<<<<< HEAD
         //Adding Article...
         public bool AddArticle(Article article)
         {
@@ -264,7 +262,7 @@ namespace Muslimeen.BLL
                 }
             }
             return DBHelper.NonQuery("uspInsertArticle", CommandType.StoredProcedure, par.ToArray());
-=======
+        }
         public bool UpdateMember(UpdateMember updateMember)
         {
             List<SqlParameter> pars = new List<SqlParameter>();
@@ -335,7 +333,6 @@ namespace Muslimeen.BLL
                 return og;
             }
 
->>>>>>> 37b94b3348a0c23aa2667f4436455069b37e2581
         }
     }
 }
