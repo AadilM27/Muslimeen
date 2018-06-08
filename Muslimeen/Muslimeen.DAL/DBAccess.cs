@@ -325,7 +325,8 @@ namespace Muslimeen.BLL
                     {
                         uspGetTopics tops = new uspGetTopics
                         {
-                            TopicDescription = Convert.ToString(row["TopicDescription"])
+                            TopicID = Convert.ToInt32(row["TopicID"]),
+                            TopicDescription = Convert.ToString(row["TopicDescription"])                           
                         };
                         list.Add(tops);
                     }
