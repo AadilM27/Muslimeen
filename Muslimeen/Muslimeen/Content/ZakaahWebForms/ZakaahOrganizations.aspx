@@ -142,8 +142,8 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <asp:Label ID="lblAddress" runat="server" Text='<%#Eval("Address")%>'></asp:Label></td>
-                                                </tr>
+                                                       
+                                                    <asp:HyperLink ID="linkAddress" runat="server" NavigateUrl='<%#Eval("Address")%>' Text='<%#Eval("Address")%>' />                                              </tr>
                                                 <tr>
                                                     <td>Contact No: <asp:Label ID="lblContactNo" runat="server" Text='<%#Eval("ContactNo")%>'></asp:Label></td>
                                                     <tr>
