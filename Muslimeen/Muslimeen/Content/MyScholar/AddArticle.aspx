@@ -102,7 +102,7 @@
                     <div class="form-group row"> 
                         <asp:Label CssClass="col-sm-5 col-form-label" ID="Label1" runat="server" Text="Heading:"></asp:Label> 
                         <div class="col-sm-7">
-                            <asp:TextBox CssClass="form-control" D="txtHeading" runat="server" Width="300%"></asp:TextBox>  
+                            <asp:TextBox CssClass="form-control" ID="txtHeading" runat="server" Width="300%"></asp:TextBox>  
                         </div>
                     </div>   
                     <div class="form-group row">
