@@ -30,8 +30,8 @@ html {
 .navbaritems {
     padding-right: 10px;
     padding-left: 10px;
-    padding-bottom: 0px;
-    padding-top: 0px;
+    padding-bottom: 0;
+    padding-top: 0;
     border-radius: 2px;
 }
 
@@ -104,9 +104,9 @@ html {
     border-top-color: #3F84C1;
     border-left-color: white;
     border-right-color: #3F84C1;
-    border-left: 0px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     width: 35px;
     background-color: none;
 }
@@ -163,7 +163,17 @@ html {
     color: #256297;
     align-self: center;
 }
-
 /*end styling for header and footer.*/
+.lnkPendingReg {
+    background-color: #256297;
+    border-color: #256297;
+}
 
+.divContainers {
+    overflow: hidden;
+}
+
+btn:hover {
+    background-color: #3F84C1;
+}
 

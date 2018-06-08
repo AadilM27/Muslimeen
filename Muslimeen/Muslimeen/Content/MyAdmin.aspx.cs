@@ -40,7 +40,18 @@ namespace Muslimeen.Content
                 divUserProfile.Visible = false;
                 Session.Clear();
             }
+            lnkViewwPendingSch.ServerClick += LnkViewwPendingSch_ServerClick;
+            lnkViewwPendingMod.ServerClick += LnkViewwPendingMod_ServerClick;
+        }
 
+        private void LnkViewwPendingMod_ServerClick(object sender, EventArgs e)
+        {
+            divViewPendingMod.Visible = false;
+        }
+
+        private void LnkViewwPendingSch_ServerClick(object sender, EventArgs e)
+        {
+            divViewPendingSch.Visible = false;
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)

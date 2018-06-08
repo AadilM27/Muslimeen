@@ -79,18 +79,18 @@
             <div class="content" id="content"><!--add content here -->
                 <div class="row">
                     <div class="col-3" style="background-color:yellow; height:90px;">
-                        <div class="row" style="background-color:green; height:20px;">
-
+                        <div runat="server"  class="row justify-content-around align-content-center" style="background-color:green; height:auto;">
+                            <a runat="server" id="lnkViewwPendingSch" class="btn btn-block lnkPendingReg">View Pending reg</a>
                         </div>
-                        <div class="row" style="background-color:green; height:20px;">
-
+                        <div class="row justify-content-around align-content-center" style="background-color:green; height:auto;">
+                            <a runat="server" id="lnkViewwPendingMod" class="btn btn-block lnkPendingReg">View Pending Mod</a>
                         </div>
                     </div>
                     <div class="col-9" style="background-color:blue; height:90px;">
-                        <div class="row" style="background-color:pink; height:80px;">
+                        <div class="row divContainers" runat="server" id="divViewPendingSch" style="background-color:pink; height:80px;">
 
                         </div>
-                        <div class="row" style="background-color:pink; height:80px;">
+                        <div runat="server" id="divViewPendingMod" class="row divContainers" style="background-color:pink; height:80px;">
 
                         </div>
                     </div>
