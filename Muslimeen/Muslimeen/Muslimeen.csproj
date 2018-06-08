@@ -89,11 +89,12 @@
     <Content Include="Content\MyScholar\PendingArticle.aspx" />
     <Content Include="Content\MyScholar\Previous Code.txt" />
     <Content Include="Content\MyScholar\RejectedArticle.aspx" />
-    <Content Include="Content\ZakaahWebForms\newZakaah.aspx" />
     <Content Include="Content\ProfileEditer.aspx" />
     <Content Include="Content\ProfileEditer\css\ProfileEditer.css" />
     <Content Include="Content\Zakaah.aspx" />
+    <Content Include="Content\ZakaahWebForms\newZakaah.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahCalculator.aspx" />
+    <Content Include="Content\ZakaahWebForms\ZakaahFacts.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahGallery.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahOrganizations.aspx" />
     <Content Include="Content\Zakaah\css\newZakaah.css" />
@@ -1568,13 +1569,6 @@
     <Compile Include="Content\MyScholar\RejectedArticle.aspx.designer.cs">
       <DependentUpon>RejectedArticle.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Content\ZakaahWebForms\newZakaah.aspx.cs">
-      <DependentUpon>newZakaah.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Content\ZakaahWebForms\newZakaah.aspx.designer.cs">
-      <DependentUpon>newZakaah.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Content\ProfileEditer.aspx.cs">
       <DependentUpon>ProfileEditer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1589,12 +1583,26 @@
     <Compile Include="Content\Zakaah.aspx.designer.cs">
       <DependentUpon>Zakaah.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Content\ZakaahWebForms\newZakaah.aspx.cs">
+      <DependentUpon>newZakaah.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\ZakaahWebForms\newZakaah.aspx.designer.cs">
+      <DependentUpon>newZakaah.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Content\ZakaahWebForms\ZakaahCalculator.aspx.cs">
       <DependentUpon>ZakaahCalculator.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Content\ZakaahWebForms\ZakaahCalculator.aspx.designer.cs">
       <DependentUpon>ZakaahCalculator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\ZakaahWebForms\ZakaahFacts.aspx.cs">
+      <DependentUpon>ZakaahFacts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\ZakaahWebForms\ZakaahFacts.aspx.designer.cs">
+      <DependentUpon>ZakaahFacts.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\ZakaahWebForms\ZakaahGallery.aspx.cs">
       <DependentUpon>ZakaahGallery.aspx</DependentUpon>

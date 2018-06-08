@@ -1,6 +1,6 @@
 ﻿/* Start coping from here to get heade and footer styling*/
 body {
-    background-color: white;
+    background-color: #256297;
     height: 100%;
     width: inherit;
     overflow-x: hidden;
@@ -23,9 +23,9 @@ html {
     color: #256297;
 }
 
-    .user:hover {
-        font-weight: 500;
-    }
+.user:hover {
+    font-weight: 500;
+}
 
 .navbaritems {
     padding-right: 10px;
@@ -41,12 +41,12 @@ html {
     color: #256297;
 }
 
-    .navText:hover {
-        color: white;
-        background-color: #3F84C1;
-        text-decoration: none;
-        border-radius: 2px;
-    }
+.navText:hover {
+    color: white;
+    background-color: #3F84C1;
+    text-decoration: none;
+    border-radius: 2px;
+}
 
 .navbar {
     background-color: white;
@@ -62,7 +62,7 @@ html {
 }
 
 .content {
-    background-color: red;
+    background-color: white;
 }
 
 .sticky {
@@ -79,12 +79,12 @@ html {
     text-decoration-color: #256297;
 }
 
-    .navbtn:hover {
-        color: white;
-        background-color: #3F84C1;
-        text-decoration: none;
-        border-radius: 2px;
-    }
+.navbtn:hover {
+    color: white;
+    background-color: #3F84C1;
+    text-decoration: none;
+    border-radius: 2px;
+}
 
 .topnav {
     border-color: #3F84C1;
@@ -92,12 +92,12 @@ html {
     color: #256297;
 }
 
-    .topnav:hover {
-        color: white;
-        background-color: #3F84C1;
-        text-decoration: none;
-        border-radius: 3px;
-    }
+.topnav:hover {
+    color: white;
+    background-color: #3F84C1;
+    text-decoration: none;
+    border-radius: 3px;
+}
 
 .search-btn {
     border-bottom-color: #3F84C1;
@@ -129,10 +129,10 @@ html {
     border-bottom-right-radius: 0px;
 }
 
-    .search-box:focus {
-        width: 100%;
-        box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
-    }
+.search-box:focus {
+    width: 100%;
+    box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+}
 
 .footerr {
     width: 100%;
@@ -163,7 +163,7 @@ html {
     color: #256297;
     align-self: center;
 }
-/*Stop CSS*/
+/*Stop header and footer CSS*/
 
 .nav-tabs--vertical {
     border-bottom: none;

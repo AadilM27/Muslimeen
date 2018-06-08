@@ -13,7 +13,6 @@
 
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/MyScholar.css" rel="stylesheet" />
-
     </head>
 <body>
     <form id="frmAddArticle" runat="server">
@@ -32,7 +31,7 @@
                             <asp:TextBox ID="txtSearch" TextMode="Search" runat="server"  class=" search-box form-control form-control-sm" autocomplete="off" placeholder="Search"></asp:TextBox>
                             </li>
                             <li class="nav-item mr-2">
-                                <asp:Button runat="server" Text="Go" CssClass="topnav search-btn form-control form-control-sm" />
+                                <asp:ImageButton runat="server" Text="Go" ImageUrl="~/Content/Default/icons/Search.png" Height="31px" Width="31px" CssClass="topnav search-btn form-control form-control-sm" />
                             </li>
                             <li class=" nav-item mr-2">
                             <asp:Button runat="server" Text="Login" ID="btnLogin" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnLogin_Click" />
@@ -40,12 +39,13 @@
                             <li class="nav-item mr-2">
                             <asp:Button runat="server" Text="Register" ID="btnRegister" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnRegister_Click" />
                             </li>
-                        </ul>
+                        </ul> <!---->
                     </div>
-                    <div class="row">
-                        <ul class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
-                            <li><asp:HyperLink ToolTip="Edit user profile" runat="server" ID="hplUserProfile" href="../Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-3 user"></asp:HyperLink></li>
-                        </ul>
+                    <div class="row" runat="server" id="divUserProfile" >
+                        <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
+                            <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
+                            </asp:HyperLink><asp:Image style="height:15px; width:15px;" runat="server" id="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="~/Content/Default/icons/EditProfile.png"/>
+                        </div>
                     </div>
                 </nav>
                 <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50);">
@@ -57,9 +57,9 @@
                             <li class="nav-item navbarText navbaritems">
                                 <asp:Button runat="server" ID="btnHome" Text="Home"  CssClass=" btn btn-link nav-item navText" OnClick="btnHome_Click"/>
                             </li><li class="NavDevider">|</li><!--deviders-->
-                            <li class="nav-item navbarText navbaritems">
-                                <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen"  CssClass=" btn btn-link nav-item navText"/>
-                            </li><li class="NavDevider">|</li><!--deviders-->
+                            <li class="nav-item navbarText navbaritems" runat="server" id="liMyMusbtn">
+                                <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen"  CssClass=" btn btn-link nav-item navText" OnClick="btnMyMuslimeen_Click"/>
+                            </li><li runat="server" id="liMyMusDivi" class=" NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems">
                                 <asp:Button runat="server" ID="btnMosques" Text="Mosques"  CssClass="nav-item navText btn-link btn" OnClick="btnMosques_Click"/>
                             </li><li class="NavDevider">|</li><!--deviders-->
@@ -81,45 +81,52 @@
             </header>
 
         <!--Page Content-->
-        <div class="d-flex flex-row mt-2">
-            <ul class="nav nav-tabs nav-tabs--vertical nav-tabs--left" role="navigation">
-                <li class="nav-item">
-                    <a href="AddArticle.aspx" class="nav-link active" data-toggle="tab" role="tab" aria-controls="lorem">Add Article</a>
-                </li>
-                <li class="nav-item">          
-                    <a href="PendingArticle.aspx" class="nav-link" data-toggle="tab" role="tab" aria-controls="ipsum">Pending Article</a>
-                </li>
-                <li class="nav-item">
-                    <a href="RejectedArticle.aspx" class="nav-link" data-toggle="tab" role="tab" aria-controls="dolor">Rejected Article</a>
-                </li>
-                <li class="nav-item">
-                    <a href="MosqueEvents.aspx" class="nav-link" data-toggle="tab" role="tab" aria-controls="sit-amet">Mosque Events</a>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <div class="tab-pane fade show active" role="tabpanel">
-                    <h2 class="text-center">Add Article</h2>    
-                    <div class="form-group row"> 
-                        <asp:Label CssClass="col-sm-5 col-form-label" ID="Label1" runat="server" Text="Heading:"></asp:Label> 
-                        <div class="col-sm-7">
-                            <asp:TextBox CssClass="form-control" ID="txtHeading" runat="server" Width="300%"></asp:TextBox>  
-                        </div>
-                    </div>   
-                    <div class="form-group row">
-                        <asp:Label CssClass="col-sm-5 col-form-label" ID="Label2" runat="server" Text="Content:"></asp:Label>
-                        <div class="col-sm-7">
-                            <asp:TextBox CssClass="form-control" ID="txtContent" runat="server" Height="200px" TextMode="MultiLine" Width="300%"></asp:TextBox>
-                        </div>
-                    </div>  
-                    <div class="form-group row float-center">
-                        <div class="col-sm-5">
-                            <asp:Button CssClass="form-control" ID="btnSave" runat="server" Text="Save" class="badge-success" OnClick="btnSave_Click"/>
+        <div class="content" id="content">
+            <div class="d-flex flex-row mt-2">
+                <ul class="nav nav-tabs nav-tabs--vertical nav-tabs--left" role="navigation">
+                    <li class="nav-item">
+                        <a href="AddArticle.aspx" class="nav-link active" data-toggle="tab" role="tab" aria-controls="lorem">Add Article</a>
+                    </li>
+                    <li class="nav-item">          
+                        <a href="PendingArticle.aspx" class="nav-link" data-toggle="tab" role="tab" aria-controls="ipsum">Pending Article</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="RejectedArticle.aspx" class="nav-link" data-toggle="tab" role="tab" aria-controls="dolor">Rejected Article</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="MosqueEvents.aspx" class="nav-link" data-toggle="tab" role="tab" aria-controls="sit-amet">Mosque Events</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" role="tabpanel">
+                        <h2 class="text-center">Add Article</h2> 
+                        <div class="form-group row">
+                            <asp:Label CssClass="col-sm-5 col-form-label position-static" ID="Label3" runat="server" Text="Topic:"></asp:Label> 
+                            <div class="col-sm-7 position-static">
+                                <asp:DropDownList ID="drpTopics" runat="server" CssClass="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" OnSelectedIndexChanged="drpTopics_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                            </div>
+                        </div>                    
+                        <div class="form-group row"> 
+                            <asp:Label CssClass="col-sm-5 col-form-label position-static" ID="Label1" runat="server" Text="Heading:"></asp:Label> 
+                            <div class="col-sm-7 position-static">
+                                <asp:TextBox CssClass="form-control" ID="txtHeading" runat="server" Width="300%"></asp:TextBox>  
+                            </div>
+                        </div>   
+                        <div class="form-group row">
+                            <asp:Label CssClass="col-sm-5 col-form-label position-static" ID="Label2" runat="server" Text="Content:"></asp:Label>
+                            <div class="col-sm-7 position-static">
+                                <asp:TextBox CssClass="form-control" ID="txtContent" runat="server" Height="200px" TextMode="MultiLine" Width="300%"></asp:TextBox>
+                            </div>
+                        </div>  
+                        <div class="form-group row float-center">
+                            <div class="col-sm-5 position-static">
+                                <asp:Button CssClass="form-control" ID="btnSave" runat="server" Text="Save" class="badge-success" OnClick="btnSave_Click"/>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>         
-
+            </div>         
+        </div>
     </form>
 
     <!--Footer-->
@@ -176,7 +183,7 @@
                 </div>
             </div>
 
-    <script src="../Default/Default.js"></script>
-    <script src="../Default/DatesEnglishHijri.js"></script>
+    <script src="../Default/Default.js" type="text/javascript"></script>
+    <script src="../Default/DatesEnglishHijri.js" type="text/javascript"></script>
 </body>
 </html>

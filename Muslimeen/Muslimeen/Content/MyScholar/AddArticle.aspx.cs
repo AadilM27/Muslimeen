@@ -24,6 +24,10 @@ namespace Muslimeen.Content.MyScholar
 
                 uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
                 hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
+                divUserProfile.Visible = true;
+
+                liMyMusbtn.Visible = true;
+                liMyMusDivi.Visible = true;
 
                 btnLogin.Text = "Log out";
                 btnRegister.Visible = false;
@@ -31,8 +35,17 @@ namespace Muslimeen.Content.MyScholar
             }
             else if (Session["UserName"] == null)
             {
+                liMyMusbtn.Visible = false;
+                liMyMusDivi.Visible = false;
+
+                divUserProfile.Visible = false;
                 Session.Clear();
             }
+            //Populating dropdown box wiht values
+            drpTopics.DataSource = dBHandler.BLL_GetTopics();
+            drpTopics.DataTextField = "TopicDescription";
+            drpTopics.DataValueField = "TopicID";
+            drpTopics.DataBind();
 
         }
 
@@ -44,6 +57,7 @@ namespace Muslimeen.Content.MyScholar
             }
             else if (btnLogin.Text == "Log out")
             {
+
                 Session.Clear();
                 Session.Abandon();
                 Response.Redirect("~/Content/Default.aspx");
@@ -87,14 +101,68 @@ namespace Muslimeen.Content.MyScholar
             //redirect user to the About us page.
         }
 
+        protected void btnMyMuslimeen_Click(object sender, EventArgs e)
+        {
+            DBHandler dBHandler = new DBHandler();
+
+            uspGetMember uspGetMember = new uspGetMember();
+
+            uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
+
+            if (uspGetMember.MemberType == 'A')
+            {
+                Response.Redirect("~/Content/MyAdmin.aspx");
+            }
+            else if (uspGetMember.MemberType == 'M')
+            {
+                Response.Redirect("~/Content/MyMember.aspx");
+            }
+            else if (uspGetMember.MemberType == 'O')
+            {
+                Response.Redirect("~/Content/MyModerator.aspx");
+            }
+            else if (uspGetMember.MemberType == 'S')
+            {
+                Response.Redirect("~/Content/AddArticle.aspx");
+            }
+
+
+        }
+
         protected void btnSave_Click(object sender, EventArgs e)
         {
             DBHandler han = new DBHandler();
             Article art = new Article();
 
-            art.ArticleTitle = txtHeading.Text.ToString();
-            art.ArticleContent = txtContent.Text.ToString();
+            try
+            {
+                art.DateCreated = DateTime.Now;
+                art.Status = Convert.ToChar("P");
+                art.RejectionReason = Convert.ToString(" ");
+                art.Active = Convert.ToChar("I");
+                art.RemovalReason = Convert.ToString(" ");
 
+                //Scholar ID input with session...
+                art.ScholarID = Convert.ToString(" ");
+
+                art.ModeratorID = Convert.ToString(" ");
+                art.TopicID = Convert.ToInt32(drpTopics.SelectedItem.Value);
+
+                art.ArticleTitle = Convert.ToString(txtHeading.Text);
+                art.ArticleContent = Convert.ToString(txtContent.Text);
+
+                han.BLL_AddArticle(art);
+            }
+            catch
+            {
+                throw;
+            }
+
+        }
+
+        protected void drpTopics_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

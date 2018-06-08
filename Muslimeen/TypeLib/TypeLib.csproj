@@ -66,10 +66,12 @@
     <Compile Include="ViewModels\uspGetMember.cs" />
     <Compile Include="ViewModels\uspGetModeratorDetails.cs" />
     <Compile Include="ViewModels\uspGetMosque.cs" />
+    <Compile Include="ViewModels\uspGetOrganizations.cs" />
     <Compile Include="ViewModels\uspGetQualification.cs" />
     <Compile Include="ViewModels\uspGetRamadaanDate.cs" />
     <Compile Include="Models\uspVerifyMember.cs" />
     <Compile Include="ViewModels\uspGetScholarDetails.cs" />
+    <Compile Include="ViewModels\uspGetTopics.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
