@@ -15,7 +15,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
+<<<<<<< HEAD
           <StartPageUrl>Content/ZakaahWebForms/newZakaah.aspx</StartPageUrl>
+=======
+          <StartPageUrl>Content/ZakaahWebForms/ZakaahCalculator.aspx</StartPageUrl>
+>>>>>>> c8483384092aa5e706e8279cbc6708e0d442f316
           <StartAction>SpecificPage</StartAction>
           <AspNetDebugging>True</AspNetDebugging>
           <SilverlightDebugging>False</SilverlightDebugging>
