@@ -12,6 +12,7 @@
     <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico" />
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../Default/css/Default.css" rel="stylesheet" />
+    <link href="../Zakaah/css/newZakaah.css" rel="stylesheet" />
 </head>
 <body>
     <form id="frmScholar" runat="server" class=" ">
@@ -94,10 +95,39 @@
         </header>
         <div class="content" id="content">
             <!--add content here -->
+             <div class="zakaah-content" style="position:static;">
+            <nav class="navbar navbar-expand-sm navbar-dark" style="position:static; background-color:#256297;">
+              <a class="navbar-brand navt " href="newZakaah.aspx" >Zakaah</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="navbar-brand navt" href="ZakaahCalculator.aspx">Calculator</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-brand navt" href="ZakaahFacts.aspx">Gallery</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-brand navt" href="ZakaahOrganizations.aspx">Organizations</a>
+                  </li>    
+                </ul>
+              </div>  
+            </nav>
 
+                    <div class="container" style="margin-top:10px; position:static;">
+                      <div class="row" style="position:static;right:50px">
+                          <div class="col-lg-8" style="position:static;">
+                             
+        
+            
+                    <div style="text-align:center;color:white;background-color:#256297;font-size:20px;width:100%">
+                    <strong >List of Zakaat Organizations</strong>
 
-
-            <asp:Repeater ID="Repeater1" runat="server">
+                    </div>
+                    <br />
+  <asp:Repeater ID="Repeater1" runat="server">
                 <ItemTemplate>
                     <div class="container">
                         <div class="jumbotron">
@@ -119,9 +149,78 @@
                 </SeparatorTemplate>
             </asp:Repeater>
 
+                     </div>
+                  <div class="col-lg-4" style="position:static;">
+                       <!---javascript code to translate language--->
+                        <p>Translate this page:</p>
+                       <div id="google_translate_element"></div>
 
-        </div>
-    </form>
+                      <script type="text/javascript">
+                          function googleTranslateElementInit()
+                          {
+                            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                          }
+                     </script>
+                     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    <!---end of javascript code--->
+                     <h2 style="color:#256297">Zakaah Facts</h2>
+                    <img src="../Zakaah/ZakaahPics/alms.jpg" />
+                    <div class="rightcolumn">
+                    <div class="card" style="position:static">
+                    
+
+                    <div style="height:50px;width:40px;">
+                     
+                    </div>
+                    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+                    </div>
+                    <div class="card" style="position:static">
+                     <h3>Popular Post</h3>
+                      <div class="fakeimg" style="position:static">Image</div><br />
+                      <div class="fakeimg" style="position:static">Image</div><br />
+                      <div class="fakeimg" style="position:static">Image</div>
+                    </div>
+                    <div class="card"style="position:static" >
+                     <h3>Follow Me</h3>
+                     <p>Some text..</p>
+                    </div>
+                    </div>
+                        <br />
+                       
+                          <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+                          <h3>Some Links</h3>
+                          <p>Lorem ipsum dolor sit ame.</p>
+                          <ul class="nav nav-pills flex-column">
+                            <li class="nav-item">
+                              <a class="nav-link active" href="#">Active</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link disabled" href="#">Disabled</a>
+                            </li>
+                          </ul>
+                          <hr class="d-sm-none" />
+                        </div>
+                    
+            
+                   
+                       
+                </div>
+                </div>
+                </div>
+                </div>
+               </form>
+
+
+          
+
+     
+   
 
     <div class="footerr">
         <!--End of content, start of footer-->

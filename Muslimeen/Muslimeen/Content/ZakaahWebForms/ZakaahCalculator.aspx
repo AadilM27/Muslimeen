@@ -210,8 +210,12 @@
                   <div style="position:static;align-items:center">
                   <asp:Button ID="Button1" runat="server" Text="Calculate  Assets" BackColor="#256297" BorderStyle="none" ForeColor="white" ToolTip="click here to calculate your total Assets" OnClick="Button1_Click1" autopostback="true" />                      
                   <asp:Button ID="Button2" runat="server" Text="Calculate Zakaah" BackColor="#256297" ForeColor="white" BorderStyle="none" ToolTip="Calculate your zakaah after deductions" autopostback="true" OnClick="Button2_Click"/>
-                                    </div>
-            
+                  </div>
+                              <br />
+                   <div style="text-align:center;color:white;background-color:#256297;font-size:20px">
+                    <strong >Example of how Zakaat can be calculated:</strong>
+                    </div>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/zERfWrdCrEY"  allowfullscreen></iframe>
                   </div>
                   <div class="col-lg-4" style="position:static;">
                        <!---javascript code to translate language--->
