@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TypeLib.ViewModels;
 using Muslimeen.BLL;
+using TypeLib.Models;
+
 
 namespace Muslimeen.Content
 {
@@ -13,9 +15,24 @@ namespace Muslimeen.Content
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             DBHandler dBHandler = new DBHandler();
+            //Uthmaans code starts to display zakaah info from database into labels when loading zakaah page.
+            TypeLib.Models.Zakaah zakaah = new TypeLib.Models.Zakaah();
 
+            zakaah = dBHandler.BLL_GetZakaah();
 
+            LblWhatIsZakaah.Text = zakaah.ZakaahDesc;
+            LblConditions.Text = zakaah.ZakaahConditions;
+            LblCaution.Text = zakaah.CautionsOfZakaah;
+            LblPermissble.Text = zakaah.ZakaahPermissible;
+            LblAssets.Text = zakaah.AssetsOfZakaah;
+            LblApplicable.Text = zakaah.ApplicableZakaah;
+            LblCalculations.Text = zakaah.CalculationDesc;
+           
+
+ 
+            //end 
             if (Session["UserName"] != null)
             {
                 uspGetMember uspGetMember = new uspGetMember();
@@ -83,5 +100,6 @@ namespace Muslimeen.Content
         {
             //redirect user to the About us page.
         }
+        
     }
 }

@@ -20,9 +20,9 @@ namespace Muslimeen.BLL
             List<uspGetQualification> list = new List<uspGetQualification>();
             using (DataTable table = DBHelper.Select("uspGetQualification", CommandType.StoredProcedure))
             {
-                if(table.Rows.Count > 0)
+                if (table.Rows.Count > 0)
                 {
-                    foreach(DataRow row in table.Rows)
+                    foreach (DataRow row in table.Rows)
                     {
                         uspGetQualification quali = new uspGetQualification
                         {
@@ -40,9 +40,9 @@ namespace Muslimeen.BLL
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
 
-            foreach(var prop in member.GetType().GetProperties())
+            foreach (var prop in member.GetType().GetProperties())
             {
-                if(prop.GetValue(member) != null)
+                if (prop.GetValue(member) != null)
                 {
                     parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(member)));
                 }
@@ -73,8 +73,8 @@ namespace Muslimeen.BLL
                 new SqlParameter("@MemberID", memberID),
             };
             using (DataTable table = DBHelper.ParamSelect("uspGetMember", CommandType.StoredProcedure, pars))
-            { 
-                if(table.Rows.Count == 1)
+            {
+                if (table.Rows.Count == 1)
                 {
 
                     DataRow row = table.Rows[0];
@@ -106,8 +106,8 @@ namespace Muslimeen.BLL
                         getMember.ActivationExpiry = null;
                     }
                     getMember.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
-                        
-                    
+
+
                 }
             }
             return getMember;
@@ -158,9 +158,9 @@ namespace Muslimeen.BLL
             List<uspGetAllMosques> list = new List<uspGetAllMosques>();
             using (DataTable table = DBHelper.Select("uspGetAllMosques", CommandType.StoredProcedure))
             {
-                if(table.Rows.Count > 0)
+                if (table.Rows.Count > 0)
                 {
-                    foreach(DataRow row in table.Rows)
+                    foreach (DataRow row in table.Rows)
                     {
                         uspGetAllMosques mosque = new uspGetAllMosques
                         {
@@ -183,7 +183,7 @@ namespace Muslimeen.BLL
             };
             using (DataTable table = DBHelper.ParamSelect("uspGetModeratorDetails", CommandType.StoredProcedure, pars))
             {
-                if(table.Rows.Count == 1)
+                if (table.Rows.Count == 1)
                 {
                     DataRow row = table.Rows[0];
                     getModerator = new uspGetModeratorDetails();
@@ -207,7 +207,7 @@ namespace Muslimeen.BLL
                     }
                     getModerator.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
                     getModerator.Password = Convert.ToString(row["Password"]);
-                    
+
                 }
             }
             return getModerator;
@@ -222,7 +222,7 @@ namespace Muslimeen.BLL
             };
             using (DataTable table = DBHelper.ParamSelect("uspGetScholarDetails", CommandType.StoredProcedure, pars))
             {
-                if(table.Rows.Count == 1)
+                if (table.Rows.Count == 1)
                 {
                     DataRow row = table.Rows[0];
                     getScholarDetails = new uspGetScholarDetails();
@@ -245,12 +245,13 @@ namespace Muslimeen.BLL
                     }
                     getScholarDetails.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
                     getScholarDetails.Password = Convert.ToString(row["Password"]);
-                    
+
                 }
             }
             return getScholarDetails;
         }
 
+<<<<<<< HEAD
         //Adding Article...
         public bool AddArticle(Article article)
         {
@@ -263,6 +264,78 @@ namespace Muslimeen.BLL
                 }
             }
             return DBHelper.NonQuery("uspInsertArticle", CommandType.StoredProcedure, par.ToArray());
+=======
+        public bool UpdateMember(UpdateMember updateMember)
+        {
+            List<SqlParameter> pars = new List<SqlParameter>();
+            foreach (var prop in updateMember.GetType().GetProperties())
+            {
+                if (prop.GetValue(updateMember) != null)
+                {
+                    pars.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(updateMember)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdateMember", CommandType.StoredProcedure, pars.ToArray());
+        }
+
+        public bool UpdateMemberPassword(UpdateMemberPassword updateMemberPassword)
+        {
+            List<SqlParameter> pars = new List<SqlParameter>();
+            foreach (var prop in updateMemberPassword.GetType().GetProperties())
+            {
+                if (prop.GetValue(updateMemberPassword) != null)
+                {
+                    pars.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(updateMemberPassword)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdateMemberPassword", CommandType.StoredProcedure, pars.ToArray());
+        }
+
+        public Zakaah GetZakaah()
+        {
+            Zakaah zk = new Zakaah();
+            using (DataTable table = DBHelper.Select("uspGetZakaah", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                        {
+                        zk.ZakaahID = Convert.ToInt32(row["ZakaahID"]);
+                        zk.ZakaahDesc = Convert.ToString(row["ZakaahDesc"]);
+                        zk.ZakaahConditions = Convert.ToString(row["ZakaahConditions"]);
+                        zk.CalculationDesc = Convert.ToString(row["CalculationDesc"]);
+                        zk.ZakaahPermissible = Convert.ToString(row["ZakaahPermissible"]);
+                        zk.CautionsOfZakaah = Convert.ToString(row["CautionsOfZakaah"]);
+                        zk.AssetsOfZakaah = Convert.ToString(row["AssetsOfZakaah"]);
+                        zk.ApplicableZakaah = Convert.ToString(row["ApplicableZakaah"]);
+                        };
+                }
+            }
+            return zk;
+        }
+        public Organization GetOrganization()
+        {
+            Organization og = new Organization();
+            using (DataTable table = DBHelper.Select("uspGetOrganizations", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        Organization org = new Organization
+                        {
+                            OrganizationID = Convert.ToInt32(row["Organization"]),
+                            OrgName = Convert.ToString(row["OrgName"]),
+                            Address = Convert.ToString(row["Address"]),
+                            OrgImageUrl = Convert.ToString(row["OrgImageUrl"])
+                        };
+
+                    }
+                }
+                return og;
+            }
+
+>>>>>>> 37b94b3348a0c23aa2667f4436455069b37e2581
         }
     }
 }

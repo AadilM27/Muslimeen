@@ -1,10 +1,4 @@
-﻿.title{
-    font-family:sans-serif;
-    color:white;
-    text-align:center;
-   
-}
-
+﻿/*Start styling for header and footer.*/
 body {
     background-color: #256297;
     height: 100%;
@@ -65,12 +59,12 @@ html {
     background-color: white;
     border-color: white;
     padding: 10px;
-    z-index:3;
 }
 
 .content {
-    background-color: white;
+    background-color: red;
 }
+
 .sticky {
     position: fixed;
     width: 100%;
@@ -135,10 +129,10 @@ html {
     border-bottom-right-radius: 0px;
 }
 
-    .search-box:focus {
-        width: 100%;
-        box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
-    }
+.search-box:focus {
+    width: 100%;
+    box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+}
 
 .footerr {
     width: 100%;
@@ -169,127 +163,7 @@ html {
     color: #256297;
     align-self: center;
 }
-/*End copying from here for Header and footer*/
 
-.zakaah-content{
-    position:static;
-    overflow:visible;
-}
-* {
-    box-sizing: border-box;
-}
+/*end styling for header and footer.*/
 
 
-
-/* Center website */
-.main {
-    max-width: 1000px;
-    margin: auto;
-}
-
-h1 {
-    font-size: 50px;
-    word-break: break-all;
-}
-
-.row {
-    margin: 8px -16px;
-}
-
-    /* Add padding BETWEEN each column */
-    .row,
-    .row > .column {
-        padding: 8px;
-    }
-
-/* Create four equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 25%;
-}
-
-/* Clear floats after rows */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* Content */
-.content {
-    background-color: white;
-    padding: 10px;
-}
-
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 900px) {
-    .column {
-        width: 50%;
-    }
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-    .column {
-        width: 100%;
-    }
-}
-
-.fakeimg {
-    width: 100%;
-    padding: 20px;
-    background: #aaa;
-}
-
-.collapsible {
-    background-color: #777;
-    color: white;
-    cursor: pointer;
-    padding: 18px;
-    width: 80%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-}
-
-.active, .collapsible:hover {
-        background-color: #555;
-    }
-.content2 {
-    padding: 0 18px;
-    background-color: #f1f1f1;
-}
-.header h2 {
-    text-align: center;
-}
-
-.progress-container {
-    width: 100%;
-    height: 8px;
-    background: #ccc;
-}
-
-.progress-bar {
-    height: 8px;
-    background: #4caf50;
-    width: 0%;
-}
-
-.content3 {
-    padding: 100px 0;
-    margin: 50px auto 0 auto;
-    width: 80%;
-}
-rightcolumn {
-    float: left;
-    width: 25%;
-    padding-left: 20px;
-}
-/* Add a card effect for articles */
-.card {
-    background-color: white;
-    padding: 20px;
-    margin-top: 20px;
-    
-}

@@ -182,7 +182,7 @@ namespace Muslimeen.Register
 
             if (continueProcess == 0)
             {
-                //make sure the DOB is in corrct format yyy-mm-dd.
+                //make sure the DOB is in correct format yyy-mm-dd.
                 if (txtDOB.Text.IndexOf('-', 4) == -1 || txtDOB.Text.IndexOf('-', 7) == -1)
                 {
                     txtDOB.Text = txtDOB.Text.Insert(4, "-");
@@ -191,7 +191,7 @@ namespace Muslimeen.Register
 
                 try
                 {
-                    string encryptionPass = "NexTech";
+                    string encryptionPass = Convert.ToString(txtUserName.Text);
                     Encryption encryption = new Encryption();
                     Member member = new Member();
 

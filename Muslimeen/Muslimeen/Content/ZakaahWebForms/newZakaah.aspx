@@ -110,94 +110,80 @@
 
                     <div class="container" style="margin-top:10px; position:static;">
                       <div class="row" style="position:static;right:50px">
-                          <div class="col-md-8" style="position:static;">
-                              <button class="collapsible" style="background-color:#256297;width:100%">What is Zakaah or Zakat?</button>
+                          <div class="col-lg-8" style="position:static;">
+                              <button id="btnWhatIsZakaah" class="collapsible" style="background-color:#256297;width:100%">What is Zakaah or Zakat?</button>
                     <div class="content2">
                         <br />
-                          <p>Some text..</p>
-                          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                        <asp:Label ID="LblWhatIsZakaah" runat="server"></asp:Label>
                     </div>
                     <button class="collapsible"  style="background-color:#256297;width:100%">Conditions of Zakaah</button>
                     <div class="content2">
+                        <br />
                       <h2>Conditions of Zakat</h2>
                           <iframe width="560" height="315"  src="https://www.youtube.com/embed/kEon0omN5SA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
                           </iframe>
-                          <p>Some text..</p>
-                          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                    </div>
+                        <asp:Label ID="LblConditions" runat="server" Text=""></asp:Label>
+                     </div>
                     <button class="collapsible" style="background-color:#256297;width:100%" >Cautions of Zakaah</button>
                     <div class="content2">
-                    <p><strong>Nasihah (Advice): Caution when giving Zakaat:</strong><br />
-                    Ramadhan, the month of fasting, is also the time when many Muslims calculate and discharge their Zakaat. One of the fundamentals of Zakaat is to discharge Zakaat to eligible recipients.</p>
-                    <p>It is the onus of the individual to verify the Zakaat eligibility of the recipient. If verification is not done and the person was not eligible for Zakaat, then that Zakaat has to be repaid. </p>
-                    <p>It is of great concern that many individuals hand over their Zakaat to beggars standing at traffic lights. Many of these individuals are “professional” beggars who make so much money that it is compulsory on them to pay Zakaat let alone receive it.<br />
-                    Individuals experiencing difficulty in discharging their Zakaat may forward their Zakaat to the Jamiat and have their Zakaat discharged to eligible recipients verified by Ulama.</p>
-                      </div>
+                        <asp:Label ID="LblCaution" runat="server" Text=""></asp:Label>
+                                          </div>
                     <button class="collapsible" style="background-color:#256297;width:100%" >To whom is Zakaah permissible?</button>
                     <div class="content2">
-                      <h2> Upon who is Zakaat fard(compulsory)?</h2> 
-
-                    <p>A.  Zakaat is Fard on a Muslim male or female who is mature (Baaligh) and sane. He/she must also be the owner of Nisaab. Nisaab is the minimum amount of wealth which makes a person liable for Zakaat. If one is the owner of Nisaab after one lunar year, then Zakaat will be Fardh upon him. The Zakaat should be paid annually on the Islamic date of a lunar year.</p>
+                        <asp:Label ID="LblPermissble" runat="server" Text=""></asp:Label>
                     </div>
-
-                    <script src="../Zakaah/newZakaah.js"></script>
+                     <button class="collapsible" style="background-color:#256297;width:100%" >Assets Of Zakaah</button>
+                    <div class="content2">
+                        <asp:Label ID="LblAssets" runat="server" Text=""></asp:Label>
                     </div>
-   
-                          <div class="col-md-4" style="position:static;">
-                          <h2>About Me</h2>
-                          <h5>Photo of me:</h5>
-                          <!-- MAIN (Center website) -->
-                    <div class="main" style="position:static;">
-
-                    <h2>MYLOGO.COM</h2>
-                    <hr />
-
-                    <h3>PORTFOLIO</h3>
-                    <p>Resize the browser window to see the responsive effect.</p>
-
-                    <!-- Portfolio Gallery Grid -->
-                    <div class="row" style="position:static;">
-                      <div class="column">
-                        <div class="content2">
-                          <img src="../Zakaah/ZakaahPics/Zakat-Image.jpg" alt="Mountains" style="width:100%;" />
-                          <h3>My Work</h3>
-                          <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
-                        </div>
-                      </div>
-                      <div class="column">
-                        <div class="content2">
-                        <img src="/w3images/lights.jpg" alt="Lights" style="width:100%" />
-                          <h3>My Work</h3>
-                          <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
-                        </div>
-                      </div>
-                      <div class="column">
-                        <div class="content2">
-                        <img src="/w3images/nature.jpg" alt="Nature" style="width:100%" />
-                          <h3>My Work</h3>
-                          <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
-                        </div>
-                      </div>
-                      <div class="column">
-                        <div class="content">
-                        <img src="/w3images/mountains.jpg" alt="Mountains" style="width:100%" />
-                          <h3>My Work</h3>
-                          <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
-                        </div>
-                      </div>
-                    <!-- END GRID -->
+                     <button class="collapsible" style="background-color:#256297;width:100%" >To whom is Zakaah Applicable?</button>
+                    <div class="content2">
+                        <asp:Label ID="LblApplicable" runat="server" Text=""></asp:Label>
                     </div>
-
-                    <div class="content2" style="position:static;">
-                      <img src="/w3images/p3.jpg" alt="Bear" style="width:100%" />
-                      <h3>Some Other Work</h3>
-                      <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
-                      <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
+                     <button class="collapsible" style="background-color:#256297;width:100%" >Calculation of Zakaah?</button>
+                    <div class="content2">
+                        <asp:Label ID="LblCalculations" runat="server" Text=""></asp:Label>
                     </div>
-
-                    <!-- END MAIN -->
+                              
                     </div>
+                     <script src="../Zakaah/newZakaah.js"></script>
+                    <div class="col-lg-4" style="position:static;">
+                       <!---javascript code to translate language--->
+                        <p>Translate this page:</p>
+                       <div id="google_translate_element"></div>
 
+                      <script type="text/javascript">
+                          function googleTranslateElementInit()
+                          {
+                            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                          }
+                     </script>
+                     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    <!---end of javascript code--->
+                     <h2 style="color:#256297">Zakaah Facts</h2>
+                    <img src="../Zakaah/ZakaahPics/alms.jpg" />
+                    <div class="rightcolumn">
+                    <div class="card" style="position:static">
+                    
+
+                    <div style="height:50px;width:40px;">
+                     
+                    </div>
+                    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+                    </div>
+                    <div class="card" style="position:static">
+                     <h3>Popular Post</h3>
+                      <div class="fakeimg" style="position:static">Image</div><br />
+                      <div class="fakeimg" style="position:static">Image</div><br />
+                      <div class="fakeimg" style="position:static">Image</div>
+                    </div>
+                    <div class="card"style="position:static" >
+                     <h3>Follow Me</h3>
+                     <p>Some text..</p>
+                    </div>
+                    </div>
+                        <br />
+                       
                           <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
                           <h3>Some Links</h3>
                           <p>Lorem ipsum dolor sit ame.</p>
@@ -223,8 +209,8 @@
            
             
              
-      </div>     
-</div>
+                   </div>     
+                  </div>
 
             <div class="footerr" > <!--End of content, start of footer-->
                 <div class="row">

@@ -39,7 +39,7 @@ namespace Muslimeen.Register
                 try
                 {
                     string memberPassword = Convert.ToString(txtPassword.Text);
-                    string encryptionPass = "NexTech";
+                    string encryptionPass = Convert.ToString(txtMemberID.Text);
                     Encryption encryption = new Encryption();
                     DBHandler dBHandler = new DBHandler();
                     uspGetMember uspGetMember = new uspGetMember();
