@@ -94,7 +94,7 @@
     <Content Include="Content\ProfileEditer\css\ProfileEditer.css" />
     <Content Include="Content\Zakaah.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahCalculator.aspx" />
-    <Content Include="Content\ZakaahWebForms\ZakaahFacts.aspx" />
+    <Content Include="Content\ZakaahWebForms\ZakaahGallery.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahOrganizations.aspx" />
     <Content Include="Content\Zakaah\css\newZakaah.css" />
     <Content Include="Content\Zakaah\css\Zakaah.css" />
@@ -1596,12 +1596,12 @@
     <Compile Include="Content\ZakaahWebForms\ZakaahCalculator.aspx.designer.cs">
       <DependentUpon>ZakaahCalculator.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Content\ZakaahWebForms\ZakaahFacts.aspx.cs">
-      <DependentUpon>ZakaahFacts.aspx</DependentUpon>
+    <Compile Include="Content\ZakaahWebForms\ZakaahGallery.aspx.cs">
+      <DependentUpon>ZakaahGallery.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Content\ZakaahWebForms\ZakaahFacts.aspx.designer.cs">
-      <DependentUpon>ZakaahFacts.aspx</DependentUpon>
+    <Compile Include="Content\ZakaahWebForms\ZakaahGallery.aspx.designer.cs">
+      <DependentUpon>ZakaahGallery.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\ZakaahWebForms\ZakaahOrganizations.aspx.cs">
       <DependentUpon>ZakaahOrganizations.aspx</DependentUpon>
