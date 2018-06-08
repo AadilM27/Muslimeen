@@ -84,5 +84,10 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetOrganization();
         }
+        //Get All Topics
+        public List<uspGetTopics> BLL_GetTopics()
+        {
+            return dBAccess.GetTopics();
+        }
     }
 }

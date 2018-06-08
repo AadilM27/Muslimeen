@@ -334,5 +334,25 @@ namespace Muslimeen.BLL
             }
 
         }
+        //Get All Topics 
+        public List<uspGetTopics> GetTopics()
+        {
+            List<uspGetTopics> list = new List<uspGetTopics>();
+            using (DataTable tbl = DBHelper.Select("uspGetTopics", CommandType.StoredProcedure))
+            {
+                if (tbl.Rows.Count > 0)
+                {
+                    foreach (DataRow row in tbl.Rows)
+                    {
+                        uspGetTopics tops = new uspGetTopics
+                        {
+                            TopicDescription = Convert.ToString(row["TopicDescription"])
+                        };
+                        list.Add(tops);
+                    }
+                }
+            }
+            return list;
+        }
     }
 }

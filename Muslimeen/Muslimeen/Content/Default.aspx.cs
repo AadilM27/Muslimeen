@@ -117,7 +117,7 @@ namespace Muslimeen.Content
             }
             else if (uspGetMember.MemberType == 'S')
             {
-                Response.Redirect("~/Content/MyScholar.aspx");
+                Response.Redirect("~/Content/AddArticle.aspx");
             }
 
 
