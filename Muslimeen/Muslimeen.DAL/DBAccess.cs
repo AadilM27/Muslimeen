@@ -275,6 +275,51 @@ namespace Muslimeen.BLL
                 }
             }
             return DBHelper.NonQuery("uspUpdateMemberPassword", CommandType.StoredProcedure, pars.ToArray());
+        }
+
+        public Zakaah GetZakaah()
+        {
+            Zakaah zk = new Zakaah();
+            using (DataTable table = DBHelper.Select("uspGetZakaah", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                        {
+                        zk.ZakaahID = Convert.ToInt32(row["ZakaahID"]);
+                        zk.ZakaahDesc = Convert.ToString(row["ZakaahDesc"]);
+                        zk.ZakaahConditions = Convert.ToString(row["ZakaahConditions"]);
+                        zk.CalculationDesc = Convert.ToString(row["CalculationDesc"]);
+                        zk.ZakaahPermissible = Convert.ToString(row["ZakaahPermissible"]);
+                        zk.CautionsOfZakaah = Convert.ToString(row["CautionsOfZakaah"]);
+                        zk.AssetsOfZakaah = Convert.ToString(row["AssetsOfZakaah"]);
+                        zk.ApplicableZakaah = Convert.ToString(row["ApplicableZakaah"]);
+                        };
+                }
+            }
+            return zk;
+        }
+        public Organization GetOrganization()
+        {
+            Organization og = new Organization();
+            using (DataTable table = DBHelper.Select("uspGetOrganizations", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        Organization org = new Organization
+                        {
+                            OrganizationID = Convert.ToInt32(row["Organization"]),
+                            OrgName = Convert.ToString(row["OrgName"]),
+                            Address = Convert.ToString(row["Address"]),
+                            OrgImageUrl = Convert.ToString(row["OrgImageUrl"])
+                        };
+
+                    }
+                }
+                return og;
+            }
 
         }
     }

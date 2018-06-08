@@ -71,5 +71,13 @@ namespace Muslimeen.BLL
         {
             return dBAccess.UpdateMemberPassword(updateMemberPassword);
         }
+        public Zakaah BLL_GetZakaah()
+        {
+             return dBAccess.GetZakaah();
+        }
+        public Organization BLL_GetOrganization()
+        {
+            return dBAccess.GetOrganization();
+        }
     }
 }
