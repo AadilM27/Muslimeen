@@ -14,15 +14,14 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
         
   
-    <title>MyMuslimeen -Zakaah</title>
-    <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
-    <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="Default/css/Default.css" rel="stylesheet" />
-    <link href="../Zakaah/css/newZakaah.css" rel="stylesheet" />
+   <title>MyMuslimeen - Calculator</title>
+     <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico" />
+     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+     <link href="../Default/css/Default.css" rel="stylesheet" />
+      <link href="../Zakaah/css/newZakaah.css" rel="stylesheet" />
 </head>
-    <body style="background-color:white">
-        
-        <form id="newZakaah" runat="server" class="">
+    <body>
+        <form id="frmScholar" runat="server" class=" ">   
             <header >
                 <nav class="navFixed">
                     <div class="row align-self-end">
@@ -36,20 +35,21 @@
                             <asp:TextBox ID="txtSearch" TextMode="Search" runat="server"  class=" search-box form-control form-control-sm" autocomplete="off" placeholder="Search"></asp:TextBox>
                             </li>
                             <li class="nav-item mr-2">
-                                <asp:Button runat="server" Text="Go" CssClass="topnav search-btn form-control form-control-sm" />
+                                <asp:ImageButton runat="server" Text="Go" ImageUrl="~/Content/Default/icons/Search.png" Height="31px" Width="31px" CssClass="topnav search-btn form-control form-control-sm" />
                             </li>
                             <li class=" nav-item mr-2">
                             <asp:Button runat="server" Text="Login" ID="btnLogin" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnLogin_Click" />
                             </li>
                             <li class="nav-item mr-2">
-                            <asp:Button runat="server" Text="Register" ID="btnRegister" CssClass=" topnav btn btn-sm btn-outline-light" OnClick="btnRegister_Click" />
+                            <asp:Button runat="server" Text="Register" ID="btnRegister" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnRegister_Click" />
                             </li>
-                        </ul>
+                        </ul> <!---->
                     </div>
-                    <div class="row">
-                        <ul class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
-                            <li><asp:HyperLink ToolTip="Edit user profile" runat="server" ID="hplUserProfile" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-3 user"></asp:HyperLink></li>
-                        </ul>
+                    <div class="row" runat="server" id="divUserProfile" >
+                        <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
+                            <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
+                            </asp:HyperLink><asp:Image style="height:15px; width:15px;" runat="server" id="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="~/Content/Default/icons/EditProfile.png"/>
+                        </div>
                     </div>
                 </nav>
                 <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50);">
@@ -61,9 +61,9 @@
                             <li class="nav-item navbarText navbaritems">
                                 <asp:Button runat="server" ID="btnHome" Text="Home"  CssClass=" btn btn-link nav-item navText" OnClick="btnHome_Click"/>
                             </li><li class="NavDevider">|</li><!--deviders-->
-                            <li class="nav-item navbarText navbaritems">
-                                <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen"  CssClass=" btn btn-link nav-item navText"/>
-                            </li><li class="NavDevider">|</li><!--deviders-->
+                            <li class="nav-item navbarText navbaritems" runat="server" id="liMyMusbtn">
+                                <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen"  CssClass=" btn btn-link nav-item navText" OnClick="btnMyMuslimeen_Click"/>
+                            </li><li runat="server" id="liMyMusDivi" class=" NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems">
                                 <asp:Button runat="server" ID="btnMosques" Text="Mosques"  CssClass="nav-item navText btn-link btn" OnClick="btnMosques_Click"/>
                             </li><li class="NavDevider">|</li><!--deviders-->
@@ -110,94 +110,80 @@
 
                     <div class="container" style="margin-top:10px; position:static;">
                       <div class="row" style="position:static;right:50px">
-                          <div class="col-md-8" style="position:static;">
-                              <button class="collapsible" style="background-color:#256297;width:100%">What is Zakaah or Zakat?</button>
+                          <div class="col-lg-8" style="position:static;">
+                              <button id="btnWhatIsZakaah" class="collapsible" style="background-color:#256297;width:100%">What is Zakaah or Zakat?</button>
                     <div class="content2">
                         <br />
-                          <p>Some text..</p>
-                          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                        <asp:Label ID="LblWhatIsZakaah" runat="server"></asp:Label>
                     </div>
                     <button class="collapsible"  style="background-color:#256297;width:100%">Conditions of Zakaah</button>
                     <div class="content2">
+                        <br />
                       <h2>Conditions of Zakat</h2>
                           <iframe width="560" height="315"  src="https://www.youtube.com/embed/kEon0omN5SA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
                           </iframe>
-                          <p>Some text..</p>
-                          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                    </div>
+                        <asp:Label ID="LblConditions" runat="server" Text=""></asp:Label>
+                     </div>
                     <button class="collapsible" style="background-color:#256297;width:100%" >Cautions of Zakaah</button>
                     <div class="content2">
-                    <p><strong>Nasihah (Advice): Caution when giving Zakaat:</strong><br />
-                    Ramadhan, the month of fasting, is also the time when many Muslims calculate and discharge their Zakaat. One of the fundamentals of Zakaat is to discharge Zakaat to eligible recipients.</p>
-                    <p>It is the onus of the individual to verify the Zakaat eligibility of the recipient. If verification is not done and the person was not eligible for Zakaat, then that Zakaat has to be repaid. </p>
-                    <p>It is of great concern that many individuals hand over their Zakaat to beggars standing at traffic lights. Many of these individuals are “professional” beggars who make so much money that it is compulsory on them to pay Zakaat let alone receive it.<br />
-                    Individuals experiencing difficulty in discharging their Zakaat may forward their Zakaat to the Jamiat and have their Zakaat discharged to eligible recipients verified by Ulama.</p>
-                      </div>
+                        <asp:Label ID="LblCaution" runat="server" Text=""></asp:Label>
+                                          </div>
                     <button class="collapsible" style="background-color:#256297;width:100%" >To whom is Zakaah permissible?</button>
                     <div class="content2">
-                      <h2> Upon who is Zakaat fard(compulsory)?</h2> 
-
-                    <p>A.  Zakaat is Fard on a Muslim male or female who is mature (Baaligh) and sane. He/she must also be the owner of Nisaab. Nisaab is the minimum amount of wealth which makes a person liable for Zakaat. If one is the owner of Nisaab after one lunar year, then Zakaat will be Fardh upon him. The Zakaat should be paid annually on the Islamic date of a lunar year.</p>
+                        <asp:Label ID="LblPermissble" runat="server" Text=""></asp:Label>
                     </div>
-
-                    <script src="../Zakaah/newZakaah.js"></script>
+                     <button class="collapsible" style="background-color:#256297;width:100%" >Assets Of Zakaah</button>
+                    <div class="content2">
+                        <asp:Label ID="LblAssets" runat="server" Text=""></asp:Label>
                     </div>
-   
-                          <div class="col-md-4" style="position:static;">
-                          <h2>About Me</h2>
-                          <h5>Photo of me:</h5>
-                          <!-- MAIN (Center website) -->
-                    <div class="main" style="position:static;">
-
-                    <h2>MYLOGO.COM</h2>
-                    <hr />
-
-                    <h3>PORTFOLIO</h3>
-                    <p>Resize the browser window to see the responsive effect.</p>
-
-                    <!-- Portfolio Gallery Grid -->
-                    <div class="row" style="position:static;">
-                      <div class="column">
-                        <div class="content2">
-                          <img src="../Zakaah/ZakaahPics/Zakat-Image.jpg" alt="Mountains" style="width:100%;" />
-                          <h3>My Work</h3>
-                          <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
-                        </div>
-                      </div>
-                      <div class="column">
-                        <div class="content2">
-                        <img src="/w3images/lights.jpg" alt="Lights" style="width:100%" />
-                          <h3>My Work</h3>
-                          <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
-                        </div>
-                      </div>
-                      <div class="column">
-                        <div class="content2">
-                        <img src="/w3images/nature.jpg" alt="Nature" style="width:100%" />
-                          <h3>My Work</h3>
-                          <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
-                        </div>
-                      </div>
-                      <div class="column">
-                        <div class="content">
-                        <img src="/w3images/mountains.jpg" alt="Mountains" style="width:100%" />
-                          <h3>My Work</h3>
-                          <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
-                        </div>
-                      </div>
-                    <!-- END GRID -->
+                     <button class="collapsible" style="background-color:#256297;width:100%" >To whom is Zakaah Applicable?</button>
+                    <div class="content2">
+                        <asp:Label ID="LblApplicable" runat="server" Text=""></asp:Label>
                     </div>
-
-                    <div class="content2" style="position:static;">
-                      <img src="/w3images/p3.jpg" alt="Bear" style="width:100%" />
-                      <h3>Some Other Work</h3>
-                      <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
-                      <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam. Lorem ipsum dolor sit amet, tempor prodesset eos no.</p>
+                     <button class="collapsible" style="background-color:#256297;width:100%" >Calculation of Zakaah?</button>
+                    <div class="content2">
+                        <asp:Label ID="LblCalculations" runat="server" Text=""></asp:Label>
                     </div>
-
-                    <!-- END MAIN -->
+                              
                     </div>
+                     <script src="../Zakaah/newZakaah.js"></script>
+                    <div class="col-lg-4" style="position:static;">
+                       <!---javascript code to translate language--->
+                        <p>Translate this page:</p>
+                       <div id="google_translate_element"></div>
 
+                      <script type="text/javascript">
+                          function googleTranslateElementInit()
+                          {
+                            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                          }
+                     </script>
+                     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    <!---end of javascript code--->
+                     <h2 style="color:#256297">Zakaah Facts</h2>
+                    <img src="../Zakaah/ZakaahPics/alms.jpg" />
+                    <div class="rightcolumn">
+                    <div class="card" style="position:static">
+                    
+
+                    <div style="height:50px;width:40px;">
+                     
+                    </div>
+                    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+                    </div>
+                    <div class="card" style="position:static">
+                     <h3>Popular Post</h3>
+                      <div class="fakeimg" style="position:static">Image</div><br />
+                      <div class="fakeimg" style="position:static">Image</div><br />
+                      <div class="fakeimg" style="position:static">Image</div>
+                    </div>
+                    <div class="card"style="position:static" >
+                     <h3>Follow Me</h3>
+                     <p>Some text..</p>
+                    </div>
+                    </div>
+                        <br />
+                       
                           <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
                           <h3>Some Links</h3>
                           <p>Lorem ipsum dolor sit ame.</p>
@@ -223,8 +209,8 @@
            
             
              
-      </div>     
-</div>
+                   </div>     
+                  </div>
 
             <div class="footerr" > <!--End of content, start of footer-->
                 <div class="row">

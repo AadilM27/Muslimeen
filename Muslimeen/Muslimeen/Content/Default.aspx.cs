@@ -23,6 +23,10 @@ namespace Muslimeen.Content
 
                 uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
                 hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
+                divUserProfile.Visible = true;
+
+                liMyMusbtn.Visible = true;
+                liMyMusDivi.Visible = true;
 
                 btnLogin.Text = "Log out";
                 btnRegister.Visible = false;
@@ -30,6 +34,10 @@ namespace Muslimeen.Content
             }
             else if (Session["UserName"] == null)
             {
+                liMyMusbtn.Visible = false;
+                liMyMusDivi.Visible = false;
+
+                divUserProfile.Visible = false;
                 Session.Clear();
             }
             
@@ -43,6 +51,7 @@ namespace Muslimeen.Content
             }
             else if(btnLogin.Text == "Log out")
             {
+
                 Session.Clear();
                 Session.Abandon();
                 Response.Redirect("~/Content/Default.aspx");
@@ -84,6 +93,34 @@ namespace Muslimeen.Content
         protected void btnAboutUs_Click(object sender, EventArgs e)
         {
             //redirect user to the About us page.
+        }
+
+        protected void btnMyMuslimeen_Click(object sender, EventArgs e)
+        {
+            DBHandler dBHandler = new DBHandler();
+
+            uspGetMember uspGetMember = new uspGetMember();
+
+            uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
+
+            if (uspGetMember.MemberType == 'A')
+            {
+                Response.Redirect("~/Content/MyAdmin.aspx");
+            }
+            else if(uspGetMember.MemberType == 'M')
+            {
+                Response.Redirect("~/Content/MyMember.aspx");
+            }
+            else if (uspGetMember.MemberType == 'O')
+            {
+                Response.Redirect("~/Content/MyModerator.aspx");
+            }
+            else if (uspGetMember.MemberType == 'S')
+            {
+                Response.Redirect("~/Content/AddArticle.aspx");
+            }
+
+
         }
     }
 }

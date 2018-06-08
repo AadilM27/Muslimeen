@@ -23,12 +23,12 @@
     color: #256297;
 }
 
-    .navText:hover {
-        color: white;
-        background-color: #3F84C1;
-        text-decoration: none;
-        border-radius: 2px;
-    }
+.navText:hover {
+    color: white;
+    background-color: #3F84C1;
+    text-decoration: none;
+    border-radius: 2px;
+}
 
 .navbar {
     background-color: white;
@@ -57,12 +57,12 @@
     text-decoration-color: #256297;
 }
 
-    .navbtn:hover {
-        color: white;
-        background-color: #3F84C1;
-        text-decoration: none;
-        border-radius: 2px;
-    }
+.navbtn:hover {
+    color: white;
+    background-color: #3F84C1;
+    text-decoration: none;
+    border-radius: 2px;
+}
 
 .topnav {
     border-color: #3F84C1;
@@ -70,12 +70,12 @@
     color: #256297;
 }
 
-    .topnav:hover {
-        color: white;
-        background-color: #3F84C1;
-        text-decoration: none;
-        border-radius: 3px;
-    }
+.topnav:hover {
+    color: white;
+    background-color: #3F84C1;
+    text-decoration: none;
+    border-radius: 3px;
+}
 
 .search-btn {
     border-bottom-color: #3F84C1;
@@ -107,10 +107,10 @@
     border-bottom-right-radius: 0px;
 }
 
-    .search-box:focus {
-        width: 100%;
-        box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
-    }
+.search-box:focus {
+    width: 100%;
+    box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+}
 
 .footerr {
     width: 100%;
@@ -131,5 +131,15 @@
     font-size: 65px;
     color: #3F84C1;
 }
-
+.NavDevider {
+    color: #256297;
+    align-self: center;
+}
 /*END code for header and footer*/
+
+.lnkPendingReg {
+    height: 100px;
+    background-color: #256297;
+    text-align:center;
+    vertical-align:middle;
+}

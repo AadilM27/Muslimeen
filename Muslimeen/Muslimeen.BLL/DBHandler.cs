@@ -61,5 +61,33 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetScholarDetails(memberID);
         }
+
+        //Adding a new Article by the Scholar...
+        public bool BLL_AddArticle(Article article)
+        {
+            return dBAccess.AddArticle(article);
+        }
+        public bool BLL_UpdateMember(UpdateMember updateMember)
+        {
+            return dBAccess.UpdateMember(updateMember);
+        }
+
+        public bool BLL_UpdateMemberPassword(UpdateMemberPassword updateMemberPassword)
+        {
+            return dBAccess.UpdateMemberPassword(updateMemberPassword);
+        }
+        public Zakaah BLL_GetZakaah()
+        {
+             return dBAccess.GetZakaah();
+        }
+        public List<uspGetOrganizations> BLL_GetOrganization()
+        {
+            return dBAccess.GetOrganization();
+        }
+        //Get All Topics
+        public List<uspGetTopics> BLL_GetTopics()
+        {
+            return dBAccess.GetTopics();
+        }
     }
 }

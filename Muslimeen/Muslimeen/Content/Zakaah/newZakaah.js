@@ -18,5 +18,7 @@
                 content2.style.display = "block";
             }
         });
-    }
+}
+
+
                              

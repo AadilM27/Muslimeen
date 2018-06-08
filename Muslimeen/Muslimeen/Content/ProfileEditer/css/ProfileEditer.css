@@ -13,11 +13,6 @@ body {
     height: 100%;
 }
 
-.field-div:hover {
-    box-shadow: 0 2px 5px rgb(25,62,97);
-    border-radius:2px;
-}
-
 .form-profileEditer {
     width: 100%;
     max-width: 630px;

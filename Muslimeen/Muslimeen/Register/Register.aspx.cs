@@ -182,7 +182,7 @@ namespace Muslimeen.Register
 
             if (continueProcess == 0)
             {
-                //make sure the DOB is in corrct format yyy-mm-dd.
+                //make sure the DOB is in correct format yyy-mm-dd.
                 if (txtDOB.Text.IndexOf('-', 4) == -1 || txtDOB.Text.IndexOf('-', 7) == -1)
                 {
                     txtDOB.Text = txtDOB.Text.Insert(4, "-");
@@ -191,9 +191,10 @@ namespace Muslimeen.Register
 
                 try
                 {
-                    string encryptionPass = "NexTech";
+                    string encryptionPass = Convert.ToString(txtUserName.Text);
                     Encryption encryption = new Encryption();
                     Member member = new Member();
+                    DateTime dateTime = DateTime.Today;
 
                     string encryptedString = encryption.Encrypt(encryptionPass, 
                         Convert.ToString(txtPassword.Text));
@@ -201,14 +202,14 @@ namespace Muslimeen.Register
                     member.MemberID = Convert.ToString(txtUserName.Text);
                     member.MemberName = Convert.ToString(txtName.Text);
                     member.MemberLastName = Convert.ToString(txtLName.Text);
-                    member.MemberDOB = Convert.ToDateTime(txtDOB.Text.ToString());
+                    member.MemberDOB = Convert.ToDateTime(txtDOB.Text);
                     member.Password = Convert.ToString(encryptedString);
                     member.MemberType = Convert.ToChar(ddUsertype.SelectedValue);
                     member.ActiveTypeID = 'T';
                     member.Email = Convert.ToString(txtUserEmail.Text);
                     member.ContactNo = Convert.ToString(txtContactNum.Text);
-                    member.ActivationExpiry = Convert.ToDateTime(DateTime.Today.AddDays(1));
-                    member.ActivationDate = Convert.ToDateTime(DateTime.Today);
+                    member.ActivationExpiry = Convert.ToDateTime(dateTime.AddDays(1).ToString("yyyy-MM-dd HH:mm:ss"));
+                    member.ActivationDate = Convert.ToDateTime(dateTime.ToString("yyyy-MM-dd HH:mm:ss"));
                     
 
                     bool success = dBHandler.BLL_AddMember(member);
