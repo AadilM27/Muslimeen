@@ -8,13 +8,19 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-    <title>MyMuslimeen - Home</title>
+    <title>Help Page</title>
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="Default/css/Default.css" rel="stylesheet" />
+     <link href="../Content/HelpPage/HelpPage.css" rel="stylesheet" />
+    <link href="../Content/HelpPage/icon" rel="stylesheet" />
 </head>
     <body>
-        <form id="frmScholar" runat="server" class=" ">   
+        <form id="frmScholar" runat="server" class=" ">   <!--READ THIS FIRST == Haanim I added the code behind for this page from Default.aspx, you 
+                                                            have to do it for AboutUs.aspx, and make all your div tags postion to static
+                                                                so it down overlap with header and footer. Dont forget to create a custom css
+                                                                    file for your new pages, copy and paste the css styling where indicated in
+                                                                       Default.css and link your pages custom css file not the default.css file for this page-->
             <header >
                 <nav class="navFixed">
                     <div class="row align-self-end">
@@ -76,47 +82,44 @@
                 </div>
             </header>
      <!--Add content-->
-            <div class="content">
+            <div class="container">
+                <br />
             <h1 class="title">Help and Support</h1>
                 <hr />
 
                 <div class="row">
             <!--Help Center-->
-              <div class =" col text-center">
+              <div class =" col text-center" style="position:static;">
+                  <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/help.png" width="90" height="70"/>
                 <h4 class="text-center"><a href="#">Help Center</a></h4>
-                <p> Information or help on</p>
-                  <ul>
-                      <li>Getting started</li>
-                      <li>Managing your account</li>
-                      <li>Logging in</li>
-                      <li>How my Muslimeen feed works</li>
-                  </ul>
+                
+                 <p class="text-center">
+                      Getting started <br/>
+                      Managing your account<br />
+                      How my Muslimeen feed works<br />
+                  </p>
               </div>
 
               <!--Privacy and Safety--> 
-            <div class =" col text-center">
-                <h4 class="text-center"><a href="#"> and safety</a></h4>  
+            <div class =" col text-center" style="position:static;"><!--and this one static also-->
+                <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/lock.png" width="90" height="70"/>
+                <h4 class="text-center"><a href="~/Content/HelpCenter.aspx"> Privacy and safety</a></h4>  
                 
-                <ul>
-                   <li>Our data policy and your privacy</li>
-                </ul>
+                   Our data policy and your privacy      
                   
              </div>
             
              <!--Terms and Policies -->
-            <div class ="col text-center">
+            <div class ="col text-center" style="position:static;"> <!--Like this i made this position static-->
+                <asp:Image runat="server" CssClass="mb-0 ml-0"  src="../Content/HelpPage/icons/docs.png" width="90" height="70"/>
                <h4 class="text-center"><a href="#">Terms and policies</a></h4> 
-                <ul>
-                    <li>Terms of service</li>
-                    <li>Our service</li>
-                    
-                </ul>
+                <p class="text-center">
+                    Terms of service<br />
+                </p>
+                
             </div>
                     
           </div> <!--close Row-->
-
-
-
             </div>
               <div class="footerr"> <!--End of content, start of footer-->
                 <div class="row">

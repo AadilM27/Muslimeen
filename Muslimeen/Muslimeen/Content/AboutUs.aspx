@@ -10,10 +10,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
     <title>About Us</title>
-    <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
+     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="MyMember/css/MyMember.css" rel="stylesheet" />
     <link href="../Content/AboutUs/AboutUs.css" rel="stylesheet" />
+     <link href="Default/css/Default.css" rel="stylesheet" />
 </head>
     <body>
         <form id="frmScholar" runat="server" class=" ">   
@@ -22,60 +23,72 @@
                     <div class="row align-self-end">
                         <ul class=" col-7 navbar-nav flex-row justify-content-start">
                             <asp:HiddenField runat="server" ID="hfAdjustDate" Value="-2" /> <!--Need to get value from DB let admin adjust this -->
-                            <li class="nav-item ml-3 mr-0"> <p id="lstIslamicDate"></p></li>
+                            <li class="nav-item ml-4 mr-0 mb-0 pt-2"> <p class="IslamicDate mb-0" id="lstIslamicDate"></p></li>
                             <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
                         </ul>
-                        <ul class="navbar-nav flex-row justify-content-end col-5">
+                        <ul class="col-5 navbar-nav flex-row justify-content-end">
                             <li class="nav-item ml-0 mr-0">
                             <asp:TextBox ID="txtSearch" TextMode="Search" runat="server"  class=" search-box form-control form-control-sm" autocomplete="off" placeholder="Search"></asp:TextBox>
                             </li>
-                            <li class="nav-item ml-0 mr-2">
+                            <li class="nav-item mr-2">
                                 <asp:Button runat="server" Text="Go" CssClass="topnav search-btn form-control form-control-sm" />
                             </li>
                             <li class=" nav-item mr-2">
-                            <asp:Button runat="server" Text="Login" CssClass="topnav btn btn-sm btn-outline-light" />
-                            </li>
+                            <asp:Button runat="server" Text="Login" ID="btnLogin" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnLogin_Click" />
+                            </li><!--I dont know whats the problem here-->
                             <li class="nav-item mr-2">
-                            <asp:Button runat="server" Text="Register" CssClass="topnav btn btn-sm btn-outline-light" />
+                            <asp:Button runat="server" Text="Register" ID="btnRegister" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnRegister_Click" />
                             </li>
                         </ul>
                     </div>
+                    <div class="row">
+                        <ul class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
+                            <li><asp:HyperLink ToolTip="Edit user profile" runat="server" ID="hplUserProfile" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-3 user"></asp:HyperLink></li>
+                        </ul>
+                    </div>
                 </nav>
-                <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row">
+                <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50);">
                     <div class=" text-center">
                         <asp:Image runat="server" CssClass="mb-0 ml-0" src="/Login/LogIn_Bootstrap\logo.png" width="185" height="110"/>
-                   
                         </div>
-                    <div class=" ml-0 navbar-nav-scroll align-self-center justify-content-start">
-                        <ul class="navbar-nav flex-row">
-                            <li class="nav-item navbarText navbaritems"">
-                                <asp:Button runat="server" Text="Home"  CssClass=" btn btn-link nav-item navText"/>
-                            </li><li>|</li><!--deviders-->
+                    <div class="ml-2 navbar-nav-scroll align-self-end justify-content-start">
+                        <ul class="navbar-nav row">
                             <li class="nav-item navbarText navbaritems">
-                                <asp:Button runat="server" Text="Mosques"  CssClass="nav-item navText btn-link btn"/>
-                            </li><li>|</li><!--deviders-->
+                                <asp:Button runat="server" ID="btnHome" Text="Home"  CssClass=" btn btn-link nav-item navText" OnClick="btnHome_Click"/>
+                            </li><li class="NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems">
-                                <asp:Button runat="server" Text="Scholars"  CssClass="nav-item navText btn-link btn"/>
-                            </li><li>|</li><!--deviders-->
+                                <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen"  CssClass=" btn btn-link nav-item navText"/>
+                            </li><li class="NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems">
-                                <asp:Button runat="server" Text="Learn Islam"  CssClass="nav-item navText btn-link btn"/>
-                            </li><li>|</li><!--deviders-->
+                                <asp:Button runat="server" ID="btnMosques" Text="Mosques"  CssClass="nav-item navText btn-link btn" OnClick="btnMosques_Click"/>
+                            </li><li class="NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems">
-                                <asp:Button runat="server" Text="Zakaah"  CssClass="nav-item navText btn-link btn"/>
-                            </li><li>|</li><!--deviders-->
+                                <asp:Button runat="server" ID="btnScholars" Text="Scholars"  CssClass="nav-item navText btn-link btn" OnClick="btnScholars_Click"/>
+                            </li><li class="NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems">
-                                <asp:Button runat="server" Text="About us"  CssClass="nav-item navText btn-link btn"/>
+                                <asp:Button runat="server" ID="btnLearnIslam" Text="Learn Islam"  CssClass="nav-item navText btn-link btn" OnClick="btnLearnIslam_Click"/>
+                            </li><li class="NavDevider">|</li><!--deviders-->
+                            <li class="nav-item navbarText navbaritems">
+                                <asp:Button runat="server" ID="btnZakaah" Text="Zakaah"  CssClass="nav-item navText btn-link btn" OnClick="btnZakaah_Click"/>
+                            </li><li class="NavDevider">|</li><!--deviders-->
+                            <li class="nav-item navbarText navbaritems">
+                                <asp:Button runat="server" ID="btnAboutUs" Text="About us"  CssClass="nav-item navText btn-link btn" OnClick="btnAboutUs_Click"/>
                             </li>
                         </ul>
                     </div>
                 </div>
             </header>
-            <div class="content"><!--add content here --> 
+
+
+           <!--add content here --> 
         <!--START INSERTING CODE FROM THIS POINT ON-->
             <!--add your custom styling in MyMember.css in MyMember/css-->
+            <br />
                 <h1 class="title">About us</h1>
                 <hr />
                 
+
+
                <div class="container">
                 
                    <h4 class="text-center"> Our Mission:  <br/></h4>
@@ -88,7 +101,7 @@
                     <hr />
 
 
-                <p class="paragraphDisplay">
+                <p>
                     Our mission is what drives us to do everything possible to increase the unity within our community. We do this by having
                     a centralised database where all members can access our safe and secure website anywhere, and at anytime. <br />
                     This website caters for those who would like to view events and salaah times or any other information about the mosque they attend or 
@@ -104,7 +117,7 @@
                     </h5>
                 <hr />
 
-                   <p class="paragraphDisplay">
+                   <p>
                        We are in the process of increasing the communication platform to increase our users satisfaction.
                        Our future communication platform will include a Muslimeen forum page where members may start a 
                        thread by asking questions as well as respond to a thread which was created.
@@ -120,7 +133,7 @@
                     </h5>
                 <hr />
 
-                   <p class="paragraphDisplay">
+                   <p>
                        No matter where we come from, the love for Islam and helping others unites us.
                        Our team shares a singular goal: to inform members about what is happening within our community, foster convenience and help those
                        who would like to know more about Islam.
@@ -131,9 +144,7 @@
                        means of communication and learning.
                     </p>-->
                     </div>
-                
 
-                </div>
             <div class="footerr"><!--End content here, start of footer-->
                 <div class="row">
                     <div class="col text-center">

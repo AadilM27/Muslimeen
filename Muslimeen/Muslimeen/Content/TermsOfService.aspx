@@ -1,23 +1,22 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MyMember.aspx.cs" Inherits="Muslimeen.Content.MyMuslimeen_User_" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TermsOfService.aspx.cs" Inherits="Muslimeen.Content.TermsOfService" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-
-    
 <head runat="server">
     <meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-    <title>My Muslimeen</title>
+    <title>TermsAndPolicies</title>
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="MyMember/css/MyMember.css" rel="stylesheet" />
+    <link href="Default/css/Default.css" rel="stylesheet" />
+    <link href="../Content/HelpPage/HelpPage.css" rel="stylesheet" />
+
 </head>
     <body>
-        <form id="frmScholar" runat="server" class=" ">   
-                  <header >
+        <form id="frmScholar" runat="server" class=" ">  
+           <header >
                 <nav class="navFixed">
                     <div class="row align-self-end">
                         <ul class=" col-7 navbar-nav flex-row justify-content-start">
@@ -77,87 +76,117 @@
                     </div>
                 </div>
             </header>
-        <div class="content"><!--add content here --> 
-        <!--START INSERTING CODE FROM THIS POINT ON-->
-            <!--add your custom styling in MyMember.css in MyMember/css-->
-            <hr class ="midnight-blue" />
-          <div class="row">
-            <!--Salaah times-->
-              <div class =" col text-center">
-                <h4 class="text-center">Salaah Times</h4>
-                <p>Salaah times here</p>
-              </div>
+     <!--Add content-->
+             <div class="container"> 
+                 <br />
+            <h1 class="title">Terms and Policies     <asp:Image runat="server" CssClass="mb-0 ml-0"  src="../Content/HelpPage/icons/docs.png" width="90" height="70"/></h1> 
+                <hr />
 
-              <!--view events--> 
-            <div class =" col text-center">
-                <h4 class="text-center">View Events</h4> <h5><asp:RadioButton  ID= "Mosque1" GroupName="AllMosque" runat="server" text="My Mosque"/>
-                 &nbsp;&nbsp;&nbsp; <asp:RadioButton ID="Mosque" GroupName="AllMosques" runat="server" text="All Mosques"/></h5>  
-                
-                    <p>
-                        paragraph
-                    </p>
-             </div>
-            
-             <!--notifications-->
-            <div class ="col text-center">
-               <h4 class="text-center">Notifications</h4> 
-                <p>add notifications here</p>
-            </div>
 
-          </div> <!--close Row-->
-        </div> <!--close content-->
-          <div class="footerr"><!--End content her, start of footer-->
+                 <p>
+                      <b>Terms of service:</b><br />
+                     These terms of use are effective on January 2018. <br />
+                     By using My Muslimeen website, you are agreeing to be bound by the following terms and conditions ("Terms of service"). <br />
+                 </p>
+
+                 <ol>
+                     <li>
+                         You must be 10 years or older to use this site.
+                     </li>
+                     <li>
+                         You are responsible for keeping your password secure.
+                     </li>
+                     <li>
+                         You may not harass or threaten our scholars regarding their content uploaded.
+                     </li>
+                     <li>
+                         You may not use My Muslimeen for illegal or unauthorized purposes.
+                     </li>
+                     <li>
+                         Each user is responsible for their own profile and conduct. 
+                     </li>
+                     <li>
+                         You may not modify, adapt or hack my Muslimeen so as to falsely say that it is associated with My Muslimeen.
+                     </li>
+                   
+                 </ol>
+
+                 <b>General Conditions:</b><br />
+                 <ol>
+                     <li>
+                         We reserve the right to alter these terms at any time. If we terminate your access to the Service, 
+                         your articles and all other data will no longer be accessible through your account.
+                     </li>
+                     <li>
+                         We reserve the right to refuse access to the Service to anyone for any reason at any time.
+                     </li>
+                     <li>
+                         We reserve the right to force forfeiture of any name for any reason.
+                     </li>
+                     <li>
+                         You are solely responsible for your interaction with other users of the Service.
+                     </li>
+                 </ol>
+                 <br />
+
+                 <b>Violation of these agreements will result in the termination of your account.</b>
+
+                 </div>
+
+<div class="footerr"> <!--End of content, start of footer-->
                 <div class="row">
-                    <div class="col text-center">
-                       <h5>Content</h5>
+                    <div class="col text-center position-static">
+                       <h6>Content</h6>
                         <ul class="navbar-nav">
                            <li class="nav-item">
-                               <a href="#">Home</a>
+                               <a class="footerr-text" href="Default.aspx">Home</a>
                            </li>
                            <li class="nav-item">
-                               <a href="#">Mosques</a>
+                               <a class="footerr-text" href="Mosque.aspx">Mosques</a>
                            </li>
                            <li class="nav-item">
-                               <a href="#">Scholars</a>
+                               <a class="footerr-text" href="#">Scholars</a>
                            </li>
                            <li class="nav-item">
-                               <a href="#">Learn Islam</a>
+                               <a class="footerr-text" href="#">Learn Islam</a>
                            </li>
                            <li class="nav-item">
-                               <a href="#">Zakaah</a>
+                               <a class="footerr-text" href="Zakaah.aspx">Zakaah</a>
                            </li>
                         </ul>
                     </div>
-                    <div class="col  text-center">
-                        <h5>About us</h5>
+                    <div class="col  text-center position-static">
+                        <h6>About us</h6>
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a href="#">Content</a>
+                                <a class="footerr-text" href="#">Content</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">Content</a>
+                                <a class="footerr-text" href="#">Content</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">Content</a>
+                                <a class="footerr-text" href="#">Content</a>
                             </li>
                         </ul>
                     </div>
-                    <div class="col  text-center">
-                        <h5>Contact us</h5>
+                    <div class="col  text-center position-static">
+                        <h6>Contact us</h6>
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a href="#">Content</a>
+                                <a class="footerr-text" href="#">Content</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">Content</a>
+                                <a class="footerr-text" href="#">Content</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">Content</a>
+                                <a class="footerr-text" href="#">Content</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </form>
+            </form>
+        <script src="Default/Default.js" type="text/javascript"></script>
     </body>
+        <script src="Default/Default.js" type="text/javascript"></script>
 </html>

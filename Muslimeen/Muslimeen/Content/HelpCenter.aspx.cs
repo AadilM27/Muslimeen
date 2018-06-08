@@ -8,10 +8,9 @@ using TypeLib.Models;
 using TypeLib.ViewModels;
 using Muslimeen.BLL;
 
-
 namespace Muslimeen.Content
 {
-    public partial class AboutUs : System.Web.UI.Page
+    public partial class HelpCenter : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,9 +32,8 @@ namespace Muslimeen.Content
             {
                 Session.Clear();
             }
-
-
         }
+
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             if (btnLogin.Text == "Login")
@@ -46,12 +44,11 @@ namespace Muslimeen.Content
             {
                 Session.Clear();
                 Session.Abandon();
-                Response.Redirect("~/Content/AboutUs.aspx");
+                Response.Redirect("~/Content/HelpPage.aspx");
                 btnLogin.Text = "Login";
                 btnRegister.Visible = true;
             }
         }
-
         protected void btnRegister_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Register/Register.aspx");
