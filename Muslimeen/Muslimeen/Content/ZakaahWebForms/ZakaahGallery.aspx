@@ -12,6 +12,7 @@
      <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico" />
      <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
      <link href="../Default/css/Default.css" rel="stylesheet" />
+        <link href="../Zakaah/css/Gallery.css" rel="stylesheet" />
 </head>
     <body style="background-color:white">
         <form id="frmScholar" runat="server" class=" ">   
@@ -76,6 +77,7 @@
                     </div>
                 </div>
             </header>
+            </form>
         <div class="content" id="content" style="background-color:white"><!--add content here -->
             <div class="zakaah-content" style="position:static;">
             <nav class="navbar navbar-expand-sm navbar-dark" style="position:static; background-color:#256297;">
@@ -99,77 +101,103 @@
             </nav>
 
                     <div class="container" style="margin-top:10px; position:static;">
-                      <div class="row" style="position:static;right:50px">
-                          <div class="col-lg-8" style="position:static;">
+                    <div class="row" style="position:static;right:50px">
+                    <div class="col-lg-12" style="position:static;">
                              
                     <div style="text-align:center;color:white;background-color:#256297;font-size:20px">
                     <strong >ZAKAAT GALLERY</strong>
                     </div>
                     <br />
-                     
+                    <!-- MAIN (Center website) -->
+                    <div class="main">
+                    <div id="myBtnContainer">
+                      <button class="btns active" onclick="filterSelection('all')"> Show all</button>
+                      <button class="btns" onclick="filterSelection('Organizations')"> Zakaat Organization</button>
+                      <button class="btns" onclick="filterSelection('cars')">alms giving</button>
+                      <button class="btns" onclick="filterSelection('people')"> People</button>
                     </div>
-                  <div class="col-lg-4" style="position:static;">
-                       <!---javascript code to translate language--->
-                        <p>Translate this page:</p>
-                       <div id="google_translate_element"></div>
 
-                      <script type="text/javascript">
-                          function googleTranslateElementInit()
-                          {
-                            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-                          }
-                     </script>
-                     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-                    <!---end of javascript code--->
-                     <h2 style="color:#256297">Zakaah Facts</h2>
-                    <img src="../Zakaah/ZakaahPics/alms.jpg" />
-                    <div class="rightcolumn">
-                    <div class="card" style="position:static">
-                    
-
-                    <div style="height:50px;width:40px;">
-                     
-                    </div>
-                    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-                    </div>
-                    <div class="card" style="position:static">
-                     <h3>Popular Post</h3>
-                      <div class="fakeimg" style="position:static">Image</div><br />
-                      <div class="fakeimg" style="position:static">Image</div><br />
-                      <div class="fakeimg" style="position:static">Image</div>
-                    </div>
-                    <div class="card"style="position:static" >
-                     <h3>Follow Me</h3>
-                     <p>Some text..</p>
-                    </div>
-                    </div>
-                        <br />
-                       
-                          <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-                          <h3>Some Links</h3>
-                          <p>Lorem ipsum dolor sit ame.</p>
-                          <ul class="nav nav-pills flex-column">
-                            <li class="nav-item">
-                              <a class="nav-link active" href="#">Active</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link disabled" href="#">Disabled</a>
-                            </li>
-                          </ul>
-                          <hr class="d-sm-none" />
+                    <!-- Portfolio Gallery Grid -->
+                    <div class="row">
+                      <div class="column Organizations">
+                        <div class="content">
+                          <img src="/w3images/mountains.jpg" alt="Mountains" style="width:100%" />
+                          <h4>Mountains</h4>
+                          <p>Lorem ipsum dolor..</p>
                         </div>
+                      </div>
+                      <div class="column Organizations">
+                        <div class="content">
+                        <img src="/w3images/lights.jpg" alt="Lights" style="width:100%" />
+                          <h4>Lights</h4>
+                          <p>Lorem ipsum dolor..</p>
+                        </div>
+                      </div>
+                      <div class="column Organizations">
+                        <div class="content">
+                        <img src="/w3images/nature.jpg" alt="Nature" style="width:100%" />
+                          <h4>Forest</h4>
+                          <p>Lorem ipsum dolor..</p>
+                        </div>
+                      </div>
+  
+                      <div class="column cars">
+                        <div class="content">
+                          <img src="/w3images/cars1.jpg" alt="Car" style="width:100%" />
+                          <h4>Retro</h4>
+                          <p>Lorem ipsum dolor..</p>
+                        </div>
+                      </div>
+                      <div class="column cars">
+                        <div class="content">
+                        <img src="/w3images/cars2.jpg" alt="Car" style="width:100%" />
+                          <h4>Fast</h4>
+                          <p>Lorem ipsum dolor..</p>
+                        </div>
+                      </div>
+                      <div class="column cars">
+                        <div class="content">
+                        <img src="/w3images/cars3.jpg" alt="Car" style="width:100%" />
+                          <h4>Classic</h4>
+                          <p>Lorem ipsum dolor..</p>
+                        </div>
+                      </div>
+
+                      <div class="column people">
+                        <div class="content">
+                          <img src="/w3images/people1.jpg" alt="Car" style="width:100%" />
+                          <h4>Girl</h4>
+                          <p>Lorem ipsum dolor..</p>
+                        </div>
+                      </div>
+                      <div class="column people">
+                        <div class="content">
+                        <img src="/w3images/people2.jpg" alt="Car" style="width:100%" />
+                          <h4>Man</h4>
+                          <p>Lorem ipsum dolor..</p>
+                        </div>
+                      </div>
+                      <div class="column people">
+                        <div class="content">
+                        <img src="/w3images/people3.jpg" alt="Car" style="width:100%" />
+                          <h4>Woman</h4>
+                          <p>Lorem ipsum dolor..</p>
+                        </div>
+                      </div>
+                    <!-- END GRID -->
+                    </div>
+
+                    <!-- END MAIN -->
+                    </div>
+
+                        <script src="../Zakaah/ZakaahGallery.js"></script>
+                    </div>                
                             
                 </div>
                 </div>
                 </div>
                 </div>
-               </form>   
+              
      
    
               <div class="footerr"> <!--End of content, start of footer-->
