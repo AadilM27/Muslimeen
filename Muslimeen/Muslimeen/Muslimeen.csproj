@@ -99,11 +99,9 @@
     <Content Include="Content\Zakaah.aspx" />
     <Content Include="Content\ZakaahWebForms\newZakaah.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahCalculator.aspx" />
-    <Content Include="Content\ZakaahWebForms\ZakaahFacts.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahGallery.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahOrganizations.aspx" />
     <Content Include="Content\Zakaah\css\newZakaah.css" />
-    <Content Include="Content\Zakaah\css\Zakaah.css" />
     <Content Include="Content\Zakaah\newZakaah.js" />
     <Content Include="Content\Zakaah\ZakaahPics\89588036-zakat-giving-money-to-the-poor-islam-concept-religious-tax-illustration.jpg" />
     <Content Include="Content\Zakaah\ZakaahPics\aid747683-v4-728px-Calculate-Your-Personal-Zakat-Step-1-Version-2.jpg" />
@@ -1644,13 +1642,6 @@
     </Compile>
     <Compile Include="Content\ZakaahWebForms\ZakaahCalculator.aspx.designer.cs">
       <DependentUpon>ZakaahCalculator.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Content\ZakaahWebForms\ZakaahFacts.aspx.cs">
-      <DependentUpon>ZakaahFacts.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Content\ZakaahWebForms\ZakaahFacts.aspx.designer.cs">
-      <DependentUpon>ZakaahFacts.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\ZakaahWebForms\ZakaahGallery.aspx.cs">
       <DependentUpon>ZakaahGallery.aspx</DependentUpon>
