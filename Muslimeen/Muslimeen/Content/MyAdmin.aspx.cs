@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using TypeLib.Models;
 using TypeLib.ViewModels;
 using Muslimeen.BLL;
+using System.Data;
 
 namespace Muslimeen.Content
 {
@@ -15,6 +16,8 @@ namespace Muslimeen.Content
         protected void Page_Load(object sender, EventArgs e)
         {
             DBHandler dBHandler = new DBHandler();
+
+            divViewPendingSch.Visible = false;
 
 
             if (Session["UserName"] != null)
@@ -40,21 +43,37 @@ namespace Muslimeen.Content
                 divUserProfile.Visible = false;
                 Session.Clear();
             }
+
+            
+
             lnkViewwPendingSch.ServerClick += LnkViewwPendingSch_ServerClick;
             lnkViewwPendingMod.ServerClick += LnkViewwPendingMod_ServerClick;
+            //Control control = rptViewPendingSch.FindControl("lstBtn");
+                
+
+        }
+
+        private void btnSchDetails_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Login/Login.aspx");
         }
 
         private void LnkViewwPendingMod_ServerClick(object sender, EventArgs e)
         {
-            DBHandler dBHandler = new DBHandler();
-            divViewPendingMod.Visible = false;
 
-            uspGetMember uspGetMember = new uspGetMember();
-            Table table = new Table();
+            if (divViewPendingSch.Visible == false)
+            {
+                divViewPendingSch.Visible = true;
 
-            uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
+                DBHandler dBHandler = new DBHandler();
 
-           // rptViewPendingSch.DataSource = 
+                rptViewPendingSch.DataSource = dBHandler.BLL_GetAllPendingScholars();
+                rptViewPendingSch.DataBind();
+            }
+            else
+            {
+                divViewPendingSch.Visible = false;
+            }
         }
 
         private void LnkViewwPendingSch_ServerClick(object sender, EventArgs e)
@@ -142,6 +161,7 @@ namespace Muslimeen.Content
 
         protected void rptViewPendingSch_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
+            
 
         }
     }

@@ -77,30 +77,28 @@
                 </div>
             </header>
             <div class="content" id="content"><!--add content here -->
-                <div class="row">
-                    <div class="col-3 justify-content-end position-static" style="background-color:yellow;">
-                        <div runat="server"  class="row justify-content-around align-content-center" style="background-color:green; height:auto;">
-                            <a runat="server" id="lnkViewwPendingSch" class=" btn btn-block lnkPendingReg">View Pending reg</a>
-                        </div>
-                        <div class="row justify-content-around align-content-center" style="background-color:green; height:auto;">
-                            <a runat="server" id="lnkViewwPendingMod" class="btn btn-block lnkPendingReg">View Pending Mod</a>
-                        </div>
+                <div class="row divContainers">
+                    <div class=" col-sm-3 p-0 m-0 divBtnList position-static list-group justify-content-end position-static" style="background-color:yellow;"> <!--contains the buttons-->
+                            <a runat="server" id="lnkViewwPendingSch" class="list-group-item list-group-item-action lnkPendingReg">View Pending scholars</a>
+                            <a runat="server" id="lnkViewwPendingMod" class="list-group-item list-group-item-action lnkPendingReg">View Pending Moderators</a>
                     </div>
-                    <div class="col-9 justify-content-end position-static" style="background-color:blue;">
-                        <div class="row divContainers" runat="server" id="divViewPendingSch" style="background-color:pink; height:80px;">
+                    <div class=" col-sm-9 divContainers position-static position-static" runat="server" id="divViewPendingSch" style="background-color:pink;"> <!--Contains the List of items-->
+                        <div class="row justify-content-end position-static list-group" style="background-color:blue;">
                             <asp:Repeater ID="rptViewPendingSch" runat="server" OnItemCommand="rptViewPendingSch_ItemCommand">
-
+                                <HeaderTemplate>
+                                </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:HyperLink ID="btnShow" Text='<%#Eval("MemberID") %>' CssClass="pb-0 pr-0 pl-0 pt-2 list-group-item list-group-item-action lstBtn" EnableViewState="true" runat="server"/>
+                                    </ItemTemplate>
+                                <FooterTemplate>
+                                </FooterTemplate>
                             </asp:Repeater>
                         </div>
-                        <div runat="server" id="divViewPendingMod" class="row divContainers" style="background-color:pink; height:80px;">
-
-                        </div>
                     </div>
-
                 </div>
             </div>
         </form>
-            <div class="footerr"> <!--End of content, start of footer-->
+            <div class="footerr"> <!--End of content, start of footer CssClass="pb-0 pr-0 pl-0 pt-2 list-group-item list-group-item-action lstBtn"-->
             <div class="row">
                 <div class="col text-center position-static">
                     <h6>Content</h6>

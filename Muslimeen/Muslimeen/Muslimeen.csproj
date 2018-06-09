@@ -85,6 +85,7 @@
     <Content Include="Content\Mosque\Mosque.css" />
     <Content Include="Content\MyAdmin.aspx" />
     <Content Include="Content\MyAdmin\css\MyAdmin.css" />
+    <Content Include="Content\MyAdmin\icons\PendingReg.png" />
     <Content Include="Content\MyAdmin\js\MyAdmin.js" />
     <Content Include="Content\MyMember.aspx" />
     <Content Include="Content\MyMember\css\MyMember.css" />
