@@ -77,26 +77,62 @@
                 </div>
             </header>
             <div class="content" id="content"><!--add content here -->
-                <div class="row divContainers">
-                    <div class=" col-sm-3 p-0 m-0 divBtnList position-static list-group justify-content-end position-static" style="background-color:yellow;"> <!--contains the buttons-->
-                            <a runat="server" id="lnkViewwPendingSch" class="list-group-item list-group-item-action lnkPendingReg">View Pending scholars</a>
-                            <a runat="server" id="lnkViewwPendingMod" class="list-group-item list-group-item-action lnkPendingReg">View Pending Moderators</a>
-                    </div>
-                    <div class=" col-sm-9 divContainers position-static position-static" runat="server" id="divViewPendingSch" style="background-color:pink;"> <!--Contains the List of items-->
-                        <div class="row justify-content-end position-static list-group" style="background-color:blue;">
+                <div class="row m-0 divContainers">
+                    <nav class=" col-3 p-0 position-static navbar navbar-light bg-light"> <!--contains the buttons-->
+                        <nav class="nav nav-pills flex-column pl-2">
+                            <p class="navbar-brand">Admin Tasks:</p>
+                            <a runat="server"  id="lnkViewPendingSch" class=" mb-2 nav-link btn btn-outline-secondary taskBtn">View Pending scholars</a>
+                            <a runat="server" id="A1" class=" mb-2 nav-link btn btn-outline-secondary taskBtn">View Pending Moderators</a>
+                            <a runat="server" id="lnkViewwPendingMod" class=" mb-2 btn btn-outline-secondary taskBtn">Pending Moderators</a>
+                        </nav>
+                    </nav>
+                    <div style="background-color:blue;" class="col-4 p-3 position-static position-static" runat="server" id="divViewPendingSch"> <!--Contains the List of items-->
+                        <div class="row position-static list-group justify-content-end">
                             <asp:Repeater ID="rptViewPendingSch" runat="server" OnItemCommand="rptViewPendingSch_ItemCommand">
                                 <HeaderTemplate>
                                 </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:HyperLink ID="btnShow" Text='<%#Eval("MemberID") %>' CssClass="pb-0 pr-0 pl-0 pt-2 list-group-item list-group-item-action lstBtn" EnableViewState="true" runat="server"/>
+                                        <asp:LinkButton ID="btnShow" EnableViewState="true"  CommandArgument='<%#Eval("MemberID") %>' CssClass="align-self-center list-group-item list-group-item-action lstBtn" runat="server" OnClick="btnShow_Click"><img src="MyAdmin/icons/PendingReg.png" class=" img-thumbnail" style="width:32px; height:32px;" />&nbspUser&nbspName: <%#Eval("MemberID")%><br /><b>Date Registered: </b><%#Eval("ActivationDate")%></asp:LinkButton>
                                     </ItemTemplate>
                                 <FooterTemplate>
                                 </FooterTemplate>
                             </asp:Repeater>
                         </div>
                     </div>
+                    <div style="background-color:red;" runat="server" id="divDisplaySch" class=" position-static col-5 p-3 divContainers">
+                            <div class="row position-static">
+                                <div class="col position-static"><b>Member  ID:</b></div><div class="col position-static"><label runat ="server" id="lblMemberID"></label></div>
+                            </div>
+                            <div class="row position-static">
+                                <div  class="col position-static"><b>Member Name:</b></div><div class="col"><label runat="server" id="lblMemberName"></label></div>
+                            </div>
+                            <div class="row position-static">
+                                <div  class="col position-static"><b>Member Lastname:</b></div><div class="col position-static"><label runat="server" id="lblMemberLastName"></label></div>
+                            </div>
+                            <div class="row position-static">
+                                <div  class="col position-static"><b>Member DOB:</b></div><div class="col position-static"><label runat="server" id="lblMemberDOB"></label></div>
+                            </div>
+                            <div class="row position-static">
+                                <div  class="col position-static"><b>Member Type:</b></div><div class="col position-static"><label runat="server" id="lblMemberType"></label></div>
+                            </div>
+                            <div class="row position-static">
+                                <div class="col position-static"><b>Status:</b></div><div class="col position-static"><label runat="server" id="lblActiveTypeID"></label></div>
+                            </div>
+                            <div class="row position-static">
+                                <div class="col position-static"><b>Email Address:</b></div><div class="col position-static"><label runat="server" id="lblEmail"></label></div>
+                            </div>
+                            <div class="row position-static">
+                                <div class="col position-static"><b>Contact No.</b></div><div class="col position-static"><label runat="server" id="lblContactNo"></label></div>
+                            </div>
+                            <div class="row position-static">
+                                <div class="col position-static"><b>Activation Expiry:</b></div><div class="col position-static"><label runat="server" id="lblActivationExpiry"></label></div>
+                            </div>
+                            <div class="row position-static">
+                                <div class="col position-static"><b>Activation Date:</b></div><div class="col position-static"><label runat="server" id="lblActivationDate"></label></div>
+                            </div>
+                        </div>
+                     </div>
                 </div>
-            </div>
         </form>
             <div class="footerr"> <!--End of content, start of footer CssClass="pb-0 pr-0 pl-0 pt-2 list-group-item list-group-item-action lstBtn"-->
             <div class="row">

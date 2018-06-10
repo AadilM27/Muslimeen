@@ -103,7 +103,7 @@ namespace Muslimeen.BLL
                     }
                     else
                     {
-                        getMember.ActivationExpiry = null;
+                        //don't parse it
                     }
                     getMember.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
 
