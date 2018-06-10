@@ -89,5 +89,10 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetTopics();
         }
+
+        public List<uspGetAllPendingScholars> BLL_GetAllPendingScholars()
+        {
+            return dBAccess.GetAllPendingScholars();
+        }
     }
 }

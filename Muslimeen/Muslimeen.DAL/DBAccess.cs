@@ -357,5 +357,43 @@ namespace Muslimeen.BLL
             }
             return list;
         }
+
+        public List<uspGetAllPendingScholars> GetAllPendingScholars ()
+        {
+            List<uspGetAllPendingScholars> scholarsList = new List<uspGetAllPendingScholars>();
+            using (DataTable table = DBHelper.Select("uspGetAllPendingScholars", CommandType.StoredProcedure))
+            {
+                if(table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetAllPendingScholars scholar = new uspGetAllPendingScholars();
+
+                        scholar.MemberID = Convert.ToString(row["MemberID"]);
+                        scholar.MemberName = Convert.ToString(row["MemberName"]);
+                        scholar.MemberLastName = Convert.ToString(row["MemberLastName"]);
+                        scholar.MemberDOB = Convert.ToDateTime(row["MemberDOB"]);
+                        scholar.Password = Convert.ToString(row["Password"]);
+                        scholar.MemberType = Convert.ToChar(row["MemberType"]);
+                        scholar.ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]);
+                        scholar.Email = Convert.ToString(row["Email"]);
+                        scholar.ContactNo = Convert.ToString(row["ContactNo"]);
+                        if (!(row["MosqueID"] is DBNull))
+                        {
+                            scholar.MosqueID = Convert.ToInt32(row["MosqueID"]);
+                        }
+                        else
+                        {
+                            scholar.MosqueID = null;
+                        }
+                        scholar.ActivationExpiry = Convert.ToDateTime(row["ActivationExpiry"]);
+                        scholar.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
+
+                        scholarsList.Add(scholar);
+                    }
+                }
+            }
+            return scholarsList;
+        }
     }
 }
