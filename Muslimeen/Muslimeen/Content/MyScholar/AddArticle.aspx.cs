@@ -49,8 +49,7 @@ namespace Muslimeen.Content.MyScholar
 
                 foreach (uspGetTopics qual in tops)
                 {
-                    drpTopics.Items.Add(new ListItem(qual.TopicDescription.ToString(),
-                        qual.TopicID.ToString()));
+                    drpTopics.Items.Add(new ListItem(qual.TopicDescription.ToString(), qual.TopicID.ToString()));
                 }
             }
         }
@@ -149,7 +148,8 @@ namespace Muslimeen.Content.MyScholar
                 art.RemovalReason = Convert.ToString(" ");
 
                 //Scholar ID input with session...
-                art.ScholarID = Convert.ToString(Session["UserName"]);
+                //art.ScholarID = Convert.ToString(Session["UserName"]);
+                art.ScholarID = Convert.ToString(" ");
 
                 art.ModeratorID = Convert.ToString(" ");
                 art.TopicID = Convert.ToInt32(drpTopics.SelectedValue);
