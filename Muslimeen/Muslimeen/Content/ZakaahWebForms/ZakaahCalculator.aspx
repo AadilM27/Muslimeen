@@ -93,7 +93,7 @@
                     <a class="navbar-brand navt" href="ZakaahCalculator.aspx">Calculator</a>
                   </li>
                   <li class="nav-item">
-                    <a class="navbar-brand navt" href="ZakaahFacts.aspx">Gallery</a>
+                    <a class="navbar-brand navt" href="ZakaahGallery.aspx">Gallery</a>
                   </li>
                   <li class="nav-item">
                     <a class="navbar-brand navt" href="ZakaahOrganizations.aspx">Organizations</a>

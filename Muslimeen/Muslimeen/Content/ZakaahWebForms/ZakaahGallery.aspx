@@ -13,9 +13,10 @@
      <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
      <link href="../Default/css/Default.css" rel="stylesheet" />
         <link href="../Zakaah/css/Gallery.css" rel="stylesheet" />
+       
 </head>
-    <body style="background-color:white">
-        <form id="frmScholar" runat="server" class=" ">   
+    <body>
+    <form id="frmScholar" runat="server" class=" ">   
             <header >
                 <nav class="navFixed">
                     <div class="row align-self-end">
@@ -91,7 +92,7 @@
                     <a class="navbar-brand navt" href="ZakaahCalculator.aspx">Calculator</a>
                   </li>
                   <li class="nav-item">
-                    <a class="navbar-brand navt" href="ZakaahFacts.aspx">Gallery</a>
+                    <a class="navbar-brand navt" href="ZakaahGallery.aspx">Gallery</a>
                   </li>
                   <li class="nav-item">
                     <a class="navbar-brand navt" href="ZakaahOrganizations.aspx">Organizations</a>
@@ -112,76 +113,73 @@
                     <div class="main">
                     <div id="myBtnContainer">
                       <button class="btns active" onclick="filterSelection('all')"> Show all</button>
-                      <button class="btns" onclick="filterSelection('Organizations')"> Zakaat Organization</button>
-                      <button class="btns" onclick="filterSelection('cars')">alms giving</button>
+                      <button class="btns" onclick="filterSelection('Charity')"> Zakaat</button>
+                      <button class="btns" onclick="filterSelection('Parcels')">zakaat parcels</button>
                       <button class="btns" onclick="filterSelection('people')"> People</button>
                     </div>
 
                     <!-- Portfolio Gallery Grid -->
                     <div class="row">
-                      <div class="column Organizations">
+                      <div class="column Charity">
                         <div class="content">
-                          <img src="/w3images/mountains.jpg" alt="Mountains" style="width:100%" />
-                          <h4>Mountains</h4>
-                          <p>Lorem ipsum dolor..</p>
+                            <img src="../Zakaah/ZakaahPics/charity.jpg"  alt="charity" style="width:100%;height:198px" />
                         </div>
                       </div>
-                      <div class="column Organizations">
+                      <div class="column Charity">
                         <div class="content">
-                        <img src="/w3images/lights.jpg" alt="Lights" style="width:100%" />
-                          <h4>Lights</h4>
-                          <p>Lorem ipsum dolor..</p>
+                            <img src="../Zakaah/ZakaahPics/1377717982.jpg" alt="charity" style="width:100%;height:198px" />
                         </div>
                       </div>
-                      <div class="column Organizations">
+                      <div class="column Charity">
                         <div class="content">
-                        <img src="/w3images/nature.jpg" alt="Nature" style="width:100%" />
-                          <h4>Forest</h4>
-                          <p>Lorem ipsum dolor..</p>
+                            <img src="../Zakaah/ZakaahPics/e5f5c3f05066.jpg" alt="charity" style="width:100%;height:198px" />
+                        </div>
+                      </div>
+                      <div class="column Charity">
+                        <div class="content">
+                            <img src="../Zakaah/ZakaahPics/6944893.jpg" alt="charity" style="width:100%;height:198px" />
+                        </div>
+                      </div>
+                        <div class="column Charity">
+                        <div class="content">
+                            <img src="../Zakaah/ZakaahPics/620x349.jpg" alt="charity" style="width:100%;height:198px" />
+                        </div>
+                      </div>
+                        <div class="column Charity">
+                        <div class="content">
+                            <img src="../Zakaah/ZakaahPics/sanzaf.jpg" alt="charity" style="width:100%;height:198px" />
                         </div>
                       </div>
   
-                      <div class="column cars">
+                      <div class="column Parcels">
                         <div class="content">
-                          <img src="/w3images/cars1.jpg" alt="Car" style="width:100%" />
-                          <h4>Retro</h4>
-                          <p>Lorem ipsum dolor..</p>
+                            <img src="../Zakaah/ZakaahPics/62245238.jpg" alt="parcels" style="width:100%;height:198px" />
                         </div>
                       </div>
-                      <div class="column cars">
+                      <div class="column Parcels">
                         <div class="content">
-                        <img src="/w3images/cars2.jpg" alt="Car" style="width:100%" />
-                          <h4>Fast</h4>
-                          <p>Lorem ipsum dolor..</p>
+                            <img src="../Zakaah/ZakaahPics/8343429.jpg" alt="parcels" style="width:100%;height:198px" />
                         </div>
                       </div>
-                      <div class="column cars">
+                      <div class="column Parcels">
                         <div class="content">
-                        <img src="/w3images/cars3.jpg" alt="Car" style="width:100%" />
-                          <h4>Classic</h4>
-                          <p>Lorem ipsum dolor..</p>
+                            <img src="../Zakaah/ZakaahPics/scouts.jpg" alt="parcels" style="width:100%;height:198px" />
                         </div>
                       </div>
 
                       <div class="column people">
                         <div class="content">
-                          <img src="/w3images/people1.jpg" alt="Car" style="width:100%" />
-                          <h4>Girl</h4>
-                          <p>Lorem ipsum dolor..</p>
+                            <img src="../Zakaah/ZakaahPics/SANZAF_580x363.jpg" alt="people" style="width:100%;height:198px" />
                         </div>
                       </div>
                       <div class="column people">
                         <div class="content">
-                        <img src="/w3images/people2.jpg" alt="Car" style="width:100%" />
-                          <h4>Man</h4>
-                          <p>Lorem ipsum dolor..</p>
+                            <img src="../Zakaah/ZakaahPics/!!!!!!UWC-Banner-SANZAF.jpg" alt="people" style="width:100%;height:198px" />
                         </div>
                       </div>
                       <div class="column people">
                         <div class="content">
-                        <img src="/w3images/people3.jpg" alt="Car" style="width:100%" />
-                          <h4>Woman</h4>
-                          <p>Lorem ipsum dolor..</p>
+                            <img src="../Zakaah/ZakaahPics/foundation%20helpers.jpg" alt="Car" style="width:100%;height:198px" />
                         </div>
                       </div>
                     <!-- END GRID -->
