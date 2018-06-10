@@ -15,11 +15,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-<<<<<<< HEAD
-          <StartPageUrl>Content/MyScholar/AddArticle.aspx</StartPageUrl>
-=======
           <StartPageUrl>Content/MyAdmin.aspx</StartPageUrl>
->>>>>>> b17768f11f410a14835f93bf65315505d0bd4ca9
           <StartAction>SpecificPage</StartAction>
           <AspNetDebugging>True</AspNetDebugging>
           <SilverlightDebugging>False</SilverlightDebugging>

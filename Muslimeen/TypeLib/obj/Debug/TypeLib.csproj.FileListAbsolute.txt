@@ -31,3 +31,4 @@ C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.cs
 C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.dll
 C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.pdb
 C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojAssemblyReference.cache
+C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache

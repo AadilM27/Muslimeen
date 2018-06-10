@@ -17,9 +17,9 @@ namespace Muslimeen.Content
         {
             DBHandler dBHandler = new DBHandler();
 
-            divViewPendingSch.Visible = false;
-
-
+            divViewPendingSch.Visible = true;
+            divDisplaySch.Visible = true;
+            
             if (Session["UserName"] != null)
             {
                 uspGetMember uspGetMember = new uspGetMember();
@@ -46,39 +46,29 @@ namespace Muslimeen.Content
 
             
 
-            lnkViewwPendingSch.ServerClick += LnkViewwPendingSch_ServerClick;
-            lnkViewwPendingMod.ServerClick += LnkViewwPendingMod_ServerClick;
+            lnkViewPendingSch.ServerClick += LnkViewPendingSch_ServerClick;
             //Control control = rptViewPendingSch.FindControl("lstBtn");
                 
 
         }
 
-        private void btnSchDetails_Click(object sender, EventArgs e)
+        private void LnkViewPendingSch_ServerClick(object sender, EventArgs e)
         {
-            Response.Redirect("~/Login/Login.aspx");
-        }
-
-        private void LnkViewwPendingMod_ServerClick(object sender, EventArgs e)
-        {
-
             if (divViewPendingSch.Visible == false)
             {
-                divViewPendingSch.Visible = true;
-
                 DBHandler dBHandler = new DBHandler();
 
                 rptViewPendingSch.DataSource = dBHandler.BLL_GetAllPendingScholars();
                 rptViewPendingSch.DataBind();
             }
-            else
+            else if(divViewPendingSch.Visible == true)
             {
-                divViewPendingSch.Visible = false;
-            }
-        }
+                DBHandler dBHandler = new DBHandler();
 
-        private void LnkViewwPendingSch_ServerClick(object sender, EventArgs e)
-        {
-            divViewPendingSch.Visible = false;
+                rptViewPendingSch.DataSource = dBHandler.BLL_GetAllPendingScholars();
+                rptViewPendingSch.DataBind();
+
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -162,6 +152,32 @@ namespace Muslimeen.Content
         protected void rptViewPendingSch_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             
+
+        }
+
+        protected void btnShow_Click(object sender, EventArgs e)
+        {
+            LinkButton linkButton = (LinkButton)sender;
+
+            string memberId = linkButton.CommandArgument.ToString();
+
+            DBHandler dBHandler = new DBHandler();
+            uspGetMember member = new uspGetMember();
+
+            member = dBHandler.BLL_GetMember(memberId);
+
+            lblMemberID.InnerText = member.MemberID.ToString();
+            lblMemberName.InnerText = member.MemberName.ToString();
+            lblMemberLastName.InnerText = member.MemberLastName.ToString();
+            lblMemberDOB.InnerText = member.MemberDOB.ToString("yyyy-MM-dd");
+            lblMemberType.InnerText = member.MemberType.ToString();
+            lblActiveTypeID.InnerText = member.ActiveTypeID.ToString();
+            lblEmail.InnerText = member.Email.ToString();
+            lblContactNo.InnerText = member.ContactNo.ToString();
+            lblActivationExpiry.InnerText = member.ActivationExpiry.ToString("yyyy-MM-dd");
+            lblActivationDate.InnerText = member.ActivationDate.ToString("yyyy-MM-dd");
+
+            divDisplaySch.Visible = true;
 
         }
     }
