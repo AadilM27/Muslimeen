@@ -19,6 +19,7 @@
      <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
      <link href="../Default/css/Default.css" rel="stylesheet" />
       <link href="../Zakaah/css/newZakaah.css" rel="stylesheet" />
+        <link href="../Zakaah/css/Zakaatcard.css" rel="stylesheet" />
 </head>
     <body>
         <form id="frmScholar" runat="server" class=" ">   
@@ -99,7 +100,7 @@
                     <a class="nav-link" href="ZakaahCalculator.aspx">Calculator</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="ZakaahFacts.aspx">Gallery</a>
+                    <a class="nav-link" href="ZakaahGallery.aspx">Gallery</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="ZakaahOrganizations.aspx">Organizations</a>
@@ -152,16 +153,24 @@
                         <p>Translate this page:</p>
                        <div id="google_translate_element"></div>
 
-                      <script type="text/javascript">
-                          function googleTranslateElementInit()
-                          {
-                            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-                          }
-                     </script>
+                        <script src="../Zakaah/LanguageTranslator.js"></script>
                      <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
                     <!---end of javascript code--->
-                     <h2 style="color:#256297">Zakaah Facts</h2>
-                    <img src="../Zakaah/ZakaahPics/alms.jpg" />
+                     <h2 style="text-align:center">User Profile Card</h2>
+
+<div class="carder">
+    <img src="../Zakaah/ZakaahPics/SANZAF_580x363.jpg" alt="zakaat" style="width:100%"/>
+  <h1>John Doe</h1>
+  <p class="titler">CEO & Founder, Example</p>
+  <p>Harvard University</p>
+  <div style="margin: 24px 0;">
+    <a href="#"><i class="fa fa-dribbble"></i></a> 
+    <a href="#"><i class="fa fa-twitter"></i></a>  
+    <a href="#"><i class="fa fa-linkedin"></i></a>  
+    <a href="#"><i class="fa fa-facebook"></i></a> 
+ </div>
+ <p><button>Contact</button></p>
+</div>
                     <div class="rightcolumn">
                     <div class="card" style="position:static">
                     
