@@ -85,7 +85,12 @@
             <!--Salaah times-->
               <div class =" col text-center">
                 <h4 class="text-center">Salaah Times</h4>
-                <p>Salaah times here</p>
+                  
+                <div>
+
+                    <!--dislay salaah times code here-->
+
+                </div>
               </div>
 
               <!--view events--> 
@@ -93,15 +98,22 @@
                 <h4 class="text-center">View Events</h4> <h5><asp:RadioButton  ID= "Mosque1" GroupName="AllMosque" runat="server" text="My Mosque"/>
                  &nbsp;&nbsp;&nbsp; <asp:RadioButton ID="Mosque" GroupName="AllMosques" runat="server" text="All Mosques"/></h5>  
                 
-                    <p>
-                        paragraph
-                    </p>
+                    <div>
+
+                        <!--display view events code here(All mosques and MyMosque)-->
+
+                    </div>
              </div>
             
              <!--notifications-->
             <div class ="col text-center">
                <h4 class="text-center">Notifications</h4> 
-                <p>add notifications here</p>
+                
+                <div>
+
+                <!--display notifications code here-->
+
+                </div>
             </div>
 
           </div> <!--close Row-->

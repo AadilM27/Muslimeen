@@ -88,7 +88,7 @@
                    <li> My Muslimeen was developed in order to inform users about the mosque information and islamic details only.</li>  
                    <li> Only registered scholars information may be viewed incase users would like to get in contact. </li> 
                    <li> Information given to My Muslimeen is fully disclosed and secured. </li> 
-                     <li>We respect other people's rights.</li>
+                   <li>We respect other people's rights.</li>
                      </ul>
                  
                  </div>

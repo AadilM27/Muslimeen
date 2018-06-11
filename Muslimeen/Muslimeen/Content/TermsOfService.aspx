@@ -130,7 +130,7 @@
                  <br />
 
                  <b>Violation of these agreements will result in the termination of your account.</b>
-
+                 <br />
                  </div>
 
 <div class="footerr"> <!--End of content, start of footer-->
