@@ -191,9 +191,10 @@ html{
 .lstBtn {
     background-color: white;
     border-color: #256297;
-    font-size:small;
+    font-size:smaller;
     position:static;
     text-wrap:normal;
+
 }
 
 .lstBtn:hover {

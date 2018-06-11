@@ -127,6 +127,7 @@
     <Content Include="Content\Zakaah\ZakaahPics\Zakat-Image.jpg" />
     <Content Include="Content\Zakaah\ZakaahPics\zakat-simplified-6-638.jpg" />
     <Content Include="Content\Zakaah\ZakaahPics\Zakat.jpg" />
+    <Content Include="Login\js\Login.js" />
     <Content Include="Login\LogIn_Bootstrap\css\Verification.css" />
     <Content Include="Login\LogIn_Bootstrap\icons\png\account-login-2x.png" />
     <Content Include="Login\LogIn_Bootstrap\icons\png\account-login-3x.png" />

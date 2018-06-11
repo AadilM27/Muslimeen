@@ -26,13 +26,13 @@
 			<h1 class="h3 mb-1 mt-2 font-weight-bold">Log into Muslimeen</h1>
             <h1 class="h6 text-black-50 mt-2 mb-3">Access Muslimeen with<br /> your account</h1>
             <div class=" mb-2">
-                <asp:TextBox runat="server" ID="txtUserName" CssClass=" form-control main-txtb" placeholder="User name"/>
+                <asp:TextBox runat="server" ID="txtUserName" CssClass=" form-control main-txtb" placeholder="User name" OnTextChanged="txtUserName_TextChanged"/>
             </div>
 			<div class="mb-2">
                 <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" CssClass="form-control main-txtb" placeholder="Password"/>
 			</div>
 			<div class=" form-check mt-3 mb-3">
-                <asp:CheckBox runat="server" AutoPostBack="true" ID="chkRememberMe" CssClass="form-check-input position-static" OnCheckedChanged="chkRememberMe_CheckedChanged"/>
+                <asp:CheckBox runat="server" AutoPostBack="true" ID="chkRememberMe" CssClass="form-check-input position-static"/>
 				<asp:Label runat="server" CssClass="form-check-label" Text="Remember me">
 				</asp:Label>
 			</div>
@@ -46,7 +46,7 @@
             <div class=" mt-3 form-group col " style="text-align:center;">
                 <asp:Label CssClass="lblError" runat="server" ID="lblErrorPass"></asp:Label>
             </div>
-
+                        <script src="js/Login.js"></script>
 		</form>
         </div>
 	</body>
