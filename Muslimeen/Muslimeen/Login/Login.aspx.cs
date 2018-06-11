@@ -127,5 +127,15 @@ namespace Muslimeen.Login
                 }
             }
         }
+
+        protected void txtUserName_TextChanged(object sender, EventArgs e)
+        {
+            HttpCookie httpCookie = new HttpCookie("RememberMe"); //replace the cookie value with new username, thats if the user kept the remember me check while loging in with different username. which he previously checked to remmeber 
+
+            httpCookie["UserName"] = Convert.ToString(txtUserName.Text);
+            httpCookie["DoRemember"] = "Yes";
+            httpCookie.Expires = DateTime.Now.AddYears(1);
+            Response.Cookies.Add(httpCookie);
+        }
     }
 }

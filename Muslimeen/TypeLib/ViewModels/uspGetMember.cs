@@ -18,7 +18,7 @@ namespace TypeLib.ViewModels
         public string Email { get; set; }
         public string ContactNo { get; set; }
         public int? MosqueID { get; set; }
-        public DateTime? ActivationExpiry { get; set; }
+        public DateTime ActivationExpiry { get; set; }
         public DateTime ActivationDate { get; set; }
 
     }

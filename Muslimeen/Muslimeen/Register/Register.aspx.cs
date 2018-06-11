@@ -92,21 +92,21 @@ namespace Muslimeen.Register
             if (txtPassword.Text.ToString() != txtRetypePass.Text.ToString() ||
                 txtPassword.Text == null || txtRetypePass == null)
             {
-                txtRetypePass.BorderColor = Color.IndianRed;
-                txtPassword.BorderColor = Color.IndianRed;
+                txtRetypePass.BorderColor = Color.Red;
+                txtPassword.BorderColor = Color.Red;
                 lblErrorPass.Text = "Passwords do not match";
                 lblErrorPass.ForeColor = Color.Red;
                 continueProcess += 1;
             }
             else if (txtUserName.Text == "" || txtUserName.Text == null)
             {
-                txtUserName.BorderColor = Color.IndianRed;
+                txtUserName.BorderColor = Color.Red;
                 lblErrorPass.Text = "User name field can not be empty";
                 continueProcess += 1;
             }
             else if (txtUserName.Text.Length > 15 || txtUserName.Text.Length < 5)
             {
-                txtUserName.BackColor = Color.IndianRed;
+                txtUserName.BackColor = Color.Red;
                 lblErrorPass.Text = "User Name is too long or too short";
                 continueProcess += 1;
             }
@@ -117,14 +117,14 @@ namespace Muslimeen.Register
                     if (dBHandler.BLL_GetMember(txtUserName.Text.ToString()) != null)
                     {
                         lblErrorPass.Text = "User Name taken, Please retype a new one";
-                        txtUserName.BorderColor = Color.IndianRed;
+                        txtUserName.BorderColor = Color.Red;
                         lblErrorPass.ForeColor = Color.Red;
                         continueProcess += 1;
                     }
                 }
                 catch (Exception ex)
                 {
-                    txtUserName.BorderColor = Color.IndianRed;
+                    txtUserName.BorderColor = Color.Red;
                     lblErrorPass.Text = ex.Message;
                     lblErrorPass.ForeColor = Color.Red;
                     continueProcess += 1;
@@ -133,32 +133,33 @@ namespace Muslimeen.Register
             
             if (txtName.Text == "" || txtName.Text == null)
             {
-                txtName.BorderColor = Color.IndianRed;
+                txtName.BorderColor = Color.Red;
                 continueProcess += 1;
             }
             else if (txtLName.Text == "" || txtLName.Text == null)
             {
-                txtLName.BorderColor = Color.IndianRed;
+                txtLName.BorderColor = Color.Red;
                 continueProcess += 1;
             }
             else if (txtDOB.Text == "" || txtDOB == null)
             {
-                txtDOB.BorderColor = Color.IndianRed;
+                txtDOB.BorderColor = Color.Red;
                 continueProcess += 1;
             }
-            else if(txtDOB.Text.Length > 10)
+            else if(txtDOB.Text.Length > 10 || txtDOB.Text.Length < 10)
             {
-                txtDOB.BorderColor = Color.IndianRed;
+                txtDOB.BorderColor = Color.Red;
                 continueProcess += 1;
+                lblErrorPass.Text = "Please follow the format: yyyy-mm-dd";
             }
             else if (txtUserEmail.Text == "" || txtUserEmail == null)
             {
-                txtUserEmail.BorderColor = Color.IndianRed;
+                txtUserEmail.BorderColor = Color.Red;
                 continueProcess += 1;
             }
             else if (ddScholarQual.SelectedValue == "None")
             {
-                ddScholarQual.BorderColor = Color.IndianRed;
+                ddScholarQual.BorderColor = Color.Red;
                 continueProcess += 1;
             }
             else if(ddUsertype.SelectedValue == "None")
@@ -179,6 +180,12 @@ namespace Muslimeen.Register
                 continueProcess += 1;
                 txtRetypePass.BorderColor = Color.Red;
             }
+            else if (txtContactNum.Text.Length > 10 || txtContactNum.Text.Length < 10)
+            {
+                lblErrorPass.Text = "Please enter a correct contact number";
+                continueProcess += 1;
+                txtContactNum.BorderColor = Color.Red;
+            }
 
             if (continueProcess == 0)
             {
@@ -194,7 +201,6 @@ namespace Muslimeen.Register
                     string encryptionPass = Convert.ToString(txtUserName.Text);
                     Encryption encryption = new Encryption();
                     Member member = new Member();
-                    DateTime dateTime = DateTime.Today;
 
                     string encryptedString = encryption.Encrypt(encryptionPass, 
                         Convert.ToString(txtPassword.Text));
@@ -202,14 +208,14 @@ namespace Muslimeen.Register
                     member.MemberID = Convert.ToString(txtUserName.Text);
                     member.MemberName = Convert.ToString(txtName.Text);
                     member.MemberLastName = Convert.ToString(txtLName.Text);
-                    member.MemberDOB = Convert.ToDateTime(txtDOB.Text);
+                    member.MemberDOB = Convert.ToDateTime(txtDOB.Text).Date;
                     member.Password = Convert.ToString(encryptedString);
                     member.MemberType = Convert.ToChar(ddUsertype.SelectedValue);
                     member.ActiveTypeID = 'T';
                     member.Email = Convert.ToString(txtUserEmail.Text);
                     member.ContactNo = Convert.ToString(txtContactNum.Text);
-                    member.ActivationExpiry = Convert.ToDateTime(dateTime.AddDays(1).ToString("yyyy-MM-dd HH:mm:ss"));
-                    member.ActivationDate = Convert.ToDateTime(dateTime.ToString("yyyy-MM-dd HH:mm:ss"));
+                    member.ActivationExpiry = Convert.ToDateTime(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"));
+                    member.ActivationDate = Convert.ToDateTime(DateTime.Now.ToLocalTime());
                     
 
                     bool success = dBHandler.BLL_AddMember(member);
@@ -228,7 +234,7 @@ namespace Muslimeen.Register
                     EmailService emailService = new EmailService();
 
                     emailService.AutoEmailService(txtUserEmail.Text.ToString(), 
-                        ddUsertype.SelectedItem.ToString(), "http://www.google.co.za");
+                        ddUsertype.SelectedItem.ToString(), "http://www.google.co.za"); //Add server Verification.aspx address.
 
                 }
                 catch(Exception ex)

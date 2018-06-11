@@ -103,7 +103,7 @@
                         <div class="form-group row">
                             <asp:Label CssClass="col-sm-5 col-form-label position-static" ID="Label3" runat="server" Text="Topic:"></asp:Label> 
                             <div class="col-sm-7 position-static">
-                                <asp:DropDownList ID="drpTopics" runat="server" CssClass="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" OnSelectedIndexChanged="drpTopics_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                <asp:DropDownList ID="drpTopics" runat="server" CssClass="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" OnSelectedIndexChanged="drpTopics_SelectedIndexChanged" AutoPostBack="false"></asp:DropDownList>
                             </div>
                         </div>                    
                         <div class="form-group row"> 

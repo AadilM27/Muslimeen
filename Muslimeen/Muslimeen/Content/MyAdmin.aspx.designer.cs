@@ -166,13 +166,22 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Button btnAboutUs;
         
         /// <summary>
-        /// lnkViewwPendingSch control.
+        /// lnkViewPendingSch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkViewwPendingSch;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkViewPendingSch;
+        
+        /// <summary>
+        /// A1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor A1;
         
         /// <summary>
         /// lnkViewwPendingMod control.
@@ -193,12 +202,111 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divViewPendingSch;
         
         /// <summary>
-        /// divViewPendingMod control.
+        /// rptViewPendingSch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divViewPendingMod;
+        protected global::System.Web.UI.WebControls.Repeater rptViewPendingSch;
+        
+        /// <summary>
+        /// divDisplaySch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDisplaySch;
+        
+        /// <summary>
+        /// lblMemberID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMemberID;
+        
+        /// <summary>
+        /// lblMemberName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMemberName;
+        
+        /// <summary>
+        /// lblMemberLastName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMemberLastName;
+        
+        /// <summary>
+        /// lblMemberDOB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMemberDOB;
+        
+        /// <summary>
+        /// lblMemberType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMemberType;
+        
+        /// <summary>
+        /// lblActiveTypeID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblActiveTypeID;
+        
+        /// <summary>
+        /// lblEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEmail;
+        
+        /// <summary>
+        /// lblContactNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblContactNo;
+        
+        /// <summary>
+        /// lblActivationExpiry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblActivationExpiry;
+        
+        /// <summary>
+        /// lblActivationDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblActivationDate;
     }
 }

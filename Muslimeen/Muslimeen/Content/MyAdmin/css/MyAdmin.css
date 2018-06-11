@@ -7,8 +7,8 @@ body {
     overflow-y: auto;
 }
 
-html {
-    width: auto;
+html{
+    width:100%;
 }
 
 .frmDefault {
@@ -62,7 +62,9 @@ html {
 }
 
 .content {
-    background-color: red;
+    background-color: white;
+    min-height: 598px;
+    padding-right:0;
 }
 
 .sticky {
@@ -164,16 +166,39 @@ html {
     align-self: center;
 }
 /*end styling for header and footer.*/
-.lnkPendingReg {
-    background-color: #256297;
-    border-color: #256297;
+.taskBtn {
+    font-weight: 400;
+    position: static;
+    background-color: lightgrey;
+    color:black;
+    font-weight:500;
+}
+
+.taskBtn:hover {
+    background-color: #3F84C1;
+    color: white;
 }
 
 .divContainers {
-    overflow: hidden;
+    min-height:595px;
+    position:center;
 }
 
-btn:hover {
+.divBtnList{
+    align-items:center;
+}
+
+.lstBtn {
+    background-color: white;
+    border-color: #256297;
+    font-size:smaller;
+    position:static;
+    text-wrap:normal;
+
+}
+
+.lstBtn:hover {
     background-color: #3F84C1;
+    color:white;
 }
 

@@ -83,7 +83,7 @@ namespace Muslimeen.BLL
                     getMember.MemberID = Convert.ToString(row["MemberID"]);
                     getMember.MemberName = Convert.ToString(row["MemberName"]);
                     getMember.MemberLastName = Convert.ToString(row["MemberLastName"]);
-                    getMember.MemberDOB = Convert.ToDateTime(row["MemberDOB"]);
+                    getMember.MemberDOB = Convert.ToDateTime(row["MemberDOB"]).Date;
                     getMember.Password = Convert.ToString(row["Password"]);
                     getMember.MemberType = Convert.ToChar(row["MemberType"]);
                     getMember.ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]);
@@ -99,13 +99,13 @@ namespace Muslimeen.BLL
                     }
                     if (!(row["ActivationExpiry"] is DBNull))
                     {
-                        getMember.ActivationExpiry = Convert.ToDateTime(row["ActivationExpiry"]);
+                        getMember.ActivationExpiry = Convert.ToDateTime(row["ActivationExpiry"]).Date;
                     }
                     else
                     {
-                        getMember.ActivationExpiry = null;
+                        //don't parse it
                     }
-                    getMember.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
+                    getMember.ActivationDate = Convert.ToDateTime(row["ActivationDate"]).Date;
 
 
                 }
@@ -193,7 +193,7 @@ namespace Muslimeen.BLL
                     getModerator.MemberName = Convert.ToString(row["MemberName"]);
                     getModerator.MemberLastName = Convert.ToString(row["MemberLastName"]);
                     getModerator.ContactNo = Convert.ToString(row["ContactNo"]);
-                    getModerator.MemberDOB = Convert.ToDateTime(row["MemberDOB"]);
+                    getModerator.MemberDOB = Convert.ToDateTime(row["MemberDOB"]).Date;
                     getModerator.Email = Convert.ToString(row["Email"]);
                     getModerator.MemberType = Convert.ToChar(row["MemberType"]);
                     getModerator.QualificationDescription = Convert.ToString(row["QualificationDescription"]);
@@ -205,7 +205,7 @@ namespace Muslimeen.BLL
                     {
                         getModerator.MosqueID = null;
                     }
-                    getModerator.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
+                    getModerator.ActivationDate = Convert.ToDateTime(row["ActivationDate"]).Date;
                     getModerator.Password = Convert.ToString(row["Password"]);
 
                 }
@@ -231,7 +231,7 @@ namespace Muslimeen.BLL
                     getScholarDetails.MemberName = Convert.ToString(row["MemberName"]);
                     getScholarDetails.MemberLastName = Convert.ToString(row["MemberLastName"]);
                     getScholarDetails.ContactNo = Convert.ToString(row["ContactNo"]);
-                    getScholarDetails.MemberDOB = Convert.ToDateTime(row["MemberDOB"]);
+                    getScholarDetails.MemberDOB = Convert.ToDateTime(row["MemberDOB"]).Date;
                     getScholarDetails.Email = Convert.ToString(row["Email"]);
                     getScholarDetails.MemberType = Convert.ToChar(row["MemberType"]);
                     getScholarDetails.QualificationDescription = Convert.ToString(row["QualificationDescription"]);
@@ -243,7 +243,7 @@ namespace Muslimeen.BLL
                     {
                         getScholarDetails.MosqueID = null;
                     }
-                    getScholarDetails.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
+                    getScholarDetails.ActivationDate = Convert.ToDateTime(row["ActivationDate"]).Date;
                     getScholarDetails.Password = Convert.ToString(row["Password"]);
 
                 }
@@ -325,7 +325,8 @@ namespace Muslimeen.BLL
                     {
                         uspGetTopics tops = new uspGetTopics
                         {
-                            TopicDescription = Convert.ToString(row["TopicDescription"])
+                            TopicID = Convert.ToInt32(row["TopicID"]),
+                            TopicDescription = Convert.ToString(row["TopicDescription"])                           
                         };
                         list.Add(tops);
                     }
@@ -336,7 +337,7 @@ namespace Muslimeen.BLL
         public List<uspGetOrganizations> GetOrganization()
         {
             List<uspGetOrganizations> list = new List<uspGetOrganizations>();
-            using (DataTable table = DBHelper.Select("uspOrganization", CommandType.StoredProcedure))
+            using (DataTable table = DBHelper.Select("uspOrganizations", CommandType.StoredProcedure))
             {
                 if (table.Rows.Count > 0)
                 {
@@ -355,6 +356,44 @@ namespace Muslimeen.BLL
                 }
             }
             return list;
+        }
+
+        public List<uspGetAllPendingScholars> GetAllPendingScholars ()
+        {
+            List<uspGetAllPendingScholars> scholarsList = new List<uspGetAllPendingScholars>();
+            using (DataTable table = DBHelper.Select("uspGetAllPendingScholars", CommandType.StoredProcedure))
+            {
+                if(table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetAllPendingScholars scholar = new uspGetAllPendingScholars();
+
+                        scholar.MemberID = Convert.ToString(row["MemberID"]);
+                        scholar.MemberName = Convert.ToString(row["MemberName"]);
+                        scholar.MemberLastName = Convert.ToString(row["MemberLastName"]);
+                        scholar.MemberDOB = Convert.ToDateTime(row["MemberDOB"]).Date;
+                        scholar.Password = Convert.ToString(row["Password"]);
+                        scholar.MemberType = Convert.ToChar(row["MemberType"]);
+                        scholar.ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]);
+                        scholar.Email = Convert.ToString(row["Email"]);
+                        scholar.ContactNo = Convert.ToString(row["ContactNo"]);
+                        if (!(row["MosqueID"] is DBNull))
+                        {
+                            scholar.MosqueID = Convert.ToInt32(row["MosqueID"]);
+                        }
+                        else
+                        {
+                            scholar.MosqueID = null;
+                        }
+                        scholar.ActivationExpiry = Convert.ToDateTime(row["ActivationExpiry"]).Date;
+                        scholar.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
+
+                        scholarsList.Add(scholar);
+                    }
+                }
+            }
+            return scholarsList;
         }
     }
 }

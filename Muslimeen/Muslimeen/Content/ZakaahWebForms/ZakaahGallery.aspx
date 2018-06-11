@@ -12,9 +12,11 @@
      <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico" />
      <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
      <link href="../Default/css/Default.css" rel="stylesheet" />
+        <link href="../Zakaah/css/Gallery.css" rel="stylesheet" />
+       
 </head>
     <body>
-        <form id="frmScholar" runat="server" class=" ">   
+    <form id="frmScholar" runat="server" class=" ">   
             <header >
                 <nav class="navFixed">
                     <div class="row align-self-end">
@@ -76,10 +78,125 @@
                     </div>
                 </div>
             </header>
-        <div class="content" id="content"><!--add content here -->
-           
-        </div>
-    </form>
+            </form>
+        <div class="content" id="content" style="background-color:white"><!--add content here -->
+            <div class="zakaah-content" style="position:static;">
+            <nav class="navbar navbar-expand-sm navbar-dark" style="position:static; background-color:#256297;">
+              <a class="navbar-brand navt " href="newZakaah.aspx" >Zakaah</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="navbar-brand navt" href="ZakaahCalculator.aspx">Calculator</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-brand navt" href="ZakaahGallery.aspx">Gallery</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="navbar-brand navt" href="ZakaahOrganizations.aspx">Organizations</a>
+                  </li>    
+                </ul>
+              </div>  
+            </nav>
+
+                    <div class="container" style="margin-top:10px; position:static;">
+                    <div class="row" style="position:static;right:50px">
+                    <div class="col-lg-12" style="position:static;">
+                             
+                    <div style="text-align:center;color:white;background-color:#256297;font-size:20px">
+                    <strong >ZAKAAT GALLERY</strong>
+                    </div>
+                    <br />
+                    <!-- MAIN (Center website) -->
+                    <div class="main">
+                    <div id="myBtnContainer">
+                      <button class="btns active" onclick="filterSelection('all')"> Show all</button>
+                      <button class="btns" onclick="filterSelection('Charity')"> Zakaat</button>
+                      <button class="btns" onclick="filterSelection('Parcels')">zakaat parcels</button>
+                      <button class="btns" onclick="filterSelection('people')"> People</button>
+                    </div>
+
+                    <!-- Portfolio Gallery Grid -->
+                    <div class="row">
+                      <div class="column Charity">
+                        <div class="content">
+                            <img src="../Zakaah/ZakaahPics/charity.jpg"  alt="charity" style="width:100%;height:198px" />
+                        </div>
+                      </div>
+                      <div class="column Charity">
+                        <div class="content">
+                            <img src="../Zakaah/ZakaahPics/1377717982.jpg" alt="charity" style="width:100%;height:198px" />
+                        </div>
+                      </div>
+                      <div class="column Charity">
+                        <div class="content">
+                            <img src="../Zakaah/ZakaahPics/e5f5c3f05066.jpg" alt="charity" style="width:100%;height:198px" />
+                        </div>
+                      </div>
+                      <div class="column Charity">
+                        <div class="content">
+                            <img src="../Zakaah/ZakaahPics/6944893.jpg" alt="charity" style="width:100%;height:198px" />
+                        </div>
+                      </div>
+                        <div class="column Charity">
+                        <div class="content">
+                            <img src="../Zakaah/ZakaahPics/620x349.jpg" alt="charity" style="width:100%;height:198px" />
+                        </div>
+                      </div>
+                        <div class="column Charity">
+                        <div class="content">
+                            <img src="../Zakaah/ZakaahPics/sanzaf.jpg" alt="charity" style="width:100%;height:198px" />
+                        </div>
+                      </div>
+  
+                      <div class="column Parcels">
+                        <div class="content">
+                            <img src="../Zakaah/ZakaahPics/62245238.jpg" alt="parcels" style="width:100%;height:198px" />
+                        </div>
+                      </div>
+                      <div class="column Parcels">
+                        <div class="content">
+                            <img src="../Zakaah/ZakaahPics/8343429.jpg" alt="parcels" style="width:100%;height:198px" />
+                        </div>
+                      </div>
+                      <div class="column Parcels">
+                        <div class="content">
+                            <img src="../Zakaah/ZakaahPics/scouts.jpg" alt="parcels" style="width:100%;height:198px" />
+                        </div>
+                      </div>
+
+                      <div class="column people">
+                        <div class="content">
+                            <img src="../Zakaah/ZakaahPics/SANZAF_580x363.jpg" alt="people" style="width:100%;height:198px" />
+                        </div>
+                      </div>
+                      <div class="column people">
+                        <div class="content">
+                            <img src="../Zakaah/ZakaahPics/!!!!!!UWC-Banner-SANZAF.jpg" alt="people" style="width:100%;height:198px" />
+                        </div>
+                      </div>
+                      <div class="column people">
+                        <div class="content">
+                            <img src="../Zakaah/ZakaahPics/foundation%20helpers.jpg" alt="Car" style="width:100%;height:198px" />
+                        </div>
+                      </div>
+                    <!-- END GRID -->
+                    </div>
+
+                    <!-- END MAIN -->
+                    </div>
+
+                        <script src="../Zakaah/ZakaahGallery.js"></script>
+                    </div>                
+                            
+                </div>
+                </div>
+                </div>
+                </div>
+              
+     
    
               <div class="footerr"> <!--End of content, start of footer-->
                 <div class="row">

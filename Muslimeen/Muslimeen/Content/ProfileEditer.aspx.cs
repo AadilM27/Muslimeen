@@ -59,7 +59,7 @@ namespace Muslimeen.Content
                     txtName.Text = Convert.ToString(uspGetModeratorDetails.MemberName);
                     txtLName.Text = Convert.ToString(uspGetModeratorDetails.MemberLastName);
                     txtContactNum.Text = Convert.ToString(uspGetModeratorDetails.ContactNo);
-                    txtDOB.Text = Convert.ToString(uspGetModeratorDetails.MemberDOB).Remove(11, 12);
+                    txtDOB.Text = uspGetModeratorDetails.MemberDOB.ToString("yyyy-MM-dd");
                     txtUserEmail.Text = Convert.ToString(uspGetModeratorDetails.Email);
                     if (uspGetModeratorDetails.MemberType.ToString() == "O")
                     {
@@ -67,7 +67,7 @@ namespace Muslimeen.Content
                     }
                     txtQual.Text = Convert.ToString(uspGetModeratorDetails.QualificationDescription);
                     ddAssignedMosques.SelectedValue = Convert.ToString(uspGetModeratorDetails.MosqueID);
-                    txtActivationDate.Text = Convert.ToString(uspGetModeratorDetails.ActivationDate);
+                    txtActivationDate.Text = uspGetModeratorDetails.ActivationDate.ToString("yyyy-MM-dd");
 
                 }
                 else if (uspGetMember.MemberType.ToString() == "S") //S stands for Scholar.
@@ -79,7 +79,7 @@ namespace Muslimeen.Content
                     txtName.Text = Convert.ToString(uspGetScholarDetails.MemberName);
                     txtLName.Text = Convert.ToString(uspGetScholarDetails.MemberLastName);
                     txtContactNum.Text = Convert.ToString(uspGetScholarDetails.ContactNo);
-                    txtDOB.Text = Convert.ToString(uspGetScholarDetails.MemberDOB).Remove(11, 12);
+                    txtDOB.Text = uspGetScholarDetails.MemberDOB.ToString("yyyy-MM-dd");
                     txtUserEmail.Text = Convert.ToString(uspGetScholarDetails.Email);
                     if (uspGetScholarDetails.MemberType.ToString() == "S")
                     {
@@ -87,7 +87,7 @@ namespace Muslimeen.Content
                     }
                     txtQual.Text = Convert.ToString(uspGetScholarDetails.QualificationDescription);
                     ddAssignedMosques.SelectedValue = Convert.ToString(uspGetScholarDetails.MosqueID);
-                    txtActivationDate.Text = Convert.ToString(uspGetScholarDetails.ActivationDate);
+                    txtActivationDate.Text = uspGetScholarDetails.ActivationDate.ToString("yyyy-MM-dd");
                 }
                 else if (uspGetMember.MemberType.ToString() == "M" || uspGetMember.MemberType.ToString() == "A") //M stands for Member, A for Admin.
                 {
@@ -96,7 +96,7 @@ namespace Muslimeen.Content
                     txtName.Text = Convert.ToString(uspGetMember.MemberName);
                     txtLName.Text = Convert.ToString(uspGetMember.MemberLastName);
                     txtContactNum.Text = Convert.ToString(uspGetMember.ContactNo);
-                    txtDOB.Text = Convert.ToString(uspGetMember.MemberDOB).Remove(11, 12);
+                    txtDOB.Text = uspGetMember.MemberDOB.ToString("yyyy-MM-dd");
                     txtUserEmail.Text = Convert.ToString(uspGetMember.Email);
                     if (uspGetMember.MemberType.ToString() == "M")
                     {
@@ -107,7 +107,7 @@ namespace Muslimeen.Content
                         txtMemberType.Text = "Admin";
                     }
                     ddAssignedMosques.SelectedValue = Convert.ToString(uspGetMember.MosqueID);
-                    txtActivationDate.Text = Convert.ToString(uspGetMember.ActivationDate);
+                    txtActivationDate.Text = uspGetMember.ActivationDate.ToString("yyyy-MM-dd");
                 }
             }
         }
