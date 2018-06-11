@@ -97,16 +97,17 @@
     <Content Include="Content\MyScholar\RejectedArticle.aspx" />
     <Content Include="Content\ProfileEditer.aspx" />
     <Content Include="Content\ProfileEditer\css\ProfileEditer.css" />
-    <Content Include="Content\Zakaah.aspx" />
     <Content Include="Content\ZakaahWebForms\newZakaah.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahCalculator.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahGallery.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahOrganizations.aspx" />
     <Content Include="Content\Zakaah\css\Gallery.css" />
     <Content Include="Content\Zakaah\css\newZakaah.css" />
+    <Content Include="Content\Zakaah\css\Slideshow.css" />
     <Content Include="Content\Zakaah\css\Zakaatcard.css" />
     <Content Include="Content\Zakaah\LanguageTranslator.js" />
     <Content Include="Content\Zakaah\newZakaah.js" />
+    <Content Include="Content\Zakaah\slideshow.js" />
     <Content Include="Content\Zakaah\ZakaahGallery.js" />
     <Content Include="Content\Zakaah\ZakaahPics\!!!!!!UWC-Banner-SANZAF.jpg" />
     <Content Include="Content\Zakaah\ZakaahPics\1377717982.jpg" />
@@ -1637,13 +1638,6 @@
     </Compile>
     <Compile Include="Content\ProfileEditer.aspx.designer.cs">
       <DependentUpon>ProfileEditer.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Content\Zakaah.aspx.cs">
-      <DependentUpon>Zakaah.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Content\Zakaah.aspx.designer.cs">
-      <DependentUpon>Zakaah.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\PrivacyAndSafety.aspx.cs">
       <DependentUpon>PrivacyAndSafety.aspx</DependentUpon>

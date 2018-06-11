@@ -7,17 +7,17 @@
 }
 
 .titler {
-    color: grey;
+    color: #256297;
     font-size: 18px;
 }
 
-button {
+.button {
     border: none;
     outline: 0;
     display: inline-block;
     padding: 8px;
     color: white;
-    background-color: #000;
+    background-color: #256297;
     text-align: center;
     cursor: pointer;
     width: 100%;
