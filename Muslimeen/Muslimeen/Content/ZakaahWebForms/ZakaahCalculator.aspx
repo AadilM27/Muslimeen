@@ -85,7 +85,7 @@
            
         <div class="zakaah-content" style="position:static;">
             <nav class="navbar navbar-expand-sm navbar-dark" style="position:static; background-color:#256297;">
-              <a class="navbar-brand navt " href="newZakaah.aspx" >Zakaah</a>
+              <a class="navbar-brand navt " href="Zakaah.aspx" >Zakaah</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -117,7 +117,7 @@
                     <br />
                      
                     <div style="width: 580px; height: 50px; clear: both;">
-                    <div style="float: left;color:white;background-color:#256297">
+                    <div style="float: left;color:#256297">
                     <asp:Label ID="Label1" runat="server" Text="Label">Cash at Home</asp:Label>
                     </div>
                     <div style="float: right;">
@@ -126,7 +126,7 @@
 
                     </div>
                     <div style="width: 580px; height: 50px; clear: both;">
-                    <div style="float: left;color:white;background-color:#256297">
+                    <div style="float: left;color:#256297">
                     <asp:Label ID="Label2" runat="server" Text="Label">Balance held in Bank Account</asp:Label>
                     </div>
                     <div style="float: right;">
@@ -135,7 +135,7 @@
 
                     </div>
                     <div style="width: 580px; height: 50px; clear: both;">
-                    <div style="float: left;color:white;background-color:#256297">
+                    <div style="float: left;color:#256297">
                     <asp:Label ID="Label3" runat="server" Text="Label">Market value of short term investments</asp:Label>
                     </div>
                     <div style="float: right;">
@@ -144,7 +144,7 @@
 
                     </div>
                     <div style="width: 580px; height: 50px; clear: both;">
-                    <div style="float: left;color:white;background-color:#256297">
+                    <div style="float: left;color:#256297">
                     <asp:Label ID="Label4" runat="server" Text="Label">Business Merchandise</asp:Label>
                     </div>
                     <div style="float: right;" >
@@ -153,14 +153,14 @@
 
                     </div>
                    <div style="width: 580px; height: 50px; clear: both;">
-                   <div style="float: left;color:white;background-color:#256297">
+                   <div style="float: left;color:#256297">
                    <asp:Label ID="Label5" runat="server" Text="Label">Gold &amp; Silver (at current value)</asp:Label>
                    </div>
                    <div style="float: right;">
                    <asp:TextBox ID="txtGoldSilver" runat="server" OnTextChanged="txtGoldSilver_TextChanged"></asp:TextBox></div>
                    </div>
                    <div style="width: 580px; height: 50px; clear: both;">
-                   <div style="float: left; color:white;font-size: 15px;color:white;background-color:#256297">
+                   <div style="float: left; color:white;color:#256297">
                    <asp:Label ID="Label6" runat="server" Text="Label">Total of Assets Liable for Zakah</asp:Label>
                    </div>
                    <div style="float: right;">
@@ -169,7 +169,7 @@
 
                    </div>
                    <div style="width: 580px; height: 50px; clear: both;">
-                   <div style="float: left;color:white;background-color:#256297">
+                   <div style="float: left;color:#256297">
                    <asp:Label ID="Label7" runat="server" Text="Label">Deduct Debts</asp:Label>
                    </div>
                    <div style="float: right;">
@@ -178,7 +178,7 @@
 
                    </div>
                    <div style="width: 580px; height: 50px;clear:both">
-                   <div style="float: left; color:white;font-size: 15px;color:white;background-color:#256297">
+                   <div style="float: left; color:white;font-size: 15px;color:#256297">
                    <asp:Label ID="Label8" runat="server" Text="Label"><strong><em>Zakah-Eligible</em> Total</strong></asp:Label>
                    </div>
                    <div style="float: right;">
@@ -188,7 +188,7 @@
                   </div>
                   <div style="width: 580px; height: 50px; clear: both;">
                   <div style="float: left;color: #256297;font-size: 15px;">
-                  <strong>Ensure that <em>Zakah-Eligible</em> Total Exceeds <em>Nisab</em></strong>
+                  <strong>Total that Exceeds <em>Nisab</em></strong>
                   </div>
                   <div style="float: right;">
                   <asp:TextBox ID="txtNisab" runat="server" value="4404"></asp:TextBox>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="newZakaah.aspx.cs" Inherits="Muslimeen.Content.newZakaah" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Zakaah.aspx.cs" Inherits="Muslimeen.Content.newZakaah" %>
 
 <!DOCTYPE html>
 
@@ -91,7 +91,7 @@
            
         <div class="zakaah-content" style="position:static;">
             <nav class="navbar navbar-expand-sm navbar-dark" style="position:static; background-color:#256297;">
-              <a class="navbar-brand navt " href="newZakaah.aspx" >Zakaah</a>
+              <a class="navbar-brand navt " href="Zakaah.aspx" >Zakaah</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -114,36 +114,42 @@
                       <div class="row" style="position:static;right:50px">
                           <div class="col-lg-8" style="position:static;">
                               <button id="btnWhatIsZakaah" class="collapsible" style="background-color:#256297;width:100%">What is Zakaah or Zakat?</button>
-                    <div class="content2">
+                    <div class="content2" style="background-color:white">
                         <br />
-                        <asp:Label ID="LblWhatIsZakaah" runat="server"></asp:Label>
+                        <asp:Label ID="LblWhatIsZakaah" runat="server" ></asp:Label>
                     </div>
                     <button class="collapsible"  style="background-color:#256297;width:100%">Conditions of Zakaah</button>
-                    <div class="content2">
+                    <div class="content2" style="background-color:white">
                         <br />
                       <h2>Conditions of Zakat</h2>
-                          <iframe width="560" height="315"  src="https://www.youtube.com/embed/kEon0omN5SA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                          <iframe width="560" height="315"  src="https://www.youtube.com/embed/kEon0omN5SA"  allowfullscreen>
                           </iframe>
+                        <br />
                         <asp:Label ID="LblConditions" runat="server" Text=""></asp:Label>
                      </div>
                     <button class="collapsible" style="background-color:#256297;width:100%" >Cautions of Zakaah</button>
-                    <div class="content2">
+                    <div class="content2"style="background-color:white" >
+                        <br />
                         <asp:Label ID="LblCaution" runat="server" Text=""></asp:Label>
                                           </div>
                     <button class="collapsible" style="background-color:#256297;width:100%" >To whom is Zakaah permissible?</button>
-                    <div class="content2">
+                    <div class="content2"style="background-color:white" >
+                        <br />
                         <asp:Label ID="LblPermissble" runat="server" Text=""></asp:Label>
                     </div>
                      <button class="collapsible" style="background-color:#256297;width:100%" >Assets Of Zakaah</button>
-                    <div class="content2">
+                    <div class="content2" style="background-color:white">
+                        <br />
                         <asp:Label ID="LblAssets" runat="server" Text=""></asp:Label>
                     </div>
                      <button class="collapsible" style="background-color:#256297;width:100%" >To whom is Zakaah Applicable?</button>
-                    <div class="content2">
+                    <div class="content2" style="background-color:white">
+                        <br />
                         <asp:Label ID="LblApplicable" runat="server" Text=""></asp:Label>
                     </div>
                      <button class="collapsible" style="background-color:#256297;width:100%" >Calculation of Zakaah?</button>
-                    <div class="content2">
+                    <div class="content2"style="background-color:white" >
+                        <br />
                         <asp:Label ID="LblCalculations" runat="server" Text=""></asp:Label>
                     </div>
                               

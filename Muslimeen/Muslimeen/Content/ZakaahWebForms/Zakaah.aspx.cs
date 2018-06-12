@@ -18,7 +18,7 @@ namespace Muslimeen.Content
 
             DBHandler dBHandler = new DBHandler();
             //Uthmaans code starts to display zakaah info from database into labels when loading zakaah page.
-            TypeLib.Models.Zakaah zakaah = new TypeLib.Models.Zakaah();
+            Zakaah zakaah = new Zakaah();
 
             zakaah = dBHandler.BLL_GetZakaah();
 
@@ -101,12 +101,12 @@ namespace Muslimeen.Content
 
         protected void btnZakaah_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Zakaah.aspx");
+            Response.Redirect("~/Content/ZakaahWebForms/Zakaah.aspx");
         }
 
         protected void btnAboutUs_Click(object sender, EventArgs e)
         {
-            //redirect user to the About us page.
+            Response.Redirect("~/Content/AboutUs.aspx");
         }
 
         protected void btnMyMuslimeen_Click(object sender, EventArgs e)
