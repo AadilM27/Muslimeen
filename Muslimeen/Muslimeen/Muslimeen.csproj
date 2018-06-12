@@ -81,6 +81,8 @@
     <Content Include="Content\HelpPage\icons\docs.png" />
     <Content Include="Content\HelpPage\icons\help.png" />
     <Content Include="Content\HelpPage\icons\lock.png" />
+    <Content Include="Content\Learn Islam\css\learnIslam.css" />
+    <Content Include="Content\Learn Islam\LearnIslam.aspx" />
     <Content Include="Content\Mosque.aspx" />
     <Content Include="Content\Mosque\Mosque.css" />
     <Content Include="Content\MyAdmin.aspx" />
@@ -1584,6 +1586,13 @@
     </Compile>
     <Compile Include="Content\HelpPage.aspx.designer.cs">
       <DependentUpon>HelpPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\Learn Islam\LearnIslam.aspx.cs">
+      <DependentUpon>LearnIslam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\Learn Islam\LearnIslam.aspx.designer.cs">
+      <DependentUpon>LearnIslam.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\Mosque.aspx.cs">
       <DependentUpon>Mosque.aspx</DependentUpon>

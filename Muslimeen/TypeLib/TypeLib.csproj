@@ -68,6 +68,7 @@
     <Compile Include="ViewModels\uspGetModeratorDetails.cs" />
     <Compile Include="ViewModels\uspGetMosque.cs" />
     <Compile Include="ViewModels\uspGetOrganizations.cs" />
+    <Compile Include="ViewModels\uspGetPendingArticle.cs" />
     <Compile Include="ViewModels\uspGetQualification.cs" />
     <Compile Include="ViewModels\uspGetRamadaanDate.cs" />
     <Compile Include="Models\uspVerifyMember.cs" />

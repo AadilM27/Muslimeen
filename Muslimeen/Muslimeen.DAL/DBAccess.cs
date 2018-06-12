@@ -395,5 +395,36 @@ namespace Muslimeen.BLL
             }
             return scholarsList;
         }
+
+        //Pending Articles
+        public List<uspGetPendingArticle> GetPendingArticle()
+        {
+            List<uspGetPendingArticle> list = new List<uspGetPendingArticle>();
+
+            using (DataTable table = DBHelper.Select("uspGetPendingArticle", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetPendingArticle art = new uspGetPendingArticle
+                        {
+                            ArticleTitle = Convert.ToString(row["ArticleTitle"]),
+                            ArticleContent = Convert.ToString(row["ArticleContent"]),
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]),
+                            Status = Convert.ToChar(row["Status"]),
+                            RejectionReason = Convert.ToString(row["RejectionReason"]),
+                            Active = Convert.ToChar(row["Active"]),
+                            RemovalReason = Convert.ToString(row["RemovalReason"]),
+                            ScholarID = Convert.ToString(row["ScholarID"]),
+                            ModeratorID = Convert.ToString(row["ModeratorID"]),
+                            TopicID = Convert.ToInt32(row["TopicID"])
+                        };
+                        list.Add(art);
+                    }
+                }
+            }
+            return list;
+        }
     }
 }

@@ -1,4 +1,15 @@
-﻿/* Start coping from here to get heade and footer styling*/
+﻿.column1 {
+    text-align:left;
+    width:100%;
+}
+
+
+
+
+
+
+
+/* Start coping from here to get heade and footer styling*/
 body {
     background-color: #256297;
     height: 100%;
@@ -23,9 +34,9 @@ html {
     color: #256297;
 }
 
-.user:hover {
-    font-weight: 500;
-}
+    .user:hover {
+        font-weight: 500;
+    }
 
 .navbaritems {
     padding-right: 10px;
@@ -41,12 +52,12 @@ html {
     color: #256297;
 }
 
-.navText:hover {
-    color: white;
-    background-color: #3F84C1;
-    text-decoration: none;
-    border-radius: 2px;
-}
+    .navText:hover {
+        color: white;
+        background-color: #3F84C1;
+        text-decoration: none;
+        border-radius: 2px;
+    }
 
 .navbar {
     background-color: white;
@@ -79,12 +90,12 @@ html {
     text-decoration-color: #256297;
 }
 
-.navbtn:hover {
-    color: white;
-    background-color: #3F84C1;
-    text-decoration: none;
-    border-radius: 2px;
-}
+    .navbtn:hover {
+        color: white;
+        background-color: #3F84C1;
+        text-decoration: none;
+        border-radius: 2px;
+    }
 
 .topnav {
     border-color: #3F84C1;
@@ -92,12 +103,12 @@ html {
     color: #256297;
 }
 
-.topnav:hover {
-    color: white;
-    background-color: #3F84C1;
-    text-decoration: none;
-    border-radius: 3px;
-}
+    .topnav:hover {
+        color: white;
+        background-color: #3F84C1;
+        text-decoration: none;
+        border-radius: 3px;
+    }
 
 .search-btn {
     border-bottom-color: #3F84C1;
@@ -129,10 +140,10 @@ html {
     border-bottom-right-radius: 0px;
 }
 
-.search-box:focus {
-    width: 100%;
-    box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
-}
+    .search-box:focus {
+        width: 100%;
+        box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+    }
 
 .footerr {
     width: 100%;
@@ -163,49 +174,4 @@ html {
     color: #256297;
     align-self: center;
 }
-/*Stop header and footer CSS*/
-
-.nav-tabs--vertical {
-    border-bottom: none;
-    border-right: 1px solid #ddd;
-    display: flex;
-    flex-flow: column nowrap;
-}
-
-.nav-tabs--left {
-    margin: 0 15px;
-}
-.nav-tabs--left .nav-item + .nav-item {
-    margin-top: .25rem;
-}
-.nav-tabs--left .nav-link {
-    transition: border-color .125s ease-in;
-    white-space: nowrap;
-}
-
-.nav-tabs--left .nav-link:hover {
-    background-color: #f7f7f7;
-    border-color: transparent;
-}
-
-.nav-tabs--left .nav-link.active {
-    border-bottom-color: #ddd;
-    border-right-color: #fff;
-    border-bottom-left-radius: 0.25rem;
-    border-top-right-radius: 0;
-    margin-right: -1px;
-}
-
-.nav-tabs--left .nav-link.active:hover {
-    background-color: #fff;
-    border-color: #0275d8 #fff #0275d8 #0275d8;
-}
-
-.main-txtb:focus {
-    background-color: #d7e7f5;
-    text-decoration-color: black;
-}
-
-.lblError {
-    color: red;
-}
+/*End copying from here for Header and footer*/

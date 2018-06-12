@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddArticle.aspx.cs" Inherits="Muslimeen.Content.MyScholar.AddArticle" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LearnIslam.aspx.cs" Inherits="Muslimeen.Content.Learn_Islam.LearnIslam" %>
 
 <!DOCTYPE html>
 
@@ -9,14 +9,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-    <title>Add Article</title>
+    <title>learn Islam</title>
 
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/MyScholar.css" rel="stylesheet" />
-    </head>
-<body>
-    <form id="frmAddArticle" runat="server">
+    <link href="css/learnIslam.css" rel="stylesheet" />
 
+</head>
+<body>
+    <form id="frmLearnIslam" runat="server">
         <!--Header-->
         <header >
                 <nav class="navFixed">
@@ -82,71 +82,43 @@
 
         <!--Page Content-->
         <div class="content" id="content">
-            <div class="d-flex flex-row mt-2">
-                <ul class="nav nav-tabs nav-tabs--vertical nav-tabs--left" role="navigation">
-                    <li class="nav-item">
-                        <a href="AddArticle.aspx" class="nav-link active" data-toggle="tab" role="tab" aria-controls="lorem">Add Article</a>
-                    </li>
-                    <li class="nav-item">          
-                        <a href="PendingArticle.aspx" class="nav-link" data-toggle="tab" role="tab" aria-controls="ipsum">Pending Article</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="RejectedArticle.aspx" class="nav-link" data-toggle="tab" role="tab" aria-controls="dolor">Rejected Article</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="MosqueEvents.aspx" class="nav-link" data-toggle="tab" role="tab" aria-controls="sit-amet">Mosque Events</a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" role="tabpanel">
-                        <h2 class="text-center">Add Article</h2> 
-                        <div class="form-group row">
-                            <asp:Label CssClass="col-sm-5 col-form-label position-static" ID="Label3" runat="server" Text="Topic:"></asp:Label> 
-                            <div class="col-sm-7 position-static">
-                                <asp:DropDownList ID="drpTopics" runat="server" class="form-control main-txtb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" OnSelectedIndexChanged="drpTopics_SelectedIndexChanged" AutoPostBack="false"></asp:DropDownList>
-                            </div>
-                        </div>                    
-                        <div class="form-group row"> 
-                            <asp:Label CssClass="col-sm-5 col-form-label position-static" ID="Label1" runat="server" Text="Heading:"></asp:Label> 
-                            <div class="col-sm-7 position-static">
-                                <asp:TextBox CssClass="form-control" ID="txtHeading" runat="server" Width="300%"></asp:TextBox>  
-                            </div>
-                        </div>   
-                        <div class="form-group row">
-                            <asp:Label CssClass="col-sm-5 col-form-label position-static" ID="Label2" runat="server" Text="Content:"></asp:Label>
-                            <div class="col-sm-7 position-static">
-                                <asp:TextBox CssClass="form-control" ID="txtContent" runat="server" Height="200px" TextMode="MultiLine" Width="300%"></asp:TextBox>
-                            </div>
-                        </div>  
-                        <div class="form-group row">
-                            <div class="col-sm-5 position-static">
-                                <asp:Button CssClass="form-control" ID="btnSave" runat="server" Text="Save" class="badge-success" OnClick="btnSave_Click" data-toggle="modal" data-target="#PopModal"/>  
-                            </div>
-                            <div class="col-sm-7 position-static">
-                                <asp:Label class="lblError" runat="server" ID="lblErrorPass"></asp:Label>
-                            </div>
-                        </div>
-
-
-                        <%--<!-- Modal -->
-                        <div class="modal fade" id="PopModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Article Added</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
+            <div class="container">
+                <asp:Repeater ID="repeatPendingArticle" runat="server">
+                    <ItemTemplate>
+                        <div class="col position-static">
+                            <div class="row position-static">
+                                <div class="col-sm-1 align-self-start col-sm-3 position-static">
+                                    <h5>Title:</h5>
+                                </div>
+                                <div class="col-4 col-sm-9 position-static">
+                                    <asp:Label runat="server" ID="lable1" Text='<%# Eval("ArticleTitle") %>'></asp:Label>
                                 </div>
                             </div>
-                        </div>--%>
-                    </div>
-                </div>
-            </div>         
+                            <div class="row position-static">
+                                <div class="col-sm-1 align-self-start col-sm-3 position-static">
+                                    <h5>Content: </h5>
+                                </div>
+                                <div class="col-4 col-sm-9 position-static">
+                                    <asp:Label runat="server" ID="Label2" Text='<%# Eval("ArticleContent") %>'></asp:Label>
+                                </div>
+                            </div>
+                            <div class="row position-static">
+                                <div class="col-sm-1 align-self-center align-self-start col-sm-3 position-static">
+                                    <h6>Author: </h6>
+                                </div>
+                                <div class="col-2 position-static">
+                                    <asp:Label class="font-italic" runat="server" ID="Label3" Text='<%# Eval("ScholarID") %>'></asp:Label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
+            
         </div>
     </form>
-
+    
     <!--Footer-->
     <div class="footerr"> <!--End of content, start of footer-->
                 <div class="row">
@@ -200,8 +172,7 @@
                     </div>
                 </div>
             </div>
-
-    <script src="../Default/Default.js" type="text/javascript"></script>
-    <script src="../Default/DatesEnglishHijri.js" type="text/javascript"></script>
+    <script src="../Default/DatesEnglishHijri.js"></script>
+    <script src="../Default/Default.js"></script>
 </body>
 </html>
