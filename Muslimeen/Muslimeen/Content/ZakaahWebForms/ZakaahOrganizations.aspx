@@ -81,7 +81,7 @@
             <!--add content here -->
             <div class="zakaah-content" style="position: static;">
                 <nav class="navbar navbar-expand-sm navbar-dark" style="position: static; background-color: #256297;">
-                    <a class="navbar-brand navt " href="newZakaah.aspx">Zakaah</a>
+                    <a class="navbar-brand navt " href="Zakaah.aspx">Zakaah</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                         <span class="navbar-toggler-icon"></span>
                     </button>
