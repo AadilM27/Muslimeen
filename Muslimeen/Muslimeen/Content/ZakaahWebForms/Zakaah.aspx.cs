@@ -4,17 +4,31 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TypeLib.Models;
 using TypeLib.ViewModels;
 using Muslimeen.BLL;
+using TypeLib.Models;
+
 
 namespace Muslimeen.Content
 {
-    public partial class TermsOfService : System.Web.UI.Page
+    public partial class newZakaah : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             DBHandler dBHandler = new DBHandler();
+            //Uthmaans code starts to display zakaah info from database into labels when loading zakaah page.
+            Zakaah zakaah = new Zakaah();
+
+            zakaah = dBHandler.BLL_GetZakaah();
+
+            LblWhatIsZakaah.Text = zakaah.ZakaahDesc;
+            LblConditions.Text = zakaah.ZakaahConditions;
+            LblCaution.Text = zakaah.CautionsOfZakaah;
+            LblPermissble.Text = zakaah.ZakaahPermissible;
+            LblAssets.Text = zakaah.AssetsOfZakaah;
+            LblApplicable.Text = zakaah.ApplicableZakaah;
+            LblCalculations.Text = zakaah.CalculationDesc;
 
 
             if (Session["UserName"] != null)
@@ -42,6 +56,7 @@ namespace Muslimeen.Content
             }
 
         }
+
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             if (btnLogin.Text == "Login")
@@ -50,9 +65,10 @@ namespace Muslimeen.Content
             }
             else if (btnLogin.Text == "Log out")
             {
+
                 Session.Clear();
                 Session.Abandon();
-                Response.Redirect("~/Content/TermsOfService.aspx");
+                Response.Redirect("~/Content/Default.aspx");
                 btnLogin.Text = "Login";
                 btnRegister.Visible = true;
             }
@@ -85,7 +101,7 @@ namespace Muslimeen.Content
 
         protected void btnZakaah_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Zakaah.aspx");
+            Response.Redirect("~/Content/ZakaahWebForms/Zakaah.aspx");
         }
 
         protected void btnAboutUs_Click(object sender, EventArgs e)
@@ -115,9 +131,8 @@ namespace Muslimeen.Content
             }
             else if (uspGetMember.MemberType == 'S')
             {
-                Response.Redirect("~/Content/AddArticle.aspx");
+                Response.Redirect("~/Content/MyScholar.aspx");
             }
-
 
         }
     }

@@ -7,10 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Muslimeen {
+namespace Muslimeen.Content.Learn_Islam {
     
     
-    public partial class Zakaah {
+    public partial class LearnIslam {
+        
+        /// <summary>
+        /// frmLearnIslam control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm frmLearnIslam;
+        
+        /// <summary>
+        /// hfAdjustDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfAdjustDate;
         
         /// <summary>
         /// txtSearch control.
@@ -22,174 +40,138 @@ namespace Muslimeen {
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
         
         /// <summary>
-        /// Menu1 control.
+        /// btnLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu Menu1;
+        protected global::System.Web.UI.WebControls.Button btnLogin;
         
         /// <summary>
-        /// MultiView1 control.
+        /// btnRegister control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView MultiView1;
+        protected global::System.Web.UI.WebControls.Button btnRegister;
         
         /// <summary>
-        /// View1 control.
+        /// divUserProfile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View View1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divUserProfile;
         
         /// <summary>
-        /// View2 control.
+        /// hplUserProfile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View View2;
+        protected global::System.Web.UI.WebControls.HyperLink hplUserProfile;
         
         /// <summary>
-        /// txtCashAtHome control.
+        /// imgEditProfile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCashAtHome;
+        protected global::System.Web.UI.WebControls.Image imgEditProfile;
         
         /// <summary>
-        /// txtBankAccount control.
+        /// btnHome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBankAccount;
+        protected global::System.Web.UI.WebControls.Button btnHome;
         
         /// <summary>
-        /// txtInvestment control.
+        /// liMyMusbtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInvestment;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liMyMusbtn;
         
         /// <summary>
-        /// txtMerchandise control.
+        /// btnMyMuslimeen control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMerchandise;
+        protected global::System.Web.UI.WebControls.Button btnMyMuslimeen;
         
         /// <summary>
-        /// txtGoldSilver control.
+        /// liMyMusDivi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGoldSilver;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liMyMusDivi;
         
         /// <summary>
-        /// txtTotalAssets control.
+        /// btnMosques control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTotalAssets;
+        protected global::System.Web.UI.WebControls.Button btnMosques;
         
         /// <summary>
-        /// txtDebts control.
+        /// btnScholars control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDebts;
+        protected global::System.Web.UI.WebControls.Button btnScholars;
         
         /// <summary>
-        /// txtEligibleZakaah control.
+        /// btnLearnIslam control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEligibleZakaah;
+        protected global::System.Web.UI.WebControls.Button btnLearnIslam;
         
         /// <summary>
-        /// txtNisab control.
+        /// btnZakaah control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNisab;
+        protected global::System.Web.UI.WebControls.Button btnZakaah;
         
         /// <summary>
-        /// txtCalculatedZakaah control.
+        /// btnAboutUs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCalculatedZakaah;
+        protected global::System.Web.UI.WebControls.Button btnAboutUs;
         
         /// <summary>
-        /// Button1 control.
+        /// repeatPendingArticle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
-        /// Button2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
-        
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
-        /// View3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.View View3;
-        
-        /// <summary>
-        /// View4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.View View4;
+        protected global::System.Web.UI.WebControls.Repeater repeatPendingArticle;
     }
 }

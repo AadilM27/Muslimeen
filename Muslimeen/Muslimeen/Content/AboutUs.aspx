@@ -14,7 +14,6 @@
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="MyMember/css/MyMember.css" rel="stylesheet" />
     <link href="../Content/AboutUs/AboutUs.css" rel="stylesheet" />
-     <link href="Default/css/Default.css" rel="stylesheet" />
 </head>
     <body>
         <form id="frmScholar" runat="server" class=" ">   
@@ -31,20 +30,21 @@
                             <asp:TextBox ID="txtSearch" TextMode="Search" runat="server"  class=" search-box form-control form-control-sm" autocomplete="off" placeholder="Search"></asp:TextBox>
                             </li>
                             <li class="nav-item mr-2">
-                                <asp:Button runat="server" Text="Go" CssClass="topnav search-btn form-control form-control-sm" />
+                                <asp:ImageButton runat="server" Text="Go" ImageUrl="~/Content/Default/icons/Search.png" Height="31px" Width="31px" CssClass="topnav search-btn form-control form-control-sm" />
                             </li>
                             <li class=" nav-item mr-2">
                             <asp:Button runat="server" Text="Login" ID="btnLogin" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnLogin_Click" />
-                            </li><!--I dont know whats the problem here-->
+                            </li>
                             <li class="nav-item mr-2">
                             <asp:Button runat="server" Text="Register" ID="btnRegister" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnRegister_Click" />
                             </li>
-                        </ul>
+                        </ul> <!---->
                     </div>
-                    <div class="row">
-                        <ul class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
-                            <li><asp:HyperLink ToolTip="Edit user profile" runat="server" ID="hplUserProfile" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-3 user"></asp:HyperLink></li>
-                        </ul>
+                    <div class="row" runat="server" id="divUserProfile" >
+                        <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
+                            <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
+                            </asp:HyperLink><asp:Image style="height:15px; width:15px;" runat="server" id="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="~/Content/Default/icons/EditProfile.png"/>
+                        </div>
                     </div>
                 </nav>
                 <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50);">
@@ -56,9 +56,9 @@
                             <li class="nav-item navbarText navbaritems">
                                 <asp:Button runat="server" ID="btnHome" Text="Home"  CssClass=" btn btn-link nav-item navText" OnClick="btnHome_Click"/>
                             </li><li class="NavDevider">|</li><!--deviders-->
-                            <li class="nav-item navbarText navbaritems">
-                                <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen"  CssClass=" btn btn-link nav-item navText"/>
-                            </li><li class="NavDevider">|</li><!--deviders-->
+                            <li class="nav-item navbarText navbaritems" runat="server" id="liMyMusbtn">
+                                <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen"  CssClass=" btn btn-link nav-item navText" OnClick="btnMyMuslimeen_Click"/>
+                            </li><li runat="server" id="liMyMusDivi" class=" NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems">
                                 <asp:Button runat="server" ID="btnMosques" Text="Mosques"  CssClass="nav-item navText btn-link btn" OnClick="btnMosques_Click"/>
                             </li><li class="NavDevider">|</li><!--deviders-->
@@ -78,72 +78,78 @@
                     </div>
                 </div>
             </header>
-
-
            <!--add content here --> 
         <!--START INSERTING CODE FROM THIS POINT ON-->
             <!--add your custom styling in MyMember.css in MyMember/css-->
-            <br />
-                <h1 class="title">About us</h1>
-                <hr />
-                
-
+            <div class="content" id="content"><!--add content here -->
+                <h1 class="title header mb-4 mt-0">About us</h1>                
 
                <div class="container">
-                
-                   <h4 class="text-center"> Our Mission:  <br/></h4>
-                    <h5 class="text-center">
-                        Enhance communication
-                        within our community <br />
-                        And educate our users more about Islam
+                <div class="contentHolder pt-0">
+                    <div class="header mb-3">
+                        <h4 class="text-center"> Our Mission:  <br/></h4>
+                        <h5 class="text-center">
+                            Enhance communication
+                            within our community <br />
+                            And educate our users more about Islam
                         
-                    </h5>
-                    <hr />
-
-
-                <p>
-                    Our mission is what drives us to do everything possible to increase the unity within our community. We do this by having
-                    a centralised database where all members can access our safe and secure website anywhere, and at anytime. <br />
-                    This website caters for those who would like to view events and salaah times or any other information about the mosque they attend or 
-                    other mosques they are interested in. Our users may view scholar details to personally contact them for islamic advice
-                    or simply learn more about Islam through our Learn Islam page. Our website strives for convenience where we don't only provide
-                    zakaah information, but also allow members to calculate the amounts by using our zakaah calculator.
-                </p>
-               <hr />
-                    <h4 class="text-center"> Innovation: <br/></h4>
-                    <h5 class="text-center">
-                        The big leap, the big risk<br />
-                        the big change
-                    </h5>
-                <hr />
-
-                   <p>
-                       We are in the process of increasing the communication platform to increase our users satisfaction.
-                       Our future communication platform will include a Muslimeen forum page where members may start a 
-                       thread by asking questions as well as respond to a thread which was created.
-                       We are also planning to create a direct messenger where we could communicate directly with our scholars, instead of using
-                       another app.
-                   </p>
-                     <hr />
-                    <h4 class="text-center"> Our Team: <br/></h4>
-                    <h5 class="text-center">
-                        A team that is empowered, diverse<br />
-                        and inclusive
+                        </h5>
+                    </div>
+                       <div class="paragraphDisplay p-2">
+                        <p>
+                            Our mission is what drives us to do everything possible to increase the unity within our community. We do this by having
+                            a centralised database where all members can access our safe and secure website anywhere, and at anytime. <br />
+                            This website caters for those who would like to view events and salaah times or any other information about the mosque they attend or 
+                            other mosques they are interested in. Our users may view scholar details to personally contact them for islamic advice
+                            or simply learn more about Islam through our Learn Islam page. Our website strives for convenience where we don't only provide
+                            zakaah information, but also allow members to calculate the amounts by using our zakaah calculator.
+                        </p>
+                    </div>
+                </div>
+                   <div class="contentHolder mt-4">
+                       <div class="header mb-3">
+                           <h4 class="text-center">Innovation:
+                               <br />
+                           </h4>
+                           <h5 class="text-center">The big leap, the big risk<br />
+                               the big change
+                           </h5>
+                       </div>
+                       <div class="paragraphDisplay p-2">
+                           <p>
+                               We are in the process of increasing the communication platform to increase our users satisfaction.
+                               Our future communication platform will include a Muslimeen forum page where members may start a 
+                               thread by asking questions as well as respond to a thread which was created.
+                               We are also planning to create a direct messenger where we could communicate directly with our scholars, instead of using
+                               another app.
+                           </p>
+                       </div>
+                   </div>
+                   <div class="contentHolder mt-4">
+                       <div class="header mb-3">
+                           <h4 class="text-center">Our Team:
+                               <br />
+                           </h4>
+                           <h5 class="text-center">A team that is empowered, diverse<br />
+                               and inclusive
                         
-                    </h5>
-                <hr />
-
-                   <p>
-                       No matter where we come from, the love for Islam and helping others unites us.
+                           </h5>
+                       </div>
+                       <div class="paragraphDisplay p-2">
+                           <p>
+                               No matter where we come from, the love for Islam and helping others unites us.
                        Our team shares a singular goal: to inform members about what is happening within our community, foster convenience and help those
                        who would like to know more about Islam.
                        The world is contantly curious about Islam, and we've got a team of scholars which we are truly inspired by.
-                   </p>
+                           </p>
+                       </div>
+                   </div>
+                </div>
                     <!--<h4 class="text-center"> We dare to enhance our communication platform  <br/></h4>
                     <p>The world is our community. We are in the process of creating a forum platform to increase our
                        means of communication and learning.
                     </p>-->
-                    </div>
+                    
 
             <div class="footerr"><!--End content here, start of footer-->
                 <div class="row">
@@ -197,7 +203,9 @@
                     </div>
                 </div>
             </div>
+        </div>
         </form>
+        <script src="Default/Default.js"></script>
     </body>
 </html>
 

@@ -35,7 +35,7 @@
             </div>
             <div class="form-row">
                 <div class="form-group text-left col-sm-5 mb-1 mt-1">
-                    <label>First Name: </label>
+                    <label>First Name:* </label>
                 </div>
                 <div class="form-group col-sm-7 mb-1 mt-1">
                     <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtName"></asp:TextBox>
@@ -43,7 +43,7 @@
             </div>
             <div class="form-row">
                 <div class="form-group text-left col-sm-5 mb-1 mt-1">
-                    <label>Last Name: </label>
+                    <label>Last Name:* </label>
                 </div>
                 <div class="form-group col-sm-7 mb-1 mt-1">
                     <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtLName"></asp:TextBox>
@@ -67,7 +67,7 @@
             </div>
             <div class="form-row ">
                 <div class="form-group text-left col-sm-5 mb-1 mt-1">
-                    <label>Email Address: </label>
+                    <label>Email Address:* </label>
                 </div>
                 <div class="form-group col-sm-7  mb-1 mt-1">
                     <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtUserEmail"></asp:TextBox>
@@ -129,7 +129,7 @@
                 </div>
             </div>
                 <asp:button runat="server" CssClass="btn btn-primary main-btn mt-2 " ID="btnUpdate" Text="Update" OnClick="btnUpdate_Click"></asp:button>
-                <div class="form-group col " style="text-align:center;">
+                <div class="form-group col m-2" style="text-align:center;">
                     <asp:Label CssClass="lblError" runat="server" ID="lblErrorPass"></asp:Label>
                 </div>
                 <p class=" text-center mt-3">Go back to the <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="~/Content/Default.aspx"  Text="Home page"></asp:HyperLink></p>

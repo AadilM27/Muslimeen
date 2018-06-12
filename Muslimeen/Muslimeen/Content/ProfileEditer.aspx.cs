@@ -8,6 +8,7 @@ using TypeLib.ViewModels;
 using TypeLib.Models;
 using Muslimeen.BLL;
 using System.Drawing;
+using System.Text;
 
 namespace Muslimeen.Content
 {
@@ -48,8 +49,11 @@ namespace Muslimeen.Content
                 }
 
                 uspGetMember uspGetMember = new uspGetMember();
-                uspGetMember = dBHandler.BLL_GetMember(Session["UserName"].ToString());
 
+                if (Session["UserName"] != null)
+                {
+                    uspGetMember = dBHandler.BLL_GetMember(Session["UserName"].ToString());
+                }
                 if (uspGetMember.MemberType.ToString() == "O") //O stands for Moderator.
                 {
                     uspGetModeratorDetails uspGetModeratorDetails = new uspGetModeratorDetails();
@@ -132,19 +136,19 @@ namespace Muslimeen.Content
                 UpdateMember updateMember = new UpdateMember();
                 DBHandler dBHandler = new DBHandler();
 
-                if(txtName.Text == null || txtName.Text == "")
+                if (txtName.Text == null || txtName.Text == "")
                 {
                     lblErrorPass.Text = "Name field can not be empty";
                     txtName.BorderColor = Color.Red;
                     continueProcess += 1;
                 }
-                else if(txtLName.Text == null || txtLName.Text == "")
+                else if (txtLName.Text == null || txtLName.Text == "")
                 {
                     txtLName.BorderColor = Color.Red;
                     continueProcess += 1;
                     lblErrorPass.Text = "Last Name field can not be empty";
                 }
-                else if(txtUserEmail.Text == null || txtUserEmail.Text == "")
+                else if (txtUserEmail.Text == null || txtUserEmail.Text == "")
                 {
                     txtUserEmail.BorderColor = Color.Red;
                     continueProcess += 1;
@@ -154,31 +158,60 @@ namespace Muslimeen.Content
 
                 if (chkChangePassword.Checked == false)
                 {
-                    updateMember.MemberID = Session["UserName"].ToString();
-                    updateMember.MemberName = txtName.Text.ToString();
-                    updateMember.MemberLastName = txtLName.Text.ToString();
-                    if (ddAssignedMosques.Text != "None")
+                    if (!(continueProcess > 0))
                     {
-                        updateMember.MosqueID = Convert.ToInt32(ddAssignedMosques.SelectedValue);
+                        uspGetMember uspGetMember = new uspGetMember();
+                        uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
+
+                        Encryption encryption = new Encryption();
+
+                        updateMember.MemberID = Session["UserName"].ToString();
+                        updateMember.MemberName = txtName.Text.ToString();
+                        updateMember.MemberLastName = txtLName.Text.ToString();
+                        if (ddAssignedMosques.Text != "None")
+                        {
+                            updateMember.MosqueID = Convert.ToInt32(ddAssignedMosques.SelectedValue);
+                        }
+
+                        updateMember.ContactNo = txtContactNum.Text.ToString();
+                        updateMember.Email = txtUserEmail.Text.ToString();
+
+                        dBHandler.BLL_UpdateMember(updateMember);
+
+                        EmailService emailService = new EmailService();
+
+                        emailService.AutoEmailService(txtUserEmail.Text.ToString(),
+                            uspGetMember.MemberType.ToString(), "null", "ProfileUpdate", uspGetMember.MemberID.ToString(), "null"); //Add server Verification.aspx address.
+
+                        Response.Redirect("~/Content/Default.aspx");
+
                     }
-
-                    updateMember.ContactNo = txtContactNum.Text.ToString();
-                    updateMember.Email = txtUserEmail.Text.ToString();
-
-                    dBHandler.BLL_UpdateMember(updateMember);
                 }
                 else if (chkChangePassword.Checked == true)
                 {
-                    if (txtPassword.Text.ToString() != txtRetypePass.Text.ToString() || txtPassword.Text == null || txtRetypePass == null)
+                    if (txtPassword.Text.ToString() != txtRetypePass.Text.ToString())
                     {
                         txtRetypePass.BorderColor = Color.Red;
                         txtPassword.BorderColor = Color.Red;
                         lblErrorPass.Text = "Passwords do not match";
                         continueProcess += 1;
                     }
+                    else if (txtPassword.Text == null || txtPassword.Text == "")
+                    {
+                        txtPassword.BorderColor = Color.Red;
+                        continueProcess += 1;
+                        lblErrorPass.Text = "Please enter your new Password";
+
+                    }
+                    else if (txtRetypePass.Text == null || txtRetypePass.Text == "")
+                    {
+                        txtRetypePass.BorderColor = Color.Red;
+                        continueProcess += 1;
+                        lblErrorPass.Text = "Please retype your Password";
+                    }
 
 
-                    if (!(continueProcess > 0))
+                    if (continueProcess == 0)
                     {
                         uspGetMember uspGetMember = new uspGetMember();
                         uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
@@ -209,6 +242,13 @@ namespace Muslimeen.Content
                             updateMemberPassword.Password = newPassword;
 
                             dBHandler.BLL_UpdateMemberPassword(updateMemberPassword);
+
+                            EmailService emailService = new EmailService();
+
+                            emailService.AutoEmailService(txtUserEmail.Text.ToString(),
+                                uspGetMember.MemberType.ToString(), "null", "ProfileUpdate", uspGetMember.MemberID.ToString(), "null"); //Add server Verification.aspx address.
+
+                            Response.Redirect("~/Content/Default.aspx");
                         }
                         else
                         {

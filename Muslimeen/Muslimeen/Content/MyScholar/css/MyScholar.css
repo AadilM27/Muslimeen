@@ -200,3 +200,12 @@ html {
     background-color: #fff;
     border-color: #0275d8 #fff #0275d8 #0275d8;
 }
+
+.main-txtb:focus {
+    background-color: #d7e7f5;
+    text-decoration-color: black;
+}
+
+.lblError {
+    color: red;
+}

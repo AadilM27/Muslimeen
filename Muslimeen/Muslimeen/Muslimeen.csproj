@@ -81,6 +81,8 @@
     <Content Include="Content\HelpPage\icons\docs.png" />
     <Content Include="Content\HelpPage\icons\help.png" />
     <Content Include="Content\HelpPage\icons\lock.png" />
+    <Content Include="Content\Learn Islam\css\learnIslam.css" />
+    <Content Include="Content\Learn Islam\LearnIslam.aspx" />
     <Content Include="Content\Mosque.aspx" />
     <Content Include="Content\Mosque\Mosque.css" />
     <Content Include="Content\MyAdmin.aspx" />
@@ -97,16 +99,17 @@
     <Content Include="Content\MyScholar\RejectedArticle.aspx" />
     <Content Include="Content\ProfileEditer.aspx" />
     <Content Include="Content\ProfileEditer\css\ProfileEditer.css" />
-    <Content Include="Content\Zakaah.aspx" />
-    <Content Include="Content\ZakaahWebForms\newZakaah.aspx" />
+    <Content Include="Content\ZakaahWebForms\Zakaah.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahCalculator.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahGallery.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahOrganizations.aspx" />
     <Content Include="Content\Zakaah\css\Gallery.css" />
     <Content Include="Content\Zakaah\css\newZakaah.css" />
+    <Content Include="Content\Zakaah\css\Slideshow.css" />
     <Content Include="Content\Zakaah\css\Zakaatcard.css" />
     <Content Include="Content\Zakaah\LanguageTranslator.js" />
     <Content Include="Content\Zakaah\newZakaah.js" />
+    <Content Include="Content\Zakaah\slideshow.js" />
     <Content Include="Content\Zakaah\ZakaahGallery.js" />
     <Content Include="Content\Zakaah\ZakaahPics\!!!!!!UWC-Banner-SANZAF.jpg" />
     <Content Include="Content\Zakaah\ZakaahPics\1377717982.jpg" />
@@ -1483,6 +1486,8 @@
     <Content Include="Login\LogIn_Bootstrap\icons\png\zoom-out.png" />
     <Content Include="Login\LogIn_Bootstrap\MuslimeenText.PNG" />
     <Content Include="Content\PrivacyAndSafety.aspx" />
+    <Content Include="Login\ResetPassword.aspx" />
+    <Content Include="Register\icons\Loading.gif" />
     <Content Include="Register\Register.js" />
     <Content Include="Register\Verification.aspx" />
     <Content Include="Login\LogIn_Bootstrap\icons\fonts\Dr Sugiyama.ttf">
@@ -1582,6 +1587,13 @@
     <Compile Include="Content\HelpPage.aspx.designer.cs">
       <DependentUpon>HelpPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Content\Learn Islam\LearnIslam.aspx.cs">
+      <DependentUpon>LearnIslam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\Learn Islam\LearnIslam.aspx.designer.cs">
+      <DependentUpon>LearnIslam.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Content\Mosque.aspx.cs">
       <DependentUpon>Mosque.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1638,13 +1650,6 @@
     <Compile Include="Content\ProfileEditer.aspx.designer.cs">
       <DependentUpon>ProfileEditer.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Content\Zakaah.aspx.cs">
-      <DependentUpon>Zakaah.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Content\Zakaah.aspx.designer.cs">
-      <DependentUpon>Zakaah.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Content\PrivacyAndSafety.aspx.cs">
       <DependentUpon>PrivacyAndSafety.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1652,12 +1657,12 @@
     <Compile Include="Content\PrivacyAndSafety.aspx.designer.cs">
       <DependentUpon>PrivacyAndSafety.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Content\ZakaahWebForms\newZakaah.aspx.cs">
-      <DependentUpon>newZakaah.aspx</DependentUpon>
+    <Compile Include="Content\ZakaahWebForms\Zakaah.aspx.cs">
+      <DependentUpon>Zakaah.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Content\ZakaahWebForms\newZakaah.aspx.designer.cs">
-      <DependentUpon>newZakaah.aspx</DependentUpon>
+    <Compile Include="Content\ZakaahWebForms\Zakaah.aspx.designer.cs">
+      <DependentUpon>Zakaah.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\ZakaahWebForms\ZakaahCalculator.aspx.cs">
       <DependentUpon>ZakaahCalculator.aspx</DependentUpon>
@@ -1679,6 +1684,13 @@
     </Compile>
     <Compile Include="Content\ZakaahWebForms\ZakaahOrganizations.aspx.designer.cs">
       <DependentUpon>ZakaahOrganizations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login\ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Login\Login.aspx.cs">

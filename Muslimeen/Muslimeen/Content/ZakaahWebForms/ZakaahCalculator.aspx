@@ -13,6 +13,8 @@
      <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
      <link href="../Default/css/Default.css" rel="stylesheet" />
      <link href="../Zakaah/css/newZakaah.css" rel="stylesheet" />
+     <link href="../Zakaah/css/Slideshow.css" rel="stylesheet" />
+     <link href="../Zakaah/css/Zakaatcard.css" rel="stylesheet" />
      
 </head>
     <body>
@@ -83,7 +85,7 @@
            
         <div class="zakaah-content" style="position:static;">
             <nav class="navbar navbar-expand-sm navbar-dark" style="position:static; background-color:#256297;">
-              <a class="navbar-brand navt " href="newZakaah.aspx" >Zakaah</a>
+              <a class="navbar-brand navt " href="Zakaah.aspx" >Zakaah</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -115,7 +117,7 @@
                     <br />
                      
                     <div style="width: 580px; height: 50px; clear: both;">
-                    <div style="float: left;color:white;background-color:#256297">
+                    <div style="float: left;color:#256297">
                     <asp:Label ID="Label1" runat="server" Text="Label">Cash at Home</asp:Label>
                     </div>
                     <div style="float: right;">
@@ -124,7 +126,7 @@
 
                     </div>
                     <div style="width: 580px; height: 50px; clear: both;">
-                    <div style="float: left;color:white;background-color:#256297">
+                    <div style="float: left;color:#256297">
                     <asp:Label ID="Label2" runat="server" Text="Label">Balance held in Bank Account</asp:Label>
                     </div>
                     <div style="float: right;">
@@ -133,7 +135,7 @@
 
                     </div>
                     <div style="width: 580px; height: 50px; clear: both;">
-                    <div style="float: left;color:white;background-color:#256297">
+                    <div style="float: left;color:#256297">
                     <asp:Label ID="Label3" runat="server" Text="Label">Market value of short term investments</asp:Label>
                     </div>
                     <div style="float: right;">
@@ -142,7 +144,7 @@
 
                     </div>
                     <div style="width: 580px; height: 50px; clear: both;">
-                    <div style="float: left;color:white;background-color:#256297">
+                    <div style="float: left;color:#256297">
                     <asp:Label ID="Label4" runat="server" Text="Label">Business Merchandise</asp:Label>
                     </div>
                     <div style="float: right;" >
@@ -151,14 +153,14 @@
 
                     </div>
                    <div style="width: 580px; height: 50px; clear: both;">
-                   <div style="float: left;color:white;background-color:#256297">
+                   <div style="float: left;color:#256297">
                    <asp:Label ID="Label5" runat="server" Text="Label">Gold &amp; Silver (at current value)</asp:Label>
                    </div>
                    <div style="float: right;">
                    <asp:TextBox ID="txtGoldSilver" runat="server" OnTextChanged="txtGoldSilver_TextChanged"></asp:TextBox></div>
                    </div>
                    <div style="width: 580px; height: 50px; clear: both;">
-                   <div style="float: left; color:white;font-size: 15px;color:white;background-color:#256297">
+                   <div style="float: left; color:white;color:#256297">
                    <asp:Label ID="Label6" runat="server" Text="Label">Total of Assets Liable for Zakah</asp:Label>
                    </div>
                    <div style="float: right;">
@@ -167,7 +169,7 @@
 
                    </div>
                    <div style="width: 580px; height: 50px; clear: both;">
-                   <div style="float: left;color:white;background-color:#256297">
+                   <div style="float: left;color:#256297">
                    <asp:Label ID="Label7" runat="server" Text="Label">Deduct Debts</asp:Label>
                    </div>
                    <div style="float: right;">
@@ -176,7 +178,7 @@
 
                    </div>
                    <div style="width: 580px; height: 50px;clear:both">
-                   <div style="float: left; color:white;font-size: 15px;color:white;background-color:#256297">
+                   <div style="float: left; color:white;font-size: 15px;color:#256297">
                    <asp:Label ID="Label8" runat="server" Text="Label"><strong><em>Zakah-Eligible</em> Total</strong></asp:Label>
                    </div>
                    <div style="float: right;">
@@ -186,7 +188,7 @@
                   </div>
                   <div style="width: 580px; height: 50px; clear: both;">
                   <div style="float: left;color: #256297;font-size: 15px;">
-                  <strong>Ensure that <em>Zakah-Eligible</em> Total Exceeds <em>Nisab</em></strong>
+                  <strong>Total that Exceeds <em>Nisab</em></strong>
                   </div>
                   <div style="float: right;">
                   <asp:TextBox ID="txtNisab" runat="server" value="4404"></asp:TextBox>
@@ -219,64 +221,48 @@
                   </div>
                   <div class="col-lg-4" style="position:static;">
                        <!---javascript code to translate language--->
-                        <p>Translate this page:</p>
-                       <div id="google_translate_element"></div>
-
-                      <script type="text/javascript">
-                          function googleTranslateElementInit()
-                          {
-                            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-                          }
-                     </script>
-                     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-                    <!---end of javascript code--->
-                     <h2 style="color:#256297">Zakaah Facts</h2>
-                    <img src="../Zakaah/ZakaahPics/alms.jpg" />
+                       <div class="carder">
+                        <img src="../Zakaah/ZakaahPics/SANZAF_580x363.jpg" alt="zakaat" style="width:100%"/>
+                      <h1 style="color:#256297">SANZAF</h1>
+                      <p class="titler">South African National Zakaah Fund</p>
+                      <p>Bursary Scheme for those in need.</p>
+                        <div class="button" >
+                     <a href="https://sanzaf.org.za/appeals/sanzaf-bursary-program.html" style="color:white">Contact:WWW.SANZAF.ORG.ZA</a>
+                       </div>
+                    </div>
+                        <br /> 
                     <div class="rightcolumn">
-                    <div class="card" style="position:static">
                     
+                    <div class="slideshow-container">
+                        <h2 style="background-color:#256297;color:white;text-align:center"> Zakaah Quotes</h2>
+                    <div class="mySlides">
+                      <q>“Zakah does not become obligatory except after the completion of one whole year.”</q>
+                      <p class="author">- Abu Huraira Prophet(Peace Be upon him)</p>
+                    </div>
 
-                    <div style="height:50px;width:40px;">
-                     
+                    <div class="mySlides">
+                      <q>“Your ally is none but Allah and [therefore] His Messenger and those who have believed – those who establish prayer and give zakah, and they bow [in worship] </q>
+                      <p class="author">- [Qur’an 5:55]</p>
                     </div>
-                    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+
+                    <div class="mySlides">
+                      <q>“And establish prayer and give zakah, and whatever good you put forward for yourselves – you will find it with Allah. Indeed, Allah of what you do, is Seeing.”</q>
+                      <p class="author"> – al-Quran 2:110</p>
                     </div>
-                    <div class="card" style="position:static">
-                     <h3>Popular Post</h3>
-                      <div class="fakeimg" style="position:static">Image</div><br />
-                      <div class="fakeimg" style="position:static">Image</div><br />
-                      <div class="fakeimg" style="position:static">Image</div>
+
+                    <a class="prev" onclick="plusSlides(-1)">❮</a>
+                    <a class="next" onclick="plusSlides(1)">❯</a>
+
                     </div>
-                    <div class="card"style="position:static" >
-                     <h3>Follow Me</h3>
-                     <p>Some text..</p>
+
+                    <div class="dot-container">
+                      <span class="dot" onclick="currentSlide(1)"></span> 
+                      <span class="dot" onclick="currentSlide(2)"></span> 
+                      <span class="dot" onclick="currentSlide(3)"></span> 
                     </div>
-                    </div>
-                        <br />
-                       
-                          <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-                          <h3>Some Links</h3>
-                          <p>Lorem ipsum dolor sit ame.</p>
-                          <ul class="nav nav-pills flex-column">
-                            <li class="nav-item">
-                              <a class="nav-link active" href="#">Active</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link disabled" href="#">Disabled</a>
-                            </li>
-                          </ul>
-                          <hr class="d-sm-none" />
-                        </div>
-                    
-            
-                   
-                       
+                        <script src="../Zakaah/slideshow.js"></script>
+                      </div>      
+                      </div>
                 </div>
                 </div>
                 </div>

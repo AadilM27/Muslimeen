@@ -4,31 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TypeLib.Models;
 using TypeLib.ViewModels;
 using Muslimeen.BLL;
-using TypeLib.Models;
 
-
-namespace Muslimeen.Content
+namespace Muslimeen.Content.Learn_Islam
 {
-    public partial class newZakaah : System.Web.UI.Page
+    public partial class LearnIslam : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             DBHandler dBHandler = new DBHandler();
-            //Uthmaans code starts to display zakaah info from database into labels when loading zakaah page.
-            TypeLib.Models.Zakaah zakaah = new TypeLib.Models.Zakaah();
-
-            zakaah = dBHandler.BLL_GetZakaah();
-
-            LblWhatIsZakaah.Text = zakaah.ZakaahDesc;
-            LblConditions.Text = zakaah.ZakaahConditions;
-            LblCaution.Text = zakaah.CautionsOfZakaah;
-            LblPermissble.Text = zakaah.ZakaahPermissible;
-            LblAssets.Text = zakaah.AssetsOfZakaah;
-            LblApplicable.Text = zakaah.ApplicableZakaah;
-            LblCalculations.Text = zakaah.CalculationDesc;
 
 
             if (Session["UserName"] != null)
@@ -53,6 +39,17 @@ namespace Muslimeen.Content
 
                 divUserProfile.Visible = false;
                 Session.Clear();
+            }
+
+            //Article...
+            try
+            {
+                repeatPendingArticle.DataSource = dBHandler.BLL_GetPendingArticle();
+                repeatPendingArticle.DataBind();
+            }
+            catch
+            {
+                throw;
             }
 
         }
@@ -131,8 +128,9 @@ namespace Muslimeen.Content
             }
             else if (uspGetMember.MemberType == 'S')
             {
-                Response.Redirect("~/Content/MyScholar.aspx");
+                Response.Redirect("~/Content/AddArticle.aspx");
             }
+
 
         }
     }

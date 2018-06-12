@@ -15,7 +15,15 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <StartPageUrl>Content/ZakaahWebForms/ZakaahGallery.aspx</StartPageUrl>
+<<<<<<< HEAD
+          <StartPageUrl>Content/MyScholar/PendingArticle.aspx</StartPageUrl>
+=======
+<<<<<<< HEAD
+          <StartPageUrl>Content/HelpPage.aspx</StartPageUrl>
+=======
+          <StartPageUrl>Content/ZakaahWebForms/ZakaahCalculator.aspx</StartPageUrl>
+>>>>>>> ca6f7844308c87273175e826779646b851824042
+>>>>>>> 34068810d8cbd2e258014252f23558bbe95512d0
           <StartAction>SpecificPage</StartAction>
           <AspNetDebugging>True</AspNetDebugging>
           <SilverlightDebugging>False</SilverlightDebugging>

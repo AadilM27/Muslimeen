@@ -7,15 +7,18 @@ using System.Web.UI.WebControls;
 using TypeLib.ViewModels;
 using TypeLib.Models;
 using Muslimeen.BLL;
+using System.Text;
 
 namespace Muslimeen.Login
 {
     public partial class Login : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+
                 HttpCookie httpCookie = Request.Cookies["RememberMe"];
 
                 if (httpCookie != null)
@@ -30,7 +33,9 @@ namespace Muslimeen.Login
                 {
                     chkRememberMe.Checked = false;
                 }
-            }            
+                
+            }
+            
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
@@ -137,5 +142,12 @@ namespace Muslimeen.Login
             httpCookie.Expires = DateTime.Now.AddYears(1);
             Response.Cookies.Add(httpCookie);
         }
+
+        protected void btnForgotPass_Click(object sender, EventArgs e)
+        {
+
+            Response.Redirect("~/Login/ResetPassword.aspx");
+        }
+
     }
 }

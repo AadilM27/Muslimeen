@@ -94,5 +94,11 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetAllPendingScholars();
         }
+
+        //Pending Articles
+        public List<uspGetPendingArticle> BLL_GetPendingArticle()
+        {
+            return dBAccess.GetPendingArticle();
+        }
     }
 }

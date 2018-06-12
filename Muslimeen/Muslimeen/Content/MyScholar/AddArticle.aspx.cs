@@ -139,33 +139,42 @@ namespace Muslimeen.Content.MyScholar
             DBHandler han = new DBHandler();
             Article art = new Article();
 
+            lblErrorPass.Text = "";
+
             try
             {
-                art.DateCreated = Convert.ToDateTime(DateTime.Today);
-                art.Status = Convert.ToChar("P");
-                art.RejectionReason = Convert.ToString(" ");
-                art.Active = Convert.ToChar("I");
-                art.RemovalReason = Convert.ToString(" ");
+                if (txtHeading.Text == null && txtContent.Text == null)
+                {
+                    art.DateCreated = Convert.ToDateTime(DateTime.Today);
+                    art.Status = Convert.ToChar("P");
+                    art.RejectionReason = Convert.ToString(" ");
+                    art.Active = Convert.ToChar("I");
+                    art.RemovalReason = Convert.ToString(" ");
 
-                //Scholar ID input with session...
-                //art.ScholarID = Convert.ToString(Session["UserName"]);
-                art.ScholarID = Convert.ToString(" ");
+                    //Scholar ID input with session...
+                    //art.ScholarID = Convert.ToString(Session["UserName"]);
+                    art.ScholarID = Convert.ToString(" ");
+                    art.ModeratorID = Convert.ToString(" ");
+                    art.TopicID = Convert.ToInt32(drpTopics.SelectedValue);
+                    art.ArticleTitle = Convert.ToString(txtHeading.Text);
+                    art.ArticleContent = Convert.ToString(txtContent.Text);
 
-                art.ModeratorID = Convert.ToString(" ");
-                art.TopicID = Convert.ToInt32(drpTopics.SelectedValue);
+                    bool success = han.BLL_AddArticle(art);
 
-                art.ArticleTitle = Convert.ToString(txtHeading.Text);
-                art.ArticleContent = Convert.ToString(txtContent.Text);
-
-                bool success = han.BLL_AddArticle(art);
-
+                    txtHeading.Text = " ";
+                    txtContent.Text = " ";
+                    drpTopics.Text = " ";
+                }
+                else
+                {
+                    lblErrorPass.Text = "One or more fields are left empty";
+                }
 
             }
             catch
             {
-                throw;
-            }
 
+            }
         }
 
         protected void drpTopics_SelectedIndexChanged(object sender, EventArgs e)

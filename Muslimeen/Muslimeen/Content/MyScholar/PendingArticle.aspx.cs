@@ -33,6 +33,16 @@ namespace Muslimeen.Content.MyScholar
                 Session.Clear();
             }
 
+            try
+            {
+                repeatPendingArticle.DataSource = dBHandler.BLL_GetPendingArticle();
+                repeatPendingArticle.DataBind();
+            }
+            catch
+            {
+                throw;
+            }
+            
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)

@@ -1,4 +1,16 @@
-﻿body {
+﻿.column1 {
+    text-align:left;
+    width:100%;
+}
+
+
+
+
+
+
+
+/* Start coping from here to get heade and footer styling*/
+body {
     background-color: #256297;
     height: 100%;
     width: inherit;
@@ -162,29 +174,4 @@ html {
     color: #256297;
     align-self: center;
 }
-
-.title {
-    font-family: sans-serif;
-    color: white;
-    text-align: center;
-}
-.paragraphDisplay {
-    background-color: white;
-    color: black;
-    /*padding: 100px 20px;*/
-    height: 100%;
-}
-.header {
-    background-color: #256297;
-    font-family: sans-serif;
-    text-decoration-color: white;
-    text-align: center;
-    color: white;
-}
-
-.contentHolder {
-    border-width: 1px;
-    border: solid;
-    border-color: #256297;
-}
-
+/*End copying from here for Header and footer*/
