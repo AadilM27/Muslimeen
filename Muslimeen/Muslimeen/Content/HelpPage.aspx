@@ -12,15 +12,11 @@
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="Default/css/Default.css" rel="stylesheet" />
-     <link href="../Content/HelpPage/HelpPage.css" rel="stylesheet" />
+    <link href="../Content/HelpPage/HelpPage.css" rel="stylesheet" />
     <link href="../Content/HelpPage/icon" rel="stylesheet" />
 </head>
     <body>
-        <form id="frmScholar" runat="server" class=" ">   <!--READ THIS FIRST == Haanim I added the code behind for this page from Default.aspx, you 
-                                                            have to do it for AboutUs.aspx, and make all your div tags postion to static
-                                                                so it down overlap with header and footer. Dont forget to create a custom css
-                                                                    file for your new pages, copy and paste the css styling where indicated in
-                                                                       Default.css and link your pages custom css file not the default.css file for this page-->
+        <form id="frmScholar" runat="server" class=" ">   
             <header >
                 <nav class="navFixed">
                     <div class="row align-self-end">
@@ -34,7 +30,7 @@
                             <asp:TextBox ID="txtSearch" TextMode="Search" runat="server"  class=" search-box form-control form-control-sm" autocomplete="off" placeholder="Search"></asp:TextBox>
                             </li>
                             <li class="nav-item mr-2">
-                                <asp:Button runat="server" Text="Go" CssClass="topnav search-btn form-control form-control-sm" />
+                                <asp:ImageButton runat="server" Text="Go" ImageUrl="~/Content/Default/icons/Search.png" Height="31px" Width="31px" CssClass="topnav search-btn form-control form-control-sm" />
                             </li>
                             <li class=" nav-item mr-2">
                             <asp:Button runat="server" Text="Login" ID="btnLogin" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnLogin_Click" />
@@ -42,12 +38,13 @@
                             <li class="nav-item mr-2">
                             <asp:Button runat="server" Text="Register" ID="btnRegister" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnRegister_Click" />
                             </li>
-                        </ul>
+                        </ul> <!---->
                     </div>
-                    <div class="row">
-                        <ul class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
-                            <li><asp:HyperLink ToolTip="Edit user profile" runat="server" ID="hplUserProfile" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-3 user"></asp:HyperLink></li>
-                        </ul>
+                    <div class="row" runat="server" id="divUserProfile" >
+                        <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
+                            <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
+                            </asp:HyperLink><asp:Image style="height:15px; width:15px;" runat="server" id="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="~/Content/Default/icons/EditProfile.png"/>
+                        </div>
                     </div>
                 </nav>
                 <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50);">
@@ -59,9 +56,9 @@
                             <li class="nav-item navbarText navbaritems">
                                 <asp:Button runat="server" ID="btnHome" Text="Home"  CssClass=" btn btn-link nav-item navText" OnClick="btnHome_Click"/>
                             </li><li class="NavDevider">|</li><!--deviders-->
-                            <li class="nav-item navbarText navbaritems">
-                                <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen"  CssClass=" btn btn-link nav-item navText"/>
-                            </li><li class="NavDevider">|</li><!--deviders-->
+                            <li class="nav-item navbarText navbaritems" runat="server" id="liMyMusbtn">
+                                <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen"  CssClass=" btn btn-link nav-item navText" OnClick="btnMyMuslimeen_Click"/>
+                            </li><li runat="server" id="liMyMusDivi" class=" NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems">
                                 <asp:Button runat="server" ID="btnMosques" Text="Mosques"  CssClass="nav-item navText btn-link btn" OnClick="btnMosques_Click"/>
                             </li><li class="NavDevider">|</li><!--deviders-->
@@ -82,99 +79,98 @@
                 </div>
             </header>
      <!--Add content-->
-            <div class="container">
-                <br />
-            <h1 class="title">Help and Support</h1>
-                <hr />
+            <div class="content" id="content">
+                <div class="contentHolder header p-5">
+                    <div class="header mb-5">
+                        <h1 class="title header">Help and Support</h1>
+                    </div>
 
-                <div class="row">
-            <!--Help Center-->
-              <div class =" col text-center" style="position:static;">
-                  <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/help.png" width="90" height="70"/>
-                <h4 class="text-center"><a href="#">Help Center</a></h4>
+                    <div class="row" style="height:495px;">
+                <!--Help Center-->
+                              <div class =" col text-center paragraphDisplay mb-3 p-1" style="position:static; height:225px; border-radius:5px;">
+                                  <asp:Image runat="server" CssClass="mb-0 ml-0 " src="../Content/HelpPage/icons/help.png" width="90" height="70"/>
+                                <h4 class="text-center"><a href="#">Help Center</a></h4>
                 
-                 <p class="text-center">
-                      Getting started <br/>
-                      Managing your account<br />
-                      How my Muslimeen feed works<br />
-                  </p>
-              </div>
+                                 <p class="text-center">
+                                      Getting started <br/>
+                                      Managing your account<br />
+                                      How my Muslimeen feed works<br />
+                                  </p>
+                              </div>
 
-              <!--Privacy and Safety--> 
-            <div class =" col text-center" style="position:static;"><!--and this one static also-->
-                <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/lock.png" width="90" height="70"/>
-                <h4 class="text-center"><a href="~/Content/HelpCenter.aspx"> Privacy and safety</a></h4>  
+                  <!--Privacy and Safety--> 
+                            <div class =" col-4 text-center paragraphDisplay mb-3 ml-1 p-1" style="position:static; height:225px; border-radius:5px;"><!--and this one static also-->
+                                <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/lock.png" width="90" height="70"/>
+                                <h4 class="text-center"><a href="~/Content/HelpCenter.aspx"> Privacy and safety</a></h4>  
                 
-                   Our data policy and your privacy      
+                                   Our data policy and your privacy      
                   
-             </div>
+                             </div>
             
-             <!--Terms and Policies -->
-            <div class ="col text-center" style="position:static;"> <!--Like this i made this position static-->
-                <asp:Image runat="server" CssClass="mb-0 ml-0"  src="../Content/HelpPage/icons/docs.png" width="90" height="70"/>
-               <h4 class="text-center"><a href="#">Terms and policies</a></h4> 
-                <p class="text-center">
-                    Terms of service<br />
-                </p>
-                
-            </div>
-                    
-          </div> <!--close Row-->
-            </div>
-              <div class="footerr"> <!--End of content, start of footer-->
-                <div class="row">
-                    <div class="col text-center position-static">
-                       <h6>Content</h6>
-                        <ul class="navbar-nav">
-                           <li class="nav-item">
-                               <a class="footerr-text" href="Default.aspx">Home</a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="footerr-text" href="Mosque.aspx">Mosques</a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="footerr-text" href="#">Scholars</a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="footerr-text" href="#">Learn Islam</a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="footerr-text" href="Zakaah.aspx">Zakaah</a>
-                           </li>
-                        </ul>
-                    </div>
-                    <div class="col  text-center position-static">
-                        <h6>About us</h6>
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="footerr-text" href="#">Content</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="#">Content</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="#">Content</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col  text-center position-static">
-                        <h6>Contact us</h6>
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="footerr-text" href="#">Content</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="#">Content</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="#">Content</a>
-                            </li>
-                        </ul>
+                             <!--Terms and Policies -->
+                            <div class ="col text-center paragraphDisplay mb-3 ml-1 p-1" style="position:static; height:225px; border-radius:5px;"> <!--Like this i made this position static-->
+                                <asp:Image runat="server" CssClass="mb-0 ml-0"  src="../Content/HelpPage/icons/docs.png" width="90" height="70"/>
+                                <h4 class="text-center"><a href="#">Terms and policies</a></h4> 
+                                <p class="text-center">
+                                Terms of service<br />
+                                </p>
+                        </div>
+                    </div>  
+              </div> <!--close Row-->
+        </div>
+                  <div class="footerr"> <!--End of content, start of footer-->
+                    <div class="row">
+                        <div class="col text-center position-static">
+                           <h6>Content</h6>
+                            <ul class="navbar-nav">
+                               <li class="nav-item">
+                                   <a class="footerr-text" href="Default.aspx">Home</a>
+                               </li>
+                               <li class="nav-item">
+                                   <a class="footerr-text" href="Mosque.aspx">Mosques</a>
+                               </li>
+                               <li class="nav-item">
+                                   <a class="footerr-text" href="#">Scholars</a>
+                               </li>
+                               <li class="nav-item">
+                                   <a class="footerr-text" href="#">Learn Islam</a>
+                               </li>
+                               <li class="nav-item">
+                                   <a class="footerr-text" href="Zakaah.aspx">Zakaah</a>
+                               </li>
+                            </ul>
+                        </div>
+                        <div class="col  text-center position-static">
+                            <h6>About us</h6>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="footerr-text" href="#">Content</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="footerr-text" href="#">Content</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="footerr-text" href="#">Content</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col  text-center position-static">
+                            <h6>Contact us</h6>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="footerr-text" href="#">Content</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="footerr-text" href="#">Content</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="footerr-text" href="#">Content</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
             </form>
-        <script src="Default/Default.js" type="text/javascript"></script>
+        <script src="Default/Default.js"></script>
     </body>
-        <script src="Default/Default.js" type="text/javascript"></script>
 </html>

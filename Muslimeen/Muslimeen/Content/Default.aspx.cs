@@ -92,7 +92,7 @@ namespace Muslimeen.Content
 
         protected void btnAboutUs_Click(object sender, EventArgs e)
         {
-            //redirect user to the About us page.
+            Response.Redirect("~/Content/AboutUs.aspx");
         }
 
         protected void btnMyMuslimeen_Click(object sender, EventArgs e)
