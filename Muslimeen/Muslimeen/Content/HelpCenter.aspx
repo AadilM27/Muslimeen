@@ -88,7 +88,7 @@
                  <p>
                      <b>User:</b><br />
                      A user will register on My Muslimeen. Once the user is registered and assigned himself to a mosque, he may then have the option to view his mosque 
-                     details, events and notifications or all mosque events and notifications. He may view mosques in his city and scholars within
+                     details, events and notifications or all mosque events and notifications. He may view mosques and scholars within
                      his city.
                      <br />
                      <br />
@@ -99,8 +99,8 @@
                      <br />
                      <br />
                      <b>Scholar:</b><br />
-                     When a scholar registered, his qualifications must be uploaded and the web master will verify these qualifications. 
-                     All articles uploaded by the scholar will be verified as well, therefore no false content wil be uploaded. 
+                     When a scholar registered, his qualifications must be uploaded and the moderator will verify these qualifications. 
+                     All articles uploaded by the scholar will be moderated as well, therefore no false content wil be uploaded. 
                      A scholar may do everything the user can do. The only difference is that a scholar may upload or edit their articles.
 
 

@@ -20,6 +20,7 @@
      <link href="../Default/css/Default.css" rel="stylesheet" />
       <link href="../Zakaah/css/newZakaah.css" rel="stylesheet" />
         <link href="../Zakaah/css/Zakaatcard.css" rel="stylesheet" />
+        <link href="../Zakaah/css/Slideshow.css" rel="stylesheet" />
 </head>
     <body>
         <form id="frmScholar" runat="server" class=" ">   
@@ -97,13 +98,13 @@
               <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" href="ZakaahCalculator.aspx">Calculator</a>
+                    <a class="navbar-brand navt" href="ZakaahCalculator.aspx">Calculator</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="ZakaahGallery.aspx">Gallery</a>
+                    <a class="navbar-brand navt" href="ZakaahGallery.aspx">Gallery</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="ZakaahOrganizations.aspx">Organizations</a>
+                    <a class="navbar-brand navt" href="ZakaahOrganizations.aspx">Organizations</a>
                   </li>    
                 </ul>
               </div>  
@@ -150,72 +151,52 @@
                      <script src="../Zakaah/newZakaah.js"></script>
                     <div class="col-lg-4" style="position:static;">
                        <!---javascript code to translate language--->
-                        <p>Translate this page:</p>
-                       <div id="google_translate_element"></div>
+                        
 
-                        <script src="../Zakaah/LanguageTranslator.js"></script>
-                     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-                    <!---end of javascript code--->
-                     <h2 style="text-align:center">User Profile Card</h2>
-
-<div class="carder">
-    <img src="../Zakaah/ZakaahPics/SANZAF_580x363.jpg" alt="zakaat" style="width:100%"/>
-  <h1>John Doe</h1>
-  <p class="titler">CEO & Founder, Example</p>
-  <p>Harvard University</p>
-  <div style="margin: 24px 0;">
-    <a href="#"><i class="fa fa-dribbble"></i></a> 
-    <a href="#"><i class="fa fa-twitter"></i></a>  
-    <a href="#"><i class="fa fa-linkedin"></i></a>  
-    <a href="#"><i class="fa fa-facebook"></i></a> 
- </div>
- <p><button>Contact</button></p>
-</div>
-                    <div class="rightcolumn">
-                    <div class="card" style="position:static">
-                    
-
-                    <div style="height:50px;width:40px;">
-                     
-                    </div>
-                    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-                    </div>
-                    <div class="card" style="position:static">
-                     <h3>Popular Post</h3>
-                      <div class="fakeimg" style="position:static">Image</div><br />
-                      <div class="fakeimg" style="position:static">Image</div><br />
-                      <div class="fakeimg" style="position:static">Image</div>
-                    </div>
-                    <div class="card"style="position:static" >
-                     <h3>Follow Me</h3>
-                     <p>Some text..</p>
-                    </div>
+                    <div class="carder">
+                        <img src="../Zakaah/ZakaahPics/SANZAF_580x363.jpg" alt="zakaat" style="width:100%"/>
+                      <h1 style="color:#256297">SANZAF</h1>
+                      <p class="titler">South African National Zakaah Fund</p>
+                      <p>Bursary Scheme for those in need.</p>
+                        <div class="button" >
+                     <a href="https://sanzaf.org.za/appeals/sanzaf-bursary-program.html" style="color:white">Contact:WWW.SANZAF.ORG.ZA</a>
+                       </div>
                     </div>
                         <br />
-                       
-                          <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-                          <h3>Some Links</h3>
-                          <p>Lorem ipsum dolor sit ame.</p>
-                          <ul class="nav nav-pills flex-column">
-                            <li class="nav-item">
-                              <a class="nav-link active" href="#">Active</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link disabled" href="#">Disabled</a>
-                            </li>
-                          </ul>
-                          <hr class="d-sm-none" />
-                        </div>
-    
+                    <div class="rightcolumn">
+                    
+                    <div class="slideshow-container">
+                        <h2 style="background-color:#256297;color:white;text-align:center"> Zakaah Quotes</h2>
+                    <div class="mySlides">
+                      <q>“Zakah does not become obligatory except after the completion of one whole year.”</q>
+                      <p class="author">- Abu Huraira Prophet(Peace Be upon him)</p>
+                    </div>
+
+                    <div class="mySlides">
+                      <q>“Your ally is none but Allah and [therefore] His Messenger and those who have believed – those who establish prayer and give zakah, and they bow [in worship] </q>
+                      <p class="author">- [Qur’an 5:55]</p>
+                    </div>
+
+                    <div class="mySlides">
+                      <q>“And establish prayer and give zakah, and whatever good you put forward for yourselves – you will find it with Allah. Indeed, Allah of what you do, is Seeing.”</q>
+                      <p class="author"> – al-Quran 2:110</p>
+                    </div>
+
+                    <a class="prev" onclick="plusSlides(-1)">❮</a>
+                    <a class="next" onclick="plusSlides(1)">❯</a>
+
+                    </div>
+
+                    <div class="dot-container">
+                      <span class="dot" onclick="currentSlide(1)"></span> 
+                      <span class="dot" onclick="currentSlide(2)"></span> 
+                      <span class="dot" onclick="currentSlide(3)"></span> 
+                    </div>
+                        <script src="../Zakaah/slideshow.js"></script>
+                   </div>
                       </div>
                     </div>
-           
+           </div>
             
              
                    </div>     
