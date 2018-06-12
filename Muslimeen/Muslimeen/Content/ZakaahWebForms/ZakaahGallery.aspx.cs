@@ -8,12 +8,15 @@ using TypeLib.ViewModels;
 using Muslimeen.BLL;
 using TypeLib.Models;
 
+
 namespace Muslimeen.Content.ZakaahWebForms
 {
     public partial class ZakaahGallery : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+           
+
             DBHandler dBHandler = new DBHandler();
 
 
@@ -119,6 +122,7 @@ namespace Muslimeen.Content.ZakaahWebForms
             {
                 Response.Redirect("~/Content/MyScholar.aspx");
             }
+           
         }
 
     }

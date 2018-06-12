@@ -184,7 +184,7 @@ namespace Muslimeen.Content.ZakaahWebForms
             }
             catch (Exception ex)
             {
-                ex.ToString();
+               Response.Write(ex.ToString());
 
             }
         }
@@ -224,7 +224,7 @@ namespace Muslimeen.Content.ZakaahWebForms
             }
             catch (Exception ex)
             {
-                ex.ToString();
+                Response.Write(ex.ToString());
             }
         }
 
