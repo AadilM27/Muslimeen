@@ -83,7 +83,7 @@ namespace Muslimeen.Content
 
         protected void btnAboutUs_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/AboutUs.aspx");
+            Response.Redirect("~/Content/MyScholar/AddArticle.aspx");
         }
     }
 }

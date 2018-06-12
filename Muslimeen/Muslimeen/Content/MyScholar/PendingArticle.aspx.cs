@@ -23,6 +23,10 @@ namespace Muslimeen.Content.MyScholar
 
                 uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
                 hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
+                //divUserProfile.Visible = true;
+
+                //liMyMusbtn.Visible = true;
+                //liMyMusDivi.Visible = true;
 
                 btnLogin.Text = "Log out";
                 btnRegister.Visible = false;
@@ -30,6 +34,10 @@ namespace Muslimeen.Content.MyScholar
             }
             else if (Session["UserName"] == null)
             {
+               // liMyMusbtn.Visible = false;
+                //liMyMusDivi.Visible = false;
+
+               // divUserProfile.Visible = false;
                 Session.Clear();
             }
 

@@ -119,7 +119,7 @@ namespace Muslimeen.Content.ZakaahWebForms
             }
             else if (uspGetMember.MemberType == 'S')
             {
-                Response.Redirect("~/Content/MyScholar.aspx");
+                Response.Redirect("~/Content/MyScholar/AddArticle.aspx");
             }
         }
     }

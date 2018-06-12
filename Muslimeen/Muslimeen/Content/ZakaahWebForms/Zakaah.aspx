@@ -208,53 +208,53 @@
                    </div>     
                   </div>
 
-            <div class="footerr" > <!--End of content, start of footer-->
-                <div class="row">
-                    <div class="col text-center">
-                       <h5>Content</h5>
+<div class="footerr"> <!--End of content, start of footer-->
+                <div class="row bg-light">
+                    <div class="col text-center position-static">
+                       <h6>Content</h6>
                         <ul class="navbar-nav">
                            <li class="nav-item">
-                               <a href="Default.aspx">Home</a>
+                               <a class="footerr-text" href="Mosque.aspx">Mosques</a>
                            </li>
                            <li class="nav-item">
-                               <a href="Mosque.aspx">Mosques</a>
+                               <a class="footerr-text" href="#">Scholars</a>
                            </li>
                            <li class="nav-item">
-                               <a href="#">Scholars</a>
+                               <a class="footerr-text" href="#">Learn Islam</a>
                            </li>
                            <li class="nav-item">
-                               <a href="#">Learn Islam</a>
-                           </li>
-                           <li class="nav-item">
-                               <a href="Zakaah.aspx">Zakaah</a>
+                               <a class="footerr-text" href="ZakaahWebForms/Zakaah.aspx">Zakaah</a>
                            </li>
                         </ul>
                     </div>
-                    <div class="col  text-center">
-                        <h5>About us</h5>
+                    <div class="col  text-center position-static">
+                        <h6>Support</h6>
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a href="#">Content</a>
+                                <a class="footerr-text" href="AboutUs.aspx">About Us</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">Content</a>
+                                <a class="footerr-text" href="HelpPage.aspx">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">Content</a>
+                                <a class="footerr-text" href="HelpCenter.aspx">Help Center</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="footerr-text" href="TermsOfService.aspx">Terms</a>
                             </li>
                         </ul>
                     </div>
-                    <div class="col  text-center">
-                        <h5>Contact us</h5>
+                    <div class="col  text-center position-static">
+                        <h6>Contact us</h6>
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a href="#">Content</a>
+                                <a class="footerr-text" href="mailto:nextechgrp@gmail.com">Email</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">Content</a>
+                                <a class="footerr-text" href="#">+27743784081</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#">Content</a>
+                                <a class="footerr-text" href="https://www.youtube.com/channel/UCp87ZLRrUz3SbzPPP2uaIEg">YouTube</a>
                             </li>
                         </ul>
                     </div>
