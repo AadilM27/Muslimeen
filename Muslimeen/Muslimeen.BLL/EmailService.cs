@@ -10,7 +10,7 @@ namespace Muslimeen.BLL
 {
     public class EmailService
     {
-        public bool AutoEmailService(string memberEmail, string memberType, string webpageLink)
+        public bool AutoEmailService(string memberEmail, string memberType, string linkToGo, string emailType, string userName, string newPassword)
         {
             try
             {
@@ -36,8 +36,12 @@ namespace Muslimeen.BLL
 
                 message.IsBodyHtml = true;
                 //message.CC.Add(ccAddress);
-                message.Subject = "Muslimeen Registration";
-                message.Body = String.Format(@"
+
+
+                if (emailType == "Registration") // Send when user registers on Muslimee.
+                {
+                    message.Subject = "Muslimeen Registration";
+                    message.Body = String.Format(@"
                                                 <html lang=""en"" style=""height:100%"">    
                                                     <body>
                                                         <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
@@ -53,10 +57,72 @@ namespace Muslimeen.BLL
                                                         </div>
                                                     </body>
                                                 </html>
-                                                ", memberType, webpageLink);
+                                                ", memberType, linkToGo);
 
-                //Send email
-                smtp.Send(message);
+                    //Send email
+                    smtp.Send(message);
+
+                }
+                else if (emailType == "ProfileUpdate") // send when User Updates his profile.
+                {
+                    string ComputerName = Environment.MachineName.ToString();
+                    string UserLoggedInName = Environment.UserName.ToString();
+                    string hostName = Dns.GetHostName();
+                    string myIP = Dns.GetHostEntry(hostName).AddressList[1].ToString();
+                    string iPAddress = myIP;
+                    string DateUpdated = Convert.ToString(DateTime.Now.ToLocalTime());
+                    message.Subject = "Muslimeen - Profile Updated";
+                    message.Body = String.Format(@"
+                                                <html lang=""en"" style=""height:100%"">    
+                                                    <body>
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
+                                                            <h1 style=""font-weight:bolder; font-size:25px;"">Muslimeen Profile <br/>Update</h1>
+                                                        </div>
+                                                        <div style=""background-color:#ffffff; text-align:left;"">
+                                                            <hr/>
+                                                            <h3 tyle=""text-align:center;"">Your profile has been updated.</h3><br/><h4>Details:</h4>
+                                                                <ul style=""text-align:left;""><li><b>Computer Name:&emsp;</b>{0}</li><li><b>OS User:&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;</b>{1}</li>
+                                                                    <li><b>IP Address:&emsp;&emsp;&emsp;<b/>{2}</li><li><b>Date Updated:&emsp;&emsp;</b>{3}</li></ul><br/><br/>
+                                                                    <p>*If you did not do this, Please notify the Muslimeen team ASAP.</p>
+                                                                <hr/>
+                                                        </div>
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
+                                                            <h2>Thank you</h2>
+                                                        </div>
+                                                    </body>
+                                                </html>
+                                                ", ComputerName, UserLoggedInName, iPAddress, DateUpdated);
+
+                    //Send email
+                    smtp.Send(message);
+
+                }
+                else if (emailType == "ForgotPassword") // send when user forgets Password.
+                {
+
+                    message.Subject = "Muslimeen - Reset Password";
+                    message.Body = String.Format(@"
+                                                <html lang=""en"" style=""height:100%"">
+                                                    <body>
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
+                                                            <h1 style=""font-weight:bolder; font-size:25px;"">Muslimeen Password<br/>Reset Request</h1>
+                                                        </div>
+                                                        <div style=""background-color:#ffffff; text-align:left;"">
+                                                            <hr/><br/>
+                                                            <h3>You have requested to reset your password</h3><br/><h5>Below are your new login credentials:</h5>
+                                                             <ul style=""text-align:left;""><li><b>User Name: </b>{0}</li><li><b>New Password: </b>{1}</li></ul><br/><br/><p>*Please make sure that you change your password again to keep your account secured</p><br/><hr/>
+                                                        </div>
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
+                                                            <h2>Thank you</h2>
+                                                        </div>
+                                                    </body>
+                                                </html>
+                                                ", userName, newPassword);
+
+                    //Send email
+                    smtp.Send(message);
+
+                }
 
                 return true;
             }

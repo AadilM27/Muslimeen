@@ -182,9 +182,12 @@ namespace Muslimeen.Register
             }
             else if (txtContactNum.Text.Length > 10 || txtContactNum.Text.Length < 10)
             {
-                lblErrorPass.Text = "Please enter a correct contact number";
-                continueProcess += 1;
-                txtContactNum.BorderColor = Color.Red;
+                if (txtContactNum.Text.Length != 0)
+                {
+                    lblErrorPass.Text = "Please enter a correct contact number";
+                    continueProcess += 1;
+                    txtContactNum.BorderColor = Color.Red;
+                }
             }
 
             if (continueProcess == 0)
@@ -234,8 +237,9 @@ namespace Muslimeen.Register
                     EmailService emailService = new EmailService();
 
                     emailService.AutoEmailService(txtUserEmail.Text.ToString(), 
-                        ddUsertype.SelectedItem.ToString(), "http://www.google.co.za"); //Add server Verification.aspx address.
+                        ddUsertype.SelectedItem.ToString(), "http://www.google.co.za", "Registration", "null", "null"); //Add server Verification.aspx address.
 
+                    Response.Redirect("~/Content/Default.aspx");
                 }
                 catch(Exception ex)
                 {

@@ -1483,6 +1483,8 @@
     <Content Include="Login\LogIn_Bootstrap\icons\png\zoom-out.png" />
     <Content Include="Login\LogIn_Bootstrap\MuslimeenText.PNG" />
     <Content Include="Content\PrivacyAndSafety.aspx" />
+    <Content Include="Login\ResetPassword.aspx" />
+    <Content Include="Register\icons\Loading.gif" />
     <Content Include="Register\Register.js" />
     <Content Include="Register\Verification.aspx" />
     <Content Include="Login\LogIn_Bootstrap\icons\fonts\Dr Sugiyama.ttf">
@@ -1679,6 +1681,13 @@
     </Compile>
     <Compile Include="Content\ZakaahWebForms\ZakaahOrganizations.aspx.designer.cs">
       <DependentUpon>ZakaahOrganizations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login\ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Login\Login.aspx.cs">
