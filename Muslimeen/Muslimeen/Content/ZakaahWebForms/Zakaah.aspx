@@ -188,12 +188,12 @@
                       <q>“And establish prayer and give zakah, and whatever good you put forward for yourselves – you will find it with Allah. Indeed, Allah of what you do, is Seeing.”</q>
                       <p class="author"> – al-Quran 2:110</p>
                     </div>
-
+                         <!-- Next/prev buttons -->
                     <a class="prev" onclick="plusSlides(-1)">❮</a>
                     <a class="next" onclick="plusSlides(1)">❯</a>
 
                     </div>
-
+                        <!-- Dots/bullets/indicators -->
                     <div class="dot-container">
                       <span class="dot" onclick="currentSlide(1)"></span> 
                       <span class="dot" onclick="currentSlide(2)"></span> 
