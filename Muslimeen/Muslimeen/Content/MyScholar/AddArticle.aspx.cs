@@ -93,17 +93,17 @@ namespace Muslimeen.Content.MyScholar
 
         protected void btnLearnIslam_Click(object sender, EventArgs e)
         {
-            //redirect user to the LearnIslam page.
+            Response.Redirect("~/Content/Learn Islam/LearnIslam.aspx");
         }
 
         protected void btnZakaah_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Zakaah.aspx");
+            Response.Redirect("~/Content/ZakaahWebForms/Zakaah.aspx");
         }
 
         protected void btnAboutUs_Click(object sender, EventArgs e)
         {
-            //redirect user to the About us page.
+            Response.Redirect("~/Content/AboutUs.aspx");
         }
 
         protected void btnMyMuslimeen_Click(object sender, EventArgs e)
@@ -145,6 +145,10 @@ namespace Muslimeen.Content.MyScholar
             {
                 if (txtHeading.Text == null && txtContent.Text == null)
                 {
+                    lblErrorPass.Text = "One or more fields are left empty";                    
+                }
+                else
+                {
                     art.DateCreated = Convert.ToDateTime(DateTime.Today);
                     art.Status = Convert.ToChar("P");
                     art.RejectionReason = Convert.ToString(" ");
@@ -152,8 +156,8 @@ namespace Muslimeen.Content.MyScholar
                     art.RemovalReason = Convert.ToString(" ");
 
                     //Scholar ID input with session...
-                    //art.ScholarID = Convert.ToString(Session["UserName"]);
-                    art.ScholarID = Convert.ToString(" ");
+                    art.ScholarID = Convert.ToString(Session["UserName"] = "123");
+                    //art.ScholarID = Convert.ToString(" ");
                     art.ModeratorID = Convert.ToString(" ");
                     art.TopicID = Convert.ToInt32(drpTopics.SelectedValue);
                     art.ArticleTitle = Convert.ToString(txtHeading.Text);
@@ -163,11 +167,6 @@ namespace Muslimeen.Content.MyScholar
 
                     txtHeading.Text = " ";
                     txtContent.Text = " ";
-                    drpTopics.Text = " ";
-                }
-                else
-                {
-                    lblErrorPass.Text = "One or more fields are left empty";
                 }
 
             }

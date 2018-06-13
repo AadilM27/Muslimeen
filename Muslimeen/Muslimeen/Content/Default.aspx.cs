@@ -82,12 +82,12 @@ namespace Muslimeen.Content
 
         protected void btnLearnIslam_Click(object sender, EventArgs e)
         {
-            //redirect user to the LearnIslam page.
+            Response.Redirect("~/Content/Learn Islam/LearnIslam.aspx");
         }
 
         protected void btnZakaah_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Zakaah.aspx");
+            Response.Redirect("~/Content/ZakaahWebForms/Zakaah.aspx");
         }
 
         protected void btnAboutUs_Click(object sender, EventArgs e)

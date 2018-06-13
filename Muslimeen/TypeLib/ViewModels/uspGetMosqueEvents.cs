@@ -4,18 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TypeLib.Models
+namespace TypeLib.ViewModels
 {
-   public class Event
+   public  class uspGetMosqueEvents
     {
         public int EventID { get; set; }
-        public string EventTitle { get; set; }
-        public string EventDescription { get; set; }
         public DateTime EventDate { get; set; }
+        public string EventDescription { get; set; }
+        public string EventTitle { get; set; }
         public string EventStartTime { get; set; }
         public string EventEndTime { get; set; }
         public string Speaker { get; set; }
-        public int MosqueID { get; set; }
-        public char Active { get; set; }
     }
 }

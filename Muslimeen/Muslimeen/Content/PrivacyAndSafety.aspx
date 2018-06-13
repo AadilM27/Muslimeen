@@ -15,7 +15,7 @@
     <link href="../Content/HelpPage/HelpPage.css" rel="stylesheet" />
 
 </head>
-    <body>
+    <body >
         <form id="frmScholar" runat="server" class=" ">  
            <header >
                 <nav class="navFixed">
@@ -82,6 +82,7 @@
                  <br />
             <h1 class="title">Privacy and Safety    <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/lock.png" width="90" height="70"/></h1> 
                 <hr />
+                 <div class="container" style="background-color:white;margin-top:5px">
                  <ul>
                 <li> My Muslimeen is a fully secure website.</li> 
                   <li> No user may view your profile.</li> 
@@ -90,7 +91,7 @@
                    <li> Information given to My Muslimeen is fully disclosed and secured. </li> 
                    <li>We respect other people's rights.</li>
                      </ul>
-                 
+                 </div>
                  </div>
 
             <div class="footerr"> <!--End of content, start of footer-->

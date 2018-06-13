@@ -126,32 +126,40 @@ namespace Muslimeen.BLL
             }
             return DBHelper.NonQuery("uspVerifyMember", CommandType.StoredProcedure, parameters.ToArray());
         }
-        public List<uspGetMosque> GetMosque()
+        public uspGetMosque GetMosque(int mosqueID)
         {
-            List<uspGetMosque> list = new List<uspGetMosque>();
-            using (DataTable table = DBHelper.Select("uspGetMosque", CommandType.StoredProcedure))
-            {
-                if (table.Rows.Count > 0)
-                {
-                    foreach (DataRow row in table.Rows)
-                    {
-                        uspGetMosque mosque = new uspGetMosque
-                        {
-                            MosqueName = Convert.ToString(row["MosqueName"]),
-                            MosqueType = Convert.ToString(row["MosqueType"]),
-                            MosqueAddress = Convert.ToString(row["MosqueAddress"]),
-                            MosqueSize = Convert.ToString(row["MosqueSize"]),
-                            MosqueImage = Convert.ToString(row["MosqueImage"]),
-                            LocationIMG = Convert.ToString(row["LocationIMG"]),
-                            LocationLink = Convert.ToString(row["LocationLink"])
 
-                        };
-                        list.Add(mosque);
-                    }
-                }
-            }
-            return list;
-        }
+            uspGetMosque mosque = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@mosqueID",mosqueID),
+
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetMosque",
+                    CommandType.StoredProcedure, pars))
+            {
+                if (table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    mosque = new uspGetMosque
+                    {
+
+                        YearEstablished = Convert.ToDateTime(row["YearEstablished"]),
+                        MosqueName = row["MosqueName"].ToString(),
+                        MosqueStreet = row["MosqueStreet"].ToString(),
+                        MosqueSuburb = row["MosqueSuburb"].ToString(),
+                        MosqueType = row["MosqueType"].ToString(),
+                        MosqueSize = row["MosqueSize"].ToString(),
+                        MosqueImage = row["MosqueImage"].ToString(),
+                        MosqueQuote = row["MosqueQuote"].ToString()
+
+                    };
+
+
+                }//end if
+            }//end using
+            return mosque;
+        }//End GetMosque
 
         public List<uspGetAllMosques> GetAllMosques()
         {
@@ -297,7 +305,7 @@ namespace Muslimeen.BLL
                 if (table.Rows.Count == 1)
                 {
                     DataRow row = table.Rows[0];
-                        {
+                    {
                         zk.ZakaahID = Convert.ToInt32(row["ZakaahID"]);
                         zk.ZakaahDesc = Convert.ToString(row["ZakaahDesc"]);
                         zk.ZakaahConditions = Convert.ToString(row["ZakaahConditions"]);
@@ -306,13 +314,13 @@ namespace Muslimeen.BLL
                         zk.CautionsOfZakaah = Convert.ToString(row["CautionsOfZakaah"]);
                         zk.AssetsOfZakaah = Convert.ToString(row["AssetsOfZakaah"]);
                         zk.ApplicableZakaah = Convert.ToString(row["ApplicableZakaah"]);
-                        };
+                    };
                 }
             }
             return zk;
         }
 
-        
+
         //Get All Topics 
         public List<uspGetTopics> GetTopics()
         {
@@ -326,7 +334,7 @@ namespace Muslimeen.BLL
                         uspGetTopics tops = new uspGetTopics
                         {
                             TopicID = Convert.ToInt32(row["TopicID"]),
-                            TopicDescription = Convert.ToString(row["TopicDescription"])                           
+                            TopicDescription = Convert.ToString(row["TopicDescription"])
                         };
                         list.Add(tops);
                     }
@@ -348,8 +356,8 @@ namespace Muslimeen.BLL
                             OrgName = Convert.ToString(row["OrgName"]),
                             Address = Convert.ToString(row["Address"]),
                             OrgImageUrl = Convert.ToString(row["OrgImageUrl"]),
-                            ContactNo=Convert.ToString(row["ContactNo"])
-                            
+                            ContactNo = Convert.ToString(row["ContactNo"])
+
                         };
                         list.Add(org);
                     }
@@ -358,12 +366,12 @@ namespace Muslimeen.BLL
             return list;
         }
 
-        public List<uspGetAllPendingScholars> GetAllPendingScholars ()
+        public List<uspGetAllPendingScholars> GetAllPendingScholars()
         {
             List<uspGetAllPendingScholars> scholarsList = new List<uspGetAllPendingScholars>();
             using (DataTable table = DBHelper.Select("uspGetAllPendingScholars", CommandType.StoredProcedure))
             {
-                if(table.Rows.Count > 0)
+                if (table.Rows.Count > 0)
                 {
                     foreach (DataRow row in table.Rows)
                     {
@@ -411,7 +419,7 @@ namespace Muslimeen.BLL
                         {
                             ArticleTitle = Convert.ToString(row["ArticleTitle"]),
                             ArticleContent = Convert.ToString(row["ArticleContent"]),
-                            DateCreated = Convert.ToDateTime(row["DateCreated"]),
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]).Date,
                             Status = Convert.ToChar(row["Status"]),
                             RejectionReason = Convert.ToString(row["RejectionReason"]),
                             Active = Convert.ToChar(row["Active"]),
@@ -441,15 +449,271 @@ namespace Muslimeen.BLL
             return DBHelper.NonQuery("uspRejectReg", CommandType.StoredProcedure, parameters.ToArray());
         }
 
-        public List<uspGetAllPendingModeraters> GetAllPendingModeraters()
+        
+
+        public List<uspGetMosques> GetMosques(string suburb, string mosqueType)
         {
-            List<uspGetAllPendingModeraters> moderatersList = new List<uspGetAllPendingModeraters>();
-            using (DataTable table = DBHelper.Select("uspGetAllPendingModeraters", CommandType.StoredProcedure))
+            List<uspGetMosques> list = new List<uspGetMosques>();
+            uspGetMosques mosques = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@suburb", suburb),
+                new SqlParameter("@mosqueType", mosqueType)
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetMosques",
+                    CommandType.StoredProcedure, pars))
             {
                 if (table.Rows.Count > 0)
                 {
                     foreach (DataRow row in table.Rows)
                     {
+                        mosques = new uspGetMosques
+                        {
+                            MosqueID = Convert.ToInt32(row["MosqueID"]),
+                            MosqueName = row["MosqueName"].ToString(),
+                            MosqueStreet = row["MosqueStreet"].ToString(),
+                            MosqueSuburb = row["MosqueSuburb"].ToString(),
+                            MosqueType = row["MosqueType"].ToString(),
+                            MosqueSize = row["MosqueSize"].ToString(),
+                            MosqueImage = row["MosqueImage"].ToString(),
+
+
+                        };
+                        list.Add(mosques);
+                    }
+                }//end if
+            }//end using
+            return list;
+        }//End GetMosques
+
+        public List<uspGetAllMosqueSuburbs> GetAllMosqueSuburbs()
+        {
+            List<uspGetAllMosqueSuburbs> list = new List<uspGetAllMosqueSuburbs>();
+            uspGetAllMosqueSuburbs suburbs = null;
+
+            using (DataTable table = DBHelper.Select("uspGetAllMosqueSuburbs",
+                    CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        suburbs = new uspGetAllMosqueSuburbs
+                        {
+
+
+                            MosqueSuburb = row["MosqueSuburb"].ToString(),
+
+
+                        };
+                        list.Add(suburbs);
+                    }
+                }//end if
+            }//end using
+            return list;
+        }//End GetAllSuburbs
+
+
+        public List<uspGetMosqueEvents> GetMosqueEvents(int MosqueID)
+        {
+            List<uspGetMosqueEvents> list = new List<uspGetMosqueEvents>();
+            uspGetMosqueEvents events = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@MosqueID",MosqueID),
+
+
+
+
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetMosqueEvents",
+                    CommandType.StoredProcedure, pars))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        events = new uspGetMosqueEvents
+                        {
+
+                            EventTitle = row["EventTitle"].ToString(),
+                            EventDate = Convert.ToDateTime(row["EventDate"].ToString()),
+                            EventDescription = row["EventDescription"].ToString(),
+                            EventStartTime = row["EventStartTime"].ToString(),
+                            EventEndTime = row["EventEndTime"].ToString(),
+                            Speaker = row["Speaker"].ToString()
+
+
+                        };
+                        list.Add(events);
+                    }
+                }//end if
+            }//end using
+            return list;
+        }//End GetMosqueEvents
+        public List<uspGetMosqueEventsDateRange> GetMosqueEventsDateRange(int MosqueID, DateTime StartDate, DateTime EndDate)
+        {
+            List<uspGetMosqueEventsDateRange> list = new List<uspGetMosqueEventsDateRange>();
+            uspGetMosqueEventsDateRange events = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@MosqueID",MosqueID),
+                new SqlParameter("@StartDate",StartDate),
+                new SqlParameter("@EndDate",EndDate),
+
+
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetMosqueEventsDateRange",
+                    CommandType.StoredProcedure, pars))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        events = new uspGetMosqueEventsDateRange
+                        {
+                            EventID = int.Parse(row["EventID"].ToString()),
+                            EventTitle = row["EventTitle"].ToString(),
+                            EventDate = Convert.ToDateTime(row["EventDate"].ToString()),
+                            EventDescription = row["EventDescription"].ToString(),
+                            EventStartTime = row["EventStartTime"].ToString(),
+                            EventEndTime = row["EventEndTime"].ToString(),
+                            Speaker = row["Speaker"].ToString()
+
+
+                        };
+                        list.Add(events);
+                    }
+                }//end if
+            }//end using
+            return list;
+        }//End GetMosqueEventsDateRange
+
+        public uspGetSpecificDayPrayerTimes GetSpecficDayPrayerTimes(int mosqueID, DateTime date)
+        {
+
+            uspGetSpecificDayPrayerTimes time = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@mosqueID",mosqueID),
+                 new SqlParameter("@prayerDate",date)
+
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetSpecificDayPrayerTimes",
+                    CommandType.StoredProcedure, pars))
+            {
+                if (table.Rows.Count == 5)
+                {
+
+                    time = new uspGetSpecificDayPrayerTimes
+                    {
+
+                        PrayerDate = Convert.ToDateTime(table.Rows[0]["PrayerDate"].ToString().Substring(0, 10)),
+                        FajrA = table.Rows[0][2].ToString(),
+                        FajrJ = table.Rows[0][3].ToString(),
+                        DhuhrA = table.Rows[1][2].ToString(),
+                        DhuhrJ = table.Rows[1][3].ToString(),
+                        AsrA = table.Rows[2][2].ToString(),
+                        AsrJ = table.Rows[2][3].ToString(),
+                        MagribA = table.Rows[3][2].ToString(),
+                        MagribJ = table.Rows[3][3].ToString(),
+                        EishaA = table.Rows[4][2].ToString(),
+                        EishaJ = table.Rows[4][3].ToString(),
+
+
+                    };
+
+
+                }//end if
+            }//end using
+            return time;
+        }//End GetMosque
+
+        public bool InsertPrayer(Prayer prayer)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            foreach (var prop in prayer.GetType().GetProperties())
+            {
+                if (prop.GetValue(prayer) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(prayer)));
+                }
+            }
+            return DBHelper.NonQuery("uspInsertPrayer", CommandType.StoredProcedure,
+                parameters.ToArray());
+        }
+
+
+        public bool InsertPrayerType(PrayerType type)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            foreach (var prop in type.GetType().GetProperties())
+            {
+                if (prop.GetValue(type) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(type)));
+                }
+            }
+            return DBHelper.NonQuery("uspInsertPrayerType", CommandType.StoredProcedure,
+                parameters.ToArray());
+        }
+        public bool UpdatePrayerType(PrayerType type)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            foreach (var prop in type.GetType().GetProperties())
+            {
+                if (prop.GetValue(type) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(type)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdatePrayerType", CommandType.StoredProcedure,
+                parameters.ToArray());
+        }
+        public List<uspGetMosquePrayerTimes> GetMosquePrayerTimes(int mosqueID, DateTime StartDate, DateTime EndDate)
+        {
+            List<uspGetMosquePrayerTimes> list = new List<uspGetMosquePrayerTimes>();
+            uspGetMosquePrayerTimes times = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@MosqueID",mosqueID),
+                 new SqlParameter("@StartDate",StartDate),
+                  new SqlParameter("@EndDate",EndDate),
+
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetMosquePrayerTimes",
+                    CommandType.StoredProcedure, pars))
+            {
+                times = new uspGetMosquePrayerTimes
+                {
+
+                    PrayerDate = Convert.ToDateTime(row["PrayerDate"]),
+                    PrayerDescription = row["PrayerDescription"].ToString(),
+                    AdhaanTime = row["AdhaanTime"].ToString(),
+                    JamaatTime = row["JamaatTime"].ToString()
+
+
+
+
+                };
+                list.Add(times);
+            }
+            return list;
+        }
+
+
+
+        public List<uspGetAllPendingModeraters> GetAllPendingModeraters()
+        {
+            List<uspGetAllPendingModeraters> moderatersList = new List<uspGetAllPendingModeraters>();
+            using (DataTable table = DBHelper.Select("uspGetAllPendingModeraters", CommandType.StoredProcedure))
+
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+
                         uspGetAllPendingModeraters moderater = new uspGetAllPendingModeraters();
 
                         moderater.MemberID = Convert.ToString(row["MemberID"]);
@@ -477,7 +741,84 @@ namespace Muslimeen.BLL
                 }
             }
             return moderatersList;
-
         }
+
+
+                    
+
+        public bool InsertEvent(Event mosqueEvent)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            foreach (var prop in mosqueEvent.GetType().GetProperties())
+            {
+                if (prop.GetValue(mosqueEvent) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(mosqueEvent)));
+                }
+            }
+            return DBHelper.NonQuery("uspInsertEvent", CommandType.StoredProcedure,
+                parameters.ToArray());
+        }
+        public bool UpdateEvent(Event mosqueEvent)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            foreach (var prop in mosqueEvent.GetType().GetProperties())
+            {
+                if (prop.GetValue(mosqueEvent) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(mosqueEvent)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdateEvent", CommandType.StoredProcedure,
+                parameters.ToArray());
+        }
+        public uspGetSpecificEvent GetSpecificEvent(int EventID)
+        {
+
+            uspGetSpecificEvent events = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@EventID",EventID),
+
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetSpecificEvent",
+                    CommandType.StoredProcedure, pars))
+            {
+                if (table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    events = new uspGetSpecificEvent
+                    {
+                        EventTitle = row["EventTitle"].ToString(),
+                        EventDate = Convert.ToDateTime(row["EventDate"].ToString()),
+                        EventDescription = row["EventDescription"].ToString(),
+                        EventStartTime = row["EventStartTime"].ToString(),
+                        EventEndTime = row["EventEndTime"].ToString(),
+                        Speaker = row["Speaker"].ToString()
+
+                    };
+
+
+                }//end if
+            }//end using
+            return events;
+        }//End GetSpecificEvent
+
+        public bool RemoveEvent(Event mosqueEvent)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            foreach (var prop in mosqueEvent.GetType().GetProperties())
+            {
+                if (prop.GetValue(mosqueEvent) != null)
+                {
+                    if (prop.Name.ToString() == "EventID")
+                        parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(mosqueEvent)));
+                }
+            }
+            return DBHelper.NonQuery("uspRemoveEvent", CommandType.StoredProcedure,
+                parameters.ToArray());
+        }
+
+       
     }
 }

@@ -43,9 +43,9 @@ namespace Muslimeen.BLL
             return dBAccess.VerifyMember(uspVerifyMember);
         }
 
-        public List<uspGetMosque> BLL_GetMosque()
+        public uspGetMosque GetMosque(int mosqueID)
         {
-            return dBAccess.GetMosque();
+            return dBAccess.GetMosque(mosqueID);
         }
 
         public List<uspGetAllMosques> BLL_GetAllMosques()
@@ -110,5 +110,61 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetAllPendingModeraters();
         }
+
+        public List<uspGetMosques> BLL_GetMosques(string suburb, string mosqueType)
+        {
+            return dBAccess.GetMosques(suburb, mosqueType);
+        }
+
+        public List<uspGetAllMosqueSuburbs> BLL_GetAllMosqueSuburbs()
+        {
+            return dBAccess.GetAllMosqueSuburbs();
+        }
+
+        public List<uspGetMosqueEvents> Bll_GetMosqueEvents(int MosqueID)
+        {
+            return dBAccess.GetMosqueEvents(MosqueID);
+        }
+        public List<uspGetMosqueEventsDateRange> Bll_GetMosqueEventsDateRange(int MosqueID, DateTime StartDate, DateTime EndDate)
+        {
+            return dBAccess.GetMosqueEventsDateRange(MosqueID, StartDate, EndDate);
+        }
+        public uspGetSpecificDayPrayerTimes BLL_GetSpecficDayPrayerTimes(int mosqueID, DateTime date)
+        {
+            return dBAccess.GetSpecficDayPrayerTimes(mosqueID, date);
+        }
+        public bool BLL_InsertPrayer(Prayer prayer)
+        {
+            return dBAccess.InsertPrayer(prayer);
+        }
+        public bool BLL_InsertPrayerType(PrayerType type)
+        {
+            return dBAccess.InsertPrayerType(type);
+        }
+        public bool BLL_UpdatePrayerType(PrayerType type)
+        {
+            return dBAccess.UpdatePrayerType(type);
+        }
+        public List<uspGetMosquePrayerTimes> BLL_GetMosquePrayerTimes(int mosqueID, DateTime StartDate, DateTime EndDate)
+        {
+            return dBAccess.GetMosquePrayerTimes(mosqueID, StartDate, EndDate);
+        }
+        public bool BLL_InsertEvent(Event mosqueEvent)
+        {
+            return dBAccess.InsertEvent(mosqueEvent);
+        }
+        public bool BLL_UpdateEvent(Event mosqueEvent)
+        {
+            return dBAccess.UpdateEvent(mosqueEvent);
+        }
+        public uspGetSpecificEvent BLL_GetuspGetSpecificEvent(int EventID)
+        {
+            return dBAccess.GetSpecificEvent(EventID);
+        }
+        public bool BLL_RemoveEvent(Event mosqueEvent)
+        {
+            return dBAccess.RemoveEvent(mosqueEvent);
+        }
+
     }
 }
