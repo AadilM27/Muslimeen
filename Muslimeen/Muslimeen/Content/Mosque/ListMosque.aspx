@@ -14,7 +14,7 @@
     <link href="../Default/css/Default.css" rel="stylesheet" />
 
 </head>
-<body>
+<body style="background-color:white">
     <form id="form1" runat="server">
         <header>
             <nav class="navFixed">
@@ -95,17 +95,20 @@
         </header>
 
 
-
+       
                <div class="container">
-                <div class="jumbotron">
-                    <h1 style="text-align: center">List of Mosques</h1>
+                   <br />
+                <div style="text-align:center;background-color:#256297;color:white;">
+                    <h1 style="text-align: center;width:100%">List of Mosques</h1>
                 </div>
-                <div class="jumbotron">
-                    <table style="width:100%">
+                   <h4 style="text-align:center;background-color:#256297;color:white;margin-bottom:0px">Search Mosque:</h4>
+                <div class="jumbotron" style="height:50px" >
+                    
+                    <table style="width:100%;">
                         <tr>
-                            <td style="width:55%">Mosque Suburb&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="ddlMosqueSuburb" runat="server" Height="60px" Width="250px" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                            <td style="width:55%;position:relative;bottom:50px;color:#256297;font-weight:bold">Mosque Suburb&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="ddlMosqueSuburb" runat="server" Height="60px" Width="250px" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                                  </asp:DropDownList></td>
-                            <td>Mosque Type&nbsp;&nbsp;&nbsp;&nbsp;<asp:RadioButton ID="rdoHanafie" runat="server" Text="Hanafie" GroupName="MosqueType" AutoPostBack="True" OnCheckedChanged="rdoHanafie_CheckedChanged" />
+                            <td style="width:55%;position:relative;bottom:50px;color:#256297;font-weight:bold" >Mosque Type&nbsp;&nbsp;&nbsp;&nbsp;<asp:RadioButton ID="rdoHanafie" runat="server" Text="Hanafie" GroupName="MosqueType" AutoPostBack="True" OnCheckedChanged="rdoHanafie_CheckedChanged" />&nbsp
                                 <asp:RadioButton ID="rdoShafie" runat="server" Text="Shafie" GroupName="MosqueType" AutoPostBack="True" OnCheckedChanged="rdoShafie_CheckedChanged" />
                             </td>
                         </tr>
@@ -119,18 +122,18 @@
         <asp:Repeater ID="rptGetMosques" runat="server">
             <ItemTemplate>
                 <div class="container">
-                    <div class="jumbotron">
+                    <div class="jumbotron" >
                         <table border="0" class="table" style="color: gray">
                             <tr>
                                 <td style="width: 200px">
                                     <asp:Image ID="MosquePic" ImageUrl='<%#Eval("MosqueImage")%>' runat="server" Width="200px" Height="180px" /></td>
                                 <td>
 
-                                    <table border="0" style="width: 100%; height: 100%">
+                                    <table  style="width: 100%; height: 100%;color:#256297;font-weight:bold;border:none">
                                         <tr>
-                                            <th rowspan="2" style="font-size: x-large" class="font-weight-bold ">
+                                            <th rowspan="2" style="font-size:22px;position:relative;bottom:61px;right:200px;border:none">
                                                 <asp:Label ID="lblName" runat="server" Text='<%#Eval("MosqueName")%>'></asp:Label></th>
-                                            <td colspan="2">Mosque Type:
+                                            <td colspan="2" >Mosque Type:
                                             <asp:Label ID="lblmosqueType" runat="server" Text='<%#Eval("MosqueType")%>'></asp:Label></td>
 
 
@@ -138,9 +141,11 @@
                                         <tr>
                                             <td colspan="2">Suburb:
                                             <asp:Label ID="lblMosqueSuburb" runat="server" Text='<%#Eval("MosqueSuburb")%>'></asp:Label></td>
-                                            <td class="text-center">
+                                            <td class="text-center" >
 
-                                                <asp:LinkButton ID="btnViewDetails" Text="View Mosque Deatils" CssClass="btn btn-info center" runat="server" OnClick="btnViewDetails_Click" EnableViewState="true" CommandArgument='<%#Eval("MosqueID")%>' /></td>
+                                                <asp:LinkButton ID="btnViewDetails" Text="View Mosque Details" CssClass="btn btn-info center" runat="server" OnClick="btnViewDetails_Click" EnableViewState="true" CommandArgument='<%#Eval("MosqueID")%>' style="background-color:#256297;color:white;"/>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td></td>
