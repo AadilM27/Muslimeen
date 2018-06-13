@@ -165,6 +165,10 @@ namespace Muslimeen.BLL
         {
             return dBAccess.RemoveEvent(mosqueEvent);
         }
-
+        //Accepted Articles for learn Islam
+        public List<uspGetAcceptedArticle> BLL_GetAcceptedArticle()
+        {
+            return dBAccess.GetAcceptedArticle();
+        }
     }
 }

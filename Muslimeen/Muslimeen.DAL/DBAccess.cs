@@ -826,7 +826,7 @@ namespace Muslimeen.BLL
                 parameters.ToArray());
         }
 
-        //Accepeted Article for Learn Islam
+        //Accepted Article for Learn Islam
         public List<uspGetAcceptedArticle> GetAcceptedArticle()
         {
             List<uspGetAcceptedArticle> list = new List<uspGetAcceptedArticle>();
