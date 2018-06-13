@@ -26,7 +26,6 @@ C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\T
 C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.pdb
 C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\bin\Debug\TypeLib.dll
 C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\bin\Debug\TypeLib.pdb
-C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
 C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csproj.CoreCompileInputs.cache
 C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.dll
 C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.pdb

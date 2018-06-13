@@ -18,6 +18,4 @@ namespace TypeLib.ViewModels
         public string MosqueImage { get; set; }
         public string MosqueQuote { get; set; }
     }
-
-    }
 }
