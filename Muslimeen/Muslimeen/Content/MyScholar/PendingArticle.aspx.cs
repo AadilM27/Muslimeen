@@ -48,7 +48,7 @@ namespace Muslimeen.Content.MyScholar
             }
             catch
             {
-                throw;
+
             }
             
         }

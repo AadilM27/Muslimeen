@@ -405,9 +405,9 @@ namespace Muslimeen.BLL
         }
 
         //Pending Articles
-        public List<uspGetPendingArticle> GetPendingArticle()
+        public List<Article> GetPendingArticle()
         {
-            List<uspGetPendingArticle> list = new List<uspGetPendingArticle>();
+            List<Article> list = new List<Article>();
 
             using (DataTable table = DBHelper.Select("uspGetPendingArticle", CommandType.StoredProcedure))
             {
@@ -415,11 +415,12 @@ namespace Muslimeen.BLL
                 {
                     foreach (DataRow row in table.Rows)
                     {
-                        uspGetPendingArticle art = new uspGetPendingArticle
+                        Article art = new Article
                         {
+                            ArticleID = Convert.ToInt32(row["ArticleID"]),
                             ArticleTitle = Convert.ToString(row["ArticleTitle"]),
                             ArticleContent = Convert.ToString(row["ArticleContent"]),
-                            DateCreated = Convert.ToDateTime(row["DateCreated"]).Date,
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]),
                             Status = Convert.ToChar(row["Status"]),
                             RejectionReason = Convert.ToString(row["RejectionReason"]),
                             Active = Convert.ToChar(row["Active"]),
@@ -824,6 +825,30 @@ namespace Muslimeen.BLL
             }
             return DBHelper.NonQuery("uspRemoveEvent", CommandType.StoredProcedure,
                 parameters.ToArray());
+        }
+
+        public Article GetArticle(int articleID)
+        {
+            Article art = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@ArticleID", articleID)
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetArticle",
+                         CommandType.StoredProcedure, pars))
+            {
+                if(table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    art = new Article
+                    {
+                        ArticleID = Convert.ToInt32(row["ArticleID"]),
+                        ArticleTitle = Convert.ToString(row["ArticleTitle"]),
+                        ArticleContent = Convert.ToString(row["ArticleContent"])
+                    };
+                }
+            }
+            return art;
         }
 
        

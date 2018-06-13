@@ -8,6 +8,7 @@ namespace TypeLib.Models
 {
     public class Article
     {
+        public int ArticleID { get; set; }
         public string ArticleTitle { get; set; }
         public string ArticleContent { get; set; }
         public DateTime DateCreated { get; set; }

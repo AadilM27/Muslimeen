@@ -94,20 +94,20 @@
                                 <HeaderTemplate>
                                 </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnShow" EnableViewState="true"  CommandArgument='<%#Eval("MemberID") %>' CssClass="align-self-center list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShow_Click"><img src="MyAdmin/icons/PendingReg.png" class=" img-thumbnail" style="width:32px; height:32px;" /><b>&nbsp;&nbsp;User&nbsp;Name: </b><%#Eval("MemberID")%><br /><b style="font-size:smaller;">&emsp;&emsp;&emsp;Date Registered: </b><%#Eval("ActivationDate")%></asp:LinkButton>
+                                        <asp:LinkButton ID="btnShow" EnableViewState="true"  CommandArgument='<%#Eval("MemberID") %>' CssClass=" position-static align-self-center list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShow_Click"><img src="MyAdmin/icons/PendingReg.png" class=" img-thumbnail" style="width:32px; height:32px;" /><b>&nbsp;&nbsp;User&nbsp;Name: </b><%#Eval("MemberID")%><br /><b style="font-size:smaller;">&emsp;&emsp;&emsp;Date Registered: </b><%#Eval("ActivationDate")%></asp:LinkButton>
                                     </ItemTemplate>
                                 <FooterTemplate>
                                 </FooterTemplate>
                             </asp:Repeater>
                         </div>
                     </div>
-                    <div class="col-4 p-3 bg-light position-static position-static" runat="server" id="divViewPendingArt"> <!--Contains the List of items-->
+                    <div class="col-sm-4 p-3 bg-light position-static position-static" runat="server" id="divViewPendingArt"> <!--Contains the List of items-->
                         <div class="row position-static list-group justify-content-end">
                             <asp:Repeater ID="rptViewPendingArticles" runat="server">
                                 <HeaderTemplate>
                                 </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnShow" EnableViewState="true"  CommandArgument='<%#Eval("ArticleID") %>' CssClass="align-self-center list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShow_Click"><img src="MyAdmin/icons/PendingReg.png" class=" img-thumbnail" style="width:32px; height:32px;" /><b>&nbsp;&nbsp;User&nbsp;Name: </b><%#Eval("ArticleID")%><br /><b style="font-size:smaller;">&emsp;&emsp;&emsp;Date Registered: </b><%#Eval("DateCreated")%></asp:LinkButton>
+                                        <asp:LinkButton ID="btnShowArt" EnableViewState="true"  CommandArgument='<%#Eval("ArticleID") %>' CssClass=" position-static list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShowArt_Click" ><b style="font-size:smaller;">Article Title: </b><%#Eval("ArticleTitle")%><br /></b> <b style="font-size:smaller;">Date Created: </b><%#Eval("DateCreated")%></asp:LinkButton>
                                     </ItemTemplate>
                                 <FooterTemplate>
                                 </FooterTemplate>
@@ -160,6 +160,20 @@
                                     <asp:Button CssClass=" topnav btn-dark btn btn-sm btn-outline-light mr-3" runat="server" ID="btnRejectReg" Text="Reject Registration" OnClick="btnRejectReg_Click" />
                             </div>
                             
+                        </div>
+                        <div class=" col position-static bg-light position-static col-5 p-3 divContainers" runat="server" id="divViewArt" >
+                            <div class="row" style="overflow-y:scroll;">
+                                <div class="row ml-4" >
+                                    <label runat="server" id="lblArticleTitle"></label>
+                                </div>
+                                <div class="row ml-4 p-2">
+                                    <label runat="server" id="lblArticleContent"></label>
+                                </div>
+                            </div>
+                            <div class="row position-static justify-content-center align-content-center mt-4">
+                                <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-3" runat="server" ID="btnAccept" Text="Accept Article" />
+                                <asp:Button CssClass=" topnav btn-dark btn btn-sm btn-outline-light mr-3" runat="server" ID="Button2" Text="Reject Article" />
+                            </div>
                         </div>
                      </div>
 

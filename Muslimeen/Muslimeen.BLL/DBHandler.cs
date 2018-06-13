@@ -96,7 +96,7 @@ namespace Muslimeen.BLL
         }
 
         //Pending Articles
-        public List<uspGetPendingArticle> BLL_GetPendingArticle()
+        public List<Article> BLL_GetPendingArticle()
         {
             return dBAccess.GetPendingArticle();
         }
@@ -166,5 +166,9 @@ namespace Muslimeen.BLL
             return dBAccess.RemoveEvent(mosqueEvent);
         }
 
+        public Article BLL_GetArticle(int articleID)
+        {
+            return dBAccess.GetArticle(articleID);
+        }
     }
 }

@@ -17,9 +17,10 @@ namespace Muslimeen.Content
         {
             DBHandler dBHandler = new DBHandler();
 
-            divViewPendingArt.Visible = true;
-            divViewPendingSch.Visible = true;
-            divDisplaySch.Visible = true;
+            divViewPendingArt.Visible = false;
+            divViewPendingSch.Visible = false;
+            divDisplaySch.Visible = false;
+            divViewArt.Visible = false;
             
             if (Session["UserName"] != null)
             {
@@ -54,6 +55,7 @@ namespace Muslimeen.Content
 
         private void LnkViewPendingArticles_ServerClick(object sender, EventArgs e)
         {
+            divDisplaySch.Visible = false;
             divViewPendingSch.Visible = false;
             divViewPendingArt.Visible = true;
 
@@ -66,6 +68,7 @@ namespace Muslimeen.Content
 
         private void LnkViewPendingMod_ServerClick(object sender, EventArgs e)
         {
+            divViewPendingArt.Visible = false;
             divDisplaySch.Visible = true;
             divViewPendingSch.Visible = true;
 
@@ -77,6 +80,7 @@ namespace Muslimeen.Content
 
         private void LnkViewPendingSch_ServerClick1(object sender, EventArgs e)
         {
+            divViewPendingArt.Visible = false;
             divDisplaySch.Visible = true;
             divViewPendingSch.Visible = true;
 
@@ -194,6 +198,8 @@ namespace Muslimeen.Content
             lblActivationExpiry.InnerText = member.ActivationExpiry.ToString("yyyy-MM-dd");
             lblActivationDate.InnerText = member.ActivationDate.ToString("yyyy-MM-dd");
 
+            divViewPendingSch.Visible = true;
+            divViewArt.Visible = false;
             divDisplaySch.Visible = true;
 
         }
@@ -221,6 +227,27 @@ namespace Muslimeen.Content
             rejectReg.MemberID = hdfSchId.Value.ToString();
 
             db.BLL_RejectReg(rejectReg);
+        }
+
+        protected void btnShowArt_Click(object sender, EventArgs e)
+        {
+            LinkButton linkButton = (LinkButton)sender;
+
+            string articleId = linkButton.CommandArgument.ToString();
+            hdfSchId.Value = articleId;
+
+            DBHandler dBHandler = new DBHandler();
+            Article article = new Article();
+            article = dBHandler.BLL_GetArticle(Convert.ToInt32(articleId));
+
+
+            lblArticleTitle.InnerText = article.ArticleTitle.ToString();
+            lblArticleContent.InnerText = article.ArticleContent.ToString();
+
+            divViewPendingArt.Visible = true;
+            divDisplaySch.Visible = false;
+            divViewArt.Visible = true;
+
         }
     }
 }
