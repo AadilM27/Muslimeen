@@ -12,16 +12,17 @@ namespace Muslimeen.Content.Mosque
 {
     public partial class MosquePage : System.Web.UI.Page
     {
+        DBHandler db = new DBHandler();
         protected void Page_Load(object sender, EventArgs e)
         {
-            DBHandler dBHandler = new DBHandler();
+           
 
 
             if (Session["UserName"] != null)
             {
                 uspGetMember uspGetMember = new uspGetMember();
 
-                uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
+                uspGetMember = db.BLL_GetMember(Convert.ToString(Session["UserName"]));
                 hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
                 divUserProfile.Visible = true;
 
@@ -41,6 +42,55 @@ namespace Muslimeen.Content.Mosque
                 Session.Clear();
             }
 
+
+            try
+            {
+
+                Session["MosqueID"] = 1;//Request.QueryString["MosqueID"];
+
+                rptGetEvents.DataSource = db.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
+                rptGetEvents.DataBind();
+                #region LoadAdd/UpdatePrayer
+
+
+
+                try
+                {
+
+                    DateTime date = DateTime.Today;
+                    uspGetSpecificDayPrayerTimes time = new uspGetSpecificDayPrayerTimes();
+                    time = db.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), date);
+                    lblFajrAzaan.Text = time.FajrA.ToString();
+                    lblFajrJamaat.Text = time.FajrJ.ToString();
+                    lblDhuhrAzaan.Text = time.DhuhrA.ToString();
+                    lblDhuhrJamaat.Text = time.DhuhrJ.ToString();
+                    lblAsrAzaan.Text = time.AsrA.ToString();
+                    lblAsrJamaat.Text = time.AsrJ.ToString();
+                    lblMagribAzaan.Text = time.MagribA.ToString();
+                    lblMagribJamaat.Text = time.MagribJ.ToString();
+                    lblEishaAzaan.Text = time.EishaA.ToString();
+                    lblEishaJamaat.Text = time.EishaJ.ToString();
+                }
+                catch { }
+                try
+                {
+
+                    uspGetMosque mosque = new uspGetMosque();
+                    mosque = db.GetMosque(int.Parse(Session["MosqueID"].ToString()));
+                    lblMosqueAddress.Text = mosque.MosqueStreet + " " + mosque.MosqueSuburb;
+                    Session["Address"] = lblMosqueAddress.Text.ToString();
+                    lblYearEstablished.Text = mosque.YearEstablished.ToString().Substring(0, 10);
+                    lblMosqueType.Text = mosque.MosqueType;
+                    lblMosqueSize.Text = mosque.MosqueSize;
+                    lblQuote.Text = mosque.MosqueQuote;
+                    imgMosque.ImageUrl = mosque.MosqueImage;
+                    lblMembers.Text = "111";////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    lblMosqueRep.Text = "Ali Aadam";///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                }
+                catch { }
+                #endregion LoadAdd/UpdatePrayer
+            }
+            catch { }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -121,6 +171,93 @@ namespace Muslimeen.Content.Mosque
             }
 
 
+        }
+        protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
+        {
+            int index = int.Parse(e.Item.Value);
+            MultiView1.ActiveViewIndex = index;
+        }
+
+        protected void btnListEvents_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
+                DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
+                rptGetEvents.DataSource = db.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
+                rptGetEvents.DataBind();
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        protected void btnListPrayer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<uspGetMosquePrayerTimes> list = new List<uspGetMosquePrayerTimes>();
+                List<uspGetSpecificDayPrayerTimes> times = new List<uspGetSpecificDayPrayerTimes>();
+                DateTime startDate = Convert.ToDateTime(txtPrayerStartDate.Text.ToString());
+                DateTime endDate = Convert.ToDateTime(txtPrayerEndDate.Text.ToString());
+                list = db.BLL_GetMosquePrayerTimes(int.Parse(Session["MosqueID"].ToString()), startDate, endDate);
+
+                int count = 0;
+
+                uspGetSpecificDayPrayerTimes pt = new uspGetSpecificDayPrayerTimes();
+
+                foreach (uspGetMosquePrayerTimes prayer in list)
+                {
+
+                    if (count == 0)
+                    {
+
+                        pt.PrayerDescription = prayer.PrayerDescription;
+                        pt.PrayerDate = prayer.PrayerDate;
+                        pt.PrayerDay = Convert.ToDateTime(pt.PrayerDate).DayOfWeek.ToString();
+                        pt.FajrA = prayer.AdhaanTime;
+                        pt.FajrJ = prayer.JamaatTime;
+
+
+                    }
+                    else if (count == 1)
+                    {
+                        pt.DhuhrA = prayer.AdhaanTime;
+                        pt.DhuhrJ = prayer.JamaatTime;
+
+                    }
+                    else if (count == 2)
+                    {
+                        pt.AsrA = prayer.AdhaanTime;
+                        pt.AsrJ = prayer.JamaatTime;
+
+
+                    }
+                    else if (count == 3)
+                    {
+                        pt.MagribA = prayer.AdhaanTime;
+                        pt.MagribJ = prayer.JamaatTime;
+
+                    }
+                    else if (count == 4)
+                    {
+                        pt.EishaA = prayer.AdhaanTime;
+                        pt.EishaJ = prayer.JamaatTime;
+                        count = -1;
+                        times.Add(pt);
+                        pt = new uspGetSpecificDayPrayerTimes();
+
+                    }
+
+                    count++;
+
+                }
+                rptPrayerTimes.DataSource = times;
+                rptPrayerTimes.DataBind();
+            }
+            catch { }
         }
     }
 }

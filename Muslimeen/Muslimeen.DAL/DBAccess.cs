@@ -852,5 +852,34 @@ namespace Muslimeen.BLL
         }
 
        
+        public List<uspGetAcceptedArticle> GetAcceptedArticle()
+        {
+            List<uspGetAcceptedArticle> list = new List<uspGetAcceptedArticle>();
+
+            using (DataTable table = DBHelper.Select("uspGetAcceptedArticle", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetAcceptedArticle art = new uspGetAcceptedArticle
+                        {
+                            ArticleTitle = Convert.ToString(row["ArticleTitle"]),
+                            ArticleContent = Convert.ToString(row["ArticleContent"]),
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]).Date,
+                            Status = Convert.ToChar(row["Status"]),
+                            RejectionReason = Convert.ToString(row["RejectionReason"]),
+                            Active = Convert.ToChar(row["Active"]),
+                            RemovalReason = Convert.ToString(row["RemovalReason"]),
+                            ScholarID = Convert.ToString(row["ScholarID"]),
+                            ModeratorID = Convert.ToString(row["ModeratorID"]),
+                            TopicID = Convert.ToInt32(row["TopicID"])
+                        };
+                        list.Add(art);
+                    }
+                }
+            }
+            return list;
+        }
     }
 }

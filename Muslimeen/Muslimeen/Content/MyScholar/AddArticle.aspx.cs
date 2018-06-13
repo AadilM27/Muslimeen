@@ -152,7 +152,7 @@ namespace Muslimeen.Content.MyScholar
                     art.DateCreated = Convert.ToDateTime(DateTime.Today);
                     art.Status = Convert.ToChar("P");
                     art.RejectionReason = Convert.ToString(" ");
-                    art.Active = Convert.ToChar("I");
+                    art.Active = Convert.ToChar("T");
                     art.RemovalReason = Convert.ToString(" ");
 
                     //Scholar ID input with session...
