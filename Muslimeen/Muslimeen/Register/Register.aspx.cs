@@ -17,195 +17,210 @@ namespace Muslimeen.Register
 {
     public partial class Register : System.Web.UI.Page
     {
+
         Encryption encryption = new Encryption();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            txtDOB.MaxLength = 10;
-            if (!IsPostBack)
+            try
             {
-                ddUsertype.ClearSelection();
+                txtDOB.MaxLength = 10;
+                if (!IsPostBack)
+                {
+                    ddUsertype.ClearSelection();
+                }
+
+                if (IsPostBack)
+                {
+                    txtPassword.Attributes["Value"] = txtPassword.Text;
+                    txtRetypePass.Attributes["Value"] = txtRetypePass.Text;
+
+                    txtUserName.BorderColor = Color.Empty;
+                    txtName.BorderColor = Color.Empty;
+                    txtLName.BorderColor = Color.Empty;
+                    txtContactNum.BorderColor = Color.Empty;
+                    txtDOB.BorderColor = Color.Empty;
+                    txtUserEmail.BorderColor = Color.Empty;
+                    ddUsertype.BorderColor = Color.Empty;
+                    txtPassword.BorderColor = Color.Empty;
+                    txtRetypePass.BorderColor = Color.Empty;
+                    lblErrorPass.Text = "";
+                    txtUserName.BorderColor = Color.Empty;
+                    txtName.BorderColor = Color.Empty;
+                    txtLName.BorderColor = Color.Empty;
+                    txtUserEmail.BorderColor = Color.Empty;
+                    ddUsertype.BorderColor = Color.Empty;
+                    txtDOB.BorderColor = Color.Empty;
+                    txtPassword.BorderColor = Color.Empty;
+                    txtRetypePass.BorderColor = Color.Empty;
+                    txtContactNum.BorderColor = Color.Empty;
+                    txtUserEmail.BorderColor = Color.Empty;
+                }
             }
-
-            if (IsPostBack)
+            catch
             {
-                txtPassword.Attributes["Value"] = txtPassword.Text;
-                txtRetypePass.Attributes["Value"] = txtRetypePass.Text;
 
-                txtUserName.BorderColor = Color.Empty;
-                txtName.BorderColor = Color.Empty;
-                txtLName.BorderColor = Color.Empty;
-                txtContactNum.BorderColor = Color.Empty;
-                txtDOB.BorderColor = Color.Empty;
-                txtUserEmail.BorderColor = Color.Empty;
-                ddUsertype.BorderColor = Color.Empty;
-                txtPassword.BorderColor = Color.Empty;
-                txtRetypePass.BorderColor = Color.Empty;
-                lblErrorPass.Text = "";
-                txtUserName.BorderColor = Color.Empty;
-                txtName.BorderColor = Color.Empty;
-                txtLName.BorderColor = Color.Empty;
-                txtUserEmail.BorderColor = Color.Empty;
-                ddUsertype.BorderColor = Color.Empty;
-                txtDOB.BorderColor = Color.Empty;
-                txtPassword.BorderColor = Color.Empty;
-                txtRetypePass.BorderColor = Color.Empty;
-                txtContactNum.BorderColor = Color.Empty;
-                txtUserEmail.BorderColor = Color.Empty;
             }
 
         }
 
         protected void ddUsertype_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddUsertype.SelectedValue == "S")
+            try
             {
-                DBHandler dBHandler = new DBHandler();
-
-                ddScholarQual.Items.Clear();
-                ddScholarQual.Dispose();
-                ddScholarQual.Visible = true;
-
-                List<uspGetQualification> list = dBHandler.BLL_GetQualification();
-
-                foreach (uspGetQualification qual in list)
+                if (ddUsertype.SelectedValue == "S")
                 {
-                    ddScholarQual.Items.Add(new ListItem(qual.QualificationDescription.ToString(), 
-                        qual.QualificationID.ToString()));
+                    DBHandler dBHandler = new DBHandler();
+
+                    ddScholarQual.Items.Clear();
+                    ddScholarQual.Dispose();
+                    ddScholarQual.Visible = true;
+
+                    List<uspGetQualification> list = dBHandler.BLL_GetQualification();
+
+                    foreach (uspGetQualification qual in list)
+                    {
+                        ddScholarQual.Items.Add(new ListItem(qual.QualificationDescription.ToString(),
+                            qual.QualificationID.ToString()));
+                    }
+                }
+                else
+                {
+                    ddScholarQual.Visible = false;
+                    ddScholarQual.Items.Clear();
+                    ddScholarQual.Dispose();
                 }
             }
-            else
+            catch
             {
-                ddScholarQual.Visible = false;
-                ddScholarQual.Items.Clear();
-                ddScholarQual.Dispose();
+
             }
 
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            DBHandler dBHandler = new DBHandler();
-            int continueProcess=0;//if more than 1 then member will not be added.
+            try
+            {
+                DBHandler dBHandler = new DBHandler();
+                int continueProcess = 0;//if more than 1 then member will not be added.
 
-            
-            if (txtPassword.Text.ToString() != txtRetypePass.Text.ToString() ||
-                txtPassword.Text == null || txtRetypePass == null)
-            {
-                txtRetypePass.BorderColor = Color.Red;
-                txtPassword.BorderColor = Color.Red;
-                lblErrorPass.Text = "Passwords do not match";
-                lblErrorPass.ForeColor = Color.Red;
-                continueProcess += 1;
-            }
-            else if (txtUserName.Text == "" || txtUserName.Text == null)
-            {
-                txtUserName.BorderColor = Color.Red;
-                lblErrorPass.Text = "User name field can not be empty";
-                continueProcess += 1;
-            }
-            else if (txtUserName.Text.Length > 15 || txtUserName.Text.Length < 5)
-            {
-                txtUserName.BackColor = Color.Red;
-                lblErrorPass.Text = "User Name is too long or too short";
-                continueProcess += 1;
-            }
-            else if (txtUserName.Text != "" || txtUserName.Text != null)
-            {
-                try
+
+                if (txtPassword.Text.ToString() != txtRetypePass.Text.ToString() ||
+                    txtPassword.Text == null || txtRetypePass == null)
                 {
-                    if (dBHandler.BLL_GetMember(txtUserName.Text.ToString()) != null)
+                    txtRetypePass.BorderColor = Color.Red;
+                    txtPassword.BorderColor = Color.Red;
+                    lblErrorPass.Text = "Passwords do not match";
+                    lblErrorPass.ForeColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtUserName.Text == "" || txtUserName.Text == null)
+                {
+                    txtUserName.BorderColor = Color.Red;
+                    lblErrorPass.Text = "User name field can not be empty";
+                    continueProcess += 1;
+                }
+                else if (txtUserName.Text.Length > 15 || txtUserName.Text.Length < 5)
+                {
+                    txtUserName.BackColor = Color.Red;
+                    lblErrorPass.Text = "User Name is too long or too short";
+                    continueProcess += 1;
+                }
+                else if (txtUserName.Text != "" || txtUserName.Text != null)
+                {
+                    try
                     {
-                        lblErrorPass.Text = "User Name taken, Please retype a new one";
+                        if (dBHandler.BLL_GetMember(txtUserName.Text.ToString()) != null)
+                        {
+                            lblErrorPass.Text = "User Name taken, Please retype a new one";
+                            txtUserName.BorderColor = Color.Red;
+                            lblErrorPass.ForeColor = Color.Red;
+                            continueProcess += 1;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
                         txtUserName.BorderColor = Color.Red;
+                        lblErrorPass.Text = ex.Message;
                         lblErrorPass.ForeColor = Color.Red;
                         continueProcess += 1;
                     }
                 }
-                catch (Exception ex)
+
+                if (txtName.Text == "" || txtName.Text == null)
                 {
-                    txtUserName.BorderColor = Color.Red;
-                    lblErrorPass.Text = ex.Message;
-                    lblErrorPass.ForeColor = Color.Red;
+                    txtName.BorderColor = Color.Red;
                     continueProcess += 1;
                 }
-            }
-            
-            if (txtName.Text == "" || txtName.Text == null)
-            {
-                txtName.BorderColor = Color.Red;
-                continueProcess += 1;
-            }
-            else if (txtLName.Text == "" || txtLName.Text == null)
-            {
-                txtLName.BorderColor = Color.Red;
-                continueProcess += 1;
-            }
-            else if (txtDOB.Text == "" || txtDOB == null)
-            {
-                txtDOB.BorderColor = Color.Red;
-                continueProcess += 1;
-            }
-            else if(txtDOB.Text.Length > 10 || txtDOB.Text.Length < 10)
-            {
-                txtDOB.BorderColor = Color.Red;
-                continueProcess += 1;
-                lblErrorPass.Text = "Please follow the format: yyyy-mm-dd";
-            }
-            else if (txtUserEmail.Text == "" || txtUserEmail == null)
-            {
-                txtUserEmail.BorderColor = Color.Red;
-                continueProcess += 1;
-            }
-            else if (ddScholarQual.SelectedValue == "None")
-            {
-                ddScholarQual.BorderColor = Color.Red;
-                continueProcess += 1;
-            }
-            else if(ddUsertype.SelectedValue == "None")
-            {
-                ddScholarQual.BorderColor = Color.Red;
-                continueProcess += 1;
-                lblErrorPass.Text = "Registration type not selected";
-            }
-            else if(txtPassword.Text == null || txtPassword.Text == "")
-            {
-                lblErrorPass.Text = "Please create a Password";
-                continueProcess += 1;
-                txtPassword.BorderColor = Color.Red;
-            }
-            else if(txtRetypePass.Text == null || txtRetypePass.Text == "")
-            {
-                lblErrorPass.Text = "Please retype your Password";
-                continueProcess += 1;
-                txtRetypePass.BorderColor = Color.Red;
-            }
-            else if (txtContactNum.Text.Length > 10 || txtContactNum.Text.Length < 10)
-            {
-                if (txtContactNum.Text.Length != 0)
+                else if (txtLName.Text == "" || txtLName.Text == null)
                 {
-                    lblErrorPass.Text = "Please enter a correct contact number";
+                    txtLName.BorderColor = Color.Red;
                     continueProcess += 1;
-                    txtContactNum.BorderColor = Color.Red;
                 }
-            }
-
-            if (continueProcess == 0)
-            {
-                //make sure the DOB is in correct format yyy-mm-dd.
-                if (txtDOB.Text.IndexOf('-', 4) == -1 || txtDOB.Text.IndexOf('-', 7) == -1)
+                else if (txtDOB.Text == "" || txtDOB == null)
                 {
-                    txtDOB.Text = txtDOB.Text.Insert(4, "-");
-                    txtDOB.Text = txtDOB.Text.Insert(7, "-");
+                    txtDOB.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtDOB.Text.Length > 10 || txtDOB.Text.Length < 10)
+                {
+                    txtDOB.BorderColor = Color.Red;
+                    continueProcess += 1;
+                    lblErrorPass.Text = "Please follow the format: yyyy-mm-dd";
+                }
+                else if (txtUserEmail.Text == "" || txtUserEmail == null)
+                {
+                    txtUserEmail.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (ddScholarQual.SelectedValue == "None")
+                {
+                    ddScholarQual.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (ddUsertype.SelectedValue == "None")
+                {
+                    ddScholarQual.BorderColor = Color.Red;
+                    continueProcess += 1;
+                    lblErrorPass.Text = "Registration type not selected";
+                }
+                else if (txtPassword.Text == null || txtPassword.Text == "")
+                {
+                    lblErrorPass.Text = "Please create a Password";
+                    continueProcess += 1;
+                    txtPassword.BorderColor = Color.Red;
+                }
+                else if (txtRetypePass.Text == null || txtRetypePass.Text == "")
+                {
+                    lblErrorPass.Text = "Please retype your Password";
+                    continueProcess += 1;
+                    txtRetypePass.BorderColor = Color.Red;
+                }
+                else if (txtContactNum.Text.Length > 10 || txtContactNum.Text.Length < 10)
+                {
+                    if (txtContactNum.Text.Length != 0)
+                    {
+                        lblErrorPass.Text = "Please enter a correct contact number";
+                        continueProcess += 1;
+                        txtContactNum.BorderColor = Color.Red;
+                    }
                 }
 
-                try
+                if (continueProcess == 0)
                 {
+                    //make sure the DOB is in correct format yyy-mm-dd.
+                    if (txtDOB.Text.IndexOf('-', 4) == -1 || txtDOB.Text.IndexOf('-', 7) == -1)
+                    {
+                        txtDOB.Text = txtDOB.Text.Insert(4, "-");
+                        txtDOB.Text = txtDOB.Text.Insert(7, "-");
+                    }
+
                     string encryptionPass = Convert.ToString(txtUserName.Text);
                     Encryption encryption = new Encryption();
                     Member member = new Member();
 
-                    string encryptedString = encryption.Encrypt(encryptionPass, 
+                    string encryptedString = encryption.Encrypt(encryptionPass,
                         Convert.ToString(txtPassword.Text));
 
                     member.MemberID = Convert.ToString(txtUserName.Text);
@@ -219,41 +234,39 @@ namespace Muslimeen.Register
                     member.ContactNo = Convert.ToString(txtContactNum.Text);
                     member.ActivationExpiry = Convert.ToDateTime(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"));
                     member.ActivationDate = Convert.ToDateTime(DateTime.Now.ToLocalTime());
-                    
 
                     bool success = dBHandler.BLL_AddMember(member);
-
-                    if (ddUsertype.SelectedValue == "S")
-                    {
-                        Scholar scholar = new Scholar
-                        {
-                            ScholarID = Convert.ToString(txtUserName.Text),
-                            QualificationID = Convert.ToString(ddScholarQual.SelectedValue)
-                        };
-
-                        dBHandler.BLL_AddScholarQualification(scholar);
-                    }
-
-                    EmailService emailService = new EmailService();
-
-                    emailService.AutoEmailService(txtUserEmail.Text.ToString(), 
-                        ddUsertype.SelectedItem.ToString(), "http://www.google.co.za", "Registration", "null", "null"); //Add server Verification.aspx address.
-
-                    Response.Redirect("~/Content/Default.aspx");
                 }
-                catch(Exception ex)
+
+
+                if (ddUsertype.SelectedValue == "S")
                 {
-                    lblErrorPass.Text = ex.Message;
+                    Scholar scholar = new Scholar
+                    {
+                        ScholarID = Convert.ToString(txtUserName.Text),
+                        QualificationID = Convert.ToString(ddScholarQual.SelectedValue)
+                    };
+
+                    dBHandler.BLL_AddScholarQualification(scholar);
                 }
 
+                EmailService emailService = new EmailService();
 
+                emailService.AutoEmailService(txtUserEmail.Text.ToString(),
+                    ddUsertype.SelectedItem.ToString(), "http://www.google.co.za", "Registration", "null", "null"); //Add server Verification.aspx address.
+
+                Response.Redirect("~/Content/Default.aspx");
             }
-                
+            catch (Exception ex)
+            {
+                lblErrorPass.Text = ex.Message;
+            }
+
 
         }
 
-    }
 
+    }
 
 }
 

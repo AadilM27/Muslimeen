@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </header>     <!--Add content-->
-                <div class="content" id="content">
+                <div class="content" id="content" style="min-height:595px;" >
                     <div class="container">
                         <div class=" contentHolder p-2">
                             <div class="header">    

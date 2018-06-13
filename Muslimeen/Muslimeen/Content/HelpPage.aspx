@@ -80,17 +80,17 @@
                 </div>
             </header>
      <!--Add content-->
-            <div class="content" id="content">
+            <div class="content" id="content" style="min-height:595px; background-color:#256297">
                 <div class="contentHolder header p-5">
                     <div class="header mb-5">
                         <h1 class="title header">Help and Support</h1>
                     </div>
 
-                    <div class="row" style="height:495px;">
+                    <div class="row">
                 <!--Help Center-->
                               <div class =" col text-center paragraphDisplay mb-3 p-1" style="position:static; height:225px; border-radius:5px;">
                                   <asp:Image runat="server" CssClass="mb-0 ml-0 " src="../Content/HelpPage/icons/help.png" width="90" height="70"/>
-                                <h4 class="text-center"><a href="#">Help Center</a></h4>
+                                <h4 class="text-center"><a href="HelpCenter.aspx">Help Center</a></h4>
                 
                                  <p class="text-center">
                                       Getting started <br/>
@@ -100,18 +100,18 @@
                               </div>
 
                   <!--Privacy and Safety--> 
-                            <div class =" col-4 text-center paragraphDisplay mb-3 ml-1 p-1" style="position:static; height:225px; border-radius:5px;"><!--and this one static also-->
+                            <div class =" col-4 text-center paragraphDisplay mb-3 ml-3 p-1" style="position:static; height:225px; border-radius:5px;"><!--and this one static also-->
                                 <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/lock.png" width="90" height="70"/>
-                                <h4 class="text-center"><a href="../Content/PrivacyAndSafety.aspx"> Privacy and safety</a></h4>  
+                                <h4 class="text-center"><a href="PrivacyAndSafety.aspx"> Privacy and safety</a></h4>  
                 
                                    Our data policy and your privacy      
                   
                              </div>
             
                              <!--Terms and Policies -->
-                            <div class ="col text-center paragraphDisplay mb-3 ml-1 p-1" style="position:static; height:225px; border-radius:5px;"> <!--Like this i made this position static-->
+                            <div class ="col text-center paragraphDisplay mb-3 ml-3 p-1" style="position:static; height:225px; border-radius:5px;"> <!--Like this i made this position static-->
                                 <asp:Image runat="server" CssClass="mb-0 ml-0"  src="../Content/HelpPage/icons/docs.png" width="90" height="70"/>
-                                <h4 class="text-center"><a href="../Content/TermsOfService.aspx">Terms and policies</a></h4> 
+                                <h4 class="text-center"><a href="TermsOfService.aspx">Terms and policies</a></h4> 
                                 <p class="text-center">
                                 Terms of service<br />
                                 </p>

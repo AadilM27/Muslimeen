@@ -16,105 +16,112 @@ namespace Muslimeen.Content
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblErrorPass.ForeColor = Color.Red;
-            lblErrorPass.Text = "";
-            txtName.BorderColor = Color.Empty;
-            txtLName.BorderColor = Color.Empty;
-            txtUserEmail.BorderColor = Color.Empty;
-            txtOldPassword.BorderColor = Color.Empty;
-            txtPassword.BorderColor = Color.Empty;
-            txtRetypePass.BorderColor = Color.Empty;
-
-            if (!IsPostBack)
+            try
             {
-                divChangePassword.Visible = false;
-                ddAssignedMosques.Items.Add(new ListItem("None", null));
-                ddAssignedMosques.SelectedValue = null;
+                lblErrorPass.ForeColor = Color.Red;
+                lblErrorPass.Text = "";
+                txtName.BorderColor = Color.Empty;
+                txtLName.BorderColor = Color.Empty;
+                txtUserEmail.BorderColor = Color.Empty;
+                txtOldPassword.BorderColor = Color.Empty;
+                txtPassword.BorderColor = Color.Empty;
+                txtRetypePass.BorderColor = Color.Empty;
 
-                txtUserName.ReadOnly = true;
-                txtDOB.ReadOnly = true;
-                txtQual.ReadOnly = true;
-                txtMemberType.ReadOnly = true;
-                txtActivationDate.ReadOnly = true;
-
-                DBHandler dBHandler = new DBHandler();
-                uspGetAllMosques uspGetAllMosques = new uspGetAllMosques();
-                List<uspGetAllMosques> list = new List<uspGetAllMosques>();
-
-                list = dBHandler.BLL_GetAllMosques();
-                foreach (uspGetAllMosques mosque in list)
+                if (!IsPostBack)
                 {
-                    ddAssignedMosques.Items.Add(new ListItem(mosque.MosqueName.ToString(),
-                        mosque.MosqueID.ToString()));
-                }
+                    divChangePassword.Visible = false;
+                    ddAssignedMosques.Items.Add(new ListItem("None", null));
+                    ddAssignedMosques.SelectedValue = null;
 
-                uspGetMember uspGetMember = new uspGetMember();
+                    txtUserName.ReadOnly = true;
+                    txtDOB.ReadOnly = true;
+                    txtQual.ReadOnly = true;
+                    txtMemberType.ReadOnly = true;
+                    txtActivationDate.ReadOnly = true;
 
-                if (Session["UserName"] != null)
-                {
-                    uspGetMember = dBHandler.BLL_GetMember(Session["UserName"].ToString());
-                }
-                if (uspGetMember.MemberType.ToString() == "O") //O stands for Moderator.
-                {
-                    uspGetModeratorDetails uspGetModeratorDetails = new uspGetModeratorDetails();
-                    uspGetModeratorDetails = dBHandler.BLL_GetModeratorDetails(Session["UserName"].ToString());
+                    DBHandler dBHandler = new DBHandler();
+                    uspGetAllMosques uspGetAllMosques = new uspGetAllMosques();
+                    List<uspGetAllMosques> list = new List<uspGetAllMosques>();
 
-                    txtUserName.Text = Convert.ToString(uspGetModeratorDetails.ModeratorID);
-                    txtName.Text = Convert.ToString(uspGetModeratorDetails.MemberName);
-                    txtLName.Text = Convert.ToString(uspGetModeratorDetails.MemberLastName);
-                    txtContactNum.Text = Convert.ToString(uspGetModeratorDetails.ContactNo);
-                    txtDOB.Text = uspGetModeratorDetails.MemberDOB.ToString("yyyy-MM-dd");
-                    txtUserEmail.Text = Convert.ToString(uspGetModeratorDetails.Email);
-                    if (uspGetModeratorDetails.MemberType.ToString() == "O")
+                    list = dBHandler.BLL_GetAllMosques();
+                    foreach (uspGetAllMosques mosque in list)
                     {
-                        txtMemberType.Text = "Moderator";
+                        ddAssignedMosques.Items.Add(new ListItem(mosque.MosqueName.ToString(),
+                            mosque.MosqueID.ToString()));
                     }
-                    txtQual.Text = Convert.ToString(uspGetModeratorDetails.QualificationDescription);
-                    ddAssignedMosques.SelectedValue = Convert.ToString(uspGetModeratorDetails.MosqueID);
-                    txtActivationDate.Text = uspGetModeratorDetails.ActivationDate.ToString("yyyy-MM-dd");
 
-                }
-                else if (uspGetMember.MemberType.ToString() == "S") //S stands for Scholar.
-                {
-                    uspGetScholarDetails uspGetScholarDetails = new uspGetScholarDetails();
-                    uspGetScholarDetails = dBHandler.BLL_GetScholarDetails(Session["UserName"].ToString());
+                    uspGetMember uspGetMember = new uspGetMember();
 
-                    txtUserName.Text = Convert.ToString(uspGetScholarDetails.ScholarID);
-                    txtName.Text = Convert.ToString(uspGetScholarDetails.MemberName);
-                    txtLName.Text = Convert.ToString(uspGetScholarDetails.MemberLastName);
-                    txtContactNum.Text = Convert.ToString(uspGetScholarDetails.ContactNo);
-                    txtDOB.Text = uspGetScholarDetails.MemberDOB.ToString("yyyy-MM-dd");
-                    txtUserEmail.Text = Convert.ToString(uspGetScholarDetails.Email);
-                    if (uspGetScholarDetails.MemberType.ToString() == "S")
+                    if (Session["UserName"] != null)
                     {
-                        txtMemberType.Text = "Scholar";
+                        uspGetMember = dBHandler.BLL_GetMember(Session["UserName"].ToString());
                     }
-                    txtQual.Text = Convert.ToString(uspGetScholarDetails.QualificationDescription);
-                    ddAssignedMosques.SelectedValue = Convert.ToString(uspGetScholarDetails.MosqueID);
-                    txtActivationDate.Text = uspGetScholarDetails.ActivationDate.ToString("yyyy-MM-dd");
-                }
-                else if (uspGetMember.MemberType.ToString() == "M" || uspGetMember.MemberType.ToString() == "A") //M stands for Member, A for Admin.
-                {
-                    divQual.Visible = false;
-                    txtUserName.Text = Convert.ToString(uspGetMember.MemberID);
-                    txtName.Text = Convert.ToString(uspGetMember.MemberName);
-                    txtLName.Text = Convert.ToString(uspGetMember.MemberLastName);
-                    txtContactNum.Text = Convert.ToString(uspGetMember.ContactNo);
-                    txtDOB.Text = uspGetMember.MemberDOB.ToString("yyyy-MM-dd");
-                    txtUserEmail.Text = Convert.ToString(uspGetMember.Email);
-                    if (uspGetMember.MemberType.ToString() == "M")
+                    if (uspGetMember.MemberType.ToString() == "O") //O stands for Moderator.
                     {
-                        txtMemberType.Text = "Member";
+                        uspGetModeratorDetails uspGetModeratorDetails = new uspGetModeratorDetails();
+                        uspGetModeratorDetails = dBHandler.BLL_GetModeratorDetails(Session["UserName"].ToString());
+
+                        txtUserName.Text = Convert.ToString(uspGetModeratorDetails.ModeratorID);
+                        txtName.Text = Convert.ToString(uspGetModeratorDetails.MemberName);
+                        txtLName.Text = Convert.ToString(uspGetModeratorDetails.MemberLastName);
+                        txtContactNum.Text = Convert.ToString(uspGetModeratorDetails.ContactNo);
+                        txtDOB.Text = uspGetModeratorDetails.MemberDOB.ToString("yyyy-MM-dd");
+                        txtUserEmail.Text = Convert.ToString(uspGetModeratorDetails.Email);
+                        if (uspGetModeratorDetails.MemberType.ToString() == "O")
+                        {
+                            txtMemberType.Text = "Moderator";
+                        }
+                        txtQual.Text = Convert.ToString(uspGetModeratorDetails.QualificationDescription);
+                        ddAssignedMosques.SelectedValue = Convert.ToString(uspGetModeratorDetails.MosqueID);
+                        txtActivationDate.Text = uspGetModeratorDetails.ActivationDate.ToString("yyyy-MM-dd");
+
                     }
-                    else if(uspGetMember.MemberType.ToString() == "A")
+                    else if (uspGetMember.MemberType.ToString() == "S") //S stands for Scholar.
                     {
-                        txtMemberType.Text = "Admin";
+                        uspGetScholarDetails uspGetScholarDetails = new uspGetScholarDetails();
+                        uspGetScholarDetails = dBHandler.BLL_GetScholarDetails(Session["UserName"].ToString());
+
+                        txtUserName.Text = Convert.ToString(uspGetScholarDetails.ScholarID);
+                        txtName.Text = Convert.ToString(uspGetScholarDetails.MemberName);
+                        txtLName.Text = Convert.ToString(uspGetScholarDetails.MemberLastName);
+                        txtContactNum.Text = Convert.ToString(uspGetScholarDetails.ContactNo);
+                        txtDOB.Text = uspGetScholarDetails.MemberDOB.ToString("yyyy-MM-dd");
+                        txtUserEmail.Text = Convert.ToString(uspGetScholarDetails.Email);
+                        if (uspGetScholarDetails.MemberType.ToString() == "S")
+                        {
+                            txtMemberType.Text = "Scholar";
+                        }
+                        txtQual.Text = Convert.ToString(uspGetScholarDetails.QualificationDescription);
+                        ddAssignedMosques.SelectedValue = Convert.ToString(uspGetScholarDetails.MosqueID);
+                        txtActivationDate.Text = uspGetScholarDetails.ActivationDate.ToString("yyyy-MM-dd");
                     }
-                    ddAssignedMosques.SelectedValue = Convert.ToString(uspGetMember.MosqueID);
-                    txtActivationDate.Text = uspGetMember.ActivationDate.ToString("yyyy-MM-dd");
+                    else if (uspGetMember.MemberType.ToString() == "M" || uspGetMember.MemberType.ToString() == "A") //M stands for Member, A for Admin.
+                    {
+                        divQual.Visible = false;
+                        txtUserName.Text = Convert.ToString(uspGetMember.MemberID);
+                        txtName.Text = Convert.ToString(uspGetMember.MemberName);
+                        txtLName.Text = Convert.ToString(uspGetMember.MemberLastName);
+                        txtContactNum.Text = Convert.ToString(uspGetMember.ContactNo);
+                        txtDOB.Text = uspGetMember.MemberDOB.ToString("yyyy-MM-dd");
+                        txtUserEmail.Text = Convert.ToString(uspGetMember.Email);
+                        if (uspGetMember.MemberType.ToString() == "M")
+                        {
+                            txtMemberType.Text = "Member";
+                        }
+                        else if (uspGetMember.MemberType.ToString() == "A")
+                        {
+                            txtMemberType.Text = "Admin";
+                        }
+                        ddAssignedMosques.SelectedValue = Convert.ToString(uspGetMember.MosqueID);
+                        txtActivationDate.Text = uspGetMember.ActivationDate.ToString("yyyy-MM-dd");
+                    }
                 }
             }
-        }
+            catch
+            {
+
+            }
+    }
 
         protected void chkChangePassword_CheckedChanged(object sender, EventArgs e)
         {
@@ -261,6 +268,10 @@ namespace Muslimeen.Content
             catch (Exception ex)
             {
                 lblErrorPass.Text = ex.Message + "\n Contact muslimeen for more information";
+            }
+            finally
+            {
+
             }
             
         }

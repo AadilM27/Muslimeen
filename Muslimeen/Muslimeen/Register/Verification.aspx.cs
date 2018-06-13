@@ -82,7 +82,10 @@ namespace Muslimeen.Register
                 {
                     lblErrorPass.Text = ex.Message + "\nContact Muslimeen for help, copy the above error information.";
                 }
+                finally
+                {
 
+                }
 
                 if(success == true)
                 {

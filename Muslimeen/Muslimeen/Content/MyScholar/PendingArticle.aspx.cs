@@ -14,35 +14,34 @@ namespace Muslimeen.Content.MyScholar
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            DBHandler dBHandler = new DBHandler();
-
-
-            if (Session["UserName"] != null)
-            {
-                uspGetMember uspGetMember = new uspGetMember();
-
-                uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
-                hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
-                //divUserProfile.Visible = true;
-
-                //liMyMusbtn.Visible = true;
-                //liMyMusDivi.Visible = true;
-
-                btnLogin.Text = "Log out";
-                btnRegister.Visible = false;
-
-            }
-            else if (Session["UserName"] == null)
-            {
-               // liMyMusbtn.Visible = false;
-                //liMyMusDivi.Visible = false;
-
-               // divUserProfile.Visible = false;
-                Session.Clear();
-            }
-
             try
             {
+                DBHandler dBHandler = new DBHandler();
+
+                if (Session["UserName"] != null)
+                {
+                    uspGetMember uspGetMember = new uspGetMember();
+
+                    uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
+                    hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
+                    //divUserProfile.Visible = true;
+
+                    //liMyMusbtn.Visible = true;
+                    //liMyMusDivi.Visible = true;
+
+                    btnLogin.Text = "Log out";
+                    btnRegister.Visible = false;
+
+                }
+                else if (Session["UserName"] == null)
+                {
+                    // liMyMusbtn.Visible = false;
+                    //liMyMusDivi.Visible = false;
+
+                    // divUserProfile.Visible = false;
+                    Session.Clear();
+                }
+
                 repeatPendingArticle.DataSource = dBHandler.BLL_GetPendingArticle();
                 repeatPendingArticle.DataBind();
             }

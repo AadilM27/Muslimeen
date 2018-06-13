@@ -16,9 +16,8 @@
 
 </head>
     <body>
-        <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
-        <form id="frmScholar" runat="server" class=" ">  
-           <header >
+        <form id="frmScholar" runat="server" class=" ">   
+            <header >
                 <nav class="navFixed">
                     <div class="row align-self-end">
                         <ul class=" col-7 navbar-nav flex-row justify-content-start">
@@ -31,7 +30,7 @@
                             <asp:TextBox ID="txtSearch" TextMode="Search" runat="server"  class=" search-box form-control form-control-sm" autocomplete="off" placeholder="Search"></asp:TextBox>
                             </li>
                             <li class="nav-item mr-2">
-                                <asp:Button runat="server" Text="Go" CssClass="topnav search-btn form-control form-control-sm" />
+                                <asp:ImageButton runat="server" Text="Go" ImageUrl="~/Content/Default/icons/Search.png" Height="31px" Width="31px" CssClass="topnav search-btn form-control form-control-sm" />
                             </li>
                             <li class=" nav-item mr-2">
                             <asp:Button runat="server" Text="Login" ID="btnLogin" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnLogin_Click" />
@@ -39,12 +38,13 @@
                             <li class="nav-item mr-2">
                             <asp:Button runat="server" Text="Register" ID="btnRegister" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnRegister_Click" />
                             </li>
-                        </ul>
+                        </ul> <!---->
                     </div>
-                    <div class="row">
-                        <ul class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
-                            <li><asp:HyperLink ToolTip="Edit user profile" runat="server" ID="hplUserProfile" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-3 user"></asp:HyperLink></li>
-                        </ul>
+                    <div class="row" runat="server" id="divUserProfile" >
+                        <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
+                            <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
+                            </asp:HyperLink><asp:Image style="height:15px; width:15px;" runat="server" id="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="~/Content/Default/icons/EditProfile.png"/>
+                        </div>
                     </div>
                 </nav>
                 <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50);">
@@ -56,9 +56,9 @@
                             <li class="nav-item navbarText navbaritems">
                                 <asp:Button runat="server" ID="btnHome" Text="Home"  CssClass=" btn btn-link nav-item navText" OnClick="btnHome_Click"/>
                             </li><li class="NavDevider">|</li><!--deviders-->
-                            <li class="nav-item navbarText navbaritems">
-                                <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen"  CssClass=" btn btn-link nav-item navText"/>
-                            </li><li class="NavDevider">|</li><!--deviders-->
+                            <li class="nav-item navbarText navbaritems" runat="server" id="liMyMusbtn">
+                                <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen"  CssClass=" btn btn-link nav-item navText" OnClick="btnMyMuslimeen_Click"/>
+                            </li><li runat="server" id="liMyMusDivi" class=" NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems">
                                 <asp:Button runat="server" ID="btnMosques" Text="Mosques"  CssClass="nav-item navText btn-link btn" OnClick="btnMosques_Click"/>
                             </li><li class="NavDevider">|</li><!--deviders-->
@@ -79,22 +79,26 @@
                 </div>
             </header>
      <!--Add content-->
-             <div class="container"> 
-                 <br />
-            <h1 class="title">Privacy and Safety    <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/lock.png" width="90" height="70"/></h1> 
-                <hr />
-                 <div class="container" style="background-color:white;margin-top:5px">
-                 <ul>
-                <li> My Muslimeen is a fully secure website.</li> 
-                  <li> No user may view your profile.</li> 
-                   <li> My Muslimeen was developed in order to inform users about the mosque information and islamic details only.</li>  
-                   <li> Only registered scholars information may be viewed incase users would like to get in contact. </li> 
-                   <li> Information given to My Muslimeen is fully disclosed and secured. </li> 
-                   <li>We respect other people's rights.</li>
-                     </ul>
-                 </div>
-                 </div>
-
+            <div class="content" id="content" style="height:595px;">
+                <div class="container-fluid">
+                <div class="contentHolder">
+                    <div class="header mb-3">
+                        <h1 class="title">Privacy and Safety
+                        <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/lock.png" Width="90" Height="70" /></h1>
+                    </div>
+                    <div class=" paragraphDisplay">
+                        <ul>
+                            <li>My Muslimeen is a fully secure website.</li>
+                            <li>No user may view your profile.</li>
+                            <li>My Muslimeen was developed in order to inform users about the mosque information and islamic details only.</li>
+                            <li>Only registered scholars information may be viewed incase users would like to get in contact. </li>
+                            <li>Information given to My Muslimeen is fully disclosed and secured. </li>
+                            <li>We respect our members rights and privacy.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
             <div class="footerr"> <!--End of content, start of footer-->
                 <div class="row bg-light">
                     <div class="col text-center position-static">

@@ -183,7 +183,10 @@ namespace Muslimeen.Content.Mosque
             {
                 Response.Redirect("~/Content/MyScholar/AddArticle.aspx");
             }
-
+            else if (uspGetMember.MemberType == 'R')
+            {
+                Response.Redirect("~/Content/Mosque/MosqueRep.aspx");
+            }
 
         }
     }
