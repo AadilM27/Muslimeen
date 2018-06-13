@@ -670,6 +670,8 @@ namespace Muslimeen.BLL
             return DBHelper.NonQuery("uspUpdatePrayerType", CommandType.StoredProcedure,
                 parameters.ToArray());
         }
+
+
         public List<uspGetMosquePrayerTimes> GetMosquePrayerTimes(int mosqueID, DateTime StartDate, DateTime EndDate)
         {
             List<uspGetMosquePrayerTimes> list = new List<uspGetMosquePrayerTimes>();
@@ -684,23 +686,28 @@ namespace Muslimeen.BLL
             using (DataTable table = DBHelper.ParamSelect("uspGetMosquePrayerTimes",
                     CommandType.StoredProcedure, pars))
             {
-                times = new uspGetMosquePrayerTimes
+                if (table.Rows.Count > 0)
                 {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        times = new uspGetMosquePrayerTimes
+                        {
 
-                    PrayerDate = Convert.ToDateTime(row["PrayerDate"]),
-                    PrayerDescription = row["PrayerDescription"].ToString(),
-                    AdhaanTime = row["AdhaanTime"].ToString(),
-                    JamaatTime = row["JamaatTime"].ToString()
+                            PrayerDate = Convert.ToDateTime(row["PrayerDate"]),
+                            PrayerDescription = row["PrayerDescription"].ToString(),
+                            AdhaanTime = row["AdhaanTime"].ToString(),
+                            JamaatTime = row["JamaatTime"].ToString()
 
 
 
 
-                };
-                list.Add(times);
-            }
+                        };
+                        list.Add(times);
+                    }
+                }//end if
+            }//end using
             return list;
-        }
-
+        }//End GetMosquePrayerTimes
 
 
         public List<uspGetAllPendingModeraters> GetAllPendingModeraters()
