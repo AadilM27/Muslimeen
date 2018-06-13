@@ -44,7 +44,7 @@ namespace Muslimeen.Content.Learn_Islam
             //Article...
             try
             {
-                repeatPendingArticle.DataSource = dBHandler.BLL_GetPendingArticle();
+                repeatPendingArticle.DataSource = dBHandler.BLL_GetAccepetedArticle();
                 repeatPendingArticle.DataBind();
             }
             catch
