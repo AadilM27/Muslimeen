@@ -145,7 +145,7 @@ namespace Muslimeen.Content.Mosque
         protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
         {
             int index = int.Parse(e.Item.Value);
-            MultiView1.ActiveViewIndex = index;
+            MultiView.ActiveViewIndex = index;
         }
 
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)

@@ -175,13 +175,13 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.Menu Menu1;
         
         /// <summary>
-        /// MultiView1 control.
+        /// MultiView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView MultiView1;
+        protected global::System.Web.UI.WebControls.MultiView MultiView;
         
         /// <summary>
         /// View1 control.
@@ -263,6 +263,15 @@ namespace Muslimeen.Content.Mosque {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAddEvent;
+        
+        /// <summary>
+        /// View2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View View2;
         
         /// <summary>
         /// ddlUpdateEvent control.
@@ -364,13 +373,13 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.Button btnRemoveEvent;
         
         /// <summary>
-        /// View2 control.
+        /// View3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View View2;
+        protected global::System.Web.UI.WebControls.View View3;
         
         /// <summary>
         /// Calendar1 control.
