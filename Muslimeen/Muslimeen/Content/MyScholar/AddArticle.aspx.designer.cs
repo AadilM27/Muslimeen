@@ -13,6 +13,15 @@ namespace Muslimeen.Content.MyScholar {
     public partial class AddArticle {
         
         /// <summary>
+        /// lnk1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnk1;
+        
+        /// <summary>
         /// frmAddArticle control.
         /// </summary>
         /// <remarks>

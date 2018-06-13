@@ -15,6 +15,7 @@
     <link href="css/MyScholar.css" rel="stylesheet" />
     </head>
 <body>
+    <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
     <form id="frmAddArticle" runat="server">
 
         <!--Header-->
@@ -203,5 +204,6 @@
 
     <script src="../Default/Default.js" type="text/javascript"></script>
     <script src="../Default/DatesEnglishHijri.js" type="text/javascript"></script>
+    <script src="../Default/DefaultJq.js"></script>
 </body>
 </html>

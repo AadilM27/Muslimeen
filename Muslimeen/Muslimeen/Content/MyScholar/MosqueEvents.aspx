@@ -16,6 +16,7 @@
 
 </head>
 <body>
+    <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
     <form id="frmEvents" runat="server">
         <!--Header-->
         <header >
@@ -161,5 +162,6 @@
 
     <script src="../Default/Default.js"></script>
     <script src="../Default/DatesEnglishHijri.js"></script>
+    <script src="../Default/DefaultJq.js"></script>
 </body>
 </html>

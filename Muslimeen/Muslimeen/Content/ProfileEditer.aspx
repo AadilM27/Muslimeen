@@ -19,6 +19,7 @@
 		<link href="..\Content\ProfileEditer\css\ProfileEditer.css" rel="stylesheet"/>
 </head>
 <body class="text-center">
+    <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
     <div class="main-div">
 			<asp:Image runat="server" CssClass="mb-2 mt-2" src="../Login/LogIn_Bootstrap/logo.png" width="200" height="130"/>
 			<h1 class="h3 mb-1 mt-2 font-weight-bold">Update your profile</h1>
@@ -136,5 +137,6 @@
                 <input type="hidden" id="hfdPassword" value=""/>
         </form>
      </div>
+    <script src="Default/DefaultJq.js"></script>
 </body>
 </html>

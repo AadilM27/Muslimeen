@@ -12,8 +12,10 @@
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="Default/css/Default.css" rel="stylesheet" />
+    <script src="../Login/LogIn_Bootstrap/js/jquery-3.3.1.min.js"></script>
 </head>
     <body>
+        <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
         <form id="frmScholar" runat="server" class=" ">   
             <header >
                 <nav class="navFixed">
@@ -155,6 +157,6 @@
                 </div>
             </div>
         <script src="Default/Default.js" type="text/javascript"></script>
+        <script src="Default/DefaultJq.js"></script>
     </body>
-        <script src="Default/Default.js" type="text/javascript"></script>
 </html>

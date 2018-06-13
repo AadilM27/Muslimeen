@@ -17,6 +17,7 @@
 
 </head>
 <body style="background-color:white">
+    <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
     <form id="frmLearnIslam" runat="server">
         <!--Header-->
         <header >
@@ -189,5 +190,6 @@
             </div>
     <script src="../Default/DatesEnglishHijri.js"></script>
     <script src="../Default/Default.js"></script>
+    <script src="../Default/DefaultJq.js"></script>
 </body>
 </html>

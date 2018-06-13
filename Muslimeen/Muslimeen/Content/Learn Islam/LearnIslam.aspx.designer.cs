@@ -13,6 +13,15 @@ namespace Muslimeen.Content.Learn_Islam {
     public partial class LearnIslam {
         
         /// <summary>
+        /// lnk1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnk1;
+        
+        /// <summary>
         /// frmLearnIslam control.
         /// </summary>
         /// <remarks>

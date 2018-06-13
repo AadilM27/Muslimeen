@@ -73,6 +73,7 @@
     <Content Include="Content\Default\DatesEnglishHijri.js" />
     <Content Include="Content\Default\css\Default.css" />
     <Content Include="Content\Default\Default.js" />
+    <Content Include="Content\Default\DefaultJq.js" />
     <Content Include="Content\HelpCenter.aspx" />
     <Content Include="Content\Default\icons\EditProfile.png" />
     <Content Include="Content\Default\icons\Search.png" />

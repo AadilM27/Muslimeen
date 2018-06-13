@@ -16,6 +16,7 @@
     <link href="../Content/AboutUs/AboutUs.css" rel="stylesheet" />
 </head>
     <body>
+        <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
         <form id="frmScholar" runat="server" class=" ">   
             <header >
                 <nav class="navFixed">
@@ -205,6 +206,7 @@
         </div>
         </form>
         <script src="Default/Default.js"></script>
+        <script src="Default/DefaultJq.js"></script>
     </body>
 </html>
 
