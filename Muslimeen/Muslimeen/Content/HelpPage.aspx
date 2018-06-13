@@ -101,7 +101,7 @@
                   <!--Privacy and Safety--> 
                             <div class =" col-4 text-center paragraphDisplay mb-3 ml-1 p-1" style="position:static; height:225px; border-radius:5px;"><!--and this one static also-->
                                 <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/lock.png" width="90" height="70"/>
-                                <h4 class="text-center"><a href="~/Content/HelpCenter.aspx"> Privacy and safety</a></h4>  
+                                <h4 class="text-center"><a href="../Content/PrivacyAndSafety.aspx"> Privacy and safety</a></h4>  
                 
                                    Our data policy and your privacy      
                   
@@ -110,7 +110,7 @@
                              <!--Terms and Policies -->
                             <div class ="col text-center paragraphDisplay mb-3 ml-1 p-1" style="position:static; height:225px; border-radius:5px;"> <!--Like this i made this position static-->
                                 <asp:Image runat="server" CssClass="mb-0 ml-0"  src="../Content/HelpPage/icons/docs.png" width="90" height="70"/>
-                                <h4 class="text-center"><a href="#">Terms and policies</a></h4> 
+                                <h4 class="text-center"><a href="../Content/TermsOfService.aspx">Terms and policies</a></h4> 
                                 <p class="text-center">
                                 Terms of service<br />
                                 </p>
