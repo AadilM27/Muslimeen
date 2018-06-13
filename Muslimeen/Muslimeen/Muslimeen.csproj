@@ -83,8 +83,9 @@
     <Content Include="Content\HelpPage\icons\lock.png" />
     <Content Include="Content\Learn Islam\css\learnIslam.css" />
     <Content Include="Content\Learn Islam\LearnIslam.aspx" />
-    <Content Include="Content\Mosque.aspx" />
-    <Content Include="Content\Mosque\Mosque.css" />
+    <Content Include="Content\Mosque\ListMosque.aspx" />
+    <Content Include="Content\Mosque\Mosque.aspx" />
+    <Content Include="Content\Mosque\MosqueRep.aspx" />
     <Content Include="Content\MyAdmin.aspx" />
     <Content Include="Content\MyAdmin\css\MyAdmin.css" />
     <Content Include="Content\MyAdmin\icons\PendingReg.png" />
@@ -1594,12 +1595,26 @@
     <Compile Include="Content\Learn Islam\LearnIslam.aspx.designer.cs">
       <DependentUpon>LearnIslam.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Content\Mosque.aspx.cs">
+    <Compile Include="Content\Mosque\ListMosque.aspx.cs">
+      <DependentUpon>ListMosque.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\Mosque\ListMosque.aspx.designer.cs">
+      <DependentUpon>ListMosque.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\Mosque\Mosque.aspx.cs">
       <DependentUpon>Mosque.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Content\Mosque.aspx.designer.cs">
+    <Compile Include="Content\Mosque\Mosque.aspx.designer.cs">
       <DependentUpon>Mosque.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\Mosque\MosqueRep.aspx.cs">
+      <DependentUpon>MosqueRep.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\Mosque\MosqueRep.aspx.designer.cs">
+      <DependentUpon>MosqueRep.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\MyAdmin.aspx.cs">
       <DependentUpon>MyAdmin.aspx</DependentUpon>

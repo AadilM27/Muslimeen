@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace TypeLib.Models
 {
-    class Prayer
-    { 
-        public int PrayerID { get; set; }
+    public class Prayer
+    {
         public int MosqueID { get; set; }
-        public DateTime Date { get; set; }
-        public string PrayerType { get; set; }
+        public DateTime PrayerDate { get; set; }
     }
 }
