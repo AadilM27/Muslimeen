@@ -100,5 +100,15 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetPendingArticle();
         }
+
+        public bool BLL_RejectReg (uspRejectReg uspRejectReg)
+        {
+            return dBAccess.RejectReg(uspRejectReg);
+        }
+
+        public List<uspGetAllPendingModeraters> BLL_GetAllPendingModeraters()
+        {
+            return dBAccess.GetAllPendingModeraters();
+        }
     }
 }

@@ -426,5 +426,58 @@ namespace Muslimeen.BLL
             }
             return list;
         }
+
+        public bool RejectReg(uspRejectReg reject)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var property in reject.GetType().GetProperties())
+            {
+                if (property.GetValue(reject) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + property.Name.ToString(), property.GetValue(reject)));
+                }
+            }
+            return DBHelper.NonQuery("uspRejectReg", CommandType.StoredProcedure, parameters.ToArray());
+        }
+
+        public List<uspGetAllPendingModeraters> GetAllPendingModeraters()
+        {
+            List<uspGetAllPendingModeraters> moderatersList = new List<uspGetAllPendingModeraters>();
+            using (DataTable table = DBHelper.Select("uspGetAllPendingModeraters", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetAllPendingModeraters moderater = new uspGetAllPendingModeraters();
+
+                        moderater.MemberID = Convert.ToString(row["MemberID"]);
+                        moderater.MemberName = Convert.ToString(row["MemberName"]);
+                        moderater.MemberLastName = Convert.ToString(row["MemberLastName"]);
+                        moderater.MemberDOB = Convert.ToDateTime(row["MemberDOB"]).Date;
+                        moderater.Password = Convert.ToString(row["Password"]);
+                        moderater.MemberType = Convert.ToChar(row["MemberType"]);
+                        moderater.ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]);
+                        moderater.Email = Convert.ToString(row["Email"]);
+                        moderater.ContactNo = Convert.ToString(row["ContactNo"]);
+                        if (!(row["MosqueID"] is DBNull))
+                        {
+                            moderater.MosqueID = Convert.ToInt32(row["MosqueID"]);
+                        }
+                        else
+                        {
+                            moderater.MosqueID = null;
+                        }
+                        moderater.ActivationExpiry = Convert.ToDateTime(row["ActivationExpiry"]).Date;
+                        moderater.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
+
+                        moderatersList.Add(moderater);
+                    }
+                }
+            }
+            return moderatersList;
+
+        }
     }
 }

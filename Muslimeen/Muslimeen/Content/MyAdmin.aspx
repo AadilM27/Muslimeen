@@ -77,13 +77,14 @@
                 </div>
             </header>
             <div class="content" id="content"><!--add content here -->
+                
                 <div class="row m-0 divContainers">
                     <nav class=" col-3 p-0 position-static navbar navbar-light bg-light"> <!--contains the buttons-->
                         <nav class="nav nav-pills flex-column pl-2">
                             <p class="navbar-brand">Admin Tasks:</p>
-                            <a runat="server"  id="lnkViewPendingSch" class=" mb-2 nav-link btn btn- taskBtn">View Pending scholars</a>
-                            <a runat="server" id="A1" class=" mb-2 nav-link btn taskBtn">View Pending Moderators</a>
-                            <a runat="server" id="lnkViewwPendingMod" class=" mb-2 btn taskBtn">Pending Moderators</a>
+                            <a runat="server"  id="lnkViewPendingSch" class=" mb-2 nav-link btn  taskBtn" >View Pending scholars</a>
+                            <a runat="server" id="lnkViewPendingMod" class=" mb-2 nav-link btn taskBtn">View Pending Moderators</a>
+                            <a runat="server" id="lnkViewPendingArticles" class=" mb-2 nav-link btn taskBtn">View Pending Articles</a>
                         </nav>
                     </nav>
                     <div class="col-4 p-3 bg-light position-static position-static" runat="server" id="divViewPendingSch"> <!--Contains the List of items-->
@@ -92,7 +93,20 @@
                                 <HeaderTemplate>
                                 </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnShow" EnableViewState="true"  CommandArgument='<%#Eval("MemberID") %>' CssClass="align-self-center list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShow_Click"><img src="MyAdmin/icons/PendingReg.png" class=" img-thumbnail" style="width:32px; height:32px;" />&nbspUser&nbspName: <%#Eval("MemberID")%><br /><b>Date Registered: </b><%#Eval("ActivationDate")%></asp:LinkButton>
+                                        <asp:LinkButton ID="btnShow" EnableViewState="true"  CommandArgument='<%#Eval("MemberID") %>' CssClass="align-self-center list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShow_Click"><img src="MyAdmin/icons/PendingReg.png" class=" img-thumbnail" style="width:32px; height:32px;" /><b>&nbsp;&nbsp;User&nbsp;Name: </b><%#Eval("MemberID")%><br /><b style="font-size:smaller;">&emsp;&emsp;&emsp;Date Registered: </b><%#Eval("ActivationDate")%></asp:LinkButton>
+                                    </ItemTemplate>
+                                <FooterTemplate>
+                                </FooterTemplate>
+                            </asp:Repeater>
+                        </div>
+                    </div>
+                    <div class="col-4 p-3 bg-light position-static position-static" runat="server" id="divViewPendingArt"> <!--Contains the List of items-->
+                        <div class="row position-static list-group justify-content-end">
+                            <asp:Repeater ID="rptViewPendingArticles" runat="server">
+                                <HeaderTemplate>
+                                </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnShow" EnableViewState="true"  CommandArgument='<%#Eval("ArticleID") %>' CssClass="align-self-center list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShow_Click"><img src="MyAdmin/icons/PendingReg.png" class=" img-thumbnail" style="width:32px; height:32px;" /><b>&nbsp;&nbsp;User&nbsp;Name: </b><%#Eval("ArticleID")%><br /><b style="font-size:smaller;">&emsp;&emsp;&emsp;Date Registered: </b><%#Eval("DateCreated")%></asp:LinkButton>
                                     </ItemTemplate>
                                 <FooterTemplate>
                                 </FooterTemplate>
@@ -100,6 +114,7 @@
                         </div>
                     </div>
                     <div runat="server" id="divDisplaySch" class=" bg-light position-static col-5 p-3 divContainers">
+                        <asp:HiddenField runat="server" ID="hdfSchId" Value=""/>
                             <div class="row position-static">
                                 <div class="col position-static"><b>Member  ID:</b></div><div class="col position-static"><label runat ="server" id="lblMemberID"></label></div>
                             </div>
@@ -139,8 +154,14 @@
                             <div class="row position-static">
                                 <div class="col position-static"><b>Activation Date:</b></div><div class="col position-static"><label runat="server" id="lblActivationDate"></label></div>
                             </div>
+                            <div class="row position-static justify-content-center align-content-center mt-4">
+                                    <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-3" runat="server" ID="btnAcceptReg" Text="Accept Registration" OnClick="btnAcceptReg_Click" />
+                                    <asp:Button CssClass=" topnav btn-dark btn btn-sm btn-outline-light mr-3" runat="server" ID="btnRejectReg" Text="Reject Registration" OnClick="btnRejectReg_Click" />
+                            </div>
+                            
                         </div>
                      </div>
+
                 </div>
             </form>
                 <div class="footerr"> <!--End of content, start of footer-->

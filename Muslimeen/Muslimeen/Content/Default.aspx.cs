@@ -119,7 +119,10 @@ namespace Muslimeen.Content
             {
                 Response.Redirect("~/Content/MyScholar/AddArticle.aspx");
             }
-
+            else if(uspGetMember.MemberType == 'R')
+            {
+                Response.Redirect("#");
+            }
 
         }
     }

@@ -59,9 +59,11 @@
     <Compile Include="Models\UpdateMember.cs" />
     <Compile Include="Models\UpdateMemberPassword.cs" />
     <Compile Include="Models\UpdateRamadaanDate.cs" />
+    <Compile Include="Models\uspRejectReg.cs" />
     <Compile Include="Models\Zakaah.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\uspGetAllMosques.cs" />
+    <Compile Include="ViewModels\uspGetAllPendingModeraters.cs" />
     <Compile Include="ViewModels\uspGetAllPendingScholars.cs" />
     <Compile Include="ViewModels\uspGetCalAdjustValue.cs" />
     <Compile Include="ViewModels\uspGetMember.cs" />
