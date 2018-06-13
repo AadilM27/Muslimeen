@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace TypeLib.Models
 {
-    class PrayerType
+   public  class PrayerType
     {
-        public string prayerType { get; set;}
+
         public string PrayerDescription { get; set; }
-         
+        public int MosqueID { get; set; }
+        public DateTime PrayerDate { get; set; }
+        public string AdhaanTime { get; set; }
+        public string JamaatTime { get; set; }
+
     }
 }

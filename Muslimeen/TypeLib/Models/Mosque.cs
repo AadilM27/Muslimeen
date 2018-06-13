@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TypeLib.Models
 {
-    class Mosque
+   public class Mosque
     {
         public int MosqueID { get; set; }
         public string MosqueName { get; set; }

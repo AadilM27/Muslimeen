@@ -184,22 +184,22 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkViewPendingSch;
         
         /// <summary>
-        /// A1 control.
+        /// lnkViewPendingMod control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor A1;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkViewPendingMod;
         
         /// <summary>
-        /// lnkViewwPendingMod control.
+        /// lnkViewPendingArticles control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkViewwPendingMod;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkViewPendingArticles;
         
         /// <summary>
         /// divViewPendingSch control.
@@ -220,6 +220,24 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Repeater rptViewPendingSch;
         
         /// <summary>
+        /// divViewPendingArt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divViewPendingArt;
+        
+        /// <summary>
+        /// rptViewPendingArticles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptViewPendingArticles;
+        
+        /// <summary>
         /// divDisplaySch control.
         /// </summary>
         /// <remarks>
@@ -227,6 +245,15 @@ namespace Muslimeen.Content {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDisplaySch;
+        
+        /// <summary>
+        /// hdfSchId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdfSchId;
         
         /// <summary>
         /// lblMemberID control.
@@ -317,5 +344,23 @@ namespace Muslimeen.Content {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblActivationDate;
+        
+        /// <summary>
+        /// btnAcceptReg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAcceptReg;
+        
+        /// <summary>
+        /// btnRejectReg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRejectReg;
     }
 }

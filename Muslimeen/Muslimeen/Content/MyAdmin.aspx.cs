@@ -17,6 +17,7 @@ namespace Muslimeen.Content
         {
             DBHandler dBHandler = new DBHandler();
 
+            divViewPendingArt.Visible = true;
             divViewPendingSch.Visible = true;
             divDisplaySch.Visible = true;
             
@@ -44,32 +45,47 @@ namespace Muslimeen.Content
                 Session.Clear();
             }
 
-            
 
-            lnkViewPendingSch.ServerClick += LnkViewPendingSch_ServerClick;
-            //Control control = rptViewPendingSch.FindControl("lstBtn");
-                
-
+            lnkViewPendingSch.ServerClick += LnkViewPendingSch_ServerClick1;
+            lnkViewPendingMod.ServerClick += LnkViewPendingMod_ServerClick;
+            lnkViewPendingArticles.ServerClick += LnkViewPendingArticles_ServerClick;
+            divDisplaySch.Visible = false;
         }
 
-        private void LnkViewPendingSch_ServerClick(object sender, EventArgs e)
+        private void LnkViewPendingArticles_ServerClick(object sender, EventArgs e)
         {
-            if (divViewPendingSch.Visible == false)
-            {
-                DBHandler dBHandler = new DBHandler();
+            divViewPendingSch.Visible = false;
+            divViewPendingArt.Visible = true;
 
-                rptViewPendingSch.DataSource = dBHandler.BLL_GetAllPendingScholars();
-                rptViewPendingSch.DataBind();
-            }
-            else if(divViewPendingSch.Visible == true)
-            {
-                DBHandler dBHandler = new DBHandler();
+            DBHandler dBHandler = new DBHandler();
 
-                rptViewPendingSch.DataSource = dBHandler.BLL_GetAllPendingScholars();
-                rptViewPendingSch.DataBind();
+            rptViewPendingArticles.DataSource = dBHandler.BLL_GetPendingArticle();
+            rptViewPendingArticles.DataBind();
 
-            }
         }
+
+        private void LnkViewPendingMod_ServerClick(object sender, EventArgs e)
+        {
+            divDisplaySch.Visible = true;
+            divViewPendingSch.Visible = true;
+
+            DBHandler dBHandler = new DBHandler();
+
+            rptViewPendingSch.DataSource = dBHandler.BLL_GetAllPendingModeraters();
+            rptViewPendingSch.DataBind();
+        }
+
+        private void LnkViewPendingSch_ServerClick1(object sender, EventArgs e)
+        {
+            divDisplaySch.Visible = true;
+            divViewPendingSch.Visible = true;
+
+            DBHandler dBHandler = new DBHandler();
+
+            rptViewPendingSch.DataSource = dBHandler.BLL_GetAllPendingScholars();
+            rptViewPendingSch.DataBind();
+        }
+
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
@@ -110,17 +126,17 @@ namespace Muslimeen.Content
 
         protected void btnLearnIslam_Click(object sender, EventArgs e)
         {
-            //redirect user to the LearnIslam page.
+            Response.Redirect("~/Content/Learn Islam/LearnIslam.aspx");
         }
 
         protected void btnZakaah_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Zakaah.aspx");
+            Response.Redirect("~/Content/ZakaahWebForms/Zakaah.aspx");
         }
 
         protected void btnAboutUs_Click(object sender, EventArgs e)
         {
-            //redirect user to the About us page.
+            Response.Redirect("~/Content/AboutUs.aspx");
         }
 
         protected void btnMyMuslimeen_Click(object sender, EventArgs e)
@@ -160,6 +176,7 @@ namespace Muslimeen.Content
             LinkButton linkButton = (LinkButton)sender;
 
             string memberId = linkButton.CommandArgument.ToString();
+            hdfSchId.Value = memberId;
 
             DBHandler dBHandler = new DBHandler();
             uspGetMember member = new uspGetMember();
@@ -179,6 +196,31 @@ namespace Muslimeen.Content
 
             divDisplaySch.Visible = true;
 
+        }
+
+        protected void btnAcceptReg_Click(object sender, EventArgs e)
+        {
+            if (hdfSchId.Value != null)
+            {
+                DBHandler db = new DBHandler();
+                uspVerifyMember uspVerifyMember = new uspVerifyMember();
+
+                string memberId = hdfSchId.Value.ToString();
+
+                uspVerifyMember.MemberID = memberId;
+                db.BLL_VerifyMember(uspVerifyMember);
+
+            }
+        }
+
+        protected void btnRejectReg_Click(object sender, EventArgs e)
+        {
+            DBHandler db = new DBHandler();
+            uspRejectReg rejectReg = new uspRejectReg();
+
+            rejectReg.MemberID = hdfSchId.Value.ToString();
+
+            db.BLL_RejectReg(rejectReg);
         }
     }
 }
