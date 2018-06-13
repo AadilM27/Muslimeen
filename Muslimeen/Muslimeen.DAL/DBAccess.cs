@@ -411,7 +411,7 @@ namespace Muslimeen.BLL
                         {
                             ArticleTitle = Convert.ToString(row["ArticleTitle"]),
                             ArticleContent = Convert.ToString(row["ArticleContent"]),
-                            DateCreated = Convert.ToDateTime(row["DateCreated"]),
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]).Date,
                             Status = Convert.ToChar(row["Status"]),
                             RejectionReason = Convert.ToString(row["RejectionReason"]),
                             Active = Convert.ToChar(row["Active"]),

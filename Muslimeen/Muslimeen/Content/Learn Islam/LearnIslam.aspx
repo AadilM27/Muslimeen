@@ -13,9 +13,10 @@
 
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/learnIslam.css" rel="stylesheet" />
+    <link href="../Zakaah/css/newZakaah.css" rel="stylesheet" />
 
 </head>
-<body>
+<body style="background-color:white">
     <form id="frmLearnIslam" runat="server">
         <!--Header-->
         <header >
@@ -80,42 +81,56 @@
                 </div>
             </header>
 
-        <!--Page Content-->
-        <div class="content" id="content">
-            <div class="container">
-                <asp:Repeater ID="repeatPendingArticle" runat="server">
-                    <ItemTemplate>
-                        <div class="col position-static">
-                            <div class="row position-static">
-                                <div class="col-sm-1 align-self-start col-sm-3 position-static">
-                                    <h5>Title:</h5>
+        <!--Page Content-->        
+        <div class="content" id="content">  
+            <div class="container" style="margin-top: 10px; position: static;">
+                <div class="row" style="position: static; right: 50px">
+                    <div class="col-lg-7" style="position: static;">
+                        <h1 class="title header mb-4 mt-0">Articles</h1>
+                        <asp:Repeater ID="repeatPendingArticle" runat="server">
+                            <ItemTemplate>
+                                <div class="col position-static">
+                                    <div class="row position-static">
+                                        <div class="col-2 position-static">
+                                            <h5>Title:</h5>
+                                        </div>
+                                        <div class="col-10 position-static">
+                                            <asp:Label runat="server" ID="lable1" Text='<%# Eval("ArticleTitle") %>'></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="row position-static">
+                                        <div class="col-2 position-static">
+                                            <h5>Content: </h5>
+                                        </div>
+                                        <div class="col-10 position-static">
+                                            <asp:Label runat="server" ID="Label2" Text='<%# Eval("ArticleContent") %>'></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="row position-static">
+                                        <div class="col-2 position-static">
+                                            <h6>Author: </h6>
+                                        </div>
+                                        <div class="col-4 position-static">
+                                            <asp:Label class="font-italic" runat="server" ID="Label3" Text='<%# Eval("ScholarID") %>'></asp:Label>
+                                        </div>
+                                        <div class="col-2 position-static">
+                                            <h6>Date: </h6>
+                                        </div>
+                                        <div class="col-4 position-static">
+                                            <asp:Label class="font-italic" runat="server" ID="Label1" Text='<%# Eval("DateCreated") %>'></asp:Label>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-4 col-sm-9 position-static">
-                                    <asp:Label runat="server" ID="lable1" Text='<%# Eval("ArticleTitle") %>'></asp:Label>
-                                </div>
-                            </div>
-                            <div class="row position-static">
-                                <div class="col-sm-1 align-self-start col-sm-3 position-static">
-                                    <h5>Content: </h5>
-                                </div>
-                                <div class="col-4 col-sm-9 position-static">
-                                    <asp:Label runat="server" ID="Label2" Text='<%# Eval("ArticleContent") %>'></asp:Label>
-                                </div>
-                            </div>
-                            <div class="row position-static">
-                                <div class="col-sm-1 align-self-center align-self-start col-sm-3 position-static">
-                                    <h6>Author: </h6>
-                                </div>
-                                <div class="col-2 position-static">
-                                    <asp:Label class="font-italic" runat="server" ID="Label3" Text='<%# Eval("ScholarID") %>'></asp:Label>
-                                </div>
-                            </div>
-                        </div>
-                        <hr />
-                    </ItemTemplate>
-                </asp:Repeater>
+                                <hr />
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
+                    <div class="col-lg-5" style="position: static;">
+                        <h3 class="title header mb-4 mt-0">Videos</h3>
+                        <iframe width="438" height="300" src="https://www.youtube.com/embed/kEon0omN5SA"></iframe>
+                    </div>
+                </div>
             </div>
-            
         </div>
     </form>
     

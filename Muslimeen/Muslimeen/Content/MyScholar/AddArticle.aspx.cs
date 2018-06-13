@@ -145,6 +145,10 @@ namespace Muslimeen.Content.MyScholar
             {
                 if (txtHeading.Text == null && txtContent.Text == null)
                 {
+                    lblErrorPass.Text = "One or more fields are left empty";                    
+                }
+                else
+                {
                     art.DateCreated = Convert.ToDateTime(DateTime.Today);
                     art.Status = Convert.ToChar("P");
                     art.RejectionReason = Convert.ToString(" ");
@@ -152,8 +156,8 @@ namespace Muslimeen.Content.MyScholar
                     art.RemovalReason = Convert.ToString(" ");
 
                     //Scholar ID input with session...
-                    //art.ScholarID = Convert.ToString(Session["UserName"]);
-                    art.ScholarID = Convert.ToString(" ");
+                    art.ScholarID = Convert.ToString(Session["UserName"] = "123");
+                    //art.ScholarID = Convert.ToString(" ");
                     art.ModeratorID = Convert.ToString(" ");
                     art.TopicID = Convert.ToInt32(drpTopics.SelectedValue);
                     art.ArticleTitle = Convert.ToString(txtHeading.Text);
@@ -163,11 +167,6 @@ namespace Muslimeen.Content.MyScholar
 
                     txtHeading.Text = " ";
                     txtContent.Text = " ";
-                    drpTopics.Text = " ";
-                }
-                else
-                {
-                    lblErrorPass.Text = "One or more fields are left empty";
                 }
 
             }
