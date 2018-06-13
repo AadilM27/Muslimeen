@@ -11,16 +11,17 @@ namespace Muslimeen.Content.Mosque
 {
     public partial class ListMosque : System.Web.UI.Page
     {
+        DBHandler db = new DBHandler();
         protected void Page_Load(object sender, EventArgs e)
         {
-            DBHandler dBHandler = new DBHandler();
+           
 
 
             if (Session["UserName"] != null)
             {
                 uspGetMember uspGetMember = new uspGetMember();
 
-                uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
+                uspGetMember = db.BLL_GetMember(Convert.ToString(Session["UserName"]));
                 hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
                 divUserProfile.Visible = true;
 
@@ -40,8 +41,72 @@ namespace Muslimeen.Content.Mosque
                 Session.Clear();
             }
 
+            try
+            {
+                if (!IsPostBack)
+                {
+                    List<uspGetAllMosqueSuburbs> list = new List<uspGetAllMosqueSuburbs>();
+                    list = db.BLL_GetAllMosqueSuburbs();
+
+                    ddlMosqueSuburb.Items.Add("Any");
+                    foreach (uspGetAllMosqueSuburbs suburb in list)
+                    {
+                        ddlMosqueSuburb.Items.Add(new ListItem(suburb.MosqueSuburb.ToString()));
+                    }
+                    ddlMosqueSuburb.DataBind();
+
+
+                    rptGetMosques.DataSource = db.BLL_GetMosques("Any", "Any");
+                    rptGetMosques.DataBind();
+                }
+
+            }
+            catch { }
+
+        }
+        protected void btnViewDetails_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                LinkButton btn = (LinkButton)sender;
+                string ID = btn.CommandArgument.ToString();
+                Response.Redirect("MosquePage.aspx?MosqueID=" + ID);
+            }
+            catch { }
+
+        }
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                rdoHanafie.Checked = false;
+                rdoShafie.Checked = false;
+                rptGetMosques.DataSource = db.BLL_GetMosques(ddlMosqueSuburb.SelectedValue.ToString(), "Any");
+                rptGetMosques.DataBind();
+            }
+            catch { }
+
+        }
+        protected void rdoHanafie_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                rptGetMosques.DataSource = db.BLL_GetMosques(ddlMosqueSuburb.SelectedValue.ToString(), "Hanafie");
+                rptGetMosques.DataBind();
+            }
+            catch { }
         }
 
+        protected void rdoShafie_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                rptGetMosques.DataSource = db.BLL_GetMosques(ddlMosqueSuburb.SelectedValue.ToString(), "Shaafie");
+                rptGetMosques.DataBind();
+            }
+            catch { }
+        }
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             if (btnLogin.Text == "Login")

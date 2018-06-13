@@ -12,7 +12,7 @@
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico" />
     <link href="../Default/css/Default.css" rel="stylesheet" />
-  
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -93,6 +93,112 @@
                 </div>
             </div>
         </header>
+
+
+
+               <div class="container">
+                <div class="jumbotron">
+                    <h1 style="text-align: center">List of Mosques</h1>
+                </div>
+                <div class="jumbotron">
+                    <table style="width:100%">
+                        <tr>
+                            <td style="width:55%">Mosque Suburb&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="ddlMosqueSuburb" runat="server" Height="60px" Width="250px" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                                 </asp:DropDownList></td>
+                            <td>Mosque Type&nbsp;&nbsp;&nbsp;&nbsp;<asp:RadioButton ID="rdoHanafie" runat="server" Text="Hanafie" GroupName="MosqueType" AutoPostBack="True" OnCheckedChanged="rdoHanafie_CheckedChanged" />
+                                <asp:RadioButton ID="rdoShafie" runat="server" Text="Shafie" GroupName="MosqueType" AutoPostBack="True" OnCheckedChanged="rdoShafie_CheckedChanged" />
+                            </td>
+                        </tr>
+                    </table>
+
+
+
+                </div>
+            </div>
+
+        <asp:Repeater ID="rptGetMosques" runat="server">
+            <ItemTemplate>
+                <div class="container">
+                    <div class="jumbotron">
+                        <table border="0" class="table" style="color: gray">
+                            <tr>
+                                <td style="width: 200px">
+                                    <asp:Image ID="MosquePic" ImageUrl='<%#Eval("MosqueImage")%>' runat="server" Width="200px" Height="180px" /></td>
+                                <td>
+
+                                    <table border="0" style="width: 100%; height: 100%">
+                                        <tr>
+                                            <th rowspan="2" style="font-size: x-large" class="font-weight-bold ">
+                                                <asp:Label ID="lblName" runat="server" Text='<%#Eval("MosqueName")%>'></asp:Label></th>
+                                            <td colspan="2">Mosque Type:
+                                            <asp:Label ID="lblmosqueType" runat="server" Text='<%#Eval("MosqueType")%>'></asp:Label></td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">Suburb:
+                                            <asp:Label ID="lblMosqueSuburb" runat="server" Text='<%#Eval("MosqueSuburb")%>'></asp:Label></td>
+                                            <td class="text-center">
+
+                                                <asp:LinkButton ID="btnViewDetails" Text="View Mosque Deatils" CssClass="btn btn-info center" runat="server" OnClick="btnViewDetails_Click" EnableViewState="true" CommandArgument='<%#Eval("MosqueID")%>' /></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td colspan="2">Size:
+                                            <asp:Label ID="lblSize" runat="server" Text='<%#Eval("MosqueSize")%>'></asp:Label></td>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </ItemTemplate>
+
+            <SeparatorTemplate>
+                <div class="divider" style="height: 1em"></div>
+            </SeparatorTemplate>
+        </asp:Repeater>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     </form>

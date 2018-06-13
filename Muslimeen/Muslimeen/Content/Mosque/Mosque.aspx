@@ -12,7 +12,7 @@
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico" />
     <link href="../Default/css/Default.css" rel="stylesheet" />
-  
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -95,7 +95,400 @@
         </header>
 
 
+        <asp:Menu ID="Menu1" class="container-fluid col-lg-40" Orientation="Horizontal" StaticMenuItemStyle-CssClass="tab" Font-Size="Large" StaticSelectedStyle-CssClass="selectedtab" StaticMenuItemStyle-HorizontalPadding="50px" StaticSelectedStyle-BackColor="White" CssClass="tabs" runat="server" Height="0px" vertical-align="top" align="center" OnMenuItemClick="Menu1_MenuItemClick">
+            <Items>
+                <asp:MenuItem Text="Mosque Details" Value="0" Selected="true"></asp:MenuItem>
+                <asp:MenuItem Text="Events" Value="1"></asp:MenuItem>
+                <asp:MenuItem Text="Address" Value="2"></asp:MenuItem>
+                <asp:MenuItem Text="Salah Times" Value="3"></asp:MenuItem>
+            </Items>
+
+        </asp:Menu>
+        <asp:MultiView ID="MultiView1" ActiveViewIndex="0" runat="server">
+            <asp:View ID="View1" runat="server">
+                <br />
+
+                <br />
+                <br />
+                <br />
+
+                <div class="container">
+
+                    <table class="table table-borderless">
+                        <tr>
+                            <td rowspan="7" style="width: 30%">
+
+                                <asp:Image runat="server" Height="70%" Width="100%" ID="imgMosque" />
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3>&nbsp;Address:
+                                    <asp:Label runat="server" Text="" ID="lblMosqueAddress"></asp:Label></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3>&nbsp;Year Established:
+                                    <asp:Label runat="server" Text="" ID="lblYearEstablished"></asp:Label></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3>&nbsp;Mosque Type:
+                                    <asp:Label runat="server" Text="" ID="lblMosqueType"></asp:Label></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3>&nbsp;Mosque Size:
+                                <asp:Label runat="server" Text="" ID="lblMosqueSize"></asp:Label></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3>&nbsp;Members:
+                                <asp:Label runat="server" Text="" ID="lblMembers"></asp:Label></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3>&nbsp;Mosque Representative: 
+                                <asp:Label runat="server" Text="" ID="lblMosqueRep"></asp:Label></h3>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td colspan="2">
+                                <div>
+                                    <i>
+                                        <asp:Label runat="server" Text="" ID="lblQuote"></asp:Label></i>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br />
+                <div class="container" style="width: 100%; height: 100%; align-content: center; justify-content: center">
+                    <table class="table table-bordered" style="justify-content: center; width: 30%; height: 20%">
+                        <tbody>
+                            <tr>
+                                <td rowspan="2">
+                                    <asp:Image ID="icoPrayer" ImageUrl="Content/download.png" runat="server" />
+                                </td>
+                                <th colspan="2">Salah TimeTable</th>
+                            </tr>
+                            <tr>
+                                <th>AZAAN</th>
+                                <th>JAMAAT</th>
+                            </tr>
+
+                            <tr>
+                                <th>Fajr</th>
+                                <td>
+                                    <asp:Label ID="lblFajrAzaan" runat="server"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblFajrJamaat" runat="server"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Dhuhr</th>
+                                <td>
+                                    <asp:Label ID="lblDhuhrAzaan" runat="server"></asp:Label></td>
+                                <td>
+                                    <asp:Label ID="lblDhuhrJamaat" runat="server"></asp:Label></td>
+                            </tr>
+                            <tr>
+                                <th>Asr</th>
+                                <td>
+                                    <asp:Label ID="lblAsrAzaan" runat="server"></asp:Label></td>
+                                <td>
+                                    <asp:Label ID="lblAsrJamaat" runat="server"></asp:Label></td>
+                            </tr>
+                            <tr>
+                                <th>Magrib</th>
+                                <td>
+                                    <asp:Label ID="lblMagribAzaan" runat="server"></asp:Label></td>
+                                <td>
+                                    <asp:Label ID="lblMagribJamaat" runat="server"></asp:Label></td>
+                            </tr>
+                            <tr>
+                                <th>Eisha</th>
+                                <td>
+                                    <asp:Label ID="lblEishaAzaan" runat="server"></asp:Label></td>
+                                <td>
+                                    <asp:Label ID="lblEishaJamaat" runat="server"></asp:Label></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </asp:View>
+            <asp:View ID="View2" runat="server">
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+
+                <br />
+                <asp:Label ID="lblEventList" runat="server" Text="List Events By Date Range "></asp:Label>
+                <asp:Label ID="lblStartDate" runat="server" Text="Start Date: "></asp:Label>
+                <asp:TextBox ID="txtStartDate" runat="server" MaxLength="10"></asp:TextBox>
+                <asp:Label ID="lblEndDate" runat="server" Text="End Date: "></asp:Label>
+                <asp:TextBox ID="txtEndDate" runat="server" MaxLength="10"></asp:TextBox>
+                <br />
+                <asp:Button ID="btnListEvents" runat="server" Text="List Events" OnClick="btnListEvents_Click" />
+
+
+
+                <asp:Repeater ID="rptGetEvents" runat="server">
+
+                    <ItemTemplate>
+                        <div class="container" style="position: center">
+
+                            <div>
+                                <br />
+                                <br />
+                                <br />
+                                <table class="table">
+                                    <tr>
+                                        <th>
+                                            <h3>Title:
+                                                    <h3>
+                                        </th>
+                                        <td>
+                                            <h4>
+                                                <asp:Label ID="lblEventTitle" runat="server" Text='<%#Eval("EventTitle")%>'></asp:Label><h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <h3>Description:
+                                                    <h3>
+                                        </th>
+                                        <td>
+                                            <h4>
+                                                <asp:Label ID="lblEventDescription" runat="server" Text='<%#Eval("EventDescription")%>'></asp:Label><h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <h3>Speaker:<h3>
+                                        </th>
+                                        <td>
+                                            <h4>
+                                                <asp:Label ID="lblSpeaker" runat="server" Text='<%#Eval("Speaker")%>'></asp:Label><h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <h3>Event Date:
+                                                    <h3>
+                                        </th>
+                                        <td>
+                                            <h4>
+                                                <asp:Label ID="lblEventDate" runat="server" Text='<%#Eval("EventDate").ToString().Substring(0,10)%>'></asp:Label><h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <h3>Start Time:
+                                                    <h3>
+                                        </th>
+                                        <td>
+                                            <h4>
+                                                <asp:Label ID="lblEventStarTime" runat="server" Text='<%#Eval("EventStartTime")%>'></asp:Label><h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <h3>End Time:
+                                                    <h3>
+                                        </th>
+                                        <td>
+
+                                            <h4>
+                                                <asp:Label ID="lblEventEndTime" runat="server" Text='<%#Eval("EventEndTime")%>'></asp:Label><h4>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+                    </ItemTemplate>
+
+                </asp:Repeater>
+            </asp:View>
+            <asp:View ID="View3" runat="server">
+                <br />
+                <style>
+                    #map {
+                        height: 400px;
+                        width: 100%;
+                    }
+
+                    #floating-panel {
+                        position: absolute;
+                        top: 10px;
+                        left: 25%;
+                        z-index: 5;
+                        background-color: #fff;
+                        padding: 5px;
+                        border: 1px solid #999;
+                        text-align: center;
+                        font-family: 'Roboto', 'sans-serif';
+                        line-height: 30px;
+                        padding-left: 10px;
+                    }
+                </style>
+                <h3>My Google Maps Demo</h3>
+
+                <!--The div element for the map -->
+                <form>
+
+                    <div id="map"></div>
+                    <script>
+                        function initMap() {
+                            var map = new google.maps.Map(document.getElementById('map'), {
+                                zoom: 17,
+                                center: { lat: 0, lng: 0 }
+                            });
+                            var geocoder = new google.maps.Geocoder();
+
+                            geocodeAddress(geocoder, map)
+
+
+                        }
+
+                        function geocodeAddress(geocoder, resultsMap) {
+                            var address = '<%=Session["address"]%>';
+                            geocoder.geocode({ 'address': address }, function (results, status) {
+                                if (status === 'OK') {
+                                    resultsMap.setCenter(results[0].geometry.location);
+                                    var marker = new google.maps.Marker({
+                                        map: resultsMap,
+                                        position: results[0].geometry.location
+                                    });
+                                } else {
+                                    alert('Geocode was not successful for the following reason: ' + status);
+                                }
+                            });
+                        }
+
+                    </script>
+
+                </form>
+                <script async="async" defer="defer"
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnDc6yCjL7rIqcd5HCsLSqz_rS_Ho8eW4&callback=initMap">
+                </script>
+
+                <div>
+                </div>
+
+            </asp:View>
+            <asp:View ID="View4" runat="server">
+                <div class="table" style="width: 0%">
+
+                    <br />
+                    <br />
+                    <asp:Label ID="lblPrayerStartDate" runat="server" Text="Start Date" />
+                    <asp:TextBox ID="txtPrayerStartDate" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblPrayerEndDate" runat="server" Text="End Date" />
+                    <asp:TextBox ID="txtPrayerEndDate" runat="server"></asp:TextBox>
+                    <asp:Button ID="btnListPrayer" runat="server" Text="List Prayers" OnClick="btnListPrayer_Click" />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th colspan="2"></th>
+                                <th colspan="2">Fajr</th>
+                                <th colspan="2">Dhuhr</th>
+                                <th colspan="2">Asr</th>
+                                <th colspan="2">Magrib</th>
+                                <th colspan="2">Eisha</th>
+
+                            </tr>
+                            <tr>
+                                <th>Date</th>
+                                <th>Day</th>
+                                <th>Azaan</th>
+                                <th>Jamaat</th>
+                                <th>Azaan</th>
+                                <th>Jamaat</th>
+                                <th>Azaan</th>
+                                <th>Jamaat</th>
+                                <th>Azaan</th>
+                                <th>Jamaat</th>
+                                <th>Azaan</th>
+                                <th>Jamaat</th>
+
+                            </tr>
+                        </thead>
+                        <tr>
+                            <asp:Repeater ID="rptPrayerTimes" runat="server">
+                                <ItemTemplate>
+
+                                    <tr>
+                                        <td>
+                                            <asp:Label runat="server" Text='<%#Eval("PrayerDate")%>' ID="lblPrayerDate"></asp:Label><br />
+                                        </td>
+                                        <td>
+                                            <asp:Label runat="server" Text='<%#Eval("PrayerDay")%>' ID="lblDay"></asp:Label><br />
+                                        </td>
+                                        <td>
+                                            <asp:Label runat="server" Text='<%#Eval("FajrA")%>' ID="lblFajrA"></asp:Label><br />
+                                        </td>
+                                        <td>
+                                            <asp:Label runat="server" Text='<%#Eval("FajrJ")%>' ID="lblFajrJ"></asp:Label><br />
+                                        </td>
+                                        <td>
+                                            <asp:Label runat="server" Text='<%#Eval("DhuhrA")%>' ID="lblDhurA"></asp:Label><br />
+                                        </td>
+                                        <td>
+                                            <asp:Label runat="server" Text='<%#Eval("DhuhrJ")%>' ID="lblDhuhrJ"></asp:Label><br />
+                                        </td>
+                                        <td>
+                                            <asp:Label runat="server" Text='<%#Eval("AsrA")%>' ID="lblAsrA"></asp:Label><br />
+                                        </td>
+                                        <td>
+                                            <asp:Label runat="server" Text='<%#Eval("AsrJ")%>' ID="lblAsrJ"></asp:Label><br />
+                                        </td>
+                                        <td>
+                                            <asp:Label runat="server" Text='<%#Eval("MagribA")%>' ID="lblMagribA"></asp:Label><br />
+                                        </td>
+                                        <td>
+                                            <asp:Label runat="server" Text='<%#Eval("MagribJ")%>' ID="lblMagribJ"></asp:Label><br />
+                                        </td>
+                                        <td>
+                                            <asp:Label runat="server" Text='<%#Eval("EishaA")%>' ID="lblEishaA"></asp:Label><br />
+                                        </td>
+                                        <td>
+                                            <asp:Label runat="server" Text='<%#Eval("EishaJ")%>' ID="lblEishaJ"></asp:Label><br />
+                                        </td>
+                                    </tr>
+
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </tr>
+                    </table>
+                </div>
+            </asp:View>
+
+        </asp:MultiView>
+
+
+
+
     </form>
+
     <div class="footerr">
         <!--End of content, start of footer-->
         <div class="row bg-light">
