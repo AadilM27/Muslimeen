@@ -101,7 +101,7 @@ namespace Muslimeen.BLL
                     }
                     catch
                     {
-                        throw;
+
                     }
                 }
             }

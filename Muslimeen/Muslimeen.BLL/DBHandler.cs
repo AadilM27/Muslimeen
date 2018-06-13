@@ -169,6 +169,7 @@ namespace Muslimeen.BLL
         public Article BLL_GetArticle(int articleID)
         {
             return dBAccess.GetArticle(articleID);
+        }
         //Accepted Articles for learn Islam
         public List<uspGetAcceptedArticle> BLL_GetAcceptedArticle()
         {
