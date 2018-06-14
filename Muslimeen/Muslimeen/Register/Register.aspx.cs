@@ -121,7 +121,7 @@ namespace Muslimeen.Register
                     lblErrorPass.Text = "User name field can not be empty";
                     continueProcess += 1;
                 }
-                else if (txtUserName.Text.Length > 15 || txtUserName.Text.Length < 5)
+                else if (txtUserName.Text.Length > 15 || txtUserName.Text.Length < 5 || txtUserName.Text == "")
                 {
                     txtUserName.BackColor = Color.Red;
                     lblErrorPass.Text = "User Name is too long or too short";
@@ -172,6 +172,7 @@ namespace Muslimeen.Register
                 else if (txtUserEmail.Text == "" || txtUserEmail == null)
                 {
                     txtUserEmail.BorderColor = Color.Red;
+                    lblErrorPass.Text = "Please enter your Email address";
                     continueProcess += 1;
                 }
                 else if (ddScholarQual.SelectedValue == "None")
@@ -236,26 +237,27 @@ namespace Muslimeen.Register
                     member.ActivationDate = Convert.ToDateTime(DateTime.Now.ToLocalTime());
 
                     bool success = dBHandler.BLL_AddMember(member);
-                }
 
 
-                if (ddUsertype.SelectedValue == "S")
-                {
-                    Scholar scholar = new Scholar
+
+                    if (ddUsertype.SelectedValue == "S")
                     {
-                        ScholarID = Convert.ToString(txtUserName.Text),
-                        QualificationID = Convert.ToString(ddScholarQual.SelectedValue)
-                    };
+                        Scholar scholar = new Scholar
+                        {
+                            ScholarID = Convert.ToString(txtUserName.Text),
+                            QualificationID = Convert.ToString(ddScholarQual.SelectedValue)
+                        };
 
-                    dBHandler.BLL_AddScholarQualification(scholar);
+                        dBHandler.BLL_AddScholarQualification(scholar);
+                    }
+
+                    EmailService emailService = new EmailService();
+
+                    emailService.AutoEmailService(txtUserEmail.Text.ToString(),
+                        ddUsertype.SelectedItem.ToString(), "http://www.google.co.za", "Registration", "null", "null"); //Add server Verification.aspx address.
+
+                    Response.Redirect("~/Content/Default.aspx");
                 }
-
-                EmailService emailService = new EmailService();
-
-                emailService.AutoEmailService(txtUserEmail.Text.ToString(),
-                    ddUsertype.SelectedItem.ToString(), "http://www.google.co.za", "Registration", "null", "null"); //Add server Verification.aspx address.
-
-                Response.Redirect("~/Content/Default.aspx");
             }
             catch (Exception ex)
             {
