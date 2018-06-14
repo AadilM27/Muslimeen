@@ -175,5 +175,10 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetAcceptedArticle();
         }
+
+        public bool  BLL_AcceptArticle(AcceptArticle acceptArticle)
+        {
+            return dBAccess.AcceptArticle(acceptArticle);
+        }
     }
 }

@@ -881,5 +881,19 @@ namespace Muslimeen.BLL
             }
             return list;
         }
+
+        public bool AcceptArticle(AcceptArticle acceptArticle)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var property in acceptArticle.GetType().GetProperties())
+            {
+                if (property.GetValue(acceptArticle) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + property.Name.ToString(), property.GetValue(acceptArticle)));
+                }
+            }
+            return DBHelper.NonQuery("uspAcceptArticle", CommandType.StoredProcedure, parameters.ToArray());
+        }
     }
 }
