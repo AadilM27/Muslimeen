@@ -114,12 +114,12 @@
                     <div class="container" style="margin-top:10px; position:static;">
                       <div class="row" style="position:static;right:50px">
                           <div class="col-lg-8" style="position:static;">
-                              <button id="btnWhatIsZakaah" class="collapsible" style="background-color:#256297;width:100%">What is Zakaah or Zakat?</button>
+                              <button id="btnWhatIsZakaah" class="collapsible" style="background-color:#256297;width:100%;position:static;">What is Zakaah or Zakat?</button>
                     <div class="content2" style="background-color:white">
                         <br />
                         <asp:Label ID="LblWhatIsZakaah" runat="server" ></asp:Label>
                     </div>
-                    <button class="collapsible"  style="background-color:#256297;width:100%">Conditions of Zakaah</button>
+                    <button class="collapsible"  style="background-color:#256297;width:100%;position:static;">Conditions of Zakaah</button>
                     <div class="content2" style="background-color:white">
                         <br />
                       <h2>Conditions of Zakat</h2>
@@ -128,27 +128,27 @@
                         <br />
                         <asp:Label ID="LblConditions" runat="server" Text=""></asp:Label>
                      </div>
-                    <button class="collapsible" style="background-color:#256297;width:100%" >Cautions of Zakaah</button>
+                    <button class="collapsible" style="background-color:#256297;width:100%;position:static" >Cautions of Zakaah</button>
                     <div class="content2"style="background-color:white" >
                         <br />
                         <asp:Label ID="LblCaution" runat="server" Text=""></asp:Label>
                                           </div>
-                    <button class="collapsible" style="background-color:#256297;width:100%" >To whom is Zakaah permissible?</button>
+                    <button class="collapsible" style="background-color:#256297;width:100%;position:static" >To whom is Zakaah permissible?</button>
                     <div class="content2"style="background-color:white" >
                         <br />
                         <asp:Label ID="LblPermissble" runat="server" Text=""></asp:Label>
                     </div>
-                     <button class="collapsible" style="background-color:#256297;width:100%" >Assets Of Zakaah</button>
+                     <button class="collapsible" style="background-color:#256297;width:100%;position:static" >Assets Of Zakaah</button>
                     <div class="content2" style="background-color:white">
                         <br />
                         <asp:Label ID="LblAssets" runat="server" Text=""></asp:Label>
                     </div>
-                     <button class="collapsible" style="background-color:#256297;width:100%" >To whom is Zakaah Applicable?</button>
+                     <button class="collapsible" style="background-color:#256297;width:100%;position:static" >To whom is Zakaah Applicable?</button>
                     <div class="content2" style="background-color:white">
                         <br />
                         <asp:Label ID="LblApplicable" runat="server" Text=""></asp:Label>
                     </div>
-                     <button class="collapsible" style="background-color:#256297;width:100%" >Calculation of Zakaah?</button>
+                     <button class="collapsible" style="background-color:#256297;width:100%;position:static" >Calculation of Zakaah?</button>
                     <div class="content2"style="background-color:white" >
                         <br />
                         <asp:Label ID="LblCalculations" runat="server" Text=""></asp:Label>
@@ -160,23 +160,23 @@
                        <!---javascript code to translate language--->
                         
 
-                    <div class="carder">
+                    <div class="carder" style="width:500px">
                         <img src="../Zakaah/ZakaahPics/SANZAF_580x363.jpg" alt="zakaat" style="width:100%"/>
                       <h1 style="color:#256297">SANZAF</h1>
                       <p class="titler">South African National Zakaah Fund</p>
                       <p>Bursary Scheme for those in need.</p>
                         <div class="button" >
-                     <a href="https://sanzaf.org.za/appeals/sanzaf-bursary-program.html" style="color:white">Contact:WWW.SANZAF.ORG.ZA</a>
+                     <a href="https://sanzaf.org.za/appeals/sanzaf-bursary-program.html" style="color:white;">Contact:WWW.SANZAF.ORG.ZA</a>
                        </div>
                     </div>
                         <br />
                     <div class="rightcolumn">
                     
-                    <div class="slideshow-container">
+                    <div class="slideshow-container" style="width:300px">
                         <h2 style="background-color:#256297;color:white;text-align:center"> Zakaah Quotes</h2>
                     <div class="mySlides">
                       <q>“Zakah does not become obligatory except after the completion of one whole year.”</q>
-                      <p class="author">- Abu Huraira Prophet(Peace Be upon him)</p>
+                      <p class="author">- Nabi Muhammed(SAW) Prophet(Peace Be upon him)</p>
                     </div>
 
                     <div class="mySlides">
@@ -194,7 +194,7 @@
 
                     </div>
                         <!-- Dots/bullets/indicators -->
-                    <div class="dot-container">
+                    <div class="dot-container" style="width:300px">
                       <span class="dot" onclick="currentSlide(1)"></span> 
                       <span class="dot" onclick="currentSlide(2)"></span> 
                       <span class="dot" onclick="currentSlide(3)"></span> 
