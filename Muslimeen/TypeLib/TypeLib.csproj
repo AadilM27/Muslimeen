@@ -46,6 +46,7 @@
     <Compile Include="Models\CalenderInfo.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\InsertArticle.cs" />
     <Compile Include="Models\Moderator.cs" />
     <Compile Include="Models\Mosque.cs" />
     <Compile Include="Models\Notice.cs" />
