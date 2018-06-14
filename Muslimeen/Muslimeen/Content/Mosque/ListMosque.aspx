@@ -122,7 +122,7 @@
         <asp:Repeater ID="rptGetMosques" runat="server">
             <ItemTemplate>
                 <div class="container">
-                    <div class="jumbotron" >
+                    <div class="jumbotron" style="height:300px" >
                         <table border="0" class="table" style="color: gray">
                             <tr>
                                 <td style="width: 200px">

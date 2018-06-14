@@ -77,6 +77,7 @@ namespace Muslimeen.Content.Mosque
 
                     uspGetMosque mosque = new uspGetMosque();
                     mosque = db.GetMosque(int.Parse(Session["MosqueID"].ToString()));
+                    lblMosqueName.Text = mosque.MosqueName.ToString();
                     lblMosqueAddress.Text = mosque.MosqueStreet + " " + mosque.MosqueSuburb;
                     Session["Address"] = lblMosqueAddress.Text.ToString();
                     lblYearEstablished.Text = mosque.YearEstablished.ToString().Substring(0, 10);

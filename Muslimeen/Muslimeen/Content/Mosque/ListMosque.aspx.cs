@@ -71,7 +71,7 @@ namespace Muslimeen.Content.Mosque
 
                 LinkButton btn = (LinkButton)sender;
                 string ID = btn.CommandArgument.ToString();
-                Response.Redirect("MosquePage.aspx?MosqueID=" + ID);
+                Response.Redirect("Mosque.aspx?MosqueID=" + ID);
             }
             catch { }
 
@@ -136,7 +136,7 @@ namespace Muslimeen.Content.Mosque
 
         protected void btnMosques_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Mosque.aspx");
+            Response.Redirect("~/Content/Mosque/ListMosque.aspx");
         }
 
         protected void btnScholars_Click(object sender, EventArgs e)

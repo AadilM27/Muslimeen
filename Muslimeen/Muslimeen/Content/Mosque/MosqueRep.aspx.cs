@@ -409,9 +409,10 @@ namespace Muslimeen.Content.Mosque
         protected void btnUpdateEvent_Click(object sender, EventArgs e)
         {
 
-            ddlUpdateEvent.SelectedIndex = 0;
+            
             Event events = new Event();
-            events.EventID = int.Parse(Session["EventID"].ToString());
+            events.EventID = 1;
+            btnRemoveEvent.Text = Session["EventID"].ToString();
             events.EventTitle = txtUpdateEventTitle.Text.ToString();
             events.EventDescription = txtUpdateEventDescription.Text.ToString();
             events.EventStartTime = txtUpdateEventStartTime.Text.ToString();

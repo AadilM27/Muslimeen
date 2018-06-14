@@ -84,6 +84,7 @@
     <Content Include="Content\HelpPage\icons\lock.png" />
     <Content Include="Content\Learn Islam\css\learnIslam.css" />
     <Content Include="Content\Learn Islam\LearnIslam.aspx" />
+    <Content Include="Content\Mosque\download.png" />
     <Content Include="Content\Mosque\ListMosque.aspx" />
     <Content Include="Content\Mosque\Mosque.aspx" />
     <Content Include="Content\Mosque\MosqueRep.aspx" />

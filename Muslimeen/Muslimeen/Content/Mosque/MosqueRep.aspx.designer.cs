@@ -247,15 +247,6 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.TextBox txtEventDescription;
         
         /// <summary>
-        /// lblEventMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEventMessage;
-        
-        /// <summary>
         /// btnAddEvent control.
         /// </summary>
         /// <remarks>
@@ -263,6 +254,15 @@ namespace Muslimeen.Content.Mosque {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAddEvent;
+        
+        /// <summary>
+        /// lblEventMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEventMessage;
         
         /// <summary>
         /// View2 control.
