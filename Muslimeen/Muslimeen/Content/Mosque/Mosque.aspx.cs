@@ -46,7 +46,7 @@ namespace Muslimeen.Content.Mosque
             try
             {
 
-                Session["MosqueID"] = 1;
+                Session["MosqueID"] = Request.QueryString["MosqueID"];
 
                 rptGetEvents.DataSource = db.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
                 rptGetEvents.DataBind();

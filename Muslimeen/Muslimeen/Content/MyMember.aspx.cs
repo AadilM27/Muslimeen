@@ -12,16 +12,42 @@ namespace Muslimeen.Content
 {
     public partial class MyMuslimeen_User_ : System.Web.UI.Page
     {
-        int id ;
+        
         DBHandler dBHandler = new DBHandler();
         protected void Page_Load(object sender, EventArgs e)
         {
             
            
-            id = int.Parse(Session["MosqueID"].ToString());
+            
             try
             {
                 DBHandler dBHandler = new DBHandler();
+               
+
+                if (Session["UserName"] != null)
+                {
+                    uspGetMember uspGetMember = new uspGetMember();
+
+                    uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
+                    Session["MosqueID"] = uspGetMember.MosqueID.ToString();
+                    hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
+                    divUserProfile.Visible = true;
+
+                    liMyMusbtn.Visible = true;
+                    liMyMusDivi.Visible = true;
+
+                    btnLogin.Text = "Log out";
+                    btnRegister.Visible = false;
+
+                }
+                else if (Session["UserName"] == null)
+                {
+                    liMyMusbtn.Visible = false;
+                    liMyMusDivi.Visible = false;
+
+                    divUserProfile.Visible = false;
+                    Session.Clear();
+                }
                 try
                 {
                     rptGetEvents.DataSource = dBHandler.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
@@ -41,30 +67,6 @@ namespace Muslimeen.Content
                     lblEishaJamaat.Text = time.EishaJ.ToString();
                 }
                 catch { }
-
-                if (Session["UserName"] != null)
-                {
-                    uspGetMember uspGetMember = new uspGetMember();
-
-                    uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
-                    hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
-                    divUserProfile.Visible = true;
-
-                    liMyMusbtn.Visible = true;
-                    liMyMusDivi.Visible = true;
-
-                    btnLogin.Text = "Log out";
-                    btnRegister.Visible = false;
-
-                }
-                else if (Session["UserName"] == null)
-                {
-                    liMyMusbtn.Visible = false;
-                    liMyMusDivi.Visible = false;
-
-                    divUserProfile.Visible = false;
-                    Session.Clear();
-                }
             }
             catch
             {
@@ -170,7 +172,7 @@ namespace Muslimeen.Content
             
                 DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
                 DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
-                rptGetEvents.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(id, startDate, EndDate);
+                rptGetEvents.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
                 rptGetEvents.DataBind();
            
         }
