@@ -148,7 +148,7 @@ namespace Muslimeen.Content
 
         protected void btnMosques_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Mosque.aspx");
+            Response.Redirect("~/Content/Mosque/ListMosque.aspx");
         }
 
         protected void btnScholars_Click(object sender, EventArgs e)
@@ -305,6 +305,62 @@ namespace Muslimeen.Content
                 divViewPendingArt.Visible = true;
                 divDisplaySch.Visible = false;
                 divViewArt.Visible = true;
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void txtRejectReason_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAccept_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Session["UserName"] != null)
+                {
+                    AcceptArticle accept = new AcceptArticle();
+
+                    string articleId = hdfSchId.Value.ToString();
+
+
+                    accept.ModeraterID = Session["UserName"].ToString();
+                    accept.Status = 'A';
+                    accept.Active = 'Y';
+                    accept.RejectionReason = "";
+                    accept.ArticleID = Convert.ToInt32(articleId);
+                    DBHandler dBHandler = new DBHandler();
+
+                    dBHandler.BLL_AcceptArticle(accept);
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AcceptArticle accept = new AcceptArticle();
+
+                string articleId = hdfSchId.Value.ToString();
+
+
+                accept.ModeraterID = Session["UserName"].ToString();
+                accept.Status = 'R';
+                accept.Active = 'N';
+                accept.RejectionReason = txtRejectReason.Text.ToString();
+                accept.ArticleID = Convert.ToInt32(articleId);
+                DBHandler dBHandler = new DBHandler();
+
+                dBHandler.BLL_AcceptArticle(accept);
             }
             catch
             {

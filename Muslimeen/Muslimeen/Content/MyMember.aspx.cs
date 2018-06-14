@@ -12,12 +12,35 @@ namespace Muslimeen.Content
 {
     public partial class MyMuslimeen_User_ : System.Web.UI.Page
     {
+        int id ;
+        DBHandler dBHandler = new DBHandler();
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+           
+            id = int.Parse(Session["MosqueID"].ToString());
             try
             {
                 DBHandler dBHandler = new DBHandler();
-
+                try
+                {
+                    rptGetEvents.DataSource = dBHandler.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
+                    rptGetEvents.DataBind();
+                    DateTime date = DateTime.Today;
+                    uspGetSpecificDayPrayerTimes time = new uspGetSpecificDayPrayerTimes();
+                    time = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), date);
+                    lblFajrAzaan.Text = time.FajrA.ToString();
+                    lblFajrJamaat.Text = time.FajrJ.ToString();
+                    lblDhuhrAzaan.Text = time.DhuhrA.ToString();
+                    lblDhuhrJamaat.Text = time.DhuhrJ.ToString();
+                    lblAsrAzaan.Text = time.AsrA.ToString();
+                    lblAsrJamaat.Text = time.AsrJ.ToString();
+                    lblMagribAzaan.Text = time.MagribA.ToString();
+                    lblMagribJamaat.Text = time.MagribJ.ToString();
+                    lblEishaAzaan.Text = time.EishaA.ToString();
+                    lblEishaJamaat.Text = time.EishaJ.ToString();
+                }
+                catch { }
 
                 if (Session["UserName"] != null)
                 {
@@ -78,7 +101,7 @@ namespace Muslimeen.Content
 
         protected void btnMosques_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Mosque.aspx");
+            Response.Redirect("~/Content/Mosque/ListMosque.aspx");
         }
 
         protected void btnScholars_Click(object sender, EventArgs e)
@@ -132,6 +155,24 @@ namespace Muslimeen.Content
             {
 
             }
+        }
+        protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
+        {
+            try
+            {
+                int index = int.Parse(e.Item.Value);
+                MultiView1.ActiveViewIndex = index;
+            }
+            catch { }
+        }
+        protected void btnListEvents_Click(object sender, EventArgs e)
+        {
+            
+                DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
+                DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
+                rptGetEvents.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(id, startDate, EndDate);
+                rptGetEvents.DataBind();
+           
         }
     }
 }

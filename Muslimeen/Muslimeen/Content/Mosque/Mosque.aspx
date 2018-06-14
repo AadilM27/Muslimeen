@@ -460,9 +460,9 @@
                             </div>
                             <div class="paragraphDisplay p-2">
                                 <asp:Label ID="lblPrayerStartDate" runat="server" Text="Start Date" />
-                                <asp:TextBox ID="txtPrayerStartDate" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtPrayerStartDate" runat="server" PlaceHolder="e.g. 01 June 2018"></asp:TextBox>
                                 <asp:Label ID="lblPrayerEndDate" runat="server" Text="End Date" />
-                                <asp:TextBox ID="txtPrayerEndDate" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtPrayerEndDate" runat="server"  PlaceHolder="e.g. 01 June 2018"></asp:TextBox>
                                 <asp:Button ID="btnListPrayer" runat="server" Text="List Prayers" OnClick="btnListPrayer_Click" CssClass="btn btn-info center"/>
 
                             </div>

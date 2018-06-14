@@ -4,176 +4,363 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-    
+
 <head runat="server">
-    <meta charset="utf-8"/>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <title>My Muslimeen</title>
-    <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
+    <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico" />
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="MyMember/css/MyMember.css" rel="stylesheet" />
-     <link href="Default/css/Default.css" rel="stylesheet" />
+    <link href="AboutUs/AboutUs.css" rel="stylesheet" />
 </head>
-    <body>
-        <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
-       <form id="frmScholar" runat="server" class=" ">   
-            <header >
-                <nav class="navFixed">
-                    <div class="row align-self-end">
-                        <ul class=" col-7 navbar-nav flex-row justify-content-start">
-                            <asp:HiddenField runat="server" ID="hfAdjustDate" Value="-2" /> <!--Need to get value from DB let admin adjust this -->
-                            <li class="nav-item ml-4 mr-0 mb-0 pt-2"> <p class="IslamicDate mb-0" id="lstIslamicDate"></p></li>
-                            <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
-                        </ul>
-                        <ul class="col-5 navbar-nav flex-row justify-content-end">
-                            <li class="nav-item ml-0 mr-0">
-                            <asp:TextBox ID="txtSearch" TextMode="Search" runat="server"  class=" search-box form-control form-control-sm" autocomplete="off" placeholder="Search"></asp:TextBox>
-                            </li>
-                            <li class="nav-item mr-2">
-                                <asp:ImageButton runat="server" Text="Go" ImageUrl="~/Content/Default/icons/Search.png" Height="31px" Width="31px" CssClass="topnav search-btn form-control form-control-sm" />
-                            </li>
-                            <li class=" nav-item mr-2">
+<body>
+    <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
+    <form id="frmScholar" runat="server" class=" ">
+        <header>
+            <nav class="navFixed">
+                <div class="row align-self-end">
+                    <ul class=" col-7 navbar-nav flex-row justify-content-start">
+                        <asp:HiddenField runat="server" ID="hfAdjustDate" Value="-2" />
+                        <!--Need to get value from DB let admin adjust this -->
+                        <li class="nav-item ml-4 mr-0 mb-0 pt-2">
+                            <p class="IslamicDate mb-0" id="lstIslamicDate"></p>
+                        </li>
+                        <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
+                    </ul>
+                    <ul class="col-5 navbar-nav flex-row justify-content-end">
+                        <li class="nav-item ml-0 mr-0">
+                            <asp:TextBox ID="txtSearch" TextMode="Search" runat="server" class=" search-box form-control form-control-sm" autocomplete="off" placeholder="Search"></asp:TextBox>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <asp:ImageButton runat="server" Text="Go" ImageUrl="~/Content/Default/icons/Search.png" Height="31px" Width="31px" CssClass="topnav search-btn form-control form-control-sm" />
+                        </li>
+                        <li class=" nav-item mr-2">
                             <asp:Button runat="server" Text="Login" ID="btnLogin" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnLogin_Click" />
-                            </li>
-                            <li class="nav-item mr-2">
+                        </li>
+                        <li class="nav-item mr-2">
                             <asp:Button runat="server" Text="Register" ID="btnRegister" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnRegister_Click" />
-                            </li>
-                        </ul> <!---->
-                    </div>
-                    <div class="row" runat="server" id="divUserProfile" >
-                        <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
-                            <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
-                            </asp:HyperLink><asp:Image style="height:15px; width:15px;" runat="server" id="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="~/Content/Default/icons/EditProfile.png"/>
-                        </div>
-                    </div>
-                </nav>
-                <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50);">
-                    <div class=" text-center">
-                        <asp:Image runat="server" CssClass="mb-0 ml-0" src="/Login/LogIn_Bootstrap\logo.png" width="185" height="110"/>
-                        </div>
-                    <div class="ml-2 navbar-nav-scroll align-self-end justify-content-start">
-                        <ul class="navbar-nav row">
-                            <li class="nav-item navbarText navbaritems">
-                                <asp:Button runat="server" ID="btnHome" Text="Home"  CssClass=" btn btn-link nav-item navText" OnClick="btnHome_Click"/>
-                            </li><li class="NavDevider">|</li><!--deviders-->
-                            <li class="nav-item navbarText navbaritems" runat="server" id="liMyMusbtn">
-                                <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen"  CssClass=" btn btn-link nav-item navText" OnClick="btnMyMuslimeen_Click"/>
-                            </li><li runat="server" id="liMyMusDivi" class=" NavDevider">|</li><!--deviders-->
-                            <li class="nav-item navbarText navbaritems">
-                                <asp:Button runat="server" ID="btnMosques" Text="Mosques"  CssClass="nav-item navText btn-link btn" OnClick="btnMosques_Click"/>
-                            </li><li class="NavDevider">|</li><!--deviders-->
-                            <li class="nav-item navbarText navbaritems">
-                                <asp:Button runat="server" ID="btnScholars" Text="Scholars"  CssClass="nav-item navText btn-link btn" OnClick="btnScholars_Click"/>
-                            </li><li class="NavDevider">|</li><!--deviders-->
-                            <li class="nav-item navbarText navbaritems">
-                                <asp:Button runat="server" ID="btnLearnIslam" Text="Learn Islam"  CssClass="nav-item navText btn-link btn" OnClick="btnLearnIslam_Click"/>
-                            </li><li class="NavDevider">|</li><!--deviders-->
-                            <li class="nav-item navbarText navbaritems">
-                                <asp:Button runat="server" ID="btnZakaah" Text="Zakaah"  CssClass="nav-item navText btn-link btn" OnClick="btnZakaah_Click"/>
-                            </li><li class="NavDevider">|</li><!--deviders-->
-                            <li class="nav-item navbarText navbaritems">
-                                <asp:Button runat="server" ID="btnAboutUs" Text="About us"  CssClass="nav-item navText btn-link btn" OnClick="btnAboutUs_Click"/>
-                            </li>
-                        </ul>
+                        </li>
+                    </ul>
+                    <!---->
+                </div>
+                <div class="row" runat="server" id="divUserProfile">
+                    <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
+                        <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
+                        </asp:HyperLink><asp:Image Style="height: 15px; width: 15px;" runat="server" ID="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="~/Content/Default/icons/EditProfile.png" />
                     </div>
                 </div>
-            </header>
-        <div class="content" id="content"><!--add content here --> 
-        <!--START INSERTING CODE FROM THIS POINT ON-->
-            <!--add your custom styling in MyMember.css in MyMember/css-->
-            <hr class ="midnight-blue" />
-          <div class="row">
-            <!--Salaah times-->
-              <div class =" col text-center">
-                <h4 class="text-center">Salaah Times</h4>
-                  
-                <div>
-
-                    <!--dislay salaah times code here-->
-
+            </nav>
+            <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50);">
+                <div class=" text-center">
+                    <asp:Image runat="server" CssClass="mb-0 ml-0" src="/Login/LogIn_Bootstrap\logo.png" Width="185" Height="110" />
                 </div>
-              </div>
-
-              <!--view events--> 
-            <div class =" col text-center">
-                <h4 class="text-center">View Events</h4> <h5><asp:RadioButton  ID= "Mosque1" GroupName="AllMosque" runat="server" text="My Mosque"/>
-                 &nbsp;&nbsp;&nbsp; <asp:RadioButton ID="Mosque" GroupName="AllMosques" runat="server" text="All Mosques"/></h5>  
-                
-                    <div>
-
-                        <!--display view events code here(All mosques and MyMosque)-->
-
-                    </div>
-             </div>
-            
-             <!--notifications-->
-            <div class ="col text-center">
-               <h4 class="text-center">Notifications</h4> 
-                
-                <div>
-
-                <!--display notifications code here-->
-
+                <div class="ml-2 navbar-nav-scroll align-self-end justify-content-start">
+                    <ul class="navbar-nav row">
+                        <li class="nav-item navbarText navbaritems">
+                            <asp:Button runat="server" ID="btnHome" Text="Home" CssClass=" btn btn-link nav-item navText" OnClick="btnHome_Click" />
+                        </li>
+                        <li class="NavDevider">|</li>
+                        <!--deviders-->
+                        <li class="nav-item navbarText navbaritems" runat="server" id="liMyMusbtn">
+                            <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen" CssClass=" btn btn-link nav-item navText" OnClick="btnMyMuslimeen_Click" />
+                        </li>
+                        <li runat="server" id="liMyMusDivi" class=" NavDevider">|</li>
+                        <!--deviders-->
+                        <li class="nav-item navbarText navbaritems">
+                            <asp:Button runat="server" ID="btnMosques" Text="Mosques" CssClass="nav-item navText btn-link btn" OnClick="btnMosques_Click" />
+                        </li>
+                        <li class="NavDevider">|</li>
+                        <!--deviders-->
+                        <li class="nav-item navbarText navbaritems">
+                            <asp:Button runat="server" ID="btnScholars" Text="Scholars" CssClass="nav-item navText btn-link btn" OnClick="btnScholars_Click" />
+                        </li>
+                        <li class="NavDevider">|</li>
+                        <!--deviders-->
+                        <li class="nav-item navbarText navbaritems">
+                            <asp:Button runat="server" ID="btnLearnIslam" Text="Learn Islam" CssClass="nav-item navText btn-link btn" OnClick="btnLearnIslam_Click" />
+                        </li>
+                        <li class="NavDevider">|</li>
+                        <!--deviders-->
+                        <li class="nav-item navbarText navbaritems">
+                            <asp:Button runat="server" ID="btnZakaah" Text="Zakaah" CssClass="nav-item navText btn-link btn" OnClick="btnZakaah_Click" />
+                        </li>
+                        <li class="NavDevider">|</li>
+                        <!--deviders-->
+                        <li class="nav-item navbarText navbaritems">
+                            <asp:Button runat="server" ID="btnAboutUs" Text="About us" CssClass="nav-item navText btn-link btn" OnClick="btnAboutUs_Click" />
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </header>
+        <br />
+        <br />
+        <asp:Menu ID="Menu1" class="container-fluid col-lg-40" Orientation="Horizontal" StaticMenuItemStyle-CssClass="tab" Font-Size="Large" StaticSelectedStyle-CssClass="selectedtab" StaticMenuItemStyle-HorizontalPadding="50px" StaticSelectedStyle-BackColor="White" CssClass="tabs" runat="server" Height="0px" vertical-align="top" align="center" OnMenuItemClick="Menu1_MenuItemClick">
+            <Items>
+                <asp:MenuItem Text="Todays Prayer Times" Value="0" Selected="true"></asp:MenuItem>
+                <asp:MenuItem Text="Events" Value="1"></asp:MenuItem>
+            </Items>
+        </asp:Menu>
+        <asp:MultiView ID="MultiView1" ActiveViewIndex="0" runat="server">
+            <asp:View ID="View1" runat="server">
 
-          </div> <!--close Row-->
-        </div> <!--close content-->
-            <div class="footerr"> <!--End of content, start of footer-->
-                <div class="row bg-light">
-                    <div class="col text-center position-static">
-                       <h6>Content</h6>
-                        <ul class="navbar-nav">
-                           <li class="nav-item">
-                               <a class="footerr-text" href="Mosque.aspx">Mosques</a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="footerr-text" href="#">Scholars</a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="footerr-text" href="#">Learn Islam</a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="footerr-text" href="ZakaahWebForms/Zakaah.aspx">Zakaah</a>
-                           </li>
-                        </ul>
+                <div class="container">
+                    <div class="contentHolder mt-4" style="width: 50%;">
+                        <div class="header mb-3">
+                            <h4 class="text-center">Today's Prayer Times 
+                               <br />
+                            </h4>
+
+                        </div>
+                        <div style="display: flex; justify-content: center" class="container">
+                            <table class="table " style="justify-content: center; width: 30%; height: 20%; align-self: center">
+
+                                <tr>
+                                    <td rowspan="2">
+                                        <asp:Image ID="icoPrayer" ImageUrl="Mosque/download.png" runat="server" Height="121px" Width="121px" />
+                                        <th colspan="2">Salah TimeTable</th>
+                                </tr>
+                                <tr>
+                                    <th>AZAAN</th>
+                                    <th>JAMAAT</th>
+                                </tr>
+
+                                <tr>
+                                    <th>Fajr</th>
+                                    <td>
+                                        <asp:Label ID="lblFajrAzaan" runat="server"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lblFajrJamaat" runat="server"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Dhuhr</th>
+                                    <td>
+                                        <asp:Label ID="lblDhuhrAzaan" runat="server"></asp:Label></td>
+                                    <td>
+                                        <asp:Label ID="lblDhuhrJamaat" runat="server"></asp:Label></td>
+                                </tr>
+                                <tr>
+                                    <th>Asr</th>
+                                    <td>
+                                        <asp:Label ID="lblAsrAzaan" runat="server"></asp:Label></td>
+                                    <td>
+                                        <asp:Label ID="lblAsrJamaat" runat="server"></asp:Label></td>
+                                </tr>
+                                <tr>
+                                    <th>Magrib</th>
+                                    <td>
+                                        <asp:Label ID="lblMagribAzaan" runat="server"></asp:Label></td>
+                                    <td>
+                                        <asp:Label ID="lblMagribJamaat" runat="server"></asp:Label></td>
+                                </tr>
+                                <tr>
+                                    <th>Eisha</th>
+                                    <td>
+                                        <asp:Label ID="lblEishaAzaan" runat="server"></asp:Label></td>
+                                    <td>
+                                        <asp:Label ID="lblEishaJamaat" runat="server"></asp:Label></td>
+                                </tr>
+
+                            </table>
+
+                        </div>
                     </div>
-                    <div class="col  text-center position-static">
-                        <h6>Support</h6>
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="footerr-text" href="AboutUs.aspx">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="HelpPage.aspx">Help</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="HelpCenter.aspx">Help Center</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="TermsOfService.aspx">Terms</a>
-                            </li>
-                        </ul>
+
+                </div>
+
+                <!--view events-->
+
+
+            </asp:View>
+            <asp:View ID="View2" runat="server">
+
+                <br />
+                <br />
+                <div class="container">
+                    <div class="contentHolder mt-4">
+                        <div class="header mb-3">
+                            <h4 class="text-center">View Mosque Events:
+                               <br />
+                            </h4>
+                            <h5 class="text-center"></h5>
+                        </div>
+                        <div class="paragraphDisplay p-2">
+
+                            <table style="width: 80%">
+                                <tr>
+                                    <td colspan="4">
+                                        <asp:Label ID="lblEventList" runat="server" Text="List Events By Date Range "></asp:Label></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="lblStartDate" runat="server" Text="Start Date: "></asp:Label></td>
+                                    <td>
+                                        <asp:TextBox ID="txtStartDate" runat="server" ></asp:TextBox></td>
+                                    <td>
+                                        <asp:Label ID="lblEndDate" runat="server" Text="End Date: "></asp:Label></td>
+                                    <td>
+                                        <asp:TextBox ID="txtEndDate" runat="server" ></asp:TextBox></td>
+                                    <td>
+                                        <asp:Button CssClass="btn btn-info center" ID="btnListEvents" runat="server" Text="List Events" OnClick="btnListEvents_Click" /></td>
+                                </tr>
+
+                            </table>
+                        </div>
                     </div>
-                    <div class="col  text-center position-static">
-                        <h6>Contact us</h6>
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="footerr-text" href="mailto:nextechgrp@gmail.com">Email</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="#">+27743784081</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="https://www.youtube.com/channel/UCp87ZLRrUz3SbzPPP2uaIEg">YouTube</a>
-                            </li>
-                        </ul>
-                    </div>
+
+
+
+
+                    <asp:Repeater ID="rptGetEvents" runat="server">
+
+                        <ItemTemplate>
+                            <div class="contentHolder mt-4">
+                                <div class="header mb-3">
+                                    <h4 class="text-center">
+                                        <asp:Label ID="lblEventTitle" runat="server" Text='<%#Eval("EventTitle")%>'></asp:Label><h4>
+                                            <br />
+                                        </h4>
+                                </div>
+                                <div class="paragraphDisplay p-2">
+
+                                    <div class="container" style="position: center">
+
+                                        <div>
+
+                                            <table class="table">
+                                                <tr>
+                                                    <th>
+                                                        <h3>Description:
+                                                    <h3>
+                                                    </th>
+                                                    <td>
+                                                        <h4>
+                                                            <asp:Label ID="lblEventDescription" runat="server" Text='<%#Eval("EventDescription")%>'></asp:Label><h4>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <h3>Speaker:<h3>
+                                                    </th>
+                                                    <td>
+                                                        <h4>
+                                                            <asp:Label ID="lblSpeaker" runat="server" Text='<%#Eval("Speaker")%>'></asp:Label><h4>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <h3>Event Date:
+                                                    <h3>
+                                                    </th>
+                                                    <td>
+                                                        <h4>
+                                                            <asp:Label ID="lblEventDate" runat="server" Text='<%#Eval("EventDate").ToString().Substring(0,10)%>'></asp:Label><h4>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <h3>Start Time:
+                                                    <h3>
+                                                    </th>
+                                                    <td>
+                                                        <h4>
+                                                            <asp:Label ID="lblEventStarTime" runat="server" Text='<%#Eval("EventStartTime")%>'></asp:Label><h4>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <h3>End Time:
+                                                    <h3>
+                                                    </th>
+                                                    <td>
+
+                                                        <h4>
+                                                            <asp:Label ID="lblEventEndTime" runat="server" Text='<%#Eval("EventEndTime")%>'></asp:Label><h4>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+                        </ItemTemplate>
+
+                    </asp:Repeater>
+
+                </div>
+            </asp:View>
+        </asp:MultiView>
+
+
+
+
+
+        <!--close content-->
+        <div class="footerr">
+            <!--End of content, start of footer-->
+            <div class="row bg-light">
+                <div class="col text-center position-static">
+                    <h6>Content</h6>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="footerr-text" href="Mosque.aspx">Mosques</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="footerr-text" href="#">Scholars</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="footerr-text" href="#">Learn Islam</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="footerr-text" href="ZakaahWebForms/Zakaah.aspx">Zakaah</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col  text-center position-static">
+                    <h6>Support</h6>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="footerr-text" href="AboutUs.aspx">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="footerr-text" href="HelpPage.aspx">Help</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="footerr-text" href="HelpCenter.aspx">Help Center</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="footerr-text" href="TermsOfService.aspx">Terms</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col  text-center position-static">
+                    <h6>Contact us</h6>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="footerr-text" href="mailto:nextechgrp@gmail.com">Email</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="footerr-text" href="#">+27743784081</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="footerr-text" href="https://www.youtube.com/channel/UCp87ZLRrUz3SbzPPP2uaIEg">YouTube</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </form>
-        <script src="Default/DefaultJq.js"></script>
-    </body>
+        </div>
+    </form>
+    <script src="Default/DefaultJq.js"></script>
+</body>
 </html>

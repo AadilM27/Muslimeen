@@ -181,5 +181,11 @@ namespace Muslimeen.BLL
         {
             return dBAccess.InsertArticle(article);
         }
+
+        public bool  BLL_AcceptArticle(AcceptArticle acceptArticle)
+        {
+            return dBAccess.AcceptArticle(acceptArticle);
+
+        }
     }
 }
