@@ -881,5 +881,19 @@ namespace Muslimeen.BLL
             }
             return list;
         }
+
+        //Insert of Article
+        public bool InsertArticle(InsertArticle article)
+        {
+            List<SqlParameter> par = new List<SqlParameter>();
+            foreach (var p in article.GetType().GetProperties())
+            {
+                if (p.GetValue(article) != null)
+                {
+                    par.Add(new SqlParameter("@" + p.Name.ToString(), p.GetValue(article)));
+                }
+            }
+            return DBHelper.NonQuery("uspInsertArticle", CommandType.StoredProcedure, par.ToArray());
+        }
     }
 }

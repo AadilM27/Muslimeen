@@ -150,7 +150,7 @@ namespace Muslimeen.Content.MyScholar
         protected void btnSave_Click(object sender, EventArgs e)
         {
             DBHandler han = new DBHandler();
-            Article art = new Article();
+            InsertArticle art = new InsertArticle();
 
             lblErrorPass.Text = "";
 
@@ -158,7 +158,7 @@ namespace Muslimeen.Content.MyScholar
             {
                 if (txtHeading.Text == null && txtContent.Text == null)
                 {
-                    lblErrorPass.Text = "One or more fields are left empty";                    
+                    lblErrorPass.Text = "One or more fields are left empty";
                 }
                 else
                 {
@@ -169,29 +169,32 @@ namespace Muslimeen.Content.MyScholar
                     art.RemovalReason = Convert.ToString(" ");
 
                     //Scholar ID input with session...
-                    art.ScholarID = Convert.ToString(Session["UserName"] = "123");
+                    art.ScholarID = Convert.ToString(Session["UserName"]);
                     //art.ScholarID = Convert.ToString(" ");
                     art.ModeratorID = Convert.ToString(" ");
                     art.TopicID = Convert.ToInt32(drpTopics.SelectedValue);
                     art.ArticleTitle = Convert.ToString(txtHeading.Text);
                     art.ArticleContent = Convert.ToString(txtContent.Text);
 
-                    bool success = han.BLL_AddArticle(art);
+                    han.BLL_InsertArticle(art);
 
                     txtHeading.Text = " ";
                     txtContent.Text = " ";
+
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Added Article');</script>");
+
                 }
 
             }
             catch
             {
-
+                throw;
             }
         }
 
         protected void drpTopics_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
     }
 }
