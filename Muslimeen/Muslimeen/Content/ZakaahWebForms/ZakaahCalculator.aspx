@@ -222,7 +222,7 @@
                   </div>
                   <div class="col-lg-4" style="position:static;">
                        <!---javascript code to translate language--->
-                       <div class="carder">
+                       <div class="carder" style="width:500px">
                         <img src="../Zakaah/ZakaahPics/SANZAF_580x363.jpg" alt="zakaat" style="width:100%"/>
                       <h1 style="color:#256297">SANZAF</h1>
                       <p class="titler">South African National Zakaah Fund</p>
@@ -234,7 +234,7 @@
                         <br /> 
                     <div class="rightcolumn">
                     
-                    <div class="slideshow-container">
+                    <div class="slideshow-container" style="width:300px">
                         <h2 style="background-color:#256297;color:white;text-align:center"> Zakaah Quotes</h2>
                     <div class="mySlides">
                       <q>“Zakah does not become obligatory except after the completion of one whole year.”</q>
@@ -256,7 +256,7 @@
 
                     </div>
 
-                    <div class="dot-container">
+                    <div class="dot-container" style="width:300px">
                       <span class="dot" onclick="currentSlide(1)"></span> 
                       <span class="dot" onclick="currentSlide(2)"></span> 
                       <span class="dot" onclick="currentSlide(3)"></span> 

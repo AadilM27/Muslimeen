@@ -252,10 +252,12 @@ h1 {
     outline: none;
     font-size: 15px;
     transition-delay: 1s;
+    position: static;
 }
 
-.active, .collapsible:hover {
+    .active, .collapsible:hover {
         background-color: #0094ff;
+        position: static;
     }
 .content2 {
     padding: 0 18px;
