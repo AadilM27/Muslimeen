@@ -162,7 +162,7 @@
                             
                         </div>
                         <div class=" col position-static bg-light position-static col-5 p-3 divContainers" runat="server" id="divViewArt" >
-                            <div class="row" style="overflow-y:scroll;">
+                            <div class="row" style="overflow:scroll;">
                                 <div class="row ml-4" >
                                     <label runat="server" id="lblArticleTitle"></label>
                                 </div>

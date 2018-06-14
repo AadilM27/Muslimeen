@@ -14,23 +14,30 @@ namespace Muslimeen.Content.MyScholar
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            DBHandler dBHandler = new DBHandler();
-
-
-            if (Session["UserName"] != null)
+            try
             {
-                uspGetMember uspGetMember = new uspGetMember();
+                DBHandler dBHandler = new DBHandler();
 
-                uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
-                hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
 
-                btnLogin.Text = "Log out";
-                btnRegister.Visible = false;
+                if (Session["UserName"] != null)
+                {
+                    uspGetMember uspGetMember = new uspGetMember();
 
+                    uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
+                    hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
+
+                    btnLogin.Text = "Log out";
+                    btnRegister.Visible = false;
+
+                }
+                else if (Session["UserName"] == null)
+                {
+                    Session.Clear();
+                }
             }
-            else if (Session["UserName"] == null)
+            catch
             {
-                Session.Clear();
+
             }
 
         }

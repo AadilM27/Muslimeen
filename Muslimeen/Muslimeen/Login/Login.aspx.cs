@@ -16,24 +16,31 @@ namespace Muslimeen.Login
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
+            {
+                if (!IsPostBack)
+                {
+
+                    HttpCookie httpCookie = Request.Cookies["RememberMe"];
+
+                    if (httpCookie != null)
+                    {
+                        if (httpCookie["DoRemember"] == "Yes")
+                        {
+                            txtUserName.Text = Convert.ToString(httpCookie["UserName"]);
+                            chkRememberMe.Checked = true;
+                        }
+                    }
+                    else
+                    {
+                        chkRememberMe.Checked = false;
+                    }
+
+                }
+            }
+            catch
             {
 
-                HttpCookie httpCookie = Request.Cookies["RememberMe"];
-
-                if (httpCookie != null)
-                {
-                    if (httpCookie["DoRemember"] == "Yes")
-                    {
-                        txtUserName.Text = Convert.ToString(httpCookie["UserName"]);
-                        chkRememberMe.Checked = true;
-                    }
-                }
-                else
-                {
-                    chkRememberMe.Checked = false;
-                }
-                
             }
             
         }
@@ -45,6 +52,7 @@ namespace Muslimeen.Login
 
         protected void btnLogIn_Click(object sender, EventArgs e)
         {
+
             Encryption encryption = new Encryption();
             string encryptionPass = Convert.ToString(txtUserName.Text);
             DBHandler dBHandler = new DBHandler();
@@ -97,6 +105,10 @@ namespace Muslimeen.Login
             {
                 lblErrorPass.Text = ex.Message + "\n Contact Muslimeen for more Information.";
             }
+            finally
+            {
+
+            }
 
 
 
@@ -104,43 +116,57 @@ namespace Muslimeen.Login
 
         protected void chkRememberMe_CheckedChanged(object sender, EventArgs e)
         {
-            if (txtUserName.Text == "" || txtUserName.Text == null) //this is to avoid storing a null in cookie
+            try
             {
-                lblErrorPass.Text = "Please enter your User name first";
-                
-                if (chkRememberMe.Checked)
+                if (txtUserName.Text == "" || txtUserName.Text == null) //this is to avoid storing a null in cookie
                 {
-                    chkRememberMe.Checked = false;
+                    lblErrorPass.Text = "Please enter your User name first";
+
+                    if (chkRememberMe.Checked)
+                    {
+                        chkRememberMe.Checked = false;
+                    }
+                }
+                else if (txtUserName.Text != "" || txtUserName.Text != null)
+                {
+                    if (chkRememberMe.Checked)
+                    {
+                        HttpCookie httpCookie = new HttpCookie("RememberMe"); //create the cookie.
+
+                        httpCookie["UserName"] = Convert.ToString(txtUserName.Text);
+                        httpCookie["DoRemember"] = "Yes";
+                        httpCookie.Expires = DateTime.Now.AddYears(1);
+                        Response.Cookies.Add(httpCookie);
+                    }
+                    else if (!chkRememberMe.Checked)
+                    {
+                        HttpCookie httpCookie = new HttpCookie("RememberMe"); //remove the cookie.
+                        httpCookie.Expires = DateTime.Now.AddYears(-1);
+                        Response.Cookies.Add(httpCookie);
+                    }
                 }
             }
-            else if (txtUserName.Text != "" || txtUserName.Text != null)
+            catch
             {
-                if (chkRememberMe.Checked)
-                {
-                    HttpCookie httpCookie = new HttpCookie("RememberMe"); //create the cookie.
 
-                    httpCookie["UserName"] = Convert.ToString(txtUserName.Text);
-                    httpCookie["DoRemember"] = "Yes";
-                    httpCookie.Expires = DateTime.Now.AddYears(1);
-                    Response.Cookies.Add(httpCookie);
-                }
-                else if (!chkRememberMe.Checked)
-                {
-                    HttpCookie httpCookie = new HttpCookie("RememberMe"); //remove the cookie.
-                    httpCookie.Expires = DateTime.Now.AddYears(-1);
-                    Response.Cookies.Add(httpCookie);
-                }
             }
         }
 
         protected void txtUserName_TextChanged(object sender, EventArgs e)
         {
-            HttpCookie httpCookie = new HttpCookie("RememberMe"); //replace the cookie value with new username, thats if the user kept the remember me check while loging in with different username. which he previously checked to remmeber 
+            try
+            {
+                HttpCookie httpCookie = new HttpCookie("RememberMe"); //replace the cookie value with new username, thats if the user kept the remember me check while loging in with different username. which he previously checked to remmeber 
 
-            httpCookie["UserName"] = Convert.ToString(txtUserName.Text);
-            httpCookie["DoRemember"] = "Yes";
-            httpCookie.Expires = DateTime.Now.AddYears(1);
-            Response.Cookies.Add(httpCookie);
+                httpCookie["UserName"] = Convert.ToString(txtUserName.Text);
+                httpCookie["DoRemember"] = "Yes";
+                httpCookie.Expires = DateTime.Now.AddYears(1);
+                Response.Cookies.Add(httpCookie);
+            }
+            catch
+            {
+
+            }
         }
 
         protected void btnForgotPass_Click(object sender, EventArgs e)
