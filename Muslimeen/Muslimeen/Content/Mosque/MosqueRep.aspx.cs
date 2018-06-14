@@ -155,7 +155,8 @@ namespace Muslimeen.Content.Mosque
             time = db.BLL_GetSpecficDayPrayerTimes(Convert.ToInt32(Session["MosqueID"]), Calendar1.SelectedDate);
             if (time != null)
             {
-                lblMessage.Text = "Prayer with selected date contains prayer times. Update Prayer times or select another date";
+                 
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Prayer with selected date contains prayer times. Update Prayer times or select another date');</script>");
                 txtFajrA.Text = time.FajrA.ToString();
                 txtFajrJ.Text = time.FajrJ.ToString();
                 txtDhuhrA.Text = time.DhuhrA.ToString();
@@ -247,7 +248,8 @@ namespace Muslimeen.Content.Mosque
                             type.AdhaanTime = txtEishaA.Text.ToString();
                             type.JamaatTime = txtEishaJ.Text.ToString();
                             db.BLL_InsertPrayerType(type);
-                            lblMessage.Text = "YES";
+                            Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Added Prayer Times');</script>");
+                            lblMessage.Text = "";
                         }
 
                         count++;
@@ -256,7 +258,8 @@ namespace Muslimeen.Content.Mosque
             }
             catch
             {
-                lblMessage.Text = "Add Unsuccesfull";
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Add Unsuccesfull');</script>");
+
             }
             BtnAdd.Visible = false;
             BtnUpdate.Visible = false;
@@ -318,7 +321,7 @@ namespace Muslimeen.Content.Mosque
                             type.AdhaanTime = txtEishaA.Text.ToString();
                             type.JamaatTime = txtEishaJ.Text.ToString();
                             db.BLL_UpdatePrayerType(type);
-                            lblMessage.Text = "YES";
+                            lblMessage.Text = "Prayer Times Successfully Updated";
                         }
 
                         count++;
@@ -327,7 +330,7 @@ namespace Muslimeen.Content.Mosque
             }
             catch
             {
-                lblMessage.Text = "Add Unsuccesfull";
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Add Unsuccesfull');</script>");
             }
 
 
@@ -357,7 +360,8 @@ namespace Muslimeen.Content.Mosque
                 txtEventEndTime.Text = "";
                 txtEventDate.Text = "";
                 txtSpeaker.Text = "";
-                lblEventMessage.Text = "Successfully Added Event";
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Added Event');</script>");
+           
             }
 
 

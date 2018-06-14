@@ -283,7 +283,7 @@
                                                     <h4></h4>
                                                 </td>
                                                 <td>
-                                                    <asp:LinkButton ID="btnSelectEvent" Text="Select Event" CssClass="btn btn-info center" runat="server" OnClick="btnSelectEvent_Click" EnableViewState="true" CommandArgument='<%#Eval("EventID")%>'/></td>
+                                                    <asp:LinkButton ID="btnSelectEvent" Text="Select Event" CssClass="btn btn-info center" runat="server" OnClick="btnSelectEvent_Click" EnableViewState="true" CommandArgument='<%#Eval("EventID")%>' /></td>
                                                 </td>
                                             </tr>
 
@@ -356,7 +356,7 @@
                                             </th>
                                             <td>
                                                 <h4>
-                                                    <asp:TextBox ID="txtUpdateEventDate" runat="server" Width="500px" ></asp:TextBox>
+                                                    <asp:TextBox ID="txtUpdateEventDate" runat="server" Width="500px"></asp:TextBox>
                                                 </h4>
                                                 <h4></h4>
                                             </td>
@@ -409,66 +409,96 @@
 
                 </asp:View>
                 <asp:View ID="View3" runat="server">
-                    <br><br/>
-                    <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
-                    <h3>Selected Date:
-                    <asp:Label ID="lblDate" runat="server" /></h3>
-                    <h4>
-                        <asp:Label ID="lblMessage" runat="server" /></h4>
-                    <table>
-                        <tbody>
-                            <tr>
+                    <br />
+                    <br />
+                    <div class="container">
+                        <div class="contentHolder mt-4">
+                            <div class="header mb-3">
+                                <h4 class="text-center">Please Select a Prayer Date:
+                               <br />
+                                </h4>
+
+                            </div>
+                            <div class="paragraphDisplay p-2">
+
+                                <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" CssClass="card"></asp:Calendar>
+                            </div>
+                        </div>
+
+
+                        <div class="contentHolder mt-4" style="width:100%">
+                            <div class="header mb-3">
+                                <h4 class="text-center">Selected Date:  <asp:Label ID="lblDate" runat="server" /> 
+                                    <asp:Label ID="lblMessage" runat="server" />
+                                    <br />
+                                </h4>
+
+                            </div>
+                            <div class="paragraphDisplay p-2">
+
+
                                 
-                                <td rowspan="2">
-                                    <asp:Image ID="icoPrayer" ImageUrl="download.png" runat="server" Width="121px" Height="121px" />
-                                </td>
-                                <th colspan="2">Salah TimeTable</th>
-                            </tr>
-                            <tr>
-                                <th>AZAAN</th>
-                                <th>JAMAAT</th>
-                            </tr>
-                            <tr>
-                                <th>Fajr</th>
-                                <td>
-                                    <asp:TextBox ID="txtFajrA" runat="server" MaxLength="5"></asp:TextBox>
-                                </td>
-                                <td>
-                                    <asp:TextBox ID="txtFajrJ" runat="server" MaxLength="5"></asp:TextBox>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Dhuhr</th>
-                                <td>
-                                    <asp:TextBox ID="txtDhuhrA" runat="server" MaxLength="5"></asp:TextBox></td>
-                                <td>
-                                    <asp:TextBox ID="txtDhuhrJ" runat="server" MaxLength="5"></asp:TextBox></td>
-                            </tr>
-                            <tr>
-                                <th class="auto-style1">Asr</th>
-                                <td class="auto-style1">
-                                    <asp:TextBox ID="txtAsrA" runat="server" MaxLength="5"></asp:TextBox></td>
-                                <td class="auto-style1">
-                                    <asp:TextBox ID="txtAsrJ" runat="server" MaxLength="5"></asp:TextBox></td>
-                            </tr>
-                            <tr>
-                                <th>Magrib</th>
-                                <td>
-                                    <asp:TextBox ID="txtMagribA" runat="server" MaxLength="5"></asp:TextBox></td>
-                                <td>
-                                    <asp:TextBox ID="txtMagribJ" runat="server" MaxLength="5"></asp:TextBox></td>
-                            </tr>
-                            <tr>
-                                <th>Eisha</th>
-                                <td>
-                                    <asp:TextBox ID="txtEishaA" runat="server" MaxLength="5"></asp:TextBox></td>
-                                <td>
-                                    <asp:TextBox ID="txtEishaJ" runat="server" MaxLength="5"></asp:TextBox></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <asp:Button ID="BtnAdd" runat="server" Text="Add Prayer Times" OnClick="BtnAdd_Click" />
-                    <asp:Button ID="BtnUpdate" runat="server" Text="Update Prayer Times" OnClick="BtnUpdate_Click" />
+                                <table>
+                                    <tbody>
+                                        <tr>
+
+                                            <td rowspan="2">
+                                        <asp:Image ID="icoPrayer" runat="server" ImageUrl="~/Content/Mosque/download.png" Width="121px" Height="121px"/>
+                                            </td>
+                                            <th colspan="2">Salah TimeTable</th>
+                                        </tr>
+                                        <tr>
+                                            <th>AZAAN</th>
+                                            <th>JAMAAT</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Fajr</th>
+                                            <td>
+                                                <asp:TextBox ID="txtFajrA" runat="server" MaxLength="5"></asp:TextBox>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtFajrJ" runat="server" MaxLength="5"></asp:TextBox>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Dhuhr</th>
+                                            <td>
+                                                <asp:TextBox ID="txtDhuhrA" runat="server" MaxLength="5"></asp:TextBox></td>
+                                            <td>
+                                                <asp:TextBox ID="txtDhuhrJ" runat="server" MaxLength="5"></asp:TextBox></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="auto-style1">Asr</th>
+                                            <td class="auto-style1">
+                                                <asp:TextBox ID="txtAsrA" runat="server" MaxLength="5"></asp:TextBox></td>
+                                            <td class="auto-style1">
+                                                <asp:TextBox ID="txtAsrJ" runat="server" MaxLength="5"></asp:TextBox></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Magrib</th>
+                                            <td>
+                                                <asp:TextBox ID="txtMagribA" runat="server" MaxLength="5"></asp:TextBox></td>
+                                            <td>
+                                                <asp:TextBox ID="txtMagribJ" runat="server" MaxLength="5"></asp:TextBox></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Eisha</th>
+                                            <td>
+                                                <asp:TextBox ID="txtEishaA" runat="server" MaxLength="5"></asp:TextBox></td>
+                                            <td>
+                                                <asp:TextBox ID="txtEishaJ" runat="server" MaxLength="5"></asp:TextBox></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <asp:Button ID="BtnAdd" runat="server" Text="Add Prayer Times" OnClick="BtnAdd_Click" CssClass=" btn btn-info center" />
+                                <asp:Button ID="BtnUpdate" runat="server" Text="Update Prayer Times" OnClick="BtnUpdate_Click" CssClass=" btn btn-info center" />
+                            </div>
+                           
+                        </div>
+
+                    </div>
+
+
 
                 </asp:View>
             </asp:MultiView>
