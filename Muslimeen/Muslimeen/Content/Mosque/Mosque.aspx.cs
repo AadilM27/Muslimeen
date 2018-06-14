@@ -15,7 +15,7 @@ namespace Muslimeen.Content.Mosque
         DBHandler db = new DBHandler();
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
 
 
             if (Session["UserName"] != null)
@@ -46,7 +46,7 @@ namespace Muslimeen.Content.Mosque
             try
             {
 
-                Session["MosqueID"] = 1;//Request.QueryString["MosqueID"];
+                Session["MosqueID"] = 1;
 
                 rptGetEvents.DataSource = db.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
                 rptGetEvents.DataBind();

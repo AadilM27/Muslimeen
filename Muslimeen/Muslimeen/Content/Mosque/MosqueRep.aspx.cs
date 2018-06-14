@@ -23,6 +23,8 @@ namespace Muslimeen.Content.Mosque
                 uspGetMember uspGetMember = new uspGetMember();
 
                 uspGetMember = db.BLL_GetMember(Convert.ToString(Session["UserName"]));
+                Session["MosqueID"] = uspGetMember.MosqueID.ToString();
+
                 hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
                 divUserProfile.Visible = true;
 
@@ -41,7 +43,8 @@ namespace Muslimeen.Content.Mosque
                 divUserProfile.Visible = false;
                 Session.Clear();
             }
-            Session["MosqueID"] = 1;
+
+            
             BtnUpdate.Visible = false;
             BtnAdd.Visible = false;
             divUpdateEvent.Visible = false;
@@ -341,30 +344,32 @@ namespace Muslimeen.Content.Mosque
 
         protected void btnAddEvent_Click(object sender, EventArgs e)
         {
-
-            if (Session["MosqueId"] != null)
+            try
             {
-                Event mosqueEvent = new Event();
-                mosqueEvent.EventTitle = txtEventTitle.Text.ToString();
-                mosqueEvent.EventDescription = txtEventDescription.Text.ToString();
-                mosqueEvent.EventStartTime = txtEventStartTime.Text.ToString();
-                mosqueEvent.EventEndTime = txtEventEndTime.Text.ToString();
-                mosqueEvent.EventDate = Convert.ToDateTime(txtEventDate.Text.ToString());
-                mosqueEvent.MosqueID = int.Parse(Session["MosqueID"].ToString());
-                mosqueEvent.Speaker = txtSpeaker.Text.ToString();
-                mosqueEvent.Active = 'Y';
-                db.BLL_InsertEvent(mosqueEvent);
-                txtEventTitle.Text = "";
-                txtEventDescription.Text = "";
-                txtEventStartTime.Text = "";
-                txtEventEndTime.Text = "";
-                txtEventDate.Text = "";
-                txtSpeaker.Text = "";
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Added Event');</script>");
-           
+                if (Session["MosqueId"] != null)
+                {
+                    Event mosqueEvent = new Event();
+                    mosqueEvent.EventTitle = txtEventTitle.Text.ToString();
+                    mosqueEvent.EventDescription = txtEventDescription.Text.ToString();
+                    mosqueEvent.EventStartTime = txtEventStartTime.Text.ToString();
+                    mosqueEvent.EventEndTime = txtEventEndTime.Text.ToString();
+                    mosqueEvent.EventDate = Convert.ToDateTime(txtEventDate.Text.ToString());
+                    mosqueEvent.MosqueID = int.Parse(Session["MosqueID"].ToString());
+                    mosqueEvent.Speaker = txtSpeaker.Text.ToString();
+                    mosqueEvent.Active = 'Y';
+                    db.BLL_InsertEvent(mosqueEvent);
+                    txtEventTitle.Text = "";
+                    txtEventDescription.Text = "";
+                    txtEventStartTime.Text = "";
+                    txtEventEndTime.Text = "";
+                    txtEventDate.Text = "";
+                    txtSpeaker.Text = "";
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Added Event');</script>");
+
+                }
+
             }
-
-
+            catch { }
 
 
 
@@ -413,40 +418,47 @@ namespace Muslimeen.Content.Mosque
         protected void btnUpdateEvent_Click(object sender, EventArgs e)
         {
 
-            
-            Event events = new Event();
-            events.EventID = 1;
-            btnRemoveEvent.Text = Session["EventID"].ToString();
-            events.EventTitle = txtUpdateEventTitle.Text.ToString();
-            events.EventDescription = txtUpdateEventDescription.Text.ToString();
-            events.EventStartTime = txtUpdateEventStartTime.Text.ToString();
-            events.EventEndTime = txtUpdateEventEndTime.Text.ToString();
-            events.EventDate = Convert.ToDateTime(txtUpdateEventDate.Text.ToString());
-            events.Speaker = txtUpdateSpeaker.Text.ToString();
-            events.MosqueID = int.Parse(Session["MosqueID"].ToString());
-            db.BLL_UpdateEvent(events);
-            ddlUpdateEvent.SelectedIndex = 0;
+            try
+            {
+                Event events = new Event();
+                events.EventID = 1;
+
+                events.EventTitle = txtUpdateEventTitle.Text.ToString();
+                events.EventDescription = txtUpdateEventDescription.Text.ToString();
+                events.EventStartTime = txtUpdateEventStartTime.Text.ToString();
+                events.EventEndTime = txtUpdateEventEndTime.Text.ToString();
+                events.EventDate = Convert.ToDateTime(txtUpdateEventDate.Text.ToString());
+                events.Speaker = txtUpdateSpeaker.Text.ToString();
+                events.MosqueID = int.Parse(Session["MosqueID"].ToString());
+                db.BLL_UpdateEvent(events);
+                ddlUpdateEvent.SelectedIndex = 0;
+            }
+            catch { }
         }
 
         protected void btnRemoveEvent_Click(object sender, EventArgs e)
         {
-            Event events = new Event();
-            events.EventID = int.Parse(Session["EventID"].ToString());
-            db.BLL_RemoveEvent(events);
-
-            List<uspGetMosqueEvents> list = new List<uspGetMosqueEvents>();
-            list = db.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
-
-            ddlUpdateEvent.Items.Clear();
-            ddlUpdateEvent.Items.Add("Select Event Date");
-
-            foreach (uspGetMosqueEvents even in list)
+            try
             {
-                ddlUpdateEvent.Items.Add(new ListItem(even.EventDate.ToString().Substring(0, 10)));
-            }
-            ddlUpdateEvent.DataBind();
+                Event events = new Event();
+                events.EventID = int.Parse(Session["EventID"].ToString());
+                db.BLL_RemoveEvent(events);
 
-            ddlUpdateEvent.SelectedIndex = 0;
+                List<uspGetMosqueEvents> list = new List<uspGetMosqueEvents>();
+                list = db.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
+
+                ddlUpdateEvent.Items.Clear();
+                ddlUpdateEvent.Items.Add("Select Event Date");
+
+                foreach (uspGetMosqueEvents even in list)
+                {
+                    ddlUpdateEvent.Items.Add(new ListItem(even.EventDate.ToString().Substring(0, 10)));
+                }
+                ddlUpdateEvent.DataBind();
+
+                ddlUpdateEvent.SelectedIndex = 0;
+            }
+            catch { }
 
         }
     }

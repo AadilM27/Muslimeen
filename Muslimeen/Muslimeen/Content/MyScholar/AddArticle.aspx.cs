@@ -169,7 +169,7 @@ namespace Muslimeen.Content.MyScholar
                     art.RemovalReason = Convert.ToString(" ");
 
                     //Scholar ID input with session...
-                    art.ScholarID = Convert.ToString(Session["UserName"] = "123");
+                    art.ScholarID = Convert.ToString(Session["UserName"] = "ASBhat789");
                     //art.ScholarID = Convert.ToString(" ");
                     art.ModeratorID = Convert.ToString(" ");
                     art.TopicID = Convert.ToInt32(drpTopics.SelectedValue);
@@ -177,7 +177,7 @@ namespace Muslimeen.Content.MyScholar
                     art.ArticleContent = Convert.ToString(txtContent.Text);
 
                     bool success = han.BLL_AddArticle(art);
-
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Add Succesfull');</script>");
                     txtHeading.Text = " ";
                     txtContent.Text = " ";
                 }
