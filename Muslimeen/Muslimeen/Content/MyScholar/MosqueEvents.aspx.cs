@@ -69,7 +69,7 @@ namespace Muslimeen.Content.MyScholar
 
         protected void btnMosques_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Mosque.aspx");
+            Response.Redirect("~/Content/Mosque/ListMosque.aspx");
         }
 
         protected void btnScholars_Click(object sender, EventArgs e)
