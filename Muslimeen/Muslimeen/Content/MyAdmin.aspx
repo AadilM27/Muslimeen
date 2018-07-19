@@ -80,9 +80,9 @@
             <div class="content" id="content"><!--add content here -->
                 
                 <div class="row m-0 divContainers">
-                    <nav class=" col-3 p-0 position-static navbar navbar-light bg-light"> <!--contains the buttons-->
+                    <nav class=" col-3 p-0 position-static bg-light"> <!--contains the buttons-->
                         <nav class="nav nav-pills flex-column pl-2">
-                            <p class="navbar-brand">Admin Tasks:</p>
+                            <p class="navbar-brand text-center text-uppercase font-weight-bold">Admin Tasks:</p>
                             <a runat="server"  id="lnkViewPendingSch" class=" mb-2 nav-link btn  taskBtn" >View Pending scholars</a>
                             <a runat="server" id="lnkViewPendingMod" class=" mb-2 nav-link btn taskBtn">View Pending Moderators</a>
                             <a runat="server" id="lnkViewPendingArticles" class=" mb-2 nav-link btn taskBtn">View Pending Articles</a>
