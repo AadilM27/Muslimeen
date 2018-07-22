@@ -79,15 +79,16 @@
             </header>
             <div class="content" id="content"><!--add content here -->
                 
-                <div class="row m-0 divContainers">
-                    <nav class=" col-3 p-0 position-static bg-light"> <!--contains the buttons-->
+                <div class="row m-0 divContainers p-2">
+                    <div class=" col-3 position-static bg-light mr-3 p-2"> <!--contains the buttons-->
                         <nav class="nav nav-pills flex-column pl-2">
                             <p class="navbar-brand text-center text-uppercase font-weight-bold">Admin Tasks:</p>
-                            <a runat="server"  id="lnkViewPendingSch" class=" mb-2 nav-link btn  taskBtn" >View Pending scholars</a>
-                            <a runat="server" id="lnkViewPendingMod" class=" mb-2 nav-link btn taskBtn">View Pending Moderators</a>
-                            <a runat="server" id="lnkViewPendingArticles" class=" mb-2 nav-link btn taskBtn">View Pending Articles</a>
+                            <asp:Button runat="server" ID="btnViewPendingSch" OnClick="btnViewPendingSch_Click" CssClass=" mb-2 btn taskBtn" Text="View Pending Scholars"/>
+                            <asp:Button runat="server" ID="btnViewPendingMod" CssClass=" mb-2 btn taskBtn" OnClick="btnViewPendingMod_Click" Text="View Pending Moderators"/>
+                            <asp:Button runat="server" ID="btnViewPendingArticles" CssClass=" mb-2 btn taskBtn" OnClick="btnViewPendingArticles_Click" Text="View Pending Articles"/>
+                            <asp:Button runat="server" ID="btnUpdateIslmDate" CssClass=" mb-2  btn taskBtn" OnClick="btnUpdateIslmDate_Click" Text="Update Islamic Date"/>
                         </nav>
-                    </nav>
+                    </div>
                     <div class="col-4 p-3 bg-light position-static position-static" runat="server" id="divViewPendingSch"> <!--Contains the List of items-->
                         <div class="row position-static list-group justify-content-end">
                             <asp:Repeater ID="rptViewPendingSch" runat="server" OnItemCommand="rptViewPendingSch_ItemCommand">
@@ -176,8 +177,16 @@
                                 <asp:TextBox runat="server" CssClass=" form-control mt-3" id="txtRejectReason" OnTextChanged="txtRejectReason_TextChanged"></asp:TextBox>
                             </div>
                         </div>
-                     </div>
+                    <div class=" col position-static bg-light position-static col-5 p-3 divContainers" runat="server" id="divUpdateIslmDate">
+                        <p class="text-center text-uppercase font-weight-bold">Update Islamic Date:</p>
+                        <div class=" row position-static">
+                            <label class="col">Islamic Date:</label>
+                            <asp:TextBox runat="server" CssClass=" col form-control" ID="txtIslmDate" Placeholder="yyyy-M-dd"></asp:TextBox>
+                            <asp:Button runat="server" CssClass="col form-control" ID="btnChngIslmDate" Text="Update Date" />
+                        </div>
+                    </div>
 
+                     </div>
                 </div>
             </form>
                 <div class="footerr"> <!--End of content, start of footer-->

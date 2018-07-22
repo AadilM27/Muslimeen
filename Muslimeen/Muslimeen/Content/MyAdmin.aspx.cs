@@ -18,7 +18,7 @@ namespace Muslimeen.Content
             try
             {
                 DBHandler dBHandler = new DBHandler();
-
+                divUpdateIslmDate.Visible = false;
                 divViewPendingArt.Visible = false;
                 divViewPendingSch.Visible = false;
                 divDisplaySch.Visible = false;
@@ -49,9 +49,6 @@ namespace Muslimeen.Content
                 }
 
 
-                lnkViewPendingSch.ServerClick += LnkViewPendingSch_ServerClick1;
-                lnkViewPendingMod.ServerClick += LnkViewPendingMod_ServerClick;
-                lnkViewPendingArticles.ServerClick += LnkViewPendingArticles_ServerClick;
                 divDisplaySch.Visible = false;
             }
             catch
@@ -60,12 +57,14 @@ namespace Muslimeen.Content
             }
         }
 
-        private void LnkViewPendingArticles_ServerClick(object sender, EventArgs e)
+        protected void btnViewPendingArticles_Click(object sender, EventArgs e)
         {
             try
             {
                 divDisplaySch.Visible = false;
                 divViewPendingSch.Visible = false;
+                divUpdateIslmDate.Visible = false;
+
                 divViewPendingArt.Visible = true;
 
                 DBHandler dBHandler = new DBHandler();
@@ -77,14 +76,14 @@ namespace Muslimeen.Content
             {
 
             }
-
         }
 
-        private void LnkViewPendingMod_ServerClick(object sender, EventArgs e)
+        protected void btnViewPendingMod_Click(object sender, EventArgs e)
         {
             try
             {
                 divViewPendingArt.Visible = false;
+                divUpdateIslmDate.Visible = false;
                 divDisplaySch.Visible = true;
                 divViewPendingSch.Visible = true;
 
@@ -99,23 +98,18 @@ namespace Muslimeen.Content
             }
         }
 
-        private void LnkViewPendingSch_ServerClick1(object sender, EventArgs e)
+        protected void btnViewPendingSch_Click(object sender, EventArgs e)
         {
-            try
-            {
-                divViewPendingArt.Visible = false;
-                divDisplaySch.Visible = true;
-                divViewPendingSch.Visible = true;
+            divViewPendingArt.Visible = false;
+            divUpdateIslmDate.Visible = false;
+            divDisplaySch.Visible = true;
+            divViewPendingSch.Visible = true;
 
-                DBHandler dBHandler = new DBHandler();
+            DBHandler dBHandler = new DBHandler();
 
-                rptViewPendingSch.DataSource = dBHandler.BLL_GetAllPendingScholars();
-                rptViewPendingSch.DataBind();
-            }
-            catch
-            {
+            rptViewPendingSch.DataSource = dBHandler.BLL_GetAllPendingScholars();
+            rptViewPendingSch.DataBind();
 
-            }
         }
 
 
@@ -135,6 +129,12 @@ namespace Muslimeen.Content
                 btnRegister.Visible = true;
             }
         }
+
+        protected void btnUpdateIslmDate_Click(object sender, EventArgs e)
+        {
+            divUpdateIslmDate.Visible = true;
+        }
+
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
@@ -202,12 +202,6 @@ namespace Muslimeen.Content
             {
 
             }
-        }
-
-        protected void rptViewPendingSch_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            
-
         }
 
         protected void btnShow_Click(object sender, EventArgs e)
@@ -367,5 +361,11 @@ namespace Muslimeen.Content
 
             }
         }
+
+        protected void rptViewPendingSch_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+
+        }
+
     }
 }
