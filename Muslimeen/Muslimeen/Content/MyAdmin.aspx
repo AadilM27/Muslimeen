@@ -80,7 +80,7 @@
             <div class="content" id="content"><!--add content here -->
                 
                 <div class="row m-0 divContainers p-2">
-                    <div class=" col-3 position-static bg-light mr-3 p-2"> <!--contains the buttons-->
+                    <div class=" col-3 position-static bg-light mr-2 p-2 "> <!--contains the buttons-->
                         <nav class="nav nav-pills flex-column pl-2">
                             <p class="navbar-brand text-center text-uppercase font-weight-bold">Admin Tasks:</p>
                             <asp:Button runat="server" ID="btnViewPendingSch" OnClick="btnViewPendingSch_Click" CssClass=" mb-2 btn taskBtn" Text="View Pending Scholars"/>
@@ -89,7 +89,7 @@
                             <asp:Button runat="server" ID="btnUpdateIslmDate" CssClass=" mb-2  btn taskBtn" OnClick="btnUpdateIslmDate_Click" Text="Update Islamic Date"/>
                         </nav>
                     </div>
-                    <div class="col-4 p-3 bg-light position-static position-static" runat="server" id="divViewPendingSch"> <!--Contains the List of items-->
+                    <div class=" col-4 p-3 bg-light position-static" runat="server" id="divViewPendingSch"> <!--Contains the List of items-->
                         <div class="row position-static list-group justify-content-end">
                             <asp:Repeater ID="rptViewPendingSch" runat="server" OnItemCommand="rptViewPendingSch_ItemCommand">
                                 <HeaderTemplate>
@@ -102,7 +102,7 @@
                             </asp:Repeater>
                         </div>
                     </div>
-                    <div class="col-sm-4 p-3 bg-light position-static position-static" runat="server" id="divViewPendingArt"> <!--Contains the List of items-->
+                    <div class="col-4 p-3 bg-light position-static" runat="server" id="divViewPendingArt"> <!--Contains the List of items-->
                         <div class="row position-static list-group justify-content-end">
                             <asp:Repeater ID="rptViewPendingArticles" runat="server">
                                 <HeaderTemplate>
@@ -115,54 +115,49 @@
                             </asp:Repeater>
                         </div>
                     </div>
-                    <div runat="server" id="divDisplaySch" class=" bg-light position-static col-5 p-3 divContainers">
+                    <div runat="server" id="divDisplaySch" class="bg-light position-static col-4 p-3 divContainers">
                         <asp:HiddenField runat="server" ID="hdfSchId" Value=""/>
-                            <div class="row position-static">
-                                <div class="col position-static"><b>Member  ID:</b></div><div class="col position-static"><label runat ="server" id="lblMemberID"></label></div>
+                            <div class="head-div mb-0 p-2">
+                                <p class="text-uppercase font-weight-bold">Member Details:</p>
                             </div>
-                                <hr class="p-0 m-0" />
-                            <div class="row position-static">
-                                <div  class="col position-static"><b>Member Name:</b></div><div class="col position-static"><label runat="server" id="lblMemberName"></label></div>
+                            <div class="body-div mt-0 p-2">
+                                <div class="row position-static">
+                                    <div class="col position-static"><b>Member  ID:</b></div><div class="col position-static"><label runat ="server" id="lblMemberID"></label></div>
+                                </div>
+                                <div class="row position-static">
+                                    <div  class="col position-static"><b>Member Name:</b></div><div class="col position-static"><label runat="server" id="lblMemberName"></label></div>
+                                </div>
+                                <div class="row position-static">
+                                    <div  class="col position-static"><b>Member Lastname:</b></div><div class="col position-static"><label runat="server" id="lblMemberLastName"></label></div>
+                                </div>
+                                <div class="row position-static">
+                                    <div  class="col position-static"><b>Member DOB:</b></div><div class="col position-static"><label runat="server" id="lblMemberDOB"></label></div>
+                                </div>
+                                <div class="row position-static">
+                                    <div  class="col position-static"><b>Member Type:</b></div><div class="col position-static"><label runat="server" id="lblMemberType"></label></div>
+                                </div>
+                                <div class="row position-static">
+                                    <div class="col position-static"><b>Status:</b></div><div class="col position-static"><label runat="server" id="lblActiveTypeID"></label></div>
+                                </div>
+                                <div class="row position-static">
+                                    <div class="col position-static"><b>Email Address:</b></div><div class="col position-static"><label runat="server" id="lblEmail"></label></div>
+                                </div>
+                                <div class="row position-static">
+                                    <div class="col position-static"><b>Contact No.</b></div><div class="col position-static"><label runat="server" id="lblContactNo"></label></div>
+                                </div>
+                                <div class="row position-static">
+                                    <div class="col position-static"><b>Activation Expiry:</b></div><div class="col position-static"><label runat="server" id="lblActivationExpiry"></label></div>
+                                </div>
+                                <div class="row position-static">
+                                    <div class="col position-static"><b>Activation Date:</b></div><div class="col position-static"><label runat="server" id="lblActivationDate"></label></div>
+                                </div>
+                                <div class="row position-static justify-content-center align-content-center mt-4">
+                                        <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-3" runat="server" ID="btnAcceptReg" Text="Accept Registration" OnClick="btnAcceptReg_Click" />
+                                        <asp:Button CssClass=" topnav btn-dark btn btn-sm btn-outline-light mr-3" runat="server" ID="btnRejectReg" Text="Reject Registration" OnClick="btnRejectReg_Click" />
+                                </div>
                             </div>
-                                <hr class="p-0 m-0" />
-                            <div class="row position-static">
-                                <div  class="col position-static"><b>Member Lastname:</b></div><div class="col position-static"><label runat="server" id="lblMemberLastName"></label></div>
-                            </div>
-                                <hr class="p-0 m-0" />
-                            <div class="row position-static">
-                                <div  class="col position-static"><b>Member DOB:</b></div><div class="col position-static"><label runat="server" id="lblMemberDOB"></label></div>
-                            </div>
-                                <hr class="p-0 m-0" />
-                            <div class="row position-static">
-                                <div  class="col position-static"><b>Member Type:</b></div><div class="col position-static"><label runat="server" id="lblMemberType"></label></div>
-                            </div>
-                                <hr class="p-0 m-0" />
-                            <div class="row position-static">
-                                <div class="col position-static"><b>Status:</b></div><div class="col position-static"><label runat="server" id="lblActiveTypeID"></label></div>
-                            </div>
-                                <hr class="p-0 m-0" />
-                            <div class="row position-static">
-                                <div class="col position-static"><b>Email Address:</b></div><div class="col position-static"><label runat="server" id="lblEmail"></label></div>
-                            </div>
-                                <hr class="p-0 m-0" />
-                            <div class="row position-static">
-                                <div class="col position-static"><b>Contact No.</b></div><div class="col position-static"><label runat="server" id="lblContactNo"></label></div>
-                            </div>
-                                <hr class="p-0 m-0" />
-                            <div class="row position-static">
-                                <div class="col position-static"><b>Activation Expiry:</b></div><div class="col position-static"><label runat="server" id="lblActivationExpiry"></label></div>
-                            </div>
-                                <hr class="p-0 m-0" />
-                            <div class="row position-static">
-                                <div class="col position-static"><b>Activation Date:</b></div><div class="col position-static"><label runat="server" id="lblActivationDate"></label></div>
-                            </div>
-                            <div class="row position-static justify-content-center align-content-center mt-4">
-                                    <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-3" runat="server" ID="btnAcceptReg" Text="Accept Registration" OnClick="btnAcceptReg_Click" />
-                                    <asp:Button CssClass=" topnav btn-dark btn btn-sm btn-outline-light mr-3" runat="server" ID="btnRejectReg" Text="Reject Registration" OnClick="btnRejectReg_Click" />
-                            </div>
-                            
                         </div>
-                        <div class=" col position-static bg-light position-static col-5 p-3 divContainers" runat="server" id="divViewArt" >
+                        <div class=" col bg-light position-static col-4 p-3 divContainers" runat="server" id="divViewArt" >
                             <div class="row" style="overflow:scroll;">
                                 <div class="row ml-4" >
                                     <label runat="server" id="lblArticleTitle"></label>
@@ -177,7 +172,7 @@
                                 <asp:TextBox runat="server" CssClass=" form-control mt-3" id="txtRejectReason" OnTextChanged="txtRejectReason_TextChanged"></asp:TextBox>
                             </div>
                         </div>
-                    <div class=" col position-static bg-light position-static col-5 p-3 divContainers" runat="server" id="divUpdateIslmDate">
+                    <div class="bg-light position-static col-4 p-3 divContainers" runat="server" id="divUpdateIslmDate">
                         <p class="text-center text-uppercase font-weight-bold">Update Islamic Date:</p>
                         <div class=" row position-static">
                             <label class="col">Islamic Date:</label>
