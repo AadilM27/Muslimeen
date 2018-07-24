@@ -97,6 +97,8 @@
     <Content Include="Content\MyAdmin\js\MyAdmin.js" />
     <Content Include="Content\MyMember.aspx" />
     <Content Include="Content\MyMember\css\MyMember.css" />
+    <Content Include="Content\MyModerator.aspx" />
+    <Content Include="Content\MyModerator\css\MyModerator.css" />
     <Content Include="Content\MyScholar\AddArticle.aspx" />
     <Content Include="Content\MyScholar\css\MyScholar.css" />
     <Content Include="Content\MyScholar\MosqueEvents.aspx" />
@@ -1636,6 +1638,13 @@
     <Compile Include="Content\MyMember.aspx.designer.cs">
       <DependentUpon>MyMember.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Content\MyModerator.aspx.cs">
+      <DependentUpon>MyModerator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\MyModerator.aspx.designer.cs">
+      <DependentUpon>MyModerator.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Content\MyScholar\AddArticle.aspx.cs">
       <DependentUpon>AddArticle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1751,6 +1760,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\MyModerator\js\" />
     <Folder Include="Content\Zakaah\js\" />
   </ItemGroup>
   <ItemGroup>
