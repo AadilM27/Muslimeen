@@ -80,8 +80,8 @@
             <div class="content" id="content"><!--add content here -->
                 
                 <div class="row m-0 divContainers p-2">
-                    <div class=" col-3 position-static bg-light mr-2 p-2 "> <!--contains the buttons-->
-                        <nav class="nav nav-pills flex-column pl-2">
+                    <div class=" col-3 position-static bg-light mr-2 p-2"> <!--contains the buttons-->
+                        <nav class="nav flex-column pl-2">
                             <p class="navbar-brand text-center text-uppercase font-weight-bold">Admin Tasks:</p>
                             <asp:Button runat="server" ID="btnViewPendingSch" OnClick="btnViewPendingSch_Click" CssClass=" mb-2 btn taskBtn" Text="View Pending Scholars"/>
                             <asp:Button runat="server" ID="btnViewPendingMod" CssClass=" mb-2 btn taskBtn" OnClick="btnViewPendingMod_Click" Text="View Pending Moderators"/>
