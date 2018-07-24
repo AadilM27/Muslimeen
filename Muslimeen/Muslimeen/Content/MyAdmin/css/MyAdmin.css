@@ -167,16 +167,20 @@ html{
 }
 /*end styling for header and footer.*/
 .taskBtn {
-    font-weight: 400;
+    font-weight: 500;
     position: static;
-    background-color: lightgrey;
+    background-color:white;
     color:black;
-    font-weight:500;
+    padding:0;
+    border-radius:0px;
+    border-bottom:0.5px solid #bababa;
+    text-align:start;
 }
 
 .taskBtn:hover {
     background-color: #3F84C1;
     color: white;
+    position: static;
 }
 
 .divContainers {
@@ -204,11 +208,21 @@ html{
 
 .head-div {
     background-color: #256297;
-    color: white
+    color: white;
+    vertical-align:middle;
+    text-align:center;
 }
 
 .body-div {
     background-color: #3F84C1;
     color:white;
+}
+
+.basic-div-styling {
+    border:solid;
+    border-width:1px;
+    border-color: #3F84C1;
+    border-radius:5px;
+    vertical-align:middle;
 }
 

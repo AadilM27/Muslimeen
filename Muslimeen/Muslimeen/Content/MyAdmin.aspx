@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-    <title>MyMuslimeen - Home</title>
+    <title>MyMuslimeen - MyAdmin</title>
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="MyAdmin/css/MyAdmin.css" rel="stylesheet" />
@@ -78,24 +78,28 @@
                 </div>
             </header>
             <div class="content" id="content"><!--add content here -->
-                
                 <div class="row m-0 divContainers p-2">
-                    <div class=" col-3 position-static bg-light mr-2 p-2"> <!--contains the buttons-->
-                        <nav class="nav flex-column pl-2">
-                            <p class="navbar-brand text-center text-uppercase font-weight-bold">Admin Tasks:</p>
-                            <asp:Button runat="server" ID="btnViewPendingSch" OnClick="btnViewPendingSch_Click" CssClass=" mb-2 btn taskBtn" Text="View Pending Scholars"/>
-                            <asp:Button runat="server" ID="btnViewPendingMod" CssClass=" mb-2 btn taskBtn" OnClick="btnViewPendingMod_Click" Text="View Pending Moderators"/>
-                            <asp:Button runat="server" ID="btnViewPendingArticles" CssClass=" mb-2 btn taskBtn" OnClick="btnViewPendingArticles_Click" Text="View Pending Articles"/>
-                            <asp:Button runat="server" ID="btnUpdateIslmDate" CssClass=" mb-2  btn taskBtn" OnClick="btnUpdateIslmDate_Click" Text="Update Islamic Date"/>
+                    <div class=" col-3 position-static mr-2 p-0 basic-div-styling"> <!--contains the buttons-->
+                        <div class="head-div text-center p-2">
+                            <p class="text-uppercase m-0 font-weight-bold">Admin Tasks:</p>
+                        </div>
+                        <nav class="nav flex-column pt-2 pb-2 pl-2 pr-0">
+                            <asp:Button runat="server" ID="btnViewPendingSch" OnClick="btnViewPendingSch_Click" CssClass=" btn mb-1 taskBtn" Text="View Pending Scholars"/>
+                            <asp:Button runat="server" ID="btnViewPendingMod" CssClass="btn mb-1 taskBtn" OnClick="btnViewPendingMod_Click" Text="View Pending Moderators"/>
+                            <asp:Button runat="server" ID="btnViewPendingArticles" CssClass="btn mb-1 taskBtn" OnClick="btnViewPendingArticles_Click" Text="View Pending Articles"/>
+                            <asp:Button runat="server" ID="btnUpdateIslmDate" CssClass="btn taskBtn mb-1" OnClick="btnUpdateIslmDate_Click" Text="Update Islamic Date"/>
                         </nav>
                     </div>
-                    <div class=" col-4 p-3 bg-light position-static" runat="server" id="divViewPendingSch"> <!--Contains the List of items-->
-                        <div class="row position-static list-group justify-content-end">
+                    <div class=" col-4 p-3 bg-light position-static basic-div-styling" runat="server" id="divViewPendingSch"> <!--Contains the List of items-->
+                        <div class=" head-div mb-0 p-2">
+                            <p class="text-uppercase font-weight-bold">Member Details:</p>
+                        </div>
+                        <div class="row p-2 position-static list-group justify-content-end">
                             <asp:Repeater ID="rptViewPendingSch" runat="server" OnItemCommand="rptViewPendingSch_ItemCommand">
                                 <HeaderTemplate>
                                 </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnShow" EnableViewState="true"  CommandArgument='<%#Eval("MemberID") %>' CssClass=" position-static align-self-center list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShow_Click"><img src="MyAdmin/icons/PendingReg.png" class=" img-thumbnail" style="width:32px; height:32px;" /><b>&nbsp;&nbsp;User&nbsp;Name: </b><%#Eval("MemberID")%><br /><b style="font-size:smaller;">&emsp;&emsp;&emsp;Date Registered: </b><%#Eval("ActivationDate")%></asp:LinkButton>
+                                        <asp:LinkButton ID="btnShow" EnableViewState="true"  CommandArgument='<%#Eval("MemberID") %>' CssClass=" position-static align-self-center list-group-item list-group-item-action  p-1" runat="server" OnClick="btnShow_Click"><img src="MyAdmin/icons/PendingReg.png" class=" img-thumbnail" style="width:32px; height:32px;" /><b>&nbsp;&nbsp;User&nbsp;Name: </b><%#Eval("MemberID")%><br /><b style="font-size:smaller;">&emsp;&emsp;&emsp;Date Registered: </b><%#Eval("ActivationDate")%></asp:LinkButton>
                                     </ItemTemplate>
                                 <FooterTemplate>
                                 </FooterTemplate>
@@ -103,6 +107,9 @@
                         </div>
                     </div>
                     <div class="col-4 p-3 bg-light position-static" runat="server" id="divViewPendingArt"> <!--Contains the List of items-->
+                        <div class=" head-div mb-0 p-2">
+                            <p class="head-div text-uppercase font-weight-bold">Member Details:</p>
+                        </div>
                         <div class="row position-static list-group justify-content-end">
                             <asp:Repeater ID="rptViewPendingArticles" runat="server">
                                 <HeaderTemplate>
@@ -117,10 +124,10 @@
                     </div>
                     <div runat="server" id="divDisplaySch" class="bg-light position-static col-4 p-3 divContainers">
                         <asp:HiddenField runat="server" ID="hdfSchId" Value=""/>
-                            <div class="head-div mb-0 p-2">
+                            <div class=" mb-0 p-2">
                                 <p class="text-uppercase font-weight-bold">Member Details:</p>
                             </div>
-                            <div class="body-div mt-0 p-2">
+                            <div class=" mt-0 p-2">
                                 <div class="row position-static">
                                     <div class="col position-static"><b>Member  ID:</b></div><div class="col position-static"><label runat ="server" id="lblMemberID"></label></div>
                                 </div>
