@@ -150,6 +150,7 @@
     <Content Include="Content\Zakaah\ZakaahPics\Zakat-Image.jpg" />
     <Content Include="Content\Zakaah\ZakaahPics\zakat-simplified-6-638.jpg" />
     <Content Include="Content\Zakaah\ZakaahPics\Zakat.jpg" />
+    <Content Include="Default.aspx" />
     <Content Include="Login\js\Login.js" />
     <Content Include="Login\LogIn_Bootstrap\css\Verification.css" />
     <Content Include="Login\LogIn_Bootstrap\icons\png\account-login-2x.png" />
@@ -1704,6 +1705,13 @@
     </Compile>
     <Compile Include="Content\ZakaahWebForms\ZakaahOrganizations.aspx.designer.cs">
       <DependentUpon>ZakaahOrganizations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login\ResetPassword.aspx.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
