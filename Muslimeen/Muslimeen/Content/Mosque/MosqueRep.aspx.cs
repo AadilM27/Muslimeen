@@ -51,6 +51,9 @@ namespace Muslimeen.Content.Mosque
 
             if (!IsPostBack)
             {
+                divAddEvent.Visible = false;
+                divEditEvent.Visible = false;
+                divManageTimes.Visible = false;
                 List<uspGetMosqueEvents> list = new List<uspGetMosqueEvents>();
                 list = db.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
                 ddlUpdateEvent.Items.Add("Select Event Date");
@@ -145,11 +148,7 @@ namespace Muslimeen.Content.Mosque
 
 
         }
-        protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
-        {
-            int index = int.Parse(e.Item.Value);
-            MultiView.ActiveViewIndex = index;
-        }
+   
 
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
@@ -460,6 +459,27 @@ namespace Muslimeen.Content.Mosque
             }
             catch { }
 
+        }
+
+        protected void btnNavAddEvent_Click(object sender, EventArgs e)
+        {
+            divAddEvent.Visible = true;
+            divEditEvent.Visible = false;
+            divManageTimes.Visible = false;
+        }
+
+        protected void btnNavEditEvent_Click(object sender, EventArgs e)
+        {
+            divAddEvent.Visible = false;
+            divEditEvent.Visible = true;
+            divManageTimes.Visible = false;
+        }
+
+        protected void btnNavManageTimes_Click(object sender, EventArgs e)
+        {
+            divAddEvent.Visible = false;
+            divEditEvent.Visible = false;
+            divManageTimes.Visible = true;
         }
     }
 }

@@ -166,31 +166,40 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.Button btnAboutUs;
         
         /// <summary>
-        /// Menu1 control.
+        /// btnNavAddEvent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu Menu1;
+        protected global::System.Web.UI.WebControls.Button btnNavAddEvent;
         
         /// <summary>
-        /// MultiView control.
+        /// btnNavEditEvent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView MultiView;
+        protected global::System.Web.UI.WebControls.Button btnNavEditEvent;
         
         /// <summary>
-        /// View1 control.
+        /// btnNavManageTimes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View View1;
+        protected global::System.Web.UI.WebControls.Button btnNavManageTimes;
+        
+        /// <summary>
+        /// divAddEvent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAddEvent;
         
         /// <summary>
         /// txtEventTitle control.
@@ -265,13 +274,13 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.Label lblEventMessage;
         
         /// <summary>
-        /// View2 control.
+        /// divEditEvent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View View2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEditEvent;
         
         /// <summary>
         /// ddlUpdateEvent control.
@@ -373,13 +382,13 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.Button btnRemoveEvent;
         
         /// <summary>
-        /// View3 control.
+        /// divManageTimes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View View3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divManageTimes;
         
         /// <summary>
         /// Calendar1 control.
