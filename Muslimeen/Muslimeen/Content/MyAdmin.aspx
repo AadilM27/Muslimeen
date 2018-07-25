@@ -79,53 +79,58 @@
             </header>
             <div class="content" id="content"><!--add content here -->
                 <div class="row m-0 divContainers p-2">
-                    <div class=" col-3 position-static mr-2 p-0 basic-div-styling"> <!--contains the buttons-->
+                    <div class=" position-static mr-2 p-0 basic-div-styling" style="min-width:250px;"> <!--contains the buttons-->
                         <div class="head-div text-center p-2">
                             <p class="text-uppercase m-0 font-weight-bold">Admin Tasks:</p>
                         </div>
-                        <nav class="nav flex-column pt-2 pb-2 pl-2 pr-0">
-                            <asp:Button runat="server" ID="btnViewPendingSch" OnClick="btnViewPendingSch_Click" CssClass=" btn mb-1 taskBtn" Text="View Pending Scholars"/>
-                            <asp:Button runat="server" ID="btnViewPendingMod" CssClass="btn mb-1 taskBtn" OnClick="btnViewPendingMod_Click" Text="View Pending Moderators"/>
-                            <asp:Button runat="server" ID="btnViewPendingArticles" CssClass="btn mb-1 taskBtn" OnClick="btnViewPendingArticles_Click" Text="View Pending Articles"/>
-                            <asp:Button runat="server" ID="btnUpdateIslmDate" CssClass="btn taskBtn mb-1" OnClick="btnUpdateIslmDate_Click" Text="Update Islamic Date"/>
+                        <nav class="nav flex-column pt-2 pb-2 pr-0">
+                            <asp:Button runat="server" ID="btnViewPendingSch" OnClick="btnViewPendingSch_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="View Pending Scholars"/>
+                            <asp:Button runat="server" ID="btnViewPendingMod" CssClass="pl-2 btn mb-1 taskBtn" OnClick="btnViewPendingMod_Click" Text="View Pending Moderators"/>
+                            <asp:Button runat="server" ID="btnViewPendingArticles" CssClass=" pl-2 btn mb-1 taskBtn" OnClick="btnViewPendingArticles_Click" Text="View Pending Articles"/>
+                            <asp:Button runat="server" ID="btnUpdateIslmDate" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnUpdateIslmDate_Click" Text="Update Islamic Date"/>
                         </nav>
                     </div>
-                    <div class=" col-4 p-3 bg-light position-static basic-div-styling" runat="server" id="divViewPendingSch"> <!--Contains the List of items-->
-                        <div class=" head-div mb-0 p-2">
-                            <p class="text-uppercase font-weight-bold">Member Details:</p>
+                    <div class=" col-4 position-static p-0 basic-div-styling-2" runat="server" id="divViewPendingSch"> <!--Contains the List of items-->
+                        <div class=" head-div-2 p-2 mb-1 ">
+                            <p class="m-0">Pending Registrations</p>
                         </div>
-                        <div class="row p-2 position-static list-group justify-content-end">
                             <asp:Repeater ID="rptViewPendingSch" runat="server" OnItemCommand="rptViewPendingSch_ItemCommand">
                                 <HeaderTemplate>
                                 </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="btnShow" EnableViewState="true"  CommandArgument='<%#Eval("MemberID") %>' CssClass=" position-static align-self-center list-group-item list-group-item-action  p-1" runat="server" OnClick="btnShow_Click"><img src="MyAdmin/icons/PendingReg.png" class=" img-thumbnail" style="width:32px; height:32px;" /><b>&nbsp;&nbsp;User&nbsp;Name: </b><%#Eval("MemberID")%><br /><b style="font-size:smaller;">&emsp;&emsp;&emsp;Date Registered: </b><%#Eval("ActivationDate")%></asp:LinkButton>
-                                    </ItemTemplate>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btnShow" CommandArgument='<%#Eval("MemberID") %>' CssClass=" col position-static lstBtn btn btn-block" runat="server" OnClick="btnShow_Click">
+                                        <b>&nbsp;&nbsp;User&nbsp;Name: </b><%#Eval("MemberID")%><br />
+                                        <b style="font-size:smaller;">&emsp;&emsp;&emsp;Date Registered: </b><%#Eval("ActivationDate")%>
+                                    </asp:LinkButton>
+                                        <hr class="p-0 m-1" />
+                                </ItemTemplate>
                                 <FooterTemplate>
                                 </FooterTemplate>
                             </asp:Repeater>
-                        </div>
                     </div>
-                    <div class="col-4 p-3 bg-light position-static" runat="server" id="divViewPendingArt"> <!--Contains the List of items-->
-                        <div class=" head-div mb-0 p-2">
-                            <p class="head-div text-uppercase font-weight-bold">Member Details:</p>
+                    <div class=" col-4 position-static p-0 basic-div-styling-2" runat="server" id="divViewPendingArt"> <!--Contains the List of items-->
+                        <div class=" head-div-2 p-2 mb-0 ">
+                            <p class="m-0">Pending Registrations</p>
                         </div>
                         <div class="row position-static list-group justify-content-end">
                             <asp:Repeater ID="rptViewPendingArticles" runat="server">
                                 <HeaderTemplate>
                                 </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnShowArt" EnableViewState="true"  CommandArgument='<%#Eval("ArticleID")%>' CssClass=" position-static list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShowArt_Click" ><b style="font-size:smaller;">Article Title: </b><%#Eval("ArticleTitle")%><br /></b> <b style="font-size:smaller;">Date Created: </b><%#Eval("DateCreated")%></asp:LinkButton>
+                                        <asp:LinkButton ID="btnShowArt" CommandArgument='<%#Eval("ArticleID")%>' CssClass="position-static p-1"
+                                            runat="server" OnClick="btnShowArt_Click" ><b style="font-size:smaller;">Article Title: </b><%#Eval("ArticleTitle")%><br /></b>
+                                            <b style="font-size:smaller;">Date Created: </b><%#Eval("DateCreated")%>
+                                        </asp:LinkButton>
                                     </ItemTemplate>
                                 <FooterTemplate>
                                 </FooterTemplate>
                             </asp:Repeater>
                         </div>
                     </div>
-                    <div runat="server" id="divDisplaySch" class="bg-light position-static col-4 p-3 divContainers">
+                    <div runat="server" id="divDisplaySch" class=" col position-static p-0 basic-div-styling-2">
                         <asp:HiddenField runat="server" ID="hdfSchId" Value=""/>
-                            <div class=" mb-0 p-2">
-                                <p class="text-uppercase font-weight-bold">Member Details:</p>
+                            <div class=" head-div-2 p-2 mb-0 ">
+                                <p class="m-0">Member Details:</p>
                             </div>
                             <div class=" mt-0 p-2">
                                 <div class="row position-static">
