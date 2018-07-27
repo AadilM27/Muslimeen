@@ -123,7 +123,55 @@ namespace Muslimeen.BLL
                     smtp.Send(message);
 
                 }
+                else if (emailType == "AcceptedScholars")
+                {
+                    message.Subject = "Muslimeen - Accepted Scholar";
+                    message.Body = String.Format(@"
+                                                <html lang=""en"" style=""height:100%"">
+                                                    <body>
+                                                        <div style=""background-color:white; text-align:center; vertical-align:middle;color:#256297;"">
+                                                            <h1 style=""font-weight:bolder; font-size:25px;"">Muslimeen Scholar Registration<br/>Congratulations!</h1>
+                                                        </div>
+                                                        <div style=""background-color:#ffffff; text-align:left;"">
+                                                            <hr/><br/>
+                                                            <br/><h5></h5
+                                                             <br/><p>Your registration has been accepted. You may now login and add articles and more.<br/><hr/>
+                                                        </div>
+                                                       <div style=""background-color:white; text-align:center; vertical-align:middle;color:#256297;"">
+                                                            <h2>Thank you</h2>
+                                                        </div>
+                                                    </body>
+                                                </html>
+                                                ", userName);
 
+                    //Send email
+                    smtp.Send(message);
+                }
+                else if (emailType == "RejectedScholars")
+                {
+                    message.Subject = "Muslimeen - Rejected Scholar";
+                    message.Body = String.Format(@"
+                                                <html lang=""en"" style=""height:100%"">
+                                                    <body>
+                                                        <div style=""background-color:white; text-align:center; vertical-align:middle;color:#256297;"">
+                                                            <h1 style=""font-weight:bolder; font-size:25px;"">Muslimeen Scholar Registration<br/></h1>
+                                                        </div>
+                                                        <div style=""background-color:#ffffff; text-align:left;"">
+                                                            <hr/>
+                                                             
+                                                            <br/><h3>Rejected!</h3>
+                                                             <br/><p>Unfortunately your registration has been unsuccessful due to unlawful circumstances or qualification reasons.<br/><hr/>
+                                                        </div>
+                                                        <div style=""background-color:white; text-align:center; vertical-align:middle;color:#256297"">
+                                                            <h2>Thank you</h2>
+                                                        </div>
+                                                    </body>
+                                                </html>
+                                                ", userName);
+
+                    //Send email
+                    smtp.Send(message);
+                }
                 return true;
             }
             catch (Exception)

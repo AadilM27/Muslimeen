@@ -96,417 +96,416 @@
         </header>
 
 
+        <div class="content" id="content">
+            <!--add content here -->
 
+            <div class="row m-0 divContainers p-2">
+                <div class=" col-3 position-static bg-light mr-2 p-2 ">
+                    <!--contains the buttons-->
+                    <nav class="nav nav-pills flex-column pl-2">
+                        <p class="navbar-brand text-center text-uppercase font-weight-bold">Mosque Representative Task:</p>
+                        <asp:Button runat="server" ID="btnNavAddEvent" CssClass=" mb-2 btn taskBtn" Text="Add Event" OnClick="btnNavAddEvent_Click" />
+                        <asp:Button runat="server" ID="btnNavEditEvent" CssClass=" mb-2 btn taskBtn" Text="Update/Remove Event" OnClick="btnNavEditEvent_Click" />
+                        <asp:Button runat="server" ID="btnNavManageTimes" CssClass=" mb-2 btn taskBtn" Text="Manage Prayer Times" OnClick="btnNavManageTimes_Click" />
+                    </nav>
+                </div>
+                <div class=" col-4 p-3 bg-light position-static" runat="server" id="divAddEvent">
+            <!--Contains the List of items-->
+            <div class="container">
 
-        <div style="background-color: white">
-            <br />
-            <asp:Menu ID="Menu1" class="container-fluid col-lg-40" Orientation="Horizontal" StaticMenuItemStyle-CssClass="tab" Font-Size="Large" StaticSelectedStyle-CssClass="selectedtab" StaticMenuItemStyle-HorizontalPadding="50px" StaticSelectedStyle-BackColor="White" CssClass="tabs" runat="server" Height="0px" vertical-align="top" align="center" OnMenuItemClick="Menu1_MenuItemClick">
-                <Items>
-                    <asp:MenuItem Text="Add Event" Value="0" Selected="true"></asp:MenuItem>
-                    <asp:MenuItem Text="Update/Remove Event" Value="1"></asp:MenuItem>
-                    <asp:MenuItem Text="Manage Prayer Times" Value="2"></asp:MenuItem>
-                </Items>
-            </asp:Menu>
-
-            <asp:MultiView ID="MultiView" ActiveViewIndex="0" runat="server">
-
-                <asp:View ID="View1" runat="server">
-                    <br />
-                    <br />
-                    <div class="container">
-
-                        <div class="contentHolder mt-4">
-                            <div class="header mb-3">
-                                <h4 class="text-center">Add Events:
+                <div class="contentHolder mt-4">
+                    <div class="header mb-3">
+                        <h4 class="text-center">Add Events:
                                <br />
-                                </h4>
-
-                            </div>
-                            <div class="container">
-
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <table>
-                                                <tr>
-                                                    <td>Event Title: </td>
-                                                    <td>
-                                                        <asp:TextBox runat="server" ID="txtEventTitle" MaxLength="50"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Event Date:</td>
-                                                    <td>
-                                                        <asp:TextBox runat="server" ID="txtEventDate"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Event Start Time</td>
-                                                    <td>
-                                                        <asp:TextBox runat="server" ID="txtEventStartTime" MaxLength="20"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Event End Time: </td>
-                                                    <td>
-                                                        <asp:TextBox runat="server" ID="txtEventEndTime" MaxLength="20"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Event Speaker: </td>
-                                                    <td>
-                                                        <asp:TextBox runat="server" ID="txtSpeaker" MaxLength="50"></asp:TextBox></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <p></p>
-                                        </td>
-                                        <td>
-                                            <table>
-                                                <tr>
-                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Event Description: </td>
-                                                    <td>
-                                                        <asp:TextBox runat="server" ID="txtEventDescription" Width="200px" Height="150" MaxLength="250"></asp:TextBox></td>
-                                                    <td>
-                                                        <asp:Button runat="server" ID="btnAddEvent" Text="Add Event" OnClick="btnAddEvent_Click" /></td>
-                                                </tr>
-
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
-
-
-                                <asp:Label ID="lblEventMessage" runat="server" />
-
-                            </div>
-                        </div>
-
-
-
-
+                        </h4>
 
                     </div>
-                </asp:View>
-                <asp:View ID="View2" runat="server">
-                    <br />
-                    <br />
                     <div class="container">
-                        <div class="contentHolder mt-4">
-                            <div class="header mb-3">
-                                <h4 class="text-center">Update/Remove Events
-                               <br />
-                                </h4>
 
-                            </div>
-                            <div class="paragraphDisplay p-2">
-                                Select the date of the event you are searching...
+                        <table>
+                            <tr>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td>Event Title: </td>
+                                            <td>
+                                                <asp:TextBox runat="server" ID="txtEventTitle" MaxLength="50"></asp:TextBox></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Event Date:</td>
+                                            <td>
+                                                <asp:TextBox runat="server" ID="txtEventDate"></asp:TextBox></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Event Start Time</td>
+                                            <td>
+                                                <asp:TextBox runat="server" ID="txtEventStartTime" MaxLength="20"></asp:TextBox></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Event End Time: </td>
+                                            <td>
+                                                <asp:TextBox runat="server" ID="txtEventEndTime" MaxLength="20"></asp:TextBox></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Event Speaker: </td>
+                                            <td>
+                                                <asp:TextBox runat="server" ID="txtSpeaker" MaxLength="50"></asp:TextBox></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <p></p>
+                                </td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Event Description: </td>
+                                            <td>
+                                                <asp:TextBox runat="server" ID="txtEventDescription" Width="200px" Height="150" MaxLength="250"></asp:TextBox></td>
+                                            <td>
+                                                <asp:Button runat="server" ID="btnAddEvent" Text="Add Event" OnClick="btnAddEvent_Click" /></td>
+                                        </tr>
+
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                        <asp:Label ID="lblEventMessage" runat="server" />
+
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+        <div class=" col-4 p-3 bg-light position-static" runat="server" id="divEditEvent">
+
+            <br />
+            <div class="container">
+                <div class="contentHolder mt-4">
+                    <div class="header mb-3">
+                        <h4 class="text-center">Update/Remove Events
+                               <br />
+                        </h4>
+
+                    </div>
+                    <div class="paragraphDisplay p-2">
+                        Select the date of the event you are searching...
                             <asp:DropDownList ID="ddlUpdateEvent" runat="server" OnSelectedIndexChanged="ddlUpdateEvent_SelectedIndexChanged" AutoPostBack="true">
                             </asp:DropDownList>
 
-                            </div>
-                        </div>
-
-
-
-
-                        <br />
-                        <br />
-                        <asp:Repeater ID="rptUpdateEvents" runat="server">
-                            <ItemTemplate>
-                                <div class="contentHolder mt-4">
-                                    <div class="header mb-3">
-                                        <h4 class="text-center">
-                                            <asp:Label ID="lblEventTitle" runat="server" Text='<%#Eval("EventTitle")%>'></asp:Label>
-                                            <br />
-                                        </h4>
-
-                                    </div>
-                                    <div class="paragraphDisplay p-2">
-
-                                        <table class="table">
-
-                                            <tr>
-                                                <th>
-                                                    <h3>Description: </h3>
-                                                    <h3></h3>
-                                                </th>
-                                                <td>
-                                                    <h4>
-                                                        <asp:Label ID="lblEventDescription" runat="server" Text='<%#Eval("EventDescription")%>'></asp:Label>
-                                                    </h4>
-                                                    <h4></h4>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>
-                                                    <h3>Speaker:</h3>
-                                                    <h3></h3>
-                                                </th>
-                                                <td>
-                                                    <h4>
-                                                        <asp:Label ID="lblSpeaker" runat="server" Text='<%#Eval("Speaker")%>'></asp:Label>
-                                                    </h4>
-                                                    <h4></h4>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>
-                                                    <h3>Event Date: </h3>
-                                                    <h3></h3>
-                                                </th>
-                                                <td>
-                                                    <h4>
-                                                        <asp:Label ID="lblEventDate" runat="server" Text='<%#Eval("EventDate").ToString().Substring(0,10)%>'></asp:Label>
-                                                    </h4>
-                                                    <h4></h4>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>
-                                                    <h3>Start Time: </h3>
-                                                    <h3></h3>
-                                                </th>
-                                                <td>
-                                                    <h4>
-                                                        <asp:Label ID="lblEventStarTime" runat="server" Text='<%#Eval("EventStartTime")%>'></asp:Label>
-                                                    </h4>
-                                                    <h4></h4>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>
-                                                    <h3>End Time: </h3>
-                                                    <h3></h3>
-                                                </th>
-                                                <td>
-                                                    <h4>
-                                                        <asp:Label ID="lblEventEndTime" runat="server" Text='<%#Eval("EventEndTime")%>'></asp:Label>
-                                                    </h4>
-                                                    <h4></h4>
-                                                </td>
-                                                <td>
-                                                    <asp:LinkButton ID="btnSelectEvent" Text="Select Event" CssClass="btn btn-info center" runat="server" OnClick="btnSelectEvent_Click" EnableViewState="true" CommandArgument='<%#Eval("EventID")%>' /></td>
-                                                </td>
-                                            </tr>
-
-                                        </table>
-
-                                    </div>
-                                </div>
-
-
-
-
-                            </ItemTemplate>
-                        </asp:Repeater>
                     </div>
-
-
-
-                    <div id="divUpdateEvent" runat="server">
-                        <div class="container">
-                            <div class="contentHolder mt-4">
-                                <div class="header mb-3">
-                                    <h4 class="text-center">Update or Remove Event:
-                               <br />
-                                    </h4>
-
-                                </div>
-                                <div class="paragraphDisplay p-2">
-
-                                    <table class="table">
-                                        <tr>
-                                            <th>
-                                                <h3>Title: </h3>
-                                                <h3></h3>
-                                            </th>
-                                            <td>
-                                                <h4>
-                                                    <asp:TextBox ID="txtUpdateEventTitle" runat="server" Width="500px"></asp:TextBox>
-                                                </h4>
-                                                <h4></h4>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                <h3>Description: </h3>
-                                                <h3></h3>
-                                            </th>
-                                            <td>
-                                                <h4>
-                                                    <asp:TextBox ID="txtUpdateEventDescription" runat="server" Width="500px" Height="300px"></asp:TextBox>
-                                                </h4>
-                                                <h4></h4>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                <h3>Speaker:</h3>
-                                                <h3></h3>
-                                            </th>
-                                            <td>
-                                                <h4>
-                                                    <asp:TextBox ID="txtUpdateSpeaker" runat="server" Width="500px"></asp:TextBox>
-                                                </h4>
-                                                <h4></h4>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                <h3>Event Date: </h3>
-                                                <h3></h3>
-                                            </th>
-                                            <td>
-                                                <h4>
-                                                    <asp:TextBox ID="txtUpdateEventDate" runat="server" Width="500px"></asp:TextBox>
-                                                </h4>
-                                                <h4></h4>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                <h3>Start Time: </h3>
-                                                <h3></h3>
-                                            </th>
-                                            <td>
-                                                <h4>
-                                                    <asp:TextBox ID="txtUpdateEventStartTime" runat="server" Width="500px"></asp:TextBox>
-                                                </h4>
-                                                <h4></h4>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                <h3>End Time: </h3>
-                                                <h3></h3>
-                                            </th>
-                                            <td>
-                                                <h4>
-                                                    <asp:TextBox ID="txtUpdateEventEndTime" runat="server" Width="500px"></asp:TextBox>
-                                                </h4>
-                                                <h4>&nbsp;</h4>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>
-                                                <asp:Button ID="btnUpdateEvent" runat="server" Text="Update Event" OnClick="btnUpdateEvent_Click" CssClass="btn btn-info center" />
-                                                <asp:Button ID="btnRemoveEvent" runat="server" Text="Remove Event" OnClick="btnRemoveEvent_Click" CssClass="btn btn-info center" />
-                                            </td>
-                                        </tr>
-                                    </table>
-
-                                </div>
-                            </div>
-                        </div>
+                </div>
 
 
 
 
-                    </div>
-
-
-
-
-
-                </asp:View>
-                <asp:View ID="View3" runat="server">
-                    <br />
-                    <br />
-                    <div class="container">
+                <br />
+                <br />
+                <asp:Repeater ID="rptUpdateEvents" runat="server">
+                    <ItemTemplate>
                         <div class="contentHolder mt-4">
                             <div class="header mb-3">
-                                <h4 class="text-center">Please Select a Prayer Date:
-                               <br />
-                                </h4>
-
-                            </div>
-                            <div class="paragraphDisplay p-2">
-
-                                <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" CssClass="card"></asp:Calendar>
-                            </div>
-                        </div>
-
-
-                        <div class="contentHolder mt-4" style="width:100%">
-                            <div class="header mb-3">
-                                <h4 class="text-center">Selected Date:  <asp:Label ID="lblDate" runat="server" /> 
-                                    <asp:Label ID="lblMessage" runat="server" />
+                                <h4 class="text-center">
+                                    <asp:Label ID="lblEventTitle" runat="server" Text='<%#Eval("EventTitle")%>'></asp:Label>
                                     <br />
                                 </h4>
 
                             </div>
                             <div class="paragraphDisplay p-2">
 
+                                <table class="table">
 
-                                
-                                <table>
-                                    <tbody>
-                                        <tr>
+                                    <tr>
+                                        <th>
+                                            <h3>Description: </h3>
+                                            <h3></h3>
+                                        </th>
+                                        <td>
+                                            <h4>
+                                                <asp:Label ID="lblEventDescription" runat="server" Text='<%#Eval("EventDescription")%>'></asp:Label>
+                                            </h4>
+                                            <h4></h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <h3>Speaker:</h3>
+                                            <h3></h3>
+                                        </th>
+                                        <td>
+                                            <h4>
+                                                <asp:Label ID="lblSpeaker" runat="server" Text='<%#Eval("Speaker")%>'></asp:Label>
+                                            </h4>
+                                            <h4></h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <h3>Event Date: </h3>
+                                            <h3></h3>
+                                        </th>
+                                        <td>
+                                            <h4>
+                                                <asp:Label ID="lblEventDate" runat="server" Text='<%#Eval("EventDate").ToString().Substring(0,10)%>'></asp:Label>
+                                            </h4>
+                                            <h4></h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <h3>Start Time: </h3>
+                                            <h3></h3>
+                                        </th>
+                                        <td>
+                                            <h4>
+                                                <asp:Label ID="lblEventStarTime" runat="server" Text='<%#Eval("EventStartTime")%>'></asp:Label>
+                                            </h4>
+                                            <h4></h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <h3>End Time: </h3>
+                                            <h3></h3>
+                                        </th>
+                                        <td>
+                                            <h4>
+                                                <asp:Label ID="lblEventEndTime" runat="server" Text='<%#Eval("EventEndTime")%>'></asp:Label>
+                                            </h4>
+                                            <h4></h4>
+                                        </td>
+                                        <td>
+                                            <asp:LinkButton ID="btnSelectEvent" Text="Select Event" CssClass="btn btn-info center" runat="server" OnClick="btnSelectEvent_Click" EnableViewState="true" CommandArgument='<%#Eval("EventID")%>' /></td>
+                                        </td>
+                                    </tr>
 
-                                            <td rowspan="2">
-                                        <asp:Image ID="icoPrayer" runat="server" ImageUrl="~/Content/Mosque/download.png" Width="121px" Height="121px"/>
-                                            </td>
-                                            <th colspan="2">Salah TimeTable</th>
-                                        </tr>
-                                        <tr>
-                                            <th>AZAAN</th>
-                                            <th>JAMAAT</th>
-                                        </tr>
-                                        <tr>
-                                            <th>Fajr</th>
-                                            <td>
-                                                <asp:TextBox ID="txtFajrA" runat="server" MaxLength="5"></asp:TextBox>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtFajrJ" runat="server" MaxLength="5"></asp:TextBox>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>Dhuhr</th>
-                                            <td>
-                                                <asp:TextBox ID="txtDhuhrA" runat="server" MaxLength="5"></asp:TextBox></td>
-                                            <td>
-                                                <asp:TextBox ID="txtDhuhrJ" runat="server" MaxLength="5"></asp:TextBox></td>
-                                        </tr>
-                                        <tr>
-                                            <th class="auto-style1">Asr</th>
-                                            <td class="auto-style1">
-                                                <asp:TextBox ID="txtAsrA" runat="server" MaxLength="5"></asp:TextBox></td>
-                                            <td class="auto-style1">
-                                                <asp:TextBox ID="txtAsrJ" runat="server" MaxLength="5"></asp:TextBox></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Magrib</th>
-                                            <td>
-                                                <asp:TextBox ID="txtMagribA" runat="server" MaxLength="5"></asp:TextBox></td>
-                                            <td>
-                                                <asp:TextBox ID="txtMagribJ" runat="server" MaxLength="5"></asp:TextBox></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Eisha</th>
-                                            <td>
-                                                <asp:TextBox ID="txtEishaA" runat="server" MaxLength="5"></asp:TextBox></td>
-                                            <td>
-                                                <asp:TextBox ID="txtEishaJ" runat="server" MaxLength="5"></asp:TextBox></td>
-                                        </tr>
-                                    </tbody>
                                 </table>
-                                <asp:Button ID="BtnAdd" runat="server" Text="Add Prayer Times" OnClick="BtnAdd_Click" CssClass=" btn btn-info center" />
-                                <asp:Button ID="BtnUpdate" runat="server" Text="Update Prayer Times" OnClick="BtnUpdate_Click" CssClass=" btn btn-info center" />
+
                             </div>
-                           
                         </div>
 
+
+
+
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
+
+
+
+            <div id="divUpdateEvent" runat="server">
+                <div class="container">
+                    <div class="contentHolder mt-4">
+                        <div class="header mb-3">
+                            <h4 class="text-center">Update or Remove Event:
+                               <br />
+                            </h4>
+
+                        </div>
+                        <div class="paragraphDisplay p-2">
+
+                            <table class="table">
+                                <tr>
+                                    <th>
+                                        <h3>Title: </h3>
+                                        <h3></h3>
+                                    </th>
+                                    <td>
+                                        <h4>
+                                            <asp:TextBox ID="txtUpdateEventTitle" runat="server" Width="500px"></asp:TextBox>
+                                        </h4>
+                                        <h4></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <h3>Description: </h3>
+                                        <h3></h3>
+                                    </th>
+                                    <td>
+                                        <h4>
+                                            <asp:TextBox ID="txtUpdateEventDescription" runat="server" Width="500px" Height="300px"></asp:TextBox>
+                                        </h4>
+                                        <h4></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <h3>Speaker:</h3>
+                                        <h3></h3>
+                                    </th>
+                                    <td>
+                                        <h4>
+                                            <asp:TextBox ID="txtUpdateSpeaker" runat="server" Width="500px"></asp:TextBox>
+                                        </h4>
+                                        <h4></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <h3>Event Date: </h3>
+                                        <h3></h3>
+                                    </th>
+                                    <td>
+                                        <h4>
+                                            <asp:TextBox ID="txtUpdateEventDate" runat="server" Width="500px"></asp:TextBox>
+                                        </h4>
+                                        <h4></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <h3>Start Time: </h3>
+                                        <h3></h3>
+                                    </th>
+                                    <td>
+                                        <h4>
+                                            <asp:TextBox ID="txtUpdateEventStartTime" runat="server" Width="500px"></asp:TextBox>
+                                        </h4>
+                                        <h4></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <h3>End Time: </h3>
+                                        <h3></h3>
+                                    </th>
+                                    <td>
+                                        <h4>
+                                            <asp:TextBox ID="txtUpdateEventEndTime" runat="server" Width="500px"></asp:TextBox>
+                                        </h4>
+                                        <h4>&nbsp;</h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <asp:Button ID="btnUpdateEvent" runat="server" Text="Update Event" OnClick="btnUpdateEvent_Click" CssClass="btn btn-info center" />
+                                        <asp:Button ID="btnRemoveEvent" runat="server" Text="Remove Event" OnClick="btnRemoveEvent_Click" CssClass="btn btn-info center" />
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
                     </div>
+                </div>
 
 
 
-                </asp:View>
-            </asp:MultiView>
+
+            </div>
+
+
+
+
+
+
         </div>
 
+        <div class=" col-4 p-3 bg-light position-static" runat="server" id="divManageTimes">
+            <div class="container">
+                <div class="contentHolder mt-4">
+                    <div class="header mb-3">
+                        <h4 class="text-center">Please Select a Prayer Date:
+                               <br />
+                        </h4>
+
+                    </div>
+                    <div class="paragraphDisplay p-2">
+
+                        <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" CssClass="card"></asp:Calendar>
+                    </div>
+                </div>
+
+
+                <div class="contentHolder mt-4" style="width: 100%">
+                    <div class="header mb-3">
+                        <h4 class="text-center">Selected Date: 
+                                    <asp:Label ID="lblDate" runat="server" />
+                            <asp:Label ID="lblMessage" runat="server" />
+                            <br />
+                        </h4>
+
+                    </div>
+                    <div class="paragraphDisplay p-2">
 
 
 
+                        <table>
+                            <tbody>
+                                <tr>
+
+                                    <td rowspan="2">
+                                        <asp:Image ID="icoPrayer" runat="server" ImageUrl="~/Content/Mosque/download.png" Width="121px" Height="121px" />
+                                    </td>
+                                    <th colspan="2">Salah TimeTable</th>
+                                </tr>
+                                <tr>
+                                    <th>AZAAN</th>
+                                    <th>JAMAAT</th>
+                                </tr>
+                                <tr>
+                                    <th>Fajr</th>
+                                    <td>
+                                        <asp:TextBox ID="txtFajrA" runat="server" MaxLength="5"></asp:TextBox>
+                                   
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="txtFajrJ" runat="server" MaxLength="5"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Dhuhr</th>
+                                    <td>
+                                        <asp:TextBox ID="txtDhuhrA" runat="server" MaxLength="5"></asp:TextBox></td>
+                                    <td>
+                                        <asp:TextBox ID="txtDhuhrJ" runat="server" MaxLength="5"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <th class="auto-style1">Asr</th>
+                                    <td class="auto-style1">
+                                        <asp:TextBox ID="txtAsrA" runat="server" MaxLength="5"></asp:TextBox></td>
+                                    <td class="auto-style1">
+                                        <asp:TextBox ID="txtAsrJ" runat="server" MaxLength="5"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <th>Magrib</th>
+                                    <td>
+                                        <asp:TextBox ID="txtMagribA" runat="server" MaxLength="5"></asp:TextBox></td>
+                                    <td>
+                                        <asp:TextBox ID="txtMagribJ" runat="server" MaxLength="5"></asp:TextBox></td>
+                                </tr>
+                                <tr>
+                                    <th>Eisha</th>
+                                    <td>
+                                        <asp:TextBox ID="txtEishaA" runat="server" MaxLength="5"></asp:TextBox></td>
+                                    <td>
+                                        <asp:TextBox ID="txtEishaJ" runat="server" MaxLength="5"></asp:TextBox></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <asp:Button ID="BtnAdd" runat="server" Text="Add Prayer Times" OnClick="BtnAdd_Click" CssClass=" btn btn-info center" />
+                        <asp:Button ID="BtnUpdate" runat="server" Text="Update Prayer Times" OnClick="BtnUpdate_Click" CssClass=" btn btn-info center" />
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+            </div>
+        </div>
+
+        
 
 
     </form>
