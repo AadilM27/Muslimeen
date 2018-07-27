@@ -882,20 +882,6 @@ namespace Muslimeen.BLL
             return list;
         }
 
-        //Insert of Article
-        public bool InsertArticle(InsertArticle article)
-        {
-            List<SqlParameter> par = new List<SqlParameter>();
-            foreach (var p in article.GetType().GetProperties())
-            {
-                if (p.GetValue(article) != null)
-                {
-                    par.Add(new SqlParameter("@" + p.Name.ToString(), p.GetValue(article)));
-                }
-            }
-            return DBHelper.NonQuery("uspInsertArticle", CommandType.StoredProcedure, par.ToArray());
-        }
-
         public bool AcceptArticle(AcceptArticle acceptArticle)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
@@ -908,6 +894,38 @@ namespace Muslimeen.BLL
                 }
             }
             return DBHelper.NonQuery("uspAcceptArticle", CommandType.StoredProcedure, parameters.ToArray());
+        }
+
+        //Rejected Articles
+        public List<Article> GetRejectedArticle()
+        {
+            List<Article> list = new List<Article>();
+
+            using (DataTable table = DBHelper.Select("uspGetRejectedArticle", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        Article art = new Article
+                        {
+                            ArticleID = Convert.ToInt32(row["ArticleID"]),
+                            ArticleTitle = Convert.ToString(row["ArticleTitle"]),
+                            ArticleContent = Convert.ToString(row["ArticleContent"]),
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]),
+                            Status = Convert.ToChar(row["Status"]),
+                            RejectionReason = Convert.ToString(row["RejectionReason"]),
+                            Active = Convert.ToChar(row["Active"]),
+                            RemovalReason = Convert.ToString(row["RemovalReason"]),
+                            ScholarID = Convert.ToString(row["ScholarID"]),
+                            ModeratorID = Convert.ToString(row["ModeratorID"]),
+                            TopicID = Convert.ToInt32(row["TopicID"])
+                        };
+                        list.Add(art);
+                    }
+                }
+            }
+            return list;
         }
     }
 }

@@ -99,10 +99,6 @@
     <Content Include="Content\MyMember\css\MyMember.css" />
     <Content Include="Content\MyScholar\AddArticle.aspx" />
     <Content Include="Content\MyScholar\css\MyScholar.css" />
-    <Content Include="Content\MyScholar\MosqueEvents.aspx" />
-    <Content Include="Content\MyScholar\PendingArticle.aspx" />
-    <Content Include="Content\MyScholar\Previous Code.txt" />
-    <Content Include="Content\MyScholar\RejectedArticle.aspx" />
     <Content Include="Content\ProfileEditer.aspx" />
     <Content Include="Content\ProfileEditer\css\ProfileEditer.css" />
     <Content Include="Content\ZakaahWebForms\Zakaah.aspx" />
@@ -1641,27 +1637,6 @@
     </Compile>
     <Compile Include="Content\MyScholar\AddArticle.aspx.designer.cs">
       <DependentUpon>AddArticle.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Content\MyScholar\MosqueEvents.aspx.cs">
-      <DependentUpon>MosqueEvents.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Content\MyScholar\MosqueEvents.aspx.designer.cs">
-      <DependentUpon>MosqueEvents.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Content\MyScholar\PendingArticle.aspx.cs">
-      <DependentUpon>PendingArticle.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Content\MyScholar\PendingArticle.aspx.designer.cs">
-      <DependentUpon>PendingArticle.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Content\MyScholar\RejectedArticle.aspx.cs">
-      <DependentUpon>RejectedArticle.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Content\MyScholar\RejectedArticle.aspx.designer.cs">
-      <DependentUpon>RejectedArticle.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\ProfileEditer.aspx.cs">
       <DependentUpon>ProfileEditer.aspx</DependentUpon>

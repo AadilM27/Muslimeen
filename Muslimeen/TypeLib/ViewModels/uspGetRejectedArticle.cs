@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TypeLib.Models
+namespace TypeLib.ViewModels
 {
-    public class InsertArticle
+    public class uspGetRejectedArticle
     {
         public string ArticleTitle { get; set; }
         public string ArticleContent { get; set; }

@@ -177,15 +177,21 @@ namespace Muslimeen.BLL
         }
 
         //Insert of Article
-        public bool BLL_InsertArticle(InsertArticle article)
+        public bool BLL_InsertArticle(Article article)
         {
-            return dBAccess.InsertArticle(article);
+            return dBAccess.AddArticle(article);
         }
 
         public bool  BLL_AcceptArticle(AcceptArticle acceptArticle)
         {
             return dBAccess.AcceptArticle(acceptArticle);
 
+        }
+
+        //Rejected Articles
+        public List<Article> BLL_GetRejectedArticle()
+        {
+            return dBAccess.GetRejectedArticle();
         }
     }
 }
