@@ -1743,6 +1743,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\MyMember\icons\" />
     <Folder Include="Content\Zakaah\js\" />
   </ItemGroup>
   <ItemGroup>

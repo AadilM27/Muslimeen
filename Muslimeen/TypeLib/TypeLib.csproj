@@ -77,6 +77,7 @@
     <Compile Include="ViewModels\uspGetMosqueEventsDateRange.cs" />
     <Compile Include="ViewModels\uspGetMosquePrayerTimes.cs" />
     <Compile Include="ViewModels\uspGetMosques.cs" />
+    <Compile Include="ViewModels\uspGetNotifications.cs" />
     <Compile Include="ViewModels\uspGetOrganizations.cs" />
     <Compile Include="ViewModels\uspGetPendingArticle.cs" />
     <Compile Include="ViewModels\uspGetQualification.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="ViewModels\uspGetSpecificDayPrayerTimes.cs" />
     <Compile Include="ViewModels\uspGetSpecificEvent.cs" />
     <Compile Include="ViewModels\uspGetTopics.cs" />
+    <Compile Include="ViewModels\uspViewLatestArticles.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

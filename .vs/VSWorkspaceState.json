@@ -8,9 +8,9 @@
     "\\Muslimeen\\Muslimeen\\Content\\Default",
     "\\Muslimeen\\Muslimeen\\Content\\Default\\css",
     "\\Muslimeen\\Muslimeen\\Content\\HelpPage",
-    "\\Muslimeen\\Muslimeen\\Login\\LogIn_Bootstrap\\css",
-    "\\Muslimeen\\Muslimeen\\Register"
+    "\\Muslimeen\\Muslimeen\\Content\\MyMember",
+    "\\Muslimeen\\Muslimeen\\Content\\MyMember\\icons"
   ],
-  "SelectedNode": "\\Muslimeen\\Muslimeen\\Content\\HelpPage.aspx",
+  "SelectedNode": "\\Muslimeen\\Muslimeen\\Content\\MyMember.aspx",
   "PreviewInSolutionExplorer": false
 }

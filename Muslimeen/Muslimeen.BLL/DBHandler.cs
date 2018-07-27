@@ -187,5 +187,14 @@ namespace Muslimeen.BLL
             return dBAccess.AcceptArticle(acceptArticle);
 
         }
+        public Notice BLL_GetNotifications(int NoticeID)
+        {
+            return dBAccess.GetNotifications(NoticeID);
+        }
+
+        public List<uspViewLatestArticles> BLL_ViewLatestArticles()
+        {
+            return dBAccess.ViewLatestArticles();
+        }
     }
 }

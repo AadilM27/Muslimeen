@@ -96,19 +96,33 @@
                 </div>
             </div>
         </header>
-        <br />
-        <br />
-        <asp:Menu ID="Menu1" class="container-fluid col-lg-40" Orientation="Horizontal" StaticMenuItemStyle-CssClass="tab" Font-Size="Large" StaticSelectedStyle-CssClass="selectedtab" StaticMenuItemStyle-HorizontalPadding="50px" StaticSelectedStyle-BackColor="White" CssClass="tabs" runat="server" Height="0px" vertical-align="top" align="center" OnMenuItemClick="Menu1_MenuItemClick">
-            <Items>
-                <asp:MenuItem Text="Todays Prayer Times" Value="0" Selected="true"></asp:MenuItem>
-                <asp:MenuItem Text="Events" Value="1"></asp:MenuItem>
-            </Items>
-        </asp:Menu>
-        <asp:MultiView ID="MultiView1" ActiveViewIndex="0" runat="server">
-            <asp:View ID="View1" runat="server">
 
-                <div class="container">
-                    <div class="contentHolder mt-4" style="width: 50%;">
+        <div class="content" id="content" >
+
+            <!--edit this so footer doesn't move - height -->
+
+                    <!--Side menu-->
+        <div class="row m-0 divContainers p-2">
+                    <div class=" col-3 position-static bg-light mr-2 p-2 "> <!--contains the buttons-->
+                        <nav class="nav nav-pills flex-column pl-2">
+                            <p class="navbar-brand text-center text-uppercase font-weight-bold">Tasks :</p>
+                            <asp:Button runat="server" ID="btnTodaysPrayerTimes" OnClick="btnTodaysPrayerTime_Click" CssClass=" mb-2 btn taskBtn" Text="View todays prayer times"/>
+                            <asp:Button runat="server" ID="btnEvents" CssClass=" mb-2 btn taskBtn" OnClick="btnEvents_Click" Text="View mosque events"/>
+                            <asp:Button runat="server" ID="btnNotifications" CssClass=" mb-2 btn taskBtn" OnClick="btnNotifications_Click" Text="View notifications"/>
+                            <asp:Button runat="server" ID="btnArticles" CssClass=" mb-2 btn taskBtn" OnClick="btnArticles_Click" Text="View latest articles"/>
+                        </nav>
+                    </div>
+
+            <!--Side menu ends-->
+            
+            
+            
+
+            <!--Salaah Timetable-->
+
+        <div runat="server" id="divDisplaySalahTimetable" class="bg-light position-static col-6 p-3 divContainers">
+               
+                    <div class="contentHolder mt-4">
                         <div class="header mb-3">
                             <h4 class="text-center">Today's Prayer Times 
                                <br />
@@ -116,10 +130,10 @@
 
                         </div>
                         <div style="display: flex; justify-content: center" class="container">
-                            <table class="table " style="justify-content: center; width: 30%; height: 20%; align-self: center">
+                            <table class="table " style="justify-content: center; width: 70%; height: 20%; align-self: center">
 
                                 <tr>
-                                    <td rowspan="2">
+                                    <td rowspan="2"></td>
                                         <asp:Image ID="icoPrayer" ImageUrl="Mosque/download.png" runat="server" Height="121px" Width="121px" />
                                         <th colspan="2">Salah TimeTable</th>
                                 </tr>
@@ -170,49 +184,45 @@
 
                         </div>
                     </div>
-
-                </div>
-
-                <!--view events-->
+                    </div>
 
 
-            </asp:View>
-            <asp:View ID="View2" runat="server">
+                <!--view mosque events-->
 
-                <br />
-                <br />
-                <div class="container">
-                    <div class="contentHolder mt-4">
+
+        <div runat="server" id="divDisplayEvents" class="bg-light position-static col p-3 divContainers">
+
+                
+                    <div class="contentHolder mt-6">
                         <div class="header mb-3">
                             <h4 class="text-center">View Mosque Events:
                                <br />
-                            </h4>
-                            <h5 class="text-center"></h5>
+                            </h4>         
                         </div>
-                        <div class="paragraphDisplay p-2">
 
-                            <table style="width: 80%">
+                        <div class="paragraphDisplay p-2">
+                            <table style="width: 30%">
                                 <tr>
-                                    <td colspan="4">
+                                    <td colspan="2">
                                         <asp:Label ID="lblEventList" runat="server" Text="List Events By Date Range "></asp:Label></td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <asp:Label ID="lblStartDate" runat="server" Text="Start Date: "></asp:Label></td>
                                     <td>
-                                        <asp:TextBox ID="txtStartDate" runat="server" ></asp:TextBox></td>
+                                        <asp:TextBox ID="txtStartDate" runat="server" TextMode="Date" ></asp:TextBox></td>
                                     <td>
-                                        <asp:Label ID="lblEndDate" runat="server" Text="End Date: "></asp:Label></td>
+                                        <asp:Label ID="lblEndDate" runat="server" Text="End Date:" ></asp:Label></td>
                                     <td>
-                                        <asp:TextBox ID="txtEndDate" runat="server" ></asp:TextBox></td>
+                                        <asp:TextBox ID="txtEndDate" runat="server" TextMode="Date" ></asp:TextBox></td>
                                     <td>
                                         <asp:Button CssClass="btn btn-info center" ID="btnListEvents" runat="server" Text="List Events" OnClick="btnListEvents_Click" /></td>
                                 </tr>
-
                             </table>
+                            </div>
                         </div>
                     </div>
-
+                   
 
 
 
@@ -229,9 +239,7 @@
                                 <div class="paragraphDisplay p-2">
 
                                     <div class="container" style="position: center">
-
                                         <div>
-
                                             <table class="table">
                                                 <tr>
                                                     <th>
@@ -283,28 +291,135 @@
                                                             <asp:Label ID="lblEventEndTime" runat="server" Text='<%#Eval("EventEndTime")%>'></asp:Label><h4>
                                                     </td>
                                                 </tr>
-
                                             </table>
                                         </div>
-                                    </div>
-
+                                     </div>
+                                  </div>
                                 </div>
                             </div>
-
-
-
 
                         </ItemTemplate>
 
                     </asp:Repeater>
 
-                </div>
-            </asp:View>
-        </asp:MultiView>
 
+                 
+                <!--Notifications-->
+            <div runat="server" id="divDiplayNotifications" class="bg-light position-static col p-3 divContainers">
 
+                  <div class="contentHolder mt-4">
+                        <div class="header mb-3">
+                            <h4 class="text-center">Notices
+                                   <br />
+                            </h4>
+                        </div>
+                        <div class="row position-static list-group justify-content-end">
+                            <asp:Repeater ID="rptNotifications" runat="server">
+                                <HeaderTemplate>
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btnShowNotice" EnableViewState="true" CommandArgument='<%#Eval("NoticeID")%>' 
+                                        CssClass=" position-static list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShowArt_Click">
+                                        <b style="font-size:smaller;">Notice Date: </b><%#Eval("NoticeDate")%><br />
+                                        </b> <b style="font-size:smaller;"> Notice Description: </b><%#Eval("NoticeDescription")%><br />
+                                    </asp:LinkButton>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                </FooterTemplate>
+                            </asp:Repeater>
+                        </div>
+                    </div>
 
+                     <div runat="server" id="divNotices" class="bg-light position-static col-4 p-3 divContainers">
+                        <asp:HiddenField runat="server" ID="hdnNotice" Value=""/>
+                            <div class="body-div mt-0 p-2">
+                                <div class="row position-static">
+                                    <div class="col position-static"><b>Notice Date: </b></div><div class="col position-static"><label runat ="server" id="lblNoticeDate"></label></div>
+                                </div>
+                                <div class="row position-static">
+                                    <div  class="col position-static"><b>Notice Description: </b></div><div class="col position-static"><label runat="server" id="lblNoticeDescription"></label></div>
+                                </div>
+                            </div>
+                         </div>
 
+                        </div>
+               <%-- asp:Repeater ID="rptNotifications" runat="server">
+
+                        <ItemTemplate>
+
+                <div class="contentHolder mt-4">
+                        <div class="header mb-3">
+                            <h4 class="text-center">Notifications 
+                               <br />
+                            </h4>
+
+                        </div>
+                        <div style="display: flex; justify-content: center" class="container">
+                            <table class="table " style="justify-content: center; width: 50%; height: 20%; align-self: center">
+
+                                <tr>
+                                    <td rowspan="2"></td>
+                                        <!--<asp:Image ID="notifications" ImageUrl="MyMember/icons/notifications.png" runat="server" Height="121px" Width="121px" />-->
+                                        <th colspan="2">Notifications</th>
+                                </tr>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Details</th>
+                                </tr>
+
+                                <tr>
+                                    <th><asp:Label ID="lblnotificationDate" runat="server" Text='<%#Eval("NoticeDate")%>'></asp:Label></th>
+                                    <th>
+                                        <asp:Label ID="lblnotificationDescription" runat="server" Text='<%#Eval("NoticeDescription")%>'></asp:Label>
+                                    </th>
+                                </tr>
+                                </table>
+                                  
+
+                            </ItemTemplate>
+
+                    </asp:Repeater>--%>
+
+                <!--articles-->
+                <div runat="server" id="divDisplayArticles" class="bg-light position-static col p-3 divContainers">
+                    <div class="contentHolder mt-4">
+                        <div class="header mb-3">
+                            <h4 class="text-center">Latest Articles
+                                   <br />
+                            </h4>
+                        </div>
+                        <div class="row position-static list-group justify-content-end">
+                            <asp:Repeater ID="rptDisplayArticles" runat="server">
+                                <HeaderTemplate>
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btnShowArt" EnableViewState="true" CommandArgument='<%#Eval("ArticleID")%>' 
+                                        CssClass=" position-static list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShowArt_Click">
+                                        <b style="font-size:smaller;">Article Title: </b><%#Eval("ArticleTitle")%><br />
+                                        </b> <b style="font-size:smaller;"> Date Created: </b><%#Eval("DateCreated")%><br />
+                                        <b style="font-size:smaller;"> Scholar: </b><%#Eval("Names")%>
+                                    </asp:LinkButton>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                </FooterTemplate>
+                            </asp:Repeater>
+                        </div>
+                    </div>
+
+                     <div runat="server" id="divDisplayArticleContent" class="bg-light position-static col-4 p-3 divContainers">
+                        <asp:HiddenField runat="server" ID="hdfArticleID" Value=""/>
+                            <div class="body-div mt-0 p-2">
+                                <div class="row position-static">
+                                    <div class="col position-static"><b>ArticleTitle: </b></div><div class="col position-static"><label runat ="server" id="lblArticleTitle"></label></div>
+                                </div>
+                                <div class="row position-static">
+                                    <div  class="col position-static"><b>Content: </b></div><div class="col position-static"><label runat="server" id="lblArticleContent"></label></div>
+                                </div>
+                            </div>
+                         </div>
+                        </div>
+            </div>
+        </div>
 
         <!--close content-->
         <div class="footerr">

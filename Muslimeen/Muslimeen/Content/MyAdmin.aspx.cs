@@ -284,7 +284,7 @@ namespace Muslimeen.Content
             try
             {
                 LinkButton linkButton = (LinkButton)sender;
-
+                
                 string articleId = linkButton.CommandArgument.ToString();
                 hdfSchId.Value = articleId;
 

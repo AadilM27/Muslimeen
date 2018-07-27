@@ -16,7 +16,8 @@ namespace Muslimeen.Content
         DBHandler dBHandler = new DBHandler();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
+
            
             
             try
@@ -35,6 +36,11 @@ namespace Muslimeen.Content
 
                     liMyMusbtn.Visible = true;
                     liMyMusDivi.Visible = true;
+                    divDisplayEvents.Visible = false;
+                    divDisplaySalahTimetable.Visible = false;
+                    divDiplayNotifications.Visible = false;
+                    divDisplayArticles.Visible = false;
+                    divNotices.Visible = false;
 
                     btnLogin.Text = "Log out";
                     btnRegister.Visible = false;
@@ -44,6 +50,11 @@ namespace Muslimeen.Content
                 {
                     liMyMusbtn.Visible = false;
                     liMyMusDivi.Visible = false;
+                    divDisplayEvents.Visible = false;
+                    divDisplaySalahTimetable.Visible = false;
+                    divDisplayArticles.Visible = false;
+                    divDiplayNotifications.Visible = false;
+                    divNotices.Visible = false;
 
                     divUserProfile.Visible = false;
                     Session.Clear();
@@ -158,15 +169,7 @@ namespace Muslimeen.Content
 
             }
         }
-        protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
-        {
-            try
-            {
-                int index = int.Parse(e.Item.Value);
-                MultiView1.ActiveViewIndex = index;
-            }
-            catch { }
-        }
+
         protected void btnListEvents_Click(object sender, EventArgs e)
         {
             
@@ -176,5 +179,105 @@ namespace Muslimeen.Content
                 rptGetEvents.DataBind();
            
         }
+
+        protected void btnTodaysPrayerTime_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                divDisplayEvents.Visible = false;
+                divDisplaySalahTimetable.Visible = true;
+                divDiplayNotifications.Visible = false;
+                divDisplayArticles.Visible = false;
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void btnEvents_Click (object sender, EventArgs e)
+        {
+            try
+            {
+                divDisplayEvents.Visible = true;
+                divDisplaySalahTimetable.Visible = false;
+                divDiplayNotifications.Visible = false;
+                divDisplayArticles.Visible = false;
+            }
+            catch
+            { }
+        }
+
+        protected void btnNotifications_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                divDisplayEvents.Visible = false;
+                divDisplaySalahTimetable.Visible = false;
+                divDiplayNotifications.Visible = true;
+                divDisplayArticles.Visible = false;
+                divNotices.Visible = true;
+            }
+            catch
+            { }
+        }
+
+        protected void btnArticles_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                divDisplayEvents.Visible = false;
+                divDisplaySalahTimetable.Visible = false;
+                divDiplayNotifications.Visible = false;
+                divDisplayArticles.Visible = true;
+          
+
+                DBHandler dBHandler = new DBHandler();
+
+                rptDisplayArticles.DataSource = dBHandler.BLL_ViewLatestArticles();
+                rptDisplayArticles.DataBind();
+
+            }
+            catch
+            { }
+        }
+
+        protected void btnShowArt_Click(object sender, EventArgs e)
+        {
+
+            LinkButton linkButton = (LinkButton)sender;
+
+            string articleId = linkButton.CommandArgument.ToString();
+            hdfArticleID.Value = articleId;
+
+            DBHandler dBHandler = new DBHandler();
+            Article article = new Article();
+            article = dBHandler.BLL_GetArticle(Convert.ToInt32(articleId));
+
+
+            lblArticleTitle.InnerText = article.ArticleTitle.ToString();
+            lblArticleContent.InnerText = article.ArticleContent.ToString();
+
+        }
+        protected void btnShowNotice_Click(object sender, EventArgs e)
+        {
+
+            LinkButton linkButton = (LinkButton)sender;
+
+            string NoticeID = linkButton.CommandArgument.ToString();
+            hdnNotice.Value = NoticeID;
+
+            DBHandler dBHandler = new DBHandler();
+            Notice notice = new Notice();
+            notice = dBHandler.BLL_GetNotifications(Convert.ToInt32(NoticeID));
+
+
+            lblNoticeDate.InnerText = notice.NoticeDate.ToString();
+            lblNoticeDescription.InnerText = notice.NoticeDescription.ToString();
+
+        }
     }
+
 }
