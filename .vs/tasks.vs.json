@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskName": "task-notifications",
+      "appliesTo": "Muslimeen/Muslimeen/Content/MyMember/icons/notifications.png",
+      "type": "launch"
+    }
+  ]
+}

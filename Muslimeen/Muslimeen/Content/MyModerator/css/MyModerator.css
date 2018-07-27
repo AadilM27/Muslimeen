@@ -7,8 +7,8 @@ body {
     overflow-y: auto;
 }
 
-html{
-    width:100%;
+html {
+    width: 100%;
 }
 
 .frmDefault {
@@ -23,9 +23,9 @@ html{
     color: #256297;
 }
 
-.user:hover {
-    font-weight: 500;
-}
+    .user:hover {
+        font-weight: 500;
+    }
 
 .navbaritems {
     padding-right: 10px;
@@ -41,12 +41,12 @@ html{
     color: #256297;
 }
 
-.navText:hover {
-    color: white;
-    background-color: #3F84C1;
-    text-decoration: none;
-    border-radius: 2px;
-}
+    .navText:hover {
+        color: white;
+        background-color: #3F84C1;
+        text-decoration: none;
+        border-radius: 2px;
+    }
 
 .navbar {
     background-color: white;
@@ -64,7 +64,7 @@ html{
 .content {
     background-color: white;
     min-height: 598px;
-    padding-right:0;
+    padding-right: 0;
 }
 
 .sticky {
@@ -81,12 +81,12 @@ html{
     text-decoration-color: #256297;
 }
 
-.navbtn:hover {
-    color: white;
-    background-color: #3F84C1;
-    text-decoration: none;
-    border-radius: 2px;
-}
+    .navbtn:hover {
+        color: white;
+        background-color: #3F84C1;
+        text-decoration: none;
+        border-radius: 2px;
+    }
 
 .topnav {
     border-color: #3F84C1;
@@ -94,12 +94,12 @@ html{
     color: #256297;
 }
 
-.topnav:hover {
-    color: white;
-    background-color: #3F84C1;
-    text-decoration: none;
-    border-radius: 3px;
-}
+    .topnav:hover {
+        color: white;
+        background-color: #3F84C1;
+        text-decoration: none;
+        border-radius: 3px;
+    }
 
 .search-btn {
     border-bottom-color: #3F84C1;
@@ -131,10 +131,10 @@ html{
     border-bottom-right-radius: 0px;
 }
 
-.search-box:focus {
-    width: 100%;
-    box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
-}
+    .search-box:focus {
+        width: 100%;
+        box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+    }
 
 .footerr {
     width: 100%;
@@ -167,80 +167,46 @@ html{
 }
 /*end styling for header and footer.*/
 .taskBtn {
-    font-weight: 500;
+    font-weight: 400;
     position: static;
-    background-color:white;
-    color:black;
-    padding:0;
-    border-radius:0px;
-    text-align:start;
+    background-color: lightgrey;
+    color: black;
+    font-weight: 500;
 }
 
-.taskBtn:hover {
-    background-color: #3F84C1;
-    color: white;
-    position: static;
-}
+    .taskBtn:hover {
+        background-color: #3F84C1;
+        color: white;
+    }
 
 .divContainers {
-    min-height:595px;
-    position:center;
+    min-height: 595px;
+    position: center;
 }
 
-.divBtnList{
-    align-items:center;
+.divBtnList {
+    align-items: center;
 }
 
 .lstBtn {
+    background-color: white;
+    border-color: #256297;
+    font-size: smaller;
     position: static;
-    background-color:#6e9bc3;
-    color: black;
-    padding: 0;
-    border-radius: 0px;
-    text-align: start;
-    font-size:small;
+    text-wrap: normal;
 }
 
-.lstBtn:hover {
-    color: white;
-    position: static;
-    border: dashed 2px black;
-}
+    .lstBtn:hover {
+        background-color: #3F84C1;
+        color: white;
+    }
 
 .head-div {
     background-color: #256297;
-    color: white;
-    vertical-align: middle;
-    text-align: center;
-    font-size:x-large;
-}
-
-.head-div-2 {
-    background-color: #3F84C1;
-    color: white;
-    vertical-align: middle;
-    text-align: center;
-    font-size:large;
+    color: white
 }
 
 .body-div {
     background-color: #3F84C1;
-    color:white;
+    color: white;
 }
-
-.basic-div-styling {
-    border:solid;
-    border-width:1px;
-    border-color: #3F84C1;
-    border-radius:5px;
-    vertical-align:middle;
-}
-
-.basic-div-styling-2 {
-    border: solid;
-    border-width: 1px;
-    border-color: rgba(0, 123, 255, 0.25);
-    border-radius: 0;
-    vertical-align: middle;
-}
-

@@ -927,5 +927,75 @@ namespace Muslimeen.BLL
             }
             return list;
         }
+
+        public Notice GetNotifications(int NoticeID)
+        {
+            Notice notice = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@NoticeID", NoticeID)
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetNotifications",
+                         CommandType.StoredProcedure, pars))
+            {
+                if (table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    notice = new Notice
+                    {
+                        NoticeID = Convert.ToInt32(row["NoticeID"]),
+                        NoticeDate = Convert.ToDateTime(row["NoticeDate"]),
+                        NoticeDescription = Convert.ToString(row["NoticeDescription"])
+                    };
+                }
+            }
+            return notice;
+        }
+        //public uspViewLatestArticles ViewLatestArticles(int ArticleID)
+        //{
+        //    uspViewLatestArticles article = null;
+        //    SqlParameter[] pars = new SqlParameter[]
+        //    {
+        //        new SqlParameter("@ArticleID", ArticleID)
+        //    };
+        //    using (DataTable table = DBHelper.ParamSelect("uspViewLatestArticles",
+        //                 CommandType.StoredProcedure, pars))
+        //    {
+        //        if (table.Rows.Count == 1)
+        //        {
+        //            DataRow row = table.Rows[0];
+        //            article = new uspViewLatestArticles
+        //            {
+        //                ArticleID = Convert.ToInt32(row["ArticleID"]),
+        //                ArticleTitle = Convert.ToInt32(row["ArticleTitle"]),
+        //                DateCreated = Convert.ToDateTime(row["DateCreated"]),
+        //                Names = Convert.ToString(row["Names"])
+        //            };
+        //        }
+        //    }
+        //    return article;
+        //}
+
+        public List<uspViewLatestArticles> ViewLatestArticles()
+        {
+            List<uspViewLatestArticles> list = new List<uspViewLatestArticles>();
+            using (DataTable table = DBHelper.Select("uspViewLatestArticles", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspViewLatestArticles article = new uspViewLatestArticles
+                        {
+                            ArticleTitle = Convert.ToInt32(row["ArticleTitle"]),
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]),
+                            Names = Convert.ToString(row["Names"])
+                        };
+                        list.Add(article);
+                    }
+                }
+            }
+            return list;
+        }
     }
 }

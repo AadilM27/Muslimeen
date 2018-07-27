@@ -9,9 +9,9 @@ using TypeLib.ViewModels;
 using Muslimeen.BLL;
 using System.Data;
 
-namespace Muslimeen.Content
+namespace Muslimeen.Content.MyModerator
 {
-    public partial class MyAdmin : System.Web.UI.Page
+    public partial class MyModerator : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -254,6 +254,14 @@ namespace Muslimeen.Content
                     uspVerifyMember.MemberID = memberId;
                     db.BLL_VerifyMember(uspVerifyMember);
 
+                    EmailService emailService = new EmailService();
+                    uspGetMember uspGetMember = new uspGetMember();
+
+                    uspGetMember = db.BLL_GetMember(memberId.ToString());
+
+
+                    emailService.AutoEmailService(uspGetMember.Email.ToString(), "NULL", "NULL", "AcceptedScholars", memberId.ToString(), "NULL");
+
                 }
             }
             catch
@@ -267,11 +275,23 @@ namespace Muslimeen.Content
             try
             {
                 DBHandler db = new DBHandler();
+                uspVerifyMember uspVerifyMember = new uspVerifyMember();
                 uspRejectReg rejectReg = new uspRejectReg();
+              
+                string memberID2 = hdfSchId.Value.ToString();
 
-                rejectReg.MemberID = hdfSchId.Value.ToString();
+                rejectReg.MemberID = memberID2;
 
                 db.BLL_RejectReg(rejectReg);
+
+                EmailService emailService = new EmailService();
+                uspGetMember uspGetMember = new uspGetMember();
+
+                uspGetMember = db.BLL_GetMember(memberID2.ToString());
+
+
+                emailService.AutoEmailService(uspGetMember.Email.ToString(), "NULL", "NULL", "RejectedScholars", memberID2.ToString(), "NULL");
+
             }
             catch
             {
@@ -284,7 +304,7 @@ namespace Muslimeen.Content
             try
             {
                 LinkButton linkButton = (LinkButton)sender;
-                
+
                 string articleId = linkButton.CommandArgument.ToString();
                 hdfSchId.Value = articleId;
 

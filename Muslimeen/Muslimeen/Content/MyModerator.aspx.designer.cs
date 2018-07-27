@@ -7,19 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Muslimeen.Content.Mosque {
+namespace Muslimeen.Content.MyModerator {
     
     
-    public partial class MosqueRep {
+    public partial class MyModerator {
         
         /// <summary>
-        /// form1 control.
+        /// lnk1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.HyperLink lnk1;
+        
+        /// <summary>
+        /// frmScholar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm frmScholar;
         
         /// <summary>
         /// hfAdjustDate control.
@@ -166,372 +175,282 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.Button btnAboutUs;
         
         /// <summary>
-        /// btnNavAddEvent control.
+        /// btn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNavAddEvent;
+        protected global::System.Web.UI.WebControls.Button btn;
         
         /// <summary>
-        /// btnNavEditEvent control.
+        /// btnViewPendingMod control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNavEditEvent;
+        protected global::System.Web.UI.WebControls.Button btnViewPendingMod;
         
         /// <summary>
-        /// btnNavManageTimes control.
+        /// btnViewPendingArticles control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNavManageTimes;
+        protected global::System.Web.UI.WebControls.Button btnViewPendingArticles;
         
         /// <summary>
-        /// divAddEvent control.
+        /// btnUpdateIslmDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAddEvent;
+        protected global::System.Web.UI.WebControls.Button btnUpdateIslmDate;
         
         /// <summary>
-        /// txtEventTitle control.
+        /// divViewPendingSch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEventTitle;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divViewPendingSch;
         
         /// <summary>
-        /// txtEventDate control.
+        /// rptViewPendingSch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEventDate;
+        protected global::System.Web.UI.WebControls.Repeater rptViewPendingSch;
         
         /// <summary>
-        /// txtEventStartTime control.
+        /// divViewPendingArt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEventStartTime;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divViewPendingArt;
         
         /// <summary>
-        /// txtEventEndTime control.
+        /// rptViewPendingArticles control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEventEndTime;
+        protected global::System.Web.UI.WebControls.Repeater rptViewPendingArticles;
         
         /// <summary>
-        /// txtSpeaker control.
+        /// divDisplaySch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSpeaker;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDisplaySch;
         
         /// <summary>
-        /// txtEventDescription control.
+        /// hdfSchId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEventDescription;
+        protected global::System.Web.UI.WebControls.HiddenField hdfSchId;
         
         /// <summary>
-        /// btnAddEvent control.
+        /// lblMemberID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddEvent;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMemberID;
         
         /// <summary>
-        /// lblEventMessage control.
+        /// lblMemberName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEventMessage;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMemberName;
         
         /// <summary>
-        /// divEditEvent control.
+        /// lblMemberLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEditEvent;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMemberLastName;
         
         /// <summary>
-        /// ddlUpdateEvent control.
+        /// lblMemberDOB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUpdateEvent;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMemberDOB;
         
         /// <summary>
-        /// rptUpdateEvents control.
+        /// lblMemberType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptUpdateEvents;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMemberType;
         
         /// <summary>
-        /// divUpdateEvent control.
+        /// lblActiveTypeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divUpdateEvent;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblActiveTypeID;
         
         /// <summary>
-        /// txtUpdateEventTitle control.
+        /// lblEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUpdateEventTitle;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEmail;
         
         /// <summary>
-        /// txtUpdateEventDescription control.
+        /// lblContactNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUpdateEventDescription;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblContactNo;
         
         /// <summary>
-        /// txtUpdateSpeaker control.
+        /// lblActivationExpiry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUpdateSpeaker;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblActivationExpiry;
         
         /// <summary>
-        /// txtUpdateEventDate control.
+        /// lblActivationDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUpdateEventDate;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblActivationDate;
         
         /// <summary>
-        /// txtUpdateEventStartTime control.
+        /// btnAcceptReg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUpdateEventStartTime;
+        protected global::System.Web.UI.WebControls.Button btnAcceptReg;
         
         /// <summary>
-        /// txtUpdateEventEndTime control.
+        /// btnRejectReg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUpdateEventEndTime;
+        protected global::System.Web.UI.WebControls.Button btnRejectReg;
         
         /// <summary>
-        /// btnUpdateEvent control.
+        /// divViewArt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdateEvent;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divViewArt;
         
         /// <summary>
-        /// btnRemoveEvent control.
+        /// lblArticleTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRemoveEvent;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblArticleTitle;
         
         /// <summary>
-        /// divManageTimes control.
+        /// lblArticleContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divManageTimes;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblArticleContent;
         
         /// <summary>
-        /// Calendar1 control.
+        /// btnAccept control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendar1;
+        protected global::System.Web.UI.WebControls.Button btnAccept;
         
         /// <summary>
-        /// lblDate control.
+        /// Button2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDate;
+        protected global::System.Web.UI.WebControls.Button Button2;
         
         /// <summary>
-        /// lblMessage control.
+        /// txtRejectReason control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessage;
+        protected global::System.Web.UI.WebControls.TextBox txtRejectReason;
         
         /// <summary>
-        /// icoPrayer control.
+        /// divUpdateIslmDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image icoPrayer;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divUpdateIslmDate;
         
         /// <summary>
-        /// txtFajrA control.
+        /// txtIslmDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFajrA;
+        protected global::System.Web.UI.WebControls.TextBox txtIslmDate;
         
         /// <summary>
-        /// txtFajrJ control.
+        /// btnChngIslmDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFajrJ;
-        
-        /// <summary>
-        /// txtDhuhrA control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDhuhrA;
-        
-        /// <summary>
-        /// txtDhuhrJ control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDhuhrJ;
-        
-        /// <summary>
-        /// txtAsrA control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAsrA;
-        
-        /// <summary>
-        /// txtAsrJ control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAsrJ;
-        
-        /// <summary>
-        /// txtMagribA control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMagribA;
-        
-        /// <summary>
-        /// txtMagribJ control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMagribJ;
-        
-        /// <summary>
-        /// txtEishaA control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEishaA;
-        
-        /// <summary>
-        /// txtEishaJ control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEishaJ;
-        
-        /// <summary>
-        /// BtnAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnAdd;
-        
-        /// <summary>
-        /// BtnUpdate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnUpdate;
+        protected global::System.Web.UI.WebControls.Button btnChngIslmDate;
     }
 }
