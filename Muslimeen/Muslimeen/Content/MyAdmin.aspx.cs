@@ -19,10 +19,8 @@ namespace Muslimeen.Content
             {
                 DBHandler dBHandler = new DBHandler();
                 divUpdateIslmDate.Visible = false;
-                divViewPendingArt.Visible = false;
                 divViewPendingSch.Visible = false;
                 divDisplaySch.Visible = false;
-                divViewArt.Visible = false;
 
                 if (Session["UserName"] != null)
                 {
@@ -57,32 +55,10 @@ namespace Muslimeen.Content
             }
         }
 
-        protected void btnViewPendingArticles_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                divDisplaySch.Visible = false;
-                divViewPendingSch.Visible = false;
-                divUpdateIslmDate.Visible = false;
-
-                divViewPendingArt.Visible = true;
-
-                DBHandler dBHandler = new DBHandler();
-
-                rptViewPendingArticles.DataSource = dBHandler.BLL_GetPendingArticle();
-                rptViewPendingArticles.DataBind();
-            }
-            catch
-            {
-
-            }
-        }
-
         protected void btnViewPendingMod_Click(object sender, EventArgs e)
         {
             try
             {
-                divViewPendingArt.Visible = false;
                 divUpdateIslmDate.Visible = false;
                 divDisplaySch.Visible = true;
                 divViewPendingSch.Visible = true;
@@ -100,7 +76,6 @@ namespace Muslimeen.Content
 
         protected void btnViewPendingSch_Click(object sender, EventArgs e)
         {
-            divViewPendingArt.Visible = false;
             divUpdateIslmDate.Visible = false;
             divDisplaySch.Visible = true;
             divViewPendingSch.Visible = true;
@@ -230,7 +205,6 @@ namespace Muslimeen.Content
                 lblActivationDate.InnerText = member.ActivationDate.ToString("yyyy-MM-dd");
 
                 divViewPendingSch.Visible = true;
-                divViewArt.Visible = false;
                 divDisplaySch.Visible = true;
             }
             catch
@@ -279,33 +253,6 @@ namespace Muslimeen.Content
             }
         }
 
-        protected void btnShowArt_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                LinkButton linkButton = (LinkButton)sender;
-                
-                string articleId = linkButton.CommandArgument.ToString();
-                hdfSchId.Value = articleId;
-
-                DBHandler dBHandler = new DBHandler();
-                Article article = new Article();
-                article = dBHandler.BLL_GetArticle(Convert.ToInt32(articleId));
-
-
-                lblArticleTitle.InnerText = article.ArticleTitle.ToString();
-                lblArticleContent.InnerText = article.ArticleContent.ToString();
-
-                divViewPendingArt.Visible = true;
-                divDisplaySch.Visible = false;
-                divViewArt.Visible = true;
-            }
-            catch
-            {
-
-            }
-        }
-
         protected void txtRejectReason_TextChanged(object sender, EventArgs e)
         {
 
@@ -331,30 +278,6 @@ namespace Muslimeen.Content
 
                     dBHandler.BLL_AcceptArticle(accept);
                 }
-            }
-            catch
-            {
-
-            }
-        }
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                AcceptArticle accept = new AcceptArticle();
-
-                string articleId = hdfSchId.Value.ToString();
-
-
-                accept.ModeraterID = Session["UserName"].ToString();
-                accept.Status = 'R';
-                accept.Active = 'N';
-                accept.RejectionReason = txtRejectReason.Text.ToString();
-                accept.ArticleID = Convert.ToInt32(articleId);
-                DBHandler dBHandler = new DBHandler();
-
-                dBHandler.BLL_AcceptArticle(accept);
             }
             catch
             {
