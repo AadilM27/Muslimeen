@@ -192,9 +192,9 @@ namespace Muslimeen.BLL
             return dBAccess.GetNotifications(NoticeID);
         }
 
-        public List<uspViewLatestArticles> BLL_ViewLatestArticles()
+        public uspViewLatestArticles BLL_ViewLatestArticles(DateTime todaysDate,DateTime date)
         {
-            return dBAccess.ViewLatestArticles();
+            return dBAccess.ViewLatestArticles(todaysDate,date);
         }
     }
 }
