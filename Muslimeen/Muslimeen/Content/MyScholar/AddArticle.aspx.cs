@@ -19,6 +19,17 @@ namespace Muslimeen.Content.MyScholar
             {
                 DBHandler dBHandler = new DBHandler();
 
+                divAddArticle.Visible = true;
+                divPendingArticles.Visible = false;
+                divRejectedArticles.Visible = false;
+
+                //Pending Article Source
+                repeatPendingArticle.DataSource = dBHandler.BLL_GetPendingArticle();
+                repeatPendingArticle.DataBind();
+
+                //RejectedArticle Source
+                repeatRejectedArticle.DataSource = dBHandler.BLL_GetRejectedArticle();
+                repeatRejectedArticle.DataBind();
 
                 if (Session["UserName"] != null)
                 {
@@ -59,7 +70,7 @@ namespace Muslimeen.Content.MyScholar
             {
 
             }
-        }
+        }   
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
@@ -72,7 +83,7 @@ namespace Muslimeen.Content.MyScholar
 
                 Session.Clear();
                 Session.Abandon();
-                Response.Redirect("~/Content/Default.aspx");
+                Response.Redirect("~/Content/MyAdmin.aspx");
                 btnLogin.Text = "Login";
                 btnRegister.Visible = true;
             }
@@ -90,7 +101,7 @@ namespace Muslimeen.Content.MyScholar
 
         protected void btnMosques_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Mosque.aspx");
+            Response.Redirect("~/Content/Mosque/ListMosque.aspx");
         }
 
         protected void btnScholars_Click(object sender, EventArgs e)
@@ -144,21 +155,75 @@ namespace Muslimeen.Content.MyScholar
             {
 
             }
+        }
 
+        protected void btnViewArticles_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                divAddArticle.Visible = true;
+                divPendingArticles.Visible = false;
+                divRejectedArticles.Visible = false;
+
+                DBHandler dBHandler = new DBHandler();
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void btnPendingArticles_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                divAddArticle.Visible = false;
+                divPendingArticles.Visible = true;
+                divRejectedArticles.Visible = false;
+
+                DBHandler dBHandler = new DBHandler();
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void btnRejectedArticles_Click(Object sender, EventArgs e)
+        {
+            try
+            {
+                divAddArticle.Visible = false;
+                divPendingArticles.Visible = false;
+                divRejectedArticles.Visible = true;
+
+                DBHandler dBHandler = new DBHandler();
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void btnAddArticle_Click(object sender, EventArgs e)
+        {
+            divAddArticle.Visible = true;
+
+            DBHandler dBHandler = new DBHandler();
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
             DBHandler han = new DBHandler();
-            InsertArticle art = new InsertArticle();
+            Article art = new Article();
 
-            lblErrorPass.Text = "";
+            //lblErrorPass.Text = "";
 
             try
             {
                 if (txtHeading.Text == null && txtContent.Text == null)
                 {
-                    lblErrorPass.Text = "One or more fields are left empty";
+                    //lblErrorPass.Text = "One or more fields are left empty";
                 }
                 else
                 {
@@ -184,19 +249,12 @@ namespace Muslimeen.Content.MyScholar
                     txtContent.Text = " ";
 
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Added Article');</script>");
-
                 }
-
             }
             catch
             {
-                throw;
+                
             }
-        }
-
-        protected void drpTopics_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿/* Start coping from here to get heade and footer styling*/
+﻿/*Start styling for header and footer.*/
 body {
     background-color: #256297;
     height: 100%;
@@ -8,7 +8,7 @@ body {
 }
 
 html {
-    width: auto;
+    width: 100%;
 }
 
 .frmDefault {
@@ -23,15 +23,15 @@ html {
     color: #256297;
 }
 
-.user:hover {
-    font-weight: 500;
-}
+    .user:hover {
+        font-weight: 500;
+    }
 
 .navbaritems {
     padding-right: 10px;
     padding-left: 10px;
-    padding-bottom: 0px;
-    padding-top: 0px;
+    padding-bottom: 0;
+    padding-top: 0;
     border-radius: 2px;
 }
 
@@ -41,12 +41,12 @@ html {
     color: #256297;
 }
 
-.navText:hover {
-    color: white;
-    background-color: #3F84C1;
-    text-decoration: none;
-    border-radius: 2px;
-}
+    .navText:hover {
+        color: white;
+        background-color: #3F84C1;
+        text-decoration: none;
+        border-radius: 2px;
+    }
 
 .navbar {
     background-color: white;
@@ -63,6 +63,8 @@ html {
 
 .content {
     background-color: white;
+    min-height: 598px;
+    padding-right: 0;
 }
 
 .sticky {
@@ -79,12 +81,12 @@ html {
     text-decoration-color: #256297;
 }
 
-.navbtn:hover {
-    color: white;
-    background-color: #3F84C1;
-    text-decoration: none;
-    border-radius: 2px;
-}
+    .navbtn:hover {
+        color: white;
+        background-color: #3F84C1;
+        text-decoration: none;
+        border-radius: 2px;
+    }
 
 .topnav {
     border-color: #3F84C1;
@@ -92,21 +94,21 @@ html {
     color: #256297;
 }
 
-.topnav:hover {
-    color: white;
-    background-color: #3F84C1;
-    text-decoration: none;
-    border-radius: 3px;
-}
+    .topnav:hover {
+        color: white;
+        background-color: #3F84C1;
+        text-decoration: none;
+        border-radius: 3px;
+    }
 
 .search-btn {
     border-bottom-color: #3F84C1;
     border-top-color: #3F84C1;
     border-left-color: white;
     border-right-color: #3F84C1;
-    border-left: 0px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     width: 35px;
     background-color: none;
 }
@@ -129,10 +131,10 @@ html {
     border-bottom-right-radius: 0px;
 }
 
-.search-box:focus {
-    width: 100%;
-    box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
-}
+    .search-box:focus {
+        width: 100%;
+        box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+    }
 
 .footerr {
     width: 100%;
@@ -163,49 +165,48 @@ html {
     color: #256297;
     align-self: center;
 }
-/*Stop header and footer CSS*/
-
-.nav-tabs--vertical {
-    border-bottom: none;
-    border-right: 1px solid #ddd;
-    display: flex;
-    flex-flow: column nowrap;
+/*end styling for header and footer.*/
+.taskBtn {
+    font-weight: 400;
+    position: static;
+    background-color: lightgrey;
+    color: black;
+    font-weight: 500;
 }
 
-.nav-tabs--left {
-    margin: 0 15px;
-}
-.nav-tabs--left .nav-item + .nav-item {
-    margin-top: .25rem;
-}
-.nav-tabs--left .nav-link {
-    transition: border-color .125s ease-in;
-    white-space: nowrap;
+    .taskBtn:hover {
+        background-color: #3F84C1;
+        color: white;
+    }
+
+.divContainers {
+    min-height: 595px;
+    position: center;
 }
 
-.nav-tabs--left .nav-link:hover {
-    background-color: #f7f7f7;
-    border-color: transparent;
+.divBtnList {
+    align-items: center;
 }
 
-.nav-tabs--left .nav-link.active {
-    border-bottom-color: #ddd;
-    border-right-color: #fff;
-    border-bottom-left-radius: 0.25rem;
-    border-top-right-radius: 0;
-    margin-right: -1px;
+.lstBtn {
+    background-color: white;
+    border-color: #256297;
+    font-size: smaller;
+    position: static;
+    text-wrap: normal;
 }
 
-.nav-tabs--left .nav-link.active:hover {
-    background-color: #fff;
-    border-color: #0275d8 #fff #0275d8 #0275d8;
+    .lstBtn:hover {
+        background-color: #3F84C1;
+        color: white;
+    }
+
+.head-div {
+    background-color: #256297;
+    color: white
 }
 
-.main-txtb:focus {
-    background-color: #d7e7f5;
-    text-decoration-color: black;
-}
-
-.lblError {
-    color: red;
+.body-div {
+    background-color: #3F84C1;
+    color: white;
 }

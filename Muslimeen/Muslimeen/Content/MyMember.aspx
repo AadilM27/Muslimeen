@@ -317,9 +317,15 @@
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <asp:LinkButton ID="btnShowNotice"  CommandArgument='<%#Eval("NoticeID")%>' CssClass=" position-static list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShowNotice_Click">
-                                        <b>Notice date: </b><%#Eval("NoticeDate")%><br />
-                                        <b style="font-size:smaller;"> Notice description: </b><%#Eval("NoticeDescription")%>
-                                        <br />
+                                        <div class=" col-auto position-static p-0">
+                                                        <div class="">
+                                        <p>Notice date: </p><%#Eval("NoticeDate")%><br />
+                                        </div>
+                                        <hr class=" mr-4 m-0 p-0"/>
+                                        <div class="">
+                                        <p style="font-size:smaller;"> Notice description: </p><%#Eval("NoticeDescription")%>
+                                        </div>
+                                       <br />
                                     </asp:LinkButton>
                                 </ItemTemplate>
                                 <FooterTemplate>
@@ -329,6 +335,7 @@
                     <%--</div>--%>
                     </div>
                  </div>
+
                      <div runat="server" id="divNotices" class=" col bg-light position-static col-4 p-3 divContainers">
                         <asp:HiddenField runat="server" ID="hdnNotice" Value=""/>   
                                 <div class=" header mb-3 ">
@@ -345,14 +352,12 @@
                             </div>
                           </div>
                         </div>
-                         
 
                        
 
                 <!--articles-->
 
                 <div runat="server" id="divDisplayArticles" class="bg-light position-static col-4 p-3 divContainers">
-                    <%--<div class="contentHolder mt-4">--%>
                         <div class="header mb-3">
                            <p class="m-0">Latest Articles</p>
                         </div>
@@ -365,14 +370,12 @@
                                         <b>Article Title: </b><%#Eval("ArticleTitle")%><br />
                                         <b style="font-size:smaller;"> By: </b><%#Eval("Names")%> </b> 
                                         <b style="font-size:smaller;"> Date Created: </b><%#Eval("DateCreated")%><br />
-                                        
                                     </asp:LinkButton>
                                 </ItemTemplate>
                                 <FooterTemplate>
                                 </FooterTemplate>
                             </asp:Repeater>
                         </div>
-                   <%-- </div>--%>
                     </div>
                     
                     
@@ -381,7 +384,7 @@
                             <div class=" header mb-3 ">
                                 <p class="m-0">Selected Article Details:</p>
                             </div>
-                            <div class="row" style="overflow:scroll;">
+                         <div class="row" style="overflow:scroll;">
                              <div class="mt-0 p-2">
                                 <div class="row position-static" >
                                     <div class="col position-static"><b>Article Title: </b></div><div class="col position-static"><label runat ="server" id="lblArticleTitle"></label></div>

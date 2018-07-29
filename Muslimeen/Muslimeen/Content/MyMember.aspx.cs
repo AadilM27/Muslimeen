@@ -221,7 +221,7 @@ namespace Muslimeen.Content
                 divDisplaySalahTimetable.Visible = false;
                 divDiplayNotifications.Visible = true;
                 divDisplayArticles.Visible = false;
-                divNotices.Visible = false;
+                divNotices.Visible = true;
                 divDisplayArt.Visible = false;
             }
             catch
@@ -281,8 +281,12 @@ namespace Muslimeen.Content
             hdnNotice.Value = NoticeID;
 
             DBHandler dBHandler = new DBHandler();
+
+            DateTime todaysDate = DateTime.Today.ToLocalTime();
+            DateTime date = DateTime.Today.AddDays(-7);
+
             Notice notice = new Notice();
-            notice = dBHandler.BLL_GetNotifications(Convert.ToInt32(NoticeID));
+            notice = dBHandler.BLL_GetNotifications(todaysDate,date);
 
 
             lblNoticeDate.InnerText = notice.NoticeDate.ToString();

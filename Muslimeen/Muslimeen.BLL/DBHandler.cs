@@ -177,9 +177,9 @@ namespace Muslimeen.BLL
         }
 
         //Insert of Article
-        public bool BLL_InsertArticle(InsertArticle article)
+        public bool BLL_InsertArticle(Article article)
         {
-            return dBAccess.InsertArticle(article);
+            return dBAccess.AddArticle(article);
         }
 
         public bool  BLL_AcceptArticle(AcceptArticle acceptArticle)
@@ -187,9 +187,16 @@ namespace Muslimeen.BLL
             return dBAccess.AcceptArticle(acceptArticle);
 
         }
-        public Notice BLL_GetNotifications(int NoticeID)
+
+        //Rejected Articles
+        public List<Article> BLL_GetRejectedArticle()
         {
-            return dBAccess.GetNotifications(NoticeID);
+            return dBAccess.GetRejectedArticle();
+        }
+
+        public Notice BLL_GetNotifications(DateTime todaysDate, DateTime date)
+        {
+            return dBAccess.GetNotifications(todaysDate, date);
         }
 
         public uspViewLatestArticles BLL_ViewLatestArticles(DateTime todaysDate,DateTime date)

@@ -175,6 +175,42 @@ namespace Muslimeen.Content.MyScholar {
         protected global::System.Web.UI.WebControls.Button btnAboutUs;
         
         /// <summary>
+        /// btnViewPendingSch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnViewPendingSch;
+        
+        /// <summary>
+        /// btnPendingArticles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPendingArticles;
+        
+        /// <summary>
+        /// btnRejectedArticles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRejectedArticles;
+        
+        /// <summary>
+        /// divAddArticle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAddArticle;
+        
+        /// <summary>
         /// Label3 control.
         /// </summary>
         /// <remarks>
@@ -238,12 +274,39 @@ namespace Muslimeen.Content.MyScholar {
         protected global::System.Web.UI.WebControls.Button btnSave;
         
         /// <summary>
-        /// lblErrorPass control.
+        /// divPendingArticles control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblErrorPass;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPendingArticles;
+        
+        /// <summary>
+        /// repeatPendingArticle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repeatPendingArticle;
+        
+        /// <summary>
+        /// divRejectedArticles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRejectedArticles;
+        
+        /// <summary>
+        /// repeatRejectedArticle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repeatRejectedArticle;
     }
 }

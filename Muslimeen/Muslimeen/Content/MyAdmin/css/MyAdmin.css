@@ -199,6 +199,7 @@ html{
     border-radius: 0px;
     text-align: start;
     font-size:small;
+    border:thin solid #256297;
 }
 
 .lstBtn:hover {

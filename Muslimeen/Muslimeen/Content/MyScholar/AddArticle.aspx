@@ -79,128 +79,185 @@
                         </ul>
                     </div>
                 </div>
-            </header>
+            </header>        
 
-        <!--Page Content-->
         <div class="content" id="content">
-            <div class="d-flex flex-row mt-2">
-                <ul class="nav nav-tabs nav-tabs--vertical nav-tabs--left" role="navigation">
-                    <li class="nav-item">
-                        <a href="AddArticle.aspx" class="nav-link active" data-toggle="tab" role="tab" aria-controls="lorem">Add Article</a>
-                    </li>
-                    <li class="nav-item">          
-                        <a href="PendingArticle.aspx" class="nav-link" data-toggle="tab" role="tab" aria-controls="ipsum">Pending Article</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="RejectedArticle.aspx" class="nav-link" data-toggle="tab" role="tab" aria-controls="dolor">Rejected Article</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="MosqueEvents.aspx" class="nav-link" data-toggle="tab" role="tab" aria-controls="sit-amet">Mosque Events</a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" role="tabpanel">
-                        <h2 class="text-center">Add Article</h2> 
+            <!--add content here -->
+            <div class="row m-0 divContainers p-2">
+                <div class=" col-3 position-static bg-light mr-2 p-2 ">
+                    <!--contains the buttons-->
+                    <nav class="nav nav-pills flex-column pl-2">
+                        <p class="navbar-brand text-center text-uppercase font-weight-bold">Scholar Tasks:</p>
+                        <asp:Button runat="server" ID="btnViewPendingSch" OnClick="btnAddArticle_Click" CssClass=" mb-2 btn taskBtn" Text="Add Article" />
+                        <asp:Button runat="server" ID="btnPendingArticles" CssClass=" mb-2 btn taskBtn" OnClick="btnPendingArticles_Click" Text="View Pending Articles" />
+                        <asp:Button runat="server" ID="btnRejectedArticles" CssClass=" mb-2 btn taskBtn" OnClick="btnRejectedArticles_Click" Text="View Rejected Articles" />
+                    </nav>
+                </div>
+
+                <div class=" col-8 p-3 bg-light position-static" runat="server" id="divAddArticle"> <!--Contains the List of items-->                   
+                    <div class="row position-static list-group justify-content-end"><!--Adding Article Code-->                        
+                        <h2 class="text-center">Add Article</h2>
+
                         <div class="form-group row">
-                            <asp:Label CssClass="col-sm-5 col-form-label position-static" ID="Label3" runat="server" Text="Topic:"></asp:Label> 
-                            <div class="col-sm-7 position-static">
-                                <asp:DropDownList ID="drpTopics" runat="server" class="form-control main-txtb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" OnSelectedIndexChanged="drpTopics_SelectedIndexChanged" AutoPostBack="false"></asp:DropDownList>
-                            </div>
-                        </div>                    
-                        <div class="form-group row"> 
-                            <asp:Label CssClass="col-sm-5 col-form-label position-static" ID="Label1" runat="server" Text="Heading:"></asp:Label> 
-                            <div class="col-sm-7 position-static">
-                                <asp:TextBox CssClass="form-control" ID="txtHeading" runat="server" Width="300%"></asp:TextBox>  
-                            </div>
-                        </div>   
-                        <div class="form-group row">
-                            <asp:Label CssClass="col-sm-5 col-form-label position-static" ID="Label2" runat="server" Text="Content:"></asp:Label>
-                            <div class="col-sm-7 position-static">
-                                <asp:TextBox CssClass="form-control" ID="txtContent" runat="server" Height="200px" TextMode="MultiLine" Width="300%"></asp:TextBox>
-                            </div>
-                        </div>  
-                        <div class="form-group row">
-                            <div class="col-sm-5 position-static">
-                                <asp:Button CssClass="form-control" ID="btnSave" runat="server" Text="Save" class="badge-success" OnClick="btnSave_Click" data-toggle="modal" data-target="#PopModal"/>  
-                            </div>
-                            <div class="col-sm-7 position-static">
-                                <asp:Label class="lblError" runat="server" ID="lblErrorPass"></asp:Label>
+                            <asp:Label CssClass="col-sm-2 col-form-label position-static" ID="Label3" runat="server" Text="Topic:"></asp:Label>
+                            <div class="col-sm-3 position-static">
+                                <asp:DropDownList ID="drpTopics" runat="server" CssClass="form-control main-txtb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" AutoPostBack="false"></asp:DropDownList>
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <asp:Label CssClass="col-sm-2 col-form-label position-static" ID="Label1" runat="server" Text="Heading:"></asp:Label>
+                            <div class="col-sm-3 position-static">
+                                <asp:TextBox CssClass="form-control" ID="txtHeading" runat="server" Width="300%"></asp:TextBox>
+                            </div>
+                        </div>
 
-                        <%--<!-- Modal -->
-                        <div class="modal fade" id="PopModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Article Added</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                        <div class="form-group row">
+                            <asp:Label CssClass="col-sm-2 col-form-label position-static" ID="Label2" runat="server" Text="Content:"></asp:Label>
+                            <div class="col-sm-3 position-static">
+                                <asp:TextBox CssClass="form-control" ID="txtContent" runat="server" Height="200px" TextMode="MultiLine" Width="300%"></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-10">
+                            <div class="btn-group float-right mb-6">
+                                <asp:Button CssClass="btn btn-primary btn-md" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
+                            </div>
+                        </div>
+                    </div><!--Ending of Adding Article Code-->
+                </div>
+
+                <div class=" col-8 p-3 bg-light position-static" runat="server" id="divPendingArticles"> <!--Pending Article Code-->
+                        <div class="row position-static list-group justify-content-end">
+                            <h2 class="text-center">Pending Article</h2>
+                            <asp:Repeater ID="repeatPendingArticle" runat="server">
+                            <ItemTemplate>
+                                <div class="col position-static">
+                                    <div class="row position-static">
+                                        <div class="col-2 position-static">
+                                            <h5>Title:</h5>
+                                        </div>
+                                        <div class="col-10 position-static">
+                                            <asp:Label runat="server" ID="lable1" Text='<%# Eval("ArticleTitle") %>'></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="row position-static">
+                                        <div class="col-2 position-static">
+                                            <h5>Content: </h5>
+                                        </div>
+                                        <div class="col-10 position-static">
+                                            <asp:Label runat="server" ID="Label2" Text='<%# Eval("ArticleContent") %>'></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="row position-static">                                        
+                                        <div class="col-2 position-static">
+                                            <h6>Date: </h6>
+                                        </div>
+                                        <div class="col-4 position-static">
+                                            <asp:Label class="font-italic" runat="server" ID="Label1" Text='<%# Eval("DateCreated") %>'></asp:Label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>--%>
+                                <hr />
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        </div>
+                    </div> <!--Ending of Pending Article Code-->
+
+                <div class=" col-8 p-3 bg-light position-static" runat="server" id="divRejectedArticles"> <!--Rejected Article Code-->
+                        <div class="row position-static list-group justify-content-end">
+                            <h2 class="text-center">Rejected Articles</h2>
+                            <asp:Repeater ID="repeatRejectedArticle" runat="server">
+                            <ItemTemplate>
+                                <div class="col position-static">
+                                    <div class="row position-static">
+                                        <div class="col-2 position-static">
+                                            <h5>Title:</h5>
+                                        </div>
+                                        <div class="col-10 position-static">
+                                            <asp:Label runat="server" ID="lable1" Text='<%# Eval("ArticleTitle") %>'></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="row position-static">
+                                        <div class="col-2 position-static">
+                                            <h5>Content: </h5>
+                                        </div>
+                                        <div class="col-10 position-static">
+                                            <asp:Label runat="server" ID="Label2" Text='<%# Eval("ArticleContent") %>'></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="row position-static">                                        
+                                        <div class="col-2 position-static">
+                                            <h6>Date: </h6>
+                                        </div>
+                                        <div class="col-4 position-static">
+                                            <asp:Label class="font-italic" runat="server" ID="Label1" Text='<%# Eval("DateCreated") %>'></asp:Label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        </div>
                     </div>
-                </div>
-            </div>         
+            </div>
         </div>
     </form>
 
     <!--Footer-->
-<div class="footerr"> <!--End of content, start of footer-->
-                <div class="row bg-light">
-                    <div class="col text-center position-static">
-                       <h6>Content</h6>
-                        <ul class="navbar-nav">
-                           <li class="nav-item">
-                               <a class="footerr-text" href="Mosque.aspx">Mosques</a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="footerr-text" href="#">Scholars</a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="footerr-text" href="#">Learn Islam</a>
-                           </li>
-                           <li class="nav-item">
-                               <a class="footerr-text" href="ZakaahWebForms/Zakaah.aspx">Zakaah</a>
-                           </li>
-                        </ul>
-                    </div>
-                    <div class="col  text-center position-static">
-                        <h6>Support</h6>
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="footerr-text" href="AboutUs.aspx">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="HelpPage.aspx">Help</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="HelpCenter.aspx">Help Center</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="TermsOfService.aspx">Terms</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col  text-center position-static">
-                        <h6>Contact us</h6>
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="footerr-text" href="mailto:nextechgrp@gmail.com">Email</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="#">+27743784081</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="footerr-text" href="https://www.youtube.com/channel/UCp87ZLRrUz3SbzPPP2uaIEg">YouTube</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+    <div class="footerr">
+        <!--End of content, start of footer-->
+        <div class="row bg-light">
+            <div class="col text-center position-static">
+                <h6>Content</h6>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="footerr-text" href="Mosque.aspx">Mosques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="footerr-text" href="#">Scholars</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="footerr-text" href="#">Learn Islam</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="footerr-text" href="ZakaahWebForms/Zakaah.aspx">Zakaah</a>
+                    </li>
+                </ul>
             </div>
+            <div class="col  text-center position-static">
+                <h6>Support</h6>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="footerr-text" href="AboutUs.aspx">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="footerr-text" href="HelpPage.aspx">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="footerr-text" href="HelpCenter.aspx">Help Center</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="footerr-text" href="TermsOfService.aspx">Terms</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col  text-center position-static">
+                <h6>Contact us</h6>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="footerr-text" href="mailto:nextechgrp@gmail.com">Email</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="footerr-text" href="#">+27743784081</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="footerr-text" href="https://www.youtube.com/channel/UCp87ZLRrUz3SbzPPP2uaIEg">YouTube</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <script src="../Default/Default.js" type="text/javascript"></script>
     <script src="../Default/DatesEnglishHijri.js" type="text/javascript"></script>

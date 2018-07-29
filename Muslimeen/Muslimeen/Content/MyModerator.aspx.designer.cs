@@ -184,15 +184,6 @@ namespace Muslimeen.Content.MyModerator {
         protected global::System.Web.UI.WebControls.Button btn;
         
         /// <summary>
-        /// btnViewPendingMod control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnViewPendingMod;
-        
-        /// <summary>
         /// btnViewPendingArticles control.
         /// </summary>
         /// <remarks>
@@ -202,13 +193,13 @@ namespace Muslimeen.Content.MyModerator {
         protected global::System.Web.UI.WebControls.Button btnViewPendingArticles;
         
         /// <summary>
-        /// btnUpdateIslmDate control.
+        /// lblHeading control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdateIslmDate;
+        protected global::System.Web.UI.WebControls.Label lblHeading;
         
         /// <summary>
         /// divViewPendingSch control.
@@ -425,32 +416,5 @@ namespace Muslimeen.Content.MyModerator {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRejectReason;
-        
-        /// <summary>
-        /// divUpdateIslmDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divUpdateIslmDate;
-        
-        /// <summary>
-        /// txtIslmDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIslmDate;
-        
-        /// <summary>
-        /// btnChngIslmDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnChngIslmDate;
     }
 }
