@@ -167,16 +167,19 @@ html {
 }
 /*end styling for header and footer.*/
 .taskBtn {
-    font-weight: 400;
-    position: static;
-    background-color: lightgrey;
-    color: black;
     font-weight: 500;
+    position: static;
+    background-color: white;
+    color: black;
+    padding: 0;
+    border-radius: 0px;
+    text-align: start;
 }
 
     .taskBtn:hover {
         background-color: #3F84C1;
         color: white;
+        position: static;
     }
 
 .divContainers {
@@ -189,24 +192,55 @@ html {
 }
 
 .lstBtn {
-    background-color: white;
-    border-color: #256297;
-    font-size: smaller;
     position: static;
-    text-wrap: normal;
+    background-color: #6e9bc3;
+    color: black;
+    padding: 0;
+    border-radius: 0px;
+    text-align: start;
+    font-size: small;
+    border: thin solid #256297;
 }
 
     .lstBtn:hover {
-        background-color: #3F84C1;
         color: white;
+        position: static;
+        border: dashed 2px black;
     }
 
 .head-div {
     background-color: #256297;
-    color: white
+    color: white;
+    vertical-align: middle;
+    text-align: center;
+    font-size: x-large;
+}
+
+.head-div-2 {
+    background-color: #3F84C1;
+    color: white;
+    vertical-align: middle;
+    text-align: center;
+    font-size: large;
 }
 
 .body-div {
     background-color: #3F84C1;
     color: white;
+}
+
+.basic-div-styling {
+    border: solid;
+    border-width: 1px;
+    border-color: #3F84C1;
+    border-radius: 5px;
+    vertical-align: middle;
+}
+
+.basic-div-styling-2 {
+    border: solid;
+    border-width: 1px;
+    border-color: rgba(0, 123, 255, 0.25);
+    border-radius: 0;
+    vertical-align: middle;
 }

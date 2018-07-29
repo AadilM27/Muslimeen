@@ -15,10 +15,11 @@ namespace Muslimeen.Content.MyModerator
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             try
             {
                 DBHandler dBHandler = new DBHandler();
-                divUpdateIslmDate.Visible = false;
+               
                 divViewPendingArt.Visible = false;
                 divViewPendingSch.Visible = false;
                 divDisplaySch.Visible = false;
@@ -61,9 +62,10 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
+                lblHeading.Text = "Pending Articles";
                 divDisplaySch.Visible = false;
                 divViewPendingSch.Visible = false;
-                divUpdateIslmDate.Visible = false;
+               
 
                 divViewPendingArt.Visible = true;
 
@@ -83,7 +85,7 @@ namespace Muslimeen.Content.MyModerator
             try
             {
                 divViewPendingArt.Visible = false;
-                divUpdateIslmDate.Visible = false;
+               
                 divDisplaySch.Visible = true;
                 divViewPendingSch.Visible = true;
 
@@ -100,8 +102,9 @@ namespace Muslimeen.Content.MyModerator
 
         protected void btnViewPendingSch_Click(object sender, EventArgs e)
         {
+            lblHeading.Text = "Pending Scholars";
             divViewPendingArt.Visible = false;
-            divUpdateIslmDate.Visible = false;
+           
             divDisplaySch.Visible = true;
             divViewPendingSch.Visible = true;
 
@@ -132,7 +135,7 @@ namespace Muslimeen.Content.MyModerator
 
         protected void btnUpdateIslmDate_Click(object sender, EventArgs e)
         {
-            divUpdateIslmDate.Visible = true;
+           
         }
 
 
