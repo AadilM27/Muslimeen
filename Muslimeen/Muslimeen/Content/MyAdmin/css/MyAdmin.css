@@ -214,6 +214,7 @@ html{
     vertical-align: middle;
     text-align: center;
     font-size:x-large;
+    height:55px;
 }
 
 .head-div-2 {
@@ -234,7 +235,6 @@ html{
     border-width:1px;
     border-color: #3F84C1;
     border-radius:5px;
-    vertical-align:middle;
 }
 
 .basic-div-styling-2 {
@@ -242,6 +242,42 @@ html{
     border-width: 1px;
     border-color: rgba(0, 123, 255, 0.25);
     border-radius: 0;
-    vertical-align: middle;
 }
 
+.side-bar{
+    min-width:250px;
+    min-height:700px;
+    float:left;
+    position:static;
+}
+
+.right-container {
+    max-width:725px;
+    min-width:743px;
+    min-height: 700px;
+    max-height:700px;
+    position: static;
+}
+
+.dash-content{
+    min-height:640px;
+    max-height:640px;
+    min-width:50%;
+    max-width:50%;
+}
+
+.right-bottom-div {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 650px;
+    max-height: 650px;
+    position: static;
+}
+
+.lst-container {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 590px;
+    max-height: 590px;
+    position: static;
+}

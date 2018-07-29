@@ -18,7 +18,6 @@ namespace Muslimeen.Content
             try
             {
                 DBHandler dBHandler = new DBHandler();
-                divUpdateIslmDate.Visible = false;
                 divViewPendingSch.Visible = false;
                 divDisplaySch.Visible = false;
 
@@ -59,7 +58,7 @@ namespace Muslimeen.Content
         {
             try
             {
-                divUpdateIslmDate.Visible = false;
+                //divUpdateIslmDate.Visible = false;
                 divDisplaySch.Visible = true;
                 divViewPendingSch.Visible = true;
 
@@ -76,7 +75,7 @@ namespace Muslimeen.Content
 
         protected void btnViewPendingSch_Click(object sender, EventArgs e)
         {
-            divUpdateIslmDate.Visible = false;
+            //divUpdateIslmDate.Visible = false;
             divDisplaySch.Visible = true;
             divViewPendingSch.Visible = true;
 
@@ -107,7 +106,7 @@ namespace Muslimeen.Content
 
         protected void btnUpdateIslmDate_Click(object sender, EventArgs e)
         {
-            divUpdateIslmDate.Visible = true;
+            //divUpdateIslmDate.Visible = true;
         }
 
 
