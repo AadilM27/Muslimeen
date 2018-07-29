@@ -463,13 +463,13 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Repeater rptDisplayArticles;
         
         /// <summary>
-        /// divDisplayArticleContent control.
+        /// divDisplayArt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDisplayArticleContent;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDisplayArt;
         
         /// <summary>
         /// hdfArticleID control.

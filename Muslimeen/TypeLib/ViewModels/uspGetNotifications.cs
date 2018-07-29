@@ -11,5 +11,7 @@ namespace TypeLib.ViewModels
         public int NoticeID { get; set; }
         public DateTime NoticeDate { get; set; }
         public string NoticeDescription { get; set; }
+        DateTime dateTime { get; set; }
+        DateTime date { get; set; }
     }
 }

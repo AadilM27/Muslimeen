@@ -928,12 +928,13 @@ namespace Muslimeen.BLL
             return list;
         }
 
-        public Notice GetNotifications(int NoticeID)
+        public Notice GetNotifications(DateTime todaysDate, DateTime date)
         {
             Notice notice = null;
             SqlParameter[] pars = new SqlParameter[]
             {
-                new SqlParameter("@NoticeID", NoticeID)
+                new SqlParameter("@DateToday", todaysDate),
+                new SqlParameter("@SubDate", date)
             };
             using (DataTable table = DBHelper.ParamSelect("uspGetNotifications",
                          CommandType.StoredProcedure, pars))
@@ -951,51 +952,52 @@ namespace Muslimeen.BLL
             }
             return notice;
         }
-        //public uspViewLatestArticles ViewLatestArticles(int ArticleID)
-        //{
-        //    uspViewLatestArticles article = null;
-        //    SqlParameter[] pars = new SqlParameter[]
-        //    {
-        //        new SqlParameter("@ArticleID", ArticleID)
-        //    };
-        //    using (DataTable table = DBHelper.ParamSelect("uspViewLatestArticles",
-        //                 CommandType.StoredProcedure, pars))
-        //    {
-        //        if (table.Rows.Count == 1)
-        //        {
-        //            DataRow row = table.Rows[0];
-        //            article = new uspViewLatestArticles
-        //            {
-        //                ArticleID = Convert.ToInt32(row["ArticleID"]),
-        //                ArticleTitle = Convert.ToInt32(row["ArticleTitle"]),
-        //                DateCreated = Convert.ToDateTime(row["DateCreated"]),
-        //                Names = Convert.ToString(row["Names"])
-        //            };
-        //        }
-        //    }
-        //    return article;
-        //}
-
-        public List<uspViewLatestArticles> ViewLatestArticles()
+        public uspViewLatestArticles ViewLatestArticles(DateTime todaysDate, DateTime date )
         {
-            List<uspViewLatestArticles> list = new List<uspViewLatestArticles>();
-            using (DataTable table = DBHelper.Select("uspViewLatestArticles", CommandType.StoredProcedure))
+            uspViewLatestArticles article = null;
+            SqlParameter[] pars = new SqlParameter[]
             {
-                if (table.Rows.Count > 0)
+                new SqlParameter("@todaysDate", todaysDate),
+                new SqlParameter("@date", date)
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspViewLatestArticles",
+                         CommandType.StoredProcedure, pars))
+            {
+                if (table.Rows.Count == 1)
                 {
-                    foreach (DataRow row in table.Rows)
+                    DataRow row = table.Rows[0];
+                    article = new uspViewLatestArticles
                     {
-                        uspViewLatestArticles article = new uspViewLatestArticles
-                        {
-                            ArticleTitle = Convert.ToInt32(row["ArticleTitle"]),
-                            DateCreated = Convert.ToDateTime(row["DateCreated"]),
-                            Names = Convert.ToString(row["Names"])
-                        };
-                        list.Add(article);
-                    }
+                        ArticleID = Convert.ToInt32(row["ArticleID"]),
+                        ArticleTitle = Convert.ToInt32(row["ArticleTitle"]),
+                        DateCreated = Convert.ToDateTime(row["DateCreated"]),
+                        Names = Convert.ToString(row["Names"])
+                    };
                 }
             }
-            return list;
+            return article;
         }
+
+        //public List<uspViewLatestArticles> ViewLatestArticles()
+        //{
+        //    List<uspViewLatestArticles> list = new List<uspViewLatestArticles>();
+        //    using (DataTable table = DBHelper.Select("uspViewLatestArticles", CommandType.StoredProcedure))
+        //    {
+        //        if (table.Rows.Count > 0)
+        //        {
+        //            foreach (DataRow row in table.Rows)
+        //            {
+        //                uspViewLatestArticles article = new uspViewLatestArticles
+        //                {
+        //                    ArticleTitle = Convert.ToInt32(row["ArticleTitle"]),
+        //                    DateCreated = Convert.ToDateTime(row["DateCreated"]),
+        //                    Names = Convert.ToString(row["Names"])
+        //                };
+        //                list.Add(article);
+        //            }
+        //        }
+        //    }
+        //    return list;
+        //}
     }
 }

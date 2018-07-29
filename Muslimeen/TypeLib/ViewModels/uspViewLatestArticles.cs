@@ -8,6 +8,7 @@ namespace TypeLib.ViewModels
 {
     public class uspViewLatestArticles
     {
+        public int ArticleID { get; set; }
         public int ArticleTitle { get; set; }
         public DateTime DateCreated { get; set; }
         public string Names { get; set; }

@@ -41,6 +41,7 @@ namespace Muslimeen.Content
                     divDiplayNotifications.Visible = false;
                     divDisplayArticles.Visible = false;
                     divNotices.Visible = false;
+                    divDisplayArt.Visible = false;
 
                     btnLogin.Text = "Log out";
                     btnRegister.Visible = false;
@@ -55,6 +56,7 @@ namespace Muslimeen.Content
                     divDisplayArticles.Visible = false;
                     divDiplayNotifications.Visible = false;
                     divNotices.Visible = false;
+                    divDisplayArt.Visible = false;
 
                     divUserProfile.Visible = false;
                     Session.Clear();
@@ -188,6 +190,7 @@ namespace Muslimeen.Content
                 divDisplaySalahTimetable.Visible = true;
                 divDiplayNotifications.Visible = false;
                 divDisplayArticles.Visible = false;
+                divDisplayArt.Visible = false;
             }
             catch
             {
@@ -203,6 +206,7 @@ namespace Muslimeen.Content
                 divDisplaySalahTimetable.Visible = false;
                 divDiplayNotifications.Visible = false;
                 divDisplayArticles.Visible = false;
+                divDisplayArt.Visible = false;
             }
             catch
             { }
@@ -218,6 +222,7 @@ namespace Muslimeen.Content
                 divDiplayNotifications.Visible = true;
                 divDisplayArticles.Visible = false;
                 divNotices.Visible = true;
+                divDisplayArt.Visible = false;
             }
             catch
             { }
@@ -232,12 +237,18 @@ namespace Muslimeen.Content
                 divDisplaySalahTimetable.Visible = false;
                 divDiplayNotifications.Visible = false;
                 divDisplayArticles.Visible = true;
-          
+                divDisplayArt.Visible = true;
+
 
                 DBHandler dBHandler = new DBHandler();
 
-                rptDisplayArticles.DataSource = dBHandler.BLL_ViewLatestArticles();
+                DateTime todaysDate = DateTime.Today.ToLocalTime();
+                DateTime date = DateTime.Today.AddDays(-7);
+
+                rptDisplayArticles.DataSource = dBHandler.BLL_ViewLatestArticles(todaysDate,date);
                 rptDisplayArticles.DataBind();
+
+                
 
             }
             catch
@@ -270,8 +281,12 @@ namespace Muslimeen.Content
             hdnNotice.Value = NoticeID;
 
             DBHandler dBHandler = new DBHandler();
+
+            DateTime todaysDate = DateTime.Today.ToLocalTime();
+            DateTime date = DateTime.Today.AddDays(-7);
+
             Notice notice = new Notice();
-            notice = dBHandler.BLL_GetNotifications(Convert.ToInt32(NoticeID));
+            notice = dBHandler.BLL_GetNotifications(todaysDate,date);
 
 
             lblNoticeDate.InnerText = notice.NoticeDate.ToString();
