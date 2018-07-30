@@ -128,13 +128,12 @@
                                     </asp:Repeater>
                                 </div>
                             </div>
-                            <div runat="server" id="divDisplaySch" class="col-5 position-static dash-content  p-0 basic-div-styling-2">
+                            <div runat="server" id="divDisplaySch" class="position-static dash-content p-0">
                                 <asp:HiddenField runat="server" ID="hdfSchId" Value="" />
                                 <div class=" head-div-2 p-2 mb-0 ">
                                     <p class="m-0">Member Details:</p>
                                 </div>
-                                <div class="p-2 m-0">
-                                    <div class="">
+                                    <div class=" container-fluid p-3">
                                         <div class="row position-static">
                                             <div class="col position-static"><b>Member  ID:</b></div>
                                             <div class="col position-static text-truncate">
@@ -196,7 +195,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class=" position-static mt-4" style="border: solid 3px red;">
+                                    <div class="position-static m-1 mt-3 border-secondary border task-action">
                                         <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-3" runat="server" ID="btnAcceptReg" Text="Accept Registration" OnClick="btnAcceptReg_Click" />
                                         <asp:Button CssClass=" topnav btn-dark btn btn-sm btn-outline-light mr-3" runat="server" ID="btnRejectReg" Text="Reject Registration" OnClick="btnRejectReg_Click" />
                                     </div>
@@ -205,7 +204,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </form>
                 <div class="footerr"> <!--End of content, start of footer-->
                     <div class="row bg-light">
