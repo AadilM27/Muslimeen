@@ -194,14 +194,19 @@ namespace Muslimeen.BLL
             return dBAccess.GetRejectedArticle();
         }
 
-        public Notice BLL_GetNotifications(DateTime todaysDate, DateTime date)
+        public List<uspGetNotifications> BLL_GetNotifications(DateTime todaysDate, DateTime date)
         {
             return dBAccess.GetNotifications(todaysDate, date);
         }
 
-        public uspViewLatestArticles BLL_ViewLatestArticles(DateTime todaysDate,DateTime date)
+        public List<uspViewLatestArticles> BLL_ViewLatestArticles(DateTime dateToday, DateTime date)
         {
-            return dBAccess.ViewLatestArticles(todaysDate,date);
+            return dBAccess.ViewLatestArticles(dateToday,date);
+        }
+
+        public Notice BLL_GetNotice(int noticeID)
+        {
+            return dBAccess.GetNotice(noticeID);
         }
     }
 }
