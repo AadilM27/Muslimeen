@@ -450,7 +450,7 @@ namespace Muslimeen.BLL
             return DBHelper.NonQuery("uspRejectReg", CommandType.StoredProcedure, parameters.ToArray());
         }
 
-        
+
 
         public List<uspGetMosques> GetMosques(string suburb, string mosqueType)
         {
@@ -752,7 +752,7 @@ namespace Muslimeen.BLL
         }
 
 
-                    
+
 
         public bool InsertEvent(Event mosqueEvent)
         {
@@ -837,7 +837,7 @@ namespace Muslimeen.BLL
             using (DataTable table = DBHelper.ParamSelect("uspGetArticle",
                          CommandType.StoredProcedure, pars))
             {
-                if(table.Rows.Count == 1)
+                if (table.Rows.Count == 1)
                 {
                     DataRow row = table.Rows[0];
                     art = new Article
@@ -851,7 +851,7 @@ namespace Muslimeen.BLL
             return art;
         }
 
-       
+
         public List<uspGetAcceptedArticle> GetAcceptedArticle()
         {
             List<uspGetAcceptedArticle> list = new List<uspGetAcceptedArticle>();
@@ -928,9 +928,10 @@ namespace Muslimeen.BLL
             return list;
         }
 
-        public Notice GetNotifications(DateTime todaysDate, DateTime date)
+        public List<uspGetNotifications> GetNotifications (DateTime todaysDate, DateTime date)
         {
-            Notice notice = null;
+            List<uspGetNotifications> list = new List<uspGetNotifications>();
+            uspGetNotifications notice = null;
             SqlParameter[] pars = new SqlParameter[]
             {
                 new SqlParameter("@DateToday", todaysDate),
@@ -939,46 +940,72 @@ namespace Muslimeen.BLL
             using (DataTable table = DBHelper.ParamSelect("uspGetNotifications",
                          CommandType.StoredProcedure, pars))
             {
+                if (table.Rows.Count > 0)
+                {
+                    DataRow row = table.Rows[0];
+                    notice = new uspGetNotifications
+                    {
+                        NoticeID = Convert.ToInt32(row["NoticeID"]),
+                        NoticeDate = Convert.ToDateTime(row["NoticeDate"]),
+                        NoticeDescription = Convert.ToString(row["NoticeDescription"])
+                    };
+                    list.Add(notice);
+                }
+            }
+            return list;
+        }
+        public List<uspViewLatestArticles> ViewLatestArticles(DateTime dateToday, DateTime date)
+        {
+            List<uspViewLatestArticles> list = new List<uspViewLatestArticles>();
+            uspViewLatestArticles article = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@dateToday", dateToday),
+                new SqlParameter("@date", date)
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspViewLatestArticles",
+                         CommandType.StoredProcedure, pars))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    DataRow row = table.Rows[0];
+                    article = new uspViewLatestArticles
+                    {
+                        ArticleID = Convert.ToInt32(row["ArticleID"]),
+                        ArticleTitle = Convert.ToString(row["ArticleTitle"]),
+                        DateCreated = Convert.ToDateTime(row["DateCreated"]),
+                        Names = Convert.ToString(row["Names"])
+                    };
+                    list.Add(article);
+                }
+            }
+            return list;
+        }
+
+        public Notice GetNotice(int NoticeID)
+        {
+            Notice notice = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@NoticeID", NoticeID)
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetNotice",
+                         CommandType.StoredProcedure, pars))
+            {
                 if (table.Rows.Count == 1)
                 {
                     DataRow row = table.Rows[0];
                     notice = new Notice
                     {
                         NoticeID = Convert.ToInt32(row["NoticeID"]),
-                        NoticeDate = Convert.ToDateTime(row["NoticeDate"]),
-                        NoticeDescription = Convert.ToString(row["NoticeDescription"])
+                        NoticeDescription = Convert.ToString(row["NoticeDescription"]),
+                        NoticeDate = Convert.ToDateTime(row["NoticeDate"])
                     };
                 }
             }
             return notice;
         }
-        public uspViewLatestArticles ViewLatestArticles(DateTime todaysDate, DateTime date )
-        {
-            uspViewLatestArticles article = null;
-            SqlParameter[] pars = new SqlParameter[]
-            {
-                new SqlParameter("@todaysDate", todaysDate),
-                new SqlParameter("@date", date)
-            };
-            using (DataTable table = DBHelper.ParamSelect("uspViewLatestArticles",
-                         CommandType.StoredProcedure, pars))
-            {
-                if (table.Rows.Count == 1)
-                {
-                    DataRow row = table.Rows[0];
-                    article = new uspViewLatestArticles
-                    {
-                        ArticleID = Convert.ToInt32(row["ArticleID"]),
-                        ArticleTitle = Convert.ToInt32(row["ArticleTitle"]),
-                        DateCreated = Convert.ToDateTime(row["DateCreated"]),
-                        Names = Convert.ToString(row["Names"])
-                    };
-                }
-            }
-            return article;
-        }
-
-        //public List<uspViewLatestArticles> ViewLatestArticles()
+        //public List<uspViewLatestArticles> ViewLatestArticles(DateTime dateToday, DateTime date)
         //{
         //    List<uspViewLatestArticles> list = new List<uspViewLatestArticles>();
         //    using (DataTable table = DBHelper.Select("uspViewLatestArticles", CommandType.StoredProcedure))
@@ -989,7 +1016,7 @@ namespace Muslimeen.BLL
         //            {
         //                uspViewLatestArticles article = new uspViewLatestArticles
         //                {
-        //                    ArticleTitle = Convert.ToInt32(row["ArticleTitle"]),
+        //                    ArticleTitle = Convert.ToString(row["ArticleTitle"]),
         //                    DateCreated = Convert.ToDateTime(row["DateCreated"]),
         //                    Names = Convert.ToString(row["Names"])
         //                };
@@ -1001,3 +1028,4 @@ namespace Muslimeen.BLL
         //}
     }
 }
+

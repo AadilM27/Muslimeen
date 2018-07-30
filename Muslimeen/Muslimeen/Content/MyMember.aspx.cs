@@ -42,6 +42,7 @@ namespace Muslimeen.Content
                     divDisplayArticles.Visible = false;
                     divNotices.Visible = false;
                     divDisplayArt.Visible = false;
+                    divEvent.Visible = false;
 
                     btnLogin.Text = "Log out";
                     btnRegister.Visible = false;
@@ -57,6 +58,7 @@ namespace Muslimeen.Content
                     divDiplayNotifications.Visible = false;
                     divNotices.Visible = false;
                     divDisplayArt.Visible = false;
+                    divEvent.Visible = false;
 
                     divUserProfile.Visible = false;
                     Session.Clear();
@@ -174,11 +176,12 @@ namespace Muslimeen.Content
 
         protected void btnListEvents_Click(object sender, EventArgs e)
         {
-            
+           
                 DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
                 DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
                 rptGetEvents.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
                 rptGetEvents.DataBind();
+            divEvent.Visible = true;
            
         }
 
@@ -191,6 +194,7 @@ namespace Muslimeen.Content
                 divDiplayNotifications.Visible = false;
                 divDisplayArticles.Visible = false;
                 divDisplayArt.Visible = false;
+                divEvent.Visible = false;
             }
             catch
             {
@@ -207,6 +211,9 @@ namespace Muslimeen.Content
                 divDiplayNotifications.Visible = false;
                 divDisplayArticles.Visible = false;
                 divDisplayArt.Visible = false;
+                divEvent.Visible = false;
+
+
             }
             catch
             { }
@@ -214,45 +221,45 @@ namespace Muslimeen.Content
 
         protected void btnNotifications_Click(object sender, EventArgs e)
         {
-            try
-            {
-                
+
                 divDisplayEvents.Visible = false;
                 divDisplaySalahTimetable.Visible = false;
                 divDiplayNotifications.Visible = true;
                 divDisplayArticles.Visible = false;
                 divNotices.Visible = true;
                 divDisplayArt.Visible = false;
-            }
-            catch
-            { }
+                divEvent.Visible = false;
+
+                DBHandler dBHandler = new DBHandler();
+
+                DateTime todaysDate = DateTime.Today;
+                DateTime date = DateTime.Today.AddDays(7);
+
+                rptNotifications.DataSource = dBHandler.BLL_GetNotifications(todaysDate, date);
+                rptNotifications.DataBind();
+
         }
 
         protected void btnArticles_Click(object sender, EventArgs e)
         {
-            try
-            {
 
                 divDisplayEvents.Visible = false;
                 divDisplaySalahTimetable.Visible = false;
                 divDiplayNotifications.Visible = false;
                 divDisplayArticles.Visible = true;
-                divDisplayArt.Visible = true;
+            divDisplayArt.Visible = true;
+            divEvent.Visible = false;
 
 
-                DBHandler dBHandler = new DBHandler();
+            DBHandler dBHandler = new DBHandler();
 
-                DateTime todaysDate = DateTime.Today.ToLocalTime();
+                DateTime dateToday = DateTime.Today;
                 DateTime date = DateTime.Today.AddDays(-7);
 
-                rptDisplayArticles.DataSource = dBHandler.BLL_ViewLatestArticles(todaysDate,date);
+                rptDisplayArticles.DataSource = dBHandler.BLL_ViewLatestArticles(dateToday,date);
                 rptDisplayArticles.DataBind();
 
-                
 
-            }
-            catch
-            { }
         }
 
         protected void btnShowArt_Click(object sender, EventArgs e)
@@ -281,18 +288,14 @@ namespace Muslimeen.Content
             hdnNotice.Value = NoticeID;
 
             DBHandler dBHandler = new DBHandler();
-
-            DateTime todaysDate = DateTime.Today.ToLocalTime();
-            DateTime date = DateTime.Today.AddDays(-7);
-
             Notice notice = new Notice();
-            notice = dBHandler.BLL_GetNotifications(todaysDate,date);
-
+            notice = dBHandler.BLL_GetNotice(Convert.ToInt32(NoticeID));
 
             lblNoticeDate.InnerText = notice.NoticeDate.ToString();
             lblNoticeDescription.InnerText = notice.NoticeDescription.ToString();
 
         }
+
     }
 
 }

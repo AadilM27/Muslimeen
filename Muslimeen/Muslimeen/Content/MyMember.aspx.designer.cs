@@ -382,6 +382,15 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Button btnListEvents;
         
         /// <summary>
+        /// divEvent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEvent;
+        
+        /// <summary>
         /// rptGetEvents control.
         /// </summary>
         /// <remarks>
