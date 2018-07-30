@@ -79,7 +79,7 @@
             </header>
             <div class="content" id="content">
                 <!--add content here -->
-                <div class="row bg-light m-0 divContainers p-1">
+                <div class="row bg-light m-0 divContainers p-1 flex-nowrap">
                     <div class="side-bar p-0 basic-div-styling mr-1">
                         <!--contains the buttons-->
                         <div class="head-div text-center p-2">
@@ -90,11 +90,11 @@
                             <asp:Button runat="server" ID="btnUpdateIslmDate" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnUpdateIslmDate_Click" Text="Update Islamic Date" />
                         </nav>
                     </div>
-                    <div class=" position-static basic-div-styling p-0 right-container" >
-                        <div class=" head-div text-center p-2 mb-1">
-                            <h4 class="p-0 m-0">H</h4>
+                    <div class=" position-static basic-div-styling p-0  w-100" >
+                        <div runat="server" id="divTaskHead" class=" head-div text-center p-2 mb-1">
+                            <h4 class="p-0 m-0"></h4>
                         </div>
-                        <div class="row p-0 m-0 tab-content right-bottom-div" >
+                        <div class="row p-0 m-0 tab-content right-bottom-div p-1" >
                             <div class="col-6 position-static p-0 dash-content" runat="server" id="divViewPendingSch">
                                 <!--Contains the List of items-->
                                 <div class=" head-div-2 p-2 mb-1 ">
@@ -196,7 +196,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class=" position-static justify-content-center align-content-center mt-4">
+                                    <div class=" position-static mt-4" style="border: solid 3px red;">
                                         <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-3" runat="server" ID="btnAcceptReg" Text="Accept Registration" OnClick="btnAcceptReg_Click" />
                                         <asp:Button CssClass=" topnav btn-dark btn btn-sm btn-outline-light mr-3" runat="server" ID="btnRejectReg" Text="Reject Registration" OnClick="btnRejectReg_Click" />
                                     </div>

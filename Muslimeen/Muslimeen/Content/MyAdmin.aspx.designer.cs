@@ -193,6 +193,15 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Button btnUpdateIslmDate;
         
         /// <summary>
+        /// divTaskHead control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTaskHead;
+        
+        /// <summary>
         /// divViewPendingSch control.
         /// </summary>
         /// <remarks>

@@ -252,8 +252,6 @@ html{
 }
 
 .right-container {
-    max-width:725px;
-    min-width:743px;
     min-height: 700px;
     max-height:700px;
     position: static;
