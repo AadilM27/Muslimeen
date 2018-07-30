@@ -175,13 +175,13 @@ namespace Muslimeen.Content.MyModerator {
         protected global::System.Web.UI.WebControls.Button btnAboutUs;
         
         /// <summary>
-        /// btn control.
+        /// btnViewPendingSch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn;
+        protected global::System.Web.UI.WebControls.Button btnViewPendingSch;
         
         /// <summary>
         /// btnViewPendingArticles control.
@@ -193,13 +193,13 @@ namespace Muslimeen.Content.MyModerator {
         protected global::System.Web.UI.WebControls.Button btnViewPendingArticles;
         
         /// <summary>
-        /// lblHeading control.
+        /// divTaskHead control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHeading;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTaskHead;
         
         /// <summary>
         /// divViewPendingSch control.
