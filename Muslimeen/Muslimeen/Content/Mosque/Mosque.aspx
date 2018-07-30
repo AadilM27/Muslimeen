@@ -462,14 +462,15 @@
                                 <asp:Label ID="lblPrayerStartDate" runat="server" Text="Start Date" />
                                 <asp:TextBox ID="txtPrayerStartDate" runat="server" PlaceHolder="e.g. 01 June 2018"></asp:TextBox>
                                 <asp:Label ID="lblPrayerEndDate" runat="server" Text="End Date" />
-                                <asp:TextBox ID="txtPrayerEndDate" runat="server"  PlaceHolder="e.g. 01 June 2018"></asp:TextBox>
-                                <asp:Button ID="btnListPrayer" runat="server" Text="List Prayers" OnClick="btnListPrayer_Click" CssClass="btn btn-info center"/>
+                                <asp:TextBox ID="txtPrayerEndDate" runat="server" PlaceHolder="e.g. 01 June 2018"></asp:TextBox>
+                                <asp:Button ID="btnListPrayer" runat="server" Text="List Prayers" OnClick="btnListPrayer_Click" CssClass="btn btn-info center" />
 
                             </div>
                         </div>
-                        <br/><br/>
+                        <br />
+                        <br />
 
-                        <table class="table table-responsive table-primary" style="width:100%;">
+                        <table class="table table-responsive table-primary" style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th colspan="2"></th>
