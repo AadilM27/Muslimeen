@@ -279,3 +279,10 @@ html{
     max-height: 590px;
     position: static;
 }
+
+.task-action{
+    height:215px;
+    width:100%;
+    align-content:center;
+    justify-content:center;
+}
