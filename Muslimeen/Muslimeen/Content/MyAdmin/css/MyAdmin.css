@@ -257,11 +257,12 @@ html{
     position: static;
 }
 
-.dash-content{
-    min-height:640px;
-    max-height:640px;
-    min-width:50%;
-    max-width:50%;
+.dash-content {
+    min-height: 640px;
+    max-height: 640px;
+    min-width: 50%;
+    max-width: 50%;
+    margin-right:3px;
 }
 
 .right-bottom-div {
@@ -281,8 +282,7 @@ html{
 }
 
 .task-action{
-    height:215px;
-    width:100%;
-    align-content:center;
-    justify-content:center;
+    height:250px;
+    width:98%;
+    position:static;
 }

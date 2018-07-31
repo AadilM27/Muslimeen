@@ -188,20 +188,19 @@ namespace Muslimeen.Content
                 hdfSchId.Value = memberId;
 
                 DBHandler dBHandler = new DBHandler();
-                uspGetMember member = new uspGetMember();
-
-                member = dBHandler.BLL_GetMember(memberId);
-
-                lblMemberID.InnerText = member.MemberID.ToString();
-                lblMemberName.InnerText = member.MemberName.ToString();
-                lblMemberLastName.InnerText = member.MemberLastName.ToString();
-                lblMemberDOB.InnerText = member.MemberDOB.ToString("yyyy-MM-dd");
-                lblMemberType.InnerText = member.MemberType.ToString();
-                lblActiveTypeID.InnerText = member.ActiveTypeID.ToString();
-                lblEmail.InnerText = member.Email.ToString();
-                lblContactNo.InnerText = member.ContactNo.ToString();
-                lblActivationExpiry.InnerText = member.ActivationExpiry.ToString("yyyy-MM-dd");
-                lblActivationDate.InnerText = member.ActivationDate.ToString("yyyy-MM-dd");
+                uspGetScholarDetails scholarDetails = new uspGetScholarDetails();
+                
+                scholarDetails = dBHandler.BLL_GetScholarDetails(memberId);
+                lblMemberID.InnerText = scholarDetails.ScholarID.ToString();
+                lblMemberName.InnerText = scholarDetails.MemberName.ToString();
+                lblMemberLastName.InnerText = scholarDetails.MemberLastName.ToString();
+                lblMemberDOB.InnerText = scholarDetails.MemberDOB.ToString();
+                lblMemberType.InnerText = scholarDetails.MemberType.ToString();
+                lblEmail.InnerText = scholarDetails.Email.ToString();
+                lblContactNo.InnerText = scholarDetails.ContactNo.ToString();
+                lblActivationExpiry.InnerText = scholarDetails.ActivationExpiry.ToString();
+                lblActivationDate.InnerText = scholarDetails.ActivationDate.ToString();
+                lblScholarQual.InnerText = scholarDetails.QualificationDescription.ToString();
 
                 divViewPendingSch.Visible = true;
                 divDisplaySch.Visible = true;

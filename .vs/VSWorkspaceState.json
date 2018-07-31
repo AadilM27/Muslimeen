@@ -2,6 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Muslimeen",
+    "\\Muslimeen\\Muslimeen",
+    "\\Muslimeen\\Muslimeen\\Content",
     "\\Muslimeen\\Muslimeen\\Content\\AboutUs",
     "\\Muslimeen\\Muslimeen\\Content\\Default",
     "\\Muslimeen\\Muslimeen\\Content\\Default\\css",
@@ -9,6 +11,6 @@
     "\\Muslimeen\\Muslimeen\\Content\\MyMember",
     "\\Muslimeen\\Muslimeen\\Content\\MyMember\\icons"
   ],
-  "SelectedNode": "\\Muslimeen\\Muslimeen.DAL",
+  "SelectedNode": "\\Muslimeen\\Muslimeen\\Content\\MyAdmin.aspx",
   "PreviewInSolutionExplorer": false
 }

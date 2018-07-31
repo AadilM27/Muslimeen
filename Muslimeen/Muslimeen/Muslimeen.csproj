@@ -93,6 +93,7 @@
     <Content Include="Content\Mosque\taqwa.png" />
     <Content Include="Content\MyAdmin.aspx" />
     <Content Include="Content\MyAdmin\css\MyAdmin.css" />
+    <Content Include="Content\MyAdmin\icons\outline_warning_black_18dp.png" />
     <Content Include="Content\MyAdmin\icons\PendingReg.png" />
     <Content Include="Content\MyAdmin\js\MyAdmin.js" />
     <Content Include="Content\MyMember.aspx" />

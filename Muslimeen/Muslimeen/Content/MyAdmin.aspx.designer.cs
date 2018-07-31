@@ -193,13 +193,13 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Button btnUpdateIslmDate;
         
         /// <summary>
-        /// divTaskHead control.
+        /// lblTaskHead control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTaskHead;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTaskHead;
         
         /// <summary>
         /// divViewPendingSch control.
@@ -283,15 +283,6 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMemberType;
         
         /// <summary>
-        /// lblActiveTypeID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblActiveTypeID;
-        
-        /// <summary>
         /// lblEmail control.
         /// </summary>
         /// <remarks>
@@ -326,6 +317,15 @@ namespace Muslimeen.Content {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblActivationDate;
+        
+        /// <summary>
+        /// lblScholarQual control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblScholarQual;
         
         /// <summary>
         /// btnAcceptReg control.

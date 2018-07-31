@@ -15,8 +15,10 @@ namespace TypeLib.ViewModels
         public DateTime MemberDOB { get; set; }
         public string Email { get; set; }
         public char MemberType { get; set; }
+        public char ActiveTypeID { get; set; }
         public string QualificationDescription { get; set; }
         public int? MosqueID { get; set; }
+        public DateTime ActivationExpiry { get; set; }
         public DateTime ActivationDate { get; set; }
         public string Password { get; set; }
     }
