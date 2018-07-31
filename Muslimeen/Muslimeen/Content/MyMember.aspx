@@ -101,303 +101,299 @@
 
         <div class="content" id="content">
             <!--Side menu-->
-            <div class="row m-0 divContainers p-2">
-                <div class=" position-static mr-2 p-0 basic-div-styling" style="min-width: 250px;">
+            <div class="row bg-light m-0 divContainers p-1 flex-nowrap">
+                <div class="side-bar p-0 basic-div-styling mr-1" style="min-width: 250px;">
                     <!--contains the buttons-->
                     <div class="head-div text-center p-2">
                         <p class="text-uppercase m-0 font-weight-bold">Tasks :</p>
                     </div>
                     <nav class="nav flex-column pt-2 pb-2 pr-0">
-                        <asp:Button runat="server" ID="btnTodaysPrayerTimes" OnClick="btnTodaysPrayerTime_Click" CssClass=" mb-2 btn taskBtn" Text="View todays prayer times" />
-                        <asp:Button runat="server" ID="btnEvents" CssClass=" mb-2 btn taskBtn" OnClick="btnEvents_Click" Text="View mosque events" />
-                        <asp:Button runat="server" ID="btnNotifications" CssClass=" mb-2 btn taskBtn" OnClick="btnNotifications_Click" Text="View notifications" />
-                        <asp:Button runat="server" ID="btnArticles" CssClass=" mb-2 btn taskBtn" OnClick="btnArticles_Click" Text="View latest articles" />
+                        <asp:Button runat="server" ID="btnTodaysPrayerTimes" OnClick="btnTodaysPrayerTime_Click" CssClass=" pl-2 btn taskBtn mb-1" Text="View todays prayer times" />
+                        <asp:Button runat="server" ID="btnEvents" CssClass=" pl-2 btn taskBtn mb-1"  OnClick="btnEvents_Click" Text="View mosque events" />
+                        <asp:Button runat="server" ID="btnNotifications" CssClass=" pl-2 btn taskBtn mb-1"  OnClick="btnNotifications_Click" Text="View notifications" />
+                        <asp:Button runat="server" ID="btnArticles" CssClass=" pl-2 btn taskBtn mb-1"  OnClick="btnArticles_Click" Text="View latest articles" />
                     </nav>
                 </div>
-
                 <!--Side menu ends-->
-
-
-
-
                 <!--Salaah Timetable-->
-
-                <div runat="server" id="divDisplaySalahTimetable" class="bg-light position-static col-6 p-3 divContainers">
-
-                    <div class="contentHolder mt-4">
-                        <div class="header mb-3">
-                            <h4 class="text-center">Today's Prayer Times 
-                               <br />
-                            </h4>
-
-                        </div>
-                        <div style="display: flex; justify-content: center" class="container">
-                            <table class="table " style="justify-content: center; width: 70%; height: 20%; align-self: center">
-
+                <div class=" position-static basic-div-styling p-0  w-100">
+                    <div runat="server" id="divTaskHead" class=" head-div text-center p-2 mb-1">
+                        <h4 class="p-0 m-0"></h4>
+                    </div>
+                    <div class="row p-0 m-0 tab-content right-bottom-div p-1">
+                        <div runat="server" id="divDisplaySalahTimetable" class="bg-light position-static col p-3 divContainers">
+                            <div style="display: flex;justify-content: center" class=" position-static basic-div-styling">
+                             <table class="table" style="justify-content: center; width: 50%; height: 20%; align-self: center">
                                 <tr>
-                                    <td rowspan="2"></td>
-                                    <asp:Image ID="icoPrayer" ImageUrl="Mosque/download.png" runat="server" Height="121px" Width="121px" />
-                                    <th colspan="2">Salah TimeTable</th>
+                                    <td rowspan="2" colspan="4"><asp:Image ID="icoPrayer" ImageUrl="Mosque/download.png" runat="server" Height="110px" Width="110px" /> </td>
+               
+                                    <th colspan="4">Salah TimeTable</th>
                                 </tr>
                                 <tr>
-                                    <th>AZAAN</th>
-                                    <th>JAMAAT</th>
+                                    <th colspan ="4">AZAAN</th>
+                                    <th colspan ="4">JAMAAT</th>
                                 </tr>
 
                                 <tr>
                                     <th>Fajr</th>
-                                    <td>
+                                    <td colspan ="4">
                                         <asp:Label ID="lblFajrAzaan" runat="server"></asp:Label>
                                     </td>
-                                    <td>
+                                    <td colspan ="4">
                                         <asp:Label ID="lblFajrJamaat" runat="server"></asp:Label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Dhuhr</th>
-                                    <td>
+                                    <td colspan ="4">
                                         <asp:Label ID="lblDhuhrAzaan" runat="server"></asp:Label></td>
-                                    <td>
+                                    <td colspan ="4">
                                         <asp:Label ID="lblDhuhrJamaat" runat="server"></asp:Label></td>
                                 </tr>
                                 <tr>
                                     <th>Asr</th>
-                                    <td>
+                                    <td colspan ="4">
                                         <asp:Label ID="lblAsrAzaan" runat="server"></asp:Label></td>
-                                    <td>
+                                    <td colspan ="4">
                                         <asp:Label ID="lblAsrJamaat" runat="server"></asp:Label></td>
                                 </tr>
                                 <tr>
                                     <th>Magrib</th>
-                                    <td>
+                                    <td colspan ="4"> 
                                         <asp:Label ID="lblMagribAzaan" runat="server"></asp:Label></td>
-                                    <td>
+                                    <td colspan ="4">
                                         <asp:Label ID="lblMagribJamaat" runat="server"></asp:Label></td>
                                 </tr>
                                 <tr>
                                     <th>Eisha</th>
-                                    <td>
+                                    <td colspan ="4">
                                         <asp:Label ID="lblEishaAzaan" runat="server"></asp:Label></td>
-                                    <td>
+                                    <td colspan ="4">
                                         <asp:Label ID="lblEishaJamaat" runat="server"></asp:Label></td>
                                 </tr>
 
                             </table>
-
-                        </div>
+                         </div>
                     </div>
-                </div>
+                  
 
+                        <!--view mosque events-->
 
-                <!--view mosque events-->
-
-
-                <div runat="server" id="divDisplayEvents" class="bg-light position-static col p-3 divContainers">
-
-
-                    <div class="contentHolder mt-6">
-                        <div class="header mb-3">
-                            <h4 class="text-center">View Mosque Events:
-                               <br />
-                            </h4>
-                        </div>
-
-                        <div class="paragraphDisplay p-2">
-                            <table style="width: 30%">
-                                <tr>
-                                    <td colspan="2">
-                                        <asp:Label ID="lblEventList" runat="server" Text="List Events By Date Range "></asp:Label></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Label ID="lblStartDate" runat="server" Text="Start Date: "></asp:Label></td>
-                                    <td>
-                                        <asp:TextBox ID="txtStartDate" runat="server" TextMode="Date"></asp:TextBox></td>
-                                    <td>
-                                        <asp:Label ID="lblEndDate" runat="server" Text="End Date:"></asp:Label></td>
-                                    <td>
-                                        <asp:TextBox ID="txtEndDate" runat="server" TextMode="Date"></asp:TextBox></td>
-                                    <td>
-                                        <asp:Button CssClass="btn btn-info center" ID="btnListEvents" runat="server" Text="List Events" OnClick="btnListEvents_Click" /></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div runat="server" id="divEvent" class="bg-light position-static flex-nowrap p-3 divContainers">
-
-                    <asp:Repeater ID="rptGetEvents" runat="server">
-
-                        <ItemTemplate>
-                            <div class="contentHolder mt-4">
-                                <div class="header mb-3">
-                                    <h4 class="text-center">
-                                        <asp:Label ID="lblEventTitle" runat="server" Text='<%#Eval("EventTitle")%>'></asp:Label><h4>
-                                            <br />
-                                        </h4>
+                        <div runat="server" id="divDisplayEvents" class="bg-light position-static col p-3 divContainers">
+                            <div class=" position-static basic-div-styling p-0">                         
+                            <div class=" head-div-2 p-2 mb-0 ">
+                                    <p class="m-0">View Mosque Events</p>
+                            </div>
+                                    <table style="width: 40%">
+                                        <tr>
+                                            <td colspan="2">
+                                                <asp:Label ID="lblEventList" runat="server" Text="List Events By Date Range " CssClass="pl-2 mb-1"></asp:Label></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <asp:Label ID="lblStartDate" runat="server" Text="Start Date:   " CssClass="pl-2 mb-1"></asp:Label></td>
+                                            <td>
+                                                <asp:TextBox ID="txtStartDate" runat="server" TextMode="Date" CssClass="pl-2 mb-1"></asp:TextBox></td>
+                                            <td>
+                                                <asp:Label ID="lblEndDate" runat="server" Text="End Date:  " CssClass="pl-2 mb-1"></asp:Label></td>
+                                            <td>
+                                                <asp:TextBox ID="txtEndDate" runat="server" TextMode="Date" CssClass="pl-2 mb-1"></asp:TextBox></td>
+                                            <td>
+                                                <asp:Button CssClass="btn btn-info center" ID="btnListEvents" runat="server" Text="List Events" OnClick="btnListEvents_Click" /></td>
+                                        </tr>
+                                    </table>
                                 </div>
-                                <div class="paragraphDisplay p-2">
+                            </div>
+                    
+                        <div runat="server" id="divListEvent" class="position-static dash-content p-0">
+                            <div class=" head-div-2 p-2 mb-0 ">
+                                    <p class="m-0">List of events</p>
+                            </div>
+                            <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
+                                <asp:Repeater ID="RptEventList" runat="server">
+                                    <HeaderTemplate>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnEventList" CommandArgument='<%#Eval("EventID")%>' CssClass=" position-static list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnEventList_Click">
+                                        <div class="p-0 form-row m-0 position-static">                       
+                                                        <div class=" mr-4 m-0 p-0">
+                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Event&nbsp;Title: </b><%#Eval("EventTitle")%></p>                                       
+                                                        </div>
+                                                       <div class=" mr-4 m-0 p-0">
+                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Event&nbsp;Date: </b><%#Eval("EventDate")%></p>
+                                                         
+                                                        </div>
+                                              </div>
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                   <FooterTemplate>
+                                  </FooterTemplate>
+                                </asp:Repeater>
+                            </div>
+                        </div>
 
-                                    <div style="display: flex; justify-content: center" class="container">
-                                        <div>
-                                            <table class="table" style="justify-content: center; width: 70%; height: 20%; align-self: center">
-                                                <tr>
-                                                    <th>
-                                                        <h3 style="font-size: medium">Description:
-                                                        </h3>
-                                                    </th>
-                                                    <td>
-                                                        <asp:Label ID="lblEventDescription" runat="server" Text='<%#Eval("EventDescription")%>'></asp:Label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th>
-                                                        <h3 style="font-size: medium">Speaker:<h3>
-                                                    </th>
-                                                    <td>
-                                                        <asp:Label ID="lblSpeaker" runat="server" Text='<%#Eval("Speaker")%>'></asp:Label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th>
-                                                        <h3 style="font-size: medium">Event Date:
-                                                    <h3>
-                                                    </th>
-                                                    <td>
-                                                        <asp:Label ID="lblEventDate" runat="server" Text='<%#Eval("EventDate").ToString().Substring(0,10)%>'></asp:Label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th>
-                                                        <h3 style="font-size: medium">Start Time:
-                                                    <h3>
-                                                    </th>
-                                                    <td>
-                                                        <asp:Label ID="lblEventStarTime" runat="server" Text='<%#Eval("EventStartTime")%>'></asp:Label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th>
-                                                        <h3 style="font-size: medium">End Time:
-                                                        </h3>
-                                                    </th>
-                                                    <td>
-                                                        <asp:Label ID="lblEventEndTime" runat="server" Text='<%#Eval("EventEndTime")%>'></asp:Label>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                             <div runat="server" id="divEvent" class="position-static dash-content p-0">
+                                             <asp:HiddenField runat="server" ID="hdfEvent" Value=" " />
+                                        <div class=" head-div-2 p-2 mb-0 ">
+                                            <p class="m-0"><asp:Label ID="lblEventTitle" runat="server" Text='<%#Eval("EventTitle")%>'></asp:Label></p>
+                                        </div>
+                                            <div style="display: flex; justify-content: center" class="container">
+                                                <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
+                                <div class="mt-0 p-2">
+                                    <div class="row position-static">
+                                        <div class="col position-static"><b>Event Description: </b></div>
+                                        <div class="col position-static">
+                                            <label runat="server" id="lblEventDescription"></label>
+                                        </div>
+                                    </div>
+                                    <div class="row position-static">
+                                        <div class="col position-static"><b>Speaker: </b></div>
+                                        <div class="col position-static">
+                                            <label runat="server" id="lblSpeaker"></label>
+                                        </div>
+                                    </div>
+                                    <div class="row position-static">
+                                        <div class="col position-static"><b>Event Date: </b></div>
+                                        <div class="col position-static">
+                                            <label runat="server" id="lblEventDate"></label>
+                                        </div>
+                                    </div>
+                                    <div class="row position-static">
+                                        <div class="col position-static"><b>Start Time: </b></div>
+                                        <div class="col position-static">
+                                            <label runat="server" id="lblEventStarTime"></label>
+                                        </div>
+                                    </div>
+                                    <div class="row position-static">
+                                        <div class="col position-static"><b>End Time: </b></div>
+                                        <div class="col position-static">
+                                            <label runat="server" id="lblEventEndTime"></label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                         </div>
+                    </div>
+               
+
+
+                        <!--Notifications-->
+                        <div runat="server" id="divDiplayNotifications" class="position-static dash-content p-0">
+                            <div class=" head-div-2 p-2 mb-0 ">
+                                    <p class="m-0">Notices</p>
                             </div>
-
-                        </ItemTemplate>
-
-                    </asp:Repeater>
-
-                </div>
-
-
-                <!--Notifications-->
-                <div runat="server" id="divDiplayNotifications" class="bg-light position-static col-4 p-3 divContainers">
-                    <div class="header mb-3">
-                        <p class="m-0">Notices</p>
-                    </div>
-                    <div class="row position-static list-group justify-content-end">
-                        <asp:Repeater ID="rptNotifications" runat="server">
-                            <HeaderTemplate>
-                            </HeaderTemplate>
-                            <ItemTemplate>
-                                <asp:LinkButton ID="btnShowNotice" CommandArgument='<%#Eval("NoticeID")%>' CssClass=" position-static list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShowNotice_Click">
-                                        <b>Notice Date: </b><%#Eval("NoticeDate")%><br />
-                                        <b style="font-size:smaller;"> Notice Description: </b><%#Eval("NoticeDescription")%> </b> <br />
-                                </asp:LinkButton>
-                            </ItemTemplate>
-                            <FooterTemplate>
-                            </FooterTemplate>
-                        </asp:Repeater>
-                    </div>
-                </div>
-
-                <div runat="server" id="divNotices" class=" col bg-light position-static col-4 p-3 divContainers">
-                    <asp:HiddenField runat="server" ID="hdnNotice" Value="" />
-                    <div class=" header mb-3 ">
-                        <p class="m-0">Notification Details:</p>
-                    </div>
-                    <div class="row" style="overflow: scroll;">
-                        <div class="mt-0 p-2">
-                            <div class="row position-static">
-                                <div class="col position-static"><b>Notice Date: </b></div>
-                                <div class="col position-static">
-                                    <label runat="server" id="lblNoticeDate"></label>
-                                </div>
+                            <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
+                                <asp:Repeater ID="rptNotifications" runat="server">
+                                    <HeaderTemplate>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnShowNotice" CommandArgument='<%#Eval("NoticeID")%>' CssClass=" position-static list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShowNotice_Click">
+                                        <div class="p-0 form-row m-0 position-static">
+                                                        <div class=" col-auto position-static p-0">
+                                                            <div class="">
+                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Notice&nbsp;Title: </b><%#Eval("NoticeTitle")%><br/></p>
+                                                            </div>
+                                                        </div>
+                                         </div>
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:Repeater>
                             </div>
-                            <div class="row position-static">
-                                <div class="col position-static"><b>Notice Description: </b></div>
-                                <div class="col position-static">
-                                    <label runat="server" id="lblNoticeDescription"></label>
+                        </div>
+
+                        <div runat="server" id="divNotices" class="position-static dash-content p-0">
+                            <asp:HiddenField runat="server" ID="hdnNotice" Value="" />
+                            <div class=" head-div-2 p-2 mb-0 ">
+                                    <p class="m-0">Notification Details:</p>
+                            </div>
+                            <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
+                                <div class="mt-0 p-2">
+                                    <div class="row position-static">
+                                        <div class="col position-static"><b>Notice Title: </b></div>
+                                        <div class="col position-static">
+                                            <label runat="server" id="lblNoticeTitle"></label>
+                                        </div>
+                                    </div>
+                                    <div class="row position-static">
+                                        <div class="col position-static"><b>Notice Date: </b></div>
+                                        <div class="col position-static">
+                                            <label runat="server" id="lblNoticeDate"></label>
+                                        </div>
+                                    </div>
+                                    <div class="row position-static">
+                                        <div class="col position-static"><b>Notice Description: </b></div>
+                                        <div class="col position-static">
+                                            <label runat="server" id="lblNoticeDescription"></label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
 
 
-                <!--articles-->
+                        <!--articles-->
 
-                <div runat="server" id="divDisplayArticles" class="bg-light position-static col-4 p-3 divContainers">
-                    <div class="header mb-3">
-                        <p class="m-0">Latest Articles</p>
-                    </div>
-                    <div class="row position-static list-group justify-content-end">
-                        <asp:Repeater ID="rptDisplayArticles" runat="server">
-                            <HeaderTemplate>
-                            </HeaderTemplate>
-                            <ItemTemplate>
-                                <asp:LinkButton ID="btnShowArt" EnableViewState="true" CommandArgument='<%#Eval("ArticleID")%>' CssClass=" position-static list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShowArt_Click">
-                                        <b>Article Title: </b><%#Eval("ArticleTitle")%><br />
-                                        <b style="font-size:smaller;"> By: </b><%#Eval("Names")%> </b> <br />
-                                        <b style="font-size:smaller;"> Date Created: </b><%#Eval("DateCreated")%><br />
-                                </asp:LinkButton>
-                            </ItemTemplate>
-                            <FooterTemplate>
-                            </FooterTemplate>
-                        </asp:Repeater>
-                    </div>
-                </div>
-
-
-                <div runat="server" id="divDisplayArt" class="col bg-light position-static col-4 p-3 divContainers">
-                    <asp:HiddenField runat="server" ID="hdfArticleID" Value="" />
-                    <div class=" header mb-3 ">
-                        <p class="m-0">Selected Article Details:</p>
-                    </div>
-                    <div class="row" style="overflow: scroll;">
-                        <div class="mt-0 p-2">
-                            <div class="row position-static">
-                                <div class="col position-static"><b>Article Title: </b></div>
-                                <div class="col position-static">
-                                    <label runat="server" id="lblArticleTitle"></label>
+                        <div runat="server" id="divDisplayArticles" class="position-static dash-content p-0">
+                            <div class=" head-div-2 p-2 mb-0 ">
+                                    <p class="m-0">Latest Articles</p>
                                 </div>
+                            <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
+                                <asp:Repeater ID="rptDisplayArticles" runat="server">
+                                    <HeaderTemplate>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnShowArt" EnableViewState="true" CommandArgument='<%#Eval("ArticleID")%>' CssClass=" position-static list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShowArt_Click">
+                                        <div class="p-0 form-row m-0 position-static">
+                                                        <div class=" col-auto position-static p-0">
+                                                            <div class="">
+                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Article&nbsp;Title: </b><%#Eval("ArticleTitle")%><br/></p>
+                                                            </div>
+                                                                <hr class=" mr-4 m-0 p-0"/>
+                                                            <div class="">
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Author: </b><%#Eval("Names")%></p>
+                                                            </div>
+                                                            <hr class=" mr-4 m-0 p-0"/>
+                                                            <div class="">
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Created: </b><%#Eval("DateCreated")%></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                    </FooterTemplate>
+                                </asp:Repeater>
                             </div>
-                            <div class="row position-static">
-                                <div class="col position-static"><b>Content: </b></div>
-                                <div class="col position-static">
-                                    <label runat="server" id="lblArticleContent"></label>
+                        </div>
+
+
+                        <div runat="server" id="divDisplayArt" class="position-static dash-content p-0">
+                            <asp:HiddenField runat="server" ID="hdfArticleID" Value="" />
+                            <div class=" head-div-2 p-2 mb-0 ">
+                                    <p class="m-0">Selected Article Details</p>
+                                </div>
+                            <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
+                                <div class="mt-0 p-2">
+                                    <div class="row position-static">
+                                        <div class="col position-static"><b>Article Title: </b></div>
+                                        <div class="col position-static">
+                                            <label runat="server" id="lblArticleTitle"></label>
+                                        </div>
+                                    </div>
+                                    <div class="row position-static">
+                                        <div class="col position-static"><b>Content: </b></div>
+                                        <div class="col position-static">
+                                            <label runat="server" id="lblArticleContent"></label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        </div>
                     </div>
                 </div>
-
-
             </div>
-
-        </div>
 
 
         <!--close content-->

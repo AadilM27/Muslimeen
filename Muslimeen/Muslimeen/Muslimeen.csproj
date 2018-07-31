@@ -97,7 +97,6 @@
     <Content Include="Content\MyAdmin\icons\PendingReg.png" />
     <Content Include="Content\MyAdmin\js\MyAdmin.js" />
     <Content Include="Content\MyMember.aspx" />
-    <Content Include="Content\MyMemberArticle.aspx" />
     <Content Include="Content\MyMember\css\MyMember.css" />
     <Content Include="Content\MyModerator.aspx" />
     <Content Include="Content\MyModerator\css\MyModerator.css" />
@@ -1635,13 +1634,6 @@
     </Compile>
     <Compile Include="Content\MyMember.aspx.designer.cs">
       <DependentUpon>MyMember.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Content\MyMemberArticle.aspx.cs">
-      <DependentUpon>MyMemberArticle.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Content\MyMemberArticle.aspx.designer.cs">
-      <DependentUpon>MyMemberArticle.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\MyModerator.aspx.cs">
       <DependentUpon>MyModerator.aspx</DependentUpon>

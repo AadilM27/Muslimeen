@@ -87,6 +87,8 @@
                         <nav class="nav flex-column pt-2 pb-2 pr-0">
                             <asp:Button runat="server" ToolTip="Pending Scholar Registrations." ID="btnViewPendingSch" OnClick="btnViewPendingSch_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="View Pending Scholars" />
                             <asp:Button runat="server" ID="btnViewPendingArticles" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnViewPendingArticles_Click" Text="View Pending Articles" />
+                            <asp:Button runat="server" ID="btnViewReports" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnViewReports_Click" Text="View Reports" />
+
                         </nav>
                     </div>
                     <div class=" position-static basic-div-styling p-0  w-100" >
@@ -252,6 +254,16 @@
                                     <asp:TextBox runat="server" CssClass=" form-control mt-3 col-8 position-static" ID="txtRejectReason" OnTextChanged="txtRejectReason_TextChanged"></asp:TextBox>
                                 </div>
                         </div>
+                             <div class="col-12 position-static p-0 " runat="server" id="divViewReports">
+                                <!--Contains the List of items-->
+                                <div class=" col-lg-12 position-static head-div-2 p-2 mb-1 " style="width:100%;">
+                                    <p class="m-0 ">Reports</p>
+                                </div>
+                                <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
+                                    <asp:GridView ID="grdReports" runat="server"></asp:GridView>
+                                    <asp:Button ID="Button1" runat="server" Text="Button" />
+                                </div>
+                            </div>
                         </div>
 
 

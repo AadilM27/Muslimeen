@@ -24,6 +24,7 @@ namespace Muslimeen.Content.MyModerator
                 divViewPendingSch.Visible = false;
                 divDisplaySch.Visible = false;
                 divViewArt.Visible = false;
+                divViewReports.Visible = false;
 
                 if (Session["UserName"] != null)
                 {
@@ -390,5 +391,16 @@ namespace Muslimeen.Content.MyModerator
 
         }
 
+        protected void btnViewReports_Click(object sender, EventArgs e)
+        {
+            divDisplaySch.Visible = false;
+            divViewPendingSch.Visible = false;
+
+
+            divViewPendingArt.Visible = false;
+            divViewArt.Visible = false;
+            divViewReports.Visible = true;
+
+        }
     }
 }

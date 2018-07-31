@@ -43,6 +43,7 @@ namespace Muslimeen.Content
                     divNotices.Visible = false;
                     divDisplayArt.Visible = false;
                     divEvent.Visible = false;
+                    divListEvent.Visible = false;
 
                     btnLogin.Text = "Log out";
                     btnRegister.Visible = false;
@@ -59,14 +60,15 @@ namespace Muslimeen.Content
                     divNotices.Visible = false;
                     divDisplayArt.Visible = false;
                     divEvent.Visible = false;
+                    divListEvent.Visible = false;
 
                     divUserProfile.Visible = false;
                     Session.Clear();
                 }
                 try
                 {
-                    rptGetEvents.DataSource = dBHandler.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
-                    rptGetEvents.DataBind();
+                    RptEventList.DataSource = dBHandler.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
+                    RptEventList.DataBind();
                     DateTime date = DateTime.Today;
                     uspGetSpecificDayPrayerTimes time = new uspGetSpecificDayPrayerTimes();
                     time = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), date);
@@ -173,18 +175,6 @@ namespace Muslimeen.Content
 
             }
         }
-
-        protected void btnListEvents_Click(object sender, EventArgs e)
-        {
-           
-                DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
-                DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
-                rptGetEvents.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
-                rptGetEvents.DataBind();
-            divEvent.Visible = true;
-           
-        }
-
         protected void btnTodaysPrayerTime_Click(object sender, EventArgs e)
         {
             try
@@ -195,14 +185,14 @@ namespace Muslimeen.Content
                 divDisplayArticles.Visible = false;
                 divDisplayArt.Visible = false;
                 divEvent.Visible = false;
+                divListEvent.Visible = false;
             }
             catch
             {
 
             }
         }
-
-        protected void btnEvents_Click (object sender, EventArgs e)
+        protected void btnEvents_Click(object sender, EventArgs e)
         {
             try
             {
@@ -212,12 +202,48 @@ namespace Muslimeen.Content
                 divDisplayArticles.Visible = false;
                 divDisplayArt.Visible = false;
                 divEvent.Visible = false;
+                divListEvent.Visible = false;
 
 
             }
             catch
             { }
         }
+
+        protected void btnListEvents_Click(object sender, EventArgs e)
+        {// button on selecting date
+                divListEvent.Visible = true;
+                DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
+                DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
+                RptEventList.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
+                RptEventList.DataBind();
+                divEvent.Visible = false;
+                divListEvent.Visible = true;
+           
+        }
+        protected void btnEventList_Click(object sender, EventArgs e)
+        {
+            divListEvent.Visible = true;
+            divEvent.Visible = true;
+            LinkButton linkButton = (LinkButton)sender;
+
+            string EventID = linkButton.CommandArgument.ToString();
+            hdfEvent.Value = EventID;
+
+            DBHandler dBHandler = new DBHandler();
+
+            Event ev = new Event();
+            ev = dBHandler.BLL_GetEventwithID(Convert.ToInt32(EventID));
+
+            lblEventDescription.InnerText = ev.EventDescription.ToString();
+            lblSpeaker.InnerText = ev.Speaker.ToString();
+            lblEventDate.InnerText = ev.EventDate.ToString();
+            lblEventStarTime.InnerText = ev.EventStartTime.ToString();
+            lblEventEndTime.InnerText = ev.EventEndTime.ToString();
+
+
+        }
+
 
         protected void btnNotifications_Click(object sender, EventArgs e)
         {
@@ -229,6 +255,7 @@ namespace Muslimeen.Content
                 divNotices.Visible = true;
                 divDisplayArt.Visible = false;
                 divEvent.Visible = false;
+                divListEvent.Visible = false;
 
                 DBHandler dBHandler = new DBHandler();
 
@@ -247,11 +274,12 @@ namespace Muslimeen.Content
                 divDisplaySalahTimetable.Visible = false;
                 divDiplayNotifications.Visible = false;
                 divDisplayArticles.Visible = true;
-            divDisplayArt.Visible = true;
-            divEvent.Visible = false;
+                divDisplayArt.Visible = true;
+                divEvent.Visible = false;
+                divListEvent.Visible = false;
 
 
-            DBHandler dBHandler = new DBHandler();
+                DBHandler dBHandler = new DBHandler();
 
                 DateTime dateToday = DateTime.Today;
                 DateTime date = DateTime.Today.AddDays(-7);
@@ -264,6 +292,7 @@ namespace Muslimeen.Content
 
         protected void btnShowArt_Click(object sender, EventArgs e)
         {
+            divDisplayArt.Visible = true;
 
             LinkButton linkButton = (LinkButton)sender;
 
@@ -281,6 +310,8 @@ namespace Muslimeen.Content
         }
         protected void btnShowNotice_Click(object sender, EventArgs e)
         {
+            divDiplayNotifications.Visible = true;
+            divNotices.Visible = true;
 
             LinkButton linkButton = (LinkButton)sender;
 
@@ -291,6 +322,7 @@ namespace Muslimeen.Content
             Notice notice = new Notice();
             notice = dBHandler.BLL_GetNotice(Convert.ToInt32(NoticeID));
 
+            lblNoticeTitle.InnerText = notice.NoticeTitle.ToString();
             lblNoticeDate.InnerText = notice.NoticeDate.ToString();
             lblNoticeDescription.InnerText = notice.NoticeDescription.ToString();
 
