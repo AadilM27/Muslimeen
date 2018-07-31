@@ -212,5 +212,13 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetEventwithID(EventID);
         }
+        public List<uspGetAcceptedScholars> BLL_GetAcceptedScholars()
+        {
+            return dBAccess.GetAcceptedScholars();
+        }
+        public List<uspGetAcceptedScholars> BLL_GetRejectedScholars()
+        {
+            return dBAccess.GetRejectedScholars();
+        }
     }
 }
