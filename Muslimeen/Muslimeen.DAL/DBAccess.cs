@@ -901,7 +901,7 @@ namespace Muslimeen.BLL
         {
             List<Article> list = new List<Article>();
 
-            using (DataTable table = DBHelper.Select("uspGetRejectedArticle", CommandType.StoredProcedure))
+            using (DataTable table = DBHelper.Select("uspGetRejectedArticles", CommandType.StoredProcedure))
             {
                 if (table.Rows.Count > 0)
                 {
@@ -1004,6 +1004,58 @@ namespace Muslimeen.BLL
                 }
             }
             return notice;
+        }
+        public List<uspGetAcceptedScholars> GetAcceptedScholars()
+        {
+            List<uspGetAcceptedScholars> list = new List<uspGetAcceptedScholars>();
+            using (DataTable table = DBHelper.Select("uspGetAcceptedScholars", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetAcceptedScholars scholar = new uspGetAcceptedScholars
+                        {
+                            MemberID = Convert.ToString(row["MemberID"]),
+                            MemberName = Convert.ToString(row["MosqueName"]),
+                            MemberLastName = Convert.ToString(row["MemberLastName"]),
+                            MemberDOB = Convert.ToDateTime(row["MemberDOB"]),
+                            MemberType = Convert.ToChar(row["MemberType"]),
+                            ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]),
+                            Email = Convert.ToString(row["Email"]),
+                            ContactNo = Convert.ToString(row["ContactNo"])
+                        };
+                        list.Add(scholar);
+                    }
+                }
+            }
+            return list;
+        }
+        public List<uspGetAcceptedScholars> GetRejectedScholars()
+        {
+            List<uspGetAcceptedScholars> list = new List<uspGetAcceptedScholars>();
+            using (DataTable table = DBHelper.Select("uspGetRejectedScholars", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetAcceptedScholars scholar = new uspGetAcceptedScholars
+                        {
+                            MemberID = Convert.ToString(row["MemberID"]),
+                            MemberName = Convert.ToString(row["MosqueName"]),
+                            MemberLastName = Convert.ToString(row["MemberLastName"]),
+                            MemberDOB = Convert.ToDateTime(row["MemberDOB"]),
+                            MemberType = Convert.ToChar(row["MemberType"]),
+                            ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]),
+                            Email = Convert.ToString(row["Email"]),
+                            ContactNo = Convert.ToString(row["ContactNo"])
+                        };
+                        list.Add(scholar);
+                    }
+                }
+            }
+            return list;
         }
         //public List<uspViewLatestArticles> ViewLatestArticles(DateTime dateToday, DateTime date)
         //{

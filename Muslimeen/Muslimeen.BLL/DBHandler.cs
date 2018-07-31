@@ -208,5 +208,13 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetNotice(noticeID);
         }
+        public List<uspGetAcceptedScholars> BLL_GetAcceptedScholars()
+        {
+            return dBAccess.GetAcceptedScholars();
+        }
+        public List<uspGetAcceptedScholars> BLL_GetRejectedScholars()
+        {
+            return dBAccess.GetRejectedScholars();
+        }
     }
 }
