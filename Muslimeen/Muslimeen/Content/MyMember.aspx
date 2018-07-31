@@ -205,12 +205,12 @@
                                 </div>
                             </div>
                     
-                        <div runat="server" id="divListEvent" class="position-static dash-content p-0">
+                        <div runat="server" id="divListEvent" class="position-static dash-content m-0 p-0">
                             <div class=" head-div-2 p-2 mb-0 ">
                                     <p class="m-0">List of events</p>
                             </div>
                             <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
-                                <asp:Repeater ID="RptEventList" runat="server">
+                                <asp:Repeater ID="RptEventList" runat="server" OnItemCommand="RptEventList_ItemCommand">
                                     <HeaderTemplate>
                                     </HeaderTemplate>
                                     <ItemTemplate>
@@ -232,10 +232,10 @@
                             </div>
                         </div>
 
-                             <div runat="server" id="divEvent" class="position-static dash-content p-0">
-                                             <asp:HiddenField runat="server" ID="hdfEvent" Value=" " />
+                             <div runat="server" id="divEvent" class="position-static dash-content m-0 p-0 flex-nowrap">
+                                    <asp:HiddenField runat="server" ID="hdfEvent" Value="" />
                                         <div class=" head-div-2 p-2 mb-0 ">
-                                            <p class="m-0"><asp:Label ID="lblEventTitle" runat="server" Text='<%#Eval("EventTitle")%>'></asp:Label></p>
+                                            <%--<p class="m-0"><asp:Label ID="lblEventTitle" runat="server" Text='<%#Eval("EventTitle")%>'></asp:Label></p>--%>
                                         </div>
                                             <div style="display: flex; justify-content: center" class="container">
                                                 <div class="position-static p-1 lst-container" style="overflow-y:scroll;">

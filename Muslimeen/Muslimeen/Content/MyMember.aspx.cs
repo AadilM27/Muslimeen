@@ -66,22 +66,22 @@ namespace Muslimeen.Content
                     Session.Clear();
                 }
                 try
-                {
-                    RptEventList.DataSource = dBHandler.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
-                    RptEventList.DataBind();
-                    DateTime date = DateTime.Today;
-                    uspGetSpecificDayPrayerTimes time = new uspGetSpecificDayPrayerTimes();
-                    time = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), date);
-                    lblFajrAzaan.Text = time.FajrA.ToString();
-                    lblFajrJamaat.Text = time.FajrJ.ToString();
-                    lblDhuhrAzaan.Text = time.DhuhrA.ToString();
-                    lblDhuhrJamaat.Text = time.DhuhrJ.ToString();
-                    lblAsrAzaan.Text = time.AsrA.ToString();
-                    lblAsrJamaat.Text = time.AsrJ.ToString();
-                    lblMagribAzaan.Text = time.MagribA.ToString();
-                    lblMagribJamaat.Text = time.MagribJ.ToString();
-                    lblEishaAzaan.Text = time.EishaA.ToString();
-                    lblEishaJamaat.Text = time.EishaJ.ToString();
+                {   //######### IDK what you using this for but this is causing a conflict with the other repeater.############## <<<<<<<<<<<<<<< READ
+                    //RptEventList.DataSource = dBHandler.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
+                    //RptEventList.DataBind();
+                    //DateTime date = DateTime.Today;
+                    //uspGetSpecificDayPrayerTimes time = new uspGetSpecificDayPrayerTimes();
+                    //time = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), date);
+                    //lblFajrAzaan.Text = time.FajrA.ToString();
+                    //lblFajrJamaat.Text = time.FajrJ.ToString();
+                    //lblDhuhrAzaan.Text = time.DhuhrA.ToString();
+                    //lblDhuhrJamaat.Text = time.DhuhrJ.ToString();
+                    //lblAsrAzaan.Text = time.AsrA.ToString();
+                    //lblAsrJamaat.Text = time.AsrJ.ToString();
+                    //lblMagribAzaan.Text = time.MagribA.ToString();
+                    //lblMagribJamaat.Text = time.MagribJ.ToString();
+                    //lblEishaAzaan.Text = time.EishaA.ToString();
+                    //lblEishaJamaat.Text = time.EishaJ.ToString();
                 }
                 catch { }
             }
@@ -212,19 +212,18 @@ namespace Muslimeen.Content
 
         protected void btnListEvents_Click(object sender, EventArgs e)
         {// button on selecting date
+
+                divEvent.Visible = true;
                 divListEvent.Visible = true;
                 DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
                 DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
                 RptEventList.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
                 RptEventList.DataBind();
-                divEvent.Visible = false;
-                divListEvent.Visible = true;
            
         }
+
         protected void btnEventList_Click(object sender, EventArgs e)
         {
-            divListEvent.Visible = true;
-            divEvent.Visible = true;
             LinkButton linkButton = (LinkButton)sender;
 
             string EventID = linkButton.CommandArgument.ToString();
@@ -235,15 +234,22 @@ namespace Muslimeen.Content
             Event ev = new Event();
             ev = dBHandler.BLL_GetEventwithID(Convert.ToInt32(EventID));
 
-            lblEventDescription.InnerText = ev.EventDescription.ToString();
-            lblSpeaker.InnerText = ev.Speaker.ToString();
-            lblEventDate.InnerText = ev.EventDate.ToString();
-            lblEventStarTime.InnerText = ev.EventStartTime.ToString();
-            lblEventEndTime.InnerText = ev.EventEndTime.ToString();
+            try
+            {
+                lblEventDescription.InnerText = ev.EventDescription.ToString();
+                lblSpeaker.InnerText = ev.Speaker.ToString();
+                lblEventDate.InnerText = ev.EventDate.ToString();
+                lblEventStarTime.InnerText = ev.EventStartTime.ToString();
+                lblEventEndTime.InnerText = ev.EventEndTime.ToString();
+                divEvent.Visible = true;
+                divListEvent.Visible = true;
 
-
+            }
+            catch
+            {
+                throw;
+            }
         }
-
 
         protected void btnNotifications_Click(object sender, EventArgs e)
         {
@@ -328,6 +334,10 @@ namespace Muslimeen.Content
 
         }
 
+        protected void RptEventList_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+
+        }
     }
 
 }
