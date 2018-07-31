@@ -947,8 +947,9 @@ namespace Muslimeen.BLL
                     {
                         NoticeID = Convert.ToInt32(row["NoticeID"]),
                         NoticeDate = Convert.ToDateTime(row["NoticeDate"]),
-                        NoticeDescription = Convert.ToString(row["NoticeDescription"])
-                    };
+                        NoticeDescription = Convert.ToString(row["NoticeDescription"]),
+                        NoticeTitle = Convert.ToString(row["NoticeTitle"])
+                };
                     list.Add(notice);
                 }
             }
@@ -998,6 +999,7 @@ namespace Muslimeen.BLL
                     notice = new Notice
                     {
                         NoticeID = Convert.ToInt32(row["NoticeID"]),
+                        NoticeTitle = Convert.ToString(row["NoticeTitle"]),
                         NoticeDescription = Convert.ToString(row["NoticeDescription"]),
                         NoticeDate = Convert.ToDateTime(row["NoticeDate"])
                     };
@@ -1005,27 +1007,34 @@ namespace Muslimeen.BLL
             }
             return notice;
         }
-        //public List<uspViewLatestArticles> ViewLatestArticles(DateTime dateToday, DateTime date)
-        //{
-        //    List<uspViewLatestArticles> list = new List<uspViewLatestArticles>();
-        //    using (DataTable table = DBHelper.Select("uspViewLatestArticles", CommandType.StoredProcedure))
-        //    {
-        //        if (table.Rows.Count > 0)
-        //        {
-        //            foreach (DataRow row in table.Rows)
-        //            {
-        //                uspViewLatestArticles article = new uspViewLatestArticles
-        //                {
-        //                    ArticleTitle = Convert.ToString(row["ArticleTitle"]),
-        //                    DateCreated = Convert.ToDateTime(row["DateCreated"]),
-        //                    Names = Convert.ToString(row["Names"])
-        //                };
-        //                list.Add(article);
-        //            }
-        //        }
-        //    }
-        //    return list;
-        //}
+        public Event GetEventwithID(int EventID)
+        {
+            Event events = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@EventID",EventID)
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetSpecificEvent",
+                    CommandType.StoredProcedure, pars))
+            {
+                if (table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    events = new Event
+                    {
+                 
+                        EventDate = Convert.ToDateTime(row["EventDate"].ToString()),
+                        EventDescription = row["EventDescription"].ToString(),
+                        EventStartTime = row["EventStartTime"].ToString(),
+                        EventEndTime = row["EventEndTime"].ToString(),
+                        Speaker = row["Speaker"].ToString()
+
+
+                    };
+                }
+            }
+            return events;
+        }
     }
 }
 
