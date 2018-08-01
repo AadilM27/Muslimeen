@@ -254,16 +254,40 @@
                                     <asp:TextBox runat="server" CssClass=" form-control mt-3 col-8 position-static" ID="txtRejectReason" OnTextChanged="txtRejectReason_TextChanged"></asp:TextBox>
                                 </div>
                         </div>
-                             <div class="col-12 position-static p-0 " runat="server" id="divViewReports">
+                             <div class="col-2 position-static p-0 " runat="server" id="divViewReports">
                                 <!--Contains the List of items-->
+                                <div class=" col-lg-12 position-static head-div-2 p-2 mb-1 " style="width:100%;">
+                                    <p class="m-0 ">Overview</p>
+                                </div>
+                                <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
+                                    
+                                    <div class ="col-1 position-static ">
+                                    <asp:Button ID="BtnAcceptedScholars" CssClass="float-left" runat="server" Text="Accepted Scholars" OnClick="BtnAcceptedScholars_Click" />
+                                    </div>
+                                    <div class="col-2 position-static">
+                                        <asp:Button ID="btnRejectedScholars" CssClass="float-left"  runat="server" Text="Rejected Scholars" OnClick="btnRejectedScholars_Click" />
+                                    </div>
+                                </div>
+                         
+                            </div>
+                            <div runat="server" id="divDisplayReports" class="col-8 position-static dash-content  p-0 ">
                                 <div class=" col-lg-12 position-static head-div-2 p-2 mb-1 " style="width:100%;">
                                     <p class="m-0 ">Reports</p>
                                 </div>
-                                <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
-                                    <asp:GridView ID="grdReports" runat="server"></asp:GridView>
-                                    <asp:Button ID="Button1" runat="server" Text="Button" />
+                                <asp:GridView ID="grdReports" runat="server" style="position:static;" CellPadding="4" ForeColor="#333333" GridLines="None" Width="60px">
+                                    <AlternatingRowStyle BackColor="White" />
+                                    <EditRowStyle BackColor="#2461BF" />
+                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                    <RowStyle BackColor="#EFF3FB" />
+                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                </asp:GridView>
                                 </div>
-                            </div>
                         </div>
 
 

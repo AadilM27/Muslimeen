@@ -25,6 +25,8 @@ namespace Muslimeen.Content.MyModerator
                 divDisplaySch.Visible = false;
                 divViewArt.Visible = false;
                 divViewReports.Visible = false;
+                divDisplayReports.Visible = false;
+                
 
                 if (Session["UserName"] != null)
                 {
@@ -400,7 +402,48 @@ namespace Muslimeen.Content.MyModerator
             divViewPendingArt.Visible = false;
             divViewArt.Visible = false;
             divViewReports.Visible = true;
+            grdReports.Visible = true;
+           
+           
+        }
 
+        protected void BtnAcceptedScholars_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                divViewReports.Visible = true;
+                divDisplayReports.Visible = true;
+                DBHandler handler = new DBHandler();
+                uspGetAcceptedArticle acc = new uspGetAcceptedArticle();
+                
+                grdReports.DataSource = handler.BLL_GetAcceptedScholars();
+                grdReports.DataBind();
+            }
+            catch(Exception)
+            {
+               
+            }
+           
+        }
+
+        protected void btnRejectedScholars_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                divViewReports.Visible = true;
+                divDisplayReports.Visible = true;
+                DBHandler handler = new DBHandler();
+                uspGetAcceptedArticle acc = new uspGetAcceptedArticle();
+
+                grdReports.DataSource = handler.BLL_GetRejectedScholars();
+                grdReports.DataBind();
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }
