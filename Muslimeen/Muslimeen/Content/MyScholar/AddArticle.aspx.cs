@@ -215,7 +215,7 @@ namespace Muslimeen.Content.MyScholar
         protected void btnSave_Click(object sender, EventArgs e)
         {
             DBHandler han = new DBHandler();
-            Article art = new Article();
+            InsertArticle art = new InsertArticle();
 
             //lblErrorPass.Text = "";
 
@@ -229,21 +229,17 @@ namespace Muslimeen.Content.MyScholar
                 {
                     art.DateCreated = Convert.ToDateTime(DateTime.Today);
                     art.Status = Convert.ToChar("P");
-                    art.RejectionReason = Convert.ToString(" ");
                     art.Active = Convert.ToChar("T");
-                    art.RemovalReason = Convert.ToString(" ");
 
                     //Scholar ID input with session...
                     art.ScholarID = Convert.ToString(Session["UserName"]);
                     //art.ScholarID = Convert.ToString(" ");
-                    art.ModeratorID = Convert.ToString(" ");
                     art.TopicID = Convert.ToInt32(drpTopics.SelectedValue);
                     art.ArticleTitle = Convert.ToString(txtHeading.Text);
                     art.ArticleContent = Convert.ToString(txtContent.Text);
 
                     han.BLL_InsertArticle(art);
 
-                    bool success = han.BLL_InsertArticle(art);
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Add Succesfull');</script>");
                     txtHeading.Text = " ";
                     txtContent.Text = " ";

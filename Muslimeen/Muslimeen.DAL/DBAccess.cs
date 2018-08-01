@@ -259,7 +259,7 @@ namespace Muslimeen.BLL
             return getScholarDetails;
         }
         //Adding Article...
-        public bool AddArticle(Article article)
+        public bool AddArticle(InsertArticle article)
         {
             List<SqlParameter> par = new List<SqlParameter>();
             foreach (var p in article.GetType().GetProperties())

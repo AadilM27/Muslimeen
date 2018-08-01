@@ -63,7 +63,7 @@ namespace Muslimeen.BLL
         }
 
         //Adding a new Article by the Scholar...
-        public bool BLL_AddArticle(Article article)
+        public bool BLL_AddArticle(InsertArticle article)
         {
             return dBAccess.AddArticle(article);
         }
@@ -177,7 +177,7 @@ namespace Muslimeen.BLL
         }
 
         //Insert of Article
-        public bool BLL_InsertArticle(Article article)
+        public bool BLL_InsertArticle(InsertArticle article)
         {
             return dBAccess.AddArticle(article);
         }

@@ -65,3 +65,11 @@ C:\Users\s216387108\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug
 C:\Users\s216387108\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csproj.CoreCompileInputs.cache
 C:\Users\s216387108\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.dll
 C:\Users\s216387108\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.pdb
+C:\Users\s216211565\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Muslimeen.DAL.dll
+C:\Users\s216211565\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Muslimeen.DAL.pdb
+C:\Users\s216211565\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\TypeLib.dll
+C:\Users\s216211565\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\TypeLib.pdb
+C:\Users\s216211565\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csprojResolveAssemblyReference.cache
+C:\Users\s216211565\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csproj.CoreCompileInputs.cache
+C:\Users\s216211565\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.dll
+C:\Users\s216211565\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.pdb
