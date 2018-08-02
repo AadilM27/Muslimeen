@@ -280,5 +280,15 @@ namespace Muslimeen.Content
             lblTaskHead.InnerText = btnAddMosque.Text.ToString();
 
         }
+
+        protected void btnRegMosque_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnCancelMosqueReg_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
