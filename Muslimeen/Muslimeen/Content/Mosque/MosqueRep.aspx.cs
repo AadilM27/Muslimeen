@@ -16,7 +16,7 @@ namespace Muslimeen.Content.Mosque
         protected void Page_Load(object sender, EventArgs e)
         {
            
-
+            
 
             if (Session["UserName"] != null)
             {
@@ -336,7 +336,7 @@ namespace Muslimeen.Content.Mosque
             }
 
 
-
+            
 
 
         }
@@ -463,6 +463,7 @@ namespace Muslimeen.Content.Mosque
 
         protected void btnNavAddEvent_Click(object sender, EventArgs e)
         {
+            lblTaskHeader.InnerText = btnNavAddEvent.Text.ToString();
             divAddEvent.Visible = true;
             divEditEvent.Visible = false;
             divManageTimes.Visible = false;
@@ -470,6 +471,7 @@ namespace Muslimeen.Content.Mosque
 
         protected void btnNavEditEvent_Click(object sender, EventArgs e)
         {
+            lblTaskHeader.InnerText = btnNavEditEvent.Text.ToString();
             divAddEvent.Visible = false;
             divEditEvent.Visible = true;
             divManageTimes.Visible = false;
@@ -477,6 +479,7 @@ namespace Muslimeen.Content.Mosque
 
         protected void btnNavManageTimes_Click(object sender, EventArgs e)
         {
+            lblTaskHeader.InnerText = btnNavManageTimes.Text.ToString();
             divAddEvent.Visible = false;
             divEditEvent.Visible = false;
             divManageTimes.Visible = true;

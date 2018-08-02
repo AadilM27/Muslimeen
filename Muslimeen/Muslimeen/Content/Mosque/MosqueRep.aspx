@@ -12,7 +12,7 @@
     <title>MyMuslimeen - Home</title>
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico" />
-    <link href="../MyAdmin/css/MyAdmin.css" rel="stylesheet" />
+    <link href="css/MyMosque.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -113,83 +113,59 @@
 
                 <div class=" position-static basic-div-styling p-0  w-100">
                     <div runat="server" id="divTaskHead" class=" head-div text-center p-2 mb-1">
-                        <h4 class="p-0 m-0"></h4>
+                        <h4 class="p-0 m-0" id="lblTaskHeader" runat="server"></h4>
                     </div>
                     <div class="row p-0 m-0 tab-content right-bottom-div p-1">
-                        <div class=" col-4 p-3 bg-light position-static" runat="server" id="divAddEvent">
+                        <div class="flex-nowrap w-50" runat="server" id="divAddEvent">
                             <!--Contains the List of items-->
-                            <div class="container">
-
-                                <div class="contentHolder mt-4">
-                                    <div class="header mb-3">
-                                        <h4 class="text-center">Add Events:
-                               <br />
-                                        </h4>
-
+                                    <div class=" head-div-2 p-2 mb-1 text-left">
+                                        <p class="m-0">Add Event</p>
                                     </div>
-                                    <div class="container">
-
-                                        <table>
-                                            <tr>
-                                                <td>
-                                                    <table>
-                                                        <tr>
-                                                            <td>Event Title: </td>
-                                                            <td>
-                                                                <asp:TextBox runat="server" ID="txtEventTitle" MaxLength="50"></asp:TextBox></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Event Date:</td>
-                                                            <td>
-                                                                <asp:TextBox runat="server" ID="txtEventDate"></asp:TextBox></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Event Start Time</td>
-                                                            <td>
-                                                                <asp:TextBox runat="server" ID="txtEventStartTime" MaxLength="20"></asp:TextBox></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Event End Time: </td>
-                                                            <td>
-                                                                <asp:TextBox runat="server" ID="txtEventEndTime" MaxLength="20"></asp:TextBox></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Event Speaker: </td>
-                                                            <td>
-                                                                <asp:TextBox runat="server" ID="txtSpeaker" MaxLength="50"></asp:TextBox></td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                                <td>
-                                                    <p></p>
-                                                </td>
-                                                <td>
-                                                    <table>
-                                                        <tr>
-                                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Event Description: </td>
-                                                            <td>
-                                                                <asp:TextBox runat="server" ID="txtEventDescription" Width="200px" Height="150" MaxLength="250"></asp:TextBox></td>
-                                                            <td>
-                                                                <asp:Button runat="server" ID="btnAddEvent" Text="Add Event" OnClick="btnAddEvent_Click" /></td>
-                                                        </tr>
-
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                        </table>
-
-
-                                        <asp:Label ID="lblEventMessage" runat="server" />
-
+                                    <div class="position-static p-1 lst-container">
+                                        <div class="form-row">
+                                            <div class="form-group col-sm-12 mb-1">
+                                                <label class="col mb-0 p-0">Event Title*</label>
+                                                <asp:TextBox CssClass="form-control form-control-md col main-txtb" runat="server" ID="txtEventTitle"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-sm-12 mb-1">
+                                                <label class="col mb-0 p-0">Event Date*</label>
+                                                <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtEventDate"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-sm-12 mb-1">
+                                                <label class="col mb-0 p-0">Event Start Time*</label>
+                                                <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtEventStartTime"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-sm-12 mb-1">
+                                                <label class="col mb-0 p-0">Event End Time*</></label>
+                                                <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtEventEndTime"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-sm-12 mb-1">
+                                                <label class="col mb-0 p-0">Event Speaker*</label>
+                                                <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtSpeaker"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-sm-12 mb-1">
+                                                <label class="col mb-0 p-0">Event Description</label>
+                                                <asp:TextBox TextMode="MultiLine" Style="min-height: 200px;max-height:200px" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtEventDescription"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                          <div class="form-row">
+                                            <div class="form-group col-sm-12 mb-1 text-center">
+                                                <asp:Button runat="server" ID="btnAddEvent" Text="Add Event" OnClick="btnAddEvent_Click" CssClass=" topnav btn btn-md btn-outline-light mr-2 mt-2" />
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-
-
-
-
-
                             </div>
-                        </div>
+ 
 
                         <div class=" col-4 p-3 bg-light position-static" runat="server" id="divEditEvent">
 
