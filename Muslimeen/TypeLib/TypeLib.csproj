@@ -86,6 +86,7 @@
     <Compile Include="Models\uspVerifyMember.cs" />
     <Compile Include="ViewModels\uspGetRejectedArticle.cs" />
     <Compile Include="ViewModels\uspGetScholarDetails.cs" />
+    <Compile Include="ViewModels\uspGetSelectedPendingArticle.cs" />
     <Compile Include="ViewModels\uspGetSpecificDayPrayerTimes.cs" />
     <Compile Include="ViewModels\uspGetSpecificEvent.cs" />
     <Compile Include="ViewModels\uspGetTopics.cs" />
