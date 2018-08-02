@@ -436,6 +436,33 @@ namespace Muslimeen.Content.MyModerator {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divViewReports;
         
         /// <summary>
+        /// BtnAcceptedScholars control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnAcceptedScholars;
+        
+        /// <summary>
+        /// btnRejectedScholars control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRejectedScholars;
+        
+        /// <summary>
+        /// divDisplayReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDisplayReports;
+        
+        /// <summary>
         /// grdReports control.
         /// </summary>
         /// <remarks>
@@ -443,14 +470,5 @@ namespace Muslimeen.Content.MyModerator {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdReports;
-        
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }

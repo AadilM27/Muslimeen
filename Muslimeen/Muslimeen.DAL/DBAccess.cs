@@ -1056,7 +1056,7 @@ namespace Muslimeen.BLL
                         uspGetAcceptedScholars scholar = new uspGetAcceptedScholars
                         {
                             MemberID = Convert.ToString(row["MemberID"]),
-                            MemberName = Convert.ToString(row["MosqueName"]),
+                            MemberName = Convert.ToString(row["MemberName"]),
                             MemberLastName = Convert.ToString(row["MemberLastName"]),
                             MemberDOB = Convert.ToDateTime(row["MemberDOB"]),
                             MemberType = Convert.ToChar(row["MemberType"]),
@@ -1082,7 +1082,7 @@ namespace Muslimeen.BLL
                         uspGetAcceptedScholars scholar = new uspGetAcceptedScholars
                         {
                             MemberID = Convert.ToString(row["MemberID"]),
-                            MemberName = Convert.ToString(row["MosqueName"]),
+                            MemberName = Convert.ToString(row["MemberName"]),
                             MemberLastName = Convert.ToString(row["MemberLastName"]),
                             MemberDOB = Convert.ToDateTime(row["MemberDOB"]),
                             MemberType = Convert.ToChar(row["MemberType"]),
