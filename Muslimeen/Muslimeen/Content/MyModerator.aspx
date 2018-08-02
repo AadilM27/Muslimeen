@@ -272,9 +272,9 @@
                             </div>
                             <div runat="server" id="divDisplayReports" class="col-8 position-static dash-content  p-0 ">
                                 <div class=" col-lg-12 position-static head-div-2 p-2 mb-1 " style="width:100%;">
-                                    <p class="m-0 ">Reports</p>
+                                    <p class="">Reports</p>
                                 </div>
-                                <asp:GridView ID="grdReports" runat="server" style="position:static;" CellPadding="4" ForeColor="#333333" GridLines="None" Width="60px">
+                                <asp:GridView ID="grdReports" runat="server" style="position:static; font-size:smaller;" CellPadding="4" ForeColor="#333333" GridLines="None" Width="60px">
                                     <AlternatingRowStyle BackColor="White" />
                                     <EditRowStyle BackColor="#2461BF" />
                                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

@@ -1058,9 +1058,7 @@ namespace Muslimeen.BLL
                             MemberID = Convert.ToString(row["MemberID"]),
                             MemberName = Convert.ToString(row["MemberName"]),
                             MemberLastName = Convert.ToString(row["MemberLastName"]),
-                            MemberDOB = Convert.ToDateTime(row["MemberDOB"]),
-                            MemberType = Convert.ToChar(row["MemberType"]),
-                            ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]),
+                            MemberDOB = Convert.ToDateTime(row["MemberDOB"]),                          
                             Email = Convert.ToString(row["Email"]),
                             ContactNo = Convert.ToString(row["ContactNo"])
                         };
@@ -1084,9 +1082,7 @@ namespace Muslimeen.BLL
                             MemberID = Convert.ToString(row["MemberID"]),
                             MemberName = Convert.ToString(row["MemberName"]),
                             MemberLastName = Convert.ToString(row["MemberLastName"]),
-                            MemberDOB = Convert.ToDateTime(row["MemberDOB"]),
-                            MemberType = Convert.ToChar(row["MemberType"]),
-                            ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]),
+                            MemberDOB = Convert.ToDateTime(row["MemberDOB"]),                           
                             Email = Convert.ToString(row["Email"]),
                             ContactNo = Convert.ToString(row["ContactNo"])
                         };
