@@ -220,5 +220,10 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetRejectedScholars();
         }
+
+        public uspGetSelectedPendingArticle BLL_GetSelectedPendingArticle(int articleID)
+        {
+            return dBAccess.GetSelectedPendingArticle(articleID);
+        }
     }
 }

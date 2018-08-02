@@ -1113,6 +1113,29 @@ namespace Muslimeen.BLL
         //    }
         //    return list;
         //}
+
+        public uspGetSelectedPendingArticle GetSelectedPendingArticle(int articleID)
+        {
+            uspGetSelectedPendingArticle pen = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@ArticleID", articleID)
+            };
+
+            using (DataTable tbl = DBHelper.ParamSelect("uspGetSelectedPendingArticle", CommandType.StoredProcedure, pars))
+            {
+                if (tbl.Rows.Count == 1)
+                {
+                    DataRow row = tbl.Rows[0];
+                    pen = new uspGetSelectedPendingArticle();
+
+                    pen.ArticleTitle = Convert.ToString(row["ArticleTitle"]);
+                    pen.ArticleContent = Convert.ToString(row["ArticleContent"]);
+                    pen.DateCreated = Convert.ToDateTime(row["DateCreated"]).Date;   
+                }
+            }
+            return pen;
+        }
     }
 }
 

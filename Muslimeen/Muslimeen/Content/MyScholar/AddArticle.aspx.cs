@@ -21,15 +21,22 @@ namespace Muslimeen.Content.MyScholar
 
                 divAddArticle.Visible = true;
                 divPendingArticles.Visible = false;
-                divRejectedArticles.Visible = false;
+                //divRejectedArticles.Visible = false;
+                divPenDetailsOverlay.Visible = false;
+                divNoSelected.Visible = false;
+                divDisplayArticle.Visible = false;
 
                 //Pending Article Source
-                repeatPendingArticle.DataSource = dBHandler.BLL_GetPendingArticle();
-                repeatPendingArticle.DataBind();
+                //repeatPendingArticle.DataSource = dBHandler.BLL_GetPendingArticle();
+                //repeatPendingArticle.DataBind();
+
+                //Pending Link Article Source
+                repeatLink.DataSource = dBHandler.BLL_GetPendingArticle();
+                repeatLink.DataBind();
 
                 //RejectedArticle Source
-                repeatRejectedArticle.DataSource = dBHandler.BLL_GetRejectedArticle();
-                repeatRejectedArticle.DataBind();
+                //repeatRejectedArticle.DataSource = dBHandler.BLL_GetRejectedArticle();
+                //repeatRejectedArticle.DataBind();
 
                 if (Session["UserName"] != null)
                 {
@@ -157,29 +164,14 @@ namespace Muslimeen.Content.MyScholar
             }
         }
 
-        protected void btnViewArticles_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                divAddArticle.Visible = true;
-                divPendingArticles.Visible = false;
-                divRejectedArticles.Visible = false;
-
-                DBHandler dBHandler = new DBHandler();
-            }
-            catch
-            {
-
-            }
-        }
-
         protected void btnPendingArticles_Click(object sender, EventArgs e)
         {
             try
             {
                 divAddArticle.Visible = false;
                 divPendingArticles.Visible = true;
-                divRejectedArticles.Visible = false;
+                divPenDetailsOverlay.Visible = true;
+                //divRejectedArticles.Visible = false;
 
                 DBHandler dBHandler = new DBHandler();
             }
@@ -195,7 +187,7 @@ namespace Muslimeen.Content.MyScholar
             {
                 divAddArticle.Visible = false;
                 divPendingArticles.Visible = false;
-                divRejectedArticles.Visible = true;
+                //divRejectedArticles.Visible = true;
 
                 DBHandler dBHandler = new DBHandler();
             }
@@ -250,6 +242,34 @@ namespace Muslimeen.Content.MyScholar
             catch
             {
                 
+            }
+        }
+
+        protected void btnShow_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton linkButton = (LinkButton)sender;
+
+                string art = linkButton.CommandArgument.ToString();
+                hdfSchId.Value = art;
+
+                DBHandler han = new DBHandler();
+                uspGetSelectedPendingArticle pen = new uspGetSelectedPendingArticle();
+
+                pen = han.BLL_GetSelectedPendingArticle(int.Parse(art));
+                lblTitle.InnerText = pen.ArticleTitle.ToString();
+                lblContent.InnerText = pen.ArticleContent.ToString();
+                lblDate.InnerText = pen.DateCreated.ToString();
+
+                divPendingArticles.Visible = true;
+                divDisplayArticle.Visible = true;
+                divNoSelected.Visible = true;
+                divAddArticle.Visible = false;
+            }
+            catch
+            {
+
             }
         }
     }
