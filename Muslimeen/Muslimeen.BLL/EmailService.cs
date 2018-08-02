@@ -125,19 +125,23 @@ namespace Muslimeen.BLL
                 }
                 else if (emailType == "AcceptedScholars")
                 {
-                    message.Subject = "Muslimeen - Accepted Scholar";
+                    message.Subject = "Muslimeen - Scholar Registration";
                     message.Body = String.Format(@"
-                                                <html lang=""en"" style=""height:100%"">
+                                                <html lang=""en"" style=""height:100%"">    
                                                     <body>
-                                                        <div style=""background-color:white; text-align:center; vertical-align:middle;color:#256297;"">
-                                                            <h1 style=""font-weight:bolder; font-size:25px;"">Muslimeen Scholar Registration<br/>Congratulations!</h1>
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
+                                                            <h1 style=""font-weight:bolder; font-size:25px;"">Muslimeen Scholar<br/>Registration</h1>
                                                         </div>
                                                         <div style=""background-color:#ffffff; text-align:left;"">
-                                                            <hr/><br/>
-                                                            <br/><h5></h5
-                                                             <br/><p>Your registration has been accepted. You may now login and add articles and more.<br/><hr/>
+                                                            <hr/>
+                                                            <h4 tyle=""text-align:center; padding:0;"">Greetings {0}</h4>
+                                                                <p>Your Registration for Scholar has been accepted.<br/><br/>You may now login as a scholar and: </p>
+                                                                    <ul style=""text-align:left;""><li>Add Articles</li><li>Get your mosques sallah times</li>
+                                                                    <li>Get Events from your mosque and other mosques</li><li>Read Articles from other scholars</li></ul>
+                                                                    <br/><br/>
+                                                                <hr/>
                                                         </div>
-                                                       <div style=""background-color:white; text-align:center; vertical-align:middle;color:#256297;"">
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
                                                             <h2>Thank you</h2>
                                                         </div>
                                                     </body>
@@ -146,23 +150,27 @@ namespace Muslimeen.BLL
 
                     //Send email
                     smtp.Send(message);
+
                 }
                 else if (emailType == "RejectedScholars")
                 {
-                    message.Subject = "Muslimeen - Rejected Scholar";
+                    message.Subject = "Muslimeen - Scholar Registration";
                     message.Body = String.Format(@"
-                                                <html lang=""en"" style=""height:100%"">
+                                                <html lang=""en"" style=""height:100%"">    
                                                     <body>
-                                                        <div style=""background-color:white; text-align:center; vertical-align:middle;color:#256297;"">
-                                                            <h1 style=""font-weight:bolder; font-size:25px;"">Muslimeen Scholar Registration<br/></h1>
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
+                                                            <h1 style=""font-weight:bolder; font-size:25px;"">Muslimeen Scholar<br/>Registration</h1>
                                                         </div>
                                                         <div style=""background-color:#ffffff; text-align:left;"">
                                                             <hr/>
-                                                             
-                                                            <br/><h3>Rejected!</h3>
-                                                             <br/><p>Unfortunately your registration has been unsuccessful due to unlawful circumstances or qualification reasons.<br/><hr/>
+                                                            <h4 tyle=""text-align:center; padding:0;"">Greetings {0}</h4>
+                                                                <p>Your Registration for Scholar has been denied.<br/><br/>We suggest registering as a Member and: </p>
+                                                                    <ul style=""text-align:left;""><li>Get access to Islamic knowledge</li><li>Get your mosques sallah times</li>
+                                                                    <li>Get Events from your mosque and other mosques</li><li>Read Articles from scholars</li></ul>
+                                                                    <br/><br/>
+                                                                <hr/>
                                                         </div>
-                                                        <div style=""background-color:white; text-align:center; vertical-align:middle;color:#256297"">
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
                                                             <h2>Thank you</h2>
                                                         </div>
                                                     </body>

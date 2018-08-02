@@ -87,6 +87,7 @@
                         </div>
                         <nav class="nav flex-column pt-2 pb-2 pr-0">
                             <asp:Button runat="server" ToolTip="Pending Scholar Registrations." ID="btnViewPendingSch" OnClick="btnViewPendingSch_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="View Pending Scholars" />
+                            <asp:Button runat="server" ToolTip="Add a Mosque on Muslimeen" ID="btnAddMosque" OnClick="btnAddMosque_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="Add Mosque" />
                             <asp:Button runat="server" ID="btnUpdateIslmDate" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnUpdateIslmDate_Click" Text="Update Islamic Date" />
                         </nav>
                     </div>
@@ -94,13 +95,13 @@
                         <div class=" head-div text-center p-2 mb-1">
                             <h4 runat="server" id="lblTaskHead"  class="p-0 m-0"></h4>
                         </div>
-                        <div class="row p-0 m-0 tab-content right-bottom-div p-1 flex-nowrap" >
+                        <div class="row p-0 m-0 right-bottom-div p-1 flex-nowrap" >
+                            <%--Scholar registration--%>
                             <div class="col-6 position-static p-0 dash-content" runat="server" id="divViewPendingSch">
-                                <!--Contains the List of items-->
                                 <div class=" head-div-2 p-2 mb-1 text-left">
                                     <p class="m-0">Pending Registrations</p>
                                 </div>
-                                <div class=" position-static p-1 lst-container" style="overflow-y:scroll;">
+                                <div class=" position-static p-1 lst-container"  style="overflow-y:scroll;" >
                                     <asp:Repeater ID="rptViewPendingSch" runat="server" OnItemCommand="rptViewPendingSch_ItemCommand">
                                         <HeaderTemplate>
                                         </HeaderTemplate>
@@ -128,13 +129,132 @@
                                     </asp:Repeater>
                                 </div>
                             </div>
+                            <%--Add Mosque Rep--%>
+                            <div class="col-6 position-static p-0 dash-content" runat="server" id="divAddMosqueRep">
+                                <div class=" head-div-2 p-2 mb-1 text-left">
+                                    <p class="m-0">Add Mosque Representative</p>
+                                </div>
+                                <div class=" position-static p-1 lst-container">
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                        <label class="col mb-0 p-0"><small>User Name*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtUserName"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-6 mb-1">
+                                        <label class="col mb-0 p-0"><small>First Name*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtName" ></asp:TextBox>
+                                        </div>
+                                        <div class="form-group col-sm-6 mb-1">
+                                            <label class="col mb-0 p-0"><small>Last Name*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtLName" ></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-6 mb-1">
+                                            <label class="col mb-0 p-0"><small>Contact Number</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtContactNum" ></asp:TextBox>
+                                        </div>
+                                        <div class="form-group col-sm-6 mb-1">
+                                            <label class="col mb-0 p-0 text"><small>Date of Birth*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtDOB" placeholder="yyyy-mm-dd*"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>Email*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtUserEmail"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>Password*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtPassword"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>Retype Password*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtRetypePassword"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <%-- Add the Mosque --%>
+                            <div class="container text-nowrap" runat="server" id="divAddMosque">
+                                <div class=" head-div-2 p-2 mb-1 text-left">
+                                    <p class="m-0">Add Mosque</p>
+                                </div>
+                                <div class="position-static p-1 lst-container">
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>Mosque Name*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtMosqueName"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>Mosque Address*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtMosqueAddr"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>Mosque Suburb*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtMosqueSuburb"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>Mosque Type*</small></label>
+                                            <asp:DropDownList CssClass="form-control form-control-sm col main-txtb" runat="server" ID="ddMosqueType">
+                                                <asp:ListItem Value="Hanafie">Hanafie</asp:ListItem>
+                                                <asp:ListItem Value="Hanafie">Shaafie</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>Date Established*</small></label>
+                                            <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtMosqueEstab"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>Mosque Size*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtMosqueSize"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>Mosque Quote</small></label>
+                                            <asp:TextBox TextMode="MultiLine" Style="max-height:75px;" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtMosqueQuote"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-1 p-0"><small>Mosque Image</small></label>
+                                            <asp:FileUpload CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="fupMosqueImage" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <%-- Overlay for Scholar Registration List selection--%>
+                            <div class="container text-nowrap" runat="server" id="divSchDetailsOverlay">
+                                <div class="w-100 h-100 container text-center">
+                                    <div class=" container h-25 mb-3"></div>
+                                    <h6 class="card-title h-50 mt-5 pt-5"><img class="figure-img mr-2" src="MyAdmin/icons/outline_error_outline_black_18dp.png" />No Scholar registration selected.</h6>
+                                    <div class=" container h-25"></div>
+                                </div>
+                            </div>
                             <div runat="server" id="divDisplaySch" class="position-static dash-content p-0">
                                 <asp:HiddenField runat="server" ID="hdfSchId" Value="" />
                                 <div class=" head-div-2 p-2 mb-0 text-left ">
                                     <p class="m-0">Scholar Details</p>
                                 </div>
                                     <hr class="m-3 ml-3 mr-3 bg-secondary"/>
-                                    <div class="container text-nowrap">
+                                    <div class="container text-nowrap" runat="server" id="divSchDetails">
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>Member  ID:</b></div>
                                             <div class="col position-static text-truncate">
@@ -264,7 +384,7 @@
                                     <a class="footerr-text" href="#">+27743784081</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="footerr-text" href="https://www.youtube.com/channel/UCp87ZLRrUz3SbzPPP2uaIEg">YouTube</a>
+                                    <a class="footerr-text" href="https://www.youtube.com/user/UCp87ZLRrUz3SbzPPP2uaIEg">YouTube</a>
                                 </li>
                             </ul>
                         </div>

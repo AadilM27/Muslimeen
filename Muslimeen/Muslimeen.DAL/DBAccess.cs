@@ -394,7 +394,14 @@ namespace Muslimeen.BLL
                         {
                             scholar.MosqueID = null;
                         }
-                        scholar.ActivationExpiry = Convert.ToDateTime(row["ActivationExpiry"]).Date;
+                        if (!(row["ActivationExpiry"] is DBNull))
+                        {
+                            scholar.ActivationExpiry = Convert.ToDateTime(row["ActivationExpiry"]).Date;
+                        }
+                        else
+                        {
+
+                        }
                         scholar.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
 
                         scholarsList.Add(scholar);

@@ -13,13 +13,23 @@ namespace Muslimeen.Content
 {
     public partial class MyAdmin : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                DBHandler dBHandler = new DBHandler();
+
                 divViewPendingSch.Visible = false;
                 divDisplaySch.Visible = false;
+                divSchDetails.Visible = false;
+                divSchDetailsOverlay.Visible = false;
+                divAddMosque.Visible = false;
+                divViewPendingSch.Visible = false;
+                divAddMosque.Visible = false;
+                divAddMosqueRep.Visible = false;
+                //txtMosqueEstab.
+
+                DBHandler dBHandler = new DBHandler();
 
                 if (Session["UserName"] != null)
                 {
@@ -54,31 +64,15 @@ namespace Muslimeen.Content
             }
         }
 
-        protected void btnViewPendingMod_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //divUpdateIslmDate.Visible = false;
-                divDisplaySch.Visible = true;
-                divViewPendingSch.Visible = true;
-
-                DBHandler dBHandler = new DBHandler();
-
-                rptViewPendingSch.DataSource = dBHandler.BLL_GetAllPendingModeraters();
-                rptViewPendingSch.DataBind();
-            }
-            catch
-            {
-
-            }
-        }
 
         protected void btnViewPendingSch_Click(object sender, EventArgs e)
         {
             //divUpdateIslmDate.Visible = false;
-            divDisplaySch.Visible = true;
+            divDisplaySch.Visible = false;
+            divSchDetailsOverlay.Visible = true;
             divViewPendingSch.Visible = true;
 
+            lblTaskHead.InnerText = btnViewPendingSch.Text.ToString();
             DBHandler dBHandler = new DBHandler();
 
             rptViewPendingSch.DataSource = dBHandler.BLL_GetAllPendingScholars();
@@ -182,6 +176,7 @@ namespace Muslimeen.Content
         {
             try
             {
+
                 LinkButton linkButton = (LinkButton)sender;
 
                 string memberId = linkButton.CommandArgument.ToString();
@@ -204,10 +199,12 @@ namespace Muslimeen.Content
 
                 divViewPendingSch.Visible = true;
                 divDisplaySch.Visible = true;
+                divSchDetails.Visible = true;
+
             }
             catch
             {
-
+                throw;
             }
 
         }
@@ -218,6 +215,7 @@ namespace Muslimeen.Content
             {
                 if (hdfSchId.Value != null)
                 {
+                    
                     DBHandler db = new DBHandler();
                     uspVerifyMember uspVerifyMember = new uspVerifyMember();
 
@@ -225,6 +223,18 @@ namespace Muslimeen.Content
 
                     uspVerifyMember.MemberID = memberId;
                     db.BLL_VerifyMember(uspVerifyMember);
+
+                    //Sends an email informing the scholar that his registration has be accepted.
+                    EmailService email = new EmailService();
+                    uspGetMember member = new uspGetMember();
+                    member = db.BLL_GetMember(hdfSchId.Value.ToString());
+
+                    email.AutoEmailService(member.Email, "null", "null", "AcceptedScholars", member.MemberID.ToString(), "null");
+
+                    //Help with keeping selected task open.
+                    divDisplaySch.Visible = false;
+                    divSchDetailsOverlay.Visible = true;
+                    divViewPendingSch.Visible = true;
 
                 }
             }
@@ -242,40 +252,14 @@ namespace Muslimeen.Content
                 uspRejectReg rejectReg = new uspRejectReg();
 
                 rejectReg.MemberID = hdfSchId.Value.ToString();
-
                 db.BLL_RejectReg(rejectReg);
-            }
-            catch
-            {
 
-            }
-        }
+                EmailService email = new EmailService();
+                uspGetMember member = new uspGetMember();
+                member = db.BLL_GetMember(hdfSchId.Value.ToString());
 
-        protected void txtRejectReason_TextChanged(object sender, EventArgs e)
-        {
+                email.AutoEmailService(member.Email, "null", "null", "RejectedScholars", member.MemberID.ToString(), "null");
 
-        }
-
-        protected void btnAccept_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Session["UserName"] != null)
-                {
-                    AcceptArticle accept = new AcceptArticle();
-
-                    string articleId = hdfSchId.Value.ToString();
-
-
-                    accept.ModeraterID = Session["UserName"].ToString();
-                    accept.Status = 'A';
-                    accept.Active = 'Y';
-                    accept.RejectionReason = "";
-                    accept.ArticleID = Convert.ToInt32(articleId);
-                    DBHandler dBHandler = new DBHandler();
-
-                    dBHandler.BLL_AcceptArticle(accept);
-                }
             }
             catch
             {
@@ -288,5 +272,13 @@ namespace Muslimeen.Content
 
         }
 
+        protected void btnAddMosque_Click(object sender, EventArgs e)
+        {
+            divAddMosque.Visible = true;
+            divAddMosqueRep.Visible = true;
+
+            lblTaskHead.InnerText = btnAddMosque.Text.ToString();
+
+        }
     }
 }
