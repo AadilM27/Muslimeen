@@ -462,7 +462,7 @@ namespace Muslimeen.BLL
         public List<uspGetMosques> GetMosques(string suburb, string mosqueType)
         {
             List<uspGetMosques> list = new List<uspGetMosques>();
-            uspGetMosques mosques = null;
+
             SqlParameter[] pars = new SqlParameter[]
             {
                 new SqlParameter("@suburb", suburb),
@@ -475,19 +475,20 @@ namespace Muslimeen.BLL
                 {
                     foreach (DataRow row in table.Rows)
                     {
-                        mosques = new uspGetMosques
-                        {
-                            MosqueID = Convert.ToInt32(row["MosqueID"]),
-                            MosqueName = row["MosqueName"].ToString(),
-                            MosqueStreet = row["MosqueStreet"].ToString(),
-                            MosqueSuburb = row["MosqueSuburb"].ToString(),
-                            MosqueType = row["MosqueType"].ToString(),
-                            MosqueSize = row["MosqueSize"].ToString(),
-                            MosqueImage = row["MosqueImage"].ToString(),
+                        uspGetMosques mosque = new uspGetMosques();
 
+                        mosque.MosqueID = Convert.ToInt32(row["MosqueID"]);
+                        mosque.MosqueName = row["MosqueName"].ToString();
+                        mosque.MosqueStreet = row["MosqueStreet"].ToString();
+                        mosque.MosqueSuburb = row["MosqueSuburb"].ToString();
+                        mosque.MosqueType = row["MosqueType"].ToString();
+                        mosque.MosqueSize = row["MosqueSize"].ToString();
 
-                        };
-                        list.Add(mosques);
+                        Byte[] bytes = (Byte[])row["MosqueImage"]; //Make byets in to base64String.
+                        string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+                        mosque.MosqueImage = "data:image/jpg;base64," + base64String;
+
+                        list.Add(mosque);
                     }
                 }//end if
             }//end using
@@ -1135,6 +1136,21 @@ namespace Muslimeen.BLL
                 }
             }
             return pen;
+        }
+
+        public bool AddMosque(uspAddMosque addMosque)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var prop in addMosque.GetType().GetProperties())
+            {
+                if (prop.GetValue(addMosque) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(addMosque)));
+                }
+            }
+            return DBHelper.NonQuery("uspAddMosque", CommandType.StoredProcedure, parameters.ToArray());
+
         }
     }
 }

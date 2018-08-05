@@ -8,6 +8,7 @@ using TypeLib.Models;
 using TypeLib.ViewModels;
 using Muslimeen.BLL;
 using System.Data;
+using System.Drawing;
 
 namespace Muslimeen.Content
 {
@@ -283,11 +284,224 @@ namespace Muslimeen.Content
 
         protected void btnRegMosque_Click(object sender, EventArgs e)
         {
+            divAddMosque.Visible = true;
+            divAddMosqueRep.Visible = true;
 
+            txtUserName.BorderColor = Color.Empty;
+            txtName.BorderColor = Color.Empty;
+            txtLName.BorderColor = Color.Empty;
+            txtDOB.BorderColor = Color.Empty;
+            txtUserEmail.BorderColor = Color.Empty;
+            txtPassword.BorderColor = Color.Empty;
+            txtRetypePassword.BorderColor = Color.Empty;
+            txtMosqueName.BorderColor = Color.Empty;
+            txtMosqueAddr.BorderColor = Color.Empty;
+            txtMosqueSuburb.BorderColor = Color.Empty;
+            txtMosqueQuote.BorderColor = Color.Empty;
+            lblError.Text = "";
+
+            try
+            {
+                DBHandler db = new DBHandler();
+                Encryption encryption = new Encryption();
+                uspAddMosque addMosque = new uspAddMosque();
+                int continueProcess = 0;
+                
+                if (txtPassword.Text.ToString() != txtRetypePassword.Text.ToString() ||
+                    txtPassword.Text == null || txtRetypePassword == null)
+                {
+                    txtRetypePassword.BorderColor = Color.Red;
+                    txtPassword.BorderColor = Color.Red;
+                    lblError.Text = "Passwords do not match";
+                    lblError.ForeColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtUserName.Text == "" || txtUserName.Text == null)
+                {
+                    txtUserName.BorderColor = Color.Red;
+                    lblError.Text = "User name field can not be empty";
+                    lblError.ForeColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtUserName.Text.Length > 15 || txtUserName.Text.Length < 5 || txtUserName.Text == "")
+                {
+                    txtUserName.BackColor = Color.Red;
+                    lblError.Text = "User Name is too long or too short";
+                    lblError.ForeColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtUserName.Text != "" || txtUserName.Text != null)
+                {
+                    try
+                    {
+                        if (db.BLL_GetMember(txtUserName.Text.ToString()) != null)
+                        {
+                            lblError.Text = "User Name taken, Please retype a new one";
+                            txtUserName.BorderColor = Color.Red;
+                            lblError.ForeColor = Color.Red;
+                            continueProcess += 1;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        txtUserName.BorderColor = Color.Red;
+                        lblError.Text = ex.Message;
+                        lblError.ForeColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                }
+
+                if (txtName.Text == "" || txtName.Text == null)
+                {
+                    txtName.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtLName.Text == "" || txtLName.Text == null)
+                {
+                    txtLName.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtDOB.Text == "" || txtDOB == null)
+                {
+                    txtDOB.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtDOB.Text.Length > 10 || txtDOB.Text.Length < 10)
+                {
+                    txtDOB.BorderColor = Color.Red;
+                    continueProcess += 1;
+                    lblError.Text = "Please follow the format: yyyy-mm-dd";
+                    lblError.ForeColor = Color.Red;
+                }
+                else if (txtUserEmail.Text == "" || txtUserEmail == null)
+                {
+                    txtUserEmail.BorderColor = Color.Red;
+                    lblError.Text = "Please enter your Email address";
+                    lblError.ForeColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if ( ddMosqueType.SelectedValue == "None")
+                {
+                    ddMosqueType.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (ddMosqueSize.SelectedValue == "None")
+                {
+                    ddMosqueSize.BorderColor = Color.Red;
+                    continueProcess += 1;
+                    lblError.Text = "Registration type not selected";
+                    lblError.ForeColor = Color.Red;
+                }
+                else if (txtPassword.Text == null || txtPassword.Text == "")
+                {
+                    lblError.Text = "Please create a Password";
+                    lblError.ForeColor = Color.Red;
+                    continueProcess += 1;
+                    txtPassword.BorderColor = Color.Red;
+                }
+                else if (txtRetypePassword.Text == null || txtRetypePassword.Text == "")
+                {
+                    lblError.Text = "Please retype your Password";
+                    lblError.ForeColor = Color.Red;
+                    continueProcess += 1;
+                    txtRetypePassword.BorderColor = Color.Red;
+                }
+                else if (txtContactNum.Text.Length > 10 || txtContactNum.Text.Length < 10)
+                {
+                    if (txtContactNum.Text.Length != 0)
+                    {
+                        lblError.Text = "Please enter a correct contact number";
+                        lblError.ForeColor = Color.Red;
+                        continueProcess += 1;
+                        txtContactNum.BorderColor = Color.Red;
+                    }
+                }
+
+
+                if (continueProcess == 0)
+                {
+                    string encryptedString = encryption.Encrypt(txtUserName.Text.ToString(),
+                        Convert.ToString(txtPassword.Text.ToString()));
+
+                    addMosque.MemberID = txtUserName.Text.ToString();
+                    addMosque.MemberName = txtName.Text.ToString();
+                    addMosque.MemberLastName = txtLName.Text.ToString();
+                    addMosque.ContactNo = txtContactNum.Text.ToString();
+                    addMosque.MemberDOB = Convert.ToDateTime(txtDOB.Text.ToString());
+                    addMosque.Email = txtUserEmail.Text.ToString();
+                    addMosque.MemberType = 'R';
+                    addMosque.ActiveTypeID = 'Y';
+                    addMosque.ActivationDate = DateTime.Today.Date;
+                    addMosque.Password = encryptedString; //password encrypted
+
+                    addMosque.MosqueName = txtMosqueName.Text.ToString();
+                    addMosque.MosqueStreet = txtMosqueAddr.Text.ToString();
+                    addMosque.MosqueSuburb = txtMosqueSuburb.Text.ToString();
+                    addMosque.MosqueType = ddMosqueType.SelectedValue.ToString();
+                    if (fupMosqueImage.HasFile)
+                    {
+                        addMosque.MosqueImage = fupMosqueImage.FileBytes; //Image to upload ...
+                    }
+                    addMosque.MosqueSize = ddMosqueSize.SelectedValue.ToString();
+                    addMosque.MosqueQuote = txtMosqueQuote.Text.ToString();
+                    addMosque.YearEstablished = Convert.ToDateTime(txtMosqueEstab.Text.ToString());
+
+                    db.BLL_AddMosque(addMosque);
+
+                    //Clear the textboxes.
+                    txtUserName.Text = string.Empty;
+                    txtName.Text = string.Empty;
+                    txtLName.Text = string.Empty;
+                    txtContactNum.Text = string.Empty;
+                    txtDOB.Text = string.Empty;
+                    txtUserEmail.Text = string.Empty;
+                    txtPassword.Text = string.Empty;
+                    txtRetypePassword.Text = string.Empty;
+
+                    txtMosqueName.Text = string.Empty;
+                    txtMosqueAddr.Text = string.Empty;
+                    txtMosqueSuburb.Text = string.Empty;
+                    ddMosqueType.SelectedIndex = 0;
+                    txtMosqueEstab.Text = "";
+                    ddMosqueSize.SelectedIndex = 0;
+                    txtMosqueQuote.Text = string.Empty;
+                    fupMosqueImage.Attributes.Clear();
+                }
+                else if(lblError.Text == "")
+                {
+                    lblError.Text = "Registration Unsuccessful, Incomplete form";
+                    lblError.ForeColor = Color.Red;
+                }
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         protected void btnCancelMosqueReg_Click(object sender, EventArgs e)
         {
+            //keep the two displayed after clicking cancel.
+            divAddMosque.Visible = true;
+            divAddMosqueRep.Visible = true;
+
+            txtUserName.Text = string.Empty;
+            txtName.Text = string.Empty;
+            txtLName.Text = string.Empty;
+            txtContactNum.Text = string.Empty;
+            txtDOB.Text = string.Empty;
+            txtUserEmail.Text = string.Empty;
+            txtPassword.Text = string.Empty;
+            txtRetypePassword.Text = string.Empty;
+
+            txtMosqueName.Text = string.Empty;
+            txtMosqueAddr.Text = string.Empty;
+            txtMosqueSuburb.Text = string.Empty;
+            ddMosqueType.SelectedIndex = 0;
+            txtMosqueEstab.Text = "";
+            ddMosqueSize.SelectedIndex = 0;
+            txtMosqueQuote.Text = string.Empty;
+            fupMosqueImage.Attributes.Clear();
 
         }
     }

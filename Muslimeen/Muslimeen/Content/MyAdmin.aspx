@@ -95,13 +95,13 @@
                         <div class=" head-div text-center p-2 mb-1">
                             <h4 runat="server" id="lblTaskHead"  class="p-0 m-0"></h4>
                         </div>
-                        <div class="row p-0 m-0 right-bottom-div p-1 flex-nowrap" >
-                            <%--Scholar registration--%>
-                            <div class="col-6 position-static p-0 dash-content" runat="server" id="divViewPendingSch">
+                        <div class="row p-0 m-0 right-bottom-div p-1 flex-nowrap justify-content-xl-center" >
+                            <%-- Pending Scholar registration List--%>
+                            <div class="col-6 col-xl-3 p-0 mr-1" runat="server" id="divViewPendingSch">
                                 <div class=" head-div-2 p-2 mb-1 text-left">
                                     <p class="m-0">Pending Registrations</p>
                                 </div>
-                                <div class=" position-static p-1 lst-container"  style="overflow-y:scroll;" >
+                                <div class=" p-1 lst-container"  style="overflow-y:scroll;" >
                                     <asp:Repeater ID="rptViewPendingSch" runat="server" OnItemCommand="rptViewPendingSch_ItemCommand">
                                         <HeaderTemplate>
                                         </HeaderTemplate>
@@ -130,11 +130,11 @@
                                 </div>
                             </div>
                             <%--Add Mosque Rep--%>
-                            <div class="col-6 p-0 dash-content" runat="server" id="divAddMosqueRep">
+                            <div class="col-6 col-xl-3 p-0" runat="server" id="divAddMosqueRep">
                                 <div class=" head-div-2 p-2 mb-1 text-left">
                                     <p class="m-0">Add Mosque Representative</p>
                                 </div>
-                                <div class=" position-static p-1 lst-container">
+                                <div class=" position-static p-1 lst-container align-content-xl-center">
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1">
                                         <label class="col mb-0 p-0"><small>User Name*</small></label>
@@ -170,17 +170,17 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1 ">
                                             <label class="col mb-0 p-0 "><small>Password*</small></label>
-                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtPassword"></asp:TextBox>
+                                            <asp:TextBox TextMode="Password" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtPassword"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1 position-static">
                                             <label class="col mb-0 p-0 "><small>Retype Password*</small></label>
-                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtRetypePassword"></asp:TextBox>
+                                            <asp:TextBox TextMode="Password" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtRetypePassword"></asp:TextBox>
                                         </div>
                                     </div>
                                         <hr class="m-3 ml-3 mr-3 bg-secondary"/>
-                                    <div class="container p-0 m-1">
+                                    <div class=" p-0 m-1">
                                         <h6 class="w-100 card-title card-header">
                                             <img class="figure-img mr-2 mb-1 " src="MyAdmin/icons/outline_warning_black_18dp.png" />Before Registering:</h6>
                                         <div class=" m-0 card-body p-2">
@@ -190,16 +190,16 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="card-footer text-center text-nowrap pb-1">
+                                        <div class="card-footer text-center text-nowrap">
                                             <asp:Button CssClass="topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnRegMosque" Text="Register Mosque" OnClick="btnRegMosque_Click"/>
                                             <asp:Button CssClass="topnav btn btn-sm btn-outline-light" runat="server" ID="btnCancelMosqueReg" Text="Cancel" OnClick="btnCancelMosqueReg_Click"/>
                                         </div>
+                                            <hr class="mt-3 ml-3 mr-3 bg-secondary"/>
                                     </div>
-                                    <hr class="mt-3 ml-3 mr-3 bg-secondary"/>
                                 </div>
                             </div>
                             <%-- Add the Mosque --%>
-                            <div class="container text-nowrap" runat="server" id="divAddMosque">
+                            <div class="col-6 col-xl-3 flex-nowrap pl-1" style="overflow:hidden;" runat="server" id="divAddMosque">
                                 <div class=" head-div-2 p-2 mb-1 text-left">
                                     <p class="m-0">Add Mosque</p>
                                 </div>
@@ -226,6 +226,7 @@
                                         <div class="form-group col-sm-12 mb-1">
                                             <label class="col mb-0 p-0"><small>Mosque Type*</small></label>
                                             <asp:DropDownList CssClass="form-control form-control-sm col main-txtb" runat="server" ID="ddMosqueType">
+                                                <asp:ListItem Selected disabled Value="None">Please select a Type</asp:ListItem>
                                                 <asp:ListItem Value="Hanafie">Hanafie</asp:ListItem>
                                                 <asp:ListItem Value="Hanafie">Shaafie</asp:ListItem>
                                             </asp:DropDownList>
@@ -240,13 +241,18 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1">
                                             <label class="col mb-0 p-0"><small>Mosque Size*</small></label>
-                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtMosqueSize"></asp:TextBox>
+                                            <asp:DropDownList CssClass="form-control form-control-sm col main-txtb" runat="server" ID="ddMosqueSize">
+                                                <asp:ListItem Selected disabled Value="None">Please select a size</asp:ListItem>
+                                                <asp:ListItem Value="Small">Small</asp:ListItem>
+                                                <asp:ListItem Value="Medium">Medium</asp:ListItem>
+                                                <asp:ListItem Value="Large">Large</asp:ListItem>
+                                            </asp:DropDownList>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1">
                                             <label class="col mb-0 p-0"><small>Mosque Quote</small></label>
-                                            <asp:TextBox TextMode="MultiLine" Style=" max-height:130px; min-height:130px;" CssClass=" position-static form-control form-control-sm col main-txtb" runat="server" ID="txtMosqueQuote"></asp:TextBox>
+                                            <asp:TextBox TextMode="MultiLine" Style=" max-height:130px; min-height:80px;" CssClass=" position-static form-control form-control-sm col main-txtb" runat="server" ID="txtMosqueQuote"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -255,17 +261,23 @@
                                             <asp:FileUpload CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="fupMosqueImage" />
                                         </div>
                                     </div>
+                                    <div class="form-row mt-2">
+                                        <div class="form-group col-sm-12 mb-1 flex-wrap" style="overflow:hidden;">
+                                            <small><asp:Label runat="server"  ID="lblError" CssClass="col p-0"></asp:Label></small>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <%-- Overlay for Scholar Registration List selection--%>
-                            <div class="container text-nowrap" runat="server" id="divSchDetailsOverlay">
+                            <div class="col-6 col-xl-3 text-nowrap" runat="server" id="divSchDetailsOverlay">
                                 <div class="w-100 h-100 container text-center">
                                     <div class=" container h-25 mb-3"></div>
-                                    <h6 class="card-title h-50 mt-5 pt-5"><img class="figure-img mr-2" src="MyAdmin/icons/outline_error_outline_black_18dp.png" />No Scholar registration selected.</h6>
+                                        <h6 class="card-title h-50 mt-5 pt-5"><img class="figure-img mr-2" src="MyAdmin/icons/outline_error_outline_black_18dp.png" />No Scholar registration selected.</h6>
                                     <div class=" container h-25"></div>
                                 </div>
                             </div>
-                            <div runat="server" id="divDisplaySch" class="position-static dash-content p-0">
+                            <%-- Diaplay Pending Scholar Details --%>
+                            <div runat="server" id="divDisplaySch" class=" col-6 col-xl-3 flex-nowrap p-0">
                                 <asp:HiddenField runat="server" ID="hdfSchId" Value="" />
                                 <div class=" head-div-2 p-2 mb-0 text-left ">
                                     <p class="m-0">Scholar Details</p>

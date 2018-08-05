@@ -61,6 +61,7 @@
     <Compile Include="Models\UpdateMember.cs" />
     <Compile Include="Models\UpdateMemberPassword.cs" />
     <Compile Include="Models\UpdateRamadaanDate.cs" />
+    <Compile Include="Models\uspAddMosque.cs" />
     <Compile Include="Models\uspRejectReg.cs" />
     <Compile Include="Models\Zakaah.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

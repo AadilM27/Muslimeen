@@ -225,5 +225,10 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetSelectedPendingArticle(articleID);
         }
+
+        public bool BLL_AddMosque(uspAddMosque addMosque)
+        {
+            return dBAccess.AddMosque(addMosque);
+        }
     }
 }
