@@ -12,6 +12,7 @@
     <link rel="icon" href="../Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="MyModerator/css/MyModerator.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 </head>
     <body>
         <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
@@ -82,7 +83,7 @@
                     <div class="side-bar p-0 basic-div-styling mr-1">
                         <!--contains the buttons-->
                         <div class="head-div text-center p-2">
-                            <p class="text-uppercase m-0 font-weight-bold">Moderator Tasks:</p>
+                            <p class="text-uppercase m-0 font-weight-bold" style="font-size:20px">Moderator Tasks:</p>
                         </div>
                         <nav class="nav flex-column pt-2 pb-2 pr-0">
                             <asp:Button runat="server" ToolTip="Pending Scholar Registrations." ID="btnViewPendingSch" OnClick="btnViewPendingSch_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="View Pending Scholars" />
@@ -254,27 +255,23 @@
                                     <asp:TextBox runat="server" CssClass=" form-control mt-3 col-8 position-static" ID="txtRejectReason" OnTextChanged="txtRejectReason_TextChanged"></asp:TextBox>
                                 </div>
                         </div>
-                             <div class="col-2 position-static p-0 " runat="server" id="divViewReports">
+                    
+
+                             <div class="  basic-div-styling mr-1" runat="server" id="divViewReports" style="height:20px;min-width: 250px;min-height: 646px; float: left;position: static;">
                                 <!--Contains the List of items-->
                                 <div class=" col-lg-12 position-static head-div-2 p-2 mb-1 " style="width:100%;">
                                     <p class="m-0 ">Overview</p>
-                                </div>
-                                <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
-                                    
-                                    <div class ="col-1 position-static ">
-                                    <asp:Button ID="BtnAcceptedScholars" CssClass="float-left" runat="server" Text="Accepted Scholars" OnClick="BtnAcceptedScholars_Click" />
-                                    </div>
-                                    <div class="col-2 position-static">
-                                        <asp:Button ID="btnRejectedScholars" CssClass="float-left"  runat="server" Text="Rejected Scholars" OnClick="btnRejectedScholars_Click" />
-                                    </div>
-                                </div>
-                         
+                                </div>                               
+                                      <nav class="nav flex-column pt-2 pb-2 pr-0">
+                                    <asp:Button ID="BtnAcceptedScholars" CssClass=" pl-2 btn taskBtn mb-1" runat="server" Text="Accepted Scholars" OnClick="BtnAcceptedScholars_Click" />                                  
+                                    <asp:Button ID="btnRejectedScholars"  CssClass=" pl-2 btn taskBtn mb-1" runat="server" Text="Rejected Scholars" OnClick="btnRejectedScholars_Click" />
+                                    </nav>                           
                             </div>
-                            <div runat="server" id="divDisplayReports" class="col-8 position-static dash-content  p-0 ">
-                                <div class=" col-lg-12 position-static head-div-2 p-2 mb-1 " style="width:100%;">
-                                    <p class="">Reports</p>
+                            <div runat="server" id="divDisplayReports" class="  basic-div-styling mr-1  w3-half " style="height:20px;min-width: 250px;max-width:1000px;min-height: 646px; float: right;position: static;">
+                                <div class="  position-static head-div-2 p-2 mb-1 " style="width:827px;">
+                                    <p class="m-0">Reports</p>
                                 </div>
-                                <asp:GridView ID="grdReports" runat="server" style="position:static; font-size:smaller;" CellPadding="4" ForeColor="#333333" GridLines="None" Width="60px">
+                                <asp:GridView ID="grdReports" runat="server" style="position:static; font-size:smaller;" CellPadding="2" ForeColor="#333333" GridLines="none" Width="40px" min-width="250px" max-width="350px">
                                     <AlternatingRowStyle BackColor="White" />
                                     <EditRowStyle BackColor="#2461BF" />
                                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

@@ -402,6 +402,7 @@ namespace Muslimeen.Content.MyModerator
             divViewPendingArt.Visible = false;
             divViewArt.Visible = false;
             divViewReports.Visible = true;
+            divDisplayReports.Visible = true;
             grdReports.Visible = true;
            
            
