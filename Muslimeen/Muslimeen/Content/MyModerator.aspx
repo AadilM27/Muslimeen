@@ -268,7 +268,7 @@
                                     <asp:Button ID="BtnAcceptedArticles" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="Accepted Articles" OnClick="BtnAcceptedArticles_Click" />
                                     <asp:Button ID="BtnRejectedArticles" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="Rejected Articles" OnClick="BtnRejectedArticles_Click" />
                                     <asp:Button ID="BtnMosqueReports" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="List of Mosques" OnClick="BtnMosqueReports_Click" />
-
+                                    <asp:Button ID="BtnEventReports" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="List of Events" OnClick="BtnEventReports_Click" />
                                     </nav>                           
                             </div>
                             <div runat="server" id="divDisplayReports" class="col-md-8 position-static dash-content  p-0 basic-div-styling-2 " style="height:20px;min-width:250px;max-width:1000px;min-height: 646px; float: right;position: static;">

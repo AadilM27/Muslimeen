@@ -1154,6 +1154,32 @@ namespace Muslimeen.BLL
             }
             return list;
         }
+        public List<uspGetEventReports> GetEventReports()
+        {
+            List<uspGetEventReports> list = new List<uspGetEventReports>();
+
+            using (DataTable table = DBHelper.Select("uspGetEventReports", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetEventReports eve = new uspGetEventReports
+                        {
+                            EventTitle = Convert.ToString(row["EventTitle"]),
+                            EventStartTime = Convert.ToString(row["EventStartTime"]),
+                            EventEndTime = Convert.ToString(row["EventEndTime"]),
+                            Speaker = Convert.ToString(row["Speaker"]),
+                            EventDescription = Convert.ToString(row["EventDescription"]),
+                            EventDate = Convert.ToDateTime(row["EventDate"])
+
+                        };
+                        list.Add(eve);
+                    }
+                }
+            }
+            return list;
+        }
     }
 }
 

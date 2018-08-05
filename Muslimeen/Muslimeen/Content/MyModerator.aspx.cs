@@ -499,5 +499,22 @@ namespace Muslimeen.Content.MyModerator
 
             }
         }
+        protected void BtnEventReports_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                divViewReports.Visible = true;
+                divDisplayReports.Visible = true;
+                DBHandler han = new DBHandler();
+                uspGetEventReports mr = new uspGetEventReports();
+
+                grdReports.DataSource = han.BLL_GetEventReports();
+                grdReports.DataBind();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
     }
 }

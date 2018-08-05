@@ -229,5 +229,9 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetMosqueReports();
         }
+        public List<uspGetEventReports> BLL_GetEventReports()
+        {
+            return dBAccess.GetEventReports();
+        }
     }
 }
