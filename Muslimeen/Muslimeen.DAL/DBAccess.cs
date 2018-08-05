@@ -875,13 +875,9 @@ namespace Muslimeen.BLL
                             ArticleTitle = Convert.ToString(row["ArticleTitle"]),
                             ArticleContent = Convert.ToString(row["ArticleContent"]),
                             DateCreated = Convert.ToDateTime(row["DateCreated"]).Date,
-                            Status = Convert.ToChar(row["Status"]),
-                            RejectionReason = Convert.ToString(row["RejectionReason"]),
-                            Active = Convert.ToChar(row["Active"]),
-                            RemovalReason = Convert.ToString(row["RemovalReason"]),
                             ScholarID = Convert.ToString(row["ScholarID"]),
                             ModeratorID = Convert.ToString(row["ModeratorID"]),
-                            TopicID = Convert.ToInt32(row["TopicID"])
+                           
                         };
                         list.Add(art);
                     }
@@ -905,9 +901,9 @@ namespace Muslimeen.BLL
         }
 
         //Rejected Articles
-        public List<Article> GetRejectedArticle()
+        public List<uspGetRejectedArticle> GetRejectedArticle()
         {
-            List<Article> list = new List<Article>();
+            List<uspGetRejectedArticle> list = new List<uspGetRejectedArticle>();
 
             using (DataTable table = DBHelper.Select("uspGetRejectedArticles", CommandType.StoredProcedure))
             {
@@ -915,19 +911,16 @@ namespace Muslimeen.BLL
                 {
                     foreach (DataRow row in table.Rows)
                     {
-                        Article art = new Article
+                        uspGetRejectedArticle art = new uspGetRejectedArticle
                         {
-                            ArticleID = Convert.ToInt32(row["ArticleID"]),
+                            
                             ArticleTitle = Convert.ToString(row["ArticleTitle"]),
                             ArticleContent = Convert.ToString(row["ArticleContent"]),
-                            DateCreated = Convert.ToDateTime(row["DateCreated"]),
-                            Status = Convert.ToChar(row["Status"]),
-                            RejectionReason = Convert.ToString(row["RejectionReason"]),
-                            Active = Convert.ToChar(row["Active"]),
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]), 
+                            RejectionReason = Convert.ToString(row["RejectionReason"]),   
                             RemovalReason = Convert.ToString(row["RemovalReason"]),
                             ScholarID = Convert.ToString(row["ScholarID"]),
                             ModeratorID = Convert.ToString(row["ModeratorID"]),
-                            TopicID = Convert.ToInt32(row["TopicID"])
                         };
                         list.Add(art);
                     }
@@ -1151,6 +1144,58 @@ namespace Muslimeen.BLL
             }
             return DBHelper.NonQuery("uspAddMosque", CommandType.StoredProcedure, parameters.ToArray());
 
+        }
+
+        public List<uspGetMosqueReports> GetMosqueReports()
+        {
+            List<uspGetMosqueReports> list = new List<uspGetMosqueReports>();
+
+            using (DataTable table = DBHelper.Select("uspGetMosqueReports", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetMosqueReports msq = new uspGetMosqueReports
+                        {
+                            MosqueName = Convert.ToString(row["MosqueName"]),
+                            MosqueStreet = Convert.ToString(row["MosqueStreet"]),
+                            MosqueSuburb = Convert.ToString(row["MosqueSuburb"]),
+                            MosqueType = Convert.ToString(row["MosqueType"]),
+                            MosqueSize = Convert.ToString(row["MosqueSize"]),
+                            
+                        };
+                        list.Add(msq);
+                    }
+                }
+            }
+            return list;
+        }
+        public List<uspGetEventReports> GetEventReports()
+        {
+            List<uspGetEventReports> list = new List<uspGetEventReports>();
+
+            using (DataTable table = DBHelper.Select("uspGetEventReports", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetEventReports eve = new uspGetEventReports
+                        {
+                            EventTitle = Convert.ToString(row["EventTitle"]),
+                            EventStartTime = Convert.ToString(row["EventStartTime"]),
+                            EventEndTime = Convert.ToString(row["EventEndTime"]),
+                            Speaker = Convert.ToString(row["Speaker"]),
+                            EventDescription = Convert.ToString(row["EventDescription"]),
+                            EventDate = Convert.ToDateTime(row["EventDate"])
+
+                        };
+                        list.Add(eve);
+                    }
+                }
+            }
+            return list;
         }
     }
 }

@@ -454,6 +454,42 @@ namespace Muslimeen.Content.MyModerator {
         protected global::System.Web.UI.WebControls.Button btnRejectedScholars;
         
         /// <summary>
+        /// BtnAcceptedArticles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnAcceptedArticles;
+        
+        /// <summary>
+        /// BtnRejectedArticles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnRejectedArticles;
+        
+        /// <summary>
+        /// BtnMosqueReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnMosqueReports;
+        
+        /// <summary>
+        /// BtnEventReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnEventReports;
+        
+        /// <summary>
         /// divDisplayReports control.
         /// </summary>
         /// <remarks>
@@ -470,5 +506,23 @@ namespace Muslimeen.Content.MyModerator {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdReports;
+        
+        /// <summary>
+        /// divPDF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPDF;
+        
+        /// <summary>
+        /// BtnPDF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnPDF;
     }
 }
