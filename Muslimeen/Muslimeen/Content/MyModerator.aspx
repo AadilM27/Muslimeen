@@ -271,7 +271,7 @@
                                     <asp:Button ID="BtnEventReports" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="List of Events" OnClick="BtnEventReports_Click" />
                                     </nav>                           
                             </div>
-                            <div runat="server" id="divDisplayReports" class="col-md-8 position-static dash-content  p-0 basic-div-styling-2 " style="height:20px;min-width:250px;max-width:1000px;min-height: 646px; float: right;position: static;">
+                            <div runat="server" id="divDisplayReports" class="col-md-8 position-static dash-content  p-0 basic-div-styling-2 " style="overflow:hidden auto;">
                                 <div class="  position-static head-div-2 p-2 mb-1 " >
                                     <p class="m-0">Reports</p>
                                 </div>
@@ -291,6 +291,9 @@
                                 </asp:GridView>
                                     </div>
                                 </div>
+                            <div  class="basic-div-styling mr-1" runat="server" id="divPDF" style="height:20px;min-width: 250px;min-height: 646px; float: left;position: static;">
+                                <asp:Button ID="BtnPDF" runat="server" CssClass=" pl-2 btn taskBtn mb-1"  OnClick="BtnPDF_Click" Text="Export to PDF"/>
+                            </div>
                         </div>
 
 

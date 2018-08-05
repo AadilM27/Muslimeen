@@ -8,6 +8,10 @@ using TypeLib.Models;
 using TypeLib.ViewModels;
 using Muslimeen.BLL;
 using System.Data;
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.html.simpleparser;
 
 namespace Muslimeen.Content.MyModerator
 {
@@ -515,6 +519,31 @@ namespace Muslimeen.Content.MyModerator
             {
 
             }
+        }
+
+        protected void BtnPDF_Click(object sender, EventArgs e)
+        {
+            PdfPTable tbl = new PdfPTable(grdReports.HeaderRow.Cells.Count);
+           foreach(GridViewRow row in grdReports.Rows)
+            {
+                foreach(TableCell cell in row.Cells)
+                {
+                    PdfPCell pdfCell = new PdfPCell(new Phrase(cell.Text));
+                    tbl.AddCell(pdfCell);
+                }
+            }
+            Document pdfDocument = new Document(PageSize.A4, 10f, 10f, 10f, 10f);
+            PdfAWriter.GetInstance(pdfDocument, Response.OutputStream);
+
+            pdfDocument.Open();
+            pdfDocument.Add(tbl);
+            pdfDocument.Close();
+
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("content-disposition", "attachment;filename=MuslimeenReports.pdf");
+            Response.Write(pdfDocument);
+            Response.Flush();
+            Response.End();
         }
     }
 }
