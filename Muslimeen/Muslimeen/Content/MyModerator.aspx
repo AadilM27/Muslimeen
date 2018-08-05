@@ -265,13 +265,18 @@
                                       <nav class="nav flex-column pt-2 pb-2 pr-0">
                                     <asp:Button ID="BtnAcceptedScholars" CssClass=" pl-2 btn taskBtn mb-1" runat="server" Text="Accepted Scholars" OnClick="BtnAcceptedScholars_Click" />                                  
                                     <asp:Button ID="btnRejectedScholars"  CssClass=" pl-2 btn taskBtn mb-1" runat="server" Text="Rejected Scholars" OnClick="btnRejectedScholars_Click" />
+                                    <asp:Button ID="BtnAcceptedArticles" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="Accepted Articles" OnClick="BtnAcceptedArticles_Click" />
+                                    <asp:Button ID="BtnRejectedArticles" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="Rejected Articles" OnClick="BtnRejectedArticles_Click" />
+                                    <asp:Button ID="BtnMosqueReports" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="List of Mosques" OnClick="BtnMosqueReports_Click" />
+
                                     </nav>                           
                             </div>
-                            <div runat="server" id="divDisplayReports" class="  basic-div-styling mr-1  w3-half " style="height:20px;min-width: 250px;max-width:1000px;min-height: 646px; float: right;position: static;">
-                                <div class="  position-static head-div-2 p-2 mb-1 " style="width:827px;">
+                            <div runat="server" id="divDisplayReports" class="col-md-8 position-static dash-content  p-0 basic-div-styling-2 " style="height:20px;min-width:250px;max-width:1000px;min-height: 646px; float: right;position: static;">
+                                <div class="  position-static head-div-2 p-2 mb-1 " >
                                     <p class="m-0">Reports</p>
                                 </div>
-                                <asp:GridView ID="grdReports" runat="server" style="position:static; font-size:smaller;" CellPadding="2" ForeColor="#333333" GridLines="none" Width="40px" min-width="250px" max-width="350px">
+                                <div style="margin-left:auto;margin-right:auto;width:700px;">
+                                <asp:GridView ID="grdReports" runat="server" style="position:static; font-size:smaller;" CellPadding="2" ForeColor="#333333" GridLines="none" Width="600px" min-width="250px" max-width="350px">
                                     <AlternatingRowStyle BackColor="White" />
                                     <EditRowStyle BackColor="#2461BF" />
                                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -284,6 +289,7 @@
                                     <SortedDescendingCellStyle BackColor="#E9EBEF" />
                                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
                                 </asp:GridView>
+                                    </div>
                                 </div>
                         </div>
 

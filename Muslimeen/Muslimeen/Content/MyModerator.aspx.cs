@@ -315,8 +315,8 @@ namespace Muslimeen.Content.MyModerator
                 hdfSchId.Value = articleId;
 
                 DBHandler dBHandler = new DBHandler();
-                Article article = new Article();
-                article = dBHandler.BLL_GetArticle(Convert.ToInt32(articleId));
+                uspGetSelectedPendingArticle article = new uspGetSelectedPendingArticle();
+                article = dBHandler.BLL_GetSelectedPendingArticle(Convert.ToInt32(articleId));
 
 
                 lblArticleTitle.InnerText = article.ArticleTitle.ToString();
@@ -416,7 +416,7 @@ namespace Muslimeen.Content.MyModerator
                 divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
                 DBHandler handler = new DBHandler();
-                uspGetAcceptedArticle acc = new uspGetAcceptedArticle();
+                uspGetAcceptedScholars acc = new uspGetAcceptedScholars();
                 
                 grdReports.DataSource = handler.BLL_GetAcceptedScholars();
                 grdReports.DataBind();
@@ -436,9 +436,62 @@ namespace Muslimeen.Content.MyModerator
                 divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
                 DBHandler handler = new DBHandler();
-                uspGetAcceptedArticle acc = new uspGetAcceptedArticle();
+                uspGetAcceptedScholars acc = new uspGetAcceptedScholars();
 
                 grdReports.DataSource = handler.BLL_GetRejectedScholars();
+                
+                grdReports.DataBind();
+                
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        protected void BtnAcceptedArticles_Click(object sender,EventArgs e)
+        {
+            try
+            {
+                divViewReports.Visible = true;
+                divDisplayReports.Visible = true;
+                DBHandler han = new DBHandler();
+                uspGetAcceptedArticle art = new uspGetAcceptedArticle();
+
+                grdReports.DataSource = han.BLL_GetAcceptedArticle();
+                grdReports.DataBind();
+            }
+            catch(Exception)
+            {
+
+            }
+        }
+        protected void BtnRejectedArticles_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                divViewReports.Visible = true;
+                divDisplayReports.Visible = true;
+                DBHandler han = new DBHandler();
+                uspGetRejectedArticle rej = new uspGetRejectedArticle();
+
+                grdReports.DataSource = han.BLL_GetRejectedArticle();
+                grdReports.DataBind();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        protected void BtnMosqueReports_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                divViewReports.Visible = true;
+                divDisplayReports.Visible = true;
+                DBHandler han = new DBHandler();
+                uspGetMosqueReports mr = new uspGetMosqueReports();
+
+                grdReports.DataSource = han.BLL_GetMosqueReports();
                 grdReports.DataBind();
             }
             catch (Exception)

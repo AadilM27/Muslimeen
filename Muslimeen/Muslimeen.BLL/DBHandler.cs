@@ -189,7 +189,7 @@ namespace Muslimeen.BLL
         }
 
         //Rejected Articles
-        public List<Article> BLL_GetRejectedArticle()
+        public List<uspGetRejectedArticle> BLL_GetRejectedArticle()
         {
             return dBAccess.GetRejectedArticle();
         }
@@ -224,6 +224,10 @@ namespace Muslimeen.BLL
         public uspGetSelectedPendingArticle BLL_GetSelectedPendingArticle(int articleID)
         {
             return dBAccess.GetSelectedPendingArticle(articleID);
+        }
+        public List<uspGetMosqueReports> BLL_GetMosqueReports()
+        {
+            return dBAccess.GetMosqueReports();
         }
     }
 }
