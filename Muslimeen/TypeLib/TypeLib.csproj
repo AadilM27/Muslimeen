@@ -61,6 +61,7 @@
     <Compile Include="Models\UpdateMember.cs" />
     <Compile Include="Models\UpdateMemberPassword.cs" />
     <Compile Include="Models\UpdateRamadaanDate.cs" />
+    <Compile Include="Models\uspAddMosque.cs" />
     <Compile Include="Models\uspRejectReg.cs" />
     <Compile Include="Models\Zakaah.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,12 +72,14 @@
     <Compile Include="ViewModels\uspGetAllMosqueSuburbs.cs" />
     <Compile Include="ViewModels\uspGetAllPendingScholars.cs" />
     <Compile Include="ViewModels\uspGetCalAdjustValue.cs" />
+    <Compile Include="ViewModels\uspGetEventReports.cs" />
     <Compile Include="ViewModels\uspGetMember.cs" />
     <Compile Include="ViewModels\uspGetModeratorDetails.cs" />
     <Compile Include="ViewModels\uspGetMosque.cs" />
     <Compile Include="ViewModels\uspGetMosqueEvents.cs" />
     <Compile Include="ViewModels\uspGetMosqueEventsDateRange.cs" />
     <Compile Include="ViewModels\uspGetMosquePrayerTimes.cs" />
+    <Compile Include="ViewModels\uspGetMosqueReports.cs" />
     <Compile Include="ViewModels\uspGetMosques.cs" />
     <Compile Include="ViewModels\uspGetNotifications.cs" />
     <Compile Include="ViewModels\uspGetOrganizations.cs" />
@@ -86,6 +89,7 @@
     <Compile Include="Models\uspVerifyMember.cs" />
     <Compile Include="ViewModels\uspGetRejectedArticle.cs" />
     <Compile Include="ViewModels\uspGetScholarDetails.cs" />
+    <Compile Include="ViewModels\uspGetSelectedPendingArticle.cs" />
     <Compile Include="ViewModels\uspGetSpecificDayPrayerTimes.cs" />
     <Compile Include="ViewModels\uspGetSpecificEvent.cs" />
     <Compile Include="ViewModels\uspGetTopics.cs" />

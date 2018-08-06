@@ -92,6 +92,13 @@ namespace Muslimeen.Content.Mosque
                 #endregion LoadAdd/UpdatePrayer
             }
             catch { }
+            if (!IsPostBack)
+            {
+                divDetails.Visible = false;
+                divEvent.Visible = false;
+                divLocation.Visible = false;
+                divPrayerTimes.Visible = false;
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -175,8 +182,7 @@ namespace Muslimeen.Content.Mosque
         }
         protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
         {
-            int index = int.Parse(e.Item.Value);
-            MultiView1.ActiveViewIndex = index;
+         
         }
 
         protected void btnListEvents_Click(object sender, EventArgs e)
@@ -259,6 +265,38 @@ namespace Muslimeen.Content.Mosque
                 rptPrayerTimes.DataBind();
             }
             catch { }
+        }
+
+        protected void btnMosqueDetails_Click(object sender, EventArgs e)
+        {
+            divDetails.Visible = true;
+            divEvent.Visible = false;
+            divLocation.Visible  = false;
+            divPrayerTimes.Visible = false;
+        }
+
+        protected void btnEvents_Click(object sender, EventArgs e)
+        {
+            divDetails.Visible = false;
+            divEvent.Visible = true;
+            divLocation.Visible = false;
+            divPrayerTimes.Visible = false;
+        }
+
+        protected void btnAddress_Click(object sender, EventArgs e)
+        {
+            divDetails.Visible = false;
+            divEvent.Visible = false;
+            divLocation.Visible = true;
+            divPrayerTimes.Visible = false;
+        }
+
+        protected void btnPrayerTimes_Click(object sender, EventArgs e)
+        {
+            divDetails.Visible = false;
+            divEvent.Visible = false;
+            divLocation.Visible = false;
+            divPrayerTimes.Visible = true;
         }
     }
 }

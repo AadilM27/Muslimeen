@@ -166,31 +166,58 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.Button btnAboutUs;
         
         /// <summary>
-        /// Menu1 control.
+        /// btnMosqueDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu Menu1;
+        protected global::System.Web.UI.WebControls.Button btnMosqueDetails;
         
         /// <summary>
-        /// MultiView1 control.
+        /// btnEvents control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView MultiView1;
+        protected global::System.Web.UI.WebControls.Button btnEvents;
         
         /// <summary>
-        /// View1 control.
+        /// btnAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View View1;
+        protected global::System.Web.UI.WebControls.Button btnAddress;
+        
+        /// <summary>
+        /// btnPrayerTimes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPrayerTimes;
+        
+        /// <summary>
+        /// divTaskHead control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTaskHead;
+        
+        /// <summary>
+        /// divDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDetails;
         
         /// <summary>
         /// lblMosqueName control.
@@ -373,13 +400,13 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.Label lblEishaJamaat;
         
         /// <summary>
-        /// View2 control.
+        /// divEvent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View View2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEvent;
         
         /// <summary>
         /// lblEventList control.
@@ -445,22 +472,22 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.Repeater rptGetEvents;
         
         /// <summary>
-        /// View3 control.
+        /// divLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View View3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divLocation;
         
         /// <summary>
-        /// View4 control.
+        /// divPrayerTimes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View View4;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPrayerTimes;
         
         /// <summary>
         /// lblPrayerStartDate control.
