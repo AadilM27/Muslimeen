@@ -211,13 +211,13 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Button btnArticles;
         
         /// <summary>
-        /// divTaskHead control.
+        /// lblTaskHead control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTaskHead;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTaskHead;
         
         /// <summary>
         /// divDisplaySalahTimetable control.
@@ -551,6 +551,15 @@ namespace Muslimeen.Content {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptDisplayArticles;
+        
+        /// <summary>
+        /// divSchDetailsOverlay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSchDetailsOverlay;
         
         /// <summary>
         /// divDisplayArt control.

@@ -610,7 +610,7 @@ namespace Muslimeen.BLL
             using (DataTable table = DBHelper.ParamSelect("uspGetSpecificDayPrayerTimes",
                     CommandType.StoredProcedure, pars))
             {
-                if (table.Rows.Count == 5)
+                if (table.Rows.Count ==5)
                 {
 
                     time = new uspGetSpecificDayPrayerTimes
@@ -1092,27 +1092,7 @@ namespace Muslimeen.BLL
             }
             return list;
         }
-        //public List<uspViewLatestArticles> ViewLatestArticles(DateTime dateToday, DateTime date)
-        //{
-        //    List<uspViewLatestArticles> list = new List<uspViewLatestArticles>();
-        //    using (DataTable table = DBHelper.Select("uspViewLatestArticles", CommandType.StoredProcedure))
-        //    {
-        //        if (table.Rows.Count > 0)
-        //        {
-        //            foreach (DataRow row in table.Rows)
-        //            {
-        //                uspViewLatestArticles article = new uspViewLatestArticles
-        //                {
-        //                    ArticleTitle = Convert.ToString(row["ArticleTitle"]),
-        //                    DateCreated = Convert.ToDateTime(row["DateCreated"]),
-        //                    Names = Convert.ToString(row["Names"])
-        //                };
-        //                list.Add(article);
-        //            }
-        //        }
-        //    }
-        //    return list;
-        //}
+
     }
 }
 

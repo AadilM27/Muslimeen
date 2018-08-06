@@ -14,12 +14,25 @@ namespace Muslimeen.Content
     {
         
         DBHandler dBHandler = new DBHandler();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblTaskHead.InnerText = "Please select a task";
+
+            divUserProfile.Visible = true;
+            liMyMusbtn.Visible = true;
+            liMyMusDivi.Visible = true;
+            divDisplayEvents.Visible = false;
+            divDisplaySalahTimetable.Visible = false;
+            divDiplayNotifications.Visible = false;
+            divDisplayArticles.Visible = false;
+            divNotices.Visible = false;
+            divDisplayArt.Visible = false;
+            divEvent.Visible = false;
+            divListEvent.Visible = false;
+            divSchDetailsOverlay.Visible = false;
 
 
-           
-            
             try
             {
                 DBHandler dBHandler = new DBHandler();
@@ -32,18 +45,6 @@ namespace Muslimeen.Content
                     uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
                     Session["MosqueID"] = uspGetMember.MosqueID.ToString();
                     hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
-                    divUserProfile.Visible = true;
-
-                    liMyMusbtn.Visible = true;
-                    liMyMusDivi.Visible = true;
-                    divDisplayEvents.Visible = false;
-                    divDisplaySalahTimetable.Visible = false;
-                    divDiplayNotifications.Visible = false;
-                    divDisplayArticles.Visible = false;
-                    divNotices.Visible = false;
-                    divDisplayArt.Visible = false;
-                    divEvent.Visible = false;
-                    divListEvent.Visible = false;
 
                     btnLogin.Text = "Log out";
                     btnRegister.Visible = false;
@@ -51,37 +52,12 @@ namespace Muslimeen.Content
                 }
                 else if (Session["UserName"] == null)
                 {
-                    liMyMusbtn.Visible = false;
-                    liMyMusDivi.Visible = false;
-                    divDisplayEvents.Visible = false;
-                    divDisplaySalahTimetable.Visible = false;
-                    divDisplayArticles.Visible = false;
-                    divDiplayNotifications.Visible = false;
-                    divNotices.Visible = false;
-                    divDisplayArt.Visible = false;
-                    divEvent.Visible = false;
-                    divListEvent.Visible = false;
-
                     divUserProfile.Visible = false;
                     Session.Clear();
                 }
                 try
-                {   //######### IDK what you using this for but this is causing a conflict with the other repeater.############## <<<<<<<<<<<<<<< READ
-                    //RptEventList.DataSource = dBHandler.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
-                    //RptEventList.DataBind();
-                    //DateTime date = DateTime.Today;
-                    //uspGetSpecificDayPrayerTimes time = new uspGetSpecificDayPrayerTimes();
-                    //time = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), date);
-                    //lblFajrAzaan.Text = time.FajrA.ToString();
-                    //lblFajrJamaat.Text = time.FajrJ.ToString();
-                    //lblDhuhrAzaan.Text = time.DhuhrA.ToString();
-                    //lblDhuhrJamaat.Text = time.DhuhrJ.ToString();
-                    //lblAsrAzaan.Text = time.AsrA.ToString();
-                    //lblAsrJamaat.Text = time.AsrJ.ToString();
-                    //lblMagribAzaan.Text = time.MagribA.ToString();
-                    //lblMagribJamaat.Text = time.MagribJ.ToString();
-                    //lblEishaAzaan.Text = time.EishaA.ToString();
-                    //lblEishaJamaat.Text = time.EishaJ.ToString();
+                {  
+
                 }
                 catch { }
             }
@@ -177,44 +153,44 @@ namespace Muslimeen.Content
         }
         protected void btnTodaysPrayerTime_Click(object sender, EventArgs e)
         {
-            try
-            {
-                divDisplayEvents.Visible = false;
                 divDisplaySalahTimetable.Visible = true;
-                divDiplayNotifications.Visible = false;
-                divDisplayArticles.Visible = false;
-                divDisplayArt.Visible = false;
-                divEvent.Visible = false;
-                divListEvent.Visible = false;
-            }
-            catch
-            {
+                lblTaskHead.InnerText = btnTodaysPrayerTimes.Text.ToString();
 
-            }
+                DBHandler dBHandler = new DBHandler();
+                DateTime todaysDate = DateTime.Today;
+
+                uspGetSpecificDayPrayerTimes prayertimes = new uspGetSpecificDayPrayerTimes();
+                prayertimes = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), todaysDate);
+
+                lblFajrAzaan.Text = prayertimes.FajrA.ToString();
+                lblFajrJamaat.Text = prayertimes.FajrJ.ToString();
+                lblDhuhrAzaan.Text = prayertimes.DhuhrA.ToString();
+                lblDhuhrJamaat.Text = prayertimes.DhuhrJ.ToString();
+                lblAsrAzaan.Text = prayertimes.AsrA.ToString();
+                lblAsrJamaat.Text = prayertimes.AsrJ.ToString();
+                lblMagribAzaan.Text = prayertimes.MagribA.ToString();
+                lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
+                lblEishaAzaan.Text = prayertimes.EishaA.ToString();
+                lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
+
+
         }
+
         protected void btnEvents_Click(object sender, EventArgs e)
         {
-            try
-            {
+           
                 divDisplayEvents.Visible = true;
-                divDisplaySalahTimetable.Visible = false;
-                divDiplayNotifications.Visible = false;
-                divDisplayArticles.Visible = false;
-                divDisplayArt.Visible = false;
-                divEvent.Visible = false;
-                divListEvent.Visible = false;
+                lblTaskHead.InnerText = btnEvents.Text.ToString();
 
-
-            }
-            catch
-            { }
         }
 
         protected void btnListEvents_Click(object sender, EventArgs e)
-        {// button on selecting date
+        {
 
-                divEvent.Visible = true;
+                lblTaskHead.InnerText = btnListEvents.Text.ToString();
                 divListEvent.Visible = true;
+                divSchDetailsOverlay.Visible = true;
+                
                 DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
                 DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
                 RptEventList.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
@@ -224,6 +200,9 @@ namespace Muslimeen.Content
 
         protected void btnEventList_Click(object sender, EventArgs e)
         {
+
+            lblTaskHead.InnerText = btnEvents.Text.ToString();
+
             LinkButton linkButton = (LinkButton)sender;
 
             string EventID = linkButton.CommandArgument.ToString();
@@ -253,17 +232,11 @@ namespace Muslimeen.Content
 
         protected void btnNotifications_Click(object sender, EventArgs e)
         {
-
-                divDisplayEvents.Visible = false;
-                divDisplaySalahTimetable.Visible = false;
+                lblTaskHead.InnerText = btnNotifications.Text.ToString();
                 divDiplayNotifications.Visible = true;
-                divDisplayArticles.Visible = false;
-                divNotices.Visible = true;
-                divDisplayArt.Visible = false;
-                divEvent.Visible = false;
-                divListEvent.Visible = false;
+                divSchDetailsOverlay.Visible = true;
 
-                DBHandler dBHandler = new DBHandler();
+            DBHandler dBHandler = new DBHandler();
 
                 DateTime todaysDate = DateTime.Today;
                 DateTime date = DateTime.Today.AddDays(7);
@@ -275,15 +248,10 @@ namespace Muslimeen.Content
 
         protected void btnArticles_Click(object sender, EventArgs e)
         {
+                lblTaskHead.InnerText = btnArticles.Text.ToString();
 
-                divDisplayEvents.Visible = false;
-                divDisplaySalahTimetable.Visible = false;
-                divDiplayNotifications.Visible = false;
                 divDisplayArticles.Visible = true;
-                divDisplayArt.Visible = true;
-                divEvent.Visible = false;
-                divListEvent.Visible = false;
-
+                divSchDetailsOverlay.Visible = true;
 
                 DBHandler dBHandler = new DBHandler();
 
@@ -298,7 +266,10 @@ namespace Muslimeen.Content
 
         protected void btnShowArt_Click(object sender, EventArgs e)
         {
+            lblTaskHead.InnerText = btnArticles.Text.ToString();
+
             divDisplayArt.Visible = true;
+            
 
             LinkButton linkButton = (LinkButton)sender;
 
@@ -316,8 +287,10 @@ namespace Muslimeen.Content
         }
         protected void btnShowNotice_Click(object sender, EventArgs e)
         {
+            lblTaskHead.InnerText = btnNotifications.Text.ToString();
             divDiplayNotifications.Visible = true;
             divNotices.Visible = true;
+            divSchDetailsOverlay.Visible = false;
 
             LinkButton linkButton = (LinkButton)sender;
 
