@@ -80,21 +80,22 @@
                 </div>
             </header>
            <!--add content here --> 
-        <!--START INSERTING CODE FROM THIS POINT ON-->
-            <!--add your custom styling in MyMember.css in MyMember/css-->
-            <div class="content" id="content"><!--add content here -->
-                <h1 class="title header mb-4 mt-0">About us</h1>                
 
-               <div class="container">
-                <div class="contentHolder pt-0">
-                    <div class="header mb-3">
-                        <h4 class="text-center"> Our Mission:  <br/></h4>
-                        <h5 class="text-center">
+            <div class="content" id="content"><!--add content here -->
+                <div class="head-div text-center p-2 mb-1">
+                        <h3 class="p-0 m-0">About us</h3>
+                    </div>              
+
+               <div class="container" >
+                <div class="position-static basic-div-styling p-0">
+                    <div class="head-div-2 p-2 mb-0">
+                        <h4 class="m-0"> Our Mission:  <br/></h4>
+                        <h6 class="text-center">
                             Enhance communication
                             within our community <br />
                             And educate our users more about Islam
                         
-                        </h5>
+                        </h6>
                     </div>
                        <div class="paragraphDisplay p-2">
                         <p>
@@ -107,14 +108,15 @@
                         </p>
                     </div>
                 </div>
-                   <div class="contentHolder mt-4">
-                       <div class="header mb-3">
-                           <h4 class="text-center">Innovation:
+                   <br />
+                   <div class="position-static basic-div-styling p-0">
+                    <div class="head-div-2 p-2 mb-0">
+                           <h4 class="m-0">Innovation:
                                <br />
                            </h4>
-                           <h5 class="text-center">The big leap, the big risk<br />
+                           <h6 class="text-center">The big leap, the big risk<br />
                                the big change
-                           </h5>
+                           </h6>
                        </div>
                        <div class="paragraphDisplay p-2">
                            <p>
@@ -126,15 +128,16 @@
                            </p>
                        </div>
                    </div>
-                   <div class="contentHolder mt-4">
-                       <div class="header mb-3">
+                   <br />
+                   <div class="position-static basic-div-styling p-0">
+                    <div class="head-div-2 p-2 mb-0">
                            <h4 class="text-center">Our Team:
                                <br />
                            </h4>
-                           <h5 class="text-center">A team that is empowered, diverse<br />
+                           <h6 class="text-center">A team that is empowered, diverse<br />
                                and inclusive
                         
-                           </h5>
+                           </h6>
                        </div>
                        <div class="paragraphDisplay p-2">
                            <p>
@@ -145,7 +148,9 @@
                            </p>
                        </div>
                    </div>
+                    <br />
                 </div>
+                
                     <!--<h4 class="text-center"> We dare to enhance our communication platform  <br/></h4>
                     <p>The world is our community. We are in the process of creating a forum platform to increase our
                        means of communication and learning.

@@ -15,7 +15,7 @@
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="MyMember/css/MyMember.css" rel="stylesheet" />
     <link href="AboutUs/AboutUs.css" rel="stylesheet" />
-    <link href="MyAdmin/css/MyAdmin.css" rel="stylesheet" />
+    <link href="MyMember/css/MyMember.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -117,58 +117,58 @@
                 <!--Side menu ends-->
                 <!--Salaah Timetable-->
                 <div class=" position-static basic-div-styling p-0  w-100">
-                    <div runat="server" id="divTaskHead" class=" head-div text-center p-2 mb-1">
+                    <div runat="server" id="lblTaskHead" class=" head-div text-center p-2 mb-1">
                         <h4 class="p-0 m-0"></h4>
                     </div>
-                    <div class="row p-0 m-0 tab-content right-bottom-div p-1">
+                    <div class="row p-0 m-0 tab-content right-bottom-div p-1 flex-nowrap">
                         <div runat="server" id="divDisplaySalahTimetable" class="bg-light position-static col p-3 divContainers">
                             <div style="display: flex;justify-content: center" class=" position-static basic-div-styling">
                              <table class="table" style="justify-content: center; width: 50%; height: 20%; align-self: center">
                                 <tr>
-                                    <td rowspan="2" colspan="4"><asp:Image ID="icoPrayer" ImageUrl="Mosque/download.png" runat="server" Height="110px" Width="110px" /> </td>
+                                    <td rowspan="2"; colspan="1"><asp:Image ID="icoPrayer" ImageUrl="Mosque/download.png" runat="server" Height="110px" Width="110px" /> </td>
                
-                                    <th colspan="4">Salah TimeTable</th>
+                                    <th colspan="2" class="text-uppercase m-0 font-weight-bold">Salah TimeTable</th>
                                 </tr>
                                 <tr>
-                                    <th colspan ="4">AZAAN</th>
-                                    <th colspan ="4">JAMAAT</th>
+                                    <th>AZAAN</th>
+                                    <th>JAMAAT</th>
                                 </tr>
 
                                 <tr>
-                                    <th>Fajr</th>
-                                    <td colspan ="4">
+                                    <th colspan="1">Fajr</th>
+                                    <td>
                                         <asp:Label ID="lblFajrAzaan" runat="server"></asp:Label>
                                     </td>
-                                    <td colspan ="4">
+                                    <td>
                                         <asp:Label ID="lblFajrJamaat" runat="server"></asp:Label>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Dhuhr</th>
-                                    <td colspan ="4">
+                                    <th colspan="1">Dhuhr</th>
+                                    <td>
                                         <asp:Label ID="lblDhuhrAzaan" runat="server"></asp:Label></td>
-                                    <td colspan ="4">
+                                    <td>
                                         <asp:Label ID="lblDhuhrJamaat" runat="server"></asp:Label></td>
                                 </tr>
                                 <tr>
-                                    <th>Asr</th>
-                                    <td colspan ="4">
+                                    <th colspan="1">Asr</th>
+                                    <td>
                                         <asp:Label ID="lblAsrAzaan" runat="server"></asp:Label></td>
-                                    <td colspan ="4">
+                                    <td>
                                         <asp:Label ID="lblAsrJamaat" runat="server"></asp:Label></td>
                                 </tr>
                                 <tr>
                                     <th>Magrib</th>
-                                    <td colspan ="4"> 
+                                    <td> 
                                         <asp:Label ID="lblMagribAzaan" runat="server"></asp:Label></td>
-                                    <td colspan ="4">
+                                    <td>
                                         <asp:Label ID="lblMagribJamaat" runat="server"></asp:Label></td>
                                 </tr>
                                 <tr>
                                     <th>Eisha</th>
-                                    <td colspan ="4">
+                                    <td>
                                         <asp:Label ID="lblEishaAzaan" runat="server"></asp:Label></td>
-                                    <td colspan ="4">
+                                    <td>
                                         <asp:Label ID="lblEishaJamaat" runat="server"></asp:Label></td>
                                 </tr>
 
@@ -180,34 +180,36 @@
                         <!--view mosque events-->
 
                         <div runat="server" id="divDisplayEvents" class="bg-light position-static col p-3 divContainers">
-                            <div class=" position-static basic-div-styling p-0">                         
+                            <div class=" position-static basic-div-styling p-0 h-20">                         
                             <div class=" head-div-2 p-2 mb-0 ">
-                                    <p class="m-0">View Mosque Events</p>
+                                    <p class="m-0">List events by date range</p>
                             </div>
-                                    <table style="width: 40%">
+                                    <table style="width: 70%">
                                         <tr>
+                                            <td colspan="4">
+                                                <asp:Label ID="lblEventList" runat="server" Text="Please select a start and end date below " CssClass="pl-2 mb-1"></asp:Label></td>
+                                        </tr> 
+                                        <tr>
+                                            <td>
+                                                <asp:Label ID="lblStartDate" runat="server" Text="Start Date:" CssClass="pl-2 mb-1"></asp:Label></td>
                                             <td colspan="2">
-                                                <asp:Label ID="lblEventList" runat="server" Text="List Events By Date Range " CssClass="pl-2 mb-1"></asp:Label></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <asp:Label ID="lblStartDate" runat="server" Text="Start Date:   " CssClass="pl-2 mb-1"></asp:Label></td>
-                                            <td>
                                                 <asp:TextBox ID="txtStartDate" runat="server" TextMode="Date" CssClass="pl-2 mb-1"></asp:TextBox></td>
                                             <td>
-                                                <asp:Label ID="lblEndDate" runat="server" Text="End Date:  " CssClass="pl-2 mb-1"></asp:Label></td>
-                                            <td>
+                                                <asp:Label ID="lblEndDate" runat="server" Text="End Date:" CssClass="pl-2 mb-1"></asp:Label></td>
+                                            <td colspan="2">
                                                 <asp:TextBox ID="txtEndDate" runat="server" TextMode="Date" CssClass="pl-2 mb-1"></asp:TextBox></td>
                                             <td>
                                                 <asp:Button CssClass="btn btn-info center" ID="btnListEvents" runat="server" Text="List Events" OnClick="btnListEvents_Click" /></td>
                                         </tr>
+                                        
                                     </table>
+                                <br />
                                 </div>
                             </div>
                     
-                        <div runat="server" id="divListEvent" class="position-static dash-content m-0 p-0">
+                        <div runat="server" id="divListEvent" class="position-static dash-content p-0">
                             <div class=" head-div-2 p-2 mb-0 ">
-                                    <p class="m-0">List of events</p>
+                                    <p class="m-0">List of events:</p>
                             </div>
                             <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
                                 <asp:Repeater ID="RptEventList" runat="server" OnItemCommand="RptEventList_ItemCommand">
@@ -232,15 +234,14 @@
                             </div>
                         </div>
 
-                             <div runat="server" id="divEvent" class="position-static dash-content m-0 p-0 flex-nowrap">
-                                    <asp:HiddenField runat="server" ID="hdfEvent" Value="" />
-                                        <div class=" head-div-2 p-2 mb-0 ">
-                                            <%--<p class="m-0"><asp:Label ID="lblEventTitle" runat="server" Text='<%#Eval("EventTitle")%>'></asp:Label></p>--%>
-                                        </div>
-                                            <div style="display: flex; justify-content: center" class="container">
-                                                <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
+                          <div runat="server" id="divEvent" class=" position-static dash-content p-0">
+                            <asp:HiddenField runat="server" ID="hdfEvent" Value="" />
+                            <div class=" head-div-2 p-2 mb-0 ">
+                                    <p class="m-0">Selected Event Details:</p>
+                            </div>
+                            <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
                                 <div class="mt-0 p-2">
-                                    <div class="row position-static">
+                                     <div class="row position-static">
                                         <div class="col position-static"><b>Event Description: </b></div>
                                         <div class="col position-static">
                                             <label runat="server" id="lblEventDescription"></label>
@@ -272,10 +273,7 @@
                                     </div>
                                 </div>
                             </div>
-                         </div>
-                    </div>
-               
-
+                        </div>
 
                         <!--Notifications-->
                         <div runat="server" id="divDiplayNotifications" class="position-static dash-content p-0">
@@ -301,7 +299,8 @@
                             </div>
                         </div>
 
-                        <div runat="server" id="divNotices" class="position-static dash-content p-0">
+
+                        <div runat="server" id="divNotices" class=" position-static dash-content p-0">
                             <asp:HiddenField runat="server" ID="hdnNotice" Value="" />
                             <div class=" head-div-2 p-2 mb-0 ">
                                     <p class="m-0">Notification Details:</p>
@@ -334,7 +333,7 @@
 
                         <!--articles-->
 
-                        <div runat="server" id="divDisplayArticles" class="position-static dash-content p-0">
+                        <div runat="server" id="divDisplayArticles" class=" text-nowrap position-static dash-content p-0">
                             <div class=" head-div-2 p-2 mb-0 ">
                                     <p class="m-0">Latest Articles</p>
                                 </div>
@@ -367,8 +366,17 @@
                             </div>
                         </div>
 
+                           <div class="container text-nowrap dash-content" runat="server" id="divSchDetailsOverlay">
+                                <div class="w-100 h-100 container text-center">
+                                    <div class=" container h-25 mb-3"></div>
+                                    <h6 class="card-title h-50 mt-5 pt-5"><img class="figure-img mr-2" src="MyAdmin/icons/outline_error_outline_black_18dp.png" />No selection was made </h6>
+                                    <div class=" container h-25"></div>
+                                </div>
+                            </div>
 
-                        <div runat="server" id="divDisplayArt" class="position-static dash-content p-0">
+                    
+                        <div runat="server" id="divDisplayArt" class=" position-static dash-content mw-100 align-self-center">
+                            
                             <asp:HiddenField runat="server" ID="hdfArticleID" Value="" />
                             <div class=" head-div-2 p-2 mb-0 ">
                                     <p class="m-0">Selected Article Details</p>
@@ -390,9 +398,9 @@
                                 </div>
                             </div>
                         </div>
-                        </div>
                     </div>
                 </div>
+            </div>
             </div>
 
 

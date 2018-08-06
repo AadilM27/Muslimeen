@@ -13,6 +13,8 @@
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="Default/css/Default.css" rel="stylesheet" />
     <link href="../Content/HelpPage/HelpPage.css" rel="stylesheet" />
+    <link href="MyMember/css/MyMember.css" rel="stylesheet" />
+
 
 </head>
     <body>
@@ -79,14 +81,13 @@
                 </div>
             </header>
      <!--Add content-->
-            <div class="content" id="content" style="height:595px;">
-                <div class="container-fluid">
-                <div class="contentHolder">
-                    <div class="header mb-3">
-                        <h1 class="title">Privacy and Safety
-                        <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/lock.png" Width="90" Height="70" /></h1>
+            <div class="content" id="content" style="height:300px;">
+                    <div class="head-div text-center p-2 mb-1">
+                        <h3 class="p-0 m-0">Privacy and Safety
+                        <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/lock.png" Width="60" Height="40" /></h3>
                     </div>
-                    <div class=" paragraphDisplay">
+                    <div class="container">
+                        <div class="position-static basic-div-styling p-2">
                         <ul>
                             <li>My Muslimeen is a fully secure website.</li>
                             <li>No user may view your profile.</li>
@@ -95,9 +96,9 @@
                             <li>Information given to My Muslimeen is fully disclosed and secured. </li>
                             <li>We respect our members rights and privacy.</li>
                         </ul>
+                        </div>
                     </div>
-                </div>
-            </div>
+
         </div>
             <div class="footerr"> <!--End of content, start of footer-->
                 <div class="row bg-light">

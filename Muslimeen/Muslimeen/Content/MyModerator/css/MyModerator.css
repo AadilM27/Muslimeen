@@ -280,3 +280,10 @@ html {
     max-height: 590px;
     position: static;
 }
+
+.dash-content2 {
+    min-height: 640px;
+    max-height: 640px;
+    min-width: 50%;
+    max-width: 60%;
+}

@@ -30,7 +30,7 @@ namespace Muslimeen.Content.MyModerator
                 divViewArt.Visible = false;
                 divViewReports.Visible = false;
                 divDisplayReports.Visible = false;
-                
+                divPDF.Visible = false;
 
                 if (Session["UserName"] != null)
                 {
@@ -408,6 +408,7 @@ namespace Muslimeen.Content.MyModerator
             divViewReports.Visible = true;
             divDisplayReports.Visible = true;
             grdReports.Visible = true;
+            divPDF.Visible = true;
            
            
         }
@@ -419,6 +420,7 @@ namespace Muslimeen.Content.MyModerator
 
                 divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
+                divPDF.Visible = true;
                 DBHandler handler = new DBHandler();
                 uspGetAcceptedScholars acc = new uspGetAcceptedScholars();
                 
@@ -439,6 +441,7 @@ namespace Muslimeen.Content.MyModerator
 
                 divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
+                divPDF.Visible = true;
                 DBHandler handler = new DBHandler();
                 uspGetAcceptedScholars acc = new uspGetAcceptedScholars();
 
@@ -458,6 +461,7 @@ namespace Muslimeen.Content.MyModerator
             {
                 divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
+                divPDF.Visible = true;
                 DBHandler han = new DBHandler();
                 uspGetAcceptedArticle art = new uspGetAcceptedArticle();
 
@@ -475,6 +479,7 @@ namespace Muslimeen.Content.MyModerator
             {
                 divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
+                divPDF.Visible = true;
                 DBHandler han = new DBHandler();
                 uspGetRejectedArticle rej = new uspGetRejectedArticle();
 
@@ -492,6 +497,7 @@ namespace Muslimeen.Content.MyModerator
             {
                 divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
+                divPDF.Visible = true;
                 DBHandler han = new DBHandler();
                 uspGetMosqueReports mr = new uspGetMosqueReports();
 
@@ -509,6 +515,7 @@ namespace Muslimeen.Content.MyModerator
             {
                 divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
+                divPDF.Visible = true;
                 DBHandler han = new DBHandler();
                 uspGetEventReports mr = new uspGetEventReports();
 
@@ -523,10 +530,15 @@ namespace Muslimeen.Content.MyModerator
 
         protected void BtnPDF_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        protected void PDF_Click(object sender, ImageClickEventArgs e)
+        {
             PdfPTable tbl = new PdfPTable(grdReports.HeaderRow.Cells.Count);
-           foreach(GridViewRow row in grdReports.Rows)
+            foreach (GridViewRow row in grdReports.Rows)
             {
-                foreach(TableCell cell in row.Cells)
+                foreach (TableCell cell in row.Cells)
                 {
                     PdfPCell pdfCell = new PdfPCell(new Phrase(cell.Text));
                     tbl.AddCell(pdfCell);

@@ -611,7 +611,7 @@ namespace Muslimeen.BLL
             using (DataTable table = DBHelper.ParamSelect("uspGetSpecificDayPrayerTimes",
                     CommandType.StoredProcedure, pars))
             {
-                if (table.Rows.Count == 5)
+                if (table.Rows.Count ==5)
                 {
 
                     time = new uspGetSpecificDayPrayerTimes
@@ -1086,6 +1086,7 @@ namespace Muslimeen.BLL
             }
             return list;
         }
+
         //public List<uspViewLatestArticles> ViewLatestArticles(DateTime dateToday, DateTime date)
         //{
         //    List<uspViewLatestArticles> list = new List<uspViewLatestArticles>();

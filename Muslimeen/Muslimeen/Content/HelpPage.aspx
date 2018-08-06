@@ -14,6 +14,7 @@
     <link href="Default/css/Default.css" rel="stylesheet" />
     <link href="../Content/HelpPage/HelpPage.css" rel="stylesheet" />
     <link href="../Content/HelpPage/icon" rel="stylesheet" />
+    <link href="MyMember/css/MyMember.css" rel="stylesheet" />
 </head>
     <body>
         <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
@@ -80,10 +81,10 @@
                 </div>
             </header>
      <!--Add content-->
-            <div class="content" id="content" style="min-height:595px; background-color:#256297">
+            <div class="content" id="content" style="min-height:595px;">
                 <div class="contentHolder header p-5">
                     <div class="header mb-5">
-                        <h1 class="title header">Help and Support</h1>
+                        <h1 class="title">Help and Support</h1>
                     </div>
 
                     <div class="row">
