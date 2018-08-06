@@ -83,7 +83,7 @@
                     <div class="side-bar p-0 basic-div-styling mr-1">
                         <!--contains the buttons-->
                         <div class="head-div text-center p-2">
-                            <p class="text-uppercase m-0 font-weight-bold">Admin Tasks:</p>
+                            <p class="text-uppercase m-0 font-weight-bold">Admin Tasks</p>
                         </div>
                         <nav class="nav flex-column pt-2 pb-2 pr-0">
                             <asp:Button runat="server" ToolTip="Pending Scholar Registrations." ID="btnViewPendingSch" OnClick="btnViewPendingSch_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="View Pending Scholars" />
@@ -97,7 +97,7 @@
                         </div>
                         <div class="row p-0 m-0 right-bottom-div p-1 flex-nowrap justify-content-xl-center" >
                             <%-- Pending Scholar registration List--%>
-                            <div class="col-6 col-xl-3 p-0 mr-1" runat="server" id="divViewPendingSch">
+                            <div class="col-6 col-xl-4 p-0 mr-1" runat="server" id="divViewPendingSch">
                                 <div class=" head-div-2 p-2 mb-1 text-left">
                                     <p class="m-0">Pending Registrations</p>
                                 </div>
@@ -130,7 +130,7 @@
                                 </div>
                             </div>
                             <%--Add Mosque Rep--%>
-                            <div class="col-6 col-xl-3 p-0" runat="server" id="divAddMosqueRep">
+                            <div class="col-6 col-xl-4 align p-0" runat="server" id="divAddMosqueRep">
                                 <div class=" head-div-2 p-2 mb-1 text-left">
                                     <p class="m-0">Add Mosque Representative</p>
                                 </div>
@@ -199,7 +199,7 @@
                                 </div>
                             </div>
                             <%-- Add the Mosque --%>
-                            <div class="col-6 col-xl-3 flex-nowrap pl-1" style="overflow:hidden;" runat="server" id="divAddMosque">
+                            <div class="col-6 col-xl-4 flex-nowrap pl-1" style="overflow:hidden;" runat="server" id="divAddMosque">
                                 <div class=" head-div-2 p-2 mb-1 text-left">
                                     <p class="m-0">Add Mosque</p>
                                 </div>
@@ -269,7 +269,7 @@
                                 </div>
                             </div>
                             <%-- Overlay for Scholar Registration List selection--%>
-                            <div class="col-6 col-xl-3 text-nowrap" runat="server" id="divSchDetailsOverlay">
+                            <div class="col-6 col-xl-4 text-nowrap" runat="server" id="divSchDetailsOverlay">
                                 <div class="w-100 h-100 container text-center">
                                     <div class=" container h-25 mb-3"></div>
                                         <h6 class="card-title h-50 mt-5 pt-5"><img class="figure-img mr-2" src="MyAdmin/icons/outline_error_outline_black_18dp.png" />No Scholar registration selected.</h6>
@@ -277,7 +277,7 @@
                                 </div>
                             </div>
                             <%-- Diaplay Pending Scholar Details --%>
-                            <div runat="server" id="divDisplaySch" class=" col-6 col-xl-3 flex-nowrap p-0">
+                            <div runat="server" id="divDisplaySch" class=" col-6 col-xl-4 flex-nowrap p-0">
                                 <asp:HiddenField runat="server" ID="hdfSchId" Value="" />
                                 <div class=" head-div-2 p-2 mb-0 text-left ">
                                     <p class="m-0">Scholar Details</p>

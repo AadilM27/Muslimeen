@@ -300,6 +300,7 @@ namespace Muslimeen.Content
             txtMosqueQuote.BorderColor = Color.Empty;
             lblError.Text = "";
 
+
             try
             {
                 DBHandler db = new DBHandler();
@@ -351,71 +352,123 @@ namespace Muslimeen.Content
                     }
                 }
 
-                if (txtName.Text == "" || txtName.Text == null)
+                if (lblError.Text == "" || lblError.Text == null)
                 {
-                    txtName.BorderColor = Color.Red;
-                    continueProcess += 1;
-                }
-                else if (txtLName.Text == "" || txtLName.Text == null)
-                {
-                    txtLName.BorderColor = Color.Red;
-                    continueProcess += 1;
-                }
-                else if (txtDOB.Text == "" || txtDOB == null)
-                {
-                    txtDOB.BorderColor = Color.Red;
-                    continueProcess += 1;
-                }
-                else if (txtDOB.Text.Length > 10 || txtDOB.Text.Length < 10)
-                {
-                    txtDOB.BorderColor = Color.Red;
-                    continueProcess += 1;
-                    lblError.Text = "Please follow the format: yyyy-mm-dd";
-                    lblError.ForeColor = Color.Red;
-                }
-                else if (txtUserEmail.Text == "" || txtUserEmail == null)
-                {
-                    txtUserEmail.BorderColor = Color.Red;
-                    lblError.Text = "Please enter your Email address";
-                    lblError.ForeColor = Color.Red;
-                    continueProcess += 1;
-                }
-                else if ( ddMosqueType.SelectedValue == "None")
-                {
-                    ddMosqueType.BorderColor = Color.Red;
-                    continueProcess += 1;
-                }
-                else if (ddMosqueSize.SelectedValue == "None")
-                {
-                    ddMosqueSize.BorderColor = Color.Red;
-                    continueProcess += 1;
-                    lblError.Text = "Registration type not selected";
-                    lblError.ForeColor = Color.Red;
-                }
-                else if (txtPassword.Text == null || txtPassword.Text == "")
-                {
-                    lblError.Text = "Please create a Password";
-                    lblError.ForeColor = Color.Red;
-                    continueProcess += 1;
-                    txtPassword.BorderColor = Color.Red;
-                }
-                else if (txtRetypePassword.Text == null || txtRetypePassword.Text == "")
-                {
-                    lblError.Text = "Please retype your Password";
-                    lblError.ForeColor = Color.Red;
-                    continueProcess += 1;
-                    txtRetypePassword.BorderColor = Color.Red;
-                }
-                else if (txtContactNum.Text.Length > 10 || txtContactNum.Text.Length < 10)
-                {
-                    if (txtContactNum.Text.Length != 0)
+                    if(txtMosqueName.Text == "" || txtMosqueName.Text == null)
                     {
-                        lblError.Text = "Please enter a correct contact number";
+                        txtMosqueName.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if(txtMosqueAddr.Text == "" || txtMosqueAddr.Text == null)
+                    {
+                        txtMosqueAddr.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if(txtMosqueSuburb.Text == "" || txtMosqueSuburb.Text == null)
+                    {
+                        txtMosqueSuburb.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if(ddMosqueType.SelectedIndex == 0)
+                    {
+                        ddMosqueType.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if(txtMosqueEstab.Text == "dd --- yyyy")
+                    {
+                        txtMosqueEstab.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if(ddMosqueSize.SelectedIndex == 0)
+                    {
+                        ddMosqueSize.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if (txtName.Text == "" || txtName.Text == null)
+                    {
+                        txtName.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if (txtLName.Text == "" || txtLName.Text == null)
+                    {
+                        txtLName.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if (txtDOB.Text == "" || txtDOB == null)
+                    {
+                        txtDOB.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if (txtDOB.Text.Length > 10 || txtDOB.Text.Length < 10)
+                    {
+                        txtDOB.BorderColor = Color.Red;
+                        continueProcess += 1;
+                        lblError.Text = "Please follow the format: yyyy-mm-dd";
+                        lblError.ForeColor = Color.Red;
+                    }
+                    else if (txtUserEmail.Text == "" || txtUserEmail == null)
+                    {
+                        txtUserEmail.BorderColor = Color.Red;
+                        lblError.Text = "Please enter your Email address";
                         lblError.ForeColor = Color.Red;
                         continueProcess += 1;
-                        txtContactNum.BorderColor = Color.Red;
+                    }
+                    else if (ddMosqueType.SelectedValue == "None")
+                    {
+                        ddMosqueType.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if (ddMosqueSize.SelectedValue == "None")
+                    {
+                        ddMosqueSize.BorderColor = Color.Red;
+                        continueProcess += 1;
+                        lblError.Text = "Registration type not selected";
+                        lblError.ForeColor = Color.Red;
+                    }
+                    else if (txtPassword.Text == null || txtPassword.Text == "")
+                    {
+                        lblError.Text = "Please create a Password";
+                        lblError.ForeColor = Color.Red;
+                        continueProcess += 1;
+                        txtPassword.BorderColor = Color.Red;
+                    }
+                    else if (txtRetypePassword.Text == null || txtRetypePassword.Text == "")
+                    {
+                        lblError.Text = "Please retype your Password";
+                        lblError.ForeColor = Color.Red;
+                        continueProcess += 1;
+                        txtRetypePassword.BorderColor = Color.Red;
+                    }
+                    else if (txtContactNum.Text.Length > 10 || txtContactNum.Text.Length < 10)
+                    {
+                        if (txtContactNum.Text.Length != 0)
+                        {
+                            lblError.Text = "Please enter a correct contact number";
+                            lblError.ForeColor = Color.Red;
+                            continueProcess += 1;
+                            txtContactNum.BorderColor = Color.Red;
+                        }
+                    }
+                    if (fupMosqueImage.HasFile)
+                    {
+                        string fileName = fupMosqueImage.FileName.ToString();
+                        string fileFormat = fileName.Substring(fileName.Length - 3);
+                        switch (fileFormat)
+                        {
+                            case "png":
+                            case "jpg":
+                            case "gif":
+                            case "bmp":
+                                break;
+                            default:
+                                continueProcess += 1;
+                                lblError.Text = "The file Uploaded is not of the correct format.";
+                                lblError.ForeColor = Color.Red;
+                                break;
+                        }
                     }
                 }
+
 
 
                 if (continueProcess == 0)
@@ -466,6 +519,7 @@ namespace Muslimeen.Content
                     ddMosqueSize.SelectedIndex = 0;
                     txtMosqueQuote.Text = string.Empty;
                     fupMosqueImage.Attributes.Clear();
+
                 }
                 else if(lblError.Text == "")
                 {

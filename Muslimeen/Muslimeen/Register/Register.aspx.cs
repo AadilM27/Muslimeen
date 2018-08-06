@@ -148,66 +148,68 @@ namespace Muslimeen.Register
                     }
                 }
 
-                if (txtName.Text == "" || txtName.Text == null)
+                if (lblErrorPass.Text == "" || lblErrorPass.Text == null)
                 {
-                    txtName.BorderColor = Color.Red;
-                    continueProcess += 1;
-                }
-                else if (txtLName.Text == "" || txtLName.Text == null)
-                {
-                    txtLName.BorderColor = Color.Red;
-                    continueProcess += 1;
-                }
-                else if (txtDOB.Text == "" || txtDOB == null)
-                {
-                    txtDOB.BorderColor = Color.Red;
-                    continueProcess += 1;
-                }
-                else if (txtDOB.Text.Length > 10 || txtDOB.Text.Length < 10)
-                {
-                    txtDOB.BorderColor = Color.Red;
-                    continueProcess += 1;
-                    lblErrorPass.Text = "Please follow the format: yyyy-mm-dd";
-                }
-                else if (txtUserEmail.Text == "" || txtUserEmail == null)
-                {
-                    txtUserEmail.BorderColor = Color.Red;
-                    lblErrorPass.Text = "Please enter your Email address";
-                    continueProcess += 1;
-                }
-                else if (ddScholarQual.SelectedValue == "None")
-                {
-                    ddScholarQual.BorderColor = Color.Red;
-                    continueProcess += 1;
-                }
-                else if (ddUsertype.SelectedValue == "None")
-                {
-                    ddScholarQual.BorderColor = Color.Red;
-                    continueProcess += 1;
-                    lblErrorPass.Text = "Registration type not selected";
-                }
-                else if (txtPassword.Text == null || txtPassword.Text == "")
-                {
-                    lblErrorPass.Text = "Please create a Password";
-                    continueProcess += 1;
-                    txtPassword.BorderColor = Color.Red;
-                }
-                else if (txtRetypePass.Text == null || txtRetypePass.Text == "")
-                {
-                    lblErrorPass.Text = "Please retype your Password";
-                    continueProcess += 1;
-                    txtRetypePass.BorderColor = Color.Red;
-                }
-                else if (txtContactNum.Text.Length > 10 || txtContactNum.Text.Length < 10)
-                {
-                    if (txtContactNum.Text.Length != 0)
+                    if (txtName.Text == "" || txtName.Text == null)
                     {
-                        lblErrorPass.Text = "Please enter a correct contact number";
+                        txtName.BorderColor = Color.Red;
                         continueProcess += 1;
-                        txtContactNum.BorderColor = Color.Red;
+                    }
+                    else if (txtLName.Text == "" || txtLName.Text == null)
+                    {
+                        txtLName.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if (txtDOB.Text == "" || txtDOB == null)
+                    {
+                        txtDOB.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if (txtDOB.Text.Length > 10 || txtDOB.Text.Length < 10)
+                    {
+                        txtDOB.BorderColor = Color.Red;
+                        continueProcess += 1;
+                        lblErrorPass.Text = "Please follow the format: yyyy-mm-dd";
+                    }
+                    else if (txtUserEmail.Text == "" || txtUserEmail == null)
+                    {
+                        txtUserEmail.BorderColor = Color.Red;
+                        lblErrorPass.Text = "Please enter your Email address";
+                        continueProcess += 1;
+                    }
+                    else if (ddScholarQual.SelectedValue == "None")
+                    {
+                        ddScholarQual.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if (ddUsertype.SelectedValue == "None")
+                    {
+                        ddScholarQual.BorderColor = Color.Red;
+                        continueProcess += 1;
+                        lblErrorPass.Text = "Registration type not selected";
+                    }
+                    else if (txtPassword.Text == null || txtPassword.Text == "")
+                    {
+                        lblErrorPass.Text = "Please create a Password";
+                        continueProcess += 1;
+                        txtPassword.BorderColor = Color.Red;
+                    }
+                    else if (txtRetypePass.Text == null || txtRetypePass.Text == "")
+                    {
+                        lblErrorPass.Text = "Please retype your Password";
+                        continueProcess += 1;
+                        txtRetypePass.BorderColor = Color.Red;
+                    }
+                    else if (txtContactNum.Text.Length > 10 || txtContactNum.Text.Length < 10)
+                    {
+                        if (txtContactNum.Text.Length != 0)
+                        {
+                            lblErrorPass.Text = "Please enter a correct contact number";
+                            continueProcess += 1;
+                            txtContactNum.BorderColor = Color.Red;
+                        }
                     }
                 }
-
                 if (continueProcess == 0)
                 {
                     //make sure the DOB is in correct format yyy-mm-dd.
