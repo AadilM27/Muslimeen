@@ -128,11 +128,12 @@ namespace Muslimeen.BLL
         }
         public uspGetMosque GetMosque(int mosqueID)
         {
-
+            int count = 0;
             uspGetMosque mosque = null;
             SqlParameter[] pars = new SqlParameter[]
             {
                 new SqlParameter("@mosqueID",mosqueID),
+                new SqlParameter("@Count",count),
 
             };
             using (DataTable table = DBHelper.ParamSelect("uspGetMosque",
@@ -141,19 +142,20 @@ namespace Muslimeen.BLL
                 if (table.Rows.Count == 1)
                 {
                     DataRow row = table.Rows[0];
-                    mosque = new uspGetMosque
-                    {
+                   
+                    mosque = new uspGetMosque();
+                    mosque.MosqueName = row["MosqueName"].ToString();
+                    mosque.MosqueStreet = row["MosqueStreet"].ToString();
+                    mosque.MosqueSuburb = row["MosqueSuburb"].ToString();
+                    mosque.MosqueType = row["MosqueType"].ToString();
+                    mosque.MosqueSize = row["MosqueSize"].ToString();
+                    mosque.MosqueQuote = row["MosqueQuote"].ToString();
+                    mosque.MemberCount = int.Parse(row["MemberCount"].ToString());
+                    Byte[] bytes = (Byte[])row["MosqueImage"]; //Make byets in to base64String.
+                    string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+                    mosque.MosqueImage = "data:image/jpg;base64," + base64String;
 
-                        YearEstablished = Convert.ToDateTime(row["YearEstablished"]),
-                        MosqueName = row["MosqueName"].ToString(),
-                        MosqueStreet = row["MosqueStreet"].ToString(),
-                        MosqueSuburb = row["MosqueSuburb"].ToString(),
-                        MosqueType = row["MosqueType"].ToString(),
-                        MosqueSize = row["MosqueSize"].ToString(),
-                        MosqueImage = row["MosqueImage"].ToString(),
-                        MosqueQuote = row["MosqueQuote"].ToString()
-
-                    };
+                   
 
 
                 }//end if
@@ -1197,6 +1199,78 @@ namespace Muslimeen.BLL
                 }
             }
             return list;
+        }
+
+        public uspGetMember GetMosqueRep(int mosqueID)
+        {
+            uspGetMember getMember = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@mosqueID", mosqueID),
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetMosqueRep", CommandType.StoredProcedure, pars))
+            {
+                if (table.Rows.Count == 1)
+                {
+
+                    DataRow row = table.Rows[0];
+                    getMember = new uspGetMember();
+
+                    getMember.MemberID = Convert.ToString(row["MemberID"]);
+                    getMember.MemberName = Convert.ToString(row["MemberName"]);
+                    getMember.MemberLastName = Convert.ToString(row["MemberLastName"]);
+                    getMember.MemberDOB = Convert.ToDateTime(row["MemberDOB"]).Date;
+                    getMember.Password = Convert.ToString(row["Password"]);
+                    getMember.MemberType = Convert.ToChar(row["MemberType"]);
+                    getMember.ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]);
+                    getMember.Email = Convert.ToString(row["Email"]);
+                    getMember.ContactNo = Convert.ToString(row["ContactNo"]);
+                    if (!(row["MosqueID"] is DBNull))
+                    {
+                        getMember.MosqueID = Convert.ToInt32(row["MosqueID"]);
+                    }
+                    else
+                    {
+                        getMember.MosqueID = null;
+                    }
+                    if (!(row["ActivationExpiry"] is DBNull))
+                    {
+                        getMember.ActivationExpiry = Convert.ToDateTime(row["ActivationExpiry"]).Date;
+                    }
+                    else
+                    {
+                        //don't parse it
+                    }
+                    getMember.ActivationDate = Convert.ToDateTime(row["ActivationDate"]).Date;
+
+
+                }
+            }
+            return getMember;
+        }
+
+        public uspGetSelectedRejectedArticle uspGetSelectedRejectedArticle(int articleID)
+        {
+            uspGetSelectedRejectedArticle pen = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@ArticleID", articleID)
+            };
+
+            using (DataTable tbl = DBHelper.ParamSelect("uspGetSelectedRejectedArticle", CommandType.StoredProcedure, pars))
+            {
+                if (tbl.Rows.Count == 1)
+                {
+                    DataRow row = tbl.Rows[0];
+                    pen = new uspGetSelectedRejectedArticle();
+
+                    pen.ArticleTitle = Convert.ToString(row["ArticleTitle"]);
+                    pen.ArticleContent = Convert.ToString(row["ArticleContent"]);
+                    pen.DateCreated = Convert.ToDateTime(row["DateCreated"]).Date;
+                    pen.RejectionReason = Convert.ToString(row["RejectionReason"]);
+                }
+            }
+            return pen;
         }
     }
 }

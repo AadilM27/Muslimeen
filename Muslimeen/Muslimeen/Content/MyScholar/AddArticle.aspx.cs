@@ -29,8 +29,6 @@ namespace Muslimeen.Content.MyScholar
                 divDisplayArticle.Visible = false;
                 divDisplayRejected.Visible = false;
 
-                lblTaskHead.InnerText = btnAddArticle.Text.ToString();
-
                 //Pending Link Article Source
                 repeatLink.DataSource = dBHandler.BLL_GetPendingArticle();
                 repeatLink.DataBind();
@@ -172,6 +170,7 @@ namespace Muslimeen.Content.MyScholar
                 divAddArticle.Visible = false;
                 divPendingArticles.Visible = true;
                 divPenDetailsOverlay.Visible = true;
+                divNoSelected.Visible = false;
                 divRejectedArticles.Visible = false;
                 divDisplayRejectedOverlay.Visible = false;
                 divDisplayRejected.Visible = false;
@@ -252,7 +251,7 @@ namespace Muslimeen.Content.MyScholar
             }
             catch
             {
-                
+                throw;
             }
         }
 
@@ -276,15 +275,13 @@ namespace Muslimeen.Content.MyScholar
                 divPendingArticles.Visible = true;
                 divDisplayArticle.Visible = true;
                 divNoSelected.Visible = true;
-                divAddArticle.Visible = false;
 
-                divRejectedArticles.Visible = false;
-                divDisplayRejected.Visible = false;
-                divNoRejectedSelected.Visible = false;
+                divAddArticle.Visible = false;
+                
             }
             catch
             {
-
+                throw;
             }
         }
 
@@ -298,25 +295,21 @@ namespace Muslimeen.Content.MyScholar
                 hfdRej.Value = art;
 
                 DBHandler han = new DBHandler();
-                uspGetSelectedPendingArticle pen = new uspGetSelectedPendingArticle();
+                uspGetSelectedRejectedArticle pen = new uspGetSelectedRejectedArticle();
 
-                pen = han.BLL_GetSelectedPendingArticle(int.Parse(art));
-                lblTitle.InnerText = pen.ArticleTitle.ToString();
-                lblContent.InnerText = pen.ArticleContent.ToString();
-                lblDate.InnerText = pen.DateCreated.ToString();
-
-                divPendingArticles.Visible = false;
-                divDisplayArticle.Visible = false;
-                divNoSelected.Visible = false;
-                divAddArticle.Visible = false;
-
+                pen = han.BLL_GetSelectedRejectedArticle(int.Parse(art));
+                lblRTitle.InnerText = pen.ArticleTitle.ToString();
+                lblRContent.InnerText = pen.ArticleContent.ToString();
+                lblRDate.InnerText = pen.DateCreated.ToString();
+                lblReason.InnerText = pen.RejectionReason.ToString();
+                
                 divRejectedArticles.Visible = true;
                 divDisplayRejected.Visible = true;
                 divNoRejectedSelected.Visible = true;
             }
             catch
             {
-
+                throw;
             }
         }
     }

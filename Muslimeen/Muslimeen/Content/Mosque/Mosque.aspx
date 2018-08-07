@@ -136,7 +136,6 @@
                                                     <td rowspan="7" style="width: 30%">
 
                                                         <asp:Image runat="server" Height="50%" Width="100%" ID="imgMosque" />
-
                                                     </td>
                                                 </tr>
                                                 <tr>
