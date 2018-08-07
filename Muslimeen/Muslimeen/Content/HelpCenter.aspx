@@ -12,6 +12,7 @@
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/HelpPage/HelpPage.css" rel="stylesheet" />
+    <link href="MyMember/css/MyMember.css" rel="stylesheet" />
 
 </head>
     <body>
@@ -80,12 +81,14 @@
             </header>
      <!--Add content-->
         <div class="content" id="content"><!--add content here -->
-             <div class="container"> 
-            <h1 class="title header">Welcome to our help center    <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/help.png" width="90" height="70"/></h1> 
+            <div class="header">
+                <h3 class="title">Welcome to our help center    <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/help.png" width="70" height="50"/></h3> 
+            </div>
 
-                <div class="contentHolder pt-0 mt-3">
-                    <div class="header mb-3">
-                        <h4 class="text-center">Getting started </h4>
+                <div class="container"> 
+                <div class="position-static basic-div-styling p-0">
+                    <div class="head-div-2 p-2 mb-0">
+                        <h5 class="text-center">Getting started </h5>
                     </div>
                         <div class=" paragraphDisplay p-2 mt-3">
 
@@ -109,9 +112,10 @@
                             </p>
                         </div>
                 </div>
-                <div class="contentHolder pt-0 mt-3">
-                     <div class="header mb-3">
-                     <h4 class="text-center">Manage your account</h4>
+                    <br />
+                <div class="position-static basic-div-styling p-0">
+                    <div class="head-div-2 p-2 mb-0">
+                     <h5 class="text-center">Manage your account</h5>
                      </div>
                      <div class=" paragraphDisplay p-2">
                      <p>
@@ -121,9 +125,10 @@
                      </p>
                      </div>
                 </div>
-                <div class="contentHolder pt-0 mt-3">
-                    <div class="header mb-3">
-                        <h4 class="text-center">How my Muslimeen feed works</h4>
+                    <br />
+                <div class="position-static basic-div-styling p-0">
+                    <div class="head-div-2 p-2 mb-0">
+                        <h5 class="text-center">How my Muslimeen feed works</h5>
                     </div>
                     <div class=" paragraphDisplay p-2">
                     <p>

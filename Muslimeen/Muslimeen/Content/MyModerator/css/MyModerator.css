@@ -235,6 +235,7 @@ html {
     border-width: 1px;
     border-color: #3F84C1;
     border-radius: 5px;
+    
 }
 
 .basic-div-styling-2 {
@@ -278,4 +279,11 @@ html {
     min-height: 590px;
     max-height: 590px;
     position: static;
+}
+
+.dash-content2 {
+    min-height: 640px;
+    max-height: 640px;
+    min-width: 50%;
+    max-width: 60%;
 }

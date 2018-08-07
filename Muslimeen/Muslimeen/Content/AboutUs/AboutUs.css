@@ -1,30 +1,13 @@
 ﻿body {
-    background-color: white;
+    background-color: #256297;
     height: 100%;
-    width: inherit;
-    overflow-x: hidden;
-    overflow-y: auto;
 }
 
-html {
-    width: auto;
-}
-
-.frmDefault {
-    width: unset;
-}
-
+/* start code for header and footer */
 .navv {
     background-color: white;
+    border-color: white;
 }
-
-.user {
-    color: #256297;
-}
-
-    .user:hover {
-        font-weight: 500;
-    }
 
 .navbaritems {
     padding-right: 10px;
@@ -57,21 +40,17 @@ html {
     width: 100%;
     background-color: white;
     border-color: white;
-    padding: 10px;
+    padding: 15px;
 }
 
 .content {
-    background-color: white;
+    background-color: none;
 }
 
 .sticky {
     position: fixed;
     width: 100%;
     top: 0;
-}
-
-.contentPad {
-    padding-top: 125px;
 }
 
 .navbtn {
@@ -91,12 +70,12 @@ html {
     color: #256297;
 }
 
-.topnav:hover {
-    color: white;
-    background-color: #3F84C1;
-    text-decoration: none;
-    border-radius: 3px;
-}
+    .topnav:hover {
+        color: white;
+        background-color: #3F84C1;
+        text-decoration: none;
+        border-radius: 3px;
+    }
 
 .search-btn {
     border-bottom-color: #3F84C1;
@@ -128,10 +107,10 @@ html {
     border-bottom-right-radius: 0px;
 }
 
-.search-box:focus {
-    width: 100%;
-    box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
-}
+    .search-box:focus {
+        width: 100%;
+        box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+    }
 
 .footerr {
     width: 100%;
@@ -143,9 +122,8 @@ html {
 }
 
 .footerr-text {
-    color: #3F84C1;
+    text-decoration-color: #3F84C1;
     text-decoration: none;
-    font-size: 13px;
 }
 
 .h1header {
@@ -154,50 +132,137 @@ html {
     color: #3F84C1;
 }
 
-.IslamicDate {
-    color: #256297;
-}
-
 .NavDevider {
     color: #256297;
     align-self: center;
 }
+/*END code for header and footer*/
 
-/*End styling for footer and header*/
-
-.title
-
-{
-    font-family: sans-serif;
-    color: white;
-    text-align: center;
-}
-.paragraphDisplay
-{
-    background-color:white;
-    color: black;
-    /*padding: 100px 20px;*/
-    height: 100%;
-}
-.main-div {
-    background-color: #ffffff;
-    position: relative;
-    text-align: center;
-    max-width: 704px;
-    margin: auto;
-    min-height: 220px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.45);
-    border-radius: 8px;
-}
-.header {
+.lnkPendingReg {
+    height: 100px;
     background-color: #256297;
-    font-family: sans-serif;
-    text-decoration-color: white;
     text-align: center;
-    color:white;
+    vertical-align: middle;
 }
-.contentHolder {
-    border-width:1px;
-    border:solid;
-    border-color: #256297;
+
+.taskBtn {
+    font-weight: 500;
+    position: static;
+    background-color: white;
+    color: black;
+    padding: 0;
+    border-radius: 0px;
+    text-align: start;
+}
+
+    .taskBtn:hover {
+        background-color: #3F84C1;
+        color: white;
+        position: static;
+    }
+
+.divContainers {
+    min-height: 595px;
+    position: center;
+}
+
+.divBtnList {
+    align-items: center;
+}
+
+.lstBtn {
+    position: static;
+    background-color: #6e9bc3;
+    color: black;
+    padding: 0;
+    border-radius: 0px;
+    text-align: start;
+    font-size: small;
+    border: thin solid #256297;
+}
+
+    .lstBtn:hover {
+        color: white;
+        position: static;
+        border: dashed 2px black;
+    }
+
+.head-div {
+    background-color: #256297;
+    color: white;
+    vertical-align: middle;
+    text-align: center;
+    font-size: x-large;
+    height: 55px;
+}
+
+.head-div-2 {
+    background-color: #3F84C1;
+    color: white;
+    vertical-align: middle;
+    text-align: center;
+    font-size: large;
+}
+
+.body-div {
+    background-color: #3F84C1;
+    color: white;
+}
+
+.basic-div-styling {
+    border: solid;
+    border-width: 1px;
+    border-color: #3F84C1;
+    border-radius: 5px;
+}
+
+.basic-div-styling-2 {
+    border: solid;
+    border-width: 1px;
+    border-color: rgba(0, 123, 255, 0.25);
+    border-radius: 0;
+}
+
+.side-bar {
+    min-width: 250px;
+    min-height: 700px;
+    float: left;
+    position: static;
+}
+
+.right-container {
+    min-height: 700px;
+    max-height: 700px;
+    position: static;
+}
+
+.dash-content {
+    min-height: 640px;
+    max-height: 100%;
+    min-width: 600px;
+    max-width: 50%;
+    margin-right: 3px;
+}
+
+.right-bottom-div {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 650px;
+    max-height: 650px;
+    position: static;
+}
+
+.lst-container {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 590px;
+    max-height: 590px;
+    position: static;
+}
+
+.task-action {
+    height: 250px;
+    width: 98%;
+    position: static;
+    padding-bottom: 3px;
 }

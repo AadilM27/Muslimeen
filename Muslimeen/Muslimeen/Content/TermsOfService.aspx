@@ -12,6 +12,7 @@
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="Default/css/Default.css" rel="stylesheet" />
     <link href="../Content/HelpPage/HelpPage.css" rel="stylesheet" />
+    <link href="MyMember/css/MyMember.css" rel="stylesheet" />
 </head>
     <body>
         <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
@@ -78,11 +79,12 @@
                 </div>
             </header>     <!--Add content-->
                 <div class="content" id="content" style="min-height:595px;" >
+                            <div class="head-div text-center p-0 mb-1">    
+                                <h3 class="p-0 m-0">Terms and Policies     <asp:Image runat="server" CssClass="mb-0 ml-0"  src="../Content/HelpPage/icons/docs.png" width="60" height="60"/></h3> 
+                            </div> 
                     <div class="container">
-                        <div class=" contentHolder p-2">
-                            <div class="header">    
-                                <h1 class="title">Terms and Policies     <asp:Image runat="server" CssClass="mb-0 ml-0"  src="../Content/HelpPage/icons/docs.png" width="90" height="70"/></h1> 
-                            </div>
+                        <div class="position-static basic-div-styling p-2 h-20">
+                           
                                  <p>
                                     <b>Terms of service:</b><br />
                                      These terms of use are effective on January 2018. <br />

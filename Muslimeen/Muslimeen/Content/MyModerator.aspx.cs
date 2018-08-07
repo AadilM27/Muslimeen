@@ -8,6 +8,10 @@ using TypeLib.Models;
 using TypeLib.ViewModels;
 using Muslimeen.BLL;
 using System.Data;
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.html.simpleparser;
 
 namespace Muslimeen.Content.MyModerator
 {
@@ -26,7 +30,7 @@ namespace Muslimeen.Content.MyModerator
                 divViewArt.Visible = false;
                 divViewReports.Visible = false;
                 divDisplayReports.Visible = false;
-                
+                divPDF.Visible = false;
 
                 if (Session["UserName"] != null)
                 {
@@ -315,8 +319,8 @@ namespace Muslimeen.Content.MyModerator
                 hdfSchId.Value = articleId;
 
                 DBHandler dBHandler = new DBHandler();
-                Article article = new Article();
-                article = dBHandler.BLL_GetArticle(Convert.ToInt32(articleId));
+                uspGetSelectedPendingArticle article = new uspGetSelectedPendingArticle();
+                article = dBHandler.BLL_GetSelectedPendingArticle(Convert.ToInt32(articleId));
 
 
                 lblArticleTitle.InnerText = article.ArticleTitle.ToString();
@@ -402,7 +406,9 @@ namespace Muslimeen.Content.MyModerator
             divViewPendingArt.Visible = false;
             divViewArt.Visible = false;
             divViewReports.Visible = true;
+            divDisplayReports.Visible = true;
             grdReports.Visible = true;
+            divPDF.Visible = true;
            
            
         }
@@ -414,8 +420,9 @@ namespace Muslimeen.Content.MyModerator
 
                 divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
+                divPDF.Visible = true;
                 DBHandler handler = new DBHandler();
-                uspGetAcceptedArticle acc = new uspGetAcceptedArticle();
+                uspGetAcceptedScholars acc = new uspGetAcceptedScholars();
                 
                 grdReports.DataSource = handler.BLL_GetAcceptedScholars();
                 grdReports.DataBind();
@@ -434,16 +441,121 @@ namespace Muslimeen.Content.MyModerator
 
                 divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
+                divPDF.Visible = true;
                 DBHandler handler = new DBHandler();
-                uspGetAcceptedArticle acc = new uspGetAcceptedArticle();
+                uspGetAcceptedScholars acc = new uspGetAcceptedScholars();
 
                 grdReports.DataSource = handler.BLL_GetRejectedScholars();
+                
+                grdReports.DataBind();
+                
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        protected void BtnAcceptedArticles_Click(object sender,EventArgs e)
+        {
+            try
+            {
+                divViewReports.Visible = true;
+                divDisplayReports.Visible = true;
+                divPDF.Visible = true;
+                DBHandler han = new DBHandler();
+                uspGetAcceptedArticle art = new uspGetAcceptedArticle();
+
+                grdReports.DataSource = han.BLL_GetAcceptedArticle();
+                grdReports.DataBind();
+            }
+            catch(Exception)
+            {
+
+            }
+        }
+        protected void BtnRejectedArticles_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                divViewReports.Visible = true;
+                divDisplayReports.Visible = true;
+                divPDF.Visible = true;
+                DBHandler han = new DBHandler();
+                uspGetRejectedArticle rej = new uspGetRejectedArticle();
+
+                grdReports.DataSource = han.BLL_GetRejectedArticle();
                 grdReports.DataBind();
             }
             catch (Exception)
             {
 
             }
+        }
+        protected void BtnMosqueReports_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                divViewReports.Visible = true;
+                divDisplayReports.Visible = true;
+                divPDF.Visible = true;
+                DBHandler han = new DBHandler();
+                uspGetMosqueReports mr = new uspGetMosqueReports();
+
+                grdReports.DataSource = han.BLL_GetMosqueReports();
+                grdReports.DataBind();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        protected void BtnEventReports_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                divViewReports.Visible = true;
+                divDisplayReports.Visible = true;
+                divPDF.Visible = true;
+                DBHandler han = new DBHandler();
+                uspGetEventReports mr = new uspGetEventReports();
+
+                grdReports.DataSource = han.BLL_GetEventReports();
+                grdReports.DataBind();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        protected void BtnPDF_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        protected void PDF_Click(object sender, ImageClickEventArgs e)
+        {
+            PdfPTable tbl = new PdfPTable(grdReports.HeaderRow.Cells.Count);
+            foreach (GridViewRow row in grdReports.Rows)
+            {
+                foreach (TableCell cell in row.Cells)
+                {
+                    PdfPCell pdfCell = new PdfPCell(new Phrase(cell.Text));
+                    tbl.AddCell(pdfCell);
+                }
+            }
+            Document pdfDocument = new Document(PageSize.A4, 10f, 10f, 10f, 10f);
+            PdfAWriter.GetInstance(pdfDocument, Response.OutputStream);
+
+            pdfDocument.Open();
+            pdfDocument.Add(tbl);
+            pdfDocument.Close();
+
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("content-disposition", "attachment;filename=MuslimeenReports.pdf");
+            Response.Write(pdfDocument);
+            Response.Flush();
+            Response.End();
         }
     }
 }
