@@ -535,20 +535,36 @@ namespace Muslimeen.Content.MyModerator
 
         protected void PDF_Click(object sender, ImageClickEventArgs e)
         {
-            PdfPTable tbl = new PdfPTable(grdReports.HeaderRow.Cells.Count);
-            foreach (GridViewRow row in grdReports.Rows)
+            PdfPTable pdfTable = new PdfPTable(grdReports.HeaderRow.Cells.Count);
+           
+            foreach (TableCell Headercell in grdReports.HeaderRow.Cells)
             {
-                foreach (TableCell cell in row.Cells)
+                Font font = new Font();
+                font.Color = new BaseColor(grdReports.HeaderStyle.ForeColor);
+                    
+                PdfPCell pdfCell = new PdfPCell(new Phrase(Headercell.Text,font));
+                pdfCell.BackgroundColor = new BaseColor(grdReports.HeaderStyle.BackColor);
+                pdfTable.AddCell(pdfCell);
+            }
+
+            foreach (GridViewRow gridviewrow in grdReports.Rows)
+            {
+                foreach (TableCell tablecell in gridviewrow.Cells)
                 {
-                    PdfPCell pdfCell = new PdfPCell(new Phrase(cell.Text));
-                    tbl.AddCell(pdfCell);
+                    Font font = new Font();
+                    font.Color = new BaseColor(grdReports.RowStyle.ForeColor);
+
+                    PdfPCell pdfcell = new PdfPCell(new Phrase(tablecell.Text));
+                    pdfcell.BackgroundColor = new BaseColor(grdReports.RowStyle.BackColor);
+                    pdfTable.AddCell(pdfcell);
                 }
             }
+            
             Document pdfDocument = new Document(PageSize.A4, 10f, 10f, 10f, 10f);
             PdfAWriter.GetInstance(pdfDocument, Response.OutputStream);
 
             pdfDocument.Open();
-            pdfDocument.Add(tbl);
+            pdfDocument.Add(pdfTable);
             pdfDocument.Close();
 
             Response.ContentType = "application/pdf";
