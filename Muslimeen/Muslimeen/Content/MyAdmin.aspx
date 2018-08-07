@@ -95,7 +95,7 @@
                         <div class=" head-div text-center p-2 mb-1">
                             <h4 runat="server" id="lblTaskHead"  class="p-0 m-0"></h4>
                         </div>
-                        <div class="row p-0 m-0 right-bottom-div p-1 flex-nowrap justify-content-xl-center" >
+                        <div class="row p-0 m-0 right-bottom-div p-1 flex-nowrap justify-content-xl-start" >
                             <%-- Pending Scholar registration List--%>
                             <div class="col-6 col-xl-4 p-0 mr-1" runat="server" id="divViewPendingSch">
                                 <div class=" head-div-2 p-2 mb-1 text-left">
@@ -370,45 +370,45 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1">
                                             <label class="col mb-0 p-0"><small>User Name*</small></label>
-                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="TextBox1"></asp:TextBox>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtModUserName"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-sm-6 mb-1">
                                             <label class="col mb-0 p-0 "><small>First Name*</small></label>
-                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="TextBox2"></asp:TextBox>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtModFName"></asp:TextBox>
                                         </div>
                                         <div class="form-group col-sm-6 mb-1 ">
                                             <label class="col mb-0 p-0 "><small>Last Name*</small></label>
-                                            <asp:TextBox CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="TextBox3"></asp:TextBox>
+                                            <asp:TextBox CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="txtModLName"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-sm-6 mb-1 ">
                                             <label class="col mb-0 p-0 "><small>Contact Number</small></label>
-                                            <asp:TextBox CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="TextBox4"></asp:TextBox>
+                                            <asp:TextBox CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="txtModContactNo"></asp:TextBox>
                                         </div>
                                         <div class="form-group col-sm-6 mb-1">
                                             <label class="col mb-0 p-0 text "><small>Date of Birth*</small></label>
-                                            <asp:TextBox CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="TextBox5" placeholder="yyyy-mm-dd*"></asp:TextBox>
+                                            <asp:TextBox CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="txtModDOB" placeholder="yyyy-mm-dd*"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1">
                                             <label class="col mb-0 p-0"><small>Email*</small></label>
-                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="TextBox6"></asp:TextBox>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtModEmail"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1 ">
                                             <label class="col mb-0 p-0 "><small>Password*</small></label>
-                                            <asp:TextBox TextMode="Password" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="TextBox7"></asp:TextBox>
+                                            <asp:TextBox TextMode="Password" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtModPassword"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1 position-static">
                                             <label class="col mb-0 p-0 "><small>Retype Password*</small></label>
-                                            <asp:TextBox TextMode="Password" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="TextBox8"></asp:TextBox>
+                                            <asp:TextBox TextMode="Password" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtModRetypePassword"></asp:TextBox>
                                         </div>
                                     </div>
                                     <hr class="m-3 ml-3 mr-3 bg-secondary" />
@@ -418,13 +418,13 @@
                                         <div class=" m-0 card-body p-2">
                                             <ul class="pl-3 pb-3 mb-0">
                                                 <li>
-                                                    <p class="mb-0"><small class="card-text">Before adding the Mosque, administrators must verify the legitimacy of the details of the mosque.</small></p>
+                                                    <p class="mb-0"><small class="card-text">Please make sure that the moderater is qualified for the membership</small></p>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="card-footer text-center text-nowrap">
-                                            <asp:Button CssClass="topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="Button1" Text="Register Mosque" OnClick="btnRegMosque_Click" />
-                                            <asp:Button CssClass="topnav btn btn-sm btn-outline-light" runat="server" ID="Button2" Text="Cancel" OnClick="btnCancelMosqueReg_Click" />
+                                            <asp:Button CssClass="topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnRegModerater" Text="Register Moderater" />
+                                            <asp:Button CssClass="topnav btn btn-sm btn-outline-light" runat="server" ID="btnModRegCancel" Text="Cancel" />
                                         </div>
                                         <hr class="mt-3 ml-3 mr-3 bg-secondary" />
                                     </div>

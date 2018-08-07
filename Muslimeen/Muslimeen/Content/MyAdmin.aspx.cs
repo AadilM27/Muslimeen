@@ -28,6 +28,7 @@ namespace Muslimeen.Content
                 divViewPendingSch.Visible = false;
                 divAddMosque.Visible = false;
                 divAddMosqueRep.Visible = false;
+                divAddMod.Visible = false;
 
                 DBHandler dBHandler = new DBHandler();
 
@@ -561,7 +562,7 @@ namespace Muslimeen.Content
 
         protected void btnAddMod_Click(object sender, EventArgs e)
         {
-
+            divAddMod.Visible = true;
         }
     }
 }
