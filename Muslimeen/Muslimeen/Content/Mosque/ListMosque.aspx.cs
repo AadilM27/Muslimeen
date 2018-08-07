@@ -14,9 +14,7 @@ namespace Muslimeen.Content.Mosque
         DBHandler db = new DBHandler();
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-
-
+         
             if (Session["UserName"] != null)
             {
                 uspGetMember uspGetMember = new uspGetMember();
@@ -36,7 +34,7 @@ namespace Muslimeen.Content.Mosque
             {
                 liMyMusbtn.Visible = false;
                 liMyMusDivi.Visible = false;
-
+           
                 divUserProfile.Visible = false;
                 Session.Clear();
             }

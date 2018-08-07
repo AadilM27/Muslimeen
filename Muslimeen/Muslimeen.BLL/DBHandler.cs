@@ -240,5 +240,9 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetEventReports();
         }
+        public uspGetMember BLL_GetMosqueRep(int mosqueID)
+        {
+            return dBAccess.GetMosqueRep(mosqueID);
+        }
     }
 }
