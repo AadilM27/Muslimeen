@@ -240,5 +240,10 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetEventReports();
         }
+
+        public uspGetSelectedRejectedArticle BLL_GetSelectedRejectedArticle(int articleID)
+        {
+            return dBAccess.uspGetSelectedRejectedArticle(articleID);
+        }
     }
 }

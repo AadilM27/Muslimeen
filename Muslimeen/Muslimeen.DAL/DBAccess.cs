@@ -1198,6 +1198,30 @@ namespace Muslimeen.BLL
             }
             return list;
         }
+
+        public uspGetSelectedRejectedArticle uspGetSelectedRejectedArticle(int articleID)
+        {
+            uspGetSelectedRejectedArticle pen = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@ArticleID", articleID)
+            };
+
+            using (DataTable tbl = DBHelper.ParamSelect("uspGetSelectedRejectedArticle", CommandType.StoredProcedure, pars))
+            {
+                if (tbl.Rows.Count == 1)
+                {
+                    DataRow row = tbl.Rows[0];
+                    pen = new uspGetSelectedRejectedArticle();
+
+                    pen.ArticleTitle = Convert.ToString(row["ArticleTitle"]);
+                    pen.ArticleContent = Convert.ToString(row["ArticleContent"]);
+                    pen.DateCreated = Convert.ToDateTime(row["DateCreated"]).Date;
+                    pen.RejectionReason = Convert.ToString(row["RejectionReason"]);
+                }
+            }
+            return pen;
+        }
     }
 }
 
