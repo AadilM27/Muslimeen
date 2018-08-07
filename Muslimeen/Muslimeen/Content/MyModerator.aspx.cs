@@ -30,7 +30,7 @@ namespace Muslimeen.Content.MyModerator
                 divViewArt.Visible = false;
                 divViewReports.Visible = false;
                 divDisplayReports.Visible = false;
-                divPDF.Visible = false;
+               
 
                 if (Session["UserName"] != null)
                 {
@@ -408,7 +408,7 @@ namespace Muslimeen.Content.MyModerator
             divViewReports.Visible = true;
             divDisplayReports.Visible = true;
             grdReports.Visible = true;
-            divPDF.Visible = true;
+           
            
            
         }
@@ -420,7 +420,7 @@ namespace Muslimeen.Content.MyModerator
 
                 divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
-                divPDF.Visible = true;
+                
                 DBHandler handler = new DBHandler();
                 uspGetAcceptedScholars acc = new uspGetAcceptedScholars();
                 
@@ -441,7 +441,7 @@ namespace Muslimeen.Content.MyModerator
 
                 divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
-                divPDF.Visible = true;
+                
                 DBHandler handler = new DBHandler();
                 uspGetAcceptedScholars acc = new uspGetAcceptedScholars();
 
@@ -461,7 +461,7 @@ namespace Muslimeen.Content.MyModerator
             {
                 divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
-                divPDF.Visible = true;
+                
                 DBHandler han = new DBHandler();
                 uspGetAcceptedArticle art = new uspGetAcceptedArticle();
 
@@ -479,7 +479,7 @@ namespace Muslimeen.Content.MyModerator
             {
                 divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
-                divPDF.Visible = true;
+                
                 DBHandler han = new DBHandler();
                 uspGetRejectedArticle rej = new uspGetRejectedArticle();
 
@@ -497,7 +497,7 @@ namespace Muslimeen.Content.MyModerator
             {
                 divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
-                divPDF.Visible = true;
+                
                 DBHandler han = new DBHandler();
                 uspGetMosqueReports mr = new uspGetMosqueReports();
 
@@ -515,7 +515,7 @@ namespace Muslimeen.Content.MyModerator
             {
                 divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
-                divPDF.Visible = true;
+              
                 DBHandler han = new DBHandler();
                 uspGetEventReports mr = new uspGetEventReports();
 
