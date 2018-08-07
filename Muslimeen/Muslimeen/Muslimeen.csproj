@@ -104,6 +104,7 @@
     <Content Include="Content\Default\css\Default.css" />
     <Content Include="Content\Default\Default.js" />
     <Content Include="Content\Default\DefaultJq.js" />
+    <Content Include="Content\Error.aspx" />
     <Content Include="Content\HelpCenter.aspx" />
     <Content Include="Content\Default\icons\EditProfile.png" />
     <Content Include="Content\Default\icons\Search.png" />
@@ -1612,6 +1613,13 @@
     <Compile Include="Content\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Content\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Content\HelpCenter.aspx.cs">
       <DependentUpon>HelpCenter.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1769,6 +1777,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\Error\css\" />
+    <Folder Include="Content\Error\js\" />
     <Folder Include="Content\MyMember\icons\" />
     <Folder Include="Content\MyModerator\js\" />
     <Folder Include="Content\Zakaah\js\" />
