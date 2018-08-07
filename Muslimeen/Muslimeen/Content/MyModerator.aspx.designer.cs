@@ -499,24 +499,6 @@ namespace Muslimeen.Content.MyModerator {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDisplayReports;
         
         /// <summary>
-        /// grdReports control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdReports;
-        
-        /// <summary>
-        /// divPDF control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPDF;
-        
-        /// <summary>
         /// PDF control.
         /// </summary>
         /// <remarks>
@@ -524,5 +506,14 @@ namespace Muslimeen.Content.MyModerator {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton PDF;
+        
+        /// <summary>
+        /// grdReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdReports;
     }
 }

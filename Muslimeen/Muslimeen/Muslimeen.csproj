@@ -131,6 +131,7 @@
     <Content Include="Content\MyMember.aspx" />
     <Content Include="Content\MyMember\css\MyMember.css" />
     <Content Include="Content\MyModerator.aspx" />
+    <Content Include="Content\MyModerator\Adobe_PDF.png" />
     <Content Include="Content\MyModerator\css\MyModerator.css" />
     <Content Include="Content\MyModerator\images %287%29.jpeg" />
     <Content Include="Content\MyScholar\AddArticle.aspx" />

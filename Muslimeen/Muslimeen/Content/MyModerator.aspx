@@ -271,9 +271,10 @@
                                     <asp:Button ID="BtnEventReports" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="List of Events" OnClick="BtnEventReports_Click" />
                                     </nav>                           
                             </div>
-                            <div runat="server" id="divDisplayReports" class="col-md-8 position-static dash-content2  p-0 basic-div-styling-2" style="float:left;width:100%;overflow:scroll;">
-                                <div class=" col-lg-12 head-div-2 p-2 mb-1 " style="width:100%;position:static" >
-                                    <p class="m-0">Reports</p>
+                            <div runat="server" id="divDisplayReports" class=" col-9 position-static flex-nowrap  p-1 basic-div-styling-2" style="width:100%;overflow:scroll;">
+                                <div class=" col-lg-12 head-div-2 p-2 mb-1 flex-nowrap " style="width:100%;height:45px;position:static" >
+                                    <p class="mr-0 ">Reports</p>
+                                     <asp:ImageButton ID="PDF" runat="server" CssClass="" style="left:200px;position:relative;height:40px; width:35px;"   OnClick="PDF_Click"  ImageUrl="~/Content/MyModerator/Adobe_PDF.png" />
                                 </div>
                                 <div style="margin-left:auto;margin-right:auto;width:100%;">
                                 <asp:GridView ID="grdReports" runat="server" style="position:static; font-size:smaller;" CellPadding="2" ForeColor="#333333" GridLines="none" Width="600px" min-width="250px" max-width="350px">
@@ -291,13 +292,7 @@
                                 </asp:GridView>
                                     </div>
                                 </div>
-                            <div  class="col-sm-1 pl-1 pr-1 basic-div-styling ml-1" runat="server" id="divPDF" style="float:right;position:static" >
-                                 <div class="  position-static head-div-2 p-2 mb-1 ">
-                                    <p class="m-0 ">Export PDF</p>
-                                </div>                       
-                                <asp:ImageButton ID="PDF" runat="server" CssClass=" pl-2 btn taskBtn mb-1" Width="75px"  OnClick="PDF_Click" Text="ExportPDF" ImageUrl="~/Content/MyModerator/images (7).jpeg" />
-                                
-                            </div>
+                            
                         </div>
 
 
