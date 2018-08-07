@@ -16,8 +16,8 @@
     </head>
 <body>
     <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
-    <form id="frmAddArticle" runat="server">
 
+    <form id="frmAddArticle" runat="server">
         <!--Header-->
         <header >
                 <nav class="navFixed">
@@ -79,190 +79,68 @@
                         </ul>
                     </div>
                 </div>
-            </header>        
-
-        <%--<div class="content" id="content">
-            <!--add content here -->
-            <div class="row m-0 divContainers p-2">
-                <div class=" col-3 position-static bg-light mr-2 p-2 ">
-                    <!--contains the buttons-->
-                    <nav class="nav nav-pills flex-column pl-2">
-                        <p class="navbar-brand text-center text-uppercase font-weight-bold">Scholar Tasks:</p>
-                        <asp:Button runat="server" ID="btnViewPendingSch" OnClick="btnAddArticle_Click" CssClass=" mb-2 btn taskBtn" Text="Add Article" />
-                        <asp:Button runat="server" ID="btnPendingArticles" CssClass=" mb-2 btn taskBtn" OnClick="btnPendingArticles_Click" Text="View Pending Articles" />
-                        <asp:Button runat="server" ID="btnRejectedArticles" CssClass=" mb-2 btn taskBtn" OnClick="btnRejectedArticles_Click" Text="View Rejected Articles" />
-                    </nav>
-                </div>
-
-                <div class=" col-8 p-3 bg-light position-static" runat="server" id="divAddArticle"> <!--Contains the List of items-->                   
-                    <div class="row position-static list-group justify-content-end"><!--Adding Article Code-->                        
-                        <h2 class="text-center">Add Article</h2>
-
-                        <div class="form-group row">
-                            <asp:Label CssClass="col-sm-2 col-form-label position-static" ID="Label3" runat="server" Text="Topic:"></asp:Label>
-                            <div class="col-sm-3 position-static">
-                                <asp:DropDownList ID="drpTopics" runat="server" CssClass="form-control main-txtb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" AutoPostBack="false"></asp:DropDownList>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <asp:Label CssClass="col-sm-2 col-form-label position-static" ID="Label1" runat="server" Text="Heading:"></asp:Label>
-                            <div class="col-sm-3 position-static">
-                                <asp:TextBox CssClass="form-control" ID="txtHeading" runat="server" Width="300%"></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <asp:Label CssClass="col-sm-2 col-form-label position-static" ID="Label2" runat="server" Text="Content:"></asp:Label>
-                            <div class="col-sm-3 position-static">
-                                <asp:TextBox CssClass="form-control" ID="txtContent" runat="server" Height="200px" TextMode="MultiLine" Width="300%"></asp:TextBox>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-10">
-                            <div class="btn-group float-right mb-6">
-                                <asp:Button CssClass="btn btn-primary btn-md" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
-                            </div>
-                        </div>
-                    </div><!--Ending of Adding Article Code-->
-                </div>
-
-                <div class=" col-8 p-3 bg-light position-static" runat="server" id="divPendingArticles"> <!--Pending Article Code-->
-                        <div class="row position-static list-group justify-content-end">
-                            <h2 class="text-center">Pending Article</h2>
-                            <asp:Repeater ID="repeatPendingArticle" runat="server">
-                            <ItemTemplate>
-                                <div class="col position-static">
-                                    <div class="row position-static">
-                                        <div class="col-2 position-static">
-                                            <h5>Title:</h5>
-                                        </div>
-                                        <div class="col-10 position-static">
-                                            <asp:Label runat="server" ID="lable1" Text='<%# Eval("ArticleTitle") %>'></asp:Label>
-                                        </div>
-                                    </div>
-                                    <div class="row position-static">
-                                        <div class="col-2 position-static">
-                                            <h5>Content: </h5>
-                                        </div>
-                                        <div class="col-10 position-static">
-                                            <asp:Label runat="server" ID="Label2" Text='<%# Eval("ArticleContent") %>'></asp:Label>
-                                        </div>
-                                    </div>
-                                    <div class="row position-static">                                        
-                                        <div class="col-2 position-static">
-                                            <h6>Date: </h6>
-                                        </div>
-                                        <div class="col-4 position-static">
-                                            <asp:Label class="font-italic" runat="server" ID="Label1" Text='<%# Eval("DateCreated") %>'></asp:Label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr />
-                            </ItemTemplate>
-                        </asp:Repeater>
-                        </div>
-                    </div> <!--Ending of Pending Article Code-->
-
-                <div class=" col-8 p-3 bg-light position-static" runat="server" id="divRejectedArticles"> <!--Rejected Article Code-->
-                        <div class="row position-static list-group justify-content-end">
-                            <h2 class="text-center">Rejected Articles</h2>
-                            <asp:Repeater ID="repeatRejectedArticle" runat="server">
-                            <ItemTemplate>
-                                <div class="col position-static">
-                                    <div class="row position-static">
-                                        <div class="col-2 position-static">
-                                            <h5>Title:</h5>
-                                        </div>
-                                        <div class="col-10 position-static">
-                                            <asp:Label runat="server" ID="lable1" Text='<%# Eval("ArticleTitle") %>'></asp:Label>
-                                        </div>
-                                    </div>
-                                    <div class="row position-static">
-                                        <div class="col-2 position-static">
-                                            <h5>Content: </h5>
-                                        </div>
-                                        <div class="col-10 position-static">
-                                            <asp:Label runat="server" ID="Label2" Text='<%# Eval("ArticleContent") %>'></asp:Label>
-                                        </div>
-                                    </div>
-                                    <div class="row position-static">                                        
-                                        <div class="col-2 position-static">
-                                            <h6>Date: </h6>
-                                        </div>
-                                        <div class="col-4 position-static">
-                                            <asp:Label class="font-italic" runat="server" ID="Label1" Text='<%# Eval("DateCreated") %>'></asp:Label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr />
-                            </ItemTemplate>
-                        </asp:Repeater>
-                        </div>
-                    </div>
-            </div>
-        </div>--%>
+            </header> 
 
         <div class="content" id="content">
-                <!--add content here -->
-                <div class="row bg-light m-0 divContainers p-1 flex-nowrap">
-                    <div class="side-bar p-0 basic-div-styling mr-1">
-                        <!--contains the buttons-->
-                        <div class="head-div text-center p-2">
-                            <p class="text-uppercase m-0 font-weight-bold">Scholar Tasks:</p>
-                        </div>
-                        <nav class="nav flex-column pt-2 pb-2 pr-0">
-                            <asp:Button runat="server" ID="btnAddArticle" OnClick="btnAddArticle_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="Add Article" />
-                            <asp:Button runat="server" ID="btnPendingArticles" OnClick="btnPendingArticles_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="View Pending Articles" />
-                            <asp:Button runat="server" ID="btnRejectedArticles" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnRejectedArticles_Click" Text="View Rejected Articles" />
-                        </nav>
+            <!--add content here -->
+            <div class="row bg-light m-0 divContainers p-1 flex-nowrap">
+                <div class="side-bar p-0 basic-div-styling mr-1">
+                    <!--contains the buttons-->
+                    <div class="head-div text-center p-2">
+                        <p class="text-uppercase m-0 font-weight-bold">Scholar Tasks:</p>
                     </div>
-                    <div class=" position-static basic-div-styling p-0  w-100" >
-                        <div class=" head-div text-center p-2 mb-1">
-                            <h4 runat="server" id="lblTaskHead"  class="p-0 m-0"></h4>
-                        </div>
-                        <div class="row p-0 m-0 right-bottom-div p-1 flex-nowrap" >
-                            <%--Add Article--%>
-                            <div class="col-6 position-static p-0 dash-content" runat="server" id="divAddArticle">
-                                <div class=" position-static p-1 lst-container">
-                                    <div class="form-row">
-                                        <div class="form-group col-sm-6 mb-1">
-                                        <label class="col mb-0 p-0"><strong>Topic:</strong></label>
-                                            <asp:DropDownList ID="drpTopics" runat="server" CssClass="form-control main-txtb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" AutoPostBack="false"></asp:DropDownList>
-                                        </div>
+                    <nav class="nav flex-column pt-2 pb-2 pr-0">
+                        <asp:Button runat="server" ID="btnAddArticle" OnClick="btnAddArticle_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="Add Article" />
+                        <asp:Button runat="server" ID="btnPendingArticles" OnClick="btnPendingArticles_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="View Pending Articles" />
+                        <asp:Button runat="server" ID="btnRejectedArticles" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnRejectedArticles_Click" Text="View Rejected Articles" />
+                    </nav>
+                </div>
+                <div class=" position-static basic-div-styling p-0  w-100">
+                    <div class=" head-div text-center p-2 mb-1">
+                        <h4 runat="server" id="lblTaskHead" class="p-0 m-0"></h4>
+                    </div>
+                    <div class="row p-0 m-0 right-bottom-div p-1 flex-nowrap">
+                        <%--Add Article--%>
+                        <div class="col-6 position-static p-0 dash-content" runat="server" id="divAddArticle">
+                            <div class=" position-static p-1 lst-container">
+                                <div class="form-row">
+                                    <div class="form-group col-sm-6 mb-1 ml-2 position-static">
+                                        <label class="col mb-0 p-0 position-static"><strong>Topic:</strong></label>
+                                        <asp:DropDownList ID="drpTopics" runat="server" CssClass="form-control main-txtb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" AutoPostBack="false"></asp:DropDownList>
                                     </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-sm-10 mb-1">
-                                        <label class="col mb-0 p-0"><strong>Heading:</strong></label>
-                                            <asp:TextBox CssClass="form-control" ID="txtHeading" runat="server"></asp:TextBox>
-                                        </div>                                        
-                                    </div>  
-                                    <div class="form-row">
-                                        <div class="form-group col-sm-10 mb-1">
-                                            <label class="col mb-0 p-0"><strong>Content:</strong></label>
-                                            <asp:TextBox CssClass="form-control" ID="txtContent" runat="server" Height="300px" TextMode="MultiLine"></asp:TextBox>
-                                        </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-10 mb-1 ml-2 position-static">
+                                        <label class="col mb-0 p-0 position-static"><strong>Heading:</strong></label>
+                                        <asp:TextBox CssClass="form-control" ID="txtHeading" runat="server"></asp:TextBox>
                                     </div>
-                                    <br />
-                                    <div class="form-row">
-                                        <div class="form-group col-sm-10 w-100 mb-1 text-right">
-                                            <asp:Button CssClass="btn btn-primary btn-lg" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
-                                        </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-12 mb-1 ml-2 position-static">
+                                        <label class="col mb-0 p-0 position-static"><strong>Content:</strong></label>
+                                        <asp:TextBox CssClass="form-control" ID="txtContent" runat="server" Height="300px" TextMode="MultiLine"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-row">
+                                    <div class="form-group col-sm-12 w-100 mb-1 text-right position-static">
+                                        <asp:Button CssClass="btn btn-primary btn-lg position-static" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <%--Pending Articles--%>
-                            <div class="col-6 position-static p-0 dash-content" runat="server" id="divPendingArticles">
-                                <div class=" head-div-2 p-2 mb-1 text-left">
-                                    <p class="m-0">Pending Articles</p>
-                                </div>
-                                <div class=" position-static p-1 lst-container"  style="overflow-y:scroll;" >
-                                    <asp:Repeater ID="repeatLink" runat="server">
-                                        <HeaderTemplate>
-                                        </HeaderTemplate>
-                                        <ItemTemplate>
-                                            <asp:LinkButton ID="btnShow" CommandArgument='<%#Eval("ArticleID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShow_Click">
+                        <%--Pending Articles--%>
+                        <div class="col-6 position-static p-0 dash-content" runat="server" id="divPendingArticles">
+                            <div class=" head-div-2 p-2 mb-1 text-left">
+                                <p class="m-0">Pending Articles</p>
+                            </div>
+                            <div class=" position-static p-1 lst-container" style="overflow-y: scroll;">
+                                <asp:Repeater ID="repeatLink" runat="server">
+                                    <HeaderTemplate>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnShow" CommandArgument='<%#Eval("ArticleID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShow_Click">
                                                     <div class="p-0 form-row m-0 position-static">
                                                         <div class=" col-auto position-static p-0">
                                                             <div class="">
@@ -274,57 +152,125 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                            </asp:LinkButton>
-                                            <hr class="p-0 m-1" />
-                                        </ItemTemplate>
-                                        <FooterTemplate>
-                                        </FooterTemplate>
-                                    </asp:Repeater>
-                                </div>
+                                        </asp:LinkButton>
+                                        <hr class="p-0 m-1" />
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                    </FooterTemplate>
+                                </asp:Repeater>
                             </div>
-                            
-                            <%-- Overlay for Pending Article Selection--%>
-                            <div class="container text-nowrap" runat="server" id="divPenDetailsOverlay">
-                                <div class="w-100 h-100 container text-center">
-                                    <div class=" container h-25 mb-3"></div>
-                                    <h6 class="card-title h-50 mt-5 pt-5"><img class="figure-img mr-2" src="../MyAdmin/icons/outline_error_outline_black_18dp.png"/>No Pending Article selected.</h6>
-                                    <div class=" container h-25"></div>
-                                </div>
-                            </div>
+                        </div>
 
-                            <div runat="server" id="divNoSelected" class="position-static dash-content p-0">
-                                <asp:HiddenField runat="server" ID="hdfSchId" Value="" />
-                                <div class=" head-div-2 p-2 mb-0 text-left ">
-                                    <p class="m-0">Article Selected</p>
-                                </div>
-                                    <hr class="m-3 ml-3 mr-3 bg-secondary"/>
-                                    <div class="container text-nowrap" runat="server" id="divDisplayArticle">
-                                        <div class="row mb-1 position-static">
-                                            <div class="col-2 position-static"><b>Title:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="lblTitle"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1 position-static">
-                                            <div class="col-2 position-static"><b>Content:</b></div>
-                                            <div  class="col position-static text-truncate">
-                                                <label class="m-0 flex-wrap" runat="server" id="lblContent"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1 position-static">
-                                            <div class="col-2 position-static"><b>Date:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="lblDate"></label>
-                                            </div>
-                                        </div>
+                        <%-- Overlay for Pending Article Selection--%>
+                        <div class="container text-nowrap" runat="server" id="divPenDetailsOverlay">
+                            <div class="w-100 h-100 container text-center">
+                                <div class=" container h-25 mb-3"></div>
+                                <h6 class="card-title h-50 mt-5 pt-5">
+                                    <img class="figure-img mr-2" src="../MyAdmin/icons/outline_error_outline_black_18dp.png" />No Pending Article selected.</h6>
+                                <div class=" container h-25"></div>
+                            </div>
+                        </div>
+
+                        <%--Display of Pending Articles--%>
+                        <div runat="server" id="divNoSelected" class="position-static dash-content p-0">
+                            <asp:HiddenField runat="server" ID="hdfSchId" Value="" />
+                            <div class=" head-div-2 p-2 mb-0 text-left ">
+                                <p class="m-0">Article Selected</p>
+                            </div>
+                            <div class="container text-nowrap" runat="server" id="divDisplayArticle">
+                                <div class="row mb-1 position-static">
+                                    <div class="col-2 position-static"><b>Title:</b></div>
+                                    <div class="col position-static">
+                                        <label class="m-0" runat="server" id="lblTitle"></label>
                                     </div>
-                                        <hr class="m-3 ml-3 mr-3 bg-secondary"/>                                    
+                                </div>
+                                <div class="row mb-1 position-static">
+                                    <div class="col-2 position-static"><b>Content:</b></div>
+                                    <div class="col position-static">
+                                        <label class="m-0" runat="server" id="lblContent"></label>
+                                    </div>
+                                </div>
+                                <div class="row mb-1 position-static">
+                                    <div class="col-2 position-static"><b>Date:</b></div>
+                                    <div class="col position-static text-truncate">
+                                        <label class="m-0" runat="server" id="lblDate"></label>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
 
+                        <%--Rejected Articles--%>
+                        <div class="col-6 position-static p-0 dash-content" runat="server" id="divRejectedArticles">
+                            <div class=" head-div-2 p-2 mb-1 text-left">
+                                <p class="m-0">Rejected Articles</p>
+                            </div>
+                            <div class=" position-static p-1 lst-container" style="overflow-y: scroll;">
+                                <asp:Repeater ID="repeatLinkRejected" runat="server">
+                                    <HeaderTemplate>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnShow" CommandArgument='<%#Eval("ArticleID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShowRejected_Click1">
+                                                    <div class="p-0 form-row m-0 position-static">
+                                                        <div class=" col-auto position-static p-0">
+                                                            <div class="">
+                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Article&nbsp;Title: </b><%#Eval("ArticleTitle")%><br/></p>
+                                                            </div>
+                                                                <hr class=" mr-4 m-0 p-0"/>
+                                                            <div class="">
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Created: </b><%#Eval("DateCreated")%></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                            </div>
+                        </div>
+
+                        <%-- Overlay for Rejected Article Selection--%>
+                        <div class="container text-nowrap" runat="server" id="divDisplayRejectedOverlay">
+                            <div class="w-100 h-100 container text-center">
+                                <div class=" container h-25 mb-3"></div>
+                                <h6 class="card-title h-50 mt-5 pt-5">
+                                    <img class="figure-img mr-2" src="../MyAdmin/icons/outline_error_outline_black_18dp.png" />No Rejected Article selected.</h6>
+                                <div class=" container h-25"></div>
+                            </div>
+                        </div>
+
+                        <%--Display of Rejected Articles--%>
+                        <div runat="server" id="divNoRejectedSelected" class="position-static dash-content p-0">
+                            <asp:HiddenField runat="server" ID="hfdRej" Value="" />
+                            <div class=" head-div-2 p-2 mb-0 text-left ">
+                                <p class="m-0">Article Selected</p>
+                            </div>
+                            <div class="container text-nowrap" runat="server" id="divDisplayRejected">
+                                <div class="row mb-1 position-static">
+                                    <div class="col-2 position-static"><b>Title:</b></div>
+                                    <div class="col position-static text-truncate">
+                                        <label class="m-0" runat="server" id="Label1"></label>
+                                    </div>
+                                </div>
+                                <div class="row mb-1 position-static">
+                                    <div class="col-2 position-static"><b>Content:</b></div>
+                                    <div class="col position-static">
+                                        <label class="m-0 flex-wrap" runat="server" id="Label2"></label>
+                                    </div>
+                                </div>
+                                <div class="row mb-1 position-static">
+                                    <div class="col-2 position-static"><b>Date:</b></div>
+                                    <div class="col position-static text-truncate">
+                                        <label class="m-0" runat="server" id="Label3"></label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
+            </div>
+        </div>
     </form>
 
     <!--Footer-->
