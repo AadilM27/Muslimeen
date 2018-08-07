@@ -249,19 +249,25 @@
                                 <div class="row mb-1 position-static">
                                     <div class="col-2 position-static"><b>Title:</b></div>
                                     <div class="col position-static text-truncate">
-                                        <label class="m-0" runat="server" id="Label1"></label>
+                                        <label class="m-0" runat="server" id="lblRTitle"></label>
                                     </div>
                                 </div>
                                 <div class="row mb-1 position-static">
                                     <div class="col-2 position-static"><b>Content:</b></div>
                                     <div class="col position-static">
-                                        <label class="m-0 flex-wrap" runat="server" id="Label2"></label>
+                                        <label class="m-0 flex-wrap" runat="server" id="lblRContent"></label>
                                     </div>
                                 </div>
                                 <div class="row mb-1 position-static">
                                     <div class="col-2 position-static"><b>Date:</b></div>
                                     <div class="col position-static text-truncate">
-                                        <label class="m-0" runat="server" id="Label3"></label>
+                                        <label class="m-0" runat="server" id="lblRDate"></label>
+                                    </div>
+                                </div>
+                                <div class="row mb-1 position-static">
+                                    <div class="col-2 position-static"><b>Date:</b></div>
+                                    <div class="col position-static text-truncate">
+                                        <label class="m-0" runat="server" id="lblReason"></label>
                                     </div>
                                 </div>
                             </div>

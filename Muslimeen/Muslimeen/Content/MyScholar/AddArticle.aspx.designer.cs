@@ -391,30 +391,39 @@ namespace Muslimeen.Content.MyScholar {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDisplayRejected;
         
         /// <summary>
-        /// Label1 control.
+        /// lblRTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblRTitle;
         
         /// <summary>
-        /// Label2 control.
+        /// lblRContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblRContent;
         
         /// <summary>
-        /// Label3 control.
+        /// lblRDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblRDate;
+        
+        /// <summary>
+        /// lblReason control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblReason;
     }
 }
