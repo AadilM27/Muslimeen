@@ -23,9 +23,9 @@ html {
     color: #256297;
 }
 
-    .user:hover {
-        font-weight: 500;
-    }
+.user:hover {
+    font-weight: 500;
+}
 
 .navbaritems {
     padding-right: 10px;
@@ -176,11 +176,29 @@ html {
     text-align: start;
 }
 
-    .taskBtn:hover {
-        background-color: #3F84C1;
-        color: white;
-        position: static;
-    }
+.taskBtn:hover {
+    background-color: #3F84C1;
+    color: white;
+    position: static;
+}
+
+.sub-taskBtn {
+    font-weight:lighter;
+    position: static;
+    background-color: white;
+    color: black;
+    padding: 0;
+    border-radius: 0px;
+    text-align: start;
+    font-size:small;
+    margin-left:30px;
+}
+
+.sub-taskBtn:hover {
+    background-color: #3F84C1;
+    color: white;
+    position: static;
+}
 
 .divContainers {
     min-height: 595px;

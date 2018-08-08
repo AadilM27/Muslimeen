@@ -28,7 +28,6 @@ namespace Muslimeen.Content.MyModerator
                 divViewPendingSch.Visible = false;
                 divDisplaySch.Visible = false;
                 divViewArt.Visible = false;
-                divViewReports.Visible = false;
                 divDisplayReports.Visible = false;
                
 
@@ -397,28 +396,11 @@ namespace Muslimeen.Content.MyModerator
 
         }
 
-        protected void btnViewReports_Click(object sender, EventArgs e)
-        {
-            divDisplaySch.Visible = false;
-            divViewPendingSch.Visible = false;
-
-
-            divViewPendingArt.Visible = false;
-            divViewArt.Visible = false;
-            divViewReports.Visible = true;
-            divDisplayReports.Visible = true;
-            grdReports.Visible = true;
-           
-           
-           
-        }
-
         protected void BtnAcceptedScholars_Click(object sender, EventArgs e)
         {
             try
             {
 
-                divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
                 
                 DBHandler handler = new DBHandler();
@@ -439,7 +421,6 @@ namespace Muslimeen.Content.MyModerator
             try
             {
 
-                divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
                 
                 DBHandler handler = new DBHandler();
@@ -459,7 +440,6 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
-                divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
                 
                 DBHandler han = new DBHandler();
@@ -477,7 +457,6 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
-                divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
                 
                 DBHandler han = new DBHandler();
@@ -495,7 +474,6 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
-                divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
                 
                 DBHandler han = new DBHandler();
@@ -513,7 +491,6 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
-                divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
               
                 DBHandler han = new DBHandler();
@@ -533,16 +510,16 @@ namespace Muslimeen.Content.MyModerator
            
         }
 
-        protected void PDF_Click(object sender, ImageClickEventArgs e)
+        protected void PDF_ServerClick(object sender, EventArgs e)
         {
             PdfPTable pdfTable = new PdfPTable(grdReports.HeaderRow.Cells.Count);
-           
+
             foreach (TableCell Headercell in grdReports.HeaderRow.Cells)
             {
                 Font font = new Font();
                 font.Color = new BaseColor(grdReports.HeaderStyle.ForeColor);
-                    
-                PdfPCell pdfCell = new PdfPCell(new Phrase(Headercell.Text,font));
+
+                PdfPCell pdfCell = new PdfPCell(new Phrase(Headercell.Text, font));
                 pdfCell.BackgroundColor = new BaseColor(grdReports.HeaderStyle.BackColor);
                 pdfTable.AddCell(pdfCell);
             }
@@ -559,7 +536,7 @@ namespace Muslimeen.Content.MyModerator
                     pdfTable.AddCell(pdfcell);
                 }
             }
-            
+
             Document pdfDocument = new Document(PageSize.A4, 10f, 10f, 10f, 10f);
             PdfAWriter.GetInstance(pdfDocument, Response.OutputStream);
 

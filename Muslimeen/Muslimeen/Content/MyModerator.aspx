@@ -83,21 +83,27 @@
                     <div class="side-bar p-0 basic-div-styling mr-1">
                         <!--contains the buttons-->
                         <div class="head-div text-center p-2">
-                            <p class="text-uppercase m-0 font-weight-bold" style="font-size:20px">Moderator Tasks:</p>
+                            <p class="text-uppercase m-0 font-weight-bold" style="font-size:20px">Moderator Tasks</p>
                         </div>
                         <nav class="nav flex-column pt-2 pb-2 pr-0">
                             <asp:Button runat="server" ToolTip="Pending Scholar Registrations." ID="btnViewPendingSch" OnClick="btnViewPendingSch_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="View Pending Scholars" />
                             <asp:Button runat="server" ID="btnViewPendingArticles" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnViewPendingArticles_Click" Text="View Pending Articles" />
-                            <asp:Button runat="server" ID="btnViewReports" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnViewReports_Click" Text="View Reports" />
-
+                            <p class="pl-2 btn taskBtn mb-1">View Reports &#11167;</p>
+                                <%-- sub buttons of report button --%>
+                                <asp:Button ID="BtnAcceptedScholars" CssClass=" pl-2 btn sub-taskBtn mb-1 " runat="server" Text="Accepted Scholars" OnClick="BtnAcceptedScholars_Click" />                                  
+                                <asp:Button ID="btnRejectedScholars"  CssClass=" pl-2 btn sub-taskBtn mb-1" runat="server" Text="Rejected Scholars" OnClick="btnRejectedScholars_Click" />
+                                <asp:Button ID="BtnAcceptedArticles" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="Accepted Articles" OnClick="BtnAcceptedArticles_Click" />
+                                <asp:Button ID="BtnRejectedArticles" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="Rejected Articles" OnClick="BtnRejectedArticles_Click" />
+                                <asp:Button ID="BtnMosqueReports" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="List of Mosques" OnClick="BtnMosqueReports_Click" />
+                                <asp:Button ID="BtnEventReports" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="List of Events" OnClick="BtnEventReports_Click" />
                         </nav>
                     </div>
                     <div class=" position-static basic-div-styling p-0  w-100" >
                         <div runat="server" id="divTaskHead" class=" head-div text-center p-2 mb-1">
                             <h4 class="p-0 m-0"></h4>
                         </div>
-                        <div class="row p-0 m-0 tab-content right-bottom-div p-1" >
-                            <div class="col-6 position-static p-0 dash-content" runat="server" id="divViewPendingSch">
+                        <div class="row p-0 m-0 right-bottom-div p-1 flex-nowrap justify-content-xl-start" >
+                            <div class="col-6 position-static p-0 dash-content flex-nowrap" runat="server" id="divViewPendingSch">
                                 <!--Contains the List of items-->
                                 <div class=" head-div-2 p-2 mb-1 ">
                                     <p class="m-0">Pending Registrations</p>
@@ -255,47 +261,31 @@
                                     <asp:TextBox runat="server" CssClass=" form-control mt-3 col-8 position-static" ID="txtRejectReason" OnTextChanged="txtRejectReason_TextChanged"></asp:TextBox>
                                 </div>
                         </div>
-                    
-
-                             <div class="  basic-div-styling mr-1" runat="server" id="divViewReports" style="height:20px;min-width: 250px;min-height: 646px; float: left;position: static;">
-                                <!--Contains the List of items-->
-                                <div class=" col-lg-12 position-static head-div-2 p-2 mb-1 " style="width:100%;">
-                                    <p class="m-0 ">Overview</p>
-                                </div>                               
-                                      <nav class="nav flex-column pt-2 pb-2 pr-0">
-                                    <asp:Button ID="BtnAcceptedScholars" CssClass=" pl-2 btn taskBtn mb-1" runat="server" Text="Accepted Scholars" OnClick="BtnAcceptedScholars_Click" />                                  
-                                    <asp:Button ID="btnRejectedScholars"  CssClass=" pl-2 btn taskBtn mb-1" runat="server" Text="Rejected Scholars" OnClick="btnRejectedScholars_Click" />
-                                    <asp:Button ID="BtnAcceptedArticles" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="Accepted Articles" OnClick="BtnAcceptedArticles_Click" />
-                                    <asp:Button ID="BtnRejectedArticles" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="Rejected Articles" OnClick="BtnRejectedArticles_Click" />
-                                    <asp:Button ID="BtnMosqueReports" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="List of Mosques" OnClick="BtnMosqueReports_Click" />
-                                    <asp:Button ID="BtnEventReports" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="List of Events" OnClick="BtnEventReports_Click" />
-                                    </nav>                           
-                            </div>
-                            <div runat="server" id="divDisplayReports" class=" col-9 position-static flex-nowrap  p-1 basic-div-styling-2" style="width:100%;overflow:scroll;">
-                                <div class=" col-lg-12 head-div-2 p-2 mb-1 flex-nowrap " style="width:100%;height:45px;position:static" >
-                                    <p class="mr-0 ">Reports</p>
-                                     <asp:ImageButton ID="PDF" runat="server" CssClass="" style="left:200px;position:relative;height:40px; width:35px;"   OnClick="PDF_Click"  ImageUrl="~/Content/MyModerator/Adobe_PDF.png" />
+                            <div runat="server" id="divDisplayReports" class=" col-12 col-xl-12 mw-100 p-0">
+                                <div class=" head-div-2 p-2 mb-0 text-center ">
+                                    <p class="m-0">Report</p>
                                 </div>
-                                <div style="margin-left:auto;margin-right:auto;width:100%;">
-                                <asp:GridView ID="grdReports" runat="server" style="position:static; font-size:smaller;" CellPadding="2" ForeColor="#333333" GridLines="none" Width="600px" min-width="250px" max-width="350px">
-                                    <AlternatingRowStyle BackColor="White" />
-                                    <EditRowStyle BackColor="#2461BF" />
-                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                                    <RowStyle BackColor="#EFF3FB" />
-                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                                </asp:GridView>
-                                    </div>
+                                <div class="m-0 p-0 pt-2 pl-2">
+                                    <a runat="server" id="PDF" onserverclick="PDF_ServerClick"><img src="MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
+                                    <hr class="m-0 mt-1 p-0" style="background-color:#0026ff; height:1px;" />
                                 </div>
-                            
+                                <div class=" col-12 col-xl-12 p-2" style="overflow-x:scroll;">
+                                    <asp:GridView ID="grdReports" RowStyle-Wrap="true" runat="server" style="position:static; font-size:smaller;" CellPadding="6" ForeColor="#333333" GridLines="none" >
+                                        <AlternatingRowStyle BackColor="White" />
+                                        <EditRowStyle BackColor="#2461BF" />
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                        <RowStyle BackColor="#EFF3FB"  Wrap="true" />
+                                        <SelectedRowStyle  BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                    </asp:GridView>
+                                </div>
+                            </div>  
                         </div>
-
-
                     </div>
                 </div>
             </div>
