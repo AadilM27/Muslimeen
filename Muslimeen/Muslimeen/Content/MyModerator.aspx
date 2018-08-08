@@ -100,7 +100,7 @@
                     </div>
                     <div class=" position-static basic-div-styling p-0  w-100" >
                         <div runat="server" id="divTaskHead" class=" head-div text-center p-2 mb-1">
-                            <h4 class="p-0 m-0"></h4>
+                            <h4> <asp:Label ID="LblHeading" runat="server" class=" p-0 m-0"></asp:Label></h4>
                         </div>
                         <div class="row p-0 m-0 right-bottom-div p-1 flex-nowrap justify-content-xl-start" >
                             <div class="col-6 col-xl-4 p-0 mr-1" runat="server" id="divViewPendingSch" style="position:static">

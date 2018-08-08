@@ -32,6 +32,7 @@ namespace Muslimeen.Content.MyModerator
                 divDisplayReports.Visible = false;
                 divSchDetails.Visible = false;
                 divSchDetailsOverlay.Visible = false;
+                
 
                 if (Session["UserName"] != null)
                 {
@@ -70,7 +71,7 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
-                //lblHeading.Text = "Pending Articles";
+                LblHeading.Text = "Articles";
                 divDisplaySch.Visible = false;
                 divViewPendingSch.Visible = false;
                
@@ -110,7 +111,7 @@ namespace Muslimeen.Content.MyModerator
 
         protected void btnViewPendingSch_Click(object sender, EventArgs e)
         {
-            //lblHeading.Text = "Pending Scholars";
+            LblHeading.Text = "Scholars";
             divViewPendingArt.Visible = false;
            
             divDisplaySch.Visible = false;
