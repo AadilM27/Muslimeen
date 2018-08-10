@@ -281,7 +281,7 @@ namespace Muslimeen.Content.MyScholar
             }
             catch
             {
-                throw;
+                
             }
         }
 
@@ -306,6 +306,7 @@ namespace Muslimeen.Content.MyScholar
                 divRejectedArticles.Visible = true;
                 divDisplayRejected.Visible = true;
                 divNoRejectedSelected.Visible = true;
+                divAddArticle.Visible = false;
             }
             catch
             {

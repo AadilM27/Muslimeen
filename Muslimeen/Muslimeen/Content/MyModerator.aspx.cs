@@ -13,6 +13,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.html.simpleparser;
 
+
 namespace Muslimeen.Content.MyModerator
 {
     public partial class MyModerator : System.Web.UI.Page
@@ -29,7 +30,9 @@ namespace Muslimeen.Content.MyModerator
                 divDisplaySch.Visible = false;
                 divViewArt.Visible = false;
                 divDisplayReports.Visible = false;
-               
+                divSchDetails.Visible = false;
+                divSchDetailsOverlay.Visible = false;
+                
 
                 if (Session["UserName"] != null)
                 {
@@ -68,7 +71,7 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
-                //lblHeading.Text = "Pending Articles";
+                LblHeading.Text = "Articles";
                 divDisplaySch.Visible = false;
                 divViewPendingSch.Visible = false;
                
@@ -108,11 +111,12 @@ namespace Muslimeen.Content.MyModerator
 
         protected void btnViewPendingSch_Click(object sender, EventArgs e)
         {
-            //lblHeading.Text = "Pending Scholars";
+            LblHeading.Text = "Scholars";
             divViewPendingArt.Visible = false;
            
-            divDisplaySch.Visible = true;
+            divDisplaySch.Visible = false;
             divViewPendingSch.Visible = true;
+            divSchDetailsOverlay.Visible = true;
 
             DBHandler dBHandler = new DBHandler();
 
@@ -223,24 +227,24 @@ namespace Muslimeen.Content.MyModerator
                 hdfSchId.Value = memberId;
 
                 DBHandler dBHandler = new DBHandler();
-                uspGetMember member = new uspGetMember();
+                uspGetScholarDetails scholarDetails = new uspGetScholarDetails();
 
-                member = dBHandler.BLL_GetMember(memberId);
-
-                lblMemberID.InnerText = member.MemberID.ToString();
-                lblMemberName.InnerText = member.MemberName.ToString();
-                lblMemberLastName.InnerText = member.MemberLastName.ToString();
-                lblMemberDOB.InnerText = member.MemberDOB.ToString("yyyy-MM-dd");
-                lblMemberType.InnerText = member.MemberType.ToString();
-                lblActiveTypeID.InnerText = member.ActiveTypeID.ToString();
-                lblEmail.InnerText = member.Email.ToString();
-                lblContactNo.InnerText = member.ContactNo.ToString();
-                lblActivationExpiry.InnerText = member.ActivationExpiry.ToString("yyyy-MM-dd");
-                lblActivationDate.InnerText = member.ActivationDate.ToString("yyyy-MM-dd");
+                scholarDetails = dBHandler.BLL_GetScholarDetails(memberId);
+                lblMemberID.InnerText = scholarDetails.ScholarID.ToString();
+                lblMemberName.InnerText = scholarDetails.MemberName.ToString();
+                lblMemberLastName.InnerText = scholarDetails.MemberLastName.ToString();
+                lblMemberDOB.InnerText = scholarDetails.MemberDOB.ToString();
+                lblMemberType.InnerText = scholarDetails.MemberType.ToString();
+                lblEmail.InnerText = scholarDetails.Email.ToString();
+                lblContactNo.InnerText = scholarDetails.ContactNo.ToString();
+                lblActivationExpiry.InnerText = scholarDetails.ActivationExpiry.ToString();
+                lblActivationDate.InnerText = scholarDetails.ActivationDate.ToString();
+                lblScholarQual.InnerText = scholarDetails.QualificationDescription.ToString();
 
                 divViewPendingSch.Visible = true;
                 divViewArt.Visible = false;
                 divDisplaySch.Visible = true;
+                divSchDetails.Visible = true;
             }
             catch
             {
@@ -270,7 +274,9 @@ namespace Muslimeen.Content.MyModerator
 
 
                     emailService.AutoEmailService(uspGetMember.Email.ToString(), "NULL", "NULL", "AcceptedScholars", memberId.ToString(), "NULL");
-
+                    divDisplaySch.Visible = false;
+                    divSchDetailsOverlay.Visible = true;
+                    divViewPendingSch.Visible = true;
                 }
             }
             catch
@@ -346,24 +352,26 @@ namespace Muslimeen.Content.MyModerator
             {
                 if (Session["UserName"] != null)
                 {
+                    DBHandler dBHandler = new DBHandler();
+                    Moderator m = new Moderator();
                     AcceptArticle accept = new AcceptArticle();
 
                     string articleId = hdfSchId.Value.ToString();
 
-
+                    accept.ArticleID = Convert.ToInt32(articleId);
                     accept.ModeraterID = Session["UserName"].ToString();
                     accept.Status = 'A';
                     accept.Active = 'Y';
-                    accept.RejectionReason = "";
-                    accept.ArticleID = Convert.ToInt32(articleId);
-                    DBHandler dBHandler = new DBHandler();
-
-                    dBHandler.BLL_AcceptArticle(accept);
+                   
+                    if (dBHandler.BLL_AcceptArticle(accept))
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Article Accepted!')", true);
+                    }
                 }
             }
             catch
             {
-
+                throw;
             }
         }
 

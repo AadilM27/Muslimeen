@@ -906,13 +906,13 @@ namespace Muslimeen.BLL
                     parameters.Add(new SqlParameter("@" + property.Name.ToString(), property.GetValue(acceptArticle)));
                 }
             }
-            return DBHelper.NonQuery("uspAcceptArticle", CommandType.StoredProcedure, parameters.ToArray());
+            return DBHelper.NonQuery("uspUpdateAcceptArticle", CommandType.StoredProcedure, parameters.ToArray());
         }
 
         //Rejected Articles
-        public List<uspGetRejectedArticle> GetRejectedArticle()
+        public List<Article> GetRejectedArticle()
         {
-            List<uspGetRejectedArticle> list = new List<uspGetRejectedArticle>();
+            List<Article> list = new List<Article>();
 
             using (DataTable table = DBHelper.Select("uspGetRejectedArticles", CommandType.StoredProcedure))
             {
@@ -920,9 +920,9 @@ namespace Muslimeen.BLL
                 {
                     foreach (DataRow row in table.Rows)
                     {
-                        uspGetRejectedArticle art = new uspGetRejectedArticle
+                        Article art = new Article
                         {
-                            
+                            ArticleID = Convert.ToInt32(row["ArticleID"]),
                             ArticleTitle = Convert.ToString(row["ArticleTitle"]),
                             //ArticleContent = Convert.ToString(row["ArticleContent"]),
                             DateCreated = Convert.ToDateTime(row["DateCreated"]), 
