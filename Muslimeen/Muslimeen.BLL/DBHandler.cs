@@ -189,7 +189,7 @@ namespace Muslimeen.BLL
         }
 
         //Rejected Articles
-        public List<uspGetRejectedArticle> BLL_GetRejectedArticle()
+        public List<Article> BLL_GetRejectedArticle()
         {
             return dBAccess.GetRejectedArticle();
         }
