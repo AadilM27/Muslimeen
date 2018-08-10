@@ -352,24 +352,26 @@ namespace Muslimeen.Content.MyModerator
             {
                 if (Session["UserName"] != null)
                 {
+                    DBHandler dBHandler = new DBHandler();
+                    Moderator m = new Moderator();
                     AcceptArticle accept = new AcceptArticle();
 
                     string articleId = hdfSchId.Value.ToString();
 
-
+                    accept.ArticleID = Convert.ToInt32(articleId);
                     accept.ModeraterID = Session["UserName"].ToString();
                     accept.Status = 'A';
                     accept.Active = 'Y';
-                    accept.RejectionReason = "";
-                    accept.ArticleID = Convert.ToInt32(articleId);
-                    DBHandler dBHandler = new DBHandler();
-
-                    dBHandler.BLL_AcceptArticle(accept);
+                   
+                    if (dBHandler.BLL_AcceptArticle(accept))
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Article Accepted!')", true);
+                    }
                 }
             }
             catch
             {
-
+                throw;
             }
         }
 

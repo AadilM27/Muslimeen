@@ -899,7 +899,7 @@ namespace Muslimeen.BLL
                     parameters.Add(new SqlParameter("@" + property.Name.ToString(), property.GetValue(acceptArticle)));
                 }
             }
-            return DBHelper.NonQuery("uspAcceptArticle", CommandType.StoredProcedure, parameters.ToArray());
+            return DBHelper.NonQuery("uspUpdateAcceptArticle", CommandType.StoredProcedure, parameters.ToArray());
         }
 
         //Rejected Articles
