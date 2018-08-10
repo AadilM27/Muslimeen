@@ -80,7 +80,7 @@ namespace Muslimeen.BLL
         {
              return dBAccess.GetZakaah();
         }
-        public List<uspGetOrganizations> BLL_GetOrganization()
+        public List<Organization> BLL_GetOrganization()
         {
             return dBAccess.GetOrganization();
         }
@@ -249,6 +249,26 @@ namespace Muslimeen.BLL
         public uspGetSelectedRejectedArticle BLL_GetSelectedRejectedArticle(int articleID)
         {
             return dBAccess.uspGetSelectedRejectedArticle(articleID);
+        }
+
+        public bool BLL_AddModeraterQualification(Moderater moderater)
+        {
+            return dBAccess.AddModeraterQualification(moderater);
+        }
+
+        public bool BLL_AddZakaahOrganization(uspAddZakaahOrg organization)
+        {
+            return dBAccess.AddZakaahOrganization(organization);
+        }
+
+        public Organization BLL_GetSelectedZakaahOrg(int organizationID)
+        {
+            return dBAccess.GetSelectedZakaahOrg(organizationID);
+        }
+
+        public bool BLL_UpdateZakaahOrg (uspUpdateZakaahOrg updateZakaahOrg)
+        {
+            return dBAccess.UpdateZakaahOrg(updateZakaahOrg);
         }
     }
 }

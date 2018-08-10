@@ -151,13 +151,12 @@ namespace Muslimeen.BLL
                     mosque.MosqueSize = row["MosqueSize"].ToString();
                     mosque.MosqueQuote = row["MosqueQuote"].ToString();
                     mosque.MemberCount = int.Parse(row["MemberCount"].ToString());
-                    Byte[] bytes = (Byte[])row["MosqueImage"]; //Make byets in to base64String.
-                    string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-                    mosque.MosqueImage = "data:image/jpg;base64," + base64String;
-
-                   
-
-
+                    if (!(row["MosqueImage"] is DBNull))
+                    {
+                        Byte[] bytes = (Byte[])row["MosqueImage"]; //Make byets in to base64String.
+                        string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+                        mosque.MosqueImage = "data:image/jpg;base64," + base64String;
+                    }
                 }//end if
             }//end using
             return mosque;
@@ -344,23 +343,30 @@ namespace Muslimeen.BLL
             }
             return list;
         }
-        public List<uspGetOrganizations> GetOrganization()
+        public List<Organization> GetOrganization()
         {
-            List<uspGetOrganizations> list = new List<uspGetOrganizations>();
+            List<Organization> list = new List<Organization>();
             using (DataTable table = DBHelper.Select("uspOrganizations", CommandType.StoredProcedure))
             {
                 if (table.Rows.Count > 0)
                 {
                     foreach (DataRow row in table.Rows)
                     {
-                        uspGetOrganizations org = new uspGetOrganizations
-                        {
-                            OrgName = Convert.ToString(row["OrgName"]),
-                            Address = Convert.ToString(row["Address"]),
-                            OrgImageUrl = Convert.ToString(row["OrgImageUrl"]),
-                            ContactNo = Convert.ToString(row["ContactNo"])
+                        Organization org = new Organization();
 
-                        };
+                        org.OrganizationID = Convert.ToInt32(row["OrganizationID"]);
+                        org.Name = Convert.ToString(row["Name"]);
+                        org.WebsiteAddress = Convert.ToString(row["WebsiteAddress"]);
+                        org.ContactNo = Convert.ToString(row["ContactNo"]);
+                        org.Active = Convert.ToChar(row["Active"]);
+
+                        if (!(row["Image"] is DBNull))
+                        {
+                            Byte[] bytes = (Byte[])row["Image"]; //Make byets in to base64String.
+                            string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+                            org.Image = "data:image/jpg;base64," + base64String;
+                        }
+
                         list.Add(org);
                     }
                 }
@@ -485,11 +491,12 @@ namespace Muslimeen.BLL
                         mosque.MosqueSuburb = row["MosqueSuburb"].ToString();
                         mosque.MosqueType = row["MosqueType"].ToString();
                         mosque.MosqueSize = row["MosqueSize"].ToString();
-
-                        Byte[] bytes = (Byte[])row["MosqueImage"]; //Make byets in to base64String.
-                        string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-                        mosque.MosqueImage = "data:image/jpg;base64," + base64String;
-
+                        if (!(row["MosqueImage"] is DBNull))
+                        {
+                            Byte[] bytes = (Byte[])row["MosqueImage"]; //Make byets in to base64String.
+                            string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+                            mosque.MosqueImage = "data:image/jpg;base64," + base64String;
+                        }
                         list.Add(mosque);
                     }
                 }//end if
@@ -1271,6 +1278,79 @@ namespace Muslimeen.BLL
                 }
             }
             return pen;
+        }
+
+        public bool AddModeraterQualification(Moderater moderater)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var prop in moderater.GetType().GetProperties())
+            {
+                if (prop.GetValue(moderater) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(moderater)));
+                }
+            }
+            return DBHelper.NonQuery("uspAddModeraterQualification", CommandType.StoredProcedure, parameters.ToArray());
+        }
+
+        public bool AddZakaahOrganization(uspAddZakaahOrg organization)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var prop in organization.GetType().GetProperties())
+            {
+                if (prop.GetValue(organization) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(organization)));
+                }
+            }
+            return DBHelper.NonQuery("uspAddZakaahOrganization", CommandType.StoredProcedure, parameters.ToArray());
+
+        }
+
+        public Organization GetSelectedZakaahOrg(int organizationID)
+        {
+            Organization org = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@OrganizationID", organizationID)
+            };
+
+            using (DataTable tbl = DBHelper.ParamSelect("uspGetSelectedOrg", CommandType.StoredProcedure, pars))
+            {
+                if (tbl.Rows.Count == 1)
+                {
+                    DataRow row = tbl.Rows[0];
+                    org = new Organization();
+
+                    org.OrganizationID = Convert.ToInt32(row["OrganizationID"]);
+                    org.Name = Convert.ToString(row["Name"]);
+                    org.WebsiteAddress = Convert.ToString(row["WebsiteAddress"]);
+                    if (!(row["Image"] is DBNull))
+                    {
+                        org.Image = Convert.ToString(row["Image"]);
+                    }
+                    org.ContactNo = Convert.ToString(row["ContactNo"]);
+                    org.PhysicalAddress = Convert.ToString(row["PhysicalAddress"]);
+                    org.Active = Convert.ToChar(row["Active"]);
+                }
+            }
+            return org;
+        }
+
+        public bool UpdateZakaahOrg(uspUpdateZakaahOrg updateZakaahOrg)
+        {
+            List<SqlParameter> pars = new List<SqlParameter>();
+            foreach (var prop in updateZakaahOrg.GetType().GetProperties())
+            {
+                if (prop.GetValue(updateZakaahOrg) != null)
+                {
+                    pars.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(updateZakaahOrg)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdateZakaahOrg", CommandType.StoredProcedure, pars.ToArray());
+
         }
     }
 }

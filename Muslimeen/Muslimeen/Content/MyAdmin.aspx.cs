@@ -19,7 +19,8 @@ namespace Muslimeen.Content
         {
             try
             {
-
+                divZakaahOrgList.Visible = false;
+                divAddUpdateZakaahOrg.Visible = false;
                 divViewPendingSch.Visible = false;
                 divDisplaySch.Visible = false;
                 divSchDetails.Visible = false;
@@ -29,6 +30,8 @@ namespace Muslimeen.Content
                 divAddMosque.Visible = false;
                 divAddMosqueRep.Visible = false;
                 divAddMod.Visible = false;
+                ddModQualification.Items.Clear();
+                ddModQualification.Dispose();
 
                 DBHandler dBHandler = new DBHandler();
 
@@ -48,6 +51,15 @@ namespace Muslimeen.Content
 
                         btnLogin.Text = "Log out";
                         btnRegister.Visible = false;
+
+                        List<uspGetQualification> list = dBHandler.BLL_GetQualification();
+
+                        foreach (uspGetQualification qual in list)
+                        {
+                            ddModQualification.Items.Add(new ListItem(qual.QualificationDescription.ToString(),
+                                qual.QualificationID.ToString()));
+                        }
+
                     }
                     else
                     {
@@ -186,7 +198,7 @@ namespace Muslimeen.Content
 
                 DBHandler dBHandler = new DBHandler();
                 uspGetScholarDetails scholarDetails = new uspGetScholarDetails();
-                
+
                 scholarDetails = dBHandler.BLL_GetScholarDetails(memberId);
                 lblMemberID.InnerText = scholarDetails.ScholarID.ToString();
                 lblMemberName.InnerText = scholarDetails.MemberName.ToString();
@@ -217,7 +229,7 @@ namespace Muslimeen.Content
             {
                 if (hdfSchId.Value != null)
                 {
-                    
+
                     DBHandler db = new DBHandler();
                     uspVerifyMember uspVerifyMember = new uspVerifyMember();
 
@@ -308,7 +320,7 @@ namespace Muslimeen.Content
                 Encryption encryption = new Encryption();
                 uspAddMosque addMosque = new uspAddMosque();
                 int continueProcess = 0;
-                
+
                 if (txtPassword.Text.ToString() != txtRetypePassword.Text.ToString() ||
                     txtPassword.Text == null || txtRetypePassword == null)
                 {
@@ -355,32 +367,32 @@ namespace Muslimeen.Content
 
                 if (lblError.Text == "" || lblError.Text == null)
                 {
-                    if(txtMosqueName.Text == "" || txtMosqueName.Text == null)
+                    if (txtMosqueName.Text == "" || txtMosqueName.Text == null)
                     {
                         txtMosqueName.BorderColor = Color.Red;
                         continueProcess += 1;
                     }
-                    else if(txtMosqueAddr.Text == "" || txtMosqueAddr.Text == null)
+                    else if (txtMosqueAddr.Text == "" || txtMosqueAddr.Text == null)
                     {
                         txtMosqueAddr.BorderColor = Color.Red;
                         continueProcess += 1;
                     }
-                    else if(txtMosqueSuburb.Text == "" || txtMosqueSuburb.Text == null)
+                    else if (txtMosqueSuburb.Text == "" || txtMosqueSuburb.Text == null)
                     {
                         txtMosqueSuburb.BorderColor = Color.Red;
                         continueProcess += 1;
                     }
-                    else if(ddMosqueType.SelectedIndex == 0)
+                    else if (ddMosqueType.SelectedIndex == 0)
                     {
                         ddMosqueType.BorderColor = Color.Red;
                         continueProcess += 1;
                     }
-                    else if(txtMosqueEstab.Text == "dd --- yyyy")
+                    else if (txtMosqueEstab.Text == "dd --- yyyy")
                     {
                         txtMosqueEstab.BorderColor = Color.Red;
                         continueProcess += 1;
                     }
-                    else if(ddMosqueSize.SelectedIndex == 0)
+                    else if (ddMosqueSize.SelectedIndex == 0)
                     {
                         ddMosqueSize.BorderColor = Color.Red;
                         continueProcess += 1;
@@ -522,7 +534,7 @@ namespace Muslimeen.Content
                     fupMosqueImage.Attributes.Clear();
 
                 }
-                else if(lblError.Text == "")
+                else if (lblError.Text == "")
                 {
                     lblError.Text = "Registration Unsuccessful, Incomplete form";
                     lblError.ForeColor = Color.Red;
@@ -563,6 +575,333 @@ namespace Muslimeen.Content
         protected void btnAddMod_Click(object sender, EventArgs e)
         {
             divAddMod.Visible = true;
+
+
+
+        }
+
+        protected void btnRegModerater_Click(object sender, EventArgs e)
+        {
+            DBHandler db = new DBHandler();
+
+            int continueProcess = 0;
+
+            divAddMod.Visible = true;
+
+            if (txtModPassword.Text.ToString() != txtModRetypePassword.Text.ToString() ||
+                   txtModPassword.Text == null || txtModRetypePassword == null)
+            {
+                txtModRetypePassword.BorderColor = Color.Red;
+                txtModPassword.BorderColor = Color.Red;
+                lblModError.Text = "Passwords do not match";
+                lblModError.ForeColor = Color.Red;
+                continueProcess += 1;
+            }
+            else if (txtModUserName.Text == "" || txtModUserName.Text == null)
+            {
+                txtModUserName.BorderColor = Color.Red;
+                lblModError.Text = "User name field can not be empty";
+                continueProcess += 1;
+            }
+            else if (txtModUserName.Text.Length > 15 || txtModUserName.Text.Length < 5 || txtModUserName.Text == "")
+            {
+                txtModUserName.BackColor = Color.Red;
+                lblModError.Text = "User Name is too long or too short";
+                continueProcess += 1;
+            }
+            else if (txtModUserName.Text != "" || txtModUserName.Text != null)
+            {
+                try
+                {
+                    if (db.BLL_GetMember(txtModUserName.Text.ToString()) != null)
+                    {
+                        lblModError.Text = "User Name taken, Please retype a new one";
+                        txtModUserName.BorderColor = Color.Red;
+                        lblModError.ForeColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    txtModUserName.BorderColor = Color.Red;
+                    lblModError.Text = ex.Message;
+                    lblModError.ForeColor = Color.Red;
+                    continueProcess += 1;
+                }
+            }
+
+            if (lblModError.Text == "" || lblModError.Text == null)
+            {
+                if (txtModFName.Text == "" || txtModFName.Text == null)
+                {
+                    txtModFName.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtModLName.Text == "" || txtModLName.Text == null)
+                {
+                    txtModLName.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtModDOB.Text == "" || txtModDOB == null)
+                {
+                    txtModDOB.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtModDOB.Text.Length > 10 || txtModDOB.Text.Length < 10)
+                {
+                    txtModDOB.BorderColor = Color.Red;
+                    continueProcess += 1;
+                    lblModError.Text = "Please follow the format: yyyy-mm-dd";
+                    lblModError.ForeColor = Color.Red;
+                }
+                else if (txtModEmail.Text == "" || txtModEmail == null)
+                {
+                    txtModEmail.BorderColor = Color.Red;
+                    lblModError.Text = "Please enter your Email address";
+                    lblModError.ForeColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtModPassword.Text == null || txtModPassword.Text == "")
+                {
+                    lblModError.Text = "Please create a Password";
+                    lblModError.ForeColor = Color.Red;
+                    continueProcess += 1;
+                    txtModPassword.BorderColor = Color.Red;
+                }
+                else if (txtModRetypePassword.Text == null || txtModRetypePassword.Text == "")
+                {
+                    lblModError.Text = "Please retype your Password";
+                    lblModError.ForeColor = Color.Red;
+                    continueProcess += 1;
+                    txtModRetypePassword.BorderColor = Color.Red;
+                }
+                else if (txtModContactNo.Text.Length > 10 || txtModContactNo.Text.Length < 10)
+                {
+                    if (txtModContactNo.Text.Length != 0) //!0 contact number field is allowed to be left empty.
+                    {
+                        lblModError.Text = "Please enter a correct contact number";
+                        lblModError.ForeColor = Color.Red;
+                        continueProcess += 1;
+                        txtModContactNo.BorderColor = Color.Red;
+                    }
+                }
+            }
+
+            if (continueProcess == 0)
+            {
+                string encryptionPass = Convert.ToString(txtModUserName.Text);
+                Encryption encryption = new Encryption();
+                Member member = new Member();
+
+                string encryptedString = encryption.Encrypt(encryptionPass, Convert.ToString(txtModPassword.Text));
+
+                member.MemberID = Convert.ToString(txtModUserName.Text);
+                member.MemberName = Convert.ToString(txtModFName.Text);
+                member.MemberLastName = Convert.ToString(txtModLName.Text);
+                member.MemberDOB = Convert.ToDateTime(txtModDOB.Text);
+                member.Password = Convert.ToString(encryptedString);
+                member.MemberType = 'O';
+                member.ActiveTypeID = 'Y';
+                member.Email = Convert.ToString(txtModEmail.Text);
+                member.ContactNo = Convert.ToString(txtModContactNo.Text);
+                member.ActivationExpiry = Convert.ToDateTime(DateTime.Today.AddDays(1));
+                member.ActivationDate = Convert.ToDateTime(DateTime.Today.ToLocalTime());
+
+                bool success = db.BLL_AddMember(member);
+
+                Moderater moderater = new Moderater();
+                moderater.ModeraterID = txtModUserName.Text;
+                moderater.QualificationID = ddModQualification.SelectedValue.ToString();
+
+                db.BLL_AddModeraterQualification(moderater);
+
+                divAddMod.Visible = true;
+
+                txtModUserName.Text = string.Empty;
+                txtModFName.Text = string.Empty;
+                txtModLName.Text = string.Empty;
+                txtModContactNo.Text = string.Empty;
+                txtModDOB.Text = string.Empty;
+                txtModEmail.Text = string.Empty;
+
+            }
+        }
+
+        protected void btnModRegCancel_Click(object sender, EventArgs e)
+        {
+            divAddMod.Visible = true;
+
+            txtModUserName.Text = string.Empty;
+            txtModFName.Text = string.Empty;
+            txtModLName.Text = string.Empty;
+            txtModContactNo.Text = string.Empty;
+            txtModDOB.Text = string.Empty;
+            txtModEmail.Text = string.Empty;
+            txtModRetypePassword.Text = string.Empty;
+            txtModPassword.Text = string.Empty;
+
+        }
+
+        protected void btnUpdateZakaahOrg_Click(object sender, EventArgs e)
+        {
+            divAddUpdateZakaahOrg.Visible = true;
+            divZakaahOrgList.Visible = true;
+            ddOrgActive.Enabled = true;
+            btnAddUpdateOrg.Text = "Update Details";
+
+            DBHandler db = new DBHandler();
+
+            rptZakaahOrg.DataSource = db.BLL_GetOrganization();
+            rptZakaahOrg.DataBind();
+        }
+
+        protected void btnShowOrg_Click(object sender, EventArgs e)
+        {
+
+            //show from the list...
+            LinkButton linkButton = (LinkButton)sender;
+
+            string orgID = linkButton.CommandArgument.ToString();
+            hdfZakaahOrg.Value = orgID;
+
+            DBHandler db = new DBHandler();
+            Organization org = new Organization();
+
+            org = db.BLL_GetSelectedZakaahOrg(Convert.ToInt32(orgID));
+
+            txtOrgName.Text = org.Name;
+            txtOrgWebAddr.Text = org.WebsiteAddress;
+            txtOrgContactNo.Text = org.ContactNo;
+            txtOrgPhyAddress.Text = org.PhysicalAddress;
+            ddOrgActive.SelectedValue = Convert.ToString(org.Active);
+
+            divZakaahOrgList.Visible = true;
+            divAddUpdateZakaahOrg.Visible = true;
+        }
+
+        protected void btnAddUpdateOrg_Click(object sender, EventArgs e)
+        {
+            divZakaahOrgList.Visible = true;
+            divAddUpdateZakaahOrg.Visible = true;
+
+            DBHandler db = new DBHandler();
+
+            int continueProcess = 0;
+
+            if (txtOrgName.Text == "" || txtOrgName.Text == null)
+            {
+                txtOrgName.BorderColor = Color.Red;
+                lblOrgError.Text = "Incomplete Form, Please provide a Organization Name";
+                continueProcess += 1;
+            }
+            else if (txtOrgContactNo.Text == "" || txtOrgContactNo.Text == null)
+            {
+                txtOrgContactNo.BorderColor = Color.Red;
+                continueProcess += 1;
+            }
+
+            if (fupOrgImage.HasFile)
+            {
+                string fileName = fupOrgImage.FileName.ToString();
+                string fileFormat = fileName.Substring(fileName.Length - 3); //get last character of Image name.
+                switch (fileFormat)
+                {
+                    case "png":
+                    case "jpg":
+                    case "gif":
+                    case "bmp":
+                        break;
+                    default:
+                        continueProcess += 1;
+                        lblOrgError.Text = "The file Uploaded is not of the correct format.";
+                        lblOrgError.ForeColor = Color.Red;
+                        break;
+                }
+            }
+
+            if (continueProcess == 0)
+            {
+                if (btnAddUpdateOrg.Text == "Add Organization")
+                {
+                    uspAddZakaahOrg addZakaahOrg = new uspAddZakaahOrg();
+
+                    addZakaahOrg.Name = txtOrgName.Text.ToString();
+                    addZakaahOrg.WebsiteAddress = txtOrgWebAddr.Text.ToString();
+                    addZakaahOrg.ContactNo = txtOrgContactNo.Text.ToString();
+                    addZakaahOrg.PhysicalAddress = txtOrgPhyAddress.Text.ToString();
+                    addZakaahOrg.Active = 'Y';
+                    if(fupOrgImage.HasFile)
+                    {
+                        addZakaahOrg.Image = fupOrgImage.FileBytes; //Image to upload ...
+                    }
+
+                    db.BLL_AddZakaahOrganization(addZakaahOrg);
+
+
+                    divZakaahOrgList.Visible = false;
+                    divAddUpdateZakaahOrg.Visible = true;
+                    ddOrgActive.Enabled = false;
+
+                }
+                else if (btnAddUpdateOrg.Text == "Update Details")
+                {
+                    uspUpdateZakaahOrg updateZakaahOrg = new uspUpdateZakaahOrg();
+
+                    updateZakaahOrg.OrganizationID = Convert.ToInt32(hdfZakaahOrg.Value);
+                    updateZakaahOrg.Name = txtOrgName.Text.ToString();
+                    updateZakaahOrg.WebsiteAddress = txtOrgWebAddr.Text.ToString();
+                    updateZakaahOrg.ContactNo = txtOrgContactNo.Text.ToString();
+                    updateZakaahOrg.PhysicalAddress = txtOrgPhyAddress.Text.ToString();
+                    updateZakaahOrg.Active = Convert.ToChar(ddOrgActive.SelectedValue);
+                    updateZakaahOrg.Image = fupOrgImage.FileBytes; //Image to upload ...
+
+                    db.BLL_UpdateZakaahOrg(updateZakaahOrg);
+
+                    divZakaahOrgList.Visible = true;
+                    divAddUpdateZakaahOrg.Visible = true;
+
+                    //Refresh the List...
+                    rptZakaahOrg.DataSource = db.BLL_GetOrganization();
+                    rptZakaahOrg.DataBind();
+                }
+
+                txtOrgName.Text = string.Empty;
+                txtOrgWebAddr.Text = string.Empty;
+                txtOrgContactNo.Text = string.Empty;
+                txtOrgPhyAddress.Text = string.Empty;
+                ddOrgActive.SelectedIndex = 0;
+                fupOrgImage.Attributes.Clear();
+            }
+        }
+
+        protected void btnAddZakaahOrg_Click(object sender, EventArgs e)
+        {
+            divZakaahOrgList.Visible = false;
+            divAddUpdateZakaahOrg.Visible = true;
+            ddOrgActive.Enabled = false;
+
+            txtOrgName.Text = string.Empty;
+            txtOrgWebAddr.Text = string.Empty;
+            txtOrgContactNo.Text = string.Empty;
+            txtOrgPhyAddress.Text = string.Empty;
+            ddOrgActive.SelectedIndex = 0;
+            fupOrgImage.Attributes.Clear();
+
+            btnAddUpdateOrg.Text = "Add Organization";
+        }
+
+        protected void btnCancelAddUpdateOrg_Click(object sender, EventArgs e)
+        {
+            divZakaahOrgList.Visible = false;
+            divAddUpdateZakaahOrg.Visible = false;
+            lblTaskHead.InnerText = string.Empty;
+
+            txtOrgName.Text = string.Empty;
+            txtOrgWebAddr.Text = string.Empty;
+            txtOrgContactNo.Text = string.Empty;
+            txtOrgPhyAddress.Text = string.Empty;
+            ddOrgActive.SelectedIndex = 0;
+            fupOrgImage.Attributes.Clear();
         }
     }
 }
