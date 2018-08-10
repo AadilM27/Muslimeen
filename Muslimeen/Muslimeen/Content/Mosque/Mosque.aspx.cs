@@ -84,11 +84,13 @@ namespace Muslimeen.Content.Mosque
                     lblMosqueType.Text = mosque.MosqueType;
                     lblMosqueSize.Text = mosque.MosqueSize;
                     lblQuote.Text = mosque.MosqueQuote;
-                    imgMosque.ImageUrl = mosque.MosqueImage;
-                    lblMembers.Text = "111";////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    lblMosqueRep.Text = "Ali Aadam";///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    imgMosque.ImageUrl=mosque.MosqueImage;
+                    lblMembers.Text = mosque.MemberCount.ToString();
+                    uspGetMember member = new uspGetMember();
+                   member = db.BLL_GetMosqueRep(int.Parse(Session["MosqueID"].ToString()));
+                   lblMosqueRep.Text = member.MemberName.ToString() + " " + member.MemberLastName.ToString();
                 }
-                catch { }
+                catch { throw; }
                 #endregion LoadAdd/UpdatePrayer
             }
             catch { }

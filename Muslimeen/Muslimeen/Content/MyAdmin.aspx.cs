@@ -28,24 +28,31 @@ namespace Muslimeen.Content
                 divViewPendingSch.Visible = false;
                 divAddMosque.Visible = false;
                 divAddMosqueRep.Visible = false;
-                //txtMosqueEstab.
+                divAddMod.Visible = false;
 
                 DBHandler dBHandler = new DBHandler();
 
                 if (Session["UserName"] != null)
                 {
                     uspGetMember uspGetMember = new uspGetMember();
-
                     uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
-                    hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
-                    divUserProfile.Visible = true;
 
-                    liMyMusbtn.Visible = true;
-                    liMyMusDivi.Visible = true;
+                    if (uspGetMember.MemberType == 'A')
+                    {
 
-                    btnLogin.Text = "Log out";
-                    btnRegister.Visible = false;
+                        hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
+                        divUserProfile.Visible = true;
 
+                        liMyMusbtn.Visible = true;
+                        liMyMusDivi.Visible = true;
+
+                        btnLogin.Text = "Log out";
+                        btnRegister.Visible = false;
+                    }
+                    else
+                    {
+                        Response.Redirect("~/Content/Error.aspx");
+                    }
                 }
                 else if (Session["UserName"] == null)
                 {
@@ -98,12 +105,6 @@ namespace Muslimeen.Content
                 btnRegister.Visible = true;
             }
         }
-
-        protected void btnUpdateIslmDate_Click(object sender, EventArgs e)
-        {
-            //divUpdateIslmDate.Visible = true;
-        }
-
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
@@ -557,6 +558,11 @@ namespace Muslimeen.Content
             txtMosqueQuote.Text = string.Empty;
             fupMosqueImage.Attributes.Clear();
 
+        }
+
+        protected void btnAddMod_Click(object sender, EventArgs e)
+        {
+            divAddMod.Visible = true;
         }
     }
 }
