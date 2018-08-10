@@ -35,7 +35,6 @@ C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Musl
 C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Muslimeen.DAL.pdb
 C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\TypeLib.dll
 C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\TypeLib.pdb
-C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csprojResolveAssemblyReference.cache
 C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csproj.CoreCompileInputs.cache
 C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csproj.CopyComplete
 C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.dll
@@ -64,6 +63,9 @@ C:\Users\s216211565\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug
 C:\Users\s216211565\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csproj.CoreCompileInputs.cache
 C:\Users\s216211565\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.dll
 C:\Users\s216211565\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.pdb
+<<<<<<< HEAD
+C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csprojResolveAssemblyReference.cache
+=======
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Muslimeen.DAL.dll
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Muslimeen.DAL.pdb
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\TypeLib.dll
@@ -73,3 +75,4 @@ C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csproj.CopyComplete
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.dll
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.pdb
+>>>>>>> 36f09d81fbcd51efb305c16f4467445231b030d0

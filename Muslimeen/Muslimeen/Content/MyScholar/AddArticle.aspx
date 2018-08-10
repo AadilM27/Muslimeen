@@ -265,7 +265,7 @@
                                     </div>
                                 </div>
                                 <div class="row mb-1 position-static">
-                                    <div class="col-2 position-static"><b>Date:</b></div>
+                                    <div class="col-2 position-static"><b>Rejection<br /> Reason:</b></div>
                                     <div class="col position-static text-truncate">
                                         <label class="m-0" runat="server" id="lblReason"></label>
                                     </div>
