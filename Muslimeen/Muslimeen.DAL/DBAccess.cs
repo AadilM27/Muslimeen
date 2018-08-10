@@ -1011,7 +1011,7 @@ namespace Muslimeen.BLL
                         NoticeID = Convert.ToInt32(row["NoticeID"]),
                         NoticeTitle = Convert.ToString(row["NoticeTitle"]),
                         NoticeDescription = Convert.ToString(row["NoticeDescription"]),
-                        NoticeDate = Convert.ToDateTime(row["NoticeDate"])
+                        DateCreated = Convert.ToDateTime(row["NoticeDate"])
                     };
                 }
             }

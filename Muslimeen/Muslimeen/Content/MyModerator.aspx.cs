@@ -353,7 +353,7 @@ namespace Muslimeen.Content.MyModerator
                 if (Session["UserName"] != null)
                 {
                     DBHandler dBHandler = new DBHandler();
-                    Moderator m = new Moderator();
+                    Moderater m = new Moderater();
                     AcceptArticle accept = new AcceptArticle();
 
                     string articleId = hdfSchId.Value.ToString();
