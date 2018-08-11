@@ -19,6 +19,8 @@ namespace Muslimeen.Content
         {
             try
             {
+                divAddUpdateNotice.Visible = false;
+                divNoticeList.Visible = false;
                 divZakaahOrgList.Visible = false;
                 divAddUpdateZakaahOrg.Visible = false;
                 divViewPendingSch.Visible = false;
@@ -73,6 +75,7 @@ namespace Muslimeen.Content
 
                     divUserProfile.Visible = false;
                     Session.Clear();
+                    Response.Redirect("~/Login/Login.aspx");
                 }
 
 
@@ -783,7 +786,6 @@ namespace Muslimeen.Content
         {
             divZakaahOrgList.Visible = true;
             divAddUpdateZakaahOrg.Visible = true;
-
             DBHandler db = new DBHandler();
 
             int continueProcess = 0;
@@ -902,6 +904,143 @@ namespace Muslimeen.Content
             txtOrgPhyAddress.Text = string.Empty;
             ddOrgActive.SelectedIndex = 0;
             fupOrgImage.Attributes.Clear();
+        }
+
+        protected void btnUpdateNotice_Click(object sender, EventArgs e)
+        {
+            divAddUpdateNotice.Visible = true;
+            divNoticeList.Visible = true;
+            txtNoticeMemberID.Enabled = false;
+            btnAddUpdateNotice.Text = "Update Notice";
+            lblTaskHead.InnerText = "Update Notice Details";
+
+            DBHandler db = new DBHandler();
+
+            rptNotice.DataSource = db.BLL_GetAllNotices();
+            rptNotice.DataBind();
+
+            txtNoticeTitle.Text = string.Empty;
+            txtNoticeDesc.Text = string.Empty;
+            txtNoticeDateCreated.Text = string.Empty;
+            txtNoticeExpiryDate.Text = string.Empty;
+            txtNoticeMemberID.Text = string.Empty;
+
+        }
+
+        protected void btnShowNotice_Click(object sender, EventArgs e)
+        {
+            divNoticeList.Visible = true;
+            divAddUpdateNotice.Visible = true;
+
+            LinkButton linkButton = (LinkButton)sender;
+
+            string noticeID = linkButton.CommandArgument.ToString();
+            hdfNotice.Value = noticeID;
+
+            DBHandler db = new DBHandler();
+            Notice notice = new Notice();
+
+            notice = db.BLL_GetSelectedNotice(Convert.ToInt32(noticeID));
+
+
+            txtNoticeTitle.Text = notice.NoticeTitle.ToString();
+            txtNoticeDesc.Text = notice.NoticeDescription.ToString();
+            txtNoticeDateCreated.Text = notice.DateCreated.ToString();
+            txtNoticeExpiryDate.Text = notice.DateExpiry.ToString("yyyy-MM-dd");
+            txtNoticeMemberID.Text = notice.MemberID.ToString();
+            ddNoticeActive.SelectedValue = notice.Active.ToString();
+        }
+
+        protected void btnAddNotice_Click(object sender, EventArgs e)
+        {
+            txtNoticeTitle.Text = string.Empty;
+            txtNoticeDesc.Text = string.Empty;
+            txtNoticeDateCreated.Text = string.Empty;
+            txtNoticeExpiryDate.Text = string.Empty;
+            txtNoticeMemberID.Text = string.Empty;
+            ddNoticeActive.SelectedIndex = 1;
+            txtNoticeDateCreated.Text = Convert.ToString(DateTime.Now.Date);
+            divNoticeList.Visible = false;
+            divAddUpdateNotice.Visible = true;
+            btnAddUpdateNotice.Text = "Add Notice";
+            txtNoticeMemberID.Enabled = false;
+            ddNoticeActive.Enabled = false;
+            txtNoticeMemberID.Text = Session["UserName"].ToString();
+            lblTaskHead.InnerText = "Add New Notice";
+
+        }
+
+        protected void btnAddUpdateNotice_Click(object sender, EventArgs e)
+        {
+            divNoticeList.Visible = true;
+            divAddUpdateNotice.Visible = true;
+
+            DBHandler db = new DBHandler();
+            Notice notice = new Notice();
+            int continueProcess = 0;
+
+            if (txtNoticeTitle.Text == "" || txtNoticeTitle.Text == null)
+            {
+                lblNoticeError.ForeColor = Color.Red;
+                lblNoticeError.Text = "Please enter a Notice title";
+                txtNoticeTitle.BorderColor = Color.Red;
+                continueProcess += 1;
+            }
+            else if (txtNoticeDesc.Text == "" || txtNoticeDesc.Text == null)
+            {
+                lblNoticeError.ForeColor = Color.Red;
+                lblNoticeError.Text = "Please enter a Notice Description";
+                txtNoticeDesc.BorderColor = Color.Red;
+                continueProcess += 1;
+            }
+            else if (txtNoticeExpiryDate.Text == "" || txtNoticeExpiryDate.Text == "dd --- yyyy")
+            {
+                lblNoticeError.ForeColor = Color.Red;
+                lblNoticeError.Text = "Please enter a Notice Expiry date";
+                txtNoticeExpiryDate.BorderColor = Color.Red;
+                continueProcess += 1;
+            }
+
+
+            if (continueProcess > 0)
+            {
+
+                if (btnAddUpdateNotice.Text == "Add Notice")
+                {
+                    notice.NoticeTitle = txtNoticeTitle.Text;
+                    notice.NoticeDescription = txtNoticeDesc.Text;
+                    notice.MemberID = Session["UserName"].ToString();
+                    notice.DateCreated = Convert.ToDateTime(txtNoticeDateCreated.Text);
+                    notice.DateExpiry = Convert.ToDateTime(txtNoticeExpiryDate.Text);
+                    notice.Active = 'Y';
+
+                    db.BLL_AddNotice(notice);
+                }
+                else if (btnAddUpdateNotice.Text == "Update Notice")
+                {
+                    notice.NoticeID = Convert.ToInt32(hdfNotice.Value);
+                    notice.NoticeTitle = txtNoticeTitle.Text;
+                    notice.NoticeDescription = txtNoticeDesc.Text;
+                    notice.MemberID = Session["UserName"].ToString();
+                    notice.DateCreated = DateTime.Today.ToLocalTime();
+                    notice.DateExpiry = Convert.ToDateTime(txtNoticeExpiryDate.Text);
+                    notice.Active = Convert.ToChar(ddNoticeActive.SelectedValue);
+
+                    db.BLL_UpdateNotice(notice);
+
+                    //Refresh list...
+                    rptNotice.DataSource = db.BLL_GetAllNotices();
+                    rptNotice.DataBind();
+
+                }
+
+                txtNoticeTitle.Text = string.Empty;
+                txtNoticeDesc.Text = string.Empty;
+                txtNoticeDateCreated.Text = string.Empty;
+                txtNoticeExpiryDate.Text = string.Empty;
+                txtNoticeMemberID.Text = string.Empty;
+                ddNoticeActive.SelectedIndex = 0;
+            }
         }
     }
 }

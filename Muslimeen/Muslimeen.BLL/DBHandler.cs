@@ -270,5 +270,25 @@ namespace Muslimeen.BLL
         {
             return dBAccess.UpdateZakaahOrg(updateZakaahOrg);
         }
+
+        public bool BLL_AddNotice(Notice notice)
+        {
+            return dBAccess.AddNotice(notice);
+        }
+
+        public bool BLL_UpdateNotice(Notice notice)
+        {
+            return dBAccess.UpdateNotice(notice);
+        }
+
+        public List<Notice> BLL_GetAllNotices()
+        {
+            return dBAccess.GetAllNotices();
+        }
+
+        public Notice BLL_GetSelectedNotice(int notice)
+        {
+            return dBAccess.GetSelectedNotice(notice);
+        }
     }
 }

@@ -1329,8 +1329,11 @@ namespace Muslimeen.BLL
                     org.WebsiteAddress = Convert.ToString(row["WebsiteAddress"]);
                     if (!(row["Image"] is DBNull))
                     {
-                        org.Image = Convert.ToString(row["Image"]);
+                        Byte[] bytes = (Byte[])row["Image"]; //Make byets in to base64String.
+                        string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+                        org.Image = "data:image/jpg;base64," + base64String;
                     }
+
                     org.ContactNo = Convert.ToString(row["ContactNo"]);
                     org.PhysicalAddress = Convert.ToString(row["PhysicalAddress"]);
                     org.Active = Convert.ToChar(row["Active"]);
@@ -1350,6 +1353,89 @@ namespace Muslimeen.BLL
                 }
             }
             return DBHelper.NonQuery("uspUpdateZakaahOrg", CommandType.StoredProcedure, pars.ToArray());
+        }
+
+        public bool AddNotice(Notice notice)
+        {
+            List<SqlParameter> pars = new List<SqlParameter>();
+            foreach(var prop in notice.GetType().GetProperties())
+            {
+                if(prop.GetValue(notice) != null)
+                {
+                    pars.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(notice)));
+                }
+            }
+            return DBHelper.NonQuery("uspAddNotice", CommandType.StoredProcedure, pars.ToArray());
+        }
+
+        public bool UpdateNotice(Notice notice)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            foreach (var prop in notice.GetType().GetProperties())
+            {
+                if (prop.GetValue(notice) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(notice)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdateNotice", CommandType.StoredProcedure,
+                parameters.ToArray());
+
+        }
+
+        public List<Notice> GetAllNotices()
+        {
+            List<Notice> list = new List<Notice>();
+
+            using (DataTable table = DBHelper.Select("uspGetAllNotices", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        Notice eve = new Notice
+                        {
+                            NoticeID = Convert.ToInt32(row["NoticeID"]),
+                            NoticeTitle = Convert.ToString(row["NoticeTitle"]),
+                            NoticeDescription = Convert.ToString(row["NoticeDescription"]),
+                            MemberID = Convert.ToString(row["MemberID"]),
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]),
+                            DateExpiry = Convert.ToDateTime(row["DateExpiry"]),
+                            Active = Convert.ToChar(row["Active"])
+                        };
+                        list.Add(eve);
+                    }
+                }
+            }
+            return list;
+        }
+
+        public Notice GetSelectedNotice(int noticeID)
+        {
+            Notice notice = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@NoticeID", noticeID)
+            };
+
+            using (DataTable tbl = DBHelper.ParamSelect("uspGetSelectedNotice", CommandType.StoredProcedure, pars))
+            {
+                if (tbl.Rows.Count == 1)
+                {
+                    DataRow row = tbl.Rows[0];
+                    notice = new Notice
+                    {
+                        NoticeID = Convert.ToInt32(row["NoticeID"]),
+                        NoticeTitle = Convert.ToString(row["NoticeTitle"]),
+                        NoticeDescription = Convert.ToString(row["NoticeDescription"]),
+                        MemberID = Convert.ToString(row["MemberID"]),
+                        DateCreated = Convert.ToDateTime(row["DateCreated"]),
+                        DateExpiry = Convert.ToDateTime(row["DateExpiry"]),
+                        Active = Convert.ToChar(row["Active"])
+                    };
+                }
+            }
+            return notice;
 
         }
     }
