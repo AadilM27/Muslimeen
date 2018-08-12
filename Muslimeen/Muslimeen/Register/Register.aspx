@@ -43,12 +43,12 @@
                     <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtContactNum" placeholder="Contact Number"></asp:TextBox>
                 </div>
                 <div class="form-group col-sm-7 mb-1 mt-1">
-                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtDOB" placeholder="yyyy-mm-dd*"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" Onkeyup="AddDateChars();" ID="txtDOB" placeholder="dd/mm/yyyy*"></asp:TextBox>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-sm-5  mb-1 mt-1">
-                 <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtUserEmail" placeholder="Email Address*"></asp:TextBox>
+                 <asp:TextBox CssClass="form-control col main-txtb" Onblur="EmailValidation();" runat="server" ID="txtUserEmail" placeholder="Email Address*"></asp:TextBox>
                 </div>
                 <div class="form-group col-sm-7 mb-1 mt-1">
                     <asp:DropDownList CssClass="form-control col" runat="server" ID="ddUsertype" AutoPostBack="true" OnSelectedIndexChanged="ddUsertype_SelectedIndexChanged" OnTextChanged="ddUsertype_SelectedIndexChanged" >
