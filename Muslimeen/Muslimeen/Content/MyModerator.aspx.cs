@@ -39,7 +39,7 @@ namespace Muslimeen.Content.MyModerator
                     uspGetMember uspGetMember = new uspGetMember();
                     uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
 
-                    if (uspGetMember.MemberType == 'M')
+                    if (uspGetMember.MemberType == 'O')
                     {
                         hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
                         divUserProfile.Visible = true;
@@ -202,7 +202,7 @@ namespace Muslimeen.Content.MyModerator
 
                 uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
 
-                if (uspGetMember.MemberType == 'M')
+                if (uspGetMember.MemberType == 'O')
                 {
                     Response.Redirect("~/Content/MyModerator.aspx");
                 }
@@ -210,7 +210,7 @@ namespace Muslimeen.Content.MyModerator
                 {
                     Response.Redirect("~/Content/MyAdmin.aspx");
                 }
-                else if (uspGetMember.MemberType == 'O')
+                else if (uspGetMember.MemberType == 'M')
                 {
                     Response.Redirect("~/Content/MyMember.aspx");
                 }
@@ -367,7 +367,7 @@ namespace Muslimeen.Content.MyModerator
                     string articleId = hdfSchId.Value.ToString();
 
                     accept.ArticleID = Convert.ToInt32(articleId);
-                    accept.ModeraterID = Session["UserName"].ToString();
+                    accept.ModeratorID = "UJappie741";
                     accept.Status = 'A';
                     accept.Active = 'Y';
                    
@@ -392,7 +392,7 @@ namespace Muslimeen.Content.MyModerator
                 string articleId = hdfSchId.Value.ToString();
 
 
-                accept.ModeraterID = Session["UserName"].ToString();
+                accept.ModeratorID = Session["UserName"].ToString();
                 accept.Status = 'R';
                 accept.Active = 'N';
                 accept.RejectionReason = txtRejectReason.Text.ToString();
