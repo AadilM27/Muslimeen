@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +9,7 @@ using TypeLib.ViewModels;
 using Muslimeen.BLL;
 using System.Data;
 using System.Drawing;
-
+     
 namespace Muslimeen.Content
 {
     public partial class MyAdmin : System.Web.UI.Page
