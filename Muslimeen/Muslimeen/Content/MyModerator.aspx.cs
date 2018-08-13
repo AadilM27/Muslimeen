@@ -13,6 +13,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.html.simpleparser;
 
+
 namespace Muslimeen.Content.MyModerator
 {
     public partial class MyModerator : System.Web.UI.Page
@@ -28,24 +29,32 @@ namespace Muslimeen.Content.MyModerator
                 divViewPendingSch.Visible = false;
                 divDisplaySch.Visible = false;
                 divViewArt.Visible = false;
-                divViewReports.Visible = false;
                 divDisplayReports.Visible = false;
-                divPDF.Visible = false;
+                divSchDetails.Visible = false;
+                divSchDetailsOverlay.Visible = false;
+                
 
                 if (Session["UserName"] != null)
                 {
                     uspGetMember uspGetMember = new uspGetMember();
-
                     uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
-                    hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
-                    divUserProfile.Visible = true;
 
-                    liMyMusbtn.Visible = true;
-                    liMyMusDivi.Visible = true;
+                    if (uspGetMember.MemberType == 'O')
+                    {
+                        hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
+                        divUserProfile.Visible = true;
 
-                    btnLogin.Text = "Log out";
-                    btnRegister.Visible = false;
+                        liMyMusbtn.Visible = true;
+                        liMyMusDivi.Visible = true;
 
+                        btnLogin.Text = "Log out";
+                        btnRegister.Visible = false;
+
+                    }
+                    else
+                    {
+                        Response.Redirect("~/Content/Error.aspx");
+                    }
                 }
                 else if (Session["UserName"] == null)
                 {
@@ -54,6 +63,7 @@ namespace Muslimeen.Content.MyModerator
 
                     divUserProfile.Visible = false;
                     Session.Clear();
+                    Response.Redirect("~/Login/Login.aspx");
                 }
 
 
@@ -69,7 +79,7 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
-                //lblHeading.Text = "Pending Articles";
+                LblHeading.Text = "Articles";
                 divDisplaySch.Visible = false;
                 divViewPendingSch.Visible = false;
                
@@ -109,11 +119,12 @@ namespace Muslimeen.Content.MyModerator
 
         protected void btnViewPendingSch_Click(object sender, EventArgs e)
         {
-            //lblHeading.Text = "Pending Scholars";
+            LblHeading.Text = "Scholars";
             divViewPendingArt.Visible = false;
            
-            divDisplaySch.Visible = true;
+            divDisplaySch.Visible = false;
             divViewPendingSch.Visible = true;
+            divSchDetailsOverlay.Visible = true;
 
             DBHandler dBHandler = new DBHandler();
 
@@ -134,7 +145,7 @@ namespace Muslimeen.Content.MyModerator
 
                 Session.Clear();
                 Session.Abandon();
-                Response.Redirect("~/Content/MyAdmin.aspx");
+                Response.Redirect("~/Content/MyModerator.aspx");
                 btnLogin.Text = "Login";
                 btnRegister.Visible = true;
             }
@@ -191,17 +202,17 @@ namespace Muslimeen.Content.MyModerator
 
                 uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
 
-                if (uspGetMember.MemberType == 'A')
+                if (uspGetMember.MemberType == 'O')
+                {
+                    Response.Redirect("~/Content/MyModerator.aspx");
+                }
+                else if (uspGetMember.MemberType == 'A')
                 {
                     Response.Redirect("~/Content/MyAdmin.aspx");
                 }
                 else if (uspGetMember.MemberType == 'M')
                 {
                     Response.Redirect("~/Content/MyMember.aspx");
-                }
-                else if (uspGetMember.MemberType == 'O')
-                {
-                    Response.Redirect("~/Content/MyModerator.aspx");
                 }
                 else if (uspGetMember.MemberType == 'S')
                 {
@@ -224,24 +235,24 @@ namespace Muslimeen.Content.MyModerator
                 hdfSchId.Value = memberId;
 
                 DBHandler dBHandler = new DBHandler();
-                uspGetMember member = new uspGetMember();
+                uspGetScholarDetails scholarDetails = new uspGetScholarDetails();
 
-                member = dBHandler.BLL_GetMember(memberId);
-
-                lblMemberID.InnerText = member.MemberID.ToString();
-                lblMemberName.InnerText = member.MemberName.ToString();
-                lblMemberLastName.InnerText = member.MemberLastName.ToString();
-                lblMemberDOB.InnerText = member.MemberDOB.ToString("yyyy-MM-dd");
-                lblMemberType.InnerText = member.MemberType.ToString();
-                lblActiveTypeID.InnerText = member.ActiveTypeID.ToString();
-                lblEmail.InnerText = member.Email.ToString();
-                lblContactNo.InnerText = member.ContactNo.ToString();
-                lblActivationExpiry.InnerText = member.ActivationExpiry.ToString("yyyy-MM-dd");
-                lblActivationDate.InnerText = member.ActivationDate.ToString("yyyy-MM-dd");
+                scholarDetails = dBHandler.BLL_GetScholarDetails(memberId);
+                lblMemberID.InnerText = scholarDetails.ScholarID.ToString();
+                lblMemberName.InnerText = scholarDetails.MemberName.ToString();
+                lblMemberLastName.InnerText = scholarDetails.MemberLastName.ToString();
+                lblMemberDOB.InnerText = scholarDetails.MemberDOB.ToString();
+                lblMemberType.InnerText = scholarDetails.MemberType.ToString();
+                lblEmail.InnerText = scholarDetails.Email.ToString();
+                lblContactNo.InnerText = scholarDetails.ContactNo.ToString();
+                lblActivationExpiry.InnerText = scholarDetails.ActivationExpiry.ToString();
+                lblActivationDate.InnerText = scholarDetails.ActivationDate.ToString();
+                lblScholarQual.InnerText = scholarDetails.QualificationDescription.ToString();
 
                 divViewPendingSch.Visible = true;
                 divViewArt.Visible = false;
                 divDisplaySch.Visible = true;
+                divSchDetails.Visible = true;
             }
             catch
             {
@@ -271,7 +282,9 @@ namespace Muslimeen.Content.MyModerator
 
 
                     emailService.AutoEmailService(uspGetMember.Email.ToString(), "NULL", "NULL", "AcceptedScholars", memberId.ToString(), "NULL");
-
+                    divDisplaySch.Visible = false;
+                    divSchDetailsOverlay.Visible = true;
+                    divViewPendingSch.Visible = true;
                 }
             }
             catch
@@ -347,24 +360,26 @@ namespace Muslimeen.Content.MyModerator
             {
                 if (Session["UserName"] != null)
                 {
+                    DBHandler dBHandler = new DBHandler();
+                    Moderater m = new Moderater();
                     AcceptArticle accept = new AcceptArticle();
 
                     string articleId = hdfSchId.Value.ToString();
 
-
-                    accept.ModeraterID = Session["UserName"].ToString();
+                    accept.ArticleID = Convert.ToInt32(articleId);
+                    accept.ModeratorID = "UJappie741";
                     accept.Status = 'A';
                     accept.Active = 'Y';
-                    accept.RejectionReason = "";
-                    accept.ArticleID = Convert.ToInt32(articleId);
-                    DBHandler dBHandler = new DBHandler();
-
-                    dBHandler.BLL_AcceptArticle(accept);
+                   
+                    if (dBHandler.BLL_AcceptArticle(accept))
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Article Accepted!')", true);
+                    }
                 }
             }
             catch
             {
-
+                throw;
             }
         }
 
@@ -377,7 +392,7 @@ namespace Muslimeen.Content.MyModerator
                 string articleId = hdfSchId.Value.ToString();
 
 
-                accept.ModeraterID = Session["UserName"].ToString();
+                accept.ModeratorID = Session["UserName"].ToString();
                 accept.Status = 'R';
                 accept.Active = 'N';
                 accept.RejectionReason = txtRejectReason.Text.ToString();
@@ -397,30 +412,13 @@ namespace Muslimeen.Content.MyModerator
 
         }
 
-        protected void btnViewReports_Click(object sender, EventArgs e)
-        {
-            divDisplaySch.Visible = false;
-            divViewPendingSch.Visible = false;
-
-
-            divViewPendingArt.Visible = false;
-            divViewArt.Visible = false;
-            divViewReports.Visible = true;
-            divDisplayReports.Visible = true;
-            grdReports.Visible = true;
-            divPDF.Visible = true;
-           
-           
-        }
-
         protected void BtnAcceptedScholars_Click(object sender, EventArgs e)
         {
             try
             {
 
-                divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
-                divPDF.Visible = true;
+                
                 DBHandler handler = new DBHandler();
                 uspGetAcceptedScholars acc = new uspGetAcceptedScholars();
                 
@@ -439,9 +437,8 @@ namespace Muslimeen.Content.MyModerator
             try
             {
 
-                divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
-                divPDF.Visible = true;
+                
                 DBHandler handler = new DBHandler();
                 uspGetAcceptedScholars acc = new uspGetAcceptedScholars();
 
@@ -459,9 +456,8 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
-                divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
-                divPDF.Visible = true;
+                
                 DBHandler han = new DBHandler();
                 uspGetAcceptedArticle art = new uspGetAcceptedArticle();
 
@@ -477,9 +473,8 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
-                divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
-                divPDF.Visible = true;
+                
                 DBHandler han = new DBHandler();
                 uspGetRejectedArticle rej = new uspGetRejectedArticle();
 
@@ -495,9 +490,8 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
-                divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
-                divPDF.Visible = true;
+                
                 DBHandler han = new DBHandler();
                 uspGetMosqueReports mr = new uspGetMosqueReports();
 
@@ -513,9 +507,8 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
-                divViewReports.Visible = true;
                 divDisplayReports.Visible = true;
-                divPDF.Visible = true;
+              
                 DBHandler han = new DBHandler();
                 uspGetEventReports mr = new uspGetEventReports();
 
@@ -533,22 +526,38 @@ namespace Muslimeen.Content.MyModerator
            
         }
 
-        protected void PDF_Click(object sender, ImageClickEventArgs e)
+        protected void PDF_ServerClick(object sender, EventArgs e)
         {
-            PdfPTable tbl = new PdfPTable(grdReports.HeaderRow.Cells.Count);
-            foreach (GridViewRow row in grdReports.Rows)
+            PdfPTable pdfTable = new PdfPTable(grdReports.HeaderRow.Cells.Count);
+
+            foreach (TableCell Headercell in grdReports.HeaderRow.Cells)
             {
-                foreach (TableCell cell in row.Cells)
+                Font font = new Font();
+                font.Color = new BaseColor(grdReports.HeaderStyle.ForeColor);
+
+                PdfPCell pdfCell = new PdfPCell(new Phrase(Headercell.Text, font));
+                pdfCell.BackgroundColor = new BaseColor(grdReports.HeaderStyle.BackColor);
+                pdfTable.AddCell(pdfCell);
+            }
+
+            foreach (GridViewRow gridviewrow in grdReports.Rows)
+            {
+                foreach (TableCell tablecell in gridviewrow.Cells)
                 {
-                    PdfPCell pdfCell = new PdfPCell(new Phrase(cell.Text));
-                    tbl.AddCell(pdfCell);
+                    Font font = new Font();
+                    font.Color = new BaseColor(grdReports.RowStyle.ForeColor);
+
+                    PdfPCell pdfcell = new PdfPCell(new Phrase(tablecell.Text));
+                    pdfcell.BackgroundColor = new BaseColor(grdReports.RowStyle.BackColor);
+                    pdfTable.AddCell(pdfcell);
                 }
             }
+
             Document pdfDocument = new Document(PageSize.A4, 10f, 10f, 10f, 10f);
             PdfAWriter.GetInstance(pdfDocument, Response.OutputStream);
 
             pdfDocument.Open();
-            pdfDocument.Add(tbl);
+            pdfDocument.Add(pdfTable);
             pdfDocument.Close();
 
             Response.ContentType = "application/pdf";

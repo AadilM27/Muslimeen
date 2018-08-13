@@ -83,23 +83,29 @@
                     <div class="side-bar p-0 basic-div-styling mr-1">
                         <!--contains the buttons-->
                         <div class="head-div text-center p-2">
-                            <p class="text-uppercase m-0 font-weight-bold" style="font-size:20px">Moderator Tasks:</p>
+                            <p class="text-uppercase m-0 font-weight-bold" style="font-size:20px">Moderator Tasks</p>
                         </div>
                         <nav class="nav flex-column pt-2 pb-2 pr-0">
                             <asp:Button runat="server" ToolTip="Pending Scholar Registrations." ID="btnViewPendingSch" OnClick="btnViewPendingSch_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="View Pending Scholars" />
                             <asp:Button runat="server" ID="btnViewPendingArticles" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnViewPendingArticles_Click" Text="View Pending Articles" />
-                            <asp:Button runat="server" ID="btnViewReports" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnViewReports_Click" Text="View Reports" />
-
+                            <p class="pl-2 btn taskBtn mb-1">View Reports &#11167;</p>
+                                <%-- sub buttons of report button --%>
+                                <asp:Button ID="BtnAcceptedScholars" CssClass=" pl-2 btn sub-taskBtn mb-1 " runat="server" Text="Accepted Scholars" OnClick="BtnAcceptedScholars_Click" />                                  
+                                <asp:Button ID="btnRejectedScholars"  CssClass=" pl-2 btn sub-taskBtn mb-1" runat="server" Text="Rejected Scholars" OnClick="btnRejectedScholars_Click" />
+                                <asp:Button ID="BtnAcceptedArticles" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="Accepted Articles" OnClick="BtnAcceptedArticles_Click" />
+                                <asp:Button ID="BtnRejectedArticles" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="Rejected Articles" OnClick="BtnRejectedArticles_Click" />
+                                <asp:Button ID="BtnMosqueReports" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="List of Mosques" OnClick="BtnMosqueReports_Click" />
+                                <asp:Button ID="BtnEventReports" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="List of Events" OnClick="BtnEventReports_Click" />
                         </nav>
                     </div>
                     <div class=" position-static basic-div-styling p-0  w-100" >
                         <div runat="server" id="divTaskHead" class=" head-div text-center p-2 mb-1">
-                            <h4 class="p-0 m-0"></h4>
+                            <h4> <asp:Label ID="LblHeading" runat="server" class=" p-0 m-0"></asp:Label></h4>
                         </div>
-                        <div class="row p-0 m-0 tab-content right-bottom-div p-1" >
-                            <div class="col-6 position-static p-0 dash-content" runat="server" id="divViewPendingSch">
+                        <div class="row p-0 m-0 right-bottom-div p-1 flex-nowrap justify-content-xl-start" >
+                            <div class="col-6 col-xl-4 p-0 mr-1" runat="server" id="divViewPendingSch" style="position:static">
                                 <!--Contains the List of items-->
-                                <div class=" head-div-2 p-2 mb-1 ">
+                                <div class=" head-div-2 p-2 mb-1 text-left">
                                     <p class="m-0">Pending Registrations</p>
                                 </div>
                                 <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
@@ -130,7 +136,7 @@
                                     </asp:Repeater>
                                 </div>
                             </div>
-                            <div class="col-6 position-static p-0 dash-content" runat="server" id="divViewPendingArt">
+                            <div class="col-6 col-xl-4 p-0 mr-1" runat="server" id="divViewPendingArt" style="position:static">
                                 <!--Contains the List of items-->
                                 <div class=" head-div-2 p-2 mb-1 ">
                                     <p class="m-0">Pending Articles</p>
@@ -163,144 +169,144 @@
                                     </asp:Repeater>
                                 </div>
                             </div>
-                            <div runat="server" id="divDisplaySch" class="col-5 position-static dash-content  p-0 basic-div-styling-2">
-                                <asp:HiddenField runat="server" ID="hdfSchId" Value="" />
-                                <div class=" head-div-2 p-2 mb-0 ">
-                                    <p class="m-0">Member Details:</p>
-                                </div>
-                                <div class="p-2 m-0">
-                                    <div class="">
-                                        <div class="row position-static">
-                                            <div class="col position-static"><b>Member  ID:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label runat="server" id="lblMemberID"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row position-static">
-                                            <div class="col position-static"><b>Member Name:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label runat="server" id="lblMemberName"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row position-static">
-                                            <div class="col position-static"><b>Member Lastname:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label runat="server" id="lblMemberLastName"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row position-static">
-                                            <div class="col position-static"><b>Member DOB:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label runat="server" id="lblMemberDOB"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row position-static">
-                                            <div class="col position-static"><b>Member Type:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label runat="server" id="lblMemberType"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row position-static">
-                                            <div class="col position-static"><b>Status:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label runat="server" id="lblActiveTypeID"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row position-static">
-                                            <div class="col position-static"><b>Email Address:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label runat="server" id="lblEmail"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row position-static">
-                                            <div class="col position-static"><b>Contact No.</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label runat="server" id="lblContactNo"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row position-static">
-                                            <div class="col position-static"><b>Activation Expiry:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label runat="server" id="lblActivationExpiry"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row position-static">
-                                            <div class="col position-static"><b>Activation Date:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label runat="server" id="lblActivationDate"></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class=" position-static mt-4" style="border: solid 3px red;">
-                                        <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-3" runat="server" ID="btnAcceptReg" Text="Accept Registration" OnClick="btnAcceptReg_Click" />
-                                        <asp:Button CssClass=" topnav btn-dark btn btn-sm btn-outline-light mr-3" runat="server" ID="btnRejectReg" Text="Reject Registration" OnClick="btnRejectReg_Click" />
-                                    </div>
+                             <%-- Overlay for Scholar Registration List selection--%>
+                            <div class="col-6 col-xl-4 text-nowrap" runat="server" id="divSchDetailsOverlay">
+                                <div class="w-100 h-100 container text-center">
+                                    <div class=" container h-25 mb-3"></div>
+                                        <h6 class="card-title h-50 mt-5 pt-5"><img class="figure-img mr-2" src="MyAdmin/icons/outline_error_outline_black_18dp.png" />No Scholar registration selected.</h6>
+                                    <div class=" container h-25"></div>
                                 </div>
                             </div>
-                            <div class="col-4 position-static dash-content  p-0 basic-div-styling-2 " runat="server" id="divViewArt" >
+                            <div runat="server" id="divDisplaySch" class=" col-6 col-xl-4 flex-nowrap p-0" style="position:static">
+                                <asp:HiddenField runat="server" ID="hdfSchId" Value="" />
+                                <div class=" head-div-2 p-2 mb-0 text-left">
+                                    <p class="m-0">Scholar Details:</p>
+                                </div>
+                                    <hr class="m-3 ml-3 mr-3 bg-secondary"/>  
+                                     <div class="container text-nowrap" runat="server" id="divSchDetails">
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Member  ID:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblMemberID"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Member Name:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblMemberName"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Member Lastname:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblMemberLastName"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Member DOB:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblMemberDOB"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Member Type:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblMemberType"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Email Address:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblEmail"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Contact No.</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblContactNo"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Activation Expiry:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblActivationExpiry"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Activation Date:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblActivationDate"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static "><b>Qualification:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblScholarQual"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <hr class="m-3 ml-3 mr-3 bg-secondary"/>
+                                    <div class="container p-0 m-2 task-action">
+                                        <h6 class="w-100 card-title card-header">
+                                            <img class="figure-img mr-2 mb-1 " src="MyAdmin/icons/outline_warning_black_18dp.png" />Before accepting registration:</h6>
+                                        <div class=" position-static m-0 card-body">
+                                            <ul class="pl-1">
+                                                <li><p class="mb-0" ><small class="card-text">The Qualification that the scholar claims to have must be verified</small></p></li>
+                                                <li><p class="mb-0"><small class="card-text">Admins may contact the members by phone or email to set up interviews</small></p></li>
+                                            </ul>
+                                        </div>
+                                       <div class="card-footer text-center position-static text-nowrap">
+                                        <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnAcceptReg" Text="Accept Registration" OnClick="btnAcceptReg_Click" />
+                                        <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnRejectReg" Text="Reject Registration" OnClick="btnRejectReg_Click" />
+                                    </div>
+                                  </div>
+                                </div>
+                            
+                            <div class=" col-12 col-md-8 flex-nowrap p-0" runat="server" id="divViewArt" style="position:static">
                                  <div class=" head-div-2 p-2 mb-0 ">
                                     <p class="m-0">Article Details:</p>
                                 </div>
-                                <div class="row" style="overflow: scroll;">
-                                    <div class="row ml-4">
+                                <div class="" style="overflow-x:scroll;overflow-y:scroll;position:static">
+                                    <div class="row ml-4" style="position:static">
                                         <label runat="server" id="lblArticleTitle"></label>
                                     </div>
-                                    <div class="row ml-4 p-2">
+                                    <div class="row ml-4 p-2" style="position:static">
                                         <label runat="server" id="lblArticleContent"></label>
                                     </div>
                                 </div>
-                                <div class="row position-static justify-content-center align-content-center mt-4">
-                                    <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-3" runat="server" ID="btnAccept" Text="Accept Article" OnClick="btnAccept_Click" />
-                                    <asp:Button CssClass=" topnav btn-dark btn btn-sm btn-outline-light mr-3" runat="server" ID="Button2" Text="Reject Article" OnClick="Button2_Click" />
-                                    <asp:TextBox runat="server" CssClass=" form-control mt-3 col-8 position-static" ID="txtRejectReason" OnTextChanged="txtRejectReason_TextChanged"></asp:TextBox>
+                                <div class="card-footer text-center position-static text-nowrap" style="position:static">
+                                    <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" ID="btnAccept" Text="Accept Article" OnClick="btnAccept_Click" />
+                                    <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" ID="Button2" Text="Reject Article" OnClick="Button2_Click" />
+                                    <br />
+                                    <br />
+                                    <asp:TextBox runat="server" CssClass=" text-justify btn btn-sm  mr-2 position-static" ID="txtRejectReason" BorderColor="#256297" Width="50%" OnTextChanged="txtRejectReason_TextChanged" TextMode="MultiLine"></asp:TextBox>
                                 </div>
                         </div>
-                    
-
-                             <div class="  basic-div-styling mr-1" runat="server" id="divViewReports" style="height:20px;min-width: 250px;min-height: 646px; float: left;position: static;">
-                                <!--Contains the List of items-->
-                                <div class=" col-lg-12 position-static head-div-2 p-2 mb-1 " style="width:100%;">
-                                    <p class="m-0 ">Overview</p>
-                                </div>                               
-                                      <nav class="nav flex-column pt-2 pb-2 pr-0">
-                                    <asp:Button ID="BtnAcceptedScholars" CssClass=" pl-2 btn taskBtn mb-1" runat="server" Text="Accepted Scholars" OnClick="BtnAcceptedScholars_Click" />                                  
-                                    <asp:Button ID="btnRejectedScholars"  CssClass=" pl-2 btn taskBtn mb-1" runat="server" Text="Rejected Scholars" OnClick="btnRejectedScholars_Click" />
-                                    <asp:Button ID="BtnAcceptedArticles" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="Accepted Articles" OnClick="BtnAcceptedArticles_Click" />
-                                    <asp:Button ID="BtnRejectedArticles" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="Rejected Articles" OnClick="BtnRejectedArticles_Click" />
-                                    <asp:Button ID="BtnMosqueReports" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="List of Mosques" OnClick="BtnMosqueReports_Click" />
-                                    <asp:Button ID="BtnEventReports" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="List of Events" OnClick="BtnEventReports_Click" />
-                                    </nav>                           
-                            </div>
-                            <div runat="server" id="divDisplayReports" class="col-md-8 position-static dash-content2  p-0 basic-div-styling-2" style="float:left;width:100%;overflow:scroll;">
-                                <div class=" col-lg-12 head-div-2 p-2 mb-1 " style="width:100%;position:static" >
-                                    <p class="m-0">Reports</p>
+                            <div runat="server" id="divDisplayReports" class=" col-12 col-xl-12 mw-100 p-0" style="position:static">
+                                <div class=" head-div-2 p-2 mb-0 text-center ">
+                                    <p class="m-0">Report</p>
                                 </div>
-                                <div style="margin-left:auto;margin-right:auto;width:100%;">
-                                <asp:GridView ID="grdReports" runat="server" style="position:static; font-size:smaller;" CellPadding="2" ForeColor="#333333" GridLines="none" Width="600px" min-width="250px" max-width="350px">
-                                    <AlternatingRowStyle BackColor="White" />
-                                    <EditRowStyle BackColor="#2461BF" />
-                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                                    <RowStyle BackColor="#EFF3FB" />
-                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                                </asp:GridView>
-                                    </div>
+                                <div class="m-0 p-0 pt-2 pl-2">
+                                    <a runat="server" id="PDF" onserverclick="PDF_ServerClick"><img src="MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
+                                    <hr class="m-0 mt-1 p-0" style="background-color:#0026ff; height:1px;" />
                                 </div>
-                            <div  class="col-sm-1 pl-1 pr-1 basic-div-styling ml-1" runat="server" id="divPDF" style="float:right;position:static" >
-                                 <div class="  position-static head-div-2 p-2 mb-1 ">
-                                    <p class="m-0 ">Export PDF</p>
-                                </div>                       
-                                <asp:ImageButton ID="PDF" runat="server" CssClass=" pl-2 btn taskBtn mb-1" Width="75px"  OnClick="PDF_Click" Text="ExportPDF" ImageUrl="~/Content/MyModerator/images (7).jpeg" />
-                                
-                            </div>
+                                <div class=" col-12 col-xl-12 p-2" style="overflow-x:scroll;position:static">
+                                    <asp:GridView ID="grdReports" RowStyle-Wrap="true" runat="server" style="position:static; font-size:smaller;" CellPadding="6" ForeColor="#333333" GridLines="none" >
+                                        <AlternatingRowStyle BackColor="White" />
+                                        <EditRowStyle BackColor="#2461BF" />
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                        <RowStyle BackColor="#EFF3FB"  Wrap="true" />
+                                        <SelectedRowStyle  BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                    </asp:GridView>
+                                </div>
+                            </div>  
                         </div>
-
-
                     </div>
                 </div>
             </div>

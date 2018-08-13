@@ -77,27 +77,31 @@
                     </div>
                 </div>
             </header>
-            <div class="content" id="content">
+            <div class="content position-relative" id="content">
                 <!--add content here -->
-                <div class="row bg-light m-0 divContainers p-1 flex-nowrap">
-                    <div class="side-bar p-0 basic-div-styling mr-1">
+                <div class="row bg-light m-0 divContainers p-1 flex-nowrap position-relative">
+                    <div class="side-bar p-0 basic-div-styling mr-1 position-relative">
                         <!--contains the buttons-->
                         <div class="head-div text-center p-2">
-                            <p class="text-uppercase m-0 font-weight-bold">Admin Tasks:</p>
+                            <p class="text-uppercase m-0 font-weight-bold">Admin Tasks</p>
                         </div>
                         <nav class="nav flex-column pt-2 pb-2 pr-0">
                             <asp:Button runat="server" ToolTip="Pending Scholar Registrations." ID="btnViewPendingSch" OnClick="btnViewPendingSch_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="View Pending Scholars" />
                             <asp:Button runat="server" ToolTip="Add a Mosque on Muslimeen" ID="btnAddMosque" OnClick="btnAddMosque_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="Add Mosque" />
-                            <asp:Button runat="server" ID="btnUpdateIslmDate" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnUpdateIslmDate_Click" Text="Update Islamic Date" />
+                            <asp:Button runat="server" ID="btnAddMod" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnAddMod_Click" Text="Add a Moderater" />
+                            <asp:Button runat="server" ID="btUpdateZakaahOrg" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnUpdateZakaahOrg_Click" Text="Update Zakaah Organization" />
+                                <asp:Button ID="btnAddZakaahOrg" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="Add New Organization" OnClick="btnAddZakaahOrg_Click" />
+                            <asp:Button runat="server" ID="btnUpdateNotice" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnUpdateNotice_Click" Text="Update Notice" />
+                                <asp:Button ID="btnAddNotice" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="Add new Notice" OnClick="btnAddNotice_Click" />
                         </nav>
                     </div>
-                    <div class=" position-static basic-div-styling p-0  w-100" >
+                    <div class=" position-static basic-div-styling p-0 w-100 position-relative">
                         <div class=" head-div text-center p-2 mb-1">
                             <h4 runat="server" id="lblTaskHead"  class="p-0 m-0"></h4>
                         </div>
-                        <div class="row p-0 m-0 right-bottom-div p-1 flex-nowrap justify-content-xl-center" >
+                        <div class="row p-0 m-0 right-bottom-div p-1 flex-nowrap justify-content-xl-start" >
                             <%-- Pending Scholar registration List--%>
-                            <div class="col-6 col-xl-3 p-0 mr-1" runat="server" id="divViewPendingSch">
+                            <div class="col-6 col-xl-4 p-0 mr-1" runat="server" id="divViewPendingSch">
                                 <div class=" head-div-2 p-2 mb-1 text-left">
                                     <p class="m-0">Pending Registrations</p>
                                 </div>
@@ -127,10 +131,10 @@
                                         <FooterTemplate>
                                         </FooterTemplate>
                                     </asp:Repeater>
-                                </div>
+                                </div>s
                             </div>
                             <%--Add Mosque Rep--%>
-                            <div class="col-6 col-xl-3 p-0" runat="server" id="divAddMosqueRep">
+                            <div class="col-6 col-xl-4 align p-0" runat="server" id="divAddMosqueRep">
                                 <div class=" head-div-2 p-2 mb-1 text-left">
                                     <p class="m-0">Add Mosque Representative</p>
                                 </div>
@@ -199,7 +203,7 @@
                                 </div>
                             </div>
                             <%-- Add the Mosque --%>
-                            <div class="col-6 col-xl-3 flex-nowrap pl-1" style="overflow:hidden;" runat="server" id="divAddMosque">
+                            <div class="col-6 col-xl-4 flex-nowrap pl-1" style="overflow:hidden;" runat="server" id="divAddMosque">
                                 <div class=" head-div-2 p-2 mb-1 text-left">
                                     <p class="m-0">Add Mosque</p>
                                 </div>
@@ -228,7 +232,7 @@
                                             <asp:DropDownList CssClass="form-control form-control-sm col main-txtb" runat="server" ID="ddMosqueType">
                                                 <asp:ListItem Selected disabled Value="None">Please select a Type</asp:ListItem>
                                                 <asp:ListItem Value="Hanafie">Hanafie</asp:ListItem>
-                                                <asp:ListItem Value="Hanafie">Shaafie</asp:ListItem>
+                                                <asp:ListItem Value="Shaafie">Shaafie</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                     </div>
@@ -252,7 +256,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1">
                                             <label class="col mb-0 p-0"><small>Mosque Quote</small></label>
-                                            <asp:TextBox TextMode="MultiLine" Style=" max-height:130px; min-height:80px;" CssClass=" position-static form-control form-control-sm col main-txtb" runat="server" ID="txtMosqueQuote"></asp:TextBox>
+                                            <asp:TextBox TextMode="MultiLine" Style=" max-height:80px; min-height:80px;" CssClass=" position-static form-control form-control-sm col main-txtb" runat="server" ID="txtMosqueQuote"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -269,7 +273,7 @@
                                 </div>
                             </div>
                             <%-- Overlay for Scholar Registration List selection--%>
-                            <div class="col-6 col-xl-3 text-nowrap" runat="server" id="divSchDetailsOverlay">
+                            <div class="col-6 col-xl-4 text-nowrap" runat="server" id="divSchDetailsOverlay">
                                 <div class="w-100 h-100 container text-center">
                                     <div class=" container h-25 mb-3"></div>
                                         <h6 class="card-title h-50 mt-5 pt-5"><img class="figure-img mr-2" src="MyAdmin/icons/outline_error_outline_black_18dp.png" />No Scholar registration selected.</h6>
@@ -277,7 +281,7 @@
                                 </div>
                             </div>
                             <%-- Diaplay Pending Scholar Details --%>
-                            <div runat="server" id="divDisplaySch" class=" col-6 col-xl-3 flex-nowrap p-0">
+                            <div runat="server" id="divDisplaySch" class=" col-6 col-xl-4 flex-nowrap p-0">
                                 <asp:HiddenField runat="server" ID="hdfSchId" Value="" />
                                 <div class=" head-div-2 p-2 mb-0 text-left ">
                                     <p class="m-0">Scholar Details</p>
@@ -361,11 +365,267 @@
                                         </div>
                                     </div>
                                 </div>
+                                <%--Add a Moderator--%>
+                            <div runat="server" id="divAddMod" class=" col-sm-12 col-xl-4 flex-nowrap p-0">
+                                <div class=" head-div-2 p-2 mb-0 text-left ">
+                                    <p class="m-0">Add Details of Moderater</p>
+                                </div>
+                                <div class=" position-static p-1 lst-container align-content-xl-center">
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>User Name*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtModUserName"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-6 mb-1">
+                                            <label class="col mb-0 p-0 "><small>First Name*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtModFName"></asp:TextBox>
+                                        </div>
+                                        <div class="form-group col-sm-6 mb-1 ">
+                                            <label class="col mb-0 p-0 "><small>Last Name*</small></label>
+                                            <asp:TextBox CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="txtModLName"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-6 mb-1 ">
+                                            <label class="col mb-0 p-0 "><small>Contact Number</small></label>
+                                            <asp:TextBox CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="txtModContactNo"></asp:TextBox>
+                                        </div>
+                                        <div class="form-group col-sm-6 mb-1">
+                                            <label class="col mb-0 p-0 text "><small>Date of Birth*</small></label>
+                                            <asp:TextBox CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="txtModDOB" placeholder="yyyy-mm-dd*"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-6 mb-1">
+                                            <label class="col mb-0 p-0"><small>Email*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtModEmail"></asp:TextBox>
+                                        </div>
+                                        <div class="form-group col-sm-6 mb-1">
+                                            <label class="col mb-0 p-0 text "><small>Qualification*</small></label>
+                                            <asp:DropDownList CssClass=" form-control form-control-sm col main-txtb" ID="ddModQualification" runat="server"></asp:DropDownList>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1 ">
+                                            <label class="col mb-0 p-0 "><small>Password*</small></label>
+                                            <asp:TextBox TextMode="Password" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtModPassword"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1 position-static">
+                                            <label class="col mb-0 p-0 "><small>Retype Password*</small></label>
+                                            <asp:TextBox TextMode="Password" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtModRetypePassword"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <hr class="m-3 ml-3 mr-3 bg-secondary" />
+                                    <div class=" p-0 m-1">
+                                        <h6 class="w-100 card-title card-header">
+                                            <img class="figure-img mr-2 mb-1 " src="MyAdmin/icons/outline_warning_black_18dp.png" />Before Registering:</h6>
+                                        <div class=" m-0 card-body p-2">
+                                            <ul class="pl-3 pb-3 mb-0">
+                                                <li>
+                                                    <p class="mb-0"><small class="card-text">Please make sure that the moderater is qualified for the membership</small></p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer text-center text-nowrap">
+                                            <asp:Button CssClass="topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnRegModerater" OnClick="btnRegModerater_Click" Text="Register Moderater" />
+                                            <asp:Button CssClass="topnav btn btn-sm btn-outline-light" runat="server" ID="btnModRegCancel" OnClick="btnModRegCancel_Click" Text="Cancel" />
+                                        </div>
+                                        <div class="form-row mt-2 mb-0">
+                                            <div class="form-group col-sm-12 m-0 flex-wrap text-truncate" style="overflow:hidden;">
+                                                <small><asp:Label runat="server" ID="lblModError" CssClass="col m-0 p-0"></asp:Label></small>
+                                            </div>
+                                        </div>
+                                        <hr class="mt-3 ml-3 mr-3 bg-secondary" />
+                                    </div>
+                                </div>
                             </div>
-
+                            <%--Add/Update a Zakaah Organization--%>
+                            <div class="col-6 col-xl-4 p-0 mr-1" runat="server" id="divZakaahOrgList">
+                                <div class=" head-div-2 p-2 mb-1 text-left">
+                                    <p class="m-0">Current Organizations</p>
+                                </div>
+                                <div class=" p-1 lst-container"  style="overflow-y:scroll;" >
+                                    <asp:Repeater ID="rptZakaahOrg" runat="server">
+                                        <HeaderTemplate>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="btnShowOrg" CommandArgument='<%#Eval("OrganizationID") %>' ToolTip="Select" CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShowOrg_Click">
+                                                    <div class="p-0 form-row m-0 position-static flex-nowrap">
+                                                        <div class="col-auto pl-0 position-static ">
+                                                            <img src='<%#Eval("Image") %>' class="" alt="n/a" style="height:40px; width:35px;"/>
+                                                        </div>
+                                                        <div class="col-auto position-static p-0">
+                                                            <div class="">
+                                                                <p style="font-size:small;" class=" p-0 m-0"><b>Name: </b><%#Eval("Name")%><br/></p>
+                                                            </div>
+                                                                <hr class=" mr-4 m-0 p-0"/>
+                                                            <div class="">
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Contact No. </b><%#Eval("ContactNo")%>&emsp;<b>Active:</b> <%#Eval("Active")%></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </asp:LinkButton>
+                                            <hr class="p-0 m-1" />
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                        </FooterTemplate>
+                                    </asp:Repeater>
+                                </div>
+                            </div>
+                            <asp:HiddenField runat="server" ID="hdfZakaahOrg" Value="" />
+                            <div runat="server" id="divAddUpdateZakaahOrg" class=" col-sm-6 col-xl-4 flex-nowrap p-0">
+                                <div class=" head-div-2 p-2 mb-0 text-left ">
+                                    <p class="m-0">Add Details of Organization</p>
+                                </div>
+                                <div class=" position-static p-1 lst-container align-content-xl-center">
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>Organization Name*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" MaxLength="35" ID="txtOrgName"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>WebsiteAddress</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtOrgWebAddr"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>Contact Number*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtOrgContactNo"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-6 mb-1">
+                                            <label class="col mb-0 p-0"><small>Physical Address*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtOrgPhyAddress"></asp:TextBox>
+                                        </div>
+                                        <div class="form-group col-sm-6 mb-1">
+                                            <label class="col mb-0 p-0"><small>Active</small></label>
+                                            <asp:DropDownList CssClass="form-control form-control-sm col main-txtb" runat="server" ID="ddOrgActive">
+                                                <asp:ListItem Selected Disabled Text="" Value=""></asp:ListItem>
+                                                <asp:ListItem Text="Yes" Value="Y" ></asp:ListItem>
+                                                <asp:ListItem Text="No" Value="N"></asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>Organizatinal Image or Logo</small></label>
+                                            <asp:FileUpload CssClass="form-control form-control-sm col main-txtb" runat="server" ID="fupOrgImage"></asp:FileUpload>
+                                        </div>
+                                    </div>
+                                    <hr class="mt-3 ml-3 mr-3 bg-secondary" />
+                                    <div class="card-footer text-center text-nowrap border-top-0">
+                                        <asp:Button CssClass="topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnAddUpdateOrg" OnClick="btnAddUpdateOrg_Click" Text="Update Details" />
+                                        <asp:Button CssClass="topnav btn btn-sm btn-outline-light" runat="server" ID="btnCancelAddUpdateOrg" OnClick="btnCancelAddUpdateOrg_Click" Text="Cancel" />
+                                    </div>
+                                    <hr class="mt-3 ml-3 mr-3 bg-secondary" />
+                                    <div class="form-row mt-2 mb-0">
+                                        <div class="form-group col-sm-12 m-0 flex-wrap text-truncate" style="overflow: hidden;">
+                                            <small><asp:Label runat="server" ID="lblOrgError" CssClass="col m-0 p-0"></asp:Label></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <%--Add/Delete Notices --%>
+                            <div class="col-6 col-xl-4 p-0 mr-1" runat="server" id="divNoticeList">
+                                <div class=" head-div-2 p-2 mb-1 text-left">
+                                    <p class="m-0">Current List of Notices</p>
+                                </div>
+                                <div class=" p-1 lst-container"  style="overflow-y:scroll;" >
+                                    <asp:Repeater ID="rptNotice" runat="server">
+                                        <HeaderTemplate>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="btnShowNotice" CommandArgument='<%#Eval("NoticeID") %>' ToolTip="Select" CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShowNotice_Click">
+                                                    <div class="p-0 form-row m-0 position-static flex-nowrap">
+                                                        <div class="col-auto position-static p-0">
+                                                            <div class="">
+                                                                <p style="font-size:small;" class=" p-0 m-0"><b>Notice Title: </b><%#Eval("NoticeTitle")%><br/></p>
+                                                            </div>
+                                                                <hr class=" mr-4 m-0 p-0"/>
+                                                            <div class="">
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Expiry Date: </b><%#Eval("DateExpiry")%>&emsp;<b>Active:</b> <%#Eval("Active")%></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </asp:LinkButton>
+                                            <hr class="p-0 m-1" />
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                        </FooterTemplate>
+                                    </asp:Repeater>
+                                </div>
+                            </div>
+                            <asp:HiddenField runat="server" ID="hdfNotice" Value=""/>
+                            <div runat="server" id="divAddUpdateNotice" class=" col-sm-12 col-xl-4 flex-nowrap p-0">
+                                <div class=" head-div-2 p-2 mb-0 text-left ">
+                                    <p class="m-0">Add Notice details</p>
+                                </div>
+                                <div class=" position-static p-1 lst-container align-content-xl-center">
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>Notice Title*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" MaxLength="25" ID="txtNoticeTitle"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>Notice Description*</small></label>
+                                            <asp:TextBox TextMode="MultiLine" Style=" max-height:80px; min-height:80px;" CssClass="form-control form-control-sm col main-txtb" runat="server" MaxLength="500" ID="txtNoticeDesc"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>Notice Added by</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" MaxLength="35" ID="txtNoticeMemberID"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>Active</small></label>
+                                            <asp:DropDownList  CssClass="form-control form-control-sm col main-txtb" runat="server" MaxLength="35" ID="ddNoticeActive">
+                                                <asp:ListItem Selected="True" disabled Text="" Value=""></asp:ListItem>
+                                                <asp:ListItem Text="Yes" Value="Y"></asp:ListItem>
+                                                <asp:ListItem Text="No" Value="N"></asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-6 mb-1">
+                                            <label class="col mb-0 p-0"><small>Date Added</small></label>
+                                            <asp:TextBox Enabled="false" CssClass="form-control form-control-sm col main-txtb" runat="server" MaxLength="35" ID="txtNoticeDateCreated"></asp:TextBox>
+                                        </div>
+                                        <div class="form-group col-sm-6 mb-1">
+                                            <label class="col mb-0 p-0"><small>Notice Expiry Date*</small></label>
+                                            <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" ToolTip="How long you want the Notice to last on the System" runat="server" ID="txtNoticeExpiryDate"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <hr class="m-3 ml-3 mr-3 bg-secondary" />
+                                    <div class=" p-0 m-1">
+                                        <div class="card-footer text-center text-nowrap border-top-0">
+                                            <asp:Button CssClass="topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnAddUpdateNotice" OnClick="btnAddUpdateNotice_Click"  Text=" " />
+                                            <asp:Button CssClass="topnav btn btn-sm btn-outline-light" runat="server" ID="btnNoticeAddCancel" Text="Cancel" />
+                                        </div>
+                                        <div class="form-row mt-2 mb-0">
+                                            <div class="form-group col-sm-12 m-0 flex-wrap text-truncate" style="overflow:hidden;">
+                                                <small><asp:Label runat="server" ID="lblNoticeError" CssClass="col m-0 p-0"></asp:Label></small>
+                                            </div>
+                                        </div>
+                                        <hr class="mt-3 ml-3 mr-3 bg-secondary" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </form>
                 <div class="footerr"> <!--End of content, start of footer-->
                     <div class="row bg-light">

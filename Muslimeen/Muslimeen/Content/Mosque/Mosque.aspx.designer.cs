@@ -211,6 +211,15 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTaskHead;
         
         /// <summary>
+        /// lblTaskHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTaskHeader;
+        
+        /// <summary>
         /// divDetails control.
         /// </summary>
         /// <remarks>
@@ -218,15 +227,6 @@ namespace Muslimeen.Content.Mosque {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDetails;
-        
-        /// <summary>
-        /// lblMosqueName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMosqueName;
         
         /// <summary>
         /// imgMosque control.
@@ -454,13 +454,13 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.TextBox txtEndDate;
         
         /// <summary>
-        /// btnListEvents control.
+        /// btnListEvent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnListEvents;
+        protected global::System.Web.UI.WebControls.Button btnListEvent;
         
         /// <summary>
         /// rptGetEvents control.
@@ -490,15 +490,6 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPrayerTimes;
         
         /// <summary>
-        /// lblPrayerStartDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPrayerStartDate;
-        
-        /// <summary>
         /// txtPrayerStartDate control.
         /// </summary>
         /// <remarks>
@@ -506,15 +497,6 @@ namespace Muslimeen.Content.Mosque {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPrayerStartDate;
-        
-        /// <summary>
-        /// lblPrayerEndDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPrayerEndDate;
         
         /// <summary>
         /// txtPrayerEndDate control.
@@ -533,6 +515,15 @@ namespace Muslimeen.Content.Mosque {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnListPrayer;
+        
+        /// <summary>
+        /// divPrayerTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPrayerTable;
         
         /// <summary>
         /// rptPrayerTimes control.

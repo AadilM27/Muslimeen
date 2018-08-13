@@ -14,3 +14,30 @@
     }
 
 }
+
+function AddDateChars() {
+    val = document.getElementById("txtDOB").value;
+    if (val.length === 2 || val.length === 5) {
+        document.getElementById("txtDOB").value += "/";
+    }
+}
+
+function EmailValidation() {
+    val = document.getElementById("txtUserEmail").value;
+
+    if (val.indexOf("@") === -1) {
+        document.getElementById("lblErrorPass").innerText = "Invalid Email Address";
+        document.getElementById("txtUserEmail").style.borderColor = "Red";
+        document.getElementById("btnRegister").disabled = true;
+    }
+    else if (val.indexOf(".") === -1) {
+        document.getElementById("lblErrorPass").innerText = "Invalid Email Address";
+        document.getElementById("txtUserEmail").style.borderColor = "Red";
+        document.getElementById("btnRegister").disabled = true;
+    }
+    else {
+        document.getElementById("lblErrorPass").innerText = "";
+        document.getElementById("txtUserEmail").style.borderColor = "";
+        document.getElementById("btnRegister").disabled = false;
+    }
+}

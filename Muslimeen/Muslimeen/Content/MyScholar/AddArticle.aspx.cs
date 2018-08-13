@@ -21,22 +21,21 @@ namespace Muslimeen.Content.MyScholar
 
                 divAddArticle.Visible = true;
                 divPendingArticles.Visible = false;
-                //divRejectedArticles.Visible = false;
+                divRejectedArticles.Visible = false;
                 divPenDetailsOverlay.Visible = false;
+                divDisplayRejectedOverlay.Visible = false;
                 divNoSelected.Visible = false;
+                divNoRejectedSelected.Visible = false;
                 divDisplayArticle.Visible = false;
-
-                //Pending Article Source
-                //repeatPendingArticle.DataSource = dBHandler.BLL_GetPendingArticle();
-                //repeatPendingArticle.DataBind();
+                divDisplayRejected.Visible = false;
 
                 //Pending Link Article Source
                 repeatLink.DataSource = dBHandler.BLL_GetPendingArticle();
                 repeatLink.DataBind();
 
                 //RejectedArticle Source
-                //repeatRejectedArticle.DataSource = dBHandler.BLL_GetRejectedArticle();
-                //repeatRejectedArticle.DataBind();
+                repeatLinkRejected.DataSource = dBHandler.BLL_GetRejectedArticle();
+                repeatLinkRejected.DataBind();
 
                 if (Session["UserName"] != null)
                 {
@@ -171,7 +170,12 @@ namespace Muslimeen.Content.MyScholar
                 divAddArticle.Visible = false;
                 divPendingArticles.Visible = true;
                 divPenDetailsOverlay.Visible = true;
-                //divRejectedArticles.Visible = false;
+                divNoSelected.Visible = false;
+                divRejectedArticles.Visible = false;
+                divDisplayRejectedOverlay.Visible = false;
+                divDisplayRejected.Visible = false;
+
+                lblTaskHead.InnerText = btnPendingArticles.Text.ToString();
 
                 DBHandler dBHandler = new DBHandler();
             }
@@ -187,7 +191,13 @@ namespace Muslimeen.Content.MyScholar
             {
                 divAddArticle.Visible = false;
                 divPendingArticles.Visible = false;
-                //divRejectedArticles.Visible = true;
+                divPenDetailsOverlay.Visible = false;
+                divRejectedArticles.Visible = true;
+                divDisplayRejectedOverlay.Visible = true;
+                divDisplayRejected.Visible = true;
+                divNoSelected.Visible = false;
+
+                lblTaskHead.InnerText = btnRejectedArticles.Text.ToString();
 
                 DBHandler dBHandler = new DBHandler();
             }
@@ -200,7 +210,7 @@ namespace Muslimeen.Content.MyScholar
         protected void btnAddArticle_Click(object sender, EventArgs e)
         {
             divAddArticle.Visible = true;
-
+            
             DBHandler dBHandler = new DBHandler();
         }
 
@@ -241,7 +251,7 @@ namespace Muslimeen.Content.MyScholar
             }
             catch
             {
-                
+                throw;
             }
         }
 
@@ -265,11 +275,42 @@ namespace Muslimeen.Content.MyScholar
                 divPendingArticles.Visible = true;
                 divDisplayArticle.Visible = true;
                 divNoSelected.Visible = true;
+
+                divAddArticle.Visible = false;
+                
+            }
+            catch
+            {
+                
+            }
+        }
+
+        protected void btnShowRejected_Click1(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton linkButton = (LinkButton)sender;
+
+                string art = linkButton.CommandArgument.ToString();
+                hfdRej.Value = art;
+
+                DBHandler han = new DBHandler();
+                uspGetSelectedRejectedArticle pen = new uspGetSelectedRejectedArticle();
+
+                pen = han.BLL_GetSelectedRejectedArticle(int.Parse(art));
+                lblRTitle.InnerText = pen.ArticleTitle.ToString();
+                lblRContent.InnerText = pen.ArticleContent.ToString();
+                lblRDate.InnerText = pen.DateCreated.ToString();
+                lblReason.InnerText = pen.RejectionReason.ToString();
+                
+                divRejectedArticles.Visible = true;
+                divDisplayRejected.Visible = true;
+                divNoRejectedSelected.Visible = true;
                 divAddArticle.Visible = false;
             }
             catch
             {
-
+                throw;
             }
         }
     }

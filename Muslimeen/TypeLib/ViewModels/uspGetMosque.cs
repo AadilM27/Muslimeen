@@ -17,5 +17,6 @@ namespace TypeLib.ViewModels
         public string MosqueSize { get; set; }
         public string MosqueImage { get; set; }
         public string MosqueQuote { get; set; }
+        public int MemberCount { get; set; }
     }
 }

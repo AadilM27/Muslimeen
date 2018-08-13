@@ -77,18 +77,20 @@ namespace Muslimeen.Content.Mosque
 
                     uspGetMosque mosque = new uspGetMosque();
                     mosque = db.GetMosque(int.Parse(Session["MosqueID"].ToString()));
-                    lblMosqueName.Text = mosque.MosqueName.ToString();
+                    Session["lblMosqueName"] = mosque.MosqueName.ToString();
                     lblMosqueAddress.Text = mosque.MosqueStreet + " " + mosque.MosqueSuburb;
                     Session["Address"] = lblMosqueAddress.Text.ToString();
                     lblYearEstablished.Text = mosque.YearEstablished.ToString().Substring(0, 10);
                     lblMosqueType.Text = mosque.MosqueType;
                     lblMosqueSize.Text = mosque.MosqueSize;
                     lblQuote.Text = mosque.MosqueQuote;
-                    imgMosque.ImageUrl = mosque.MosqueImage;
-                    lblMembers.Text = "111";////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    lblMosqueRep.Text = "Ali Aadam";///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    imgMosque.ImageUrl=mosque.MosqueImage;
+                    lblMembers.Text = mosque.MemberCount.ToString();
+                    uspGetMember member = new uspGetMember();
+                   member = db.BLL_GetMosqueRep(int.Parse(Session["MosqueID"].ToString()));
+                   lblMosqueRep.Text = member.MemberName.ToString() + " " + member.MemberLastName.ToString();
                 }
-                catch { }
+                catch { throw; }
                 #endregion LoadAdd/UpdatePrayer
             }
             catch { }
@@ -98,6 +100,7 @@ namespace Muslimeen.Content.Mosque
                 divEvent.Visible = false;
                 divLocation.Visible = false;
                 divPrayerTimes.Visible = false;
+                divPrayerTable.Visible = false;
             }
         }
 
@@ -203,6 +206,11 @@ namespace Muslimeen.Content.Mosque
 
         protected void btnListPrayer_Click(object sender, EventArgs e)
         {
+            lblTaskHeader.InnerText = btnPrayerTimes.Text.ToString();
+            divDetails.Visible = false;
+            divEvent.Visible = false;
+            divLocation.Visible = false;
+            divPrayerTable.Visible = true;
             try
             {
                 List<uspGetMosquePrayerTimes> list = new List<uspGetMosquePrayerTimes>();
@@ -269,6 +277,7 @@ namespace Muslimeen.Content.Mosque
 
         protected void btnMosqueDetails_Click(object sender, EventArgs e)
         {
+            lblTaskHeader.InnerText = Session["lblMosqueName"].ToString();
             divDetails.Visible = true;
             divEvent.Visible = false;
             divLocation.Visible  = false;
@@ -277,26 +286,41 @@ namespace Muslimeen.Content.Mosque
 
         protected void btnEvents_Click(object sender, EventArgs e)
         {
+            lblTaskHeader.InnerText = btnEvents.Text.ToString();
             divDetails.Visible = false;
             divEvent.Visible = true;
             divLocation.Visible = false;
             divPrayerTimes.Visible = false;
+            divPrayerTable.Visible = false;
         }
 
         protected void btnAddress_Click(object sender, EventArgs e)
         {
+            lblTaskHeader.InnerText = btnAddress.Text.ToString();
             divDetails.Visible = false;
             divEvent.Visible = false;
             divLocation.Visible = true;
             divPrayerTimes.Visible = false;
+            divPrayerTable.Visible = false;
+
+
         }
 
         protected void btnPrayerTimes_Click(object sender, EventArgs e)
         {
+            lblTaskHeader.InnerText = btnPrayerTimes.Text.ToString();
             divDetails.Visible = false;
             divEvent.Visible = false;
             divLocation.Visible = false;
             divPrayerTimes.Visible = true;
+            divPrayerTable.Visible = false;
+
+
+        }
+
+        protected void btnListPrayers_Click(object sender, EventArgs e)
+        {
+         
         }
     }
 }

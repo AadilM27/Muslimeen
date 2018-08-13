@@ -9,8 +9,11 @@ namespace TypeLib.Models
     public class Organization
     {
         public int OrganizationID { get; set; }
-        public string OrgName { get; set; }
-        public string Address { get; set; }
-        public string OrgImageUrl { get; set; }
+        public string Name { get; set; }
+        public string WebsiteAddress { get; set; }
+        public string Image { get; set; } //should be Byte[] but used string for compatibility of data type.
+        public string ContactNo { get; set; }
+        public string PhysicalAddress { get; set; }
+        public char Active { get; set; }
     }
 }

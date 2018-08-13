@@ -80,7 +80,7 @@ namespace Muslimeen.BLL
         {
              return dBAccess.GetZakaah();
         }
-        public List<uspGetOrganizations> BLL_GetOrganization()
+        public List<Organization> BLL_GetOrganization()
         {
             return dBAccess.GetOrganization();
         }
@@ -189,7 +189,7 @@ namespace Muslimeen.BLL
         }
 
         //Rejected Articles
-        public List<uspGetRejectedArticle> BLL_GetRejectedArticle()
+        public List<Article> BLL_GetRejectedArticle()
         {
             return dBAccess.GetRejectedArticle();
         }
@@ -239,6 +239,66 @@ namespace Muslimeen.BLL
         public List<uspGetEventReports> BLL_GetEventReports()
         {
             return dBAccess.GetEventReports();
+        }
+
+        public uspGetMember BLL_GetMosqueRep(int mosqueID)
+        {
+            return dBAccess.GetMosqueRep(mosqueID);
+        }
+
+        public uspGetSelectedRejectedArticle BLL_GetSelectedRejectedArticle(int articleID)
+        {
+            return dBAccess.uspGetSelectedRejectedArticle(articleID);
+        }
+
+        //Learn Page Articles
+        public List<Article> BLL_GetLearnArticle()
+        {
+            return dBAccess.GetLearnArticle();
+        }
+
+        public uspGetSelectedLearnArticle BLL_GetSelectedLearnArticle(int articleID)
+        {
+            return dBAccess.GetSelectedLearnArticle(articleID);
+        }
+        public bool BLL_AddModeraterQualification(Moderater moderater)
+        {
+            return dBAccess.AddModeraterQualification(moderater);
+        }
+
+        public bool BLL_AddZakaahOrganization(uspAddZakaahOrg organization)
+        {
+            return dBAccess.AddZakaahOrganization(organization);
+        }
+
+        public Organization BLL_GetSelectedZakaahOrg(int organizationID)
+        {
+            return dBAccess.GetSelectedZakaahOrg(organizationID);
+        }
+
+        public bool BLL_UpdateZakaahOrg (uspUpdateZakaahOrg updateZakaahOrg)
+        {
+            return dBAccess.UpdateZakaahOrg(updateZakaahOrg);
+        }
+
+        public bool BLL_AddNotice(Notice notice)
+        {
+            return dBAccess.AddNotice(notice);
+        }
+
+        public bool BLL_UpdateNotice(Notice notice)
+        {
+            return dBAccess.UpdateNotice(notice);
+        }
+
+        public List<Notice> BLL_GetAllNotices()
+        {
+            return dBAccess.GetAllNotices();
+        }
+
+        public Notice BLL_GetSelectedNotice(int notice)
+        {
+            return dBAccess.GetSelectedNotice(notice);
         }
     }
 }

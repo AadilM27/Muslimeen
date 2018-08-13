@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=18.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\ASP.NET AJAX Control Toolkit\Bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
@@ -104,6 +108,7 @@
     <Content Include="Content\Default\css\Default.css" />
     <Content Include="Content\Default\Default.js" />
     <Content Include="Content\Default\DefaultJq.js" />
+    <Content Include="Content\Error.aspx" />
     <Content Include="Content\HelpCenter.aspx" />
     <Content Include="Content\Default\icons\EditProfile.png" />
     <Content Include="Content\Default\icons\Search.png" />
@@ -131,6 +136,7 @@
     <Content Include="Content\MyMember.aspx" />
     <Content Include="Content\MyMember\css\MyMember.css" />
     <Content Include="Content\MyModerator.aspx" />
+    <Content Include="Content\MyModerator\Adobe_PDF.png" />
     <Content Include="Content\MyModerator\css\MyModerator.css" />
     <Content Include="Content\MyModerator\images %287%29.jpeg" />
     <Content Include="Content\MyScholar\AddArticle.aspx" />
@@ -1612,6 +1618,13 @@
     <Compile Include="Content\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Content\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Content\HelpCenter.aspx.cs">
       <DependentUpon>HelpCenter.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1769,6 +1782,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\Error\css\" />
+    <Folder Include="Content\Error\js\" />
     <Folder Include="Content\MyMember\icons\" />
     <Folder Include="Content\MyModerator\js\" />
     <Folder Include="Content\Zakaah\js\" />
