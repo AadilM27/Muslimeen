@@ -142,7 +142,7 @@ namespace Muslimeen.BLL
                 if (table.Rows.Count == 1)
                 {
                     DataRow row = table.Rows[0];
-                   
+
                     mosque = new uspGetMosque();
                     mosque.MosqueName = row["MosqueName"].ToString();
                     mosque.MosqueStreet = row["MosqueStreet"].ToString();
@@ -620,7 +620,7 @@ namespace Muslimeen.BLL
             using (DataTable table = DBHelper.ParamSelect("uspGetSpecificDayPrayerTimes",
                     CommandType.StoredProcedure, pars))
             {
-                if (table.Rows.Count ==5)
+                if (table.Rows.Count == 5)
                 {
 
                     time = new uspGetSpecificDayPrayerTimes
@@ -886,7 +886,7 @@ namespace Muslimeen.BLL
                             DateCreated = Convert.ToDateTime(row["DateCreated"]).Date,
                             ScholarID = Convert.ToString(row["ScholarID"]),
                             ModeratorID = Convert.ToString(row["ModeratorID"]),
-                           
+
                         };
                         list.Add(art);
                     }
@@ -939,8 +939,8 @@ namespace Muslimeen.BLL
                             ArticleID = Convert.ToInt32(row["ArticleID"]),
                             ArticleTitle = Convert.ToString(row["ArticleTitle"]),
                             //ArticleContent = Convert.ToString(row["ArticleContent"]),
-                            DateCreated = Convert.ToDateTime(row["DateCreated"]), 
-                            RejectionReason = Convert.ToString(row["RejectionReason"]),   
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]),
+                            RejectionReason = Convert.ToString(row["RejectionReason"]),
                             RemovalReason = Convert.ToString(row["RemovalReason"]),
                             ScholarID = Convert.ToString(row["ScholarID"]),
                             ModeratorID = Convert.ToString(row["ModeratorID"]),
@@ -952,7 +952,7 @@ namespace Muslimeen.BLL
             return list;
         }
 
-        public List<uspGetNotifications> GetNotifications (DateTime todaysDate, DateTime date)
+        public List<uspGetNotifications> GetNotifications(DateTime todaysDate, DateTime date)
         {
             List<uspGetNotifications> list = new List<uspGetNotifications>();
             uspGetNotifications notice = null;
@@ -973,7 +973,7 @@ namespace Muslimeen.BLL
                         NoticeDate = Convert.ToDateTime(row["NoticeDate"]),
                         NoticeDescription = Convert.ToString(row["NoticeDescription"]),
                         NoticeTitle = Convert.ToString(row["NoticeTitle"])
-                };
+                    };
                     list.Add(notice);
                 }
             }
@@ -1047,7 +1047,7 @@ namespace Muslimeen.BLL
                     DataRow row = table.Rows[0];
                     events = new Event
                     {
-                 
+
                         EventDate = Convert.ToDateTime(row["EventDate"].ToString()),
                         EventDescription = row["EventDescription"].ToString(),
                         EventStartTime = row["EventStartTime"].ToString(),
@@ -1075,7 +1075,7 @@ namespace Muslimeen.BLL
                             MemberID = Convert.ToString(row["MemberID"]),
                             MemberName = Convert.ToString(row["MemberName"]),
                             MemberLastName = Convert.ToString(row["MemberLastName"]),
-                            MemberDOB = Convert.ToDateTime(row["MemberDOB"]),                          
+                            MemberDOB = Convert.ToDateTime(row["MemberDOB"]),
                             Email = Convert.ToString(row["Email"]),
                             ContactNo = Convert.ToString(row["ContactNo"])
                         };
@@ -1099,7 +1099,7 @@ namespace Muslimeen.BLL
                             MemberID = Convert.ToString(row["MemberID"]),
                             MemberName = Convert.ToString(row["MemberName"]),
                             MemberLastName = Convert.ToString(row["MemberLastName"]),
-                            MemberDOB = Convert.ToDateTime(row["MemberDOB"]),                           
+                            MemberDOB = Convert.ToDateTime(row["MemberDOB"]),
                             Email = Convert.ToString(row["Email"]),
                             ContactNo = Convert.ToString(row["ContactNo"])
                         };
@@ -1149,7 +1149,7 @@ namespace Muslimeen.BLL
 
                     pen.ArticleTitle = Convert.ToString(row["ArticleTitle"]);
                     pen.ArticleContent = Convert.ToString(row["ArticleContent"]);
-                    pen.DateCreated = Convert.ToDateTime(row["DateCreated"]).Date;   
+                    pen.DateCreated = Convert.ToDateTime(row["DateCreated"]).Date;
                 }
             }
             return pen;
@@ -1187,7 +1187,7 @@ namespace Muslimeen.BLL
                             MosqueSuburb = Convert.ToString(row["MosqueSuburb"]),
                             MosqueType = Convert.ToString(row["MosqueType"]),
                             MosqueSize = Convert.ToString(row["MosqueSize"]),
-                            
+
                         };
                         list.Add(msq);
                     }
@@ -1372,9 +1372,9 @@ namespace Muslimeen.BLL
         public bool AddNotice(Notice notice)
         {
             List<SqlParameter> pars = new List<SqlParameter>();
-            foreach(var prop in notice.GetType().GetProperties())
+            foreach (var prop in notice.GetType().GetProperties())
             {
-                if(prop.GetValue(notice) != null)
+                if (prop.GetValue(notice) != null)
                 {
                     pars.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(notice)));
                 }
@@ -1450,8 +1450,62 @@ namespace Muslimeen.BLL
                 }
             }
             return notice;
-
         }
-    }
+
+        public List<Article> GetLearnArticle()
+        {
+            List<Article> list = new List<Article>();
+            using (DataTable table = DBHelper.Select("uspGetLearnArticle", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach(DataRow row in table.Rows)
+                    {
+                        Article art = new Article
+                        {
+                            ArticleID = Convert.ToInt32(row["ArticleID"]),
+                            ArticleTitle = Convert.ToString(row["ArticleTitle"]),
+                            ArticleContent = Convert.ToString(row["ArticleContent"]),
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]),
+                            Status = Convert.ToChar(row["Status"]),
+                            RejectionReason = Convert.ToString(row["RejectionReason"]),
+                            Active = Convert.ToChar(row["Active"]),
+                            RemovalReason = Convert.ToString(row["RemovalReason"]),
+                            ScholarID = Convert.ToString(row["ScholarID"]),
+                            ModeratorID = Convert.ToString(row["ModeratorID"]),
+                            TopicID = Convert.ToInt32(row["TopicID"])
+                        };
+                        list.Add(art);
+                    }
+                }
+            }
+            return list;            
+        }
+
+        public uspGetSelectedLearnArticle GetSelectedLearnArticle(int articleID)
+        {
+            uspGetSelectedLearnArticle pen = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@ArticleID", articleID)
+            };
+
+            using (DataTable tbl = DBHelper.ParamSelect("uspGetSelectedLearnArticle", CommandType.StoredProcedure, pars))
+            {
+                if (tbl.Rows.Count == 1)
+                {
+                    DataRow row = tbl.Rows[0];
+
+                    pen = new uspGetSelectedLearnArticle();
+
+                    pen.ArticleTitle = Convert.ToString(row["ArticleTitle"]);
+                    pen.ArticleContent = Convert.ToString(row["ArticleContent"]);
+                    pen.DateCreated = Convert.ToDateTime(row["DateCreated"]).Date;
+                    pen.ScholarID = Convert.ToString(row["ScholarID"]);
+                }                
+            } 
+            return pen;
+        }
+    }        
 }
 
