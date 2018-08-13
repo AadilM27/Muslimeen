@@ -12,7 +12,6 @@
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/HelpPage/HelpPage.css" rel="stylesheet" />
-    <link href="MyMember/css/MyMember.css" rel="stylesheet" />
 
 </head>
     <body>
@@ -81,8 +80,8 @@
             </header>
      <!--Add content-->
         <div class="content" id="content"><!--add content here -->
-            <div class="header">
-                <h3 class="title">Welcome to our help center    <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/help.png" width="70" height="50"/></h3> 
+            <div class="head-div text-center p-1 mb-1">
+                <h2 class="p-0 m-0">Welcome to our help center    <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/help.png" width="70" height="50"/></h2> 
             </div>
 
                 <div class="container"> 
@@ -132,9 +131,9 @@
                     </div>
                     <div class=" paragraphDisplay p-2">
                     <p>
-                        A registered and validated scholar will request to upload an article. Before any article is uploaded, the web master will view the
+                        A registered and validated scholar will request to upload an article. Before any article is uploaded, the moderator will view the
                         validity of this article and will either accept the upload or reject it. If the articles request is rejected, the article will not
-                        be uploaded.
+                        be uploaded and users will not be able to view these articles. 
                     </p>
                     </div>
                     </div>

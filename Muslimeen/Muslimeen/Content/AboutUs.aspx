@@ -12,7 +12,6 @@
     <title>About Us</title>
      <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="MyMember/css/MyMember.css" rel="stylesheet" />
     <link href="../Content/AboutUs/AboutUs.css" rel="stylesheet" />
 </head>
     <body>
@@ -83,10 +82,10 @@
 
             <div class="content" id="content"><!--add content here -->
                 <div class="head-div text-center p-2 mb-1">
-                        <h3 class="p-0 m-0">About us</h3>
+                        <h2 class="p-0 m-0">About us</h2>
                     </div>              
 
-               <div class="container" >
+               <div class="container p-3" >
                 <div class="position-static basic-div-styling p-0">
                     <div class="head-div-2 p-2 mb-0">
                         <h4 class="m-0"> Our Mission:  <br/></h4>
@@ -150,11 +149,6 @@
                    </div>
                     <br />
                 </div>
-                
-                    <!--<h4 class="text-center"> We dare to enhance our communication platform  <br/></h4>
-                    <p>The world is our community. We are in the process of creating a forum platform to increase our
-                       means of communication and learning.
-                    </p>-->
                     
                 <div class="footerr"> <!--End of content, start of footer-->
                 <div class="row bg-light">

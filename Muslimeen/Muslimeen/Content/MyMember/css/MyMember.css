@@ -154,7 +154,7 @@
     text-align: start;
 }
 
-    .taskBtn:hover {
+.taskBtn:hover {
         background-color: #3F84C1;
         color: white;
         position: static;
@@ -180,7 +180,7 @@
     border: thin solid #256297;
 }
 
-    .lstBtn:hover {
+.lstBtn:hover {
         color: white;
         position: static;
         border: dashed 2px black;
