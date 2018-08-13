@@ -250,5 +250,16 @@ namespace Muslimeen.BLL
         {
             return dBAccess.uspGetSelectedRejectedArticle(articleID);
         }
+
+        //Learn Page Articles
+        public List<Article> BLL_GetLearnArticle()
+        {
+            return dBAccess.GetLearnArticle();
+        }
+
+        public uspGetSelectedLearnArticle BLL_GetSelectedLearnArticle(int articleID)
+        {
+            return dBAccess.GetSelectedLearnArticle(articleID);
+        }
     }
 }

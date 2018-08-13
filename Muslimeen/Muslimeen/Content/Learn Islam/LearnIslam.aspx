@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LearnIslam.aspx.cs" Inherits="Muslimeen.Content.Learn_Islam.LearnIslam" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,6 +16,7 @@
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/learnIslam.css" rel="stylesheet" />
     <link href="../Zakaah/css/newZakaah.css" rel="stylesheet" />
+
 
 </head>
 <body style="background-color:white">
@@ -83,56 +86,69 @@
             </header>
 
         <!--Page Content-->        
-        <div class="content" id="content">  
+        <div class="content" id="content">
             <div class="container" style="margin-top: 10px; position: static;">
                 <div class="row" style="position: static; right: 50px">
                     <div class="col-lg-7" style="position: static;">
                         <h1 class="title header mb-4 mt-0">Articles</h1>
-                        <asp:Repeater ID="repeatPendingArticle" runat="server">
+                        <!--Modal pop-up code-->
+                        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                        
+                        <asp:Repeater ID="repeatLink" runat="server">                                                       
                             <ItemTemplate>
-                                <div class="col position-static">
-                                    <div class="row position-static">
-                                        <div class="col-2 position-static">
-                                            <h5>Title:</h5>
-                                        </div>
-                                        <div class="col-10 position-static">
-                                            <asp:Label runat="server" ID="lable1" Text='<%# Eval("ArticleTitle") %>'></asp:Label>
-                                        </div>
-                                    </div>
-                                    <div class="row position-static">
-                                        <div class="col-2 position-static">
-                                            <h5>Content: </h5>
-                                        </div>
-                                        <div class="col-10 position-static">
-                                            <asp:Label runat="server" ID="Label2" Text='<%# Eval("ArticleContent") %>'></asp:Label>
+                                <asp:LinkButton ID="btnShow" CommandArgument='<%#Eval("ArticleID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShow_Click">
+                                    <div class="p-0 form-row m-0 position-static">
+                                        <div class=" col-auto position-static p-0">
+                                            <div class="">
+                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Article&nbsp;Title: </b><%#Eval("ArticleTitle")%><br/></p>
+                                            </div>
+                                            <hr class=" mr-4 m-0 p-0"/>
+                                            <div class="">
+                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Created: </b><%#Eval("DateCreated")%></p>
+                                            </div>
+                                            <div class="">
+                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Scholar: </b><%#Eval("ScholarID")%></p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row position-static">
-                                        <div class="col-2 position-static">
-                                            <h6>Author: </h6>
-                                        </div>
-                                        <div class="col-4 position-static">
-                                            <asp:Label class="font-italic" runat="server" ID="Label3" Text='<%# Eval("ScholarID") %>'></asp:Label>
-                                        </div>
-                                        <div class="col-2 position-static">
-                                            <h6>Date: </h6>
-                                        </div>
-                                        <div class="col-4 position-static">
-                                            <asp:Label class="font-italic" runat="server" ID="Label1" Text='<%# Eval("DateCreated") %>'></asp:Label>
-                                        </div>
-                                    </div>
+                                    <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender1" runat="server" okcontrolid="btnOkay" TargetControlId="btnShow" PopupControlID="Panel1" BackgroundCssClass="ModalPopupBG" drag="true"></ajaxToolkit:ModalPopupExtender>
+                                </asp:LinkButton>
+                                <hr class="p-0 m-1" />
+                            </ItemTemplate>  
+                        </asp:Repeater>  
+
+                        <asp:Panel ID="Panel1" style="display: none" runat="server">
+                            <asp:HiddenField runat="server" ID="hfdRej" Value="" />
+                            <div class="HellowWorldPopup">
+                                <div class="PopupHeader" id="PopupHeader">
+                                    <label runat="server" id="lblRTitle"></label>
                                 </div>
-                                <hr />
-                            </ItemTemplate>
-                        </asp:Repeater>
-                    </div>
-                    <div class="col-lg-5" style="position: static;">
-                        <h3 class="title header mb-4 mt-0">Videos</h3>
-                        <iframe width="438" height="300" src="https://www.youtube.com/embed/kEon0omN5SA"></iframe>
+                                <div class="PopupBody">
+                                    <p>
+                                        <label runat="server" id="lblRContent"></label>
+                                    </p>
+                                    <p>
+                                        <label runat="server" id="lblRDate"></label>
+                                    </p>
+                                    <p>
+                                        <label runat="server" id="lblScholar"></label>
+                                    </p>
+                                </div>
+                                <div class="Controls">
+                                    <input id="btnOkay" type="button" value="Done" />
+                                </div>
+                            </div>
+                        </asp:Panel>
+
+                        <div class="col-lg-5" style="position: static;">
+                            <h3 class="title header mb-4 mt-0">Videos</h3>
+                            <iframe width="438" height="300" src="https://www.youtube.com/embed/kEon0omN5SA"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        
     </form>
     
     <!--Footer-->

@@ -73,6 +73,7 @@
     <Compile Include="ViewModels\uspGetAllPendingScholars.cs" />
     <Compile Include="ViewModels\uspGetCalAdjustValue.cs" />
     <Compile Include="ViewModels\uspGetEventReports.cs" />
+    <Compile Include="ViewModels\uspGetLearnArticle.cs" />
     <Compile Include="ViewModels\uspGetMember.cs" />
     <Compile Include="ViewModels\uspGetModeratorDetails.cs" />
     <Compile Include="ViewModels\uspGetMosque.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Models\uspVerifyMember.cs" />
     <Compile Include="ViewModels\uspGetRejectedArticle.cs" />
     <Compile Include="ViewModels\uspGetScholarDetails.cs" />
+    <Compile Include="ViewModels\uspGetSelectedLearnArticle.cs" />
     <Compile Include="ViewModels\uspGetSelectedPendingArticle.cs" />
     <Compile Include="ViewModels\uspGetSelectedRejectedArticle.cs" />
     <Compile Include="ViewModels\uspGetSpecificDayPrayerTimes.cs" />
