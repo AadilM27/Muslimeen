@@ -89,7 +89,7 @@
         <div class="content" id="content">
             <div class="container" style="margin-top: 10px; position: static;">
                 <div class="row" style="position: static; right: 50px">
-                    <div class="col-lg-7" style="position: static;">
+                    <div class="col-lg-7 flex-nowrap" style="position: static;">
                         <h1 class="title header mb-4 mt-0">Articles</h1>
                         <!--Modal pop-up code-->
                         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -140,11 +140,11 @@
                             </div>
                         </asp:Panel>
 
-                        <div class="col-lg-5" style="position: static;">
+                    </div>
+                    <div class="col-lg-5" style="position: static;">
                             <h3 class="title header mb-4 mt-0">Videos</h3>
                             <iframe width="438" height="300" src="https://www.youtube.com/embed/kEon0omN5SA"></iframe>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -1441,23 +1441,31 @@ namespace Muslimeen.BLL
         public List<Article> GetLearnArticle()
         {
             List<Article> list = new List<Article>();
-
             using (DataTable table = DBHelper.Select("uspGetLearnArticle", CommandType.StoredProcedure))
-                Article art = new Article
+            {
+                if (table.Rows.Count > 0)
                 {
-                    ArticleID = Convert.ToInt32(row["ArticleID"]),
-                    ArticleTitle = Convert.ToString(row["ArticleTitle"]),
-                    ArticleContent = Convert.ToString(row["ArticleContent"]),
-                    DateCreated = Convert.ToDateTime(row["DateCreated"]),
-                    Status = Convert.ToChar(row["Status"]),
-                    RejectionReason = Convert.ToString(row["RejectionReason"]),
-                    Active = Convert.ToChar(row["Active"]),
-                    RemovalReason = Convert.ToString(row["RemovalReason"]),
-                    ScholarID = Convert.ToString(row["ScholarID"]),
-                    ModeratorID = Convert.ToString(row["ModeratorID"]),
-                    TopicID = Convert.ToInt32(row["TopicID"])
-                };
-            list.Add(art);
+                    foreach(DataRow row in table.Rows)
+                    {
+                        Article art = new Article
+                        {
+                            ArticleID = Convert.ToInt32(row["ArticleID"]),
+                            ArticleTitle = Convert.ToString(row["ArticleTitle"]),
+                            ArticleContent = Convert.ToString(row["ArticleContent"]),
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]),
+                            Status = Convert.ToChar(row["Status"]),
+                            RejectionReason = Convert.ToString(row["RejectionReason"]),
+                            Active = Convert.ToChar(row["Active"]),
+                            RemovalReason = Convert.ToString(row["RemovalReason"]),
+                            ScholarID = Convert.ToString(row["ScholarID"]),
+                            ModeratorID = Convert.ToString(row["ModeratorID"]),
+                            TopicID = Convert.ToInt32(row["TopicID"])
+                        };
+                        list.Add(art);
+                    }
+                }
+            }
+            return list;            
         }
 
         public uspGetSelectedLearnArticle GetSelectedLearnArticle(int articleID)
@@ -1469,12 +1477,18 @@ namespace Muslimeen.BLL
             };
 
             using (DataTable tbl = DBHelper.ParamSelect("uspGetSelectedLearnArticle", CommandType.StoredProcedure, pars))
-                pen = new uspGetSelectedLearnArticle();
             {
-                pen.ArticleTitle = Convert.ToString(row["ArticleTitle"]);
-                pen.ArticleContent = Convert.ToString(row["ArticleContent"]);
-                pen.DateCreated = Convert.ToDateTime(row["DateCreated"]).Date;
-                pen.ScholarID = Convert.ToString(row["ScholarID"]);
+                if (tbl.Rows.Count == 1)
+                {
+                    DataRow row = tbl.Rows[0];
+
+                    pen = new uspGetSelectedLearnArticle();
+
+                    pen.ArticleTitle = Convert.ToString(row["ArticleTitle"]);
+                    pen.ArticleContent = Convert.ToString(row["ArticleContent"]);
+                    pen.DateCreated = Convert.ToDateTime(row["DateCreated"]).Date;
+                    pen.ScholarID = Convert.ToString(row["ScholarID"]);
+                }                
             } 
             return pen;
         }
