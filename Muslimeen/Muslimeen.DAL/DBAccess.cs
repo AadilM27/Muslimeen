@@ -909,6 +909,20 @@ namespace Muslimeen.BLL
             return DBHelper.NonQuery("uspUpdateAcceptArticle", CommandType.StoredProcedure, parameters.ToArray());
         }
 
+        public bool RejectArticle(RejectArticle rejectArticle)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var property in rejectArticle.GetType().GetProperties())
+            {
+                if (property.GetValue(rejectArticle) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + property.Name.ToString(), property.GetValue(rejectArticle)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdateRejectArticle", CommandType.StoredProcedure, parameters.ToArray());
+        }
+
         //Rejected Articles
         public List<Article> GetRejectedArticle()
         {

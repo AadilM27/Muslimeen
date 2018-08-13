@@ -12,6 +12,6 @@ namespace TypeLib.Models
         public string ModeratorID { get; set; }
         public char Status { get; set; }
         public char Active { get; set; }
-        public string RejectionReason { get; set; }
+       
     }
 }

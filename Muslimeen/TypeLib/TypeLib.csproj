@@ -54,6 +54,7 @@
     <Compile Include="Models\Prayer.cs" />
     <Compile Include="Models\PrayerType.cs" />
     <Compile Include="Models\Qualification.cs" />
+    <Compile Include="Models\RejectArticle.cs" />
     <Compile Include="Models\Scholar.cs" />
     <Compile Include="Models\Topic.cs" />
     <Compile Include="Models\Member.cs" />

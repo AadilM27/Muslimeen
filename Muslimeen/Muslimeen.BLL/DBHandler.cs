@@ -290,5 +290,9 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetSelectedNotice(notice);
         }
+        public bool BLL_RejectArticle(RejectArticle rejectArticle)
+        {
+            return dBAccess.RejectArticle(rejectArticle);
+        }
     }
 }
