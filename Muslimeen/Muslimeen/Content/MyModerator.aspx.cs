@@ -14,6 +14,7 @@ using iTextSharp.text.pdf;
 using iTextSharp.text.html.simpleparser;
 
 
+
 namespace Muslimeen.Content.MyModerator
 {
     public partial class MyModerator : System.Web.UI.Page
@@ -202,7 +203,7 @@ namespace Muslimeen.Content.MyModerator
 
                 uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
 
-                if (uspGetMember.MemberType == 'M')
+                if (uspGetMember.MemberType == 'O')
                 {
                     Response.Redirect("~/Content/MyModerator.aspx");
                 }
@@ -210,7 +211,7 @@ namespace Muslimeen.Content.MyModerator
                 {
                     Response.Redirect("~/Content/MyAdmin.aspx");
                 }
-                else if (uspGetMember.MemberType == 'O')
+                else if (uspGetMember.MemberType == 'M')
                 {
                     Response.Redirect("~/Content/MyMember.aspx");
                 }
@@ -358,6 +359,7 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
+                
                 if (Session["UserName"] != null)
                 {
                     DBHandler dBHandler = new DBHandler();
@@ -367,7 +369,7 @@ namespace Muslimeen.Content.MyModerator
                     string articleId = hdfSchId.Value.ToString();
 
                     accept.ArticleID = Convert.ToInt32(articleId);
-                    accept.ModeraterID = Session["UserName"].ToString();
+                    accept.ModeratorID =Session["UserName"].ToString();
                     accept.Status = 'A';
                     accept.Active = 'Y';
                    
@@ -375,6 +377,9 @@ namespace Muslimeen.Content.MyModerator
                     {
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Article Accepted!')", true);
                     }
+
+                    divViewArt.Visible = true;
+                    divViewPendingArt.Visible = true;
                 }
             }
             catch
@@ -383,23 +388,41 @@ namespace Muslimeen.Content.MyModerator
             }
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void Button2_Click(object sender, EventArgs e)//btnRejectArticles
         {
             try
             {
-                AcceptArticle accept = new AcceptArticle();
+               
+                if (txtRejectReason.Text.ToString() == "" || txtRejectReason == null)
+                {
+                    lblRejection.Text = "Cannot reject an article without a reason!";
+                    txtRejectReason.BorderColor = System.Drawing.Color.Red;
 
-                string articleId = hdfSchId.Value.ToString();
+                }
+                else
+                {
+                   
+                    DBHandler dBHandler = new DBHandler();
+                    RejectArticle reject = new RejectArticle();
 
+                    string articleId = hdfSchId.Value.ToString();
 
-                accept.ModeraterID = Session["UserName"].ToString();
-                accept.Status = 'R';
-                accept.Active = 'N';
-                accept.RejectionReason = txtRejectReason.Text.ToString();
-                accept.ArticleID = Convert.ToInt32(articleId);
-                DBHandler dBHandler = new DBHandler();
+                    reject.ArticleID = Convert.ToInt32(articleId);
+                    reject.Status = 'R';
+                    reject.RejectionReason = txtRejectReason.Text.ToString();
+                    reject.Active = 'N';
+                    reject.ModeratorID = Session["UserName"].ToString();
 
-                dBHandler.BLL_AcceptArticle(accept);
+                    dBHandler.BLL_RejectArticle(reject);                
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Article Rejected!')", true);
+                    lblRejection.Text = "";
+                    txtRejectReason.Text = "";
+                    txtRejectReason.BorderColor = System.Drawing.Color.Empty;
+
+                }
+                
+                divViewArt.Visible = true;
+                divViewPendingArt.Visible = true;
             }
             catch
             {

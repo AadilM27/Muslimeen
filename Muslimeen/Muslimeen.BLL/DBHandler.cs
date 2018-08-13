@@ -251,6 +251,16 @@ namespace Muslimeen.BLL
             return dBAccess.uspGetSelectedRejectedArticle(articleID);
         }
 
+        //Learn Page Articles
+        public List<Article> BLL_GetLearnArticle()
+        {
+            return dBAccess.GetLearnArticle();
+        }
+
+        public uspGetSelectedLearnArticle BLL_GetSelectedLearnArticle(int articleID)
+        {
+            return dBAccess.GetSelectedLearnArticle(articleID);
+        }
         public bool BLL_AddModeraterQualification(Moderater moderater)
         {
             return dBAccess.AddModeraterQualification(moderater);
@@ -289,6 +299,10 @@ namespace Muslimeen.BLL
         public Notice BLL_GetSelectedNotice(int notice)
         {
             return dBAccess.GetSelectedNotice(notice);
+        }
+        public bool BLL_RejectArticle(RejectArticle rejectArticle)
+        {
+            return dBAccess.RejectArticle(rejectArticle);
         }
     }
 }

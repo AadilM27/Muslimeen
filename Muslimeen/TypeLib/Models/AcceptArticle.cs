@@ -9,9 +9,9 @@ namespace TypeLib.Models
     public class AcceptArticle
     {
         public int ArticleID { get; set; }
-        public string ModeraterID { get; set; }
+        public string ModeratorID { get; set; }
         public char Status { get; set; }
         public char Active { get; set; }
-        public string RejectionReason { get; set; }
+       
     }
 }

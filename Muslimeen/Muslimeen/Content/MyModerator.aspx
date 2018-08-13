@@ -279,7 +279,9 @@
                                     <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" ID="Button2" Text="Reject Article" OnClick="Button2_Click" />
                                     <br />
                                     <br />
-                                    <asp:TextBox runat="server" CssClass=" text-justify btn btn-sm  mr-2 position-static" ID="txtRejectReason" BorderColor="#256297" Width="50%" OnTextChanged="txtRejectReason_TextChanged" TextMode="MultiLine"></asp:TextBox>
+                                    <asp:Label ID="Label1" CssClass=" form-control-sm col main-txtb " ForeColor="#256297" runat="server" Text="Rejection Reason:"></asp:Label> <asp:TextBox runat="server" CssClass=" text-justify btn btn-sm  mr-2 position-static" ID="txtRejectReason" BorderColor="#256297" Width="50%" OnTextChanged="txtRejectReason_TextChanged" ></asp:TextBox>
+                                    <br />
+                                    <asp:Label ID="lblRejection" CssClass="align-content-center" ForeColor="Red" runat="server" Text=""></asp:Label>
                                 </div>
                         </div>
                             <div runat="server" id="divDisplayReports" class=" col-12 col-xl-12 mw-100 p-0" style="position:static">

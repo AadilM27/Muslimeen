@@ -16,6 +16,9 @@ namespace Muslimeen.Content.Learn_Islam
         {
             DBHandler dBHandler = new DBHandler();
 
+            //Pending Link Article Source
+            repeatLink.DataSource = dBHandler.BLL_GetLearnArticle();
+            repeatLink.DataBind();
 
             if (Session["UserName"] != null)
             {
@@ -40,18 +43,6 @@ namespace Muslimeen.Content.Learn_Islam
                 divUserProfile.Visible = false;
                 Session.Clear();
             }
-
-            //Article...
-            try
-            {
-                repeatPendingArticle.DataSource = dBHandler.BLL_GetAcceptedArticle();
-                repeatPendingArticle.DataBind();
-            }
-            catch
-            {
-                throw;
-            }
-
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -131,6 +122,25 @@ namespace Muslimeen.Content.Learn_Islam
                 Response.Redirect("~/Content/AddArticle.aspx");
             }
 
+
+        }
+
+        protected void btnShow_Click(object sender, EventArgs e)
+        {
+
+            LinkButton linkButton = (LinkButton)sender;
+
+            string art = linkButton.CommandArgument.ToString();
+            hfdRej.Value = art;
+
+            DBHandler han = new DBHandler();
+            uspGetSelectedLearnArticle pen = new uspGetSelectedLearnArticle();
+
+            pen = han.BLL_GetSelectedLearnArticle(int.Parse(art));
+            lblRTitle.InnerText = pen.ArticleTitle.ToString();
+            lblRContent.InnerText = pen.ArticleContent.ToString();
+            lblRDate.InnerText = pen.DateCreated.ToString();
+            lblScholar.InnerText = pen.ScholarID.ToString();
 
         }
     }
