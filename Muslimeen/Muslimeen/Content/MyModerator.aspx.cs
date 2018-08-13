@@ -39,7 +39,7 @@ namespace Muslimeen.Content.MyModerator
                     uspGetMember uspGetMember = new uspGetMember();
                     uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
 
-                    if (uspGetMember.MemberType == 'M')
+                    if (uspGetMember.MemberType == 'O')
                     {
                         hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
                         divUserProfile.Visible = true;
