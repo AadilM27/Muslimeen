@@ -6,6 +6,10 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TypeLib.ViewModels;
 using Muslimeen.BLL;
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.html.simpleparser;
 
 
 namespace Muslimeen.Content.Mosque
@@ -84,11 +88,11 @@ namespace Muslimeen.Content.Mosque
                     lblMosqueType.Text = mosque.MosqueType;
                     lblMosqueSize.Text = mosque.MosqueSize;
                     lblQuote.Text = mosque.MosqueQuote;
-                    imgMosque.ImageUrl=mosque.MosqueImage;
+                    imgMosque.ImageUrl = mosque.MosqueImage;
                     lblMembers.Text = mosque.MemberCount.ToString();
                     uspGetMember member = new uspGetMember();
-                   member = db.BLL_GetMosqueRep(int.Parse(Session["MosqueID"].ToString()));
-                   lblMosqueRep.Text = member.MemberName.ToString() + " " + member.MemberLastName.ToString();
+                    member = db.BLL_GetMosqueRep(int.Parse(Session["MosqueID"].ToString()));
+                    lblMosqueRep.Text = member.MemberName.ToString() + " " + member.MemberLastName.ToString();
                 }
                 catch { throw; }
                 #endregion LoadAdd/UpdatePrayer
@@ -101,6 +105,7 @@ namespace Muslimeen.Content.Mosque
                 divLocation.Visible = false;
                 divPrayerTimes.Visible = false;
                 divPrayerTable.Visible = false;
+                divgrid.Visible = false;
             }
         }
 
@@ -185,7 +190,7 @@ namespace Muslimeen.Content.Mosque
         }
         protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
         {
-         
+
         }
 
         protected void btnListEvents_Click(object sender, EventArgs e)
@@ -211,6 +216,7 @@ namespace Muslimeen.Content.Mosque
             divEvent.Visible = false;
             divLocation.Visible = false;
             divPrayerTable.Visible = true;
+            divgrid.Visible = false;
             try
             {
                 List<uspGetMosquePrayerTimes> list = new List<uspGetMosquePrayerTimes>();
@@ -229,8 +235,8 @@ namespace Muslimeen.Content.Mosque
                     if (count == 0)
                     {
 
-                        pt.PrayerDescription = prayer.PrayerDescription;
-                        pt.PrayerDate = prayer.PrayerDate;
+
+                        pt.PrayerDate = prayer.PrayerDate.Date;
                         pt.PrayerDay = Convert.ToDateTime(pt.PrayerDate).DayOfWeek.ToString();
                         pt.FajrA = prayer.AdhaanTime;
                         pt.FajrJ = prayer.JamaatTime;
@@ -271,6 +277,8 @@ namespace Muslimeen.Content.Mosque
                 }
                 rptPrayerTimes.DataSource = times;
                 rptPrayerTimes.DataBind();
+                grdReports.DataSource = times;
+                grdReports.DataBind();
             }
             catch { }
         }
@@ -280,7 +288,7 @@ namespace Muslimeen.Content.Mosque
             lblTaskHeader.InnerText = Session["lblMosqueName"].ToString();
             divDetails.Visible = true;
             divEvent.Visible = false;
-            divLocation.Visible  = false;
+            divLocation.Visible = false;
             divPrayerTimes.Visible = false;
         }
 
@@ -292,6 +300,7 @@ namespace Muslimeen.Content.Mosque
             divLocation.Visible = false;
             divPrayerTimes.Visible = false;
             divPrayerTable.Visible = false;
+            divgrid.Visible = false;
         }
 
         protected void btnAddress_Click(object sender, EventArgs e)
@@ -302,6 +311,7 @@ namespace Muslimeen.Content.Mosque
             divLocation.Visible = true;
             divPrayerTimes.Visible = false;
             divPrayerTable.Visible = false;
+            divgrid.Visible = false;
 
 
         }
@@ -314,13 +324,71 @@ namespace Muslimeen.Content.Mosque
             divLocation.Visible = false;
             divPrayerTimes.Visible = true;
             divPrayerTable.Visible = false;
-
+            divgrid.Visible = false;
 
         }
 
         protected void btnListPrayers_Click(object sender, EventArgs e)
         {
-         
+
         }
+
+        protected void PDF_ServerClick(object sender, EventArgs e)
+        {
+            try
+            {
+                PdfPTable pdfTable = new PdfPTable(grdReports.HeaderRow.Cells.Count);
+                pdfTable.HorizontalAlignment = 0;
+                foreach (TableCell Headercell in grdReports.HeaderRow.Cells)
+                {
+                    grdReports.HeaderRow.Cells[0].Text = "Date";
+                    grdReports.HeaderRow.Cells[1].Text = "Day";
+                    grdReports.HeaderRow.Cells[2].Text = "Fajr Adhaan";
+                    grdReports.HeaderRow.Cells[3].Text = "Fajr Jamaat";
+                    grdReports.HeaderRow.Cells[4].Text = "Dhuhr Adhaan";
+                    grdReports.HeaderRow.Cells[5].Text = "Dhuhr Jamaat ";
+                    grdReports.HeaderRow.Cells[6].Text = "Asr Adhaan";
+                    grdReports.HeaderRow.Cells[7].Text = "Asr Jamaat ";
+                    grdReports.HeaderRow.Cells[8].Text = "Magrib Adhaan";
+                    grdReports.HeaderRow.Cells[9].Text = "Magrib Jamaat ";
+                    grdReports.HeaderRow.Cells[10].Text = "Eisha Adhaan";
+                    grdReports.HeaderRow.Cells[11].Text = "Eisha Jamaat";
+                    Font font = new Font();
+                    font.Color = new BaseColor(grdReports.HeaderStyle.ForeColor);
+                    PdfPCell pdfCell = new PdfPCell(new Phrase(Headercell.Text, font));
+                    pdfCell.BackgroundColor = new BaseColor(grdReports.HeaderStyle.BackColor);
+                    pdfTable.AddCell(pdfCell);
+                }
+
+                foreach (GridViewRow gridviewrow in grdReports.Rows)
+                {
+                    foreach (TableCell tablecell in gridviewrow.Cells)
+                    {
+                        Font font = new Font();
+                        font.Color = new BaseColor(grdReports.RowStyle.ForeColor);
+
+                        PdfPCell pdfcell = new PdfPCell(new Phrase(tablecell.Text));
+                        pdfcell.BackgroundColor = new BaseColor(grdReports.RowStyle.BackColor);
+                        pdfTable.AddCell(pdfcell);
+                    }
+                }
+
+                Document pdfDocument = new Document(new RectangleReadOnly(842, 595), 10f, -200f, 10f, 0f);
+                // Document pdfDocument = new Document(new RectangleReadOnly(842, 595), widthstart, cell width, heightstart);
+                PdfAWriter.GetInstance(pdfDocument, Response.OutputStream);
+
+                pdfDocument.Open();
+                pdfDocument.Add(pdfTable);
+                pdfDocument.Close();
+
+                Response.ContentType = "application/pdf";
+                Response.AppendHeader("content-disposition", "attachment;filename=PrayerTimeTable.pdf");
+                Response.Write(pdfDocument);
+                Response.Flush();
+                Response.End();
+            }
+            catch { }
+        }
+
     }
 }

@@ -23,7 +23,7 @@
     color: #256297;
 }
 
-    .navText:hover {
+.navText:hover {
         color: white;
         background-color: #3F84C1;
         text-decoration: none;
@@ -44,7 +44,7 @@
 }
 
 .content {
-    background-color: none;
+    background-color: #ffffff;
 }
 
 .sticky {
@@ -57,7 +57,7 @@
     text-decoration-color: #256297;
 }
 
-    .navbtn:hover {
+.navbtn:hover {
         color: white;
         background-color: #3F84C1;
         text-decoration: none;
@@ -107,7 +107,7 @@
     border-bottom-right-radius: 0px;
 }
 
-    .search-box:focus {
+.search-box:focus {
         width: 100%;
         box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
     }
@@ -155,7 +155,7 @@
     text-align: start;
 }
 
-    .taskBtn:hover {
+.taskBtn:hover {
         background-color: #3F84C1;
         color: white;
         position: static;
@@ -181,7 +181,7 @@
     border: thin solid #256297;
 }
 
-    .lstBtn:hover {
+.lstBtn:hover {
         color: white;
         position: static;
         border: dashed 2px black;

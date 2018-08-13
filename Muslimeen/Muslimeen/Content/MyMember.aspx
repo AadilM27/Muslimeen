@@ -102,16 +102,16 @@
         <div class="content" id="content">
             <!--Side menu-->
             <div class="row bg-light m-0 divContainers p-1 flex-nowrap">
-                <div class="side-bar p-0 basic-div-styling mr-1" style="min-width: 250px;">
+                <div class="side-bar p-0 basic-div-styling mr-1">
                     <!--contains the buttons-->
                     <div class="head-div text-center p-2">
                         <p class="text-uppercase m-0 font-weight-bold">Tasks :</p>
                     </div>
-                    <nav class="nav flex-column pt-2 pb-2 pr-0">
-                        <asp:Button runat="server" ID="btnTodaysPrayerTimes" OnClick="btnTodaysPrayerTime_Click" CssClass=" pl-2 btn taskBtn mb-1" Text="View todays prayer times" />
-                        <asp:Button runat="server" ID="btnEvents" CssClass=" pl-2 btn taskBtn mb-1"  OnClick="btnEvents_Click" Text="View mosque events" />
-                        <asp:Button runat="server" ID="btnNotifications" CssClass=" pl-2 btn taskBtn mb-1"  OnClick="btnNotifications_Click" Text="View notifications" />
-                        <asp:Button runat="server" ID="btnArticles" CssClass=" pl-2 btn taskBtn mb-1"  OnClick="btnArticles_Click" Text="View latest articles" />
+                    <nav class="nav flex-column pt-1 pb-1 pr-0">
+                        <asp:Button runat="server" ID="btnTodaysPrayerTimes" OnClick="btnTodaysPrayerTime_Click" CssClass="pl-2 btn taskBtn mb-1" Text="View todays prayer times" />
+                        <asp:Button runat="server" ID="btnEvents" CssClass="pl-2 btn taskBtn mb-1"  OnClick="btnEvents_Click" Text="View mosque events" />
+                        <asp:Button runat="server" ID="btnNotifications" CssClass="pl-2 btn taskBtn mb-1"  OnClick="btnNotifications_Click" Text="View notifications" />
+                        <asp:Button runat="server" ID="btnArticles" CssClass="pl-2 btn taskBtn mb-1"  OnClick="btnArticles_Click" Text="View latest articles" />
                     </nav>
                 </div>
                 <!--Side menu ends-->
@@ -122,7 +122,7 @@
                     </div>
                     <div class="row p-0 m-0 tab-content right-bottom-div p-1 flex-nowrap">
                         <div runat="server" id="divDisplaySalahTimetable" class="bg-light position-static col p-3 divContainers">
-                            <div style="display: flex;justify-content: center" class=" position-static basic-div-styling">
+                            <div style="display: flex;justify-content: center" class=" position-static basic-div-styling w-50">
                              <table class="table" style="justify-content: center; width: 50%; height: 20%; align-self: center">
                                 <tr>
                                     <td rowspan="2"; colspan="1"><asp:Image ID="icoPrayer" ImageUrl="Mosque/download.png" runat="server" Height="110px" Width="110px" /> </td>

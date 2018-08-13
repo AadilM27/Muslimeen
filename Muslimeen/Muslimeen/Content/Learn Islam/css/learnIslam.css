@@ -60,6 +60,23 @@
     }
 
 
+.lstBtn {
+    position: static;
+    background-color: #6e9bc3;
+    color: black;
+    padding: 0;
+    border-radius: 0px;
+    text-align: start;
+    font-size: small;
+    border: thin solid #256297;
+}
+
+    .lstBtn:hover {
+        color: white;
+        position: static;
+        border: dashed 2px black;
+    }
+
 
 
 
@@ -229,3 +246,18 @@ html {
     align-self: center;
 }
 /*End copying from here for Header and footer*/
+
+.ModalPopupBG {
+    background-color: #666699;
+    filter: alpha(opacity=50);
+    opacity: 0.7;
+}
+
+.HellowWorldPopup {
+    min-width: 500%;
+    max-width: 100%;
+    min-height: 300px;
+    max-height: 100%;
+    background: white;
+    overflow: auto;
+}

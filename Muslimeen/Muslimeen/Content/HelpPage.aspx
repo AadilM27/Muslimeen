@@ -11,10 +11,9 @@
     <title>Help Page</title>
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="Default/css/Default.css" rel="stylesheet" />
     <link href="../Content/HelpPage/HelpPage.css" rel="stylesheet" />
     <link href="../Content/HelpPage/icon" rel="stylesheet" />
-    <link href="MyMember/css/MyMember.css" rel="stylesheet" />
+
 </head>
     <body>
         <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
@@ -81,41 +80,46 @@
                 </div>
             </header>
      <!--Add content-->
-            <div class="content" id="content" style="min-height:595px;">
-                <div class="contentHolder header p-5">
-                    <div class="header mb-5">
-                        <h1 class="title">Help and Support</h1>
+            <div class="content" id="content" style="min-height:500px; background-color:#256297">
+                <div class="contentHolder p-0" ">
+                    <div class="head-div text-center p-1 mb-2">
+                        <h2 class="p-2 m-0">Help and Support</h2>
                     </div>
-
-                    <div class="row">
+                    <hr style="background-color: #17a2b8" />
+                    <div class="row contentHolder p-5"  >
                 <!--Help Center-->
-                              <div class =" col text-center paragraphDisplay mb-3 p-1" style="position:static; height:225px; border-radius:5px;">
+                        
+                              <div class =" col text-center paragraphDisplay mb-3 p-1 " style="position:static; height:225px; border-radius:5px; ">
+                                  <div class="position-static basic-div-styling p-3 h-100 " style= "background-color:white">
                                   <asp:Image runat="server" CssClass="mb-0 ml-0 " src="../Content/HelpPage/icons/help.png" width="90" height="70"/>
                                 <h4 class="text-center"><a href="HelpCenter.aspx">Help Center</a></h4>
-                
                                  <p class="text-center">
                                       Getting started <br/>
                                       Managing your account<br />
                                       How my Muslimeen feed works<br />
                                   </p>
+                                  </div>
                               </div>
-
+                        
                   <!--Privacy and Safety--> 
                             <div class =" col-4 text-center paragraphDisplay mb-3 ml-3 p-1" style="position:static; height:225px; border-radius:5px;"><!--and this one static also-->
-                                <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/lock.png" width="90" height="70"/>
-                                <h4 class="text-center"><a href="PrivacyAndSafety.aspx"> Privacy and safety</a></h4>  
+                                 <div class="position-static basic-div-styling p-3 h-100" style= "background-color:white">
+                                    <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/lock.png" width="90" height="70"/>
+                                    <h4 class="text-center"><a href="PrivacyAndSafety.aspx"> Privacy and safety</a></h4>  
                 
                                    Our data policy and your privacy      
-                  
+                                </div>
                              </div>
             
                              <!--Terms and Policies -->
-                            <div class ="col text-center paragraphDisplay mb-3 ml-3 p-1" style="position:static; height:225px; border-radius:5px;"> <!--Like this i made this position static-->
+                            <div class ="col text-center paragraphDisplay mb-3 ml-3 p-1" style="position:static; height:225px; border-radius:5px; "> <!--Like this i made this position static-->
+                                 <div class="position-static basic-div-styling p-3 h-100" style= "background-color:white" >
                                 <asp:Image runat="server" CssClass="mb-0 ml-0"  src="../Content/HelpPage/icons/docs.png" width="90" height="70"/>
                                 <h4 class="text-center"><a href="TermsOfService.aspx">Terms and policies</a></h4> 
                                 <p class="text-center">
                                 Terms of service<br />
                                 </p>
+                                  </div>
                         </div>
                     </div>  
               </div> <!--close Row-->
