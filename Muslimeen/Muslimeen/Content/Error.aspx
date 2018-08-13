@@ -50,6 +50,9 @@
                     <li>
                         The page requested is spelt wrong
                     </li>
+                    <li>
+                        The page requested may not exist
+                    </li>
                 </ul>
             </div>
         </div>

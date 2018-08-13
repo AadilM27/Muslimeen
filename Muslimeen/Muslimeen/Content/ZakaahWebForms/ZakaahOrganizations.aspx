@@ -119,16 +119,16 @@
                                             <table class="table table-active align-content-center shadow-lg" style="color: gray">
                                                 <tr>
                                                     <td rowspan="3">
-                                                        <asp:Image ID="OrganizationIMG" ImageUrl='<%#Eval("OrgImageUrl")%>' runat="server" Width="200px" Height="180px" />
+                                                        <asp:Image ID="OrganizationIMG" ImageUrl='<%#Eval("Image")%>' runat="server" Width="200px" Height="180px" />
                                                     </td>
                                                     <td>
-                                                        <asp:Label ID="lblOrgName" runat="server" Text='<%#Eval("OrgName")%>'></asp:Label>
+                                                        <asp:Label ID="lblOrgName" runat="server" Text='<%#Eval("Name")%>'></asp:Label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
                                                        
-                                                    <asp:HyperLink ID="linkAddress" runat="server" NavigateUrl='<%#Eval("Address")%>' Text='<%#Eval("Address")%>' />                                              </tr>
+                                                    <asp:HyperLink ID="linkAddress" runat="server" NavigateUrl='<%#Eval("WebsiteAddress")%>' Text='<%#Eval("Address")%>' />                                              </tr>
                                                 <tr>
                                                     <td>Contact No: <asp:Label ID="lblContactNo" runat="server" Text='<%#Eval("ContactNo")%>'></asp:Label></td>
                                                     <tr>

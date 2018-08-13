@@ -302,7 +302,7 @@ namespace Muslimeen.Content
             notice = dBHandler.BLL_GetNotice(Convert.ToInt32(NoticeID));
 
             lblNoticeTitle.InnerText = notice.NoticeTitle.ToString();
-            lblNoticeDate.InnerText = notice.NoticeDate.ToString();
+            lblNoticeDate.InnerText = notice.DateCreated.ToString();
             lblNoticeDescription.InnerText = notice.NoticeDescription.ToString();
 
         }

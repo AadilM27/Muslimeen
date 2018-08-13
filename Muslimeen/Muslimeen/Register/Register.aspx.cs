@@ -212,12 +212,6 @@ namespace Muslimeen.Register
                 }
                 if (continueProcess == 0)
                 {
-                    //make sure the DOB is in correct format yyy-mm-dd.
-                    if (txtDOB.Text.IndexOf('-', 4) == -1 || txtDOB.Text.IndexOf('-', 7) == -1)
-                    {
-                        txtDOB.Text = txtDOB.Text.Insert(4, "-");
-                        txtDOB.Text = txtDOB.Text.Insert(7, "-");
-                    }
 
                     string encryptionPass = Convert.ToString(txtUserName.Text);
                     Encryption encryption = new Encryption();
@@ -235,8 +229,8 @@ namespace Muslimeen.Register
                     member.ActiveTypeID = 'T';
                     member.Email = Convert.ToString(txtUserEmail.Text);
                     member.ContactNo = Convert.ToString(txtContactNum.Text);
-                    member.ActivationExpiry = Convert.ToDateTime(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"));
-                    member.ActivationDate = Convert.ToDateTime(DateTime.Now.ToLocalTime());
+                    member.ActivationExpiry = Convert.ToDateTime(DateTime.Now.AddDays(1));
+                    member.ActivationDate = Convert.ToDateTime(DateTime.Now);
 
                     bool success = dBHandler.BLL_AddMember(member);
 
