@@ -165,8 +165,6 @@
                                         </div>
                                     </div>
                             </div>
- 
-
                         <div class=" col-4 p-3 bg-light position-static" runat="server" id="divEditEvent">
 
                             <br />
@@ -391,7 +389,6 @@
 
 
                         </div>
-
                         <div class="p-3 bg-light position-static flex-nowrap" runat="server" id="divManageTimes">
 
                             <div class="row flex-nowrap">

@@ -11,8 +11,9 @@ namespace TypeLib.Models
         public int NoticeID { get; set; }
         public string NoticeTitle { get; set; }
         public string NoticeDescription { get; set; }
-        public DateTime NoticeDate { get; set; }
         public string MemberID{get; set;}
-
+        public DateTime DateCreated { get; set; }
+        public DateTime DateExpiry { get; set; }
+        public char Active { get; set; }   
     }
 }

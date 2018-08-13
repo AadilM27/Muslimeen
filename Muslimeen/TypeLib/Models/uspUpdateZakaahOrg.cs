@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace TypeLib.Models
 {
-    public class Organization
+    public class uspUpdateZakaahOrg
     {
         public int OrganizationID { get; set; }
         public string Name { get; set; }
         public string WebsiteAddress { get; set; }
-        public string Image { get; set; } //should be Byte[] but used string for compatibility of data type.
+        public byte[] Image { get; set; }
         public string ContactNo { get; set; }
         public string PhysicalAddress { get; set; }
         public char Active { get; set; }
+
     }
 }

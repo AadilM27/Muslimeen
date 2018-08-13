@@ -182,6 +182,24 @@ html{
     position: static;
 }
 
+.sub-taskBtn {
+    font-weight: 500;
+    position: static;
+    background-color: white;
+    color: black;
+    padding: 0;
+    border-radius: 0px;
+    text-align: start;
+    font-size: small;
+    margin-left: 30px;
+}
+
+.sub-taskBtn:hover {
+    background-color: #3F84C1;
+    color: white;
+    position: static;
+}
+
 .divContainers {
     min-height:595px;
     position:center;
@@ -199,7 +217,7 @@ html{
     border-radius: 0px;
     text-align: start;
     font-size:small;
-    border:thin solid #256297;
+    border:2px solid #256297;
 }
 
 .lstBtn:hover {

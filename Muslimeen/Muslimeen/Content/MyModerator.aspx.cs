@@ -37,17 +37,24 @@ namespace Muslimeen.Content.MyModerator
                 if (Session["UserName"] != null)
                 {
                     uspGetMember uspGetMember = new uspGetMember();
-
                     uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
-                    hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
-                    divUserProfile.Visible = true;
 
-                    liMyMusbtn.Visible = true;
-                    liMyMusDivi.Visible = true;
+                    if (uspGetMember.MemberType == 'O')
+                    {
+                        hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
+                        divUserProfile.Visible = true;
 
-                    btnLogin.Text = "Log out";
-                    btnRegister.Visible = false;
+                        liMyMusbtn.Visible = true;
+                        liMyMusDivi.Visible = true;
 
+                        btnLogin.Text = "Log out";
+                        btnRegister.Visible = false;
+
+                    }
+                    else
+                    {
+                        Response.Redirect("~/Content/Error.aspx");
+                    }
                 }
                 else if (Session["UserName"] == null)
                 {
@@ -56,6 +63,7 @@ namespace Muslimeen.Content.MyModerator
 
                     divUserProfile.Visible = false;
                     Session.Clear();
+                    Response.Redirect("~/Login/Login.aspx");
                 }
 
 
@@ -137,7 +145,7 @@ namespace Muslimeen.Content.MyModerator
 
                 Session.Clear();
                 Session.Abandon();
-                Response.Redirect("~/Content/MyAdmin.aspx");
+                Response.Redirect("~/Content/MyModerator.aspx");
                 btnLogin.Text = "Login";
                 btnRegister.Visible = true;
             }
@@ -194,17 +202,17 @@ namespace Muslimeen.Content.MyModerator
 
                 uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
 
-                if (uspGetMember.MemberType == 'A')
+                if (uspGetMember.MemberType == 'O')
+                {
+                    Response.Redirect("~/Content/MyModerator.aspx");
+                }
+                else if (uspGetMember.MemberType == 'A')
                 {
                     Response.Redirect("~/Content/MyAdmin.aspx");
                 }
                 else if (uspGetMember.MemberType == 'M')
                 {
                     Response.Redirect("~/Content/MyMember.aspx");
-                }
-                else if (uspGetMember.MemberType == 'O')
-                {
-                    Response.Redirect("~/Content/MyModerator.aspx");
                 }
                 else if (uspGetMember.MemberType == 'S')
                 {
@@ -352,24 +360,26 @@ namespace Muslimeen.Content.MyModerator
             {
                 if (Session["UserName"] != null)
                 {
+                    DBHandler dBHandler = new DBHandler();
+                    Moderater m = new Moderater();
                     AcceptArticle accept = new AcceptArticle();
 
                     string articleId = hdfSchId.Value.ToString();
 
-
-                    accept.ModeraterID = Session["UserName"].ToString();
+                    accept.ArticleID = Convert.ToInt32(articleId);
+                    accept.ModeratorID = "UJappie741";
                     accept.Status = 'A';
                     accept.Active = 'Y';
-                    accept.RejectionReason = "";
-                    accept.ArticleID = Convert.ToInt32(articleId);
-                    DBHandler dBHandler = new DBHandler();
-
-                    dBHandler.BLL_AcceptArticle(accept);
+                   
+                    if (dBHandler.BLL_AcceptArticle(accept))
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Article Accepted!')", true);
+                    }
                 }
             }
             catch
             {
-
+                throw;
             }
         }
 
@@ -382,7 +392,7 @@ namespace Muslimeen.Content.MyModerator
                 string articleId = hdfSchId.Value.ToString();
 
 
-                accept.ModeraterID = Session["UserName"].ToString();
+                accept.ModeratorID = Session["UserName"].ToString();
                 accept.Status = 'R';
                 accept.Active = 'N';
                 accept.RejectionReason = txtRejectReason.Text.ToString();
