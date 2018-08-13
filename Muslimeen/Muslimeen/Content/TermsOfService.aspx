@@ -10,9 +10,7 @@
     <title>TermsAndPolicies</title>
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="Default/css/Default.css" rel="stylesheet" />
     <link href="../Content/HelpPage/HelpPage.css" rel="stylesheet" />
-    <link href="MyMember/css/MyMember.css" rel="stylesheet" />
 </head>
     <body>
         <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
@@ -80,10 +78,10 @@
             </header>     <!--Add content-->
                 <div class="content" id="content" style="min-height:595px;" >
                             <div class="head-div text-center p-0 mb-1">    
-                                <h3 class="p-0 m-0">Terms and Policies     <asp:Image runat="server" CssClass="mb-0 ml-0"  src="../Content/HelpPage/icons/docs.png" width="60" height="60"/></h3> 
+                                <h2 class="p-0 m-0">Terms and Policies     <asp:Image runat="server" CssClass="mb-0 ml-0"  src="../Content/HelpPage/icons/docs.png" width="60" height="60"/></h2> 
                             </div> 
-                    <div class="container">
-                        <div class="position-static basic-div-styling p-2 h-20">
+                    <div class="container p-4">
+                        <div class="position-static basic-div-styling p-3 h-20">
                            
                                  <p>
                                     <b>Terms of service:</b><br />
