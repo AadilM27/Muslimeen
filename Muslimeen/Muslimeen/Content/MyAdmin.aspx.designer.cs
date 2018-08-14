@@ -238,6 +238,15 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Button btnAddNotice;
         
         /// <summary>
+        /// btnUpdateDateCounter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpdateDateCounter;
+        
+        /// <summary>
         /// lblTaskHead control.
         /// </summary>
         /// <remarks>
@@ -742,6 +751,15 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.HiddenField hdfZakaahOrg;
         
         /// <summary>
+        /// divOrgOverlay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divOrgOverlay;
+        
+        /// <summary>
         /// divAddUpdateZakaahOrg control.
         /// </summary>
         /// <remarks>
@@ -859,6 +877,15 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.HiddenField hdfNotice;
         
         /// <summary>
+        /// divNoticeOverlay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divNoticeOverlay;
+        
+        /// <summary>
         /// divAddUpdateNotice control.
         /// </summary>
         /// <remarks>
@@ -947,5 +974,104 @@ namespace Muslimeen.Content {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNoticeError;
+        
+        /// <summary>
+        /// divCounterCalander control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCounterCalander;
+        
+        /// <summary>
+        /// txtCurCounterTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCurCounterTitle;
+        
+        /// <summary>
+        /// txtCurCounterEndTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCurCounterEndTitle;
+        
+        /// <summary>
+        /// txtCurCounterEndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCurCounterEndDate;
+        
+        /// <summary>
+        /// txtCounterTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCounterTitle;
+        
+        /// <summary>
+        /// txtCounterEndTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCounterEndTitle;
+        
+        /// <summary>
+        /// txtCounterEndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCounterEndDate;
+        
+        /// <summary>
+        /// btnUpdateCounter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpdateCounter;
+        
+        /// <summary>
+        /// txtCurIsalmicDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCurIsalmicDate;
+        
+        /// <summary>
+        /// txtIslamicDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtIslamicDate;
+        
+        /// <summary>
+        /// btnUpdateIslamicDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpdateIslamicDate;
     }
 }

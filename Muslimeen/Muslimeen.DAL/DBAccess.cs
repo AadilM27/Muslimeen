@@ -360,12 +360,12 @@ namespace Muslimeen.BLL
                         org.ContactNo = Convert.ToString(row["ContactNo"]);
                         org.Active = Convert.ToChar(row["Active"]);
 
-                        if (!(row["Image"] is DBNull))
-                        {
-                            Byte[] bytes = (Byte[])row["Image"]; //Make byets in to base64String.
-                            string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-                            org.Image = "data:image/jpg;base64," + base64String;
-                        }
+                        //if (!(row["Image"] is DBNull))
+                        //{
+                        //    Byte[] bytes = (Byte[])row["Image"]; //Make byets in to base64String.
+                        //    string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+                        //    org.Image = "data:image/jpg;base64," + base64String;
+                        //}
 
                         list.Add(org);
                     }
@@ -1506,6 +1506,56 @@ namespace Muslimeen.BLL
             } 
             return pen;
         }
-    }        
+
+        public List<CounterCalender> GetCounterCalender()
+        {
+            List<CounterCalender> list = new List<CounterCalender>();
+            using (DataTable table = DBHelper.Select("[uspGetCounterCalender]", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        CounterCalender cc = new CounterCalender
+                        {
+                            ID = Convert.ToString(row["ID"]),
+                            Val = Convert.ToString(row["Val"])
+                        };
+                        list.Add(cc);
+                    }
+                }
+            }
+            return list;
+        }
+
+        public bool UpdateIslamicDate (uspUpdateIslamicDate updateIslamicDate)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            foreach (var prop in updateIslamicDate.GetType().GetProperties())
+            {
+                if (prop.GetValue(updateIslamicDate) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(updateIslamicDate)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdateIslamicDate", CommandType.StoredProcedure,
+                parameters.ToArray());
+        }
+
+        public bool UpdateCountDown(uspUpdateCountDown updateCountDown)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            foreach (var prop in updateCountDown.GetType().GetProperties())
+            {
+                if (prop.GetValue(updateCountDown) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(updateCountDown)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdateCountDown", CommandType.StoredProcedure,
+                parameters.ToArray());
+        }
+
+    }   
 }
 

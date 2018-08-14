@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace TypeLib.Models
 {
-    public class UpdateRamadaanDate
+    public class CounterCalender
     {
+        public string ID { get; set; }
         public string Val { get; set; }
     }
 }

@@ -17,5 +17,10 @@ function myFunction() {
     }
 }
 
-
+function AddDateChars() {
+    val = document.getElementById("txtDOB").value;
+    if (val.length === 2 || val.length === 5) {
+        document.getElementById("txtDOB").value += "/";
+    }
+}
     

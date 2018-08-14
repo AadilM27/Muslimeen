@@ -43,7 +43,7 @@
     <Compile Include="Models\AcceptArticle.cs" />
     <Compile Include="Models\ActiveType.cs" />
     <Compile Include="Models\Article.cs" />
-    <Compile Include="Models\CalenderInfo.cs" />
+    <Compile Include="Models\CounterCalender.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\InsertArticle.cs" />
@@ -58,13 +58,13 @@
     <Compile Include="Models\Scholar.cs" />
     <Compile Include="Models\Topic.cs" />
     <Compile Include="Models\Member.cs" />
-    <Compile Include="Models\UpdateCalAdjustValue.cs" />
     <Compile Include="Models\UpdateMember.cs" />
     <Compile Include="Models\UpdateMemberPassword.cs" />
-    <Compile Include="Models\UpdateRamadaanDate.cs" />
     <Compile Include="Models\uspAddMosque.cs" />
     <Compile Include="Models\uspAddZakaahOrg.cs" />
     <Compile Include="Models\uspRejectReg.cs" />
+    <Compile Include="Models\uspUpdateCountDown.cs" />
+    <Compile Include="Models\uspUpdateIslamicDate.cs" />
     <Compile Include="Models\uspUpdateZakaahOrg.cs" />
     <Compile Include="Models\Zakaah.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

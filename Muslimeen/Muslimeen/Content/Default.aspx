@@ -81,7 +81,7 @@
         <div class="content" id="content"><!--add content here -->
             <div class=" pt-2 countDown-div">
                 <div id="clockdiv" class="col">
-                    <h2 style="font-family: Arial; color:#3F84C1" id="title">Ramadaan Count down</h2>
+                    <h2 style="font-family: Arial; color:#3F84C1" runat="server" id="counterTitle">Ramadaan Count down</h2>
                   <div class="">
                     <span id="spDays" class="days"></span>
                     <div class="smalltext">Days</div>
@@ -99,7 +99,8 @@
                     <div class="smalltext">Seconds</div>
                   </div>
                 </div>
-                <asp:HiddenField ID="hfRamadaanDate" runat="server" Value="2019-05-17 24:00:00" /> <!--updated by the admin yyyy-mm-dd-->
+                <asp:HiddenField ID="hdfCounterDate" runat="server" Value="2018-08-14 18:12:00" /> <!--updated by the admin yyyy-mm-dd-->
+                <asp:HiddenField ID="hdfCounterFinishTitle" runat="server" Value="Raaamadaan Count Down" />
                 <script src="Default/CountDown.js" type="text/javascript"></script>
             </div>
         </div>
