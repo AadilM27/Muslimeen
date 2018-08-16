@@ -16,7 +16,13 @@ namespace Muslimeen.Content
         {
             try
             {
-                DBHandler dBHandler = new DBHandler();
+                DBHandler db = new DBHandler();
+                List<CounterCalender> counterCalender = new List<CounterCalender>();
+
+                counterCalender = db.BLL_GetCounterCalender();
+                lblCounterTitle.InnerHtml = counterCalender[2].Val.ToString();
+                hdfCounterFinishTitle.Value = counterCalender[1].Val.ToString();
+                hdfCounterDate.Value = counterCalender[0].Val.ToString();
 
                 if (Session["UserName"] != null)
                 {
@@ -24,7 +30,7 @@ namespace Muslimeen.Content
                     {
                         uspGetMember uspGetMember = new uspGetMember();
 
-                        uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
+                        uspGetMember = db.BLL_GetMember(Convert.ToString(Session["UserName"]));
                         hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
                         divUserProfile.Visible = true;
                     }

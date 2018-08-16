@@ -305,7 +305,7 @@ namespace Muslimeen.BLL
             return dBAccess.RejectArticle(rejectArticle);
         }
 
-        public List<CounterCalender> BLL_CounterCalenders()
+        public List<CounterCalender> BLL_GetCounterCalender()
         {
             return dBAccess.GetCounterCalender();
         }

@@ -74,7 +74,6 @@
     <Compile Include="ViewModels\uspGetAllPendingModeraters.cs" />
     <Compile Include="ViewModels\uspGetAllMosqueSuburbs.cs" />
     <Compile Include="ViewModels\uspGetAllPendingScholars.cs" />
-    <Compile Include="ViewModels\uspGetCalAdjustValue.cs" />
     <Compile Include="ViewModels\uspGetEventReports.cs" />
     <Compile Include="ViewModels\uspGetLearnArticle.cs" />
     <Compile Include="ViewModels\uspGetMember.cs" />

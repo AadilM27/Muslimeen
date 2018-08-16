@@ -1510,7 +1510,7 @@ namespace Muslimeen.BLL
         public List<CounterCalender> GetCounterCalender()
         {
             List<CounterCalender> list = new List<CounterCalender>();
-            using (DataTable table = DBHelper.Select("[uspGetCounterCalender]", CommandType.StoredProcedure))
+            using (DataTable table = DBHelper.Select("uspGetCounterCalender", CommandType.StoredProcedure))
             {
                 if (table.Rows.Count > 0)
                 {

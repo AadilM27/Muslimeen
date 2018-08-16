@@ -1122,13 +1122,13 @@ namespace Muslimeen.Content
         {
             divCounterCalander.Visible = true;
 
-            List<CounterCalender> counterCalender = new List<CounterCalender>();
             DBHandler db = new DBHandler();
-            counterCalender = db.BLL_CounterCalenders();
+            List<CounterCalender> counterCalender = new List<CounterCalender>();
+            counterCalender = db.BLL_GetCounterCalender();
             txtCurCounterTitle.Text = Convert.ToString(counterCalender[2].Val);
             txtCurCounterEndTitle.Text = Convert.ToString(counterCalender[1].Val);
             DateTime islamiceDate = Convert.ToDateTime(counterCalender[0].Val);
-            txtCurCounterEndDate.Text = islamiceDate.ToString("dd MM yyyy");
+            txtCurCounterEndDate.Text = islamiceDate.ToString("yyyy MM dd");
             txtCurIsalmicDate.Text = Convert.ToString(counterCalender[3].Val);
         }
 

@@ -524,7 +524,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1">
-                                            <label class="col mb-0 p-0"><small>Organizatinal Image or Logo</small></label>
+                                            <label class="col mb-0 p-0"><small>Organization Image or Logo</small></label>
                                             <asp:FileUpload CssClass="form-control form-control-sm col main-txtb" runat="server" ID="fupOrgImage"></asp:FileUpload>
                                         </div>
                                     </div>
