@@ -20,7 +20,7 @@
                 <nav class="navFixed">
                     <div class="row align-self-end">
                         <ul class=" col-7 navbar-nav flex-row justify-content-start">
-                            <asp:HiddenField runat="server" ID="hfAdjustDate" Value="-2" /> <!--Need to get value from DB let admin adjust this -->
+                            <asp:HiddenField runat="server" ID="hdfAdjustDate" Value="" /> <!--Need to get value from DB let admin adjust this -->
                             <li class="nav-item ml-4 mr-0 mb-0 pt-2 text-truncate"> <p class="IslamicDate mb-0 text-truncate position-static" id="lstIslamicDate"></p></li>
                             <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
                         </ul>
