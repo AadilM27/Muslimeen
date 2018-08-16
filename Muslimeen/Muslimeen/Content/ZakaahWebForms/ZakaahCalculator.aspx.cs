@@ -148,7 +148,7 @@ namespace Muslimeen.Content.ZakaahWebForms
                 double total = 0;
                 if (txtCashAtHome.Text == "")
                 {
-                    txtCashAtHome.BackColor = ColorTranslator.FromHtml("#256297");
+                    txtCashAtHome.BorderColor = Color.Red;
                 }
                 else
                 {
@@ -160,7 +160,7 @@ namespace Muslimeen.Content.ZakaahWebForms
 
                 if (txtBankAccount.Text == "")
                 {
-                    txtBankAccount.BackColor = ColorTranslator.FromHtml("#256297");
+                    txtBankAccount.BorderColor = Color.Red;
                 }
                 else
                 {
@@ -169,7 +169,7 @@ namespace Muslimeen.Content.ZakaahWebForms
                 }
                 if (txtInvestment.Text == "")
                 {
-                    txtInvestment.BackColor = ColorTranslator.FromHtml("#256297");
+                    txtInvestment.BorderColor = Color.Red;
                 }
                 else
                 {
@@ -178,7 +178,7 @@ namespace Muslimeen.Content.ZakaahWebForms
                 }
                 if (txtMerchandise.Text == "")
                 {
-                    txtMerchandise.BackColor = ColorTranslator.FromHtml("#256297");
+                    txtMerchandise.BorderColor = Color.Red;
                 }
                 else
                 {
@@ -188,7 +188,7 @@ namespace Muslimeen.Content.ZakaahWebForms
 
                 if (txtGoldSilver.Text == "")
                 {
-                    txtGoldSilver.BackColor = ColorTranslator.FromHtml("#256297");
+                    txtGoldSilver.BorderColor = Color.Red;
                 }
                 else
                 {
@@ -196,7 +196,9 @@ namespace Muslimeen.Content.ZakaahWebForms
                     total += double.Parse(txtGoldSilver.Text);
                 }
 
+                
                 txtTotalAssets.Text = Convert.ToString(total);
+                
             }
             catch (Exception ex)
             {
@@ -213,13 +215,38 @@ namespace Muslimeen.Content.ZakaahWebForms
         {
             try
             {
+                
                 double eligible = 0;
-                if (txtAllDebts.Text == "")
+                if (txtAllDebts.Text == "" && (txtTotalAssets.Text != "" || txtTotalAssets.Text != null))
                 {
-                    txtAllDebts.BackColor = ColorTranslator.FromHtml("#256297");
+                    txtAllDebts.BorderColor = Color.Red;
+                    txtAllDebts.ForeColor = Color.Red;
+                    LblRequire.Text = "*Field Required*";
+                    LblRequire.ForeColor = Color.Red;
+                  
+                }
+                else if (txtTotalAssets.Text == "" && (txtAllDebts.Text != "" || txtAllDebts.Text != null))
+                {
+                    txtTotalAssets.BorderColor = Color.Red;
+                    txtTotalAssets.ForeColor = Color.Red;
+                    LblRequire1.Text = "*Field Required*";
+                    LblRequire1.ForeColor = Color.Red;
+                }
+                else if (txtAllDebts.Text == "" && txtTotalAssets.Text == "")
+                {
+                    txtAllDebts.BorderColor = Color.Red;
+                    txtAllDebts.ForeColor = Color.Red;
+                    LblRequire.Text = "*Field Required*";
+                    LblRequire.ForeColor = Color.Red;
+
+                    txtTotalAssets.BorderColor = Color.Red;
+                    txtTotalAssets.ForeColor = Color.Red;
+                    LblRequire1.Text = "*Field Required*";
+                    LblRequire1.ForeColor = Color.Red;
                 }
                 else
                 {
+                    
                     eligible = double.Parse(txtTotalAssets.Text.ToString()) - double.Parse(txtAllDebts.Text.ToString());
                     txtEligibleZakaah.Text = Convert.ToString(eligible);
 
@@ -238,13 +265,16 @@ namespace Muslimeen.Content.ZakaahWebForms
                         LblMessage.Text = "You are eligible to pay Zakaah of" + " R"+ double.Parse(txtCalculatedZakaah.Text) + "!!";
 
                     }
+                    LblRequire.Text = "";
+                    LblRequire1.Text = "";
+                    
                 }
 
 
             }
             catch (Exception ex)
             {
-                Response.Write(ex.ToString());
+                throw;
             }
             finally
             {
