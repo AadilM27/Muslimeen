@@ -439,7 +439,7 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
-
+                reportHeading.InnerText = "Accepted Scholars Report";
                 divDisplayReports.Visible = true;
                 
                 DBHandler handler = new DBHandler();
@@ -459,7 +459,7 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
-
+                reportHeading.InnerText = "Rejected Scholars Report";
                 divDisplayReports.Visible = true;
                 
                 DBHandler handler = new DBHandler();
@@ -472,6 +472,7 @@ namespace Muslimeen.Content.MyModerator
             }
             catch (Exception)
             {
+                
 
             }
         }
@@ -479,6 +480,7 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
+                reportHeading.InnerText = "Accepted Articles Report";
                 divDisplayReports.Visible = true;
                 
                 DBHandler han = new DBHandler();
@@ -496,6 +498,7 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
+                reportHeading.InnerText = "Rejected Articles Report";
                 divDisplayReports.Visible = true;
                 
                 DBHandler han = new DBHandler();
@@ -513,6 +516,7 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
+                reportHeading.InnerText = "Available Mosque Report";
                 divDisplayReports.Visible = true;
                 
                 DBHandler han = new DBHandler();
@@ -523,13 +527,14 @@ namespace Muslimeen.Content.MyModerator
             }
             catch (Exception)
             {
-
+               
             }
         }
         protected void BtnEventReports_Click(object sender, EventArgs e)
         {
             try
             {
+                reportHeading.InnerText = "Available Events Report";
                 divDisplayReports.Visible = true;
               
                 DBHandler han = new DBHandler();

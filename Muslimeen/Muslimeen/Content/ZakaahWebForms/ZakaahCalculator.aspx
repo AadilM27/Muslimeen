@@ -10,15 +10,16 @@
 
     <title>MyMuslimeen - Calculator</title>
      <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico" />
+     
      <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
      <link href="../Default/css/Default.css" rel="stylesheet" />
      <link href="../Zakaah/css/newZakaah.css" rel="stylesheet" />
      <link href="../Zakaah/css/Slideshow.css" rel="stylesheet" />
      <link href="../Zakaah/css/Zakaatcard.css" rel="stylesheet" />
-     
+     <script src="../../Login/LogIn_Bootstrap/js/jquery-3.3.1.min.js"></script>
 </head>
     <body>
-        <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
+       <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
         <form id="frmScholar" runat="server" class=" ">   
             <header >
                 <nav class="navFixed">
@@ -41,7 +42,7 @@
                             <li class="nav-item mr-2">
                             <asp:Button runat="server" Text="Register" ID="btnRegister" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnRegister_Click" />
                             </li>
-                        </ul> <!---->
+                        </ul>
                     </div>
                     <div class="row" runat="server" id="divUserProfile" >
                         <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
@@ -52,7 +53,7 @@
                 </nav>
                 <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50);">
                     <div class=" text-center">
-                        <asp:Image runat="server" CssClass="mb-0 ml-0" src="/Login/LogIn_Bootstrap\logo.png" width="185" height="110"/>
+                        <asp:Image runat="server" CssClass="mb-0 ml-0" src="\Login\LogIn_Bootstrap\logo.png" width="185" height="110"/>
                         </div>
                     <div class="ml-2 navbar-nav-scroll align-self-end justify-content-start">
                         <ul class="navbar-nav row">
@@ -61,7 +62,7 @@
                             </li><li class="NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems" runat="server" id="liMyMusbtn">
                                 <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen"  CssClass=" btn btn-link nav-item navText" OnClick="btnMyMuslimeen_Click"/>
-                            </li><li runat="server" id="liMyMusDivi" class=" NavDevider">|</li><!--deviders-->
+                            </li><li runat="server" id="liMyMusDivi" class="NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems">
                                 <asp:Button runat="server" ID="btnMosques" Text="Mosques"  CssClass="nav-item navText btn-link btn" OnClick="btnMosques_Click"/>
                             </li><li class="NavDevider">|</li><!--deviders-->
@@ -123,7 +124,7 @@
                     <asp:Label ID="Label1" runat="server" Text="Label">Cash at Home</asp:Label>
                     </div>
                     <div style="float: right;">
-                    <asp:TextBox ID="txtCashAtHome" CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" OnTextChanged="txtCashAtHome_TextChanged"></asp:TextBox>  
+                    <asp:TextBox ID="txtCashAtHome" CssClass="form-control form-control-sm topnav  mr-2 " runat="server" OnTextChanged="txtCashAtHome_TextChanged"></asp:TextBox>  
                     </div>
 
                     </div>
@@ -132,16 +133,16 @@
                     <asp:Label ID="Label2" runat="server" Text="Label">Balance held in Bank Account</asp:Label>
                     </div>
                     <div style="float: right;">
-                    <asp:TextBox ID="txtBankAccount" CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" OnTextChanged="txtBankAccount_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="txtBankAccount" CssClass="form-control form-control-sm topnav  mr-2 " runat="server" OnTextChanged="txtBankAccount_TextChanged"></asp:TextBox>
                     </div>
 
                     </div>
                     <div style="width:100%; height: 50px; clear: both;background-color:transparent" class=" btn btn-sm btn-outline-light mr-2 ">
                     <div style="float: left;color:#256297">
-                    <asp:Label ID="Label3" runat="server" Text="Label">Market value of short term investments</asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text="Label">short term investments</asp:Label>
                     </div>
                     <div style="float: right;">
-                    <asp:TextBox ID="txtInvestment" CssClass=" topnav btn btn-sm btn-outline-light mr-2 "  runat="server" OnTextChanged="txtInvestment_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="txtInvestment" CssClass="form-control form-control-sm topnav   mr-2 "  runat="server" OnTextChanged="txtInvestment_TextChanged"></asp:TextBox>
                     </div>
 
                     </div>
@@ -150,7 +151,7 @@
                     <asp:Label ID="Label4" runat="server" Text="Label">Business Merchandise</asp:Label>
                     </div>
                     <div style="float: right;" >
-                    <asp:TextBox ID="txtMerchandise" CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" OnTextChanged="txtMerchandise_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="txtMerchandise" CssClass=" form-control form-control-sm topnav   mr-2 " runat="server" OnTextChanged="txtMerchandise_TextChanged"></asp:TextBox>
                     </div>
 
                     </div>
@@ -159,14 +160,14 @@
                    <asp:Label ID="Label5" runat="server" Text="Label">Gold &amp; Silver (at current value)</asp:Label>
                    </div>
                    <div style="float: right;">
-                   <asp:TextBox ID="txtGoldSilver" CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" OnTextChanged="txtGoldSilver_TextChanged"></asp:TextBox></div>
+                   <asp:TextBox ID="txtGoldSilver" CssClass="form-control form-control-sm topnav   mr-2 " runat="server" OnTextChanged="txtGoldSilver_TextChanged"></asp:TextBox></div>
                    </div>
                    <div style="width:100%; height: 50px; clear: both;background-color:transparent" class=" btn btn-sm btn-outline-light mr-2 ">
                    <div style="float: left; color:white;color:#256297">
                    <asp:Label ID="Label6" runat="server" Text="Label">Total of Assets Liable for Zakah</asp:Label>
                    </div>
                    <div style="float: right;">
-                   <asp:TextBox ID="txtTotalAssets"  CssClass=" topnav btn btn-sm btn-outline-light mr-2 "   runat="server" OnTextChanged ="txtTotalAssets_TextChanged" ReadOnly="true"></asp:TextBox>
+                   <asp:TextBox ID="txtTotalAssets"  CssClass="form-control form-control-sm topnav   mr-2 "   runat="server" OnTextChanged ="txtTotalAssets_TextChanged" ReadOnly="true"></asp:TextBox>
                     <br />
                        <asp:Label ID="LblRequire" runat="server" Text=""></asp:Label>
                    </div>
@@ -177,7 +178,7 @@
                    <asp:Label ID="Label7" runat="server" Text="Label">Deduct Debts</asp:Label>
                    </div>
                    <div style="float: right;">
-                   <asp:Textbox ID="txtAllDebts" CssClass=" topnav btn btn-sm btn-outline-light mr-2 "  runat="server" OnTextChanged="txtAllDebts_TextChanged"></asp:Textbox>
+                   <asp:Textbox ID="txtAllDebts" CssClass="form-control form-control-sm topnav   mr-2 "  runat="server" OnTextChanged="txtAllDebts_TextChanged"></asp:Textbox>
                        <br />
                        <asp:Label ID="LblRequire1" runat="server" Text=""></asp:Label>
                    </div>
@@ -188,7 +189,7 @@
                    <asp:Label ID="Label8" runat="server" Text="Label"><strong><em>Zakah-Eligible</em> Total</strong></asp:Label>
                    </div>
                    <div style="float: right;">
-                   <asp:TextBox ID="txtEligibleZakaah" CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" OnTextChanged="txtEligibleZakaah_TextChanged" ReadOnly="true"></asp:TextBox>
+                   <asp:TextBox ID="txtEligibleZakaah" CssClass="form-control form-control-sm topnav   mr-2 " runat="server" OnTextChanged="txtEligibleZakaah_TextChanged" ReadOnly="true"></asp:TextBox>
                    </div>
 
                   </div>
@@ -197,21 +198,21 @@
                   <strong >Total that Exceeds <em>Nisab</em></strong>
                   </div>
                   <div style="float: right;">
-                  <asp:TextBox ID="txtNisab" CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" value="4404" ReadOnly="true"></asp:TextBox>
+                  <asp:TextBox ID="txtNisab" CssClass="form-control form-control-sm topnav   mr-2 " runat="server" value="4404" ReadOnly="true"></asp:TextBox>
                   </div>
 
                   </div>
                   <div style="width:100%; height: 50px; clear: both;background-color:transparent" class=" btn btn-sm btn-outline-light mr-2 ">
                   <div style="float: left;color: #256297;font-size: 15px;">
-                  <asp:Label ID="Label9" runat="server" Text="Label"><strong>Your <em>Zakah</em></strong><strong>(0.025 x <em>Zakah-Eligible</em> Total)</strong></asp:Label>
+                  <asp:Label ID="Label9" runat="server" Text="Label"><strong>Your <em>Zakah</em></strong><strong>(2.5% Total)</strong></asp:Label>
                   </div>
                   <div style="float: right;">
-                  <asp:TextBox ID="txtCalculatedZakaah" CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" OnTextChanged="txtCalculatedZakaah_TextChanged" ReadOnly="true"></asp:TextBox> 
+                  <asp:TextBox ID="txtCalculatedZakaah" CssClass="form-control form-control-sm topnav   mr-2 " runat="server" OnTextChanged="txtCalculatedZakaah_TextChanged" ReadOnly="true"></asp:TextBox> 
                   </div>
 
                   </div>
-                  
-                  <div style="text-align:center;color:white;font-size:20px;background-color:#256297">
+                  <br />
+                  <div style="text-align:center;color:white;font-size:15px;background-color:#256297">
                   <asp:Label ID="LblMessage" runat="server" Text=""></asp:Label>
                   </div>
                   <br />
