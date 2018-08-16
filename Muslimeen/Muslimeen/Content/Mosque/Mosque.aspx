@@ -110,13 +110,11 @@
 
                     </nav>
                 </div>
-
                 <div class=" position-static basic-div-styling p-0  w-100">
                     <div runat="server" id="divTaskHead" class=" head-div text-center p-2 mb-1">
                         <h4 class="p-0 m-0" id="lblTaskHeader" runat="server"></h4>
                     </div>
                     <div class="row p-0 m-0 tab-content right-bottom-div p-1">
-
                         <div class="col-12 bg-light position-static mt-2" runat="server" id="divDetails">
                             <div class="row">
                                 <div class="col-8">
@@ -235,7 +233,6 @@
                                             </tr>
 
                                         </table>
-
                                     </div>
                                 </div>
                             </div>
@@ -441,7 +438,7 @@
                                                 <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtPrayerEndDate"></asp:TextBox>
                                             </div>
                                             <div class="form-group col-1 mb-1 mt-1">
-                                                <asp:Button runat="server" ID="btnListPrayer" Text="List Prayers" OnClick="btnListPrayer_Click" CssClass=" topnav btn btn-md btn-outline-light" />
+                                                <asp:Button runat="server" ID="btnListPrayer" Text="List Prayers" OnClick="btnListPrayer_Click" CssClass="topnav btn btn-md btn-outline-light" />
                                             </div>
                                         </div>
 

@@ -94,8 +94,6 @@
                 </div>
             </div>
         </header>
-
-
         <div class="content" id="content">
             <!--add content here -->
             <div class="row bg-light m-0 divContainers p-1 flex-nowrap">
@@ -110,7 +108,6 @@
                         <asp:Button runat="server" ID="btnNavManageTimes" CssClass="pl-2 btn mb-1 taskBtn" Text="Manage Prayer Times" OnClick="btnNavManageTimes_Click" />
                     </nav>
                 </div>
-
                 <div class=" position-static basic-div-styling p-0  w-100">
                     <div runat="server" id="divTaskHead" class=" head-div text-center p-2 mb-1">
                         <h4 class="p-0 m-0" id="lblTaskHeader" runat="server"></h4>
@@ -118,53 +115,53 @@
                     <div class="row p-0 m-0 tab-content right-bottom-div p-1">
                         <div class="flex-nowrap w-50" runat="server" id="divAddEvent">
                             <!--Contains the List of items-->
-                                    <div class=" head-div-2 p-2 mb-1 text-left">
-                                        <p class="m-0">Add Event</p>
-                                    </div>
-                                    <div class="position-static p-1 lst-container">
-                                        <div class="form-row">
-                                            <div class="form-group col-sm-12 mb-1">
-                                                <label class="col mb-0 p-0">Event Title*</label>
-                                                <asp:TextBox CssClass="form-control form-control-md col main-txtb" runat="server" ID="txtEventTitle"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-sm-12 mb-1">
-                                                <label class="col mb-0 p-0">Event Date*</label>
-                                                <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtEventDate"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-sm-12 mb-1">
-                                                <label class="col mb-0 p-0">Event Start Time*</label>
-                                                <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtEventStartTime"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-sm-12 mb-1">
-                                                <label class="col mb-0 p-0">Event End Time*</></label>
-                                                <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtEventEndTime"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-sm-12 mb-1">
-                                                <label class="col mb-0 p-0">Event Speaker*</label>
-                                                <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtSpeaker"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-sm-12 mb-1">
-                                                <label class="col mb-0 p-0">Event Description</label>
-                                                <asp:TextBox TextMode="MultiLine" Style="min-height: 200px;max-height:200px" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtEventDescription"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                          <div class="form-row">
-                                            <div class="form-group col-sm-12 mb-1 text-center">
-                                                <asp:Button runat="server" ID="btnAddEvent" Text="Add Event" OnClick="btnAddEvent_Click" CssClass=" topnav btn btn-md btn-outline-light mr-2 mt-2" />
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class=" head-div-2 p-2 mb-1 text-left">
+                                <p class="m-0">Add Event</p>
                             </div>
+                            <div class="position-static p-1 lst-container">
+                                <div class="form-row">
+                                    <div class="form-group col-sm-12 mb-1">
+                                        <label class="col mb-0 p-0">Event Title*</label>
+                                        <asp:TextBox CssClass="form-control form-control-md col main-txtb" runat="server" ID="txtEventTitle"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-12 mb-1">
+                                        <label class="col mb-0 p-0">Event Date*</label>
+                                        <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtEventDate"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-12 mb-1">
+                                        <label class="col mb-0 p-0">Event Start Time*</label>
+                                        <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtEventStartTime"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-12 mb-1">
+                                        <label class="col mb-0 p-0">Event End Time*</></label>
+                                        <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtEventEndTime"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-12 mb-1">
+                                        <label class="col mb-0 p-0">Event Speaker*</label>
+                                        <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtSpeaker"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-12 mb-1">
+                                        <label class="col mb-0 p-0">Event Description</label>
+                                        <asp:TextBox TextMode="MultiLine" Style="min-height: 200px; max-height: 200px" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtEventDescription"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-12 mb-1 text-center">
+                                        <asp:Button runat="server" ID="btnAddEvent" Text="Add Event" OnClick="btnAddEvent_Click" CssClass=" topnav btn btn-md btn-outline-light mr-2 mt-2" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class=" col-4 p-3 bg-light position-static" runat="server" id="divEditEvent">
 
                             <br />
@@ -278,9 +275,6 @@
                                     </ItemTemplate>
                                 </asp:Repeater>
                             </div>
-
-
-
                             <div id="divUpdateEvent" runat="server">
                                 <div class="container">
                                     <div class="contentHolder mt-4">
@@ -377,108 +371,104 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
                             </div>
-
-
-
-
-
-
                         </div>
-                        <div class="p-3 bg-light position-static flex-nowrap" runat="server" id="divManageTimes">
-
+                        <div class="col-12 bg-light position-static mt-0" runat="server" id="divManageTimes">
                             <div class="row flex-nowrap">
-
-                                <div class="col contentHolder mt-4">
-                                    <div class="header mb-3">
-                                        <h4 class="text-center">Please Select a Prayer Date:
-                               <br />
-                                        </h4>
-
+                                <div class="col-sm-4 col-4 col-xl-3 p-0">
+                                    <div class=" head-div-2 p-2 mb-1 text-left">
+                                        <p class="m-0">Select a date to Add/Update Prayer</p>
                                     </div>
-                                    <div class="paragraphDisplay p-2">
-
-                                        <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" CssClass="card"></asp:Calendar>
+                                    <div class=" ml-5 mt-5 p-2">
+                                        <asp:Calendar ID="Calendar1" runat="server" CssClass="" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
                                     </div>
                                 </div>
-
-
-                                <div class="col contentHolder mt-4" style="width: 100%">
-                                    <div class="header mb-3">
-                                        <h4 class="text-center">Selected Date: 
-                                    <asp:Label ID="lblDate" runat="server" />
-                                            <asp:Label ID="lblMessage" runat="server" />
-                                            <br />
-                                        </h4>
-
+                                <div class="col-sm-9 col-9 col-xl-4 p-0 ml-2">
+                                    <div class=" head-div-2 p-2 mb-1 text-left">
+                                        <p class="m-0">
+                                            <asp:Label ID="lblMessage" runat="server"></asp:Label><asp:Label ID="lblDate" runat="server"></asp:Label>
+                                        </p>
                                     </div>
-                                    <div class="paragraphDisplay p-2">
-
-
-
-                                        <table>
-                                            <tbody>
-                                                <tr>
-
-                                                    <td rowspan="2">
-                                                        <asp:Image ID="icoPrayer" runat="server" ImageUrl="~/Content/Mosque/download.png" Width="121px" Height="121px" />
-                                                    </td>
-                                                    <th colspan="2">Salah TimeTable</th>
-                                                </tr>
-                                                <tr>
-                                                    <th>AZAAN</th>
-                                                    <th>JAMAAT</th>
-                                                </tr>
-                                                <tr>
-                                                    <th>Fajr</th>
-                                                    <td>
-                                                        <asp:TextBox ID="txtFajrA" runat="server" MaxLength="5"></asp:TextBox>
-
-                                                    </td>
-                                                    <td>
-                                                        <asp:TextBox ID="txtFajrJ" runat="server" MaxLength="5"></asp:TextBox>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Dhuhr</th>
-                                                    <td>
-                                                        <asp:TextBox ID="txtDhuhrA" runat="server" MaxLength="5"></asp:TextBox></td>
-                                                    <td>
-                                                        <asp:TextBox ID="txtDhuhrJ" runat="server" MaxLength="5"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="auto-style1">Asr</th>
-                                                    <td class="auto-style1">
-                                                        <asp:TextBox ID="txtAsrA" runat="server" MaxLength="5"></asp:TextBox></td>
-                                                    <td class="auto-style1">
-                                                        <asp:TextBox ID="txtAsrJ" runat="server" MaxLength="5"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Magrib</th>
-                                                    <td>
-                                                        <asp:TextBox ID="txtMagribA" runat="server" MaxLength="5"></asp:TextBox></td>
-                                                    <td>
-                                                        <asp:TextBox ID="txtMagribJ" runat="server" MaxLength="5"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Eisha</th>
-                                                    <td>
-                                                        <asp:TextBox ID="txtEishaA" runat="server" MaxLength="5"></asp:TextBox></td>
-                                                    <td>
-                                                        <asp:TextBox ID="txtEishaJ" runat="server" MaxLength="5"></asp:TextBox></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <asp:Button ID="BtnAdd" runat="server" Text="Add Prayer Times" OnClick="BtnAdd_Click" CssClass=" btn btn-info center" />
-                                        <asp:Button ID="BtnUpdate" runat="server" Text="Update Prayer Times" OnClick="BtnUpdate_Click" CssClass=" btn btn-info center" />
+                                    <div>
+                                        <div class="table text-center mt-5 ml-3">
+                                            <div class="form-row">
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                </div>
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <label class="font-weight-bold">Adhaan</label>
+                                                </div>
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <label class="font-weight-bold">Jamaat</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <label class="mb-0 p-0 font-weight-bold">Fajr</label>
+                                                </div>
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <asp:TextBox ID="txtFajrA" runat="server" MaxLength="5" CssClass=" form-control mb-1 border border-dark"></asp:TextBox>
+                                                </div>
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <asp:TextBox ID="txtFajrJ" runat="server" MaxLength="5" CssClass=" form-control mb-1 border border-dark"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <label class=" mb-0 p-0 font-weight-bold">Dhuhr</label>
+                                                </div>
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <asp:TextBox ID="txtDhuhrA" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark"></asp:TextBox>
+                                                </div>
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <asp:TextBox ID="txtDhuhrJ" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <label class="col mb-0 p-0 font-weight-bold">Asr</label>
+                                                </div>
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <asp:TextBox ID="txtAsrA" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark"></asp:TextBox>
+                                                </div>
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <asp:TextBox ID="txtAsrJ" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <label class="col mb-0 p-0 font-weight-bold">Magrib</label>
+                                                </div>
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <asp:TextBox ID="txtMagribA" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark"></asp:TextBox>
+                                                </div>
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <asp:TextBox ID="txtMagribJ" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <label class="col mb-0 p-0 font-weight-bold">Eisha</label>
+                                                </div>
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <asp:TextBox ID="txtEishaA" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark"></asp:TextBox>
+                                                </div>
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <asp:TextBox ID="txtEishaJ" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                </div>
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                </div>
+                                                <div class="form-group col col-xl-3 col-sm-2">
+                                                    <asp:Button ID="BtnAdd" runat="server" Text="Add Prayer" OnClick="BtnAdd_Click" CssClass="topnav btn btn-md btn-outline-light" />
+                                                    <asp:Button ID="BtnUpdate" runat="server" Text="Update Prayer" OnClick="BtnUpdate_Click" CssClass="topnav btn btn-md btn-outline-light" />
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
                     </div>

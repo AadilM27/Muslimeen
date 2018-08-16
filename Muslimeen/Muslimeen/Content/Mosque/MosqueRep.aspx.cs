@@ -159,6 +159,7 @@ namespace Muslimeen.Content.Mosque
             {
                  
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Prayer with selected date contains prayer times. Update Prayer times or select another date');</script>");
+                lblMessage.Text = "Update Prayer Times For ";
                 txtFajrA.Text = time.FajrA.ToString();
                 txtFajrJ.Text = time.FajrJ.ToString();
                 txtDhuhrA.Text = time.DhuhrA.ToString();
@@ -174,7 +175,7 @@ namespace Muslimeen.Content.Mosque
             }
             else
             {
-                lblMessage.Text = "Add Prayer Times";
+                lblMessage.Text = "Add Prayer Times For ";
                 txtFajrA.Text = "";
                 txtFajrJ.Text = "";
                 txtDhuhrA.Text = "";
