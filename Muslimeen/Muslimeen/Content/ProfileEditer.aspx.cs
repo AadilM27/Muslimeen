@@ -110,7 +110,24 @@ namespace Muslimeen.Content
                         }
                         else if (uspGetMember.MemberType.ToString() == "A")
                         {
-                            txtMemberType.Text = "Admin";
+                            txtMemberType.Text = "Administrator";
+                        }
+                        ddAssignedMosques.SelectedValue = Convert.ToString(uspGetMember.MosqueID);
+                        txtActivationDate.Text = uspGetMember.ActivationDate.ToString("dd MMM yyyy");
+                    }
+                    else if (uspGetMember.MemberType.ToString() == "R")
+                    {
+                        divQual.Visible = false;
+                        ddAssignedMosques.Enabled = false;
+                        txtUserName.Text = Convert.ToString(uspGetMember.MemberID);
+                        txtName.Text = Convert.ToString(uspGetMember.MemberName);
+                        txtLName.Text = Convert.ToString(uspGetMember.MemberLastName);
+                        txtContactNum.Text = Convert.ToString(uspGetMember.ContactNo);
+                        txtDOB.Text = uspGetMember.MemberDOB.ToString("dd MMM yyyy");
+                        txtUserEmail.Text = Convert.ToString(uspGetMember.Email);
+                        if (uspGetMember.MemberType.ToString() == "R")
+                        {
+                            txtMemberType.Text = "Mosque Reprisentative";
                         }
                         ddAssignedMosques.SelectedValue = Convert.ToString(uspGetMember.MosqueID);
                         txtActivationDate.Text = uspGetMember.ActivationDate.ToString("dd MMM yyyy");

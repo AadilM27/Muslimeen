@@ -31,13 +31,13 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.HtmlControls.HtmlForm frmScholar;
         
         /// <summary>
-        /// hfAdjustDate control.
+        /// hdfAdjustDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfAdjustDate;
+        protected global::System.Web.UI.WebControls.HiddenField hdfAdjustDate;
         
         /// <summary>
         /// txtSearch control.
@@ -175,13 +175,13 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Button btnAboutUs;
         
         /// <summary>
-        /// counterTitle control.
+        /// lblCounterTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl counterTitle;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCounterTitle;
         
         /// <summary>
         /// hdfCounterDate control.
@@ -200,5 +200,14 @@ namespace Muslimeen.Content {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdfCounterFinishTitle;
+        
+        /// <summary>
+        /// hdfCounterTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdfCounterTitle;
     }
 }

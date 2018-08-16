@@ -526,6 +526,15 @@ namespace Muslimeen.Content.MyModerator {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDisplayReports;
         
         /// <summary>
+        /// reportHeading control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl reportHeading;
+        
+        /// <summary>
         /// PDF control.
         /// </summary>
         /// <remarks>

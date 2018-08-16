@@ -992,7 +992,7 @@ namespace Muslimeen.Content
             txtNoticeTitle.Text = notice.NoticeTitle.ToString();
             txtNoticeDesc.Text = notice.NoticeDescription.ToString();
             txtNoticeDateCreated.Text = notice.DateCreated.ToString();
-            txtNoticeExpiryDate.Text = notice.DateExpiry.ToString("yyyy-MM-dd");
+            txtNoticeExpiryDate.Text = notice.DateExpiry.ToString("dd MM yyyy");
             txtNoticeMemberID.Text = notice.MemberID.ToString();
             ddNoticeActive.SelectedValue = notice.Active.ToString();
         }
@@ -1009,7 +1009,7 @@ namespace Muslimeen.Content
             txtNoticeExpiryDate.Text = string.Empty;
             txtNoticeMemberID.Text = string.Empty;
             ddNoticeActive.SelectedIndex = 1;
-            txtNoticeDateCreated.Text = Convert.ToString(DateTime.Now.Date);
+            txtNoticeDateCreated.Text = DateTime.Now.Date.ToString("dd MM yyyy");
             divNoticeList.Visible = false;
             divAddUpdateNotice.Visible = true;
             btnAddUpdateNotice.Text = "Add Notice";
@@ -1122,9 +1122,9 @@ namespace Muslimeen.Content
         {
             divCounterCalander.Visible = true;
 
-            List<CounterCalender> counterCalender = new List<CounterCalender>();
             DBHandler db = new DBHandler();
-            counterCalender = db.BLL_CounterCalenders();
+            List<CounterCalender> counterCalender = new List<CounterCalender>();
+            counterCalender = db.BLL_GetCounterCalender();
             txtCurCounterTitle.Text = Convert.ToString(counterCalender[2].Val);
             txtCurCounterEndTitle.Text = Convert.ToString(counterCalender[1].Val);
             DateTime islamiceDate = Convert.ToDateTime(counterCalender[0].Val);
@@ -1161,7 +1161,13 @@ namespace Muslimeen.Content
                 DBHandler db = new DBHandler();
                 uspUpdateCountDown uspUpdateCountDown = new uspUpdateCountDown();
 
-                uspUpdateCountDown.CounterDate = txtCounterEndDate.Text;
+
+                string[] endDate; 
+                endDate = txtCounterEndDate.Text.ToString().Split('/');
+
+                string endDate2 = endDate[2] + "-" + endDate[1] + "-" + endDate[0];
+
+                uspUpdateCountDown.CounterDate = endDate2;
                 uspUpdateCountDown.CounterFinishTitle = txtCounterEndTitle.Text;
                 uspUpdateCountDown.CounterTitle = txtCounterTitle.Text;
 

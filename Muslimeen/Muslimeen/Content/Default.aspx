@@ -21,7 +21,7 @@
                 <nav class="navFixed">
                     <div class="row align-self-end">
                         <ul class=" col-7 navbar-nav flex-row justify-content-start">
-                            <asp:HiddenField runat="server" ID="hfAdjustDate" Value="-1" /> <!--Need to get value from DB let admin adjust this -->
+                            <asp:HiddenField runat="server" ID="hdfAdjustDate" Value="" /> <!--Need to get value from DB let admin adjust this -->
                             <li class="nav-item ml-4 mr-0 mb-0 pt-2"> <p class="IslamicDate mb-0" id="lstIslamicDate"></p></li>
                             <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
                         </ul>
@@ -81,7 +81,7 @@
         <div class="content" id="content"><!--add content here -->
             <div class=" pt-2 countDown-div">
                 <div id="clockdiv" class="col">
-                    <h2 style="font-family: Arial; color:#3F84C1" runat="server" id="counterTitle">Ramadaan Count down</h2>
+                    <h2 style="font-family: Arial; color:#3F84C1" runat="server" id="lblCounterTitle"></h2>
                   <div class="">
                     <span id="spDays" class="days"></span>
                     <div class="smalltext">Days</div>
@@ -99,8 +99,9 @@
                     <div class="smalltext">Seconds</div>
                   </div>
                 </div>
-                <asp:HiddenField ID="hdfCounterDate" runat="server" Value="2018-08-14 18:12:00" /> <!--updated by the admin yyyy-mm-dd-->
-                <asp:HiddenField ID="hdfCounterFinishTitle" runat="server" Value="Raaamadaan Count Down" />
+                <asp:HiddenField ID="hdfCounterDate" runat="server" Value="" /> <!--updated by the admin yyyy-mm-dd-->
+                <asp:HiddenField ID="hdfCounterFinishTitle" runat="server" Value="" />
+                <asp:HiddenField ID="hdfCounterTitle" runat="server" Value="" />
                 <script src="Default/CountDown.js" type="text/javascript"></script>
             </div>
         </div>

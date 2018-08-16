@@ -286,7 +286,7 @@
                         </div>
                             <div runat="server" id="divDisplayReports" class=" col-12 col-xl-12 mw-100 p-0" style="position:static">
                                 <div class=" head-div-2 p-2 mb-0 text-center ">
-                                    <p class="m-0">Report</p>
+                                    <p class="m-0" runat ="server" id ="reportHeading">Report</p>
                                 </div>
                                 <div class="m-0 p-0 pt-2 pl-2">
                                     <a runat="server" id="PDF" onserverclick="PDF_ServerClick"><img src="MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
