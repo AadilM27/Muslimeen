@@ -23,6 +23,7 @@ namespace Muslimeen.Content
                 lblCounterTitle.InnerHtml = counterCalender[2].Val.ToString();
                 hdfCounterFinishTitle.Value = counterCalender[1].Val.ToString();
                 hdfCounterDate.Value = counterCalender[0].Val.ToString();
+                hdfAdjustDate.Value = counterCalender[3].Val.ToString();
 
                 if (Session["UserName"] != null)
                 {
