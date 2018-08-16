@@ -84,8 +84,8 @@
         
    <div class="content" id="content"><!--add content here -->
            
-        <div class="zakaah-content" style="position:static;">
-            <nav class="navbar navbar-expand-sm navbar-dark" style="position:static; background-color:#256297;">
+        <div class="zakaah-content " style="position:static;" >
+            <nav class="navbar navbar-expand-sm navbar-dark topnav btn btn-sm btn-outline-light mr-2 " style="position:static; background-color:#256297;">
               <a class="navbar-brand navt " href="Zakaah.aspx" >Zakaah</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -111,97 +111,102 @@
                              
         
             
-                    <div style="text-align:center;color:white;background-color:#256297;font-size:20px">
+                    <div style="text-align:center;color:white;background-color:#256297;font-size:20px;width:100%" class=" topnav btn btn-sm btn-outline-light mr-2 ">
                     <strong >Assets and Liabilities</strong>
 
                     </div>
                     <br />
+                    <br />
                      
-                    <div style="width: 580px; height: 50px; clear: both;">
+                    <div style="width:100%; height: 50px; clear: both;background-color:transparent" class=" btn btn-sm btn-outline-light mr-2 ">
                     <div style="float: left;color:#256297">
                     <asp:Label ID="Label1" runat="server" Text="Label">Cash at Home</asp:Label>
                     </div>
                     <div style="float: right;">
-                    <asp:TextBox ID="txtCashAtHome" runat="server" OnTextChanged="txtCashAtHome_TextChanged"></asp:TextBox>  
+                    <asp:TextBox ID="txtCashAtHome" CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" OnTextChanged="txtCashAtHome_TextChanged"></asp:TextBox>  
                     </div>
 
                     </div>
-                    <div style="width: 580px; height: 50px; clear: both;">
+                    <div style="width:100%; height: 50px; clear: both;background-color:transparent" class=" btn btn-sm btn-outline-light mr-2 ">
                     <div style="float: left;color:#256297">
                     <asp:Label ID="Label2" runat="server" Text="Label">Balance held in Bank Account</asp:Label>
                     </div>
                     <div style="float: right;">
-                    <asp:TextBox ID="txtBankAccount" runat="server" OnTextChanged="txtBankAccount_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="txtBankAccount" CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" OnTextChanged="txtBankAccount_TextChanged"></asp:TextBox>
                     </div>
 
                     </div>
-                    <div style="width: 580px; height: 50px; clear: both;">
+                    <div style="width:100%; height: 50px; clear: both;background-color:transparent" class=" btn btn-sm btn-outline-light mr-2 ">
                     <div style="float: left;color:#256297">
                     <asp:Label ID="Label3" runat="server" Text="Label">Market value of short term investments</asp:Label>
                     </div>
                     <div style="float: right;">
-                    <asp:TextBox ID="txtInvestment" runat="server" OnTextChanged="txtInvestment_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="txtInvestment" CssClass=" topnav btn btn-sm btn-outline-light mr-2 "  runat="server" OnTextChanged="txtInvestment_TextChanged"></asp:TextBox>
                     </div>
 
                     </div>
-                    <div style="width: 580px; height: 50px; clear: both;">
+                    <div style="width:100%; height: 50px; clear: both;background-color:transparent" class=" btn btn-sm btn-outline-light mr-2 ">
                     <div style="float: left;color:#256297">
                     <asp:Label ID="Label4" runat="server" Text="Label">Business Merchandise</asp:Label>
                     </div>
                     <div style="float: right;" >
-                    <asp:TextBox ID="txtMerchandise" runat="server" OnTextChanged="txtMerchandise_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="txtMerchandise" CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" OnTextChanged="txtMerchandise_TextChanged"></asp:TextBox>
                     </div>
 
                     </div>
-                   <div style="width: 580px; height: 50px; clear: both;">
+                   <div style="width:100%; height: 50px; clear: both;background-color:transparent" class=" btn btn-sm btn-outline-light mr-2 ">
                    <div style="float: left;color:#256297">
                    <asp:Label ID="Label5" runat="server" Text="Label">Gold &amp; Silver (at current value)</asp:Label>
                    </div>
                    <div style="float: right;">
-                   <asp:TextBox ID="txtGoldSilver" runat="server" OnTextChanged="txtGoldSilver_TextChanged"></asp:TextBox></div>
+                   <asp:TextBox ID="txtGoldSilver" CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" OnTextChanged="txtGoldSilver_TextChanged"></asp:TextBox></div>
                    </div>
-                   <div style="width: 580px; height: 50px; clear: both;">
+                   <div style="width:100%; height: 50px; clear: both;background-color:transparent" class=" btn btn-sm btn-outline-light mr-2 ">
                    <div style="float: left; color:white;color:#256297">
                    <asp:Label ID="Label6" runat="server" Text="Label">Total of Assets Liable for Zakah</asp:Label>
                    </div>
                    <div style="float: right;">
-                   <asp:TextBox ID="txtTotalAssets" runat="server" OnTextChanged="txtTotalAssets_TextChanged" ></asp:TextBox>
+                   <asp:TextBox ID="txtTotalAssets"  CssClass=" topnav btn btn-sm btn-outline-light mr-2 "   runat="server" OnTextChanged ="txtTotalAssets_TextChanged" ReadOnly="true"></asp:TextBox>
+                    <br />
+                       <asp:Label ID="LblRequire" runat="server" Text=""></asp:Label>
                    </div>
 
                    </div>
-                   <div style="width: 580px; height: 50px; clear: both;">
+                   <div style="width:100%; height: 50px; clear: both;background-color:transparent" class=" btn btn-sm btn-outline-light mr-2 ">
                    <div style="float: left;color:#256297">
                    <asp:Label ID="Label7" runat="server" Text="Label">Deduct Debts</asp:Label>
                    </div>
                    <div style="float: right;">
-                   <asp:Textbox ID="txtAllDebts" runat="server" OnTextChanged="txtAllDebts_TextChanged"></asp:Textbox>
+                   <asp:Textbox ID="txtAllDebts" CssClass=" topnav btn btn-sm btn-outline-light mr-2 "  runat="server" OnTextChanged="txtAllDebts_TextChanged"></asp:Textbox>
+                       <br />
+                       <asp:Label ID="LblRequire1" runat="server" Text=""></asp:Label>
                    </div>
 
                    </div>
-                   <div style="width: 580px; height: 50px;clear:both">
+                   <div style="width:100%; height: 50px; clear: both;background-color:transparent" class=" btn btn-sm btn-outline-light mr-2 ">
                    <div style="float: left; color:white;font-size: 15px;color:#256297">
                    <asp:Label ID="Label8" runat="server" Text="Label"><strong><em>Zakah-Eligible</em> Total</strong></asp:Label>
                    </div>
                    <div style="float: right;">
-                   <asp:TextBox ID="txtEligibleZakaah" runat="server" OnTextChanged="txtEligibleZakaah_TextChanged"></asp:TextBox>
+                   <asp:TextBox ID="txtEligibleZakaah" CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" OnTextChanged="txtEligibleZakaah_TextChanged" ReadOnly="true"></asp:TextBox>
                    </div>
 
                   </div>
-                  <div style="width: 580px; height: 50px; clear: both;">
+                  <div style="width:100%; height: 50px; clear: both;background-color:transparent" class=" btn btn-sm btn-outline-light mr-2 ">
                   <div style="float: left;color: #256297;font-size: 15px;">
-                  <strong>Total that Exceeds <em>Nisab</em></strong>
+                  <strong >Total that Exceeds <em>Nisab</em></strong>
                   </div>
                   <div style="float: right;">
-                  <asp:TextBox ID="txtNisab" runat="server" value="4404"></asp:TextBox>
+                  <asp:TextBox ID="txtNisab" CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" value="4404" ReadOnly="true"></asp:TextBox>
                   </div>
 
                   </div>
-                  <div style="width: 580px; height: 50px; clear: both;">
+                  <div style="width:100%; height: 50px; clear: both;background-color:transparent" class=" btn btn-sm btn-outline-light mr-2 ">
                   <div style="float: left;color: #256297;font-size: 15px;">
                   <asp:Label ID="Label9" runat="server" Text="Label"><strong>Your <em>Zakah</em></strong><strong>(0.025 x <em>Zakah-Eligible</em> Total)</strong></asp:Label>
                   </div>
                   <div style="float: right;">
-                  <asp:TextBox ID="txtCalculatedZakaah" runat="server" OnTextChanged="txtCalculatedZakaah_TextChanged"></asp:TextBox> 
+                  <asp:TextBox ID="txtCalculatedZakaah" CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" OnTextChanged="txtCalculatedZakaah_TextChanged" ReadOnly="true"></asp:TextBox> 
                   </div>
 
                   </div>
@@ -210,15 +215,17 @@
                   <asp:Label ID="LblMessage" runat="server" Text=""></asp:Label>
                   </div>
                   <br />
-                  <div style="position:static;align-items:center">
-                  <asp:Button ID="Button1" runat="server" Text="Calculate  Assets" BackColor="#256297" BorderStyle="none" ForeColor="white" ToolTip="click here to calculate your total Assets" OnClick="Button1_Click1" autopostback="true" />                      
-                  <asp:Button ID="Button2" runat="server" Text="Calculate Zakaah" BackColor="#256297" ForeColor="white" BorderStyle="none" ToolTip="Calculate your zakaah after deductions" autopostback="true" OnClick="Button2_Click"/>
+                  <div style="position:static;align-items:center;vertical-align:central">
+                  <asp:Button ID="Button1" runat="server" Text="Calculate  Assets" CssClass=" topnav btn btn-sm btn-outline-light mr-2 " ToolTip="click here to calculate your total Assets" OnClick="Button1_Click1" autopostback="true" />                      
+                  <asp:Button ID="Button2" runat="server" Text="Calculate Zakaah" CssClass=" topnav btn btn-sm btn-outline-light mr-2 " ToolTip="Calculate your zakaah after deductions" autopostback="true" OnClick="Button2_Click"/>
                   </div>
                               <br />
-                   <div style="text-align:center;color:white;background-color:#256297;font-size:20px">
+                   <div style="text-align:center;color:white;background-color:#256297;font-size:20px;width:100%" class=" topnav btn btn-sm btn-outline-light mr-2 ">
                     <strong >Example of how Zakaat can be calculated:</strong>
                     </div>
+                              <div style="text-align:center;color:white;font-size:20px;width:100%" class=" btn-sm btn-outline-light mr-2 ">
                   <iframe width="560" height="315" src="https://www.youtube.com/embed/zERfWrdCrEY"  allowfullscreen></iframe>
+                                  </div>
                   </div>
                   <div class="col-lg-4" style="position:static;">
                        <!---javascript code to translate language--->
@@ -232,7 +239,7 @@
                        </div>
                     </div>
                         <br /> 
-                    <div class="rightcolumn">
+                    <div class="rightcolumn" style="margin-left:27px">
                     
                     <div class="slideshow-container" style="width:300px">
                         <h2 style="background-color:#256297;color:white;text-align:center"> Zakaah Quotes</h2>
@@ -265,6 +272,7 @@
                       </div>      
                       </div>
                 </div>
+                        
                 </div>
                 </div>
                 </div>
