@@ -319,5 +319,9 @@ namespace Muslimeen.BLL
         {
             return dBAccess.UpdateCountDown(updateCountDown);
         }
+        public List<RejectedArticlesReport> BLL_GetRejectedArticleReports()
+        {
+            return dBAccess.GetRejectedArticlesReport();
+        }
     }
 }

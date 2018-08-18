@@ -940,8 +940,7 @@ namespace Muslimeen.BLL
                             ArticleTitle = Convert.ToString(row["ArticleTitle"]),
                             //ArticleContent = Convert.ToString(row["ArticleContent"]),
                             DateCreated = Convert.ToDateTime(row["DateCreated"]),
-                            RejectionReason = Convert.ToString(row["RejectionReason"]),
-                            RemovalReason = Convert.ToString(row["RemovalReason"]),
+                            RejectionReason = Convert.ToString(row["RejectionReason"]),                           
                             ScholarID = Convert.ToString(row["ScholarID"]),
                             ModeratorID = Convert.ToString(row["ModeratorID"]),
                         };
@@ -1072,10 +1071,11 @@ namespace Muslimeen.BLL
                     {
                         uspGetAcceptedScholars scholar = new uspGetAcceptedScholars
                         {
-                            MemberID = Convert.ToString(row["MemberID"]),
+                            
                             MemberName = Convert.ToString(row["MemberName"]),
                             MemberLastName = Convert.ToString(row["MemberLastName"]),
                             MemberDOB = Convert.ToDateTime(row["MemberDOB"]),
+                            ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]),
                             Email = Convert.ToString(row["Email"]),
                             ContactNo = Convert.ToString(row["ContactNo"])
                         };
@@ -1096,10 +1096,11 @@ namespace Muslimeen.BLL
                     {
                         uspGetAcceptedScholars scholar = new uspGetAcceptedScholars
                         {
-                            MemberID = Convert.ToString(row["MemberID"]),
+
                             MemberName = Convert.ToString(row["MemberName"]),
                             MemberLastName = Convert.ToString(row["MemberLastName"]),
                             MemberDOB = Convert.ToDateTime(row["MemberDOB"]),
+                            ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]),
                             Email = Convert.ToString(row["Email"]),
                             ContactNo = Convert.ToString(row["ContactNo"])
                         };
@@ -1556,7 +1557,34 @@ namespace Muslimeen.BLL
             return DBHelper.NonQuery("uspUpdateCountDown", CommandType.StoredProcedure,
                 parameters.ToArray());
         }
+        public List<RejectedArticlesReport> GetRejectedArticlesReport()
+        {
+            List<RejectedArticlesReport> list = new List<RejectedArticlesReport>();
+            using (DataTable table = DBHelper.Select("uspGetRejectedArticles", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        RejectedArticlesReport reject = new RejectedArticlesReport
+                        {
+                            
+                            ArticleTitle = Convert.ToString(row["ArticleTitle"]),
+                            ArticleContent = Convert.ToString(row["ArticleContent"]),
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]),                           
+                            RejectionReason = Convert.ToString(row["RejectionReason"]),
+                            ScholarID = Convert.ToString(row["ScholarID"]),
+                            ModeratorID = Convert.ToString(row["ModeratorID"]),
+                            
+                        };
+                        list.Add(reject);
+                    }
+                }
+            }
+            return list;
+        }
 
-    }   
+
+    }
 }
 

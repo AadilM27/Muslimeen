@@ -68,6 +68,7 @@
     <Compile Include="Models\uspUpdateZakaahOrg.cs" />
     <Compile Include="Models\Zakaah.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\RejectedArticlesReport.cs" />
     <Compile Include="ViewModels\uspGetAcceptedArticle.cs" />
     <Compile Include="ViewModels\uspGetAcceptedScholars.cs" />
     <Compile Include="ViewModels\uspGetAllMosques.cs" />
