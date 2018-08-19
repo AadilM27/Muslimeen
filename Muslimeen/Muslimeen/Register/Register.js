@@ -45,3 +45,4 @@ function EmailValidation() {
         document.getElementById("btnRegister").disabled = false;
     }
 }
+

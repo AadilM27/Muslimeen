@@ -48,7 +48,7 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\InsertArticle.cs" />
     <Compile Include="Models\Moderater.cs" />
-    <Compile Include="Models\Mosque.cs" />
+    <Compile Include="Models\Mosques.cs" />
     <Compile Include="Models\Notice.cs" />
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\Prayer.cs" />

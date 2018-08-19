@@ -319,5 +319,20 @@ namespace Muslimeen.BLL
         {
             return dBAccess.UpdateCountDown(updateCountDown);
         }
+
+        public bool BLL_UpdateMosque(Mosques mosque)
+        {
+            return dBAccess.UpdateMosque(mosque);
+        }
+
+        public List<Mosques> BLL_GetMosques()
+        {
+            return dBAccess.GetMosques();
+        }
+
+        public Mosques BLL_GetSpecificMosque(int mosqueID)
+        {
+            return dBAccess.GetSpecificMosque(mosqueID);
+        }
     }
 }
