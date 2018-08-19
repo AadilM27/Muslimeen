@@ -334,5 +334,10 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetSpecificMosque(mosqueID);
         }
+
+        public List<RejectedArticlesReport> BLL_GetRejectedArticleReports()
+        {
+            return dBAccess.GetRejectedArticlesReport();
+        }
     }
 }
