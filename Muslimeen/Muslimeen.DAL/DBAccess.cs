@@ -153,9 +153,11 @@ namespace Muslimeen.BLL
                     mosque.MemberCount = int.Parse(row["MemberCount"].ToString());
                     if (!(row["MosqueImage"] is DBNull))
                     {
-                        Byte[] bytes = (Byte[])row["MosqueImage"]; //Make byets in to base64String.
-                        string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-                        mosque.MosqueImage = "data:image/jpg;base64," + base64String;
+                        mosque.MosqueImage = row["MosqueImage"].ToString(); ; //Make byets in to base64String.
+                    }
+                    else
+                    {
+                        mosque.MosqueImage = "";
                     }
                 }//end if
             }//end using
@@ -360,13 +362,6 @@ namespace Muslimeen.BLL
                         org.ContactNo = Convert.ToString(row["ContactNo"]);
                         org.Active = Convert.ToChar(row["Active"]);
 
-                        if (!(row["Image"] is DBNull))
-                        {
-                            Byte[] bytes = (Byte[])row["Image"]; //Make byets in to base64String.
-                            string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-                            org.Image = "data:image/jpg;base64," + base64String;
-                        }
-
                         list.Add(org);
                     }
                 }
@@ -493,9 +488,11 @@ namespace Muslimeen.BLL
                         mosque.MosqueSize = row["MosqueSize"].ToString();
                         if (!(row["MosqueImage"] is DBNull))
                         {
-                            Byte[] bytes = (Byte[])row["MosqueImage"]; //Make byets in to base64String.
-                            string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-                            mosque.MosqueImage = "data:image/jpg;base64," + base64String;
+                            mosque.MosqueImage = row["MosqueImage"].ToString();                           
+                        }
+                        else
+                        {
+                            mosque.MosqueImage = "";
                         }
                         list.Add(mosque);
                     }
@@ -909,6 +906,20 @@ namespace Muslimeen.BLL
             return DBHelper.NonQuery("uspUpdateAcceptArticle", CommandType.StoredProcedure, parameters.ToArray());
         }
 
+        public bool RejectArticle(RejectArticle rejectArticle)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var property in rejectArticle.GetType().GetProperties())
+            {
+                if (property.GetValue(rejectArticle) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + property.Name.ToString(), property.GetValue(rejectArticle)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdateRejectArticle", CommandType.StoredProcedure, parameters.ToArray());
+        }
+
         //Rejected Articles
         public List<Article> GetRejectedArticle()
         {
@@ -926,8 +937,7 @@ namespace Muslimeen.BLL
                             ArticleTitle = Convert.ToString(row["ArticleTitle"]),
                             //ArticleContent = Convert.ToString(row["ArticleContent"]),
                             DateCreated = Convert.ToDateTime(row["DateCreated"]),
-                            RejectionReason = Convert.ToString(row["RejectionReason"]),
-                            RemovalReason = Convert.ToString(row["RemovalReason"]),
+                            RejectionReason = Convert.ToString(row["RejectionReason"]),                           
                             ScholarID = Convert.ToString(row["ScholarID"]),
                             ModeratorID = Convert.ToString(row["ModeratorID"]),
                         };
@@ -1058,10 +1068,11 @@ namespace Muslimeen.BLL
                     {
                         uspGetAcceptedScholars scholar = new uspGetAcceptedScholars
                         {
-                            MemberID = Convert.ToString(row["MemberID"]),
+                            
                             MemberName = Convert.ToString(row["MemberName"]),
                             MemberLastName = Convert.ToString(row["MemberLastName"]),
                             MemberDOB = Convert.ToDateTime(row["MemberDOB"]),
+                            ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]),
                             Email = Convert.ToString(row["Email"]),
                             ContactNo = Convert.ToString(row["ContactNo"])
                         };
@@ -1082,10 +1093,11 @@ namespace Muslimeen.BLL
                     {
                         uspGetAcceptedScholars scholar = new uspGetAcceptedScholars
                         {
-                            MemberID = Convert.ToString(row["MemberID"]),
+
                             MemberName = Convert.ToString(row["MemberName"]),
                             MemberLastName = Convert.ToString(row["MemberLastName"]),
                             MemberDOB = Convert.ToDateTime(row["MemberDOB"]),
+                            ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]),
                             Email = Convert.ToString(row["Email"]),
                             ContactNo = Convert.ToString(row["ContactNo"])
                         };
@@ -1135,7 +1147,8 @@ namespace Muslimeen.BLL
 
                     pen.ArticleTitle = Convert.ToString(row["ArticleTitle"]);
                     pen.ArticleContent = Convert.ToString(row["ArticleContent"]);
-                    pen.DateCreated = Convert.ToDateTime(row["DateCreated"]).Date;
+                    string dateCreated = Convert.ToDateTime(row["DateCreated"]).ToString("dd MMM yyyy HH:mm:ss tt");
+                    pen.DateCreated = Convert.ToDateTime(dateCreated);
                 }
             }
             return pen;
@@ -1329,11 +1342,12 @@ namespace Muslimeen.BLL
                     org.WebsiteAddress = Convert.ToString(row["WebsiteAddress"]);
                     if (!(row["Image"] is DBNull))
                     {
-                        Byte[] bytes = (Byte[])row["Image"]; //Make byets in to base64String.
-                        string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-                        org.Image = "data:image/jpg;base64," + base64String;
+                        org.Image = row["Image"].ToString();
                     }
-
+                    else
+                    {
+                        org.Image = "";
+                    }
                     org.ContactNo = Convert.ToString(row["ContactNo"]);
                     org.PhysicalAddress = Convert.ToString(row["PhysicalAddress"]);
                     org.Active = Convert.ToChar(row["Active"]);
@@ -1492,6 +1506,178 @@ namespace Muslimeen.BLL
             } 
             return pen;
         }
-    }        
+
+        public List<CounterCalender> GetCounterCalender()
+        {
+            List<CounterCalender> list = new List<CounterCalender>();
+            using (DataTable table = DBHelper.Select("uspGetCounterCalender", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        CounterCalender cc = new CounterCalender
+                        {
+                            ID = Convert.ToString(row["ID"]),
+                            Val = Convert.ToString(row["Val"])
+                        };
+                        list.Add(cc);
+                    }
+                }
+            }
+            return list;
+        }
+
+        public bool UpdateIslamicDate (uspUpdateIslamicDate updateIslamicDate)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            foreach (var prop in updateIslamicDate.GetType().GetProperties())
+            {
+                if (prop.GetValue(updateIslamicDate) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(updateIslamicDate)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdateIslamicDate", CommandType.StoredProcedure,
+                parameters.ToArray());
+        }
+
+        public bool UpdateCountDown(uspUpdateCountDown updateCountDown)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            foreach (var prop in updateCountDown.GetType().GetProperties())
+            {
+                if (prop.GetValue(updateCountDown) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(updateCountDown)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdateCountDown", CommandType.StoredProcedure,
+                parameters.ToArray());
+        }
+        public List<RejectedArticlesReport> GetRejectedArticlesReport()
+        {
+            List<RejectedArticlesReport> list = new List<RejectedArticlesReport>();
+            using (DataTable table = DBHelper.Select("uspGetRejectedArticles", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        RejectedArticlesReport reject = new RejectedArticlesReport
+                        {
+                            
+                            ArticleTitle = Convert.ToString(row["ArticleTitle"]),
+                            ArticleContent = Convert.ToString(row["ArticleContent"]),
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]),                           
+                            RejectionReason = Convert.ToString(row["RejectionReason"]),
+                            ScholarID = Convert.ToString(row["ScholarID"]),
+                            ModeratorID = Convert.ToString(row["ModeratorID"]),
+                            
+                        };
+                        list.Add(reject);
+                    }
+                }
+            }
+            return list;
+        }
+
+        //Update Article
+        public bool UpdateArticle(UpdateArticle Art)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var prop in Art.GetType().GetProperties())
+            {
+                if (prop.GetValue(Art) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(Art)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdateArticle", CommandType.StoredProcedure, parameters.ToArray());
+        }
+
+        public bool UpdateMosque(Mosques mosque)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            foreach (var prop in mosque.GetType().GetProperties())
+            {
+                if (prop.GetValue(mosque) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(mosque)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdateMosque", CommandType.StoredProcedure,
+                parameters.ToArray());
+        }
+
+        public List<Mosques> GetMosques()
+        {
+            List<Mosques> list = new List<Mosques>();
+
+            using (DataTable table = DBHelper.Select("uspGetAllMosqueDetails",
+                    CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        Mosques mosque = new Mosques();
+
+                        mosque.MosqueID = Convert.ToInt32(row["MosqueID"]);
+                        mosque.MosqueName = row["MosqueName"].ToString();
+                        mosque.MosqueStreet = row["MosqueStreet"].ToString();
+                        mosque.MosqueSuburb = row["MosqueSuburb"].ToString();
+                        mosque.MosqueType = row["MosqueType"].ToString();
+                        mosque.MosqueSize = row["MosqueSize"].ToString();
+                        if (!(row["MosqueImage"] is DBNull))
+                        {
+                            mosque.MosqueImage = row["MosqueImage"].ToString();
+                        }
+                        else
+                        {
+                            mosque.MosqueImage = "";
+                        }
+                        mosque.YearEstablished = Convert.ToDateTime(row["YearEstablished"]);
+                        mosque.Active = Convert.ToChar(row["Active"]);
+
+                        list.Add(mosque);
+                    }
+                }
+            }
+            return list;
+        }
+
+        public Mosques GetSpecificMosque(int mosqueID)
+        {
+            Mosques mosque = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@MosqueID", mosqueID)
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetSpecificMosque",
+                    CommandType.StoredProcedure, pars))
+            {
+                if (table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    mosque = new Mosques
+                    {
+                        MosqueID = Convert.ToInt32(row["MosqueID"]),
+                        MosqueName = Convert.ToString(row["MosqueName"]),
+                        MosqueStreet = Convert.ToString(row["MosqueStreet"]),
+                        MosqueSuburb = Convert.ToString(row["MosqueSuburb"]),
+                        MosqueSize = Convert.ToString(row["MosqueSize"]),
+                        MosqueImage = Convert.ToString(row["MosqueImage"]),
+                        MosqueQuote = Convert.ToString(row["MosqueQuote"]),
+                        MosqueType = Convert.ToString(row["MosqueType"]),
+                        YearEstablished = Convert.ToDateTime(row["YearEstablished"]),
+                        Active = Convert.ToChar(row["Active"])
+                    };
+                }
+            }
+            return mosque;
+        }
+    }
 }
 

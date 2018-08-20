@@ -409,15 +409,6 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.Calendar Calendar1;
         
         /// <summary>
-        /// lblDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDate;
-        
-        /// <summary>
         /// lblMessage control.
         /// </summary>
         /// <remarks>
@@ -427,13 +418,13 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.Label lblMessage;
         
         /// <summary>
-        /// icoPrayer control.
+        /// lblDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image icoPrayer;
+        protected global::System.Web.UI.WebControls.Label lblDate;
         
         /// <summary>
         /// txtFajrA control.

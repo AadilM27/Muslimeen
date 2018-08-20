@@ -17,9 +17,7 @@ namespace Muslimeen.Content.MyScholar
         {
             try
             {
-                DBHandler dBHandler = new DBHandler();
-
-                divAddArticle.Visible = true;
+                divAddArticle.Visible = false;
                 divPendingArticles.Visible = false;
                 divRejectedArticles.Visible = false;
                 divPenDetailsOverlay.Visible = false;
@@ -29,28 +27,34 @@ namespace Muslimeen.Content.MyScholar
                 divDisplayArticle.Visible = false;
                 divDisplayRejected.Visible = false;
 
-                //Pending Link Article Source
-                repeatLink.DataSource = dBHandler.BLL_GetPendingArticle();
-                repeatLink.DataBind();
+                DBHandler dBHandler = new DBHandler();
 
-                //RejectedArticle Source
-                repeatLinkRejected.DataSource = dBHandler.BLL_GetRejectedArticle();
-                repeatLinkRejected.DataBind();
+                List<CounterCalender> counterCalender = new List<CounterCalender>();
+
+                counterCalender = dBHandler.BLL_GetCounterCalender();
+                hdfAdjustDate.Value = counterCalender[3].Val.ToString();
 
                 if (Session["UserName"] != null)
                 {
                     uspGetMember uspGetMember = new uspGetMember();
 
                     uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
-                    hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
-                    divUserProfile.Visible = true;
 
-                    liMyMusbtn.Visible = true;
-                    liMyMusDivi.Visible = true;
+                    if (uspGetMember.MemberType == 'S')
+                    {
+                        hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
+                        divUserProfile.Visible = true;
 
-                    btnLogin.Text = "Log out";
-                    btnRegister.Visible = false;
+                        liMyMusbtn.Visible = true;
+                        liMyMusDivi.Visible = true;
 
+                        btnLogin.Text = "Log out";
+                        btnRegister.Visible = false;
+                    }
+                    else
+                    {
+                        Response.Redirect("~/Content/Error.aspx");
+                    }
                 }
                 else if (Session["UserName"] == null)
                 {
@@ -59,6 +63,7 @@ namespace Muslimeen.Content.MyScholar
 
                     divUserProfile.Visible = false;
                     Session.Clear();
+                    Response.Redirect("~/Login/Login.aspx");
                 }
 
                 if (!IsPostBack)
@@ -178,6 +183,11 @@ namespace Muslimeen.Content.MyScholar
                 lblTaskHead.InnerText = btnPendingArticles.Text.ToString();
 
                 DBHandler dBHandler = new DBHandler();
+
+                //Pending Link Article Source
+                repeatLink.DataSource = dBHandler.BLL_GetPendingArticle();
+                repeatLink.DataBind();
+
             }
             catch
             {
@@ -200,6 +210,10 @@ namespace Muslimeen.Content.MyScholar
                 lblTaskHead.InnerText = btnRejectedArticles.Text.ToString();
 
                 DBHandler dBHandler = new DBHandler();
+
+                //RejectedArticle Source
+                repeatLinkRejected.DataSource = dBHandler.BLL_GetRejectedArticle();
+                repeatLinkRejected.DataBind();
             }
             catch
             {
@@ -210,7 +224,9 @@ namespace Muslimeen.Content.MyScholar
         protected void btnAddArticle_Click(object sender, EventArgs e)
         {
             divAddArticle.Visible = true;
-            
+            btnUpdate.Visible = false;
+            lblTaskHead.InnerText = btnAddArticle.Text.ToString();
+
             DBHandler dBHandler = new DBHandler();
         }
 
@@ -257,6 +273,7 @@ namespace Muslimeen.Content.MyScholar
 
         protected void btnShow_Click(object sender, EventArgs e)
         {
+
             try
             {
                 LinkButton linkButton = (LinkButton)sender;
@@ -272,16 +289,14 @@ namespace Muslimeen.Content.MyScholar
                 lblContent.InnerText = pen.ArticleContent.ToString();
                 lblDate.InnerText = pen.DateCreated.ToString();
 
+                divPenDetailsOverlay.Visible = false;
                 divPendingArticles.Visible = true;
                 divDisplayArticle.Visible = true;
                 divNoSelected.Visible = true;
-
-                divAddArticle.Visible = false;
-                
             }
             catch
             {
-                
+
             }
         }
 
@@ -312,6 +327,32 @@ namespace Muslimeen.Content.MyScholar
             {
                 throw;
             }
+        }
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            btnSave.Visible = false;
+            btnUpdate.Visible = true;
+            divAddArticle.Visible = true;
+            lblTaskHead.InnerText = "Edit Article";
+
+            txtContent.Text = lblRContent.InnerText;
+            txtHeading.Text = lblRTitle.InnerText;
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateArticle art = new UpdateArticle();
+            DBHandler han = new DBHandler();
+
+            art.ArticleTitle = Convert.ToString(txtHeading.Text);
+            art.ArticleContent = Convert.ToString(txtContent.Text);
+            art.ArticleTopic = Convert.ToInt32(drpTopics.SelectedValue);
+
+            han.BLL_UpdateArticle(art);
+
+            txtHeading.Text = " ";
+            txtContent.Text = " ";
         }
     }
 }

@@ -23,7 +23,7 @@ namespace TypeLib.Models
         public string MosqueStreet { get; set; }
         public string MosqueSuburb { get; set; }
         public string MosqueType { get; set; }
-        public byte[] MosqueImage { get; set; }
+        public string MosqueImage { get; set; }
         public string MosqueSize { get; set; }
         public string MosqueQuote { get; set; }
         public DateTime? YearEstablished { get; set; }

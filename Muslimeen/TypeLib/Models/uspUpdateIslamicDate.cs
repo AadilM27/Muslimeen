@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TypeLib.Models
 {
-    public class UpdateCalAdjustValue
+    public class uspUpdateIslamicDate
     {
-        public string Val { get; set; }
+       public string IslamicDate {get;set;}
     }
 }

@@ -9,7 +9,6 @@ namespace TypeLib.ViewModels
    public  class uspGetSpecificDayPrayerTimes
     {
         public DateTime PrayerDate { get; set; }
-        public string PrayerDescription { get; set; }
         public string PrayerDay { get; set; }
         public string FajrA { get; set; }
         public string FajrJ { get; set; }

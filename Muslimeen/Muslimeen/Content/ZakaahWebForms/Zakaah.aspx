@@ -17,20 +17,23 @@
    <title>MyMuslimeen - Calculator</title>
      <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico" />
      <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-     <link href="../Default/css/Default.css" rel="stylesheet" />
+        <link href="../Default/css/Default.css" rel="stylesheet" />
       <link href="../Zakaah/css/newZakaah.css" rel="stylesheet" />
         <link href="../Zakaah/css/Zakaatcard.css" rel="stylesheet" />
         <link href="../Zakaah/css/Slideshow.css" rel="stylesheet" />
+        <script src="../../Login/LogIn_Bootstrap/js/jquery-3.3.1.min.js"></script>
+       
 </head>
     <body>
-        <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
+         <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
         <form id="frmScholar" runat="server" class=" ">   
             <header >
                 <nav class="navFixed">
                     <div class="row align-self-end">
                         <ul class=" col-7 navbar-nav flex-row justify-content-start">
-                            <asp:HiddenField runat="server" ID="hfAdjustDate" Value="-2" /> <!--Need to get value from DB let admin adjust this -->
+                            <asp:HiddenField runat="server" ID="hfAdjustDate" Value="-1" /> <!--Need to get value from DB let admin adjust this -->
                             <li class="nav-item ml-4 mr-0 mb-0 pt-2"> <p class="IslamicDate mb-0" id="lstIslamicDate"></p></li>
+                           
                             <script src="../Default/DatesEnglishHijri.js"></script>
                         </ul>
                         <ul class="col-5 navbar-nav flex-row justify-content-end">

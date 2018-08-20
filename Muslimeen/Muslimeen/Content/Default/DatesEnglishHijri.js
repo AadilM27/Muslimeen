@@ -1,5 +1,5 @@
 
-var adjustDate = document.getElementById('hfAdjustDate').value;
+var adjustDate = document.getElementById('hdfAdjustDate').value;
 
 document.getElementById("lstIslamicDate").innerHTML = displayGregDate() + ' | ' + displayHijriDate(adjustDate);
 

@@ -1,7 +1,8 @@
 ﻿
     // Set the date we're counting down to 2018/05/17 24:00:00"
-   var countDownDate = new Date(document.getElementById("hfRamadaanDate").value).getTime('yyyy,mm,dd HH:MM:SS');
-
+var countdownDate = new Date(document.getElementById("hdfCounterDate").value).getTime('yyyy,mm,dd HH:MM:SS');
+var countdownFinishTitle = document.getElementById("hdfCounterFinishTitle").value;
+var countDownTitle = document.getElementById("hdfCounterTitle").value;
     // Update the count down every 1 second
     var x = setInterval(function () {
 
@@ -9,7 +10,9 @@
         var now = new Date().getTime();
 
         // Find the distance between now an the count down date
-        var distance = countDownDate - now;
+        var distance = countdownDate - now;
+
+        document.getElementById("lblCounterTitle").innerHTML = countdownFinishTitle;
 
         // Time calculations for days, hours, minutes and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -26,7 +29,7 @@
         // If the count down is finished, write some text
         if (distance < 0) {
             clearInterval(x);
-            document.getElementById("title").innerHTML = "Ramadaan Mubarak";
+            document.getElementById("title").innerHTML = countdownFinishTitle;
             document.getElementById("spDays").innerHTML = 0;
             document.getElementById("spHours").innerHTML = 0;
             document.getElementById("spMinutes").innerHTML = 0;

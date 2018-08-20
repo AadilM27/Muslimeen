@@ -78,7 +78,7 @@ namespace Muslimeen.BLL
         }
         public Zakaah BLL_GetZakaah()
         {
-             return dBAccess.GetZakaah();
+            return dBAccess.GetZakaah();
         }
         public List<Organization> BLL_GetOrganization()
         {
@@ -101,7 +101,7 @@ namespace Muslimeen.BLL
             return dBAccess.GetPendingArticle();
         }
 
-        public bool BLL_RejectReg (uspRejectReg uspRejectReg)
+        public bool BLL_RejectReg(uspRejectReg uspRejectReg)
         {
             return dBAccess.RejectReg(uspRejectReg);
         }
@@ -182,7 +182,7 @@ namespace Muslimeen.BLL
             return dBAccess.AddArticle(article);
         }
 
-        public bool  BLL_AcceptArticle(AcceptArticle acceptArticle)
+        public bool BLL_AcceptArticle(AcceptArticle acceptArticle)
         {
             return dBAccess.AcceptArticle(acceptArticle);
 
@@ -201,7 +201,7 @@ namespace Muslimeen.BLL
 
         public List<uspViewLatestArticles> BLL_ViewLatestArticles(DateTime dateToday, DateTime date)
         {
-            return dBAccess.ViewLatestArticles(dateToday,date);
+            return dBAccess.ViewLatestArticles(dateToday, date);
         }
 
         public Notice BLL_GetNotice(int noticeID)
@@ -276,7 +276,7 @@ namespace Muslimeen.BLL
             return dBAccess.GetSelectedZakaahOrg(organizationID);
         }
 
-        public bool BLL_UpdateZakaahOrg (uspUpdateZakaahOrg updateZakaahOrg)
+        public bool BLL_UpdateZakaahOrg(uspUpdateZakaahOrg updateZakaahOrg)
         {
             return dBAccess.UpdateZakaahOrg(updateZakaahOrg);
         }
@@ -299,6 +299,51 @@ namespace Muslimeen.BLL
         public Notice BLL_GetSelectedNotice(int notice)
         {
             return dBAccess.GetSelectedNotice(notice);
+        }
+        public bool BLL_RejectArticle(RejectArticle rejectArticle)
+        {
+            return dBAccess.RejectArticle(rejectArticle);
+        }
+
+        public List<CounterCalender> BLL_GetCounterCalender()
+        {
+            return dBAccess.GetCounterCalender();
+        }
+
+        public bool BLL_UpdateIslamicDate(uspUpdateIslamicDate updateIslamicDate)
+        {
+            return dBAccess.UpdateIslamicDate(updateIslamicDate);
+        }
+
+        public bool BLL_UpdateCountDown(uspUpdateCountDown updateCountDown)
+        {
+            return dBAccess.UpdateCountDown(updateCountDown);
+        }
+
+        //Update Article
+        public bool BLL_UpdateArticle(UpdateArticle art)
+        {
+            return dBAccess.UpdateArticle(art);
+        }
+
+        public bool BLL_UpdateMosque(Mosques mosque)
+        {
+            return dBAccess.UpdateMosque(mosque);
+        }
+
+        public List<Mosques> BLL_GetMosques()
+        {
+            return dBAccess.GetMosques();
+        }
+
+        public Mosques BLL_GetSpecificMosque(int mosqueID)
+        {
+            return dBAccess.GetSpecificMosque(mosqueID);
+        }
+
+        public List<RejectedArticlesReport> BLL_GetRejectedArticleReports()
+        {
+            return dBAccess.GetRejectedArticlesReport();
         }
     }
 }

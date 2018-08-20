@@ -110,16 +110,14 @@
 
                     </nav>
                 </div>
-
                 <div class=" position-static basic-div-styling p-0  w-100">
                     <div runat="server" id="divTaskHead" class=" head-div text-center p-2 mb-1">
                         <h4 class="p-0 m-0" id="lblTaskHeader" runat="server"></h4>
                     </div>
                     <div class="row p-0 m-0 tab-content right-bottom-div p-1">
-
-                        <div class="col-12 p-3 bg-light position-static" runat="server" id="divDetails">
+                        <div class="col-12 bg-light position-static mt-2" runat="server" id="divDetails">
                             <div class="row">
-                                <div class="col-8 p-3">
+                                <div class="col-8">
                                     <div class=" head-div-2 p-2 mb-1 text-left">
                                         <p class="m-0">Mosque Details</p>
                                     </div>
@@ -178,7 +176,7 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="col-4 p-3">
+                                <div class="col-4">
                                     <div class=" head-div-2 p-2 mb-1 text-left">
                                         <p class="m-0">Today's Prayer Times </p>
                                     </div>
@@ -235,7 +233,6 @@
                                             </tr>
 
                                         </table>
-
                                     </div>
                                 </div>
                             </div>
@@ -425,97 +422,130 @@
 
                         </div>
                         <div class="col-12 p-3 bg-light position-static" runat="server" id="divPrayerTimes">
-                            <div class="container">
-                                <div class="table">
-                                    <div class="form-row">
-                                        <div class="form-group col-sm-6 mb-1">
-                                            <label class="col mb-0 p-0">Start Date: </label>
-                                            <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtPrayerStartDate"></asp:TextBox>
+                            <div class="row">
+                                <div class="col-3 p-3">
+                                    <div class=" head-div-2 p-2 mb-1 text-left">
+                                        <p class="m-0">Enter Prayer Date Range</p>
+                                    </div>
+                                    <div class="table">
+                                        <div class="form-row">
+                                            <div class="form-group col-sm-6 mb-1">
+                                                <label class="col mb-0 p-0">Start Date: </label>
+                                                <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtPrayerStartDate"></asp:TextBox>
+                                            </div>
+                                            <div class="form-group col-sm-6 mb-1">
+                                                <label class="col mb-0 p-0">End Date: </label>
+                                                <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtPrayerEndDate"></asp:TextBox>
+                                            </div>
+                                            <div class="form-group col-1 mb-1 mt-1">
+                                                <asp:Button runat="server" ID="btnListPrayer" Text="List Prayers" OnClick="btnListPrayer_Click" CssClass="topnav btn btn-md btn-outline-light" />
+                                            </div>
                                         </div>
-                                        <div class="form-group col-sm-6 mb-1">
-                                            <label class="col mb-0 p-0">End Date: </label>
-                                            <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtPrayerEndDate"></asp:TextBox>
+
+                                    </div>
+                                </div>
+                                <div class="col-9 p-3" id="divPrayerTable" runat="server">
+                                    <div class=" head-div-2 p-2 mb-1 text-left">
+                                        <p class="m-0">Prayer Table</p>
+                                    </div>
+                                    <div class="table">
+                                        <table class="table table-primary">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2"></th>
+                                                    <th colspan="2">Fajr</th>
+                                                    <th colspan="2">Dhuhr</th>
+                                                    <th colspan="2">Asr</th>
+                                                    <th colspan="2">Magrib</th>
+                                                    <th colspan="2">Eisha</th>
+
+                                                </tr>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Day</th>
+                                                    <th>Azaan</th>
+                                                    <th>Jamaat</th>
+                                                    <th>Azaan</th>
+                                                    <th>Jamaat</th>
+                                                    <th>Azaan</th>
+                                                    <th>Jamaat</th>
+                                                    <th>Azaan</th>
+                                                    <th>Jamaat</th>
+                                                    <th>Azaan</th>
+                                                    <th>Jamaat</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tr>
+                                                <asp:Repeater ID="rptPrayerTimes" runat="server">
+                                                    <ItemTemplate>
+
+                                                        <tr>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("PrayerDate").ToString().Substring(0,10)%>' ID="lblPrayerDate"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("PrayerDay")%>' ID="lblDay"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("FajrA")%>' ID="lblFajrA"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("FajrJ")%>' ID="lblFajrJ"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("DhuhrA")%>' ID="lblDhurA"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("DhuhrJ")%>' ID="lblDhuhrJ"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("AsrA")%>' ID="lblAsrA"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("AsrJ")%>' ID="lblAsrJ"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("MagribA")%>' ID="lblMagribA"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("MagribJ")%>' ID="lblMagribJ"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("EishaA")%>' ID="lblEishaA"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("EishaJ")%>' ID="lblEishaJ"></asp:Label><br />
+                                                            </td>
+                                                        </tr>
+
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
+                                            </tr>
+                                        </table>
+                                        <div runat="server" id="divDisplayReports" class=" col-12 col-xl-12 mw-100 p-0" style="position: static">
+                                            <div class="m-0 p-0 pt-2 pl-2">
+                                                <a runat="server" id="PDF" onserverclick="PDF_ServerClick">
+                                                    <img src="../MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
+                                                <hr class="m-0 mt-1 p-0" style="background-color: #0026ff; height: 1px;" />
+                                            </div>
+                                            <div id="divgrid" runat="server">
+                                                <asp:GridView ID="grdReports" RowStyle-Wrap="true" runat="server" Style="position: static; font-size: smaller;" CellPadding="6" ForeColor="#333333" GridLines="none">
+                                                    <AlternatingRowStyle BackColor="White" />
+                                                    <EditRowStyle BackColor="#2461BF" />
+                                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                                    <RowStyle BackColor="#EFF3FB" Wrap="true" />
+                                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                                </asp:GridView>
+                                            </div>
                                         </div>
                                     </div>
-                                        <div class="col-1">
-                                            <asp:Button runat="server" ID="btnListPrayer" Text="List Prayers" OnClick="btnListPrayer_Click" CssClass=" topnav btn btn-md btn-outline-light mr-2 mt-2" />
-                                        </div>
-                                    </div>
-                                <div class="table" id="divPrayerTable" runat="server">
-                                    <table class="table table-responsive table-primary" style="width: 100%;">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="2"></th>
-                                                <th colspan="2">Fajr</th>
-                                                <th colspan="2">Dhuhr</th>
-                                                <th colspan="2">Asr</th>
-                                                <th colspan="2">Magrib</th>
-                                                <th colspan="2">Eisha</th>
-
-                                            </tr>
-                                            <tr>
-                                                <th>Date</th>
-                                                <th>Day</th>
-                                                <th>Azaan</th>
-                                                <th>Jamaat</th>
-                                                <th>Azaan</th>
-                                                <th>Jamaat</th>
-                                                <th>Azaan</th>
-                                                <th>Jamaat</th>
-                                                <th>Azaan</th>
-                                                <th>Jamaat</th>
-                                                <th>Azaan</th>
-                                                <th>Jamaat</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tr>
-                                            <asp:Repeater ID="rptPrayerTimes" runat="server">
-                                                <ItemTemplate>
-
-                                                    <tr>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%#Eval("PrayerDate").ToString().Substring(0,10)%>' ID="lblPrayerDate"></asp:Label><br />
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%#Eval("PrayerDay")%>' ID="lblDay"></asp:Label><br />
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%#Eval("FajrA")%>' ID="lblFajrA"></asp:Label><br />
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%#Eval("FajrJ")%>' ID="lblFajrJ"></asp:Label><br />
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%#Eval("DhuhrA")%>' ID="lblDhurA"></asp:Label><br />
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%#Eval("DhuhrJ")%>' ID="lblDhuhrJ"></asp:Label><br />
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%#Eval("AsrA")%>' ID="lblAsrA"></asp:Label><br />
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%#Eval("AsrJ")%>' ID="lblAsrJ"></asp:Label><br />
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%#Eval("MagribA")%>' ID="lblMagribA"></asp:Label><br />
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%#Eval("MagribJ")%>' ID="lblMagribJ"></asp:Label><br />
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%#Eval("EishaA")%>' ID="lblEishaA"></asp:Label><br />
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%#Eval("EishaJ")%>' ID="lblEishaJ"></asp:Label><br />
-                                                        </td>
-                                                    </tr>
-
-                                                </ItemTemplate>
-                                            </asp:Repeater>
-                                        </tr>
-                                    </table>
                                 </div>
                             </div>
                         </div>

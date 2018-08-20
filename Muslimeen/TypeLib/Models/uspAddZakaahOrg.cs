@@ -10,7 +10,7 @@ namespace TypeLib.Models
     {   
         public string Name { get; set; }
         public string WebsiteAddress { get; set; }
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
         public string ContactNo { get; set; }
         public string PhysicalAddress { get; set; }
         public char Active { get; set; }

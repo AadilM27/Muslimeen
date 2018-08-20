@@ -122,13 +122,14 @@
     <Content Include="Content\Mosque\aboubakr.png" />
     <Content Include="Content\Mosque\css\MyMosque.css" />
     <Content Include="Content\Mosque\download.png" />
-    <Content Include="Content\Mosque\fuqara.png" />
+    <Content Include="Content\Images\MosqueImages\fuqara.png" />
     <Content Include="Content\Mosque\ListMosque.aspx" />
     <Content Include="Content\Mosque\Mosque.aspx" />
     <Content Include="Content\Mosque\MosqueRep.aspx" />
     <Content Include="Content\Mosque\taqwa.png" />
     <Content Include="Content\MyAdmin.aspx" />
     <Content Include="Content\MyAdmin\css\MyAdmin.css" />
+    <Content Include="Content\MyAdmin\icons\Loading.gif" />
     <Content Include="Content\MyAdmin\icons\outline_error_outline_black_18dp.png" />
     <Content Include="Content\MyAdmin\icons\outline_warning_black_18dp.png" />
     <Content Include="Content\MyAdmin\icons\PendingReg.png" />
@@ -1784,6 +1785,7 @@
   <ItemGroup>
     <Folder Include="Content\Error\css\" />
     <Folder Include="Content\Error\js\" />
+    <Folder Include="Content\Images\ZakaahOrgImages\" />
     <Folder Include="Content\MyMember\icons\" />
     <Folder Include="Content\MyModerator\js\" />
     <Folder Include="Content\Zakaah\js\" />

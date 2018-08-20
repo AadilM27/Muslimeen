@@ -283,6 +283,15 @@ namespace Muslimeen.Content.ZakaahWebForms {
         protected global::System.Web.UI.WebControls.TextBox txtTotalAssets;
         
         /// <summary>
+        /// LblRequire control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblRequire;
+        
+        /// <summary>
         /// Label7 control.
         /// </summary>
         /// <remarks>
@@ -299,6 +308,15 @@ namespace Muslimeen.Content.ZakaahWebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAllDebts;
+        
+        /// <summary>
+        /// LblRequire1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblRequire1;
         
         /// <summary>
         /// Label8 control.

@@ -17,8 +17,12 @@
 
 function AddDateChars() {
     val = document.getElementById("txtDOB").value;
-    if (val.length === 2 || val.length === 5) {
-        document.getElementById("txtDOB").value += "/";
+    var key = event.which || event.keyCode || event.charCode;
+
+    if (key != 8) {
+        if (val.length === 2 || val.length === 5) {
+            document.getElementById("txtDOB").value += "/";
+        }
     }
 }
 
@@ -41,3 +45,4 @@ function EmailValidation() {
         document.getElementById("btnRegister").disabled = false;
     }
 }
+
