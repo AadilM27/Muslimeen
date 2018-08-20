@@ -188,16 +188,13 @@ namespace Muslimeen.Content.Mosque
 
 
         }
-        protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
-        {
-
-        }
 
         protected void btnListEvents_Click(object sender, EventArgs e)
         {
             try
             {
-                DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
+               divViewActiveEvents.Visible = true;
+               DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
                 DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
                 rptGetEvents.DataSource = db.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
                 rptGetEvents.DataBind();
@@ -301,6 +298,8 @@ namespace Muslimeen.Content.Mosque
             divPrayerTimes.Visible = false;
             divPrayerTable.Visible = false;
             divgrid.Visible = false;
+            divDisplayEvent.Visible = false;
+            divViewActiveEvents.Visible = false;
         }
 
         protected void btnAddress_Click(object sender, EventArgs e)
@@ -390,5 +389,19 @@ namespace Muslimeen.Content.Mosque
             catch { }
         }
 
+        protected void btnShow_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            string ID = btn.CommandArgument.ToString();
+            uspGetSpecificEvent events = new uspGetSpecificEvent();
+            divDisplayEvent.Visible = true;
+            events = db.BLL_GetuspGetSpecificEvent(Convert.ToInt32(Convert.ToInt32(ID)));
+            lblEventDescription.InnerText = events.EventDescription;
+            lblEventStartTime.InnerText = events.EventStartTime;
+            lblEventEndTime.InnerText = events.EventEndTime;
+            lblEventDate.InnerText = events.EventDate.ToString();
+            lblSpeaker.InnerText = events.Speaker;
+
+        }
     }
 }
