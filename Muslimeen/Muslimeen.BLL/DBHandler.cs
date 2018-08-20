@@ -319,5 +319,11 @@ namespace Muslimeen.BLL
         {
             return dBAccess.UpdateCountDown(updateCountDown);
         }
+
+        //Update Article
+        public bool BLL_UpdateArticle(UpdateArticle art)
+        {
+            return dBAccess.UpdateArticle(art);
+        }
     }
 }

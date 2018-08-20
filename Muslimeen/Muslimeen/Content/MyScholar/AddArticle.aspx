@@ -101,7 +101,7 @@
                     </div>
                     <div class="row p-0 m-0 right-bottom-div p-1 flex-nowrap">
                         <%--Add Article--%>
-                        <div class="col-12 col-sm-12 col-xl-6 p-0" runat="server" id="divAddArticle">
+                        <div class="col-12 col-sm-12 col-md-6 col-xl-8 p-0" runat="server" id="divAddArticle">
                             <div class=" head-div-2 p-2 mb-1 text-left">
                                 <p class="m-0">Add Article Details</p>
                             </div>
@@ -130,11 +130,16 @@
                                         <asp:Button CssClass=" topnav btn btn-outline-light" Style="width:150px;" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
                                     </div>
                                 </div>
+                                <div class="form-row">
+                                    <div class="form-group col-sm-12 mb-1 text-right position-static">
+                                        <asp:Button CssClass=" topnav btn btn-outline-light" Style="width:150px;" ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <%--Pending Articles--%>
-                        <div class="col-5 col-sm-5 col-xl-4 p-0 mr-1" runat="server" id="divPendingArticles">
+                        <div class="col-5 col-sm-5 col-md-6 col-xl-4 p-0 mr-1" runat="server" id="divPendingArticles">
                             <div class=" head-div-2 p-2 mb-1 text-left">
                                 <p class="m-0">Pending Articles</p>
                             </div>
@@ -271,6 +276,18 @@
                                         <label class="m-0" runat="server" id="lblReason"></label>
                                     </div>
                                 </div>
+                                <div class="container p-0 m-2 task-action">
+                                        <h6 class="w-100 card-title card-header">
+                                            <img class="figure-img mr-2 mb-1 " src="../MyAdmin/icons/outline_warning_black_18dp.png" />Before Editing Article.</h6>
+                                        <div class=" position-static m-0 card-body">
+                                            <ul class="pl-1">
+                                                <li><p class="mb-0" ><small class="card-text">Clicking on the Edit button will able you to edit the selected article.</small></p></li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer text-center position-static text-nowrap">
+                                            <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnEdit" Text="Edit Article" OnClick="btnEdit_Click" />
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                     </div>

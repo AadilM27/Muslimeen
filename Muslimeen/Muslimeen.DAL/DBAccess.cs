@@ -1557,6 +1557,21 @@ namespace Muslimeen.BLL
                 parameters.ToArray());
         }
 
+        //Update Article
+        public bool UpdateArticle(UpdateArticle Art)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var prop in Art.GetType().GetProperties())
+            {
+                if (prop.GetValue(Art) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(Art)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdateArticle", CommandType.StoredProcedure, parameters.ToArray());
+        }
+
     }   
 }
 

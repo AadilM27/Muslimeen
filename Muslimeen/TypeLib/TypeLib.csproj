@@ -58,6 +58,7 @@
     <Compile Include="Models\Scholar.cs" />
     <Compile Include="Models\Topic.cs" />
     <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\UpdateArticle.cs" />
     <Compile Include="Models\UpdateMember.cs" />
     <Compile Include="Models\UpdateMemberPassword.cs" />
     <Compile Include="Models\uspAddMosque.cs" />
