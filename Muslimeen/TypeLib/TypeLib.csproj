@@ -48,7 +48,7 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\InsertArticle.cs" />
     <Compile Include="Models\Moderater.cs" />
-    <Compile Include="Models\Mosque.cs" />
+    <Compile Include="Models\Mosques.cs" />
     <Compile Include="Models\Notice.cs" />
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\Prayer.cs" />
@@ -69,6 +69,7 @@
     <Compile Include="Models\uspUpdateZakaahOrg.cs" />
     <Compile Include="Models\Zakaah.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\RejectedArticlesReport.cs" />
     <Compile Include="ViewModels\uspGetAcceptedArticle.cs" />
     <Compile Include="ViewModels\uspGetAcceptedScholars.cs" />
     <Compile Include="ViewModels\uspGetAllMosques.cs" />

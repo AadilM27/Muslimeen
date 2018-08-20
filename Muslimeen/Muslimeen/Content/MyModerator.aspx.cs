@@ -447,6 +447,8 @@ namespace Muslimeen.Content.MyModerator
                 
                 grdReports.DataSource = handler.BLL_GetAcceptedScholars();
                 grdReports.DataBind();
+
+               
             }
             catch(Exception)
             {
@@ -465,9 +467,9 @@ namespace Muslimeen.Content.MyModerator
                 DBHandler handler = new DBHandler();
                 uspGetAcceptedScholars acc = new uspGetAcceptedScholars();
 
-                grdReports.DataSource = handler.BLL_GetRejectedScholars();
-                
+                grdReports.DataSource = handler.BLL_GetRejectedScholars();                
                 grdReports.DataBind();
+               
                 
             }
             catch (Exception)
@@ -484,7 +486,7 @@ namespace Muslimeen.Content.MyModerator
                 divDisplayReports.Visible = true;
                 
                 DBHandler han = new DBHandler();
-                uspGetAcceptedArticle art = new uspGetAcceptedArticle();
+               
 
                 grdReports.DataSource = han.BLL_GetAcceptedArticle();
                 grdReports.DataBind();
@@ -502,9 +504,9 @@ namespace Muslimeen.Content.MyModerator
                 divDisplayReports.Visible = true;
                 
                 DBHandler han = new DBHandler();
-                uspGetRejectedArticle rej = new uspGetRejectedArticle();
+                
 
-                grdReports.DataSource = han.BLL_GetRejectedArticle();
+                grdReports.DataSource = han.BLL_GetRejectedArticleReports();
                 grdReports.DataBind();
             }
             catch (Exception)
@@ -524,6 +526,7 @@ namespace Muslimeen.Content.MyModerator
 
                 grdReports.DataSource = han.BLL_GetMosqueReports();
                 grdReports.DataBind();
+                
             }
             catch (Exception)
             {
@@ -556,43 +559,55 @@ namespace Muslimeen.Content.MyModerator
 
         protected void PDF_ServerClick(object sender, EventArgs e)
         {
-            PdfPTable pdfTable = new PdfPTable(grdReports.HeaderRow.Cells.Count);
-
-            foreach (TableCell Headercell in grdReports.HeaderRow.Cells)
+            try
             {
-                Font font = new Font();
-                font.Color = new BaseColor(grdReports.HeaderStyle.ForeColor);
 
-                PdfPCell pdfCell = new PdfPCell(new Phrase(Headercell.Text, font));
-                pdfCell.BackgroundColor = new BaseColor(grdReports.HeaderStyle.BackColor);
-                pdfTable.AddCell(pdfCell);
-            }
 
-            foreach (GridViewRow gridviewrow in grdReports.Rows)
-            {
-                foreach (TableCell tablecell in gridviewrow.Cells)
+                DBHandler han = new DBHandler();
+                PdfPTable pdfTable = new PdfPTable(grdReports.HeaderRow.Cells.Count);
+                pdfTable.HorizontalAlignment = 0;
+                foreach (TableCell Headercell in grdReports.HeaderRow.Cells)
                 {
+                                                              
                     Font font = new Font();
-                    font.Color = new BaseColor(grdReports.RowStyle.ForeColor);
+                    font.Color = new BaseColor(grdReports.HeaderStyle.ForeColor);
 
-                    PdfPCell pdfcell = new PdfPCell(new Phrase(tablecell.Text));
-                    pdfcell.BackgroundColor = new BaseColor(grdReports.RowStyle.BackColor);
-                    pdfTable.AddCell(pdfcell);
+                    PdfPCell pdfCell = new PdfPCell(new Phrase(Headercell.Text, font));
+                    pdfCell.BackgroundColor = new BaseColor(grdReports.HeaderStyle.BackColor);
+                    pdfTable.AddCell(pdfCell);
+
                 }
+
+                foreach (GridViewRow gridviewrow in grdReports.Rows)
+                {
+                    foreach (TableCell tablecell in gridviewrow.Cells)
+                    {
+                        Font font = new Font();
+                        font.Color = new BaseColor(grdReports.RowStyle.ForeColor);
+
+                        PdfPCell pdfcell = new PdfPCell(new Phrase(tablecell.Text));
+                        pdfcell.BackgroundColor = new BaseColor(grdReports.RowStyle.BackColor);
+                        pdfTable.AddCell(pdfcell);
+                    }
+                }
+
+                Document pdfDocument = new Document(new RectangleReadOnly(842, 595), 10f, -200f, 10f, 0f);
+                PdfAWriter.GetInstance(pdfDocument, Response.OutputStream);
+
+                pdfDocument.Open();
+                pdfDocument.Add(pdfTable);
+                pdfDocument.Close();
+
+                Response.ContentType = "application/pdf";
+                Response.AppendHeader("content-disposition", "attachment;filename=MuslimeenReports.pdf");
+                Response.Write(pdfDocument);
+                Response.Flush();
+                Response.End();
             }
-
-            Document pdfDocument = new Document(PageSize.A4, 10f, 10f, 10f, 10f);
-            PdfAWriter.GetInstance(pdfDocument, Response.OutputStream);
-
-            pdfDocument.Open();
-            pdfDocument.Add(pdfTable);
-            pdfDocument.Close();
-
-            Response.ContentType = "application/pdf";
-            Response.AppendHeader("content-disposition", "attachment;filename=MuslimeenReports.pdf");
-            Response.Write(pdfDocument);
-            Response.Flush();
-            Response.End();
+            catch(Exception)
+            {
+                throw;
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TypeLib.Models
 {
-   public class Mosque
+    public class Mosques
     {
         public int MosqueID { get; set; }
         public string MosqueName { get; set; }
@@ -14,5 +14,9 @@ namespace TypeLib.Models
         public string MosqueSuburb { get; set; }
         public DateTime YearEstablished { get; set; }
         public string MosqueType { get; set; }
+        public char Active { get; set; }
+        public string MosqueImage { get; set; }
+        public string MosqueSize { get; set; }
+        public string MosqueQuote { get; set; }
     }
 }

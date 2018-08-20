@@ -9,7 +9,9 @@ using TypeLib.ViewModels;
 using Muslimeen.BLL;
 using System.Data;
 using System.Drawing;
-     
+using System.IO;
+using System.Globalization;
+
 namespace Muslimeen.Content
 {
     public partial class MyAdmin : System.Web.UI.Page
@@ -17,8 +19,14 @@ namespace Muslimeen.Content
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+
             try
             {
+                divUpdateMosqueOverlay.Visible = false;
+                divMosqueList.Visible = false;
+                divUpdateMosque.Visible = false;
+                divOrgImg.Visible = false;
                 divCounterCalander.Visible = false;
                 divNoticeOverlay.Visible = false;
                 divOrgOverlay.Visible = false;
@@ -215,12 +223,12 @@ namespace Muslimeen.Content
                 lblMemberID.InnerText = scholarDetails.ScholarID.ToString();
                 lblMemberName.InnerText = scholarDetails.MemberName.ToString();
                 lblMemberLastName.InnerText = scholarDetails.MemberLastName.ToString();
-                lblMemberDOB.InnerText = scholarDetails.MemberDOB.ToString();
+                lblMemberDOB.InnerText = scholarDetails.MemberDOB.ToString("dd MM yyyy");
                 lblMemberType.InnerText = scholarDetails.MemberType.ToString();
                 lblEmail.InnerText = scholarDetails.Email.ToString();
                 lblContactNo.InnerText = scholarDetails.ContactNo.ToString();
-                lblActivationExpiry.InnerText = scholarDetails.ActivationExpiry.ToString();
-                lblActivationDate.InnerText = scholarDetails.ActivationDate.ToString();
+                lblActivationExpiry.InnerText = scholarDetails.ActivationExpiry.ToString("dd MM yyyy");
+                lblActivationDate.InnerText = scholarDetails.ActivationDate.ToString("dd MM yyyy");
                 lblScholarQual.InnerText = scholarDetails.QualificationDescription.ToString();
 
                 divViewPendingSch.Visible = true;
@@ -302,9 +310,9 @@ namespace Muslimeen.Content
         {
             divAddMosque.Visible = true;
             divAddMosqueRep.Visible = true;
-
+            ddMosqueActive.SelectedValue = "None";
+            ddMosqueActive.Enabled = false;
             lblTaskHead.InnerText = btnAddMosque.Text.ToString();
-
         }
 
         protected void btnRegMosque_Click(object sender, EventArgs e)
@@ -464,6 +472,13 @@ namespace Muslimeen.Content
                         continueProcess += 1;
                         txtRetypePassword.BorderColor = Color.Red;
                     }
+                    else if (!(int.TryParse(txtDOB.Text, out int parsedValue2)))
+                    {
+                        lblError.Text = "Date must only contain numbers";
+                        lblError.ForeColor = Color.Red;
+                        continueProcess += 1;
+                        txtDOB.BorderColor = Color.Red;
+                    }
                     else if (txtContactNum.Text.Length > 10 || txtContactNum.Text.Length < 10)
                     {
                         if (txtContactNum.Text.Length != 0)
@@ -473,6 +488,13 @@ namespace Muslimeen.Content
                             continueProcess += 1;
                             txtContactNum.BorderColor = Color.Red;
                         }
+                    }
+                    else if(ddMosqueActive.SelectedValue == "None")
+                    {
+                        lblError.Text = "Mosque has to be either Yes or No";
+                        lblError.ForeColor = Color.Red;
+                        continueProcess += 1;
+                        ddMosqueActive.BorderColor = Color.Red;
                     }
                     if (fupMosqueImage.HasFile)
                     {
@@ -505,7 +527,8 @@ namespace Muslimeen.Content
                     addMosque.MemberName = txtName.Text.ToString();
                     addMosque.MemberLastName = txtLName.Text.ToString();
                     addMosque.ContactNo = txtContactNum.Text.ToString();
-                    addMosque.MemberDOB = Convert.ToDateTime(txtDOB.Text.ToString());
+                    string DOB = Convert.ToDateTime(txtDOB.Text.ToString()).ToString("yyyy-MM-dd");
+                    addMosque.MemberDOB = Convert.ToDateTime(DOB);
                     addMosque.Email = txtUserEmail.Text.ToString();
                     addMosque.MemberType = 'R';
                     addMosque.ActiveTypeID = 'Y';
@@ -516,13 +539,23 @@ namespace Muslimeen.Content
                     addMosque.MosqueStreet = txtMosqueAddr.Text.ToString();
                     addMosque.MosqueSuburb = txtMosqueSuburb.Text.ToString();
                     addMosque.MosqueType = ddMosqueType.SelectedValue.ToString();
-                    if (fupMosqueImage.HasFile)
+                    if (fupMosqueImage.HasFile)//Add Image save to directory and path to DB.
                     {
-                        addMosque.MosqueImage = fupMosqueImage.FileBytes; //Image to upload ...
+                        string fileName = fupMosqueImage.FileName.ToString();
+                        string fileFormat = fileName.Substring(fileName.Length - 3); //get last character of Image name.
+
+                        fupMosqueImage.SaveAs(Server.MapPath("~/Content/Images/MosqueImages/") + txtMosqueName.Text.ToString().ToString() + "." +fileFormat.ToString()); //Image to upload ...
+                        //Server.MapPath("~/") + filename
+                        addMosque.MosqueImage = ("~/Content/Images/MosqueImages/" + txtMosqueName.Text.ToString() + "." + fileFormat.ToString());
+                    }
+                    else
+                    {
+                        addMosque.MosqueImage = "";
                     }
                     addMosque.MosqueSize = ddMosqueSize.SelectedValue.ToString();
                     addMosque.MosqueQuote = txtMosqueQuote.Text.ToString();
-                    addMosque.YearEstablished = Convert.ToDateTime(txtMosqueEstab.Text.ToString());
+                    string yearEstablished = Convert.ToDateTime(txtMosqueEstab.Text).ToString("yyyy-MM-dd");
+                    addMosque.YearEstablished = Convert.ToDateTime(yearEstablished);
 
                     db.BLL_AddMosque(addMosque);
 
@@ -781,6 +814,8 @@ namespace Muslimeen.Content
             string orgID = linkButton.CommandArgument.ToString();
             hdfZakaahOrg.Value = orgID;
 
+            Cache.Remove("divAddUpdateZakaahOrg");
+            
             DBHandler db = new DBHandler();
             Organization org = new Organization();
 
@@ -791,9 +826,11 @@ namespace Muslimeen.Content
             txtOrgContactNo.Text = org.ContactNo;
             txtOrgPhyAddress.Text = org.PhysicalAddress;
             ddOrgActive.SelectedValue = Convert.ToString(org.Active);
-
+            imgOrgImage.ImageUrl = org.Image.ToString();
+            Cache.Remove(imgOrgImage.ImageUrl.ToString()); //removes old Image from catch so client may see new picture and not the old one.
             divZakaahOrgList.Visible = true;
             divAddUpdateZakaahOrg.Visible = true;
+            divOrgImg.Visible = true;
         }
 
         protected void btnAddUpdateOrg_Click(object sender, EventArgs e)
@@ -859,7 +896,16 @@ namespace Muslimeen.Content
                         addZakaahOrg.Active = 'Y';
                         if (fupOrgImage.HasFile)
                         {
-                            addZakaahOrg.Image = fupOrgImage.FileBytes; //Image to upload ...
+                            string fileName = fupOrgImage.FileName.ToString();
+                            string fileFormat = fileName.Substring(fileName.Length - 3); //get last character of Image name.
+
+                            fupOrgImage.SaveAs(Server.MapPath("~/Content/Images/ZakaahOrgImages/") + txtOrgName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
+                            //Server.MapPath("~/") + filename
+                            addZakaahOrg.Image = ("~/Content/Images/ZakaahOrgImages/" + txtOrgName.Text.ToString() + "." + fileFormat.ToString());
+                        }
+                        else
+                        {
+                            addZakaahOrg.Image = "";
                         }
 
                         db.BLL_AddZakaahOrganization(addZakaahOrg);
@@ -894,15 +940,29 @@ namespace Muslimeen.Content
                         updateZakaahOrg.ContactNo = txtOrgContactNo.Text.ToString();
                         updateZakaahOrg.PhysicalAddress = txtOrgPhyAddress.Text.ToString();
                         updateZakaahOrg.Active = Convert.ToChar(ddOrgActive.SelectedValue);
-                        updateZakaahOrg.Image = fupOrgImage.FileBytes; //Image to upload ...
 
+                        if (fupOrgImage.HasFile)
+                        {
+                            string fileName = fupOrgImage.FileName.ToString();
+                            string fileFormat = fileName.Substring(fileName.Length - 3); //get last character of Image name eg(.jpg).
+
+                            fupOrgImage.SaveAs(Server.MapPath("/Content/Images/ZakaahOrgImages/") + txtOrgName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
+
+                            updateZakaahOrg.Image = ("/Content/Images/ZakaahOrgImages/" + txtOrgName.Text.ToString() + "." + fileFormat.ToString());
+
+                        }
+                        else
+                        {
+                        updateZakaahOrg.Image = "";
+                        }
                         db.BLL_UpdateZakaahOrg(updateZakaahOrg);
 
                         divZakaahOrgList.Visible = true;
                         divAddUpdateZakaahOrg.Visible = true;
+                        divOrgImg.Visible = true;
 
-                        //Refresh the List...
-                        rptZakaahOrg.DataSource = db.BLL_GetOrganization();
+                    //Refresh the List...
+                    rptZakaahOrg.DataSource = db.BLL_GetOrganization();
                         rptZakaahOrg.DataBind();
 
 
@@ -917,6 +977,11 @@ namespace Muslimeen.Content
                         lblOrgError.Text = String.Empty;
                     }
                 }
+
+            Cache.Remove("divAddUpdateZakaahOrg");
+
+            divAddUpdateZakaahOrg.Visible = true;
+            divZakaahOrgList.Visible = true;
         }
 
         protected void btnAddZakaahOrg_Click(object sender, EventArgs e)
@@ -924,6 +989,7 @@ namespace Muslimeen.Content
             divZakaahOrgList.Visible = false;
             divAddUpdateZakaahOrg.Visible = true;
             ddOrgActive.Enabled = false;
+            divOrgImg.Visible = false;
 
             txtOrgName.BorderColor = Color.Empty;
             txtOrgContactNo.BorderColor = Color.Empty;
@@ -933,7 +999,7 @@ namespace Muslimeen.Content
             txtOrgWebAddr.Text = string.Empty;
             txtOrgContactNo.Text = string.Empty;
             txtOrgPhyAddress.Text = string.Empty;
-            ddOrgActive.SelectedIndex = 0;
+            ddOrgActive.SelectedValue = "Y";
             fupOrgImage.Attributes.Clear();
             lblTaskHead.InnerText = "Add Zakaah Organization";
             btnAddUpdateOrg.Text = "Add Organization";
@@ -997,8 +1063,8 @@ namespace Muslimeen.Content
 
             txtNoticeTitle.Text = notice.NoticeTitle.ToString();
             txtNoticeDesc.Text = notice.NoticeDescription.ToString();
-            txtNoticeDateCreated.Text = notice.DateCreated.ToString();
-            txtNoticeExpiryDate.Text = notice.DateExpiry.ToString("dd MM yyyy");
+            txtNoticeDateCreated.Text = Convert.ToDateTime(notice.DateCreated).ToString("dd MM yyyy");
+            txtNoticeExpiryDate.Text = notice.DateExpiry.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
             txtNoticeMemberID.Text = notice.MemberID.ToString();
             ddNoticeActive.SelectedValue = notice.Active.ToString();
         }
@@ -1211,6 +1277,199 @@ namespace Muslimeen.Content
                 txtIslamicDate.BackColor = Color.Empty;
             }
 
+        }
+
+        protected void btnUpdateMosque_Click(object sender, EventArgs e)
+        {
+            divMosqueList.Visible = true;
+            divUpdateMosqueOverlay.Visible = false;
+
+            lblTaskHead.InnerText = btnUpdateMosque.Text;
+            DBHandler db = new DBHandler();
+
+            Cache.Remove("divMosqueList");
+
+            rptMosqueList.DataSource = db.BLL_GetMosques();
+            rptMosqueList.DataBind();
+
+        }
+
+        protected void btnUpdateMosqueDetails_Click(object sender, EventArgs e)
+        {
+            txtUpdateMosqueName.BorderColor = Color.Empty;
+            txtUpdateMosqueAddr.BorderColor = Color.Empty;
+            txtUpdateMosqueSuburb.BorderColor = Color.Empty;
+            txtUpdateMosqueQuote.BorderColor = Color.Empty;
+            lblUpdateMosqueError.Text = "";
+
+                DBHandler db = new DBHandler();
+                Encryption encryption = new Encryption();
+                uspAddMosque addMosque = new uspAddMosque();
+                int continueProcess = 0;
+
+                if (lblUpdateMosqueError.Text == "" || lblUpdateMosqueError.Text == null)
+                {
+                    if (txtUpdateMosqueName.Text == "" || txtUpdateMosqueName.Text == null)
+                    {
+                        txtUpdateMosqueName.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if (txtUpdateMosqueAddr.Text == "" || txtUpdateMosqueAddr.Text == null)
+                    {
+                        txtUpdateMosqueAddr.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if (txtUpdateMosqueSuburb.Text == "" || txtUpdateMosqueSuburb.Text == null)
+                    {
+                        txtUpdateMosqueSuburb.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if (ddUpdateMosqueType.SelectedIndex == 0)
+                    {
+                        ddUpdateMosqueType.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if (txtUpdateMosqueEstab.Text == "dd --- yyyy")
+                    {
+                        txtUpdateMosqueEstab.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if (ddUpdateMosqueSize.SelectedIndex == 0)
+                    {
+                        ddUpdateMosqueSize.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if (ddUpdateMosqueType.SelectedValue == "None")
+                    {
+                        ddUpdateMosqueType.BorderColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                    else if (ddUpdateMosqueSize.SelectedValue == "None")
+                    {
+                        ddUpdateMosqueSize.BorderColor = Color.Red;
+                        continueProcess += 1;
+                        lblUpdateMosqueError.Text = "Registration type not selected";
+                        lblUpdateMosqueError.ForeColor = Color.Red;
+                    }
+                    else if (ddUpdateMosqueActive.SelectedValue == "None")
+                    {
+                        lblUpdateMosqueError.Text = "Mosque has to be either Yes or No";
+                        lblUpdateMosqueError.ForeColor = Color.Red;
+                        continueProcess += 1;
+                        ddUpdateMosqueActive.BorderColor = Color.Red;
+                    }
+                    if (fupUpdateMosqueImage.HasFile)
+                    {
+                        string fileName = fupUpdateMosqueImage.FileName.ToString();
+                        string fileFormat = fileName.Substring(fileName.Length - 3);
+                        switch (fileFormat)
+                        {
+                            case "png":
+                            case "jpg":
+                            case "gif":
+                            case "bmp":
+                                break;
+                            default:
+                                continueProcess += 1;
+                                lblUpdateMosqueError.Text = "The file Uploaded is not of the correct format.";
+                                lblUpdateMosqueError.ForeColor = Color.Red;
+                                break;
+                        }
+                    }
+                }
+
+            if(continueProcess == 0)
+            {
+                Mosques mosque = new Mosques();
+
+                mosque.MosqueID = Convert.ToInt32(hdfMosqueID.Value);
+                mosque.MosqueName = txtUpdateMosqueName.Text;
+                mosque.MosqueStreet = txtUpdateMosqueAddr.Text;
+                mosque.MosqueSuburb = txtUpdateMosqueSuburb.Text;
+                mosque.MosqueType = ddUpdateMosqueType.SelectedValue;
+                mosque.YearEstablished = Convert.ToDateTime(txtUpdateMosqueEstab.Text);
+                mosque.Active = Convert.ToChar(ddUpdateMosqueActive.SelectedValue);
+                if (fupUpdateMosqueImage.HasFile)//Add Image save to directory and path to DB.
+                {
+                    string fileName = fupUpdateMosqueImage.FileName.ToString();
+                    string fileFormat = fileName.Substring(fileName.Length - 3); //get last character of Image name.
+
+                    fupUpdateMosqueImage.SaveAs(Server.MapPath("/Content/Images/MosqueImages/") + txtUpdateMosqueName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
+                    
+                    mosque.MosqueImage = ("/Content/Images/MosqueImages/" + txtUpdateMosqueName.Text.ToString() + "." + fileFormat.ToString());
+                }
+                else
+                {
+                    mosque.MosqueImage = fupUpdateMosqueImage.ToolTip.ToString();
+                }
+                mosque.MosqueSize = ddUpdateMosqueSize.SelectedValue;
+                mosque.MosqueQuote = txtUpdateMosqueQuote.Text;
+
+                db.BLL_UpdateMosque(mosque);
+
+                txtUpdateMosqueName.Text = string.Empty;
+                txtUpdateMosqueAddr.Text = string.Empty;
+                txtUpdateMosqueSuburb.Text = string.Empty;
+                ddUpdateMosqueType.SelectedValue = "None";
+                txtUpdateMosqueEstab.Text = string.Empty;
+                ddUpdateMosqueActive.SelectedValue = "None";
+                ddUpdateMosqueSize.SelectedValue = "None";
+                txtUpdateMosqueQuote.Text = string.Empty;
+
+            }
+
+            Cache.Remove("divMosqueList");
+
+            rptMosqueList.DataSource = db.BLL_GetMosques();
+            rptMosqueList.DataBind();
+
+            divUpdateMosque.Visible = false;
+            divMosqueList.Visible = true;
+            divUpdateMosqueOverlay.Visible = true;
+
+        }
+
+        protected void btnCancelMosqueUpdate_Click(object sender, EventArgs e)
+        {
+            divUpdateMosqueOverlay.Visible = false;
+            divUpdateMosque.Visible = false;
+            divMosqueList.Visible = false;
+
+            txtUpdateMosqueName.Text = string.Empty;
+            txtUpdateMosqueAddr.Text = string.Empty;
+            txtUpdateMosqueSuburb.Text = string.Empty;
+            ddUpdateMosqueType.SelectedValue = "None";
+            txtUpdateMosqueEstab.Text = string.Empty;
+            ddUpdateMosqueActive.SelectedValue = "None";
+            ddUpdateMosqueSize.SelectedValue = "None";
+            txtUpdateMosqueQuote.Text = string.Empty;
+
+        }
+
+        protected void btnShowMosque_Click(object sender, EventArgs e)
+        {
+            LinkButton linkButton = (LinkButton)sender;
+
+            string mosqueId = linkButton.CommandArgument.ToString();
+            hdfMosqueID.Value = mosqueId;
+
+            DBHandler db = new DBHandler();
+            Mosques mosque = new Mosques();
+
+            mosque = db.BLL_GetSpecificMosque(Convert.ToInt32(mosqueId));
+
+            txtUpdateMosqueName.Text = mosque.MosqueName.ToString();
+            txtUpdateMosqueAddr.Text = mosque.MosqueStreet.ToString();
+            txtUpdateMosqueSuburb.Text = mosque.MosqueSuburb.ToString();
+            ddUpdateMosqueType.SelectedValue = mosque.MosqueType.ToString();
+            txtUpdateMosqueEstab.Text = Convert.ToDateTime(mosque.YearEstablished).ToString("yyyy-MM-dd");
+            ddUpdateMosqueActive.SelectedValue = Convert.ToString(mosque.Active);
+            ddUpdateMosqueSize.SelectedValue = Convert.ToString(mosque.MosqueSize);
+            txtUpdateMosqueQuote.Text = Convert.ToString(mosque.MosqueQuote);
+            fupUpdateMosqueImage.ToolTip = Convert.ToString(mosque.MosqueImage);
+            divUpdateMosqueOverlay.Visible = false;
+            divUpdateMosque.Visible = true;
+            divMosqueList.Visible = true;
         }
     }
 }

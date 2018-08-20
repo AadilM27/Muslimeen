@@ -67,10 +67,7 @@ namespace Muslimeen.Content
                         txtContactNum.Text = Convert.ToString(uspGetModeratorDetails.ContactNo);
                         txtDOB.Text = uspGetModeratorDetails.MemberDOB.ToString("dd MMM yyyy");
                         txtUserEmail.Text = Convert.ToString(uspGetModeratorDetails.Email);
-                        if (uspGetModeratorDetails.MemberType.ToString() == "O")
-                        {
-                            txtMemberType.Text = "Moderator";
-                        }
+                        txtMemberType.Text = "Moderator";
                         txtQual.Text = Convert.ToString(uspGetModeratorDetails.QualificationDescription);
                         ddAssignedMosques.SelectedValue = Convert.ToString(uspGetModeratorDetails.MosqueID);
                         txtActivationDate.Text = uspGetModeratorDetails.ActivationDate.ToString("dd MMM yyyy");
