@@ -620,9 +620,7 @@ namespace Muslimeen.Content
         protected void btnAddMod_Click(object sender, EventArgs e)
         {
             divAddMod.Visible = true;
-
-
-
+            lblTaskHead.InnerText = btnAddMod.Text;
         }
 
         protected void btnRegModerater_Click(object sender, EventArgs e)
@@ -827,7 +825,6 @@ namespace Muslimeen.Content
             txtOrgPhyAddress.Text = org.PhysicalAddress;
             ddOrgActive.SelectedValue = Convert.ToString(org.Active);
             imgOrgImage.ImageUrl = org.Image.ToString();
-            Cache.Remove(imgOrgImage.ImageUrl.ToString()); //removes old Image from catch so client may see new picture and not the old one.
             divZakaahOrgList.Visible = true;
             divAddUpdateZakaahOrg.Visible = true;
             divOrgImg.Visible = true;
@@ -899,13 +896,13 @@ namespace Muslimeen.Content
                             string fileName = fupOrgImage.FileName.ToString();
                             string fileFormat = fileName.Substring(fileName.Length - 3); //get last character of Image name.
 
-                            fupOrgImage.SaveAs(Server.MapPath("~/Content/Images/ZakaahOrgImages/") + txtOrgName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
-                            //Server.MapPath("~/") + filename
-                            addZakaahOrg.Image = ("~/Content/Images/ZakaahOrgImages/" + txtOrgName.Text.ToString() + "." + fileFormat.ToString());
+                            fupOrgImage.SaveAs(Server.MapPath("/Content/Images/ZakaahOrgImages/") + txtOrgName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
+
+                            addZakaahOrg.Image = ("/Content/Images/ZakaahOrgImages/" + txtOrgName.Text.ToString() + "." + fileFormat.ToString());
                         }
                         else
                         {
-                            addZakaahOrg.Image = "";
+                            addZakaahOrg.Image = "/Content/Images/ImageUnavailable.jpg";
                         }
 
                         db.BLL_AddZakaahOrganization(addZakaahOrg);
@@ -953,7 +950,7 @@ namespace Muslimeen.Content
                         }
                         else
                         {
-                        updateZakaahOrg.Image = "";
+                            updateZakaahOrg.Image = imgOrgImage.ImageUrl.ToString();
                         }
                         db.BLL_UpdateZakaahOrg(updateZakaahOrg);
 
@@ -1149,6 +1146,8 @@ namespace Muslimeen.Content
 
                         txtNoticeTitle.Text = string.Empty;
                         txtNoticeTitle.BorderColor = Color.Empty;
+                        txtNoticeExpiryDate.BorderColor = Color.Empty;
+                        txtNoticeDesc.BorderColor = Color.Empty;
                         txtNoticeDesc.Text = string.Empty;
                         txtNoticeDateCreated.Text = string.Empty;
                         txtNoticeExpiryDate.Text = string.Empty;
@@ -1193,6 +1192,7 @@ namespace Muslimeen.Content
         protected void btnUpdateDateCounter_Click(object sender, EventArgs e)
         {
             divCounterCalander.Visible = true;
+            lblTaskHead.InnerText = btnUpdateDateCounter.Text;
 
             DBHandler db = new DBHandler();
             List<CounterCalender> counterCalender = new List<CounterCalender>();
@@ -1286,8 +1286,6 @@ namespace Muslimeen.Content
 
             lblTaskHead.InnerText = btnUpdateMosque.Text;
             DBHandler db = new DBHandler();
-
-            Cache.Remove("divMosqueList");
 
             rptMosqueList.DataSource = db.BLL_GetMosques();
             rptMosqueList.DataBind();
@@ -1423,6 +1421,8 @@ namespace Muslimeen.Content
             rptMosqueList.DataSource = db.BLL_GetMosques();
             rptMosqueList.DataBind();
 
+            Cache.Remove("divMosqueList");
+
             divUpdateMosque.Visible = false;
             divMosqueList.Visible = true;
             divUpdateMosqueOverlay.Visible = true;
@@ -1467,6 +1467,7 @@ namespace Muslimeen.Content
             ddUpdateMosqueSize.SelectedValue = Convert.ToString(mosque.MosqueSize);
             txtUpdateMosqueQuote.Text = Convert.ToString(mosque.MosqueQuote);
             fupUpdateMosqueImage.ToolTip = Convert.ToString(mosque.MosqueImage);
+
             divUpdateMosqueOverlay.Visible = false;
             divUpdateMosque.Visible = true;
             divMosqueList.Visible = true;

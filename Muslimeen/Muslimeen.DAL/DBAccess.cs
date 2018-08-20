@@ -1637,7 +1637,7 @@ namespace Muslimeen.BLL
                         }
                         else
                         {
-                            mosque.MosqueImage = "";
+                            mosque.MosqueImage = "/Content/Images/ImageUnavailable.jpg";
                         }
                         mosque.YearEstablished = Convert.ToDateTime(row["YearEstablished"]);
                         mosque.Active = Convert.ToChar(row["Active"]);

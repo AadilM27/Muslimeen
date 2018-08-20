@@ -89,9 +89,9 @@
                             <asp:Button runat="server" ToolTip="Add a Mosque on Muslimeen" ID="btnAddMosque" OnClick="btnAddMosque_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="Add Mosque" />
                                 <asp:Button ID="btnUpdateMosque" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="Update Mosque Details" OnClick="btnUpdateMosque_Click" />
                             <asp:Button runat="server" ID="btnAddMod" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnAddMod_Click" Text="Add a Moderater" />
-                            <asp:Button runat="server" ID="btUpdateZakaahOrg" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnUpdateZakaahOrg_Click" Text="Update Zakaah Organization" />
-                                <asp:Button ID="btnAddZakaahOrg" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="Add New Organization" OnClick="btnAddZakaahOrg_Click" />
-                            <asp:Button runat="server" ID="btnUpdateNotice" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnUpdateNotice_Click" Text="Update Notice" />
+                            <asp:Button ID="btnAddZakaahOrg" CssClass="pl-2 btn taskBtn mb-1"   runat ="server" Text="Add New Organization" OnClick="btnAddZakaahOrg_Click" />
+                                <asp:Button runat="server" ID="btUpdateZakaahOrg" CssClass="pl-2 btn sub-taskBtn mb-1 pl-2 btn taskBtn mb-1" OnClick="btnUpdateZakaahOrg_Click" Text="Update Zakaah Organization" />
+                            <asp:Button runat="server" ID="btnUpdateNotice" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnUpdateNotice_Click" Text="Update a Notice" />
                                 <asp:Button ID="btnAddNotice" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="Add new Notice" OnClick="btnAddNotice_Click" />
                             <asp:Button runat="server" ID="btnUpdateDateCounter" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnUpdateDateCounter_Click" Text="Update Date and Count Down" />
                         </nav>
@@ -265,7 +265,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1">
                                             <label class="col mb-0 p-0"><small>Mosque Quote</small></label>
-                                            <asp:TextBox TextMode="MultiLine" Style=" max-height:60px; min-height:60px;" CssClass=" position-static form-control form-control-sm col main-txtb" runat="server" ID="txtMosqueQuote"></asp:TextBox>
+                                            <asp:TextBox TextMode="MultiLine" Style=" max-height:90px; min-height:90px;" MaxLength="500" CssClass=" position-static form-control form-control-sm col main-txtb" runat="server" ID="txtMosqueQuote"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -281,6 +281,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <%-- Update Mosque List --%>
                             <div class="col-6 col-xl-4 p-0 mr-1" runat="server" id="divMosqueList">
                                 <div class=" head-div-2 p-2 mb-1 text-left">
                                     <p class="m-0">Pending Registrations</p>
@@ -301,7 +302,7 @@
                                                             </div>
                                                                 <hr class=" mr-4 m-0 p-0"/>
                                                             <div class="">
-                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Year Established: </b><%#Convert.ToDateTime(Eval("YearEstablished")).ToString("dd MM yyyy")%></p>
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Year Established: </b><%# Convert.ToDateTime(Eval("YearEstablished")).ToString("dd MM yyyy") %></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -383,7 +384,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1">
                                             <label class="col mb-0 p-0"><small>Mosque Quote</small></label>
-                                            <asp:TextBox TextMode="MultiLine" Style=" max-height:60px; min-height:60px;" CssClass=" position-static form-control form-control-sm col main-txtb" runat="server" ID="txtUpdateMosqueQuote"></asp:TextBox>
+                                            <asp:TextBox TextMode="MultiLine" Style=" max-height:90px; min-height:90px;" MaxLength="500" CssClass=" position-static form-control form-control-sm col main-txtb" runat="server" ID="txtUpdateMosqueQuote"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -398,7 +399,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer text-center text-nowrap border-top-0">
-                                        <asp:Button CssClass="topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnUpdateMosqueDetails" Text="Register Mosque" OnClick="btnUpdateMosqueDetails_Click"/>
+                                        <asp:Button CssClass="topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnUpdateMosqueDetails" Text="Update Details" OnClick="btnUpdateMosqueDetails_Click"/>
                                         <asp:Button CssClass="topnav btn btn-sm btn-outline-light" runat="server" ID="btnCancelMosqueUpdate" Text="Cancel" OnClick="btnCancelMosqueUpdate_Click"/>
                                     </div>
                                 </div>
@@ -585,7 +586,7 @@
                                         </HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:LinkButton ID="btnShowOrg" CommandArgument='<%#Eval("OrganizationID") %>' ToolTip="Select" CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShowOrg_Click">
-                                                    <div class="p-0 form-row m-0 position-static flex-nowrap">
+                                                    <div class="p-0 form-row p-1 m-0 position-static flex-nowrap">
                                                         <div class="col-auto position-static p-0">
                                                             <div class="">
                                                                 <p style="font-size:small;" class=" p-0 m-0"><b>Name: </b><%#Eval("Name")%><br/></p>
@@ -775,12 +776,13 @@
                                     </div>
                                 </div>
                             </div>
+                            <%-- Update Islamic Date and Counter --%>
                             <div runat="server" id="divCounterCalander" class=" col-sm-12 col-xl-6 flex-nowrap p-0">
-                                <div class=" head-div-2 p-2 mb-0 text-left ">
+                                <div class=" head-div-2 p-2 mb-0 text-left">
                                     <p class="m-0">Update Islamic Date and Counter</p>
                                 </div>
                                 <div class=" position-static p-1 lst-container align-content-xl-center">
-                                    <div class=" mt-3 card-header">
+                                    <div class=" mt-1 card-header">
                                         <div class="form-group col-12 mb-1">
                                             <label class=" h5">Set up Count Down</label>
                                         </div>
@@ -834,7 +836,7 @@
                                         <div class="col">
                                             <div class="form-group col-12 mb-1">
                                                 <label class="col mb-0 p-0"><small>Islamic Date Adjust Number</small></label>
-                                                <asp:TextBox  MaxLength="2" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtIslamicDate"></asp:TextBox>
+                                                <asp:TextBox  MaxLength="2" placeholder="e.g 1, 2, -1, -2" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtIslamicDate"></asp:TextBox>
                                             </div>
                                         </div>
                                     </div>

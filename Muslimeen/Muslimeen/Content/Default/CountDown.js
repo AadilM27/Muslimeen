@@ -12,7 +12,7 @@ var countDownTitle = document.getElementById("hdfCounterTitle").value;
         // Find the distance between now an the count down date
         var distance = countdownDate - now;
 
-        document.getElementById("lblCounterTitle").innerHTML = countdownFinishTitle;
+        document.getElementById("lblCounterTitle").innerHTML = countDownTitle;
 
         // Time calculations for days, hours, minutes and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -29,7 +29,7 @@ var countDownTitle = document.getElementById("hdfCounterTitle").value;
         // If the count down is finished, write some text
         if (distance < 0) {
             clearInterval(x);
-            document.getElementById("title").innerHTML = countdownFinishTitle;
+            document.getElementById("lblCounterTitle").innerHTML = countdownFinishTitle;
             document.getElementById("spDays").innerHTML = 0;
             document.getElementById("spHours").innerHTML = 0;
             document.getElementById("spMinutes").innerHTML = 0;

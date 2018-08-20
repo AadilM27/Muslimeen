@@ -211,15 +211,6 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Button btnAddMod;
         
         /// <summary>
-        /// btUpdateZakaahOrg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btUpdateZakaahOrg;
-        
-        /// <summary>
         /// btnAddZakaahOrg control.
         /// </summary>
         /// <remarks>
@@ -227,6 +218,15 @@ namespace Muslimeen.Content {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAddZakaahOrg;
+        
+        /// <summary>
+        /// btUpdateZakaahOrg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btUpdateZakaahOrg;
         
         /// <summary>
         /// btnUpdateNotice control.

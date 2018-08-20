@@ -20,7 +20,7 @@ namespace Muslimeen.Content
                 List<CounterCalender> counterCalender = new List<CounterCalender>();
 
                 counterCalender = db.BLL_GetCounterCalender();
-                lblCounterTitle.InnerHtml = counterCalender[2].Val.ToString();
+                hdfCounterTitle.Value = counterCalender[2].Val.ToString();
                 hdfCounterFinishTitle.Value = counterCalender[1].Val.ToString();
                 hdfCounterDate.Value = counterCalender[0].Val.ToString();
                 hdfAdjustDate.Value = counterCalender[3].Val.ToString();
