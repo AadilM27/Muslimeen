@@ -550,7 +550,7 @@ namespace Muslimeen.BLL
                     {
                         events = new uspGetMosqueEvents
                         {
-
+                            EventID = Convert.ToInt32(row["EventID"].ToString()),
                             EventTitle = row["EventTitle"].ToString(),
                             EventDate = Convert.ToDateTime(row["EventDate"].ToString()),
                             EventDescription = row["EventDescription"].ToString(),
@@ -811,6 +811,7 @@ namespace Muslimeen.BLL
                     DataRow row = table.Rows[0];
                     events = new uspGetSpecificEvent
                     {
+                        EventID = Convert.ToInt32(row["EventID"].ToString()),
                         EventTitle = row["EventTitle"].ToString(),
                         EventDate = Convert.ToDateTime(row["EventDate"].ToString()),
                         EventDescription = row["EventDescription"].ToString(),

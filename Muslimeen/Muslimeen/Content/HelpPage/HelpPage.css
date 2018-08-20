@@ -53,16 +53,20 @@
     top: 0;
 }
 
+.contentPad {
+    padding-top: 125px;
+}
+
 .navbtn {
     text-decoration-color: #256297;
 }
 
-    .navbtn:hover {
-        color: white;
-        background-color: #3F84C1;
-        text-decoration: none;
-        border-radius: 2px;
-    }
+.navbtn:hover {
+    color: white;
+    background-color: #3F84C1;
+    text-decoration: none;
+    border-radius: 2px;
+}
 
 .topnav {
     border-color: #3F84C1;
@@ -265,4 +269,9 @@
     width: 98%;
     position: static;
     padding-bottom: 3px;
+}
+
+.highlight-btn {
+    color: #3F84C1;
+    t
 }

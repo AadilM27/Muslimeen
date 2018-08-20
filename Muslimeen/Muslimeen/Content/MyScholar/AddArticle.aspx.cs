@@ -258,7 +258,6 @@ namespace Muslimeen.Content.MyScholar
 
                     han.BLL_InsertArticle(art);
 
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Add Succesfull');</script>");
                     txtHeading.Text = " ";
                     txtContent.Text = " ";
 
@@ -341,18 +340,23 @@ namespace Muslimeen.Content.MyScholar
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
-        {
+        {            
             UpdateArticle art = new UpdateArticle();
             DBHandler han = new DBHandler();
 
             art.ArticleTitle = Convert.ToString(txtHeading.Text);
             art.ArticleContent = Convert.ToString(txtContent.Text);
             art.ArticleTopic = Convert.ToInt32(drpTopics.SelectedValue);
+            art.ArticleID = Convert.ToInt32(hfdRej.Value);
+            art.Status = Convert.ToChar("P");
+            art.Active = Convert.ToChar("T");
 
             han.BLL_UpdateArticle(art);
 
             txtHeading.Text = " ";
             txtContent.Text = " ";
+
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Added Article');</script>");
         }
     }
 }
