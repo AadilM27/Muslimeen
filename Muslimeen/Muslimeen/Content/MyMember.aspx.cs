@@ -23,7 +23,7 @@ namespace Muslimeen.Content
             liMyMusbtn.Visible = true;
             liMyMusDivi.Visible = true;
             divDisplayEvents.Visible = false;
-            divDisplaySalahTimetable.Visible = false;
+            divDisplaySalahTimetable.Visible = true;
             divDiplayNotifications.Visible = false;
             divDisplayArticles.Visible = false;
             divNotices.Visible = false;
@@ -180,7 +180,9 @@ namespace Muslimeen.Content
         {
            
                 divDisplayEvents.Visible = true;
-                lblTaskHead.InnerText = btnEvents.Text.ToString();
+            divListEvent.Visible = true;
+            divDisplayEvents.Visible = true;
+            lblTaskHead.InnerText = btnEvents.Text.ToString();
 
         }
 
@@ -217,7 +219,7 @@ namespace Muslimeen.Content
             {
                 lblEventDescription.InnerText = ev.EventDescription.ToString();
                 lblSpeaker.InnerText = ev.Speaker.ToString();
-                lblEventDate.InnerText = ev.EventDate.ToString();
+                lblEventDate.InnerText = Convert.ToDateTime(ev.EventDate).ToString("dd-MM-yyyy");
                 lblEventStarTime.InnerText = ev.EventStartTime.ToString();
                 lblEventEndTime.InnerText = ev.EventEndTime.ToString();
                 divEvent.Visible = true;

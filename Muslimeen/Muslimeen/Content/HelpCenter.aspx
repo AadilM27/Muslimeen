@@ -12,9 +12,7 @@
     <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/HelpPage/HelpPage.css" rel="stylesheet" />
-
 </head>
-    <body>
         <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
         <form id="frmScholar" runat="server" class=" ">   
             <header >
@@ -79,12 +77,39 @@
                 </div>
             </header>
      <!--Add content-->
-        <div class="content" id="content"><!--add content here -->
-            <div class="head-div text-center p-1 mb-1">
-                <h2 class="p-0 m-0">Welcome to our help center    <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/help.png" width="70" height="50"/></h2> 
-            </div>
+            
+        <div class="content position-relative" id="content"><!--add content here -->
+            <div class="row bg-light m-0 divContainers p-1 flex-nowrap position-relative">
+              <div class="side-bar p-0 basic-div-styling mr-1 position-relative">
+                    <!--contains the buttons-->
+                    <div class="head-div text-center p-2">
+                        <p class="text-uppercase m-0 font-weight-bold">Index :</p>
+                   </div>
+                     <nav class="list-group m-1" id="scrollspy">
+<%--                         <asp:Button runat="server" ID="btnArticles" CssClass="pl-2 ml-1 btn taskBtn mb-1"  onclick="#divUser" Text="User" />--%>
+                         
+                             <a class="list-group-item list-group-item-action" href="#divUser">User</a>
+                             <a class="list-group-item list-group-item-action" href="#divScholar">Scholar</a>
+                             <a class="list-group-item list-group-item-action" href="#divMosqueRep">Mosque Representitive</a>
+                             <a class="list-group-item list-group-item-action" href="#divAdmin">Admin</a>
+                             <a class="list-group-item list-group-item-action" href="#divModerator">Moderator</a>
+                       
+                         
+                         
+<%--                         <asp:Button runat="server" /><a type="button" href="#divUser" class="pl-2 ml-1 btn taskBtn mb-1" >User</a>
+                         <a type="button" href="#divMosqueRep" class="pl-2 ml-1 btn taskBtn mb-1">Mosque Representitve</a>
+                         <a type="button" href="#divScholar" class="pl-2 ml-1 btn taskBtn mb-1">Scholar</a>
+                         <a type="button" href="#divAdmin" class="pl-2 ml-1 btn taskBtn mb-1">Admin</a>
+                         <a type="button" href="#divModerator" class="pl-2 ml-1 btn taskBtn mb-1">Moderator</a>--%>
+                     </nav>
+                </div>
+                <!--End menu-->
+             <div class=" position-static basic-div-styling p-0  w-100">
+                    <div class=" head-div text-center p-2 mb-1">
+                        <h4 class="p-0 m-0">Welcome to our help center    <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Content/HelpPage/icons/help.png" width="70" height="50"/></h4>
+                    </div>
 
-                <div class="container"> 
+                <div class="container" data-spy="scroll" data-target="#scrollspy" data-offset="20">
                 <div class="position-static basic-div-styling p-0">
                     <div class="head-div-2 p-2 mb-0">
                         <h5 class="text-center">Getting started </h5>
@@ -105,9 +130,19 @@
                             <br />
                             <br />
                             <b>Scholar:</b><br />
-                            When a scholar registered, his qualifications must be uploaded and the moderator will verify these qualifications. 
+                            A user has to request to become a scholar having the needed qualifications. When a scholar registered, his qualifications must be uploaded and the moderator will verify these qualifications. 
                             All articles uploaded by the scholar will be moderated as well, therefore no false content wil be uploaded. 
                             A scholar may do everything the user can do. The only difference is that a scholar may upload or edit their articles.
+                            <br />
+                            <br />
+                            <b>Admin:</b><br />
+                            The admin are the individulas who created this site. When they log in they may control and change anything as well as keep
+                            the website up to date.
+                            <br />
+                            <br />
+                            <b>Moderator:</b><br />
+                            A user may become a moderator depedning on his qualifiction. When a moderator registers and is accepted by the admin, they may
+                            view all the pending articles and users who requested to become a scholar. They are in control of the data uploaded onto this site.
                             </p>
                         </div>
                 </div>
@@ -131,14 +166,83 @@
                     </div>
                     <div class=" paragraphDisplay p-2">
                     <p>
-                        A registered and validated scholar will request to upload an article. Before any article is uploaded, the moderator will view the
-                        validity of this article and will either accept the upload or reject it. If the articles request is rejected, the article will not
-                        be uploaded and users will not be able to view these articles. 
+                        Various users have access to and may do various tasks. 
                     </p>
+                        <div runat="server" id="divUser" >
+                            <b>User:</b><br />
+                            <ul>
+                                <li>View/edit profile</li>
+                                <li>View prayer times</li>
+                                <li>View mosque events</li>
+                                <li>Serach for specific results</li>
+                                <li>View zakaah information, organisations as well as calculate zakaah</li>
+                                <li>View Scholars</li>
+                                <li>View a list of mosques and filter according to their needs</li>
+                                <li>View articles on our Learn Islam page</li>
+                                <li>Have online chats with the desired scholar</li>
+                            </ul>
+
+                        </div>
+                        <div runat="server" id="divMosqueRep" >
+                            <b>Mosque Representitive:</b><br />
+                            <ul>
+                                <li>View/update prayer times</li>
+                                <li>Add/remove mosque events</li>
+                                <li>View mosque details</li>
+                                <li>View/Update profile</li>
+                                <li>View number of assigned users to a specific mosque</li>
+                                <li>Serach for specific results</li>
+                                <li>View zakaah information, organisations as well as calculate zakaah</li>
+                                <li>View Scholars</li>
+                                <li>View a list of mosques and filter according to their needs</li>
+                                <li>View articles on our Learn Islam page</li>
+                            </ul>
+                            <a id="h"></a>
+                        </div>
+                        <div runat="server" id="divScholar">
+                            <b>Scholar:</b><br />
+                            <ul>
+                                <li>Add/Edit articles</li>
+                                <li>View/edit profile</li>
+                                <li>View prayer times</li>
+                                <li>View mosque events</li>
+                                <li>Serach for specific results</li>
+                                <li>View zakaah information, organisations as well as calculate zakaah</li>
+                                <li>View Scholars</li>
+                                <li>View a list of mosques and filter according to their needs</li>
+                                <li>View articles on our Learn Islam page</li>
+                                <li>Have online chats with users</li>
+                                
+                            </ul>
+                        </div>
+                        <div runat="server" id="divAdmin">
+                            <b>Admin:</b><br />
+                            <ul>
+                                <li>Add/edit/delete a mosque</li>
+                                <li>View/accept/reject scholar registration</li>
+                                <li>Add a moderator</li>
+                                <li>Add/Update zakaah organisations</li>
+                                <li>Add/Update notices</li>
+                            </ul>
+                        </div>
+                        <div runat="server" id="divModerator" >
+                            <b>Moderator:</b><br />
+                            <ul>
+                                <li>View/edit their profile</li>
+                                <li>View/accept/reject pending article uploads</li>
+                                <li>View/accept/reject scholar registration</li>
+                                <li>View mosque reports</li>
+                                <li>View event reports</li>
+                            </ul>
+                        </div>
                     </div>
                     </div>
                 </div>
+                </div>
             </div>
+            </div>
+         
+                <!--close content-->
             <div class="footerr"> <!--End of content, start of footer-->
                 <div class="row bg-light">
                     <div class="col text-center position-static">

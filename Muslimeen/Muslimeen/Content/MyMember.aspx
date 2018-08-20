@@ -99,19 +99,19 @@
             </div>
         </header>
 
-        <div class="content" id="content">
+        <div class="content position-relative " id="content">
             <!--Side menu-->
-            <div class="row bg-light m-0 divContainers p-1 flex-nowrap">
-                <div class="side-bar p-0 basic-div-styling mr-1">
+            <div class="row bg-light m-0 divContainers p-1 flex-nowrap position-relative">
+                <div class="side-bar p-0 basic-div-styling mr-1 position-relative">
                     <!--contains the buttons-->
                     <div class="head-div text-center p-2">
                         <p class="text-uppercase m-0 font-weight-bold">Tasks :</p>
                     </div>
-                    <nav class="nav flex-column pt-1 pb-1 pr-0">
-                        <asp:Button runat="server" ID="btnTodaysPrayerTimes" OnClick="btnTodaysPrayerTime_Click" CssClass="pl-2 btn taskBtn mb-1" Text="View todays prayer times" />
-                        <asp:Button runat="server" ID="btnEvents" CssClass="pl-2 btn taskBtn mb-1"  OnClick="btnEvents_Click" Text="View mosque events" />
-                        <asp:Button runat="server" ID="btnNotifications" CssClass="pl-2 btn taskBtn mb-1"  OnClick="btnNotifications_Click" Text="View notifications" />
-                        <asp:Button runat="server" ID="btnArticles" CssClass="pl-2 btn taskBtn mb-1"  OnClick="btnArticles_Click" Text="View latest articles" />
+                        <nav class="nav flex-column pt-2 pb-2 pr-0">
+                        <asp:Button runat="server" ID="btnTodaysPrayerTimes" OnClick="btnTodaysPrayerTime_Click" CssClass="pl-2 ml-1 btn taskBtn mb-1" Text="View todays prayer times" />
+                        <asp:Button runat="server" ID="btnEvents" CssClass="pl-2 ml-1 btn taskBtn mb-1"  OnClick="btnEvents_Click" Text="View mosque events" />
+                        <asp:Button runat="server" ID="btnNotifications" CssClass="pl-2 ml-1 btn taskBtn mb-1"  OnClick="btnNotifications_Click" Text="View notifications" />
+                        <asp:Button runat="server" ID="btnArticles" CssClass="pl-2 ml-1 btn taskBtn mb-1"  OnClick="btnArticles_Click" Text="View latest articles" />
                     </nav>
                 </div>
                 <!--Side menu ends-->
@@ -179,15 +179,15 @@
 
                         <!--view mosque events-->
 
-                        <div runat="server" id="divDisplayEvents" class="bg-light position-static col p-3 divContainers">
-                            <div class=" position-static basic-div-styling p-0 h-20">                         
+                        <div runat="server" id="divDisplayEvents" class="bg-light position-static col p-0 divContainers">
+                            <div class=" position-static p-0 h-20">                         
                             <div class=" head-div-2 p-2 mb-0 ">
                                     <p class="m-0">List events by date range</p>
                             </div>
                                     <table style="width: 70%">
                                         <tr>
                                             <td colspan="4">
-                                                <asp:Label ID="lblEventList" runat="server" Text="Please select a start and end date below " CssClass="pl-2 mb-1"></asp:Label></td>
+                                                <asp:Label ID="lblEventList" runat="server" Text="Please select a start and end date below " Font-Size="Medium" CssClass="pl-2 mb-3"></asp:Label></td>
                                         </tr> 
                                         <tr>
                                             <td>
@@ -199,7 +199,7 @@
                                             <td colspan="2">
                                                 <asp:TextBox ID="txtEndDate" runat="server" TextMode="Date" CssClass="pl-2 mb-1"></asp:TextBox></td>
                                             <td>
-                                                <asp:Button CssClass="btn btn-info center" ID="btnListEvents" runat="server" Text="List Events" OnClick="btnListEvents_Click" /></td>
+                                                <asp:Button CssClass="btn center btn-outline-light topnav" ID="btnListEvents" runat="server" Text="List Events" OnClick="btnListEvents_Click" /></td>
                                         </tr>
                                         
                                     </table>
@@ -222,7 +222,7 @@
                                                                 <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Event&nbsp;Title: </b><%#Eval("EventTitle")%></p>                                       
                                                         </div>
                                                        <div class=" mr-4 m-0 p-0">
-                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Event&nbsp;Date: </b><%#Eval("EventDate")%></p>
+                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Event&nbsp;Date: </b><%# Convert.ToDateTime(Eval("EventDate")).ToString("dd MM yyyy")%></p>
                                                          
                                                         </div>
                                               </div>
