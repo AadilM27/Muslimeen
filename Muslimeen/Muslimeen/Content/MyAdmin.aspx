@@ -301,7 +301,7 @@
                                                             </div>
                                                                 <hr class=" mr-4 m-0 p-0"/>
                                                             <div class="">
-                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Year Established </b><%#Convert.ToDateTime(Eval("YearEstablished")).ToString("dd MM yyyy")%></p>
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Year Established: </b><%#Convert.ToDateTime(Eval("YearEstablished")).ToString("dd MM yyyy")%></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -543,7 +543,7 @@
                                             <label class="col mb-0 p-0 "><small>Password*</small></label>
                                             <asp:TextBox TextMode="Password" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtModPassword"></asp:TextBox>
                                         </div>
-                                    </div>
+                                    </div>   
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1 position-static">
                                             <label class="col mb-0 p-0 "><small>Retype Password*</small></label>
@@ -592,7 +592,7 @@
                                                             </div>
                                                                 <hr class=" mr-4 m-0 p-0"/>
                                                             <div class="">
-                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Contact No. </b><%#Eval("ContactNo")%>&emsp;<b>Active:</b> <%#Eval("Active")%></p>
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Contact No. </b><%#Eval("ContactNo")%>&emsp;<b>Active:</b> <%#Convert.ToString(Eval("Active")).Replace("Y", "Yes") .Replace("N", "No")%></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -694,7 +694,7 @@
                                                             </div>
                                                                 <hr class=" mr-4 m-0 p-0"/>
                                                             <div class="">
-                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Expiry Date: </b><%#Convert.ToDateTime(Eval("DateExpiry")).ToString("dd MM yyyy")%>&emsp;<b>Active:</b> <%#Eval("Active")%></p>
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Expiry Date: </b><%#Convert.ToDateTime(Eval("DateExpiry")).ToString("dd MM yyyy")%>&emsp;<b>Active:</b> <%#Convert.ToString(Eval("Active")).Replace("Y", "Yes") .Replace("N", "No")%></p>
                                                             </div>
                                                         </div>
                                                     </div>
