@@ -116,7 +116,7 @@
                 </div>
                 <!--Side menu ends-->
                 <!--Salaah Timetable-->
-                <div class=" position-static basic-div-styling p-0  w-100">
+                <div class=" position-static basic-div-styling p-0  w-100 ">
                     <div runat="server" id="lblTaskHead" class=" head-div text-center p-2 mb-1">
                         <h4 class="p-0 m-0"></h4>
                     </div>
@@ -179,35 +179,25 @@
 
                         <!--view mosque events-->
 
-                        <div runat="server" id="divDisplayEvents" class="bg-light position-static col p-0 divContainers">
-                            <div class=" position-static p-0 h-20">                         
+                        <div runat="server" id="divDisplayEvents" class="position-static row m-0 p-0">
+                            <div class=" col position-static p-0">                         
                             <div class=" head-div-2 p-2 mb-0 ">
                                     <p class="m-0">List events by date range</p>
                             </div>
-                                    <table style="width: 70%">
-                                        <tr>
-                                            <td colspan="4">
-                                                <asp:Label ID="lblEventList" runat="server" Text="Please select a start and end date below " Font-Size="Medium" CssClass="pl-2 mb-3"></asp:Label></td>
-                                        </tr> 
-                                        <tr>
-                                            <td>
-                                                <asp:Label ID="lblStartDate" runat="server" Text="Start Date:" CssClass="pl-2 mb-1"></asp:Label></td>
-                                            <td colspan="2">
-                                                <asp:TextBox ID="txtStartDate" runat="server" TextMode="Date" CssClass="pl-2 mb-1"></asp:TextBox></td>
-                                            <td>
-                                                <asp:Label ID="lblEndDate" runat="server" Text="End Date:" CssClass="pl-2 mb-1"></asp:Label></td>
-                                            <td colspan="2">
-                                                <asp:TextBox ID="txtEndDate" runat="server" TextMode="Date" CssClass="pl-2 mb-1"></asp:TextBox></td>
-                                            <td>
-                                                <asp:Button CssClass="btn center btn-outline-light topnav" ID="btnListEvents" runat="server" Text="List Events" OnClick="btnListEvents_Click" /></td>
-                                        </tr>
-                                        
-                                    </table>
-                                <br />
-                                </div>
+                                                <asp:Label ID="lblEventList" runat="server" Text="Please select a start and end date below " Font-Size="Medium" CssClass="pl-2 mb-3"></asp:Label>                               
+                                                <asp:Label ID="lblStartDate" runat="server" Text="Start Date:" CssClass="pl-2 mb-1"></asp:Label>
+                                                <asp:TextBox ID="txtStartDate" runat="server" TextMode="Date" CssClass="pl-2 mb-1"></asp:TextBox>
+                                                <asp:Label ID="lblEndDate" runat="server" Text="End Date:" CssClass="pl-2 mb-1"></asp:Label>
+                                                <asp:TextBox ID="txtEndDate" runat="server" TextMode="Date" CssClass="pl-2 mb-1"></asp:TextBox>
+                                                <asp:Button CssClass="btn center btn-outline-light topnav" ID="btnListEvents" runat="server" Text="List Events" OnClick="btnListEvents_Click" />
+<%--                                            <asp:CompareValidator ID="cmpVal1" ControlToCompare="txtStartDate" ControlToValidate="txtEndDate" Type="Date" Operator="GreaterThanEqual" ErrorMessage="*The end date has to be greater than the start date" runat="server"></asp:CompareValidator>--%>
+                                    
+                                <asp:Label ID="lblDateError" runat="server" Text="Please ensure a date is selected and the start date is before the end date"></asp:Label>
                             </div>
-                    
-                        <div runat="server" id="divListEvent" class="position-static dash-content p-0">
+                        </div>
+
+                        <div class="row" runat="server" id="divListEventDetails">
+                        <div runat="server" id="divListEvent" class="position-static col m-0 p-0">
                             <div class=" head-div-2 p-2 mb-0 ">
                                     <p class="m-0">List of events:</p>
                             </div>
@@ -223,7 +213,6 @@
                                                         </div>
                                                        <div class=" mr-4 m-0 p-0">
                                                                 <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Event&nbsp;Date: </b><%# Convert.ToDateTime(Eval("EventDate")).ToString("dd MM yyyy")%></p>
-                                                         
                                                         </div>
                                               </div>
                                         </asp:LinkButton>
@@ -234,7 +223,7 @@
                             </div>
                         </div>
 
-                          <div runat="server" id="divEvent" class=" position-static dash-content p-0">
+                          <div runat="server" id="divEvent" class=" position-static col dash-content p-0 m-0">
                             <asp:HiddenField runat="server" ID="hdfEvent" Value="" />
                             <div class=" head-div-2 p-2 mb-0 ">
                                     <p class="m-0">Selected Event Details:</p>
@@ -274,7 +263,7 @@
                                 </div>
                             </div>
                         </div>
-
+                            </div>
                         <!--Notifications-->
                         <div runat="server" id="divDiplayNotifications" class="position-static dash-content p-0">
                             <div class=" head-div-2 p-2 mb-0 ">
@@ -291,6 +280,11 @@
                                                             <div class="">
                                                                 <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Notice&nbsp;Title: </b><%#Eval("NoticeTitle")%><br/></p>
                                                             </div>
+                                                            <hr class=" mr-4 m-0 p-0"/>
+                                                            <div class="">
+                                                                 <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Notice&nbsp;Date: </b><%#Convert.ToDateTime(Eval("NoticeDate")).ToString("dd MM yyyy")%><br/></p>
+                                                            </div>
+
                                                         </div>
                                          </div>
                                         </asp:LinkButton>
@@ -354,7 +348,7 @@
                                                             </div>
                                                             <hr class=" mr-4 m-0 p-0"/>
                                                             <div class="">
-                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Created: </b><%#Eval("DateCreated")%></p>
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Created: </b><%#Convert.ToDateTime(Eval("DateCreated")).ToString("dd MM yyyy")%></p>
                                                             </div>
                                                         </div>
                                                     </div>

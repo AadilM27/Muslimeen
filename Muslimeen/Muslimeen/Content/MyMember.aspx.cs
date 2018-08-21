@@ -19,7 +19,8 @@ namespace Muslimeen.Content
         {
             lblTaskHead.InnerText = "Please select a task";
 
-            divUserProfile.Visible = true;
+            divListEventDetails.Visible = false;
+            divUserProfile.Visible = false;
             liMyMusbtn.Visible = true;
             liMyMusDivi.Visible = true;
             divDisplayEvents.Visible = false;
@@ -31,6 +32,7 @@ namespace Muslimeen.Content
             divEvent.Visible = false;
             divListEvent.Visible = false;
             divSchDetailsOverlay.Visible = false;
+            lblDateError.Visible = false;
 
 
             try
@@ -178,10 +180,13 @@ namespace Muslimeen.Content
 
         protected void btnEvents_Click(object sender, EventArgs e)
         {
-           
-                divDisplayEvents.Visible = true;
+
+            divSchDetailsOverlay.Visible = false;
             divListEvent.Visible = true;
+            divListEventDetails.Visible = true;
             divDisplayEvents.Visible = true;
+            divEvent.Visible = false;
+
             lblTaskHead.InnerText = btnEvents.Text.ToString();
 
         }
@@ -189,14 +194,31 @@ namespace Muslimeen.Content
         protected void btnListEvents_Click(object sender, EventArgs e)
         {
 
-                lblTaskHead.InnerText = btnListEvents.Text.ToString();
-                divListEvent.Visible = true;
-                divSchDetailsOverlay.Visible = true;
-                
-                DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
-                DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
-                RptEventList.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
-                RptEventList.DataBind();
+            lblTaskHead.InnerText = btnListEvents.Text.ToString();
+
+            DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
+            DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
+
+            //if (EndDate < startDate|| startDate==null )
+            //{
+            //    lblDateError.Visible = true;
+            //}
+            //if (EndDate==null)
+            //{
+            //    lblDateError.Visible = true;
+            //}
+
+
+            divSchDetailsOverlay.Visible = false;
+            divListEvent.Visible = true;
+            divListEventDetails.Visible = true;
+            divDisplayEvents.Visible = true;
+            divEvent.Visible = true;
+
+            RptEventList.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
+            RptEventList.DataBind();
+           
+           
            
         }
 
@@ -222,8 +244,12 @@ namespace Muslimeen.Content
                 lblEventDate.InnerText = Convert.ToDateTime(ev.EventDate).ToString("dd-MM-yyyy");
                 lblEventStarTime.InnerText = ev.EventStartTime.ToString();
                 lblEventEndTime.InnerText = ev.EventEndTime.ToString();
-                divEvent.Visible = true;
+
+                divSchDetailsOverlay.Visible = false;
                 divListEvent.Visible = true;
+                divListEventDetails.Visible = true;
+                divDisplayEvents.Visible = true;
+                divEvent.Visible = true;
 
             }
             catch

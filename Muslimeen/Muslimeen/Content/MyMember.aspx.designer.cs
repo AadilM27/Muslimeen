@@ -391,6 +391,24 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Button btnListEvents;
         
         /// <summary>
+        /// lblDateError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDateError;
+        
+        /// <summary>
+        /// divListEventDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divListEventDetails;
+        
+        /// <summary>
         /// divListEvent control.
         /// </summary>
         /// <remarks>
