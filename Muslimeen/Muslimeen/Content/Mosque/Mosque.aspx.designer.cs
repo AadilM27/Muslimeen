@@ -409,24 +409,6 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEvent;
         
         /// <summary>
-        /// lblEventList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEventList;
-        
-        /// <summary>
-        /// lblStartDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblStartDate;
-        
-        /// <summary>
         /// txtStartDate control.
         /// </summary>
         /// <remarks>
@@ -434,15 +416,6 @@ namespace Muslimeen.Content.Mosque {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtStartDate;
-        
-        /// <summary>
-        /// lblEndDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEndDate;
         
         /// <summary>
         /// txtEndDate control.
@@ -454,13 +427,22 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.TextBox txtEndDate;
         
         /// <summary>
-        /// btnListEvent control.
+        /// btnEvent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnListEvent;
+        protected global::System.Web.UI.WebControls.Button btnEvent;
+        
+        /// <summary>
+        /// divViewActiveEvents control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divViewActiveEvents;
         
         /// <summary>
         /// rptGetEvents control.
@@ -470,6 +452,78 @@ namespace Muslimeen.Content.Mosque {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptGetEvents;
+        
+        /// <summary>
+        /// divDisplayEvent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDisplayEvent;
+        
+        /// <summary>
+        /// hdfEventId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdfEventId;
+        
+        /// <summary>
+        /// divEventDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEventDetails;
+        
+        /// <summary>
+        /// lblSpeaker control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblSpeaker;
+        
+        /// <summary>
+        /// lblEventDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventDate;
+        
+        /// <summary>
+        /// lblEventStartTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventStartTime;
+        
+        /// <summary>
+        /// lblEventEndTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventEndTime;
+        
+        /// <summary>
+        /// lblEventDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventDescription;
         
         /// <summary>
         /// divLocation control.

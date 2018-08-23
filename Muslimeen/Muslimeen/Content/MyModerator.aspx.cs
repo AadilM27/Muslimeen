@@ -437,6 +437,7 @@ namespace Muslimeen.Content.MyModerator
 
         protected void BtnAcceptedScholars_Click(object sender, EventArgs e)
         {
+            Session["btnType"] = "AcceptedScholars";
             try
             {
                 reportHeading.InnerText = "Accepted Scholars Report";
@@ -459,6 +460,7 @@ namespace Muslimeen.Content.MyModerator
 
         protected void btnRejectedScholars_Click(object sender, EventArgs e)
         {
+            Session["btnType"] = "RejectedScholars";
             try
             {
                 reportHeading.InnerText = "Rejected Scholars Report";
@@ -480,6 +482,7 @@ namespace Muslimeen.Content.MyModerator
         }
         protected void BtnAcceptedArticles_Click(object sender,EventArgs e)
         {
+            Session["btnType"] = "AcceptedArticle";
             try
             {
                 reportHeading.InnerText = "Accepted Articles Report";
@@ -498,6 +501,7 @@ namespace Muslimeen.Content.MyModerator
         }
         protected void BtnRejectedArticles_Click(object sender, EventArgs e)
         {
+            Session["btnType"] = "RejectedArticle";
             try
             {
                 reportHeading.InnerText = "Rejected Articles Report";
@@ -516,6 +520,7 @@ namespace Muslimeen.Content.MyModerator
         }
         protected void BtnMosqueReports_Click(object sender, EventArgs e)
         {
+            Session["btnType"] = "MosqueReports";
             try
             {
                 reportHeading.InnerText = "Available Mosque Report";
@@ -535,6 +540,7 @@ namespace Muslimeen.Content.MyModerator
         }
         protected void BtnEventReports_Click(object sender, EventArgs e)
         {
+            Session["btnType"] = "EventsReports";
             try
             {
                 reportHeading.InnerText = "Available Events Report";
@@ -568,7 +574,67 @@ namespace Muslimeen.Content.MyModerator
                 pdfTable.HorizontalAlignment = 0;
                 foreach (TableCell Headercell in grdReports.HeaderRow.Cells)
                 {
-                                                              
+                    
+                    if(Session["btnType"].ToString() == "AcceptedScholars")
+                    {
+                        grdReports.HeaderRow.Cells[0].Text = "FirstName";
+                        grdReports.HeaderRow.Cells[1].Text = "LastName";
+                        grdReports.HeaderRow.Cells[2].Text = "Date Of Birth";
+                        grdReports.HeaderRow.Cells[3].Text = "Active";
+                        grdReports.HeaderRow.Cells[4].Text = "Email Address";
+                        grdReports.HeaderRow.Cells[5].Text = "Contact Number";
+                    }
+                     else if(Session["btnType"].ToString() == "RejectedScholars")
+                    {
+                        grdReports.HeaderRow.Cells[0].Text = "FirstName";
+                        grdReports.HeaderRow.Cells[1].Text = "LastName";
+                        grdReports.HeaderRow.Cells[2].Text = "Date Of Birth";
+                        grdReports.HeaderRow.Cells[3].Text = "Active";
+                        grdReports.HeaderRow.Cells[4].Text = "Email Address";
+                        grdReports.HeaderRow.Cells[5].Text = "Contact Number";
+                    }
+                    else if (Session["btnType"].ToString() == "AcceptedArticle")
+                    {
+                        grdReports.HeaderRow.Cells[0].Text = "Title";
+                        grdReports.HeaderRow.Cells[1].Text = "Content";
+                        grdReports.HeaderRow.Cells[2].Text = "Date Created";
+                        grdReports.HeaderRow.Cells[3].Text = "Scholar";
+                        grdReports.HeaderRow.Cells[4].Text = "Moderator";
+
+                    }
+                    else if (Session["btnType"].ToString() == "RejectedArticle")
+                    {
+                        grdReports.HeaderRow.Cells[0].Text = "Title";
+                        grdReports.HeaderRow.Cells[1].Text = "Content";
+                        grdReports.HeaderRow.Cells[2].Text = "Date Created";
+                        grdReports.HeaderRow.Cells[3].Text = "Rejection Reason";
+                        grdReports.HeaderRow.Cells[4].Text = "Scholar";
+                        grdReports.HeaderRow.Cells[5].Text = "Moderator";
+
+                    }
+                    else if(Session["btnType"].ToString() == "MosqueReports")
+                    {
+                        grdReports.HeaderRow.Cells[0].Text = "Mosque Name";
+                        grdReports.HeaderRow.Cells[1].Text = "Street";
+                        grdReports.HeaderRow.Cells[2].Text = "Suburb";
+                        grdReports.HeaderRow.Cells[3].Text = "Mosque Type";
+                        grdReports.HeaderRow.Cells[4].Text = "Mosque Size";
+                        
+
+                    }
+                    else if(Session["btnType"].ToString() == "EventsReports")
+                    {
+                        grdReports.HeaderRow.Cells[0].Text = "Event Title";
+                        grdReports.HeaderRow.Cells[1].Text = "Start Time";
+                        grdReports.HeaderRow.Cells[2].Text = "End Time";
+                        grdReports.HeaderRow.Cells[3].Text = "Speaker";
+                        grdReports.HeaderRow.Cells[4].Text = "Event Description";
+                        grdReports.HeaderRow.Cells[5].Text = "Date";
+                    }
+
+
+
+
                     Font font = new Font();
                     font.Color = new BaseColor(grdReports.HeaderStyle.ForeColor);
 
@@ -604,7 +670,7 @@ namespace Muslimeen.Content.MyModerator
                 Response.Flush();
                 Response.End();
             }
-            catch(Exception)
+            catch(NullReferenceException)
             {
                 throw;
             }

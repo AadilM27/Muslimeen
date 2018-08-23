@@ -12,5 +12,7 @@ namespace TypeLib.Models
         public string ArticleTitle { get; set; }
         public string ArticleContent { get; set; }
         public int ArticleTopic { get; set; }
+        public char Status { get; set; }
+        public char Active { get; set; }
     }
 }
