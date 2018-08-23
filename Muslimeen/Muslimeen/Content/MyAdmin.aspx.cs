@@ -1484,9 +1484,9 @@ namespace Muslimeen.Content
             DBHandler db = new DBHandler();
             Member member = new Member();
 
-            //************************************************
-            //Create stored procedure to get all Members
-            //To get specific Member, procedure already exists.
+            rptMemberList.DataSource = db.BLL_GetAllMembers();
+            rptMemberList.DataBind();
+
         }
     }
 }

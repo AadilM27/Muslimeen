@@ -852,7 +852,7 @@
                                     <p class="m-0">Pending Registrations</p>
                                 </div>
                                 <div class=" p-1 lst-container"  style="overflow-y:scroll;" >
-                                    <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="rptViewPendingSch_ItemCommand">
+                                    <asp:Repeater ID="rptMemberList" runat="server" OnItemCommand="rptViewPendingSch_ItemCommand">
                                         <HeaderTemplate>
                                         </HeaderTemplate>
                                         <ItemTemplate>
@@ -867,7 +867,7 @@
                                                             </div>
                                                                 <hr class=" mr-4 m-0 p-0"/>
                                                             <div class="">
-                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Registered: </b><%#Convert.ToDateTime(Eval("ActivationDate")).ToString("dd MM yyyy")%></p>
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Expiry Date: </b><%#Convert.ToDateTime(Eval("ActivationDate")).ToString("dd MM yyyy")%>&emsp;<b>Active:</b> <%#Convert.ToString(Eval("Active")).Replace("Y", "Yes") .Replace("N", "No")%></p>
                                                             </div>
                                                         </div>
                                                     </div>
