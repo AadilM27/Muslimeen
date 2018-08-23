@@ -23,6 +23,9 @@ namespace Muslimeen.Content
 
             try
             {
+                divAllMembersList.Visible = false;
+                divMemberDetails.Visible = false;
+                divMemberDetailsOverlay.Visible = false;
                 divUpdateMosqueOverlay.Visible = false;
                 divMosqueList.Visible = false;
                 divUpdateMosque.Visible = false;
@@ -94,7 +97,6 @@ namespace Muslimeen.Content
                     Session.Clear();
                     Response.Redirect("~/Login/Login.aspx");
                 }
-
 
                 divDisplaySch.Visible = false;
             }
@@ -1471,6 +1473,20 @@ namespace Muslimeen.Content
             divUpdateMosqueOverlay.Visible = false;
             divUpdateMosque.Visible = true;
             divMosqueList.Visible = true;
+        }
+
+        protected void btnViewAllMembers_Click(object sender, EventArgs e)
+        {
+            divAllMembersList.Visible = true;
+            divMemberDetails.Visible = false;
+            divMemberDetailsOverlay.Visible = true;
+
+            DBHandler db = new DBHandler();
+            Member member = new Member();
+
+            //************************************************
+            //Create stored procedure to get all Members
+            //To get specific Member, procedure already exists.
         }
     }
 }

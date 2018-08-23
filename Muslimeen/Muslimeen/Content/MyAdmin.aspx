@@ -85,14 +85,15 @@
                             <p class="text-uppercase m-0 font-weight-bold">Admin Tasks</p>
                         </div>
                         <nav class="nav flex-column pt-2 pb-2 pr-0">
+                            <asp:Button runat="server" ToolTip="View All Members with thier Details" ID="btnViewAllMembers" OnClick="btnViewAllMembers_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="View All Members" />
                             <asp:Button runat="server" ToolTip="Pending Scholar Registrations." ID="btnViewPendingSch" OnClick="btnViewPendingSch_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="View Pending Scholars" />
                             <asp:Button runat="server" ToolTip="Add a Mosque on Muslimeen" ID="btnAddMosque" OnClick="btnAddMosque_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="Add Mosque" />
                                 <asp:Button ID="btnUpdateMosque" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="Update Mosque Details" OnClick="btnUpdateMosque_Click" />
                             <asp:Button runat="server" ID="btnAddMod" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnAddMod_Click" Text="Add a Moderater" />
                             <asp:Button ID="btnAddZakaahOrg" CssClass="pl-2 btn taskBtn mb-1"   runat ="server" Text="Add New Organization" OnClick="btnAddZakaahOrg_Click" />
                                 <asp:Button runat="server" ID="btUpdateZakaahOrg" CssClass="pl-2 btn sub-taskBtn mb-1 pl-2 btn taskBtn mb-1" OnClick="btnUpdateZakaahOrg_Click" Text="Update Zakaah Organization" />
-                            <asp:Button runat="server" ID="btnUpdateNotice" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnUpdateNotice_Click" Text="Update a Notice" />
-                                <asp:Button ID="btnAddNotice" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="Add new Notice" OnClick="btnAddNotice_Click" />
+                            <asp:Button ID="btnAddNotice" CssClass="pl-2 btn taskBtn mb-1"   runat ="server" Text="Add new Notice" OnClick="btnAddNotice_Click" />
+                                <asp:Button runat="server" ID="btnUpdateNotice" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnUpdateNotice_Click" Text="Update a Notice" />
                             <asp:Button runat="server" ID="btnUpdateDateCounter" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnUpdateDateCounter_Click" Text="Update Date and Count Down" />
                         </nav>
                     </div>
@@ -688,7 +689,7 @@
                                         </HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:LinkButton ID="btnShowNotice" CommandArgument='<%#Eval("NoticeID") %>' ToolTip="Select" CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShowNotice_Click">
-                                                    <div class="p-0 form-row m-0 position-static flex-nowrap">
+                                                    <div class="p-0 form-row p-1 m-0 position-static flex-nowrap">
                                                         <div class="col-auto position-static p-0">
                                                             <div class="">
                                                                 <p style="font-size:small;" class=" p-0 m-0"><b>Notice Title: </b><%#Eval("NoticeTitle")%><br/></p>
@@ -845,6 +846,133 @@
                                     </div>
                                 </div>
                             </div>
+                            <%-- View all Members List --%>
+                            <div class="col-6 col-xl-4 p-0 mr-1" runat="server" id="divAllMembersList">
+                                <div class=" head-div-2 p-2 mb-1 text-left">
+                                    <p class="m-0">Pending Registrations</p>
+                                </div>
+                                <div class=" p-1 lst-container"  style="overflow-y:scroll;" >
+                                    <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="rptViewPendingSch_ItemCommand">
+                                        <HeaderTemplate>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="btnShow" CommandArgument='<%#Eval("MemberID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShow_Click">
+                                                    <div class="p-0 form-row m-0 position-static p-1">
+                                                        <div class="col-auto position-static">
+                                                            <p style="font-size:small" class="p-0 m-0 text-truncate"><b>User&nbsp;Name: </b><%#Eval("MemberName") + ("MemberLastName")%><br/></p>
+                                                        </div>
+                                                        <div class=" col-auto position-static p-0">
+                                                            <div class="">
+                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>User&nbsp;Name: </b><%#Eval("MemberID")%><br/></p>
+                                                            </div>
+                                                                <hr class=" mr-4 m-0 p-0"/>
+                                                            <div class="">
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Registered: </b><%#Convert.ToDateTime(Eval("ActivationDate")).ToString("dd MM yyyy")%></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </asp:LinkButton>
+                                            <hr class="p-0 m-1" />
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                        </FooterTemplate>
+                                    </asp:Repeater>
+                                </div>
+                            </div>
+                            <%-- Overlay For AllMember List --%>
+                            <div class="col-sm-6 col-xl-4 text-nowrap" runat="server" id="divMemberDetailsOverlay">
+                                <div class="w-100 h-100 container text-center">
+                                    <div class=" container h-25 mb-3"></div>
+                                    <h6 class="card-title h-50 mt-5 pt-5">
+                                        <img class="figure-img mr-2" src="MyAdmin/icons/outline_error_outline_black_18dp.png" />No Member selected.</h6>
+                                    <div class=" container h-25"></div>
+                                </div>
+                            </div>
+                            <%-- Display Details of All Members --%>
+                            <div runat="server" id="divMemberDetails" class=" col-6 col-xl-4 flex-nowrap p-0">
+                                <asp:HiddenField runat="server" ID="hdfMemberID" Value="" />
+                                <div class=" head-div-2 p-2 mb-0 text-left ">
+                                    <p class="m-0">Scholar Details</p>
+                                </div>
+                                    <hr class="m-3 ml-3 mr-3 bg-secondary"/>
+                                    <div class="container text-nowrap" runat="server" id="div2">
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Member  ID:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="Label1"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>First Name:</b></div>
+                                            <div  class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="Label2"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Last Name:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="Label3"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Date of Birth:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="Label4"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Member Type:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="Label5"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>E-mail:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="Label6"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Contact No.</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="Label7"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Activation Expiry:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="Label8"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Activation Date:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="Label9"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static "><b>Qualification:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="Label10"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <hr class="m-3 ml-3 mr-3 bg-secondary"/>
+                                    <div class="container p-0 m-2 task-action">
+                                        <h6 class="w-100 card-title card-header">
+                                            <img class="figure-img mr-2 mb-1 " src="MyAdmin/icons/outline_warning_black_18dp.png" />Before accepting registration:</h6>
+                                        <div class=" position-static m-0 card-body">
+                                            <ul class="pl-1">
+                                                <li><p class="mb-0" ><small class="card-text">The Qualification that the scholar claims to have must be verified</small></p></li>
+                                                <li><p class="mb-0"><small class="card-text">Admins may contact the members by phone or email to set up interviews</small></p></li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer text-center position-static text-nowrap">
+                                            <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="Button1" Text="Accept Registration" OnClick="btnAcceptReg_Click" />
+                                            <asp:Button CssClass=" topnav btn btn-sm btn-outline-light" runat="server" ID="Button2" Text="Reject Registration" OnClick="btnRejectReg_Click" />
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                     </div>
                 </div>
