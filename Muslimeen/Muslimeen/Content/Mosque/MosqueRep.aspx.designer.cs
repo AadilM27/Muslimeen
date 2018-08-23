@@ -184,6 +184,15 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.Button btnNavEditEvent;
         
         /// <summary>
+        /// btnNavRemoveEvent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNavRemoveEvent;
+        
+        /// <summary>
         /// btnNavManageTimes control.
         /// </summary>
         /// <remarks>
@@ -292,31 +301,76 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEditEvent;
         
         /// <summary>
-        /// ddlUpdateEvent control.
+        /// txtStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUpdateEvent;
+        protected global::System.Web.UI.WebControls.TextBox txtStartDate;
         
         /// <summary>
-        /// rptUpdateEvents control.
+        /// txtEndDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptUpdateEvents;
+        protected global::System.Web.UI.WebControls.TextBox txtEndDate;
         
         /// <summary>
-        /// divUpdateEvent control.
+        /// btnEvent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divUpdateEvent;
+        protected global::System.Web.UI.WebControls.Button btnEvent;
+        
+        /// <summary>
+        /// divViewActiveEvents control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divViewActiveEvents;
+        
+        /// <summary>
+        /// rptGetEvents control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptGetEvents;
+        
+        /// <summary>
+        /// divDisplayEvent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDisplayEvent;
+        
+        /// <summary>
+        /// hdfEventId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdfEventId;
+        
+        /// <summary>
+        /// divEventDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEventDetails;
         
         /// <summary>
         /// txtUpdateEventTitle control.
@@ -326,15 +380,6 @@ namespace Muslimeen.Content.Mosque {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUpdateEventTitle;
-        
-        /// <summary>
-        /// txtUpdateEventDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUpdateEventDescription;
         
         /// <summary>
         /// txtUpdateSpeaker control.
@@ -373,22 +418,139 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.TextBox txtUpdateEventEndTime;
         
         /// <summary>
-        /// btnUpdateEvent control.
+        /// txtUpdateEventDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdateEvent;
+        protected global::System.Web.UI.WebControls.TextBox txtUpdateEventDescription;
         
         /// <summary>
-        /// btnRemoveEvent control.
+        /// divDeleteEvent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRemoveEvent;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDeleteEvent;
+        
+        /// <summary>
+        /// txtDeleteStartDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDeleteStartDate;
+        
+        /// <summary>
+        /// txtDeleteEndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDeleteEndDate;
+        
+        /// <summary>
+        /// btnListDeleteEvents control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnListDeleteEvents;
+        
+        /// <summary>
+        /// Repeater1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater Repeater1;
+        
+        /// <summary>
+        /// divDisplayDeleteEvent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDisplayDeleteEvent;
+        
+        /// <summary>
+        /// HiddenField1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
+        
+        /// <summary>
+        /// divDeleteEventDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDeleteEventDetails;
+        
+        /// <summary>
+        /// txtDeleteEventTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDeleteEventTitle;
+        
+        /// <summary>
+        /// txtDeleteSpeaker control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDeleteSpeaker;
+        
+        /// <summary>
+        /// txtUDeleteEventDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUDeleteEventDate;
+        
+        /// <summary>
+        /// txtDeleteEventStartTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDeleteEventStartTime;
+        
+        /// <summary>
+        /// txtDeleteEventEndTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDeleteEventEndTime;
+        
+        /// <summary>
+        /// txtDeleteEventDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDeleteEventDescription;
         
         /// <summary>
         /// divManageTimes control.
