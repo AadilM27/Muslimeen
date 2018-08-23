@@ -1679,6 +1679,61 @@ namespace Muslimeen.BLL
             }
             return mosque;
         }
+
+        public List<Member> GetAllMembers()
+        {
+            List<Member> list = new List<Member>();
+            using (DataTable table = DBHelper.Select("uspGetAllMembers", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        Member member = new Member();
+
+                        member.MemberID = row["MemberID"].ToString();
+                        member.MemberName = row["MemberName"].ToString();
+                        member.MemberLastName = row["MemberLastName"].ToString();
+                        member.MemberDOB = Convert.ToDateTime(row["MemberDOB"]);
+                        member.Password = Convert.ToString(row["Password"]);
+                        member.MemberType = Convert.ToChar(row["MemberType"]);
+                        member.ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]);
+                        member.Email = Convert.ToString(row["Email"]);
+                        if (!(row["ContactNo"] is DBNull))
+                        {
+                            member.ContactNo = Convert.ToString(row["ContactNo"]);
+                        }
+                        else
+                        {
+                            member.ContactNo = "";
+                        }
+
+                        if((row["MosqueID"] is DBNull))
+                        {
+                            member.MosqueID = Convert.ToInt32(row["MosqueID"]);
+                        }
+                        else
+                        {
+                            member.MosqueID = null;
+                        }
+
+                        if ((row["ActivationExpiry"] is DBNull))
+                        {
+                            member.ActivationExpiry = Convert.ToDateTime(row["ActivationExpiry"]);
+                        }
+                        else
+                        {
+                            member.ActivationExpiry = null;
+                        }
+                        member.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
+
+                        list.Add(member);
+                    }
+                }
+            }
+            return list;
+
+        }
     }
 }
 

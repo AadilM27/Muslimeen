@@ -345,5 +345,10 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetRejectedArticlesReport();
         }
+
+        public List<Member> BLL_GetAllMembers()
+        {
+            return dBAccess.GetAllMembers();
+        }
     }
 }
