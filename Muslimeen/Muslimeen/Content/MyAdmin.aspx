@@ -856,18 +856,18 @@
                                         <HeaderTemplate>
                                         </HeaderTemplate>
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="btnShow" CommandArgument='<%#Eval("MemberID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShow_Click">
+                                            <asp:LinkButton ID="btnShowMember" CommandArgument='<%#Eval("MemberID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShowMember_Click">
                                                     <div class="p-0 form-row m-0 position-static p-1">
-                                                        <div class="col-auto position-static">
-                                                            <p style="font-size:small" class="p-0 m-0 text-truncate"><b>User&nbsp;Name: </b><%#Eval("MemberName") + ("MemberLastName")%><br/></p>
+                                                        <div class="col-auto p-0 position-static">
+                                                            <p style="font-size:small" class="p-0 border-0 m-0 text-truncate"><b>User&nbsp;Name: </b><%#Eval("MemberID")%><br/></p>
                                                         </div>
                                                         <div class=" col-auto position-static p-0">
                                                             <div class="">
-                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>User&nbsp;Name: </b><%#Eval("MemberID")%><br/></p>
+                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>User&nbsp;Name: </b><%#Eval("MemberName")%> <%#Eval("MemberLastName")%><br/></p>
                                                             </div>
-                                                                <hr class=" mr-4 m-0 p-0"/>
+                                                                <hr class=" m-0 p-0"/>
                                                             <div class="">
-                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Expiry Date: </b><%#Convert.ToDateTime(Eval("ActivationDate")).ToString("dd MM yyyy")%>&emsp;<b>Active:</b> <%#Convert.ToString(Eval("Active")).Replace("Y", "Yes") .Replace("N", "No")%></p>
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Registration Date: </b><%#Convert.ToDateTime(Eval("ActivationDate")).ToString("dd MM yyyy")%>&emsp;<b>Active:</b> <%#Convert.ToString(Eval("ActiveTypeID")).Replace("Y", "Yes") .Replace("N", "No") .Replace("T", "Temporary")%></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -899,55 +899,55 @@
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>Member  ID:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label1"></label>
+                                                <label class="m-0" runat="server" id="lblAllMemberID"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>First Name:</b></div>
                                             <div  class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label2"></label>
+                                                <label class="m-0" runat="server" id="lblAllMemberName"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>Last Name:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label3"></label>
+                                                <label class="m-0" runat="server" id="lblAllMemberLastName"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>Date of Birth:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label4"></label>
+                                                <label class="m-0" runat="server" id="lblAllMemberDOB"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>Member Type:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label5"></label>
+                                                <label class="m-0" runat="server" id="lblAllMemberType"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>E-mail:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label6"></label>
+                                                <label class="m-0" runat="server" id="lblAllActiveTypeID"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>Contact No.</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label7"></label>
+                                                <label class="m-0" runat="server" id="lblAllEmail"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>Activation Expiry:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label8"></label>
+                                                <label class="m-0" runat="server" id="lblAllContactNo"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>Activation Date:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label9"></label>
+                                                <label class="m-0" runat="server" id="lblAllMosque"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">

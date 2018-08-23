@@ -1708,7 +1708,7 @@ namespace Muslimeen.BLL
                             member.ContactNo = "";
                         }
 
-                        if((row["MosqueID"] is DBNull))
+                        if(!(row["MosqueID"] is DBNull))
                         {
                             member.MosqueID = Convert.ToInt32(row["MosqueID"]);
                         }
@@ -1717,7 +1717,7 @@ namespace Muslimeen.BLL
                             member.MosqueID = null;
                         }
 
-                        if ((row["ActivationExpiry"] is DBNull))
+                        if (!(row["ActivationExpiry"] is DBNull))
                         {
                             member.ActivationExpiry = Convert.ToDateTime(row["ActivationExpiry"]);
                         }

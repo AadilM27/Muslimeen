@@ -1488,6 +1488,21 @@ namespace Muslimeen.Content
             rptMemberList.DataBind();
 
         }
+
+        protected void btnShowMember_Click(object sender, EventArgs e)
+        {
+            LinkButton linkButton = new LinkButton();
+            DBHandler db = new DBHandler();
+            uspGetMember member = new uspGetMember();
+
+            string memberId = linkButton.CommandArgument.ToString();
+            hdfMemberID.Value = memberId;
+
+            member = db.BLL_GetMember(memberId);
+
+
+
+        }
     }
 }
 
