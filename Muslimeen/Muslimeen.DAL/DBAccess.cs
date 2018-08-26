@@ -1734,6 +1734,114 @@ namespace Muslimeen.BLL
             return list;
 
         }
+        public List<uspGetForumTopics> GetForumTopics()
+        {
+            List<uspGetForumTopics> list = new List<uspGetForumTopics>();
+            using (DataTable table = DBHelper.Select("uspGetForumTopics", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetForumTopics ft = new uspGetForumTopics
+                        {
+                            ForumTopicID = Convert.ToInt32(row["ForumTopicID"]),
+                            TopicSubject = Convert.ToString(row["TopicSubject"]),
+                            TopicCreateDate = Convert.ToDateTime(row["TopicCreateDate"]),
+                            TopicCreateName = Convert.ToString(row["TopicCreateName"])
+
+                        };
+                        list.Add(ft);
+                    }
+                }
+            }
+            return list;
+        }
+        
+        public List<uspGetPostings> GetPostings(int ForumTopicID)
+        {
+            List<uspGetPostings> list = new List<uspGetPostings>();
+
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@forumTopicID", ForumTopicID)
+                
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetPostings",
+                    CommandType.StoredProcedure, pars))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetPostings post = new uspGetPostings();
+
+                            post.PostID = Convert.ToInt32(row["PostID"]);
+                            post.PostContent = Convert.ToString(row["PostContent"]);
+                            post.PostCreateDate = Convert.ToDateTime(row["PostCreateDate"]);
+                            post.PostCreateName = Convert.ToString(row["PostCreateName"]);
+                            post.ForumTopicID = Convert.ToInt32(row["ForumTopicID"]);
+
+
+                        list.Add(post);
+                    }
+                }//end if
+            }//end using
+            return list;
+        }//End GetPostings 
+
+        public bool InsertForumTopics(ForumTopics topic)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var prop in topic.GetType().GetProperties())
+            {
+                if (prop.GetValue(topic) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(topic)));
+                }
+            }
+            return DBHelper.NonQuery("uspInsertForumTopics", CommandType.StoredProcedure, parameters.ToArray());
+        }
+        public bool InsertPostings(uspGetPostings post)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var prop in post.GetType().GetProperties())
+            {
+                if (prop.GetValue(post) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(post)));
+                }
+            }
+            return DBHelper.NonQuery("uspInsertPostings", CommandType.StoredProcedure, parameters.ToArray());
+        }
+        public bool DeleteForumTopics(ForumTopics topic)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var prop in topic.GetType().GetProperties())
+            {
+                if (prop.GetValue(topic) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(topic)));
+                }
+            }
+            return DBHelper.NonQuery("uspDeleteForumTopic", CommandType.StoredProcedure, parameters.ToArray());
+        }
+        public bool DeletePostings(uspGetPostings post)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var prop in post.GetType().GetProperties())
+            {
+                if (prop.GetValue(post) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(post)));
+                }
+            }
+            return DBHelper.NonQuery("uspDeletePostings", CommandType.StoredProcedure, parameters.ToArray());
+        }
     }
 }
 
