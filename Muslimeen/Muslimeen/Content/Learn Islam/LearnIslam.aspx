@@ -15,8 +15,6 @@
 
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/learnIslam.css" rel="stylesheet" />
-    <link href="../Zakaah/css/newZakaah.css" rel="stylesheet" />
-
 
 </head>
 <body style="background-color:white">
@@ -85,8 +83,8 @@
                 </div>
             </header>
 
-        <!--Page Content-->        
-        <div class="content" id="content">
+        <!--Old Page Content-->        
+        <%--<div class="content" id="content">
             <div class="container" style="margin-top: 10px; position: static;">
                 <div class="row" style="position: static; right: 50px">
                     <div class="col-lg-7 flex-nowrap" style="position: static;">
@@ -139,12 +137,91 @@
                                 </div>
                             </div>
                         </asp:Panel>
-
                     </div>
                     <div class="col-lg-5" style="position: static;">
-                            <h3 class="title header mb-4 mt-0">Videos</h3>
-                            <iframe width="438" height="300" src="https://www.youtube.com/embed/kEon0omN5SA"></iframe>
+                        <h3 class="title header mb-4 mt-0">Videos</h3>
+                        <iframe width="438" height="300" src="https://www.youtube.com/embed/kEon0omN5SA"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>--%>
+
+        <!--Page Content-->
+        <div class="content" id="content">
+            <!--add content here -->
+            <div class="row bg-light m-0 divContainers p-1 flex-nowrap">
+                <div class="side-bar p-0 basic-div-styling mr-1">
+                    <!--contains the buttons-->
+                    <div class="head-div text-center p-2">
+                        <p class="text-uppercase m-0 font-weight-bold">Search:</p>
+                    </div>
+                    <nav class="nav flex-column pt-2 pb-2 pr-0">
+                        <!--Searching options will go here.-->
+                    </nav>
+                </div>
+                <div class=" position-static basic-div-styling p-0  w-100">
+                    <div class=" head-div text-center p-2 mb-1">
+                        <h4 class="p-0 m-0">Learn Islam</h4>
+                    </div>
+                    <div class="row p-0 m-0 right-bottom-div p-1 flex-nowrap">
+                        <%--Pending Articles--%>
+                        <div class="col-5 col-sm-5 col-md-6 col-xl-4 p-0 mr-1" runat="server" id="divPendingArticles">
+                            <div class=" head-div-2 p-2 mb-1 text-left">
+                                <p class="m-0">Articles</p>
+                            </div>
+                            <div class="p-1 lst-container" style="overflow-y: scroll;">
+                                <asp:Repeater ID="repeatLink" runat="server">
+                                    <HeaderTemplate>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnShow" CommandArgument='<%#Eval("ArticleID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShow_Click">
+                                                    <div class="p-0 form-row m-0 position-static">
+                                                        <div class=" col-auto position-static p-0">
+                                                            <div class="">
+                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Article&nbsp;Title: </b><%#Eval("ArticleTitle")%><br/></p>
+                                                            </div>
+                                                                <hr class=" mr-4 m-0 p-0"/>
+                                                            <div class="">
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Created: </b><%#Eval("DateCreated")%></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                        </asp:LinkButton>
+                                        <hr class="p-0 m-1" />
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                            </div>
                         </div>
+
+                        
+
+                        <%--Display of Pending Articles--%>
+                        <div runat="server" id="divNoSelected" class="col-7 col-sm-7 col-xl-8 align p-0 text-justify">
+                            <asp:HiddenField runat="server" ID="hdfSchId" Value="" />
+                            <div class=" head-div-2 p-2 mb-0 text-left ">
+                                <p class="m-0 ">Article Selected</p>
+                            </div>
+                            <div class="container" runat="server" id="divDisplayArticle">
+                                <div class="row mb-3 mt-2">
+                                    <div class="col">
+                                        <label class="m-0 h2" runat="server" id="lblTitle"></label>
+                                    </div>
+                                </div>
+                                <div class="row mb-1 position-static">
+                                    <div class="col position-static">
+                                        <label class="m-0" runat="server" id="lblContent"></label>
+                                    </div>
+                                </div>
+                                <div class="row mb-1 position-static text-right">
+                                    <div class="col position-static">
+                                        <label class="m-0 font-italic mt-2" runat="server" id="lblDate"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
