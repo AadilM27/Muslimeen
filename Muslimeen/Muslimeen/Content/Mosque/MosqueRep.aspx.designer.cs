@@ -292,13 +292,22 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.Button btnAddEvent;
         
         /// <summary>
-        /// divEditEvent control.
+        /// divManageEvent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEditEvent;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divManageEvent;
+        
+        /// <summary>
+        /// divEventDateSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEventDateSearch;
         
         /// <summary>
         /// txtStartDate control.
@@ -346,22 +355,13 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.Repeater rptGetEvents;
         
         /// <summary>
-        /// divDisplayEvent control.
+        /// divDisplayEditEvent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDisplayEvent;
-        
-        /// <summary>
-        /// hdfEventId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdfEventId;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDisplayEditEvent;
         
         /// <summary>
         /// divEventDetails control.
@@ -427,49 +427,13 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.TextBox txtUpdateEventDescription;
         
         /// <summary>
-        /// divDeleteEvent control.
+        /// btnUpdateEvent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDeleteEvent;
-        
-        /// <summary>
-        /// txtDeleteStartDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDeleteStartDate;
-        
-        /// <summary>
-        /// txtDeleteEndDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDeleteEndDate;
-        
-        /// <summary>
-        /// btnListDeleteEvents control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnListDeleteEvents;
-        
-        /// <summary>
-        /// Repeater1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater1;
+        protected global::System.Web.UI.WebControls.Button btnUpdateEvent;
         
         /// <summary>
         /// divDisplayDeleteEvent control.
@@ -481,76 +445,85 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDisplayDeleteEvent;
         
         /// <summary>
-        /// HiddenField1 control.
+        /// lblEventTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventTitle;
         
         /// <summary>
-        /// divDeleteEventDetails control.
+        /// lblSpeaker control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDeleteEventDetails;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblSpeaker;
         
         /// <summary>
-        /// txtDeleteEventTitle control.
+        /// lblEventDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDeleteEventTitle;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventDate;
         
         /// <summary>
-        /// txtDeleteSpeaker control.
+        /// lblEventStartTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDeleteSpeaker;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventStartTime;
         
         /// <summary>
-        /// txtUDeleteEventDate control.
+        /// lblEventEndTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUDeleteEventDate;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventEndTime;
         
         /// <summary>
-        /// txtDeleteEventStartTime control.
+        /// lblEventDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDeleteEventStartTime;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventDescription;
         
         /// <summary>
-        /// txtDeleteEventEndTime control.
+        /// btnRemove control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDeleteEventEndTime;
+        protected global::System.Web.UI.WebControls.Button btnRemove;
         
         /// <summary>
-        /// txtDeleteEventDescription control.
+        /// divEventOverlay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDeleteEventDescription;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEventOverlay;
+        
+        /// <summary>
+        /// lblEventError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventError;
         
         /// <summary>
         /// divManageTimes control.
@@ -562,6 +535,15 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divManageTimes;
         
         /// <summary>
+        /// divCalander control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCalander;
+        
+        /// <summary>
         /// Calendar1 control.
         /// </summary>
         /// <remarks>
@@ -569,6 +551,15 @@ namespace Muslimeen.Content.Mosque {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Calendar Calendar1;
+        
+        /// <summary>
+        /// divTimes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTimes;
         
         /// <summary>
         /// lblMessage control.
@@ -695,5 +686,14 @@ namespace Muslimeen.Content.Mosque {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnUpdate;
+        
+        /// <summary>
+        /// cancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cancel;
     }
 }
