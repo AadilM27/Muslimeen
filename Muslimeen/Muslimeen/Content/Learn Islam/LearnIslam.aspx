@@ -150,6 +150,11 @@
                                         <label class="m-0" runat="server" id="lblContent"></label>
                                     </div>
                                 </div>
+                                <div class="row mb-1 position-static text-left">
+                                    <div class="col position-static">
+                                        <label class="m-0 font-italic mt-2" runat="server" id="lblScholar"></label>
+                                    </div>
+                                </div>
                                 <div class="row mb-1 position-static text-right">
                                     <div class="col position-static">
                                         <label class="m-0 font-italic mt-2" runat="server" id="lblDate"></label>

@@ -153,6 +153,7 @@ namespace Muslimeen.Content.Learn_Islam
             lblContent.InnerText = pen.ArticleContent.ToString();
             string dateCreated = pen.DateCreated.ToString("yyyy/MM/dd");
             lblDate.InnerText = Convert.ToDateTime(dateCreated).ToString("dd/MM/yyyy");
+            lblScholar.InnerText = pen.ScholarName.ToString();
         }
     }
 }

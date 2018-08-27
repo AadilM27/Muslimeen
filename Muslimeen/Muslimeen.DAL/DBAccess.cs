@@ -1502,7 +1502,7 @@ namespace Muslimeen.BLL
                     pen.ArticleTitle = Convert.ToString(row["ArticleTitle"]);
                     pen.ArticleContent = Convert.ToString(row["ArticleContent"]);
                     pen.DateCreated = Convert.ToDateTime(row["DateCreated"]).Date;
-                    pen.ScholarID = Convert.ToString(row["ScholarID"]);
+                    pen.ScholarName = Convert.ToString(row["Scholar Name"]);
                 }
             }
             return pen;
