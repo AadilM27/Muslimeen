@@ -7,6 +7,11 @@ using System.Web.UI.WebControls;
 using TypeLib.Models;
 using TypeLib.ViewModels;
 using Muslimeen.BLL;
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.html.simpleparser;
+
 
 namespace Muslimeen.Content
 {
@@ -19,7 +24,8 @@ namespace Muslimeen.Content
         {
             lblTaskHead.InnerText = "Please select a task";
 
-            divUserProfile.Visible = true;
+            divListEventDetails.Visible = false;
+            divUserProfile.Visible = false;
             liMyMusbtn.Visible = true;
             liMyMusDivi.Visible = true;
             divDisplayEvents.Visible = false;
@@ -32,6 +38,11 @@ namespace Muslimeen.Content
             divListEvent.Visible = false;
             divSchDetailsOverlay.Visible = false;
 
+            DBHandler db = new DBHandler();
+            List<CounterCalender> counterCalender = new List<CounterCalender>();
+
+            counterCalender = db.BLL_GetCounterCalender();
+            hdfAdjustDate.Value = counterCalender[3].Val.ToString();
 
             try
             {
@@ -176,33 +187,109 @@ namespace Muslimeen.Content
 
         }
 
+        protected void PDF_ServerClick(object sender, EventArgs e)
+        {
+            try
+            {
+                PdfPTable pdfTable = new PdfPTable(grdSalaah.HeaderRow.Cells.Count);
+                pdfTable.HorizontalAlignment = 0;
+                foreach (TableCell Headercell in grdSalaah.HeaderRow.Cells)
+                {
+                    grdSalaah.HeaderRow.Cells[0].Text = "Date";
+                    grdSalaah.HeaderRow.Cells[1].Text = "Day";
+                    grdSalaah.HeaderRow.Cells[2].Text = "Fajr Adhaan";
+                    grdSalaah.HeaderRow.Cells[3].Text = "Fajr Jamaat";
+                    grdSalaah.HeaderRow.Cells[4].Text = "Dhuhr Adhaan";
+                    grdSalaah.HeaderRow.Cells[5].Text = "Dhuhr Jamaat ";
+                    grdSalaah.HeaderRow.Cells[6].Text = "Asr Adhaan";
+                    grdSalaah.HeaderRow.Cells[7].Text = "Asr Jamaat ";
+                    grdSalaah.HeaderRow.Cells[8].Text = "Magrib Adhaan";
+                    grdSalaah.HeaderRow.Cells[9].Text = "Magrib Jamaat ";
+                    grdSalaah.HeaderRow.Cells[10].Text = "Eisha Adhaan";
+                    grdSalaah.HeaderRow.Cells[11].Text = "Eisha Jamaat";
+                    Font font = new Font();
+                    font.Color = new BaseColor(grdSalaah.HeaderStyle.ForeColor);
+                    PdfPCell pdfCell = new PdfPCell(new Phrase(Headercell.Text, font));
+                    pdfCell.BackgroundColor = new BaseColor(grdSalaah.HeaderStyle.BackColor);
+                    pdfTable.AddCell(pdfCell); 
+                }
+
+                foreach (GridViewRow gridviewrow in grdSalaah.Rows)
+                {
+                    foreach (TableCell tablecell in gridviewrow.Cells)
+                    {
+                        Font font = new Font();
+                        font.Color = new BaseColor(grdSalaah.RowStyle.ForeColor);
+
+                        PdfPCell pdfcell = new PdfPCell(new Phrase(tablecell.Text));
+                        pdfcell.BackgroundColor = new BaseColor(grdSalaah.RowStyle.BackColor);
+                        pdfTable.AddCell(pdfcell);
+                    }
+                }
+
+                Document pdfDocument = new Document(new RectangleReadOnly(842, 595), 10f, -200f, 10f, 0f);
+                // Document pdfDocument = new Document(new RectangleReadOnly(842, 595), widthstart, cell width, heightstart);
+                PdfAWriter.GetInstance(pdfDocument, Response.OutputStream);
+
+                pdfDocument.Open();
+                pdfDocument.Add(pdfTable);
+                pdfDocument.Close();
+
+                Response.ContentType = "application/pdf";
+                Response.AppendHeader("content-disposition", "attachment;filename=PrayerTimeTable.pdf");
+                Response.Write(pdfDocument);
+                Response.Flush();
+                Response.End();
+            }
+            catch { }
+        }
         protected void btnEvents_Click(object sender, EventArgs e)
         {
-           
-                divDisplayEvents.Visible = true;
+            divDisplaySalahTimetable.Visible = false;
+            divSchDetailsOverlay.Visible = true;
             divListEvent.Visible = true;
-            divDisplayEvents.Visible = true;
+            divListEventDetails.Visible = true;
+            divDisplayEvents.Visible = false;
+            divEvent.Visible = false;
+
             lblTaskHead.InnerText = btnEvents.Text.ToString();
 
         }
 
         protected void btnListEvents_Click(object sender, EventArgs e)
         {
+            divDisplaySalahTimetable.Visible = false;
+            lblTaskHead.InnerText = btnListEvents.Text.ToString();
 
-                lblTaskHead.InnerText = btnListEvents.Text.ToString();
-                divListEvent.Visible = true;
-                divSchDetailsOverlay.Visible = true;
-                
-                DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
-                DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
-                RptEventList.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
-                RptEventList.DataBind();
+            DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
+            DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
+
+            //if (startDate!=null)
+            //{
+            //    if (EndDate!=null)
+            //    {
+            //        btnListEvents.Visible = true;
+            //    }
+
+            //}
+
+            divSchDetailsOverlay.Visible = false;
+
+            divListEvent.Visible = true;
+            divListEventDetails.Visible = true;
+            divDisplayEvents.Visible = true;
+            divEvent.Visible = true;
+
+            RptEventList.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
+            RptEventList.DataBind();
+           
+           
            
         }
 
         protected void btnEventList_Click(object sender, EventArgs e)
         {
-
+            divDisplaySalahTimetable.Visible = false;
             lblTaskHead.InnerText = btnEvents.Text.ToString();
 
             LinkButton linkButton = (LinkButton)sender;
@@ -214,22 +301,20 @@ namespace Muslimeen.Content
 
             Event ev = new Event();
             ev = dBHandler.BLL_GetEventwithID(Convert.ToInt32(EventID));
-
-            try
-            {
+                lblEventTitle.InnerText = ev.EventTitle.ToString();
                 lblEventDescription.InnerText = ev.EventDescription.ToString();
                 lblSpeaker.InnerText = ev.Speaker.ToString();
                 lblEventDate.InnerText = Convert.ToDateTime(ev.EventDate).ToString("dd-MM-yyyy");
-                lblEventStarTime.InnerText = ev.EventStartTime.ToString();
+                lblEventStartTime.InnerText = ev.EventStartTime.ToString();
                 lblEventEndTime.InnerText = ev.EventEndTime.ToString();
-                divEvent.Visible = true;
-                divListEvent.Visible = true;
 
-            }
-            catch
-            {
-                throw;
-            }
+                divSchDetailsOverlay.Visible = false;
+                divListEvent.Visible = true;
+                divListEventDetails.Visible = true;
+                divDisplayEvents.Visible = true;
+                divEvent.Visible = true;
+
+
         }
 
         protected void btnNotifications_Click(object sender, EventArgs e)
@@ -237,6 +322,7 @@ namespace Muslimeen.Content
                 lblTaskHead.InnerText = btnNotifications.Text.ToString();
                 divDiplayNotifications.Visible = true;
                 divSchDetailsOverlay.Visible = true;
+                divDisplaySalahTimetable.Visible = false;
 
             DBHandler dBHandler = new DBHandler();
 
@@ -254,11 +340,12 @@ namespace Muslimeen.Content
 
                 divDisplayArticles.Visible = true;
                 divSchDetailsOverlay.Visible = true;
+                divDisplaySalahTimetable.Visible = false;
 
-                DBHandler dBHandler = new DBHandler();
+            DBHandler dBHandler = new DBHandler();
 
                 DateTime dateToday = DateTime.Today;
-                DateTime date = DateTime.Today.AddDays(-7);
+                DateTime date = DateTime.Now.AddDays(-7);
 
                 rptDisplayArticles.DataSource = dBHandler.BLL_ViewLatestArticles(dateToday,date);
                 rptDisplayArticles.DataBind();
@@ -271,7 +358,7 @@ namespace Muslimeen.Content
             lblTaskHead.InnerText = btnArticles.Text.ToString();
 
             divDisplayArt.Visible = true;
-            
+            divDisplaySalahTimetable.Visible = false;
 
             LinkButton linkButton = (LinkButton)sender;
 
@@ -293,6 +380,7 @@ namespace Muslimeen.Content
             divDiplayNotifications.Visible = true;
             divNotices.Visible = true;
             divSchDetailsOverlay.Visible = false;
+            divDisplaySalahTimetable.Visible = false;
 
             LinkButton linkButton = (LinkButton)sender;
 

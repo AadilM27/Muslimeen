@@ -983,7 +983,7 @@ namespace Muslimeen.Content
                     }
                 }
 
-            udpOrgList.Update();
+            //udpOrgList.Update();
         }
 
         protected void btnAddZakaahOrg_Click(object sender, EventArgs e)
