@@ -66,6 +66,7 @@
     <Compile Include="Models\uspRejectReg.cs" />
     <Compile Include="Models\uspUpdateCountDown.cs" />
     <Compile Include="Models\uspUpdateIslamicDate.cs" />
+    <Compile Include="Models\uspUpdateMemberActiveStatus.cs" />
     <Compile Include="Models\uspUpdateZakaahOrg.cs" />
     <Compile Include="Models\Zakaah.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

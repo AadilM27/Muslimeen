@@ -350,5 +350,15 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetAllMembers();
         }
+
+        public List<ActiveType> BLL_GetAllActiveTypes()
+        {
+            return dBAccess.GetAllActiveTypes();
+        }
+
+        public bool BLL_UpdateMemberActiveStatus(uspUpdateMemberActiveStatus updateMemberActiveStatus)
+        {
+            return dBAccess.UpdateMemberActiveStatus(updateMemberActiveStatus);
+        }
     }
 }
