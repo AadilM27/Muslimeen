@@ -46,11 +46,13 @@
     <Compile Include="Models\CounterCalender.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\ForumTopics.cs" />
     <Compile Include="Models\InsertArticle.cs" />
     <Compile Include="Models\Moderater.cs" />
     <Compile Include="Models\Mosques.cs" />
     <Compile Include="Models\Notice.cs" />
     <Compile Include="Models\Organization.cs" />
+    <Compile Include="Models\Postings.cs" />
     <Compile Include="Models\Prayer.cs" />
     <Compile Include="Models\PrayerType.cs" />
     <Compile Include="Models\Qualification.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="ViewModels\uspGetAllMosqueSuburbs.cs" />
     <Compile Include="ViewModels\uspGetAllPendingScholars.cs" />
     <Compile Include="ViewModels\uspGetEventReports.cs" />
+    <Compile Include="ViewModels\uspGetForumTopics.cs" />
     <Compile Include="ViewModels\uspGetLearnArticle.cs" />
     <Compile Include="ViewModels\uspGetMember.cs" />
     <Compile Include="ViewModels\uspGetModeratorDetails.cs" />
@@ -90,6 +93,7 @@
     <Compile Include="ViewModels\uspGetNotifications.cs" />
     <Compile Include="ViewModels\uspGetOrganizations.cs" />
     <Compile Include="ViewModels\uspGetPendingArticle.cs" />
+    <Compile Include="ViewModels\uspGetPostings.cs" />
     <Compile Include="ViewModels\uspGetQualification.cs" />
     <Compile Include="ViewModels\uspGetRamadaanDate.cs" />
     <Compile Include="Models\uspVerifyMember.cs" />
