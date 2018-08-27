@@ -36,11 +36,6 @@ namespace Muslimeen.Content.MyScholar
 
                 DBHandler dBHandler = new DBHandler();
 
-                List<CounterCalender> counterCalender = new List<CounterCalender>();
-
-                counterCalender = dBHandler.BLL_GetCounterCalender();
-                hdfAdjustDate.Value = counterCalender[3].Val.ToString();
-
                 if (Session["UserName"] != null)
                 {
                     uspGetMember uspGetMember = new uspGetMember();

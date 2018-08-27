@@ -77,69 +77,6 @@
                 </div>
             </header>
 
-        <!--Old Page Content-->        
-        <%--<div class="content" id="content">
-            <div class="container" style="margin-top: 10px; position: static;">
-                <div class="row" style="position: static; right: 50px">
-                    <div class="col-lg-7 flex-nowrap" style="position: static;">
-                        <h1 class="title header mb-4 mt-0">Articles</h1>
-                        <!--Modal pop-up code-->
-                        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                        
-                        <asp:Repeater ID="repeatLink" runat="server">                                                       
-                            <ItemTemplate>
-                                <asp:LinkButton ID="btnShow" CommandArgument='<%#Eval("ArticleID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShow_Click">
-                                    <div class="p-0 form-row m-0 position-static">
-                                        <div class=" col-auto position-static p-0">
-                                            <div class="">
-                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Article&nbsp;Title: </b><%#Eval("ArticleTitle")%><br/></p>
-                                            </div>
-                                            <hr class=" mr-4 m-0 p-0"/>
-                                            <div class="">
-                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Created: </b><%#Eval("DateCreated")%></p>
-                                            </div>
-                                            <div class="">
-                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Scholar: </b><%#Eval("ScholarID")%></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender1" runat="server" okcontrolid="btnOkay" TargetControlId="btnShow" PopupControlID="Panel1" BackgroundCssClass="ModalPopupBG" drag="true"></ajaxToolkit:ModalPopupExtender>
-                                </asp:LinkButton>
-                                <hr class="p-0 m-1" />
-                            </ItemTemplate>  
-                        </asp:Repeater>  
-
-                        <asp:Panel ID="Panel1" style="display: none" runat="server">
-                            <asp:HiddenField runat="server" ID="hfdRej" Value="" />
-                            <div class="HellowWorldPopup">
-                                <div class="PopupHeader" id="PopupHeader">
-                                    <label runat="server" id="lblRTitle"></label>
-                                </div>
-                                <div class="PopupBody">
-                                    <p>
-                                        <label runat="server" id="lblRContent"></label>
-                                    </p>
-                                    <p>
-                                        <label runat="server" id="lblRDate"></label>
-                                    </p>
-                                    <p>
-                                        <label runat="server" id="lblScholar"></label>
-                                    </p>
-                                </div>
-                                <div class="Controls">
-                                    <input id="btnOkay" type="button" value="Done" />
-                                </div>
-                            </div>
-                        </asp:Panel>
-                    </div>
-                    <div class="col-lg-5" style="position: static;">
-                        <h3 class="title header mb-4 mt-0">Videos</h3>
-                        <iframe width="438" height="300" src="https://www.youtube.com/embed/kEon0omN5SA"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>--%>
-
         <!--Page Content-->
         <div class="content" id="content" style="z-index:1000">
             <!--add content here -->
@@ -178,13 +115,13 @@
                                                 <div class="">
                                                     <p style="font-size: small" class="p-0 m-0 text-truncate"><b>Content: </b><%#Eval("ArticleContent").ToString().PadRight(30).Substring(0,30).TrimEnd() + "..."%> 
                                                         <asp:LinkButton ID="btnShow" CommandArgument='<%#Eval("ArticleID") %>' runat="server" OnClick="btnShow_Click">
-                                                            Read More...
+                                                            Read More
                                                         </asp:LinkButton>
                                                     </p>
                                                 </div>
                                                 <hr class=" mr-4 m-0 p-0" />
                                                 <div class="">
-                                                    <p style="font-size: small;" class="p-0 m-0 text-truncate"><b>Date Created: </b><%#Convert.ToDateTime(Eval("DateCreated")).ToString("dd MM yyyy")%></p>
+                                                    <p style="font-size: small;" class="p-0 m-0 text-truncate"><b>Date Created: </b><%#Convert.ToDateTime(Eval("DateCreated")).ToString("dd/MM/yyyy")%></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -194,10 +131,7 @@
                                     </FooterTemplate>
                                 </asp:Repeater>
                             </div>
-<<<<<<< HEAD
                         </div>
-
-                        
 
                         <%--Display of Pending Articles--%>
                         <div runat="server" id="divNoSelected" class="col-7 col-sm-7 col-xl-8 align p-0 text-justify">
@@ -223,42 +157,10 @@
                                 </div>
                             </div>
                         </div>
-=======
                         </div>
-
-                        
-
-                        <%--Display of Pending Articles--%>
-                        <div runat="server" id="divNoSelected" class="col-7 col-sm-7 col-xl-8 align p-0 text-justify">
-                            <asp:HiddenField runat="server" ID="hdfSchId" Value="" />
-                            <div class=" head-div-2 p-2 mb-0 text-left ">
-                                <p class="m-0 ">Article Selected</p>
-                            </div>
-                            <div class="container" runat="server" id="divDisplayArticle">
-                                <div class="row mb-3 mt-2">
-                                    <div class="col">
-                                        <label class="m-0 h2" runat="server" id="lblTitle"></label>
-                                    </div>
-                                </div>
-                                <div class="row mb-1 position-static">
-                                    <div class="col position-static">
-                                        <label class="m-0" runat="server" id="lblContent"></label>
-                                    </div>
-                                </div>
-                                <div class="row mb-1 position-static text-right">
-                                    <div class="col position-static">
-                                        -
-                                        <label class="m-0 font-italic mt-2" runat="server" id="lblDate"></label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
->>>>>>> 0690e81e3b6f888b42a61e7f9f929642e2e9838f
                     </div>
                 </div>
-            </div>
-        </div>
-        
+            </div>        
     </form>
     
     <!--Footer-->
