@@ -26,12 +26,6 @@
                             <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
                         </ul>
                         <ul class="col-5 navbar-nav flex-row justify-content-end">
-                            <li class="nav-item ml-0 mr-0">
-                            <asp:TextBox ID="txtSearch" TextMode="Search" runat="server"  class=" search-box form-control form-control-sm" autocomplete="off" placeholder="Search"></asp:TextBox>
-                            </li>
-                            <li class="nav-item mr-2">
-                                <asp:ImageButton runat="server" Text="Go" ImageUrl="~/Content/Default/icons/Search.png" Height="31px" Width="31px" CssClass="topnav search-btn form-control form-control-sm" />
-                            </li>
                             <li class=" nav-item mr-2">
                             <asp:Button runat="server" Text="Login" ID="btnLogin" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnLogin_Click" />
                             </li>

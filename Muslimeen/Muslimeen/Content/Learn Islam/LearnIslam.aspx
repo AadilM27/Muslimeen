@@ -24,18 +24,12 @@
         <header >
                 <nav class="navFixed">
                     <div class="row align-self-end">
-                        <ul class=" col-7 navbar-nav flex-row justify-content-start">
-                            <asp:HiddenField runat="server" ID="hfAdjustDate" Value="-2" /> <!--Need to get value from DB let admin adjust this -->
+                         <ul class=" col-7 navbar-nav flex-row justify-content-start">
+                            <asp:HiddenField runat="server" ID="hdfAdjustDate" Value="" /> <!--Need to get value from DB let admin adjust this -->
                             <li class="nav-item ml-4 mr-0 mb-0 pt-2"> <p class="IslamicDate mb-0" id="lstIslamicDate"></p></li>
                             <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
                         </ul>
                         <ul class="col-5 navbar-nav flex-row justify-content-end">
-                            <li class="nav-item ml-0 mr-0">
-                            <asp:TextBox ID="txtSearch" TextMode="Search" runat="server"  class=" search-box form-control form-control-sm" autocomplete="off" placeholder="Search"></asp:TextBox>
-                            </li>
-                            <li class="nav-item mr-2">
-                                <asp:ImageButton runat="server" Text="Go" ImageUrl="~/Content/Default/icons/Search.png" Height="31px" Width="31px" CssClass="topnav search-btn form-control form-control-sm" />
-                            </li>
                             <li class=" nav-item mr-2">
                             <asp:Button runat="server" Text="Login" ID="btnLogin" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnLogin_Click" />
                             </li>
@@ -200,6 +194,36 @@
                                     </FooterTemplate>
                                 </asp:Repeater>
                             </div>
+<<<<<<< HEAD
+                        </div>
+
+                        
+
+                        <%--Display of Pending Articles--%>
+                        <div runat="server" id="divNoSelected" class="col-7 col-sm-7 col-xl-8 align p-0 text-justify">
+                            <asp:HiddenField runat="server" ID="hdfSchId" Value="" />
+                            <div class=" head-div-2 p-2 mb-0 text-left ">
+                                <p class="m-0 ">Article Selected</p>
+                            </div>
+                            <div class="container" runat="server" id="divDisplayArticle">
+                                <div class="row mb-3 mt-2">
+                                    <div class="col">
+                                        <label class="m-0 h2" runat="server" id="lblTitle"></label>
+                                    </div>
+                                </div>
+                                <div class="row mb-1 position-static">
+                                    <div class="col position-static">
+                                        <label class="m-0" runat="server" id="lblContent"></label>
+                                    </div>
+                                </div>
+                                <div class="row mb-1 position-static text-right">
+                                    <div class="col position-static">
+                                        <label class="m-0 font-italic mt-2" runat="server" id="lblDate"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+=======
                         </div>
 
                         
@@ -229,6 +253,7 @@
                                 </div>
                             </div>
                         </div>
+>>>>>>> 0690e81e3b6f888b42a61e7f9f929642e2e9838f
                     </div>
                 </div>
             </div>

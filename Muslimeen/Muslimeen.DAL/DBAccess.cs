@@ -958,7 +958,7 @@ namespace Muslimeen.BLL
                 new SqlParameter("@DateToday", todaysDate),
                 new SqlParameter("@SubDate", date)
             };
-            using (DataTable table = DBHelper.ParamSelect("uspGetNotifications",
+            using (DataTable table = DBHelper.ParamSelect("uspGetSpecificNotifications",
                          CommandType.StoredProcedure, pars))
             {
                 if (table.Rows.Count > 0)
@@ -967,7 +967,7 @@ namespace Muslimeen.BLL
                     notice = new uspGetNotifications
                     {
                         NoticeID = Convert.ToInt32(row["NoticeID"]),
-                        NoticeDate = Convert.ToDateTime(row["NoticeDate"]),
+                        DateCreated = Convert.ToDateTime(row["DateCreated"]),
                         NoticeDescription = Convert.ToString(row["NoticeDescription"]),
                         NoticeTitle = Convert.ToString(row["NoticeTitle"])
                     };
@@ -1022,7 +1022,7 @@ namespace Muslimeen.BLL
                         NoticeID = Convert.ToInt32(row["NoticeID"]),
                         NoticeTitle = Convert.ToString(row["NoticeTitle"]),
                         NoticeDescription = Convert.ToString(row["NoticeDescription"]),
-                        DateCreated = Convert.ToDateTime(row["NoticeDate"])
+                        DateCreated = Convert.ToDateTime(row["DateCreated"])
                     };
                 }
             }
