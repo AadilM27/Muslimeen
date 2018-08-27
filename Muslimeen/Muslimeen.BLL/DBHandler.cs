@@ -350,5 +350,46 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetAllMembers();
         }
+
+        public List<ActiveType> BLL_GetAllActiveTypes()
+        {
+            return dBAccess.GetAllActiveTypes();
+        }
+
+        public bool BLL_UpdateMemberActiveStatus(uspUpdateMemberActiveStatus updateMemberActiveStatus)
+        {
+            return dBAccess.UpdateMemberActiveStatus(updateMemberActiveStatus);
+        }
+
+        public List<uspGetForumTopics> BLL_GetForumTopics()
+        {
+            return dBAccess.GetForumTopics();
+        }
+
+        public List<uspGetPostings> BLL_GetPostings(int ForumTopicID)
+        {
+            return dBAccess.GetPostings(ForumTopicID);
+        }
+
+        public bool BLL_InsertForumTopics(ForumTopics topic)
+        {
+            return dBAccess.InsertForumTopics(topic);
+        }
+
+        public bool BLL_InsertPostings(uspGetPostings post)
+        {
+            return dBAccess.InsertPostings(post);
+        }
+
+        public bool BLL_DeleteForumTopics(ForumTopics topic)
+        {
+            return dBAccess.DeleteForumTopics(topic);
+        }
+
+        public bool BLL_DeletePostings(uspGetPostings post)
+        {
+            return dBAccess.DeletePostings(post);
+        }
+
     }
 }

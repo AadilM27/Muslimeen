@@ -242,7 +242,7 @@ namespace Muslimeen.BLL
                     getScholarDetails.MemberName = Convert.ToString(row["MemberName"]);
                     getScholarDetails.MemberLastName = Convert.ToString(row["MemberLastName"]);
                     getScholarDetails.ContactNo = Convert.ToString(row["ContactNo"]);
-                    getScholarDetails.MemberDOB = Convert.ToDateTime(row["MemberDOB"]).Date;
+                    getScholarDetails.MemberDOB = Convert.ToDateTime(row["MemberDOB"]);
                     getScholarDetails.Email = Convert.ToString(row["Email"]);
                     getScholarDetails.MemberType = Convert.ToChar(row["MemberType"]);
                     getScholarDetails.QualificationDescription = Convert.ToString(row["QualificationDescription"]);
@@ -488,7 +488,7 @@ namespace Muslimeen.BLL
                         mosque.MosqueSize = row["MosqueSize"].ToString();
                         if (!(row["MosqueImage"] is DBNull))
                         {
-                            mosque.MosqueImage = row["MosqueImage"].ToString();                           
+                            mosque.MosqueImage = row["MosqueImage"].ToString();
                         }
                         else
                         {
@@ -938,7 +938,7 @@ namespace Muslimeen.BLL
                             ArticleTitle = Convert.ToString(row["ArticleTitle"]),
                             //ArticleContent = Convert.ToString(row["ArticleContent"]),
                             DateCreated = Convert.ToDateTime(row["DateCreated"]),
-                            RejectionReason = Convert.ToString(row["RejectionReason"]),                           
+                            RejectionReason = Convert.ToString(row["RejectionReason"]),
                             ScholarID = Convert.ToString(row["ScholarID"]),
                             ModeratorID = Convert.ToString(row["ModeratorID"]),
                         };
@@ -1069,7 +1069,7 @@ namespace Muslimeen.BLL
                     {
                         uspGetAcceptedScholars scholar = new uspGetAcceptedScholars
                         {
-                            
+
                             MemberName = Convert.ToString(row["MemberName"]),
                             MemberLastName = Convert.ToString(row["MemberLastName"]),
                             MemberDOB = Convert.ToDateTime(row["MemberDOB"]),
@@ -1460,7 +1460,7 @@ namespace Muslimeen.BLL
             {
                 if (table.Rows.Count > 0)
                 {
-                    foreach(DataRow row in table.Rows)
+                    foreach (DataRow row in table.Rows)
                     {
                         Article art = new Article
                         {
@@ -1480,7 +1480,7 @@ namespace Muslimeen.BLL
                     }
                 }
             }
-            return list;            
+            return list;
         }
 
         public uspGetSelectedLearnArticle GetSelectedLearnArticle(int articleID)
@@ -1503,8 +1503,8 @@ namespace Muslimeen.BLL
                     pen.ArticleContent = Convert.ToString(row["ArticleContent"]);
                     pen.DateCreated = Convert.ToDateTime(row["DateCreated"]).Date;
                     pen.ScholarID = Convert.ToString(row["ScholarID"]);
-                }                
-            } 
+                }
+            }
             return pen;
         }
 
@@ -1529,7 +1529,7 @@ namespace Muslimeen.BLL
             return list;
         }
 
-        public bool UpdateIslamicDate (uspUpdateIslamicDate updateIslamicDate)
+        public bool UpdateIslamicDate(uspUpdateIslamicDate updateIslamicDate)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
             foreach (var prop in updateIslamicDate.GetType().GetProperties())
@@ -1567,14 +1567,14 @@ namespace Muslimeen.BLL
                     {
                         RejectedArticlesReport reject = new RejectedArticlesReport
                         {
-                            
+
                             ArticleTitle = Convert.ToString(row["ArticleTitle"]),
                             ArticleContent = Convert.ToString(row["ArticleContent"]),
-                            DateCreated = Convert.ToDateTime(row["DateCreated"]),                           
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]),
                             RejectionReason = Convert.ToString(row["RejectionReason"]),
                             ScholarID = Convert.ToString(row["ScholarID"]),
                             ModeratorID = Convert.ToString(row["ModeratorID"]),
-                            
+
                         };
                         list.Add(reject);
                     }
@@ -1708,7 +1708,7 @@ namespace Muslimeen.BLL
                             member.ContactNo = "";
                         }
 
-                        if(!(row["MosqueID"] is DBNull))
+                        if (!(row["MosqueID"] is DBNull))
                         {
                             member.MosqueID = Convert.ToInt32(row["MosqueID"]);
                         }
@@ -1734,6 +1734,153 @@ namespace Muslimeen.BLL
             return list;
 
         }
+
+        public List<ActiveType> GetAllActiveTypes()
+        {
+            List<ActiveType> list = new List<ActiveType>();
+
+            using (DataTable table = DBHelper.Select("uspGetAllActiveTypes",
+                    CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        ActiveType activeType = new ActiveType();
+
+                        activeType.ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]);
+                        activeType.ActiveDescription = Convert.ToString(row["ActiveDescription"]);
+
+                        list.Add(activeType);
+                    }
+                }
+            }
+            return list;
+        }
+
+        public List<uspGetForumTopics> GetForumTopics()
+        {
+            List<uspGetForumTopics> list = new List<uspGetForumTopics>();
+            using (DataTable table = DBHelper.Select("uspGetForumTopics", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetForumTopics ft = new uspGetForumTopics
+                        {
+                            ForumTopicID = Convert.ToInt32(row["ForumTopicID"]),
+                            TopicSubject = Convert.ToString(row["TopicSubject"]),
+                            TopicCreateDate = Convert.ToDateTime(row["TopicCreateDate"]),
+                            TopicCreateName = Convert.ToString(row["TopicCreateName"])
+
+                        };
+                        list.Add(ft);
+                    }
+                }
+            }
+            return list;
+        }
+        
+        public List<uspGetPostings> GetPostings(int ForumTopicID)
+        {
+            List<uspGetPostings> list = new List<uspGetPostings>();
+
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@forumTopicID", ForumTopicID)
+                
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetPostings",
+                    CommandType.StoredProcedure, pars))
+            {
+                foreach (DataRow row in table.Rows)
+                {
+
+                    uspGetPostings post = new uspGetPostings();
+
+                            post.PostID = Convert.ToInt32(row["PostID"]);
+                            post.PostContent = Convert.ToString(row["PostContent"]);
+                            post.PostCreateDate = Convert.ToDateTime(row["PostCreateDate"]);
+                            post.PostCreateName = Convert.ToString(row["PostCreateName"]);
+                            post.ForumTopicID = Convert.ToInt32(row["ForumTopicID"]);
+
+
+                        list.Add(post);
+                }
+            }
+            return list;
+        }
+
+        public bool UpdateMemberActiveStatus(uspUpdateMemberActiveStatus updateMemberActiveStatus)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            foreach (var prop in updateMemberActiveStatus.GetType().GetProperties())
+            {
+                if (prop.GetValue(updateMemberActiveStatus) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(updateMemberActiveStatus)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdateMemberActiveStatus", CommandType.StoredProcedure,
+                parameters.ToArray());
+        }
+
+        public bool InsertForumTopics(ForumTopics topic)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var prop in topic.GetType().GetProperties())
+            {
+                if (prop.GetValue(topic) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(topic)));
+                }
+            }
+            return DBHelper.NonQuery("uspInsertForumTopics", CommandType.StoredProcedure, parameters.ToArray());
+        }
+
+        public bool InsertPostings(uspGetPostings post)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var prop in post.GetType().GetProperties())
+            {
+                if (prop.GetValue(post) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(post)));
+                }
+            }
+            return DBHelper.NonQuery("uspInsertPostings", CommandType.StoredProcedure, parameters.ToArray());
+        }
+
+        public bool DeleteForumTopics(ForumTopics topic)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var prop in topic.GetType().GetProperties())
+            {
+                if (prop.GetValue(topic) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(topic)));
+                }
+            }
+            return DBHelper.NonQuery("uspDeleteForumTopic", CommandType.StoredProcedure, parameters.ToArray());
+        }
+
+        public bool DeletePostings(uspGetPostings post)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var prop in post.GetType().GetProperties())
+            {
+                if (prop.GetValue(post) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(post)));
+                }
+            }
+            return DBHelper.NonQuery("uspDeletePostings", CommandType.StoredProcedure, parameters.ToArray());
+        }
+
     }
 }
-

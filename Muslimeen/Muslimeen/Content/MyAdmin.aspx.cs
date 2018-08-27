@@ -226,7 +226,12 @@ namespace Muslimeen.Content
                 lblMemberName.InnerText = scholarDetails.MemberName.ToString();
                 lblMemberLastName.InnerText = scholarDetails.MemberLastName.ToString();
                 lblMemberDOB.InnerText = scholarDetails.MemberDOB.ToString("dd MM yyyy");
-                lblMemberType.InnerText = scholarDetails.MemberType.ToString();
+                switch (scholarDetails.MemberType.ToString())
+                {
+                    case "S":
+                        lblMemberType.InnerText = "Scholar";
+                        break;
+                }
                 lblEmail.InnerText = scholarDetails.Email.ToString();
                 lblContactNo.InnerText = scholarDetails.ContactNo.ToString();
                 lblActivationExpiry.InnerText = scholarDetails.ActivationExpiry.ToString("dd MM yyyy");
@@ -842,7 +847,7 @@ namespace Muslimeen.Content
             else if (btnAddUpdateOrg.Text == "Update Details")
             {
                 divZakaahOrgList.Visible = true;
-                divAddUpdateZakaahOrg.Visible = true;
+                divAddUpdateZakaahOrg.Visible = false;
             }
             DBHandler db = new DBHandler();
 
@@ -956,14 +961,9 @@ namespace Muslimeen.Content
                         }
                         db.BLL_UpdateZakaahOrg(updateZakaahOrg);
 
-                        divZakaahOrgList.Visible = true;
-                        divAddUpdateZakaahOrg.Visible = true;
-                        divOrgImg.Visible = true;
-
-                    //Refresh the List...
-                    rptZakaahOrg.DataSource = db.BLL_GetOrganization();
+                        //Refresh the List...
+                        rptZakaahOrg.DataSource = db.BLL_GetOrganization();
                         rptZakaahOrg.DataBind();
-
 
                         txtOrgName.Text = string.Empty;
                         txtOrgWebAddr.Text = string.Empty;
@@ -974,13 +974,16 @@ namespace Muslimeen.Content
                         txtOrgName.BorderColor = Color.Empty;
                         txtOrgContactNo.BorderColor = Color.Empty;
                         lblOrgError.Text = String.Empty;
+
+                        divOrgImg.Visible = false;
+                        divAddUpdateZakaahOrg.Visible = false;
+                        divZakaahOrgList.Visible = true;
+                        divOrgOverlay.Visible = true;
+
                     }
                 }
 
-            Cache.Remove("divAddUpdateZakaahOrg");
-
-            divAddUpdateZakaahOrg.Visible = true;
-            divZakaahOrgList.Visible = true;
+            udpOrgList.Update();
         }
 
         protected void btnAddZakaahOrg_Click(object sender, EventArgs e)
@@ -1480,6 +1483,7 @@ namespace Muslimeen.Content
             divAllMembersList.Visible = true;
             divMemberDetails.Visible = false;
             divMemberDetailsOverlay.Visible = true;
+            lblTaskHead.InnerText = btnViewAllMembers.Text;
 
             DBHandler db = new DBHandler();
             Member member = new Member();
@@ -1491,17 +1495,87 @@ namespace Muslimeen.Content
 
         protected void btnShowMember_Click(object sender, EventArgs e)
         {
-            LinkButton linkButton = new LinkButton();
-            DBHandler db = new DBHandler();
-            uspGetMember member = new uspGetMember();
+            LinkButton linkButton = (LinkButton)sender;
 
             string memberId = linkButton.CommandArgument.ToString();
-            hdfMemberID.Value = memberId;
+            hdfAllMemberID.Value = memberId;
+
+            DBHandler db = new DBHandler();
+            uspGetMember member = new uspGetMember();
+            List<ActiveType> activeType = new List<ActiveType>();
+
+            divAllMembersList.Visible = true;
+            divMemberDetails.Visible = true;
+            divMemberDetailsOverlay.Visible = false;
+
 
             member = db.BLL_GetMember(memberId);
 
+            ddAllctiveTypeID.Items.Clear();
+            activeType = db.BLL_GetAllActiveTypes();
+            ddAllctiveTypeID.Items.Add(new ListItem(activeType[0].ActiveDescription.ToString(), activeType[0].ActiveTypeID.ToString()));
+            ddAllctiveTypeID.Items.Add(new ListItem(activeType[1].ActiveDescription.ToString(), activeType[1].ActiveTypeID.ToString()));
+            ddAllctiveTypeID.Items.Add(new ListItem(activeType[2].ActiveDescription.ToString(), activeType[2].ActiveTypeID.ToString()));
 
+            lblAllMemberID.InnerText = member.MemberID;
+            lblAllMemberName.InnerText = member.MemberName;
+            lblAllMemberLastName.InnerText = member.MemberLastName;
+            switch (member.MemberType.ToString())
+            {
+                case "A":
+                    lblAllMemberType.InnerText = "Administrator";
+                    break;
+                case "S":
+                    lblAllMemberType.InnerText = "Scholar";
+                    break;
+                case "M":
+                    lblAllMemberType.InnerText = "Member";
+                    break;
+                case "O":
+                    lblAllMemberType.InnerText = "Moderater";
+                    break;
+                case "R":
+                    lblAllMemberType.InnerText = "Mosque Representative";
+                    break;
+            }
 
+            lblAllMemberDOB.InnerText = member.MemberDOB.ToString("dd MM yyyy");
+            lblAllEmail.InnerText = member.Email.ToString();
+            lblAllContactNo.InnerText = member.ContactNo.ToString();
+            lblAllMosque.InnerText = member.MosqueID.ToString();
+            lblAllActivationDate.InnerText = member.ActivationDate.ToString("dd MM yyyy");
+            ddAllctiveTypeID.SelectedValue = Convert.ToString(member.ActiveTypeID);
+        }
+
+        protected void btnUpdateAllMember_Click(object sender, EventArgs e)
+        {
+            divAllMembersList.Visible = true;
+            divMemberDetails.Visible = false;
+            divMemberDetailsOverlay.Visible = true;
+
+            DBHandler dBHandler = new DBHandler();
+            uspUpdateMemberActiveStatus updateMemberActiveStatus = new uspUpdateMemberActiveStatus();
+            uspGetMember member = new uspGetMember();
+
+            member = dBHandler.BLL_GetMember(hdfAllMemberID.Value.ToString());
+
+            updateMemberActiveStatus.MemberID = hdfAllMemberID.Value.ToString();
+            updateMemberActiveStatus.MemberType = Convert.ToChar(member.MemberType);
+            updateMemberActiveStatus.ActiveTypeID = Convert.ToChar(ddAllctiveTypeID.SelectedValue);
+
+            dBHandler.BLL_UpdateMemberActiveStatus(updateMemberActiveStatus);
+
+            rptMemberList.DataSource = dBHandler.BLL_GetAllMembers();
+            rptMemberList.DataBind();
+
+        }
+
+        protected void btnUpdateCancelAllMember_Click(object sender, EventArgs e)
+        {
+            divAllMembersList.Visible = false;
+            divMemberDetails.Visible = false;
+            divMemberDetailsOverlay.Visible = false;
+            lblTaskHead.InnerText = String.Empty;
         }
     }
 }

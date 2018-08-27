@@ -857,13 +857,13 @@
                                         </HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:LinkButton ID="btnShowMember" CommandArgument='<%#Eval("MemberID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShowMember_Click">
-                                                    <div class="p-0 form-row m-0 position-static p-1">
+                                                    <div class="p-0 m-0 position-static p-1">
                                                         <div class="col-auto p-0 position-static">
                                                             <p style="font-size:small" class="p-0 border-0 m-0 text-truncate"><b>User&nbsp;Name: </b><%#Eval("MemberID")%><br/></p>
                                                         </div>
                                                         <div class=" col-auto position-static p-0">
                                                             <div class="">
-                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>User&nbsp;Name: </b><%#Eval("MemberName")%> <%#Eval("MemberLastName")%><br/></p>
+                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Full&nbsp;Name: </b><%#Eval("MemberName")%> <%#Eval("MemberLastName")%><br/></p>
                                                             </div>
                                                                 <hr class=" m-0 p-0"/>
                                                             <div class="">
@@ -890,7 +890,7 @@
                             </div>
                             <%-- Display Details of All Members --%>
                             <div runat="server" id="divMemberDetails" class=" col-6 col-xl-4 flex-nowrap p-0">
-                                <asp:HiddenField runat="server" ID="hdfMemberID" Value="" />
+                                <asp:HiddenField runat="server" ID="hdfAllMemberID" Value="" />
                                 <div class=" head-div-2 p-2 mb-0 text-left ">
                                     <p class="m-0">Scholar Details</p>
                                 </div>
@@ -929,47 +929,47 @@
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>E-mail:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="lblAllActiveTypeID"></label>
+                                                <label class="m-0" runat="server" id="lblAllEmail"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>Contact No.</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="lblAllEmail"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1 position-static">
-                                            <div class="col position-static"><b>Activation Expiry:</b></div>
-                                            <div class="col position-static text-truncate">
                                                 <label class="m-0" runat="server" id="lblAllContactNo"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
-                                            <div class="col position-static"><b>Activation Date:</b></div>
+                                            <div class="col position-static"><b>Mosque ID:</b></div>
                                             <div class="col position-static text-truncate">
                                                 <label class="m-0" runat="server" id="lblAllMosque"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
-                                            <div class="col position-static "><b>Qualification:</b></div>
+                                            <div class="col position-static"><b>Activation Date:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label10"></label>
+                                                <label class="m-0" runat="server" id="lblAllActivationDate"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static "><b>Active:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <asp:DropDownList CssClass="form-control form-control-sm col main-txtb" runat="server" ID="ddAllctiveTypeID"></asp:DropDownList>
                                             </div>
                                         </div>
                                     </div>
                                         <hr class="m-3 ml-3 mr-3 bg-secondary"/>
                                     <div class="container p-0 m-2 task-action">
                                         <h6 class="w-100 card-title card-header">
-                                            <img class="figure-img mr-2 mb-1 " src="MyAdmin/icons/outline_warning_black_18dp.png" />Before accepting registration:</h6>
-                                        <div class=" position-static m-0 card-body">
+                                            <img class="figure-img mr-2 mb-1 " src="MyAdmin/icons/outline_warning_black_18dp.png" />Before Changing Members Active status</h6>
+                                        <div class=" position-static m-0 pb-sm-0 pb-xl-5 card-body">
                                             <ul class="pl-1">
-                                                <li><p class="mb-0" ><small class="card-text">The Qualification that the scholar claims to have must be verified</small></p></li>
-                                                <li><p class="mb-0"><small class="card-text">Admins may contact the members by phone or email to set up interviews</small></p></li>
+                                                <li><p class="mb-0" ><small class="card-text">Changing the active status will disable the members account</small></p></li>
+                                                <li><p class="mb-0"><small class="card-text">Mosque representative and the Mosque they represent will be disabled</small></p></li>
                                             </ul>
                                         </div>
                                         <div class="card-footer text-center position-static text-nowrap">
-                                            <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="Button1" Text="Accept Registration" OnClick="btnAcceptReg_Click" />
-                                            <asp:Button CssClass=" topnav btn btn-sm btn-outline-light" runat="server" ID="Button2" Text="Reject Registration" OnClick="btnRejectReg_Click" />
+                                            <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnUpdateAllMember" Text="Update Active Status" OnClick="btnUpdateAllMember_Click" />
+                                            <asp:Button CssClass=" topnav btn btn-sm btn-outline-light" runat="server" ID="btnUpdateCancelAllMember" Text="Cancel" OnClick="btnUpdateCancelAllMember_Click" />
                                         </div>
                                     </div>
                                 </div>
