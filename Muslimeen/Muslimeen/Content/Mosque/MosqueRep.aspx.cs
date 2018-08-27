@@ -15,15 +15,15 @@ namespace Muslimeen.Content.Mosque
         DBHandler db = new DBHandler();
         protected void Page_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
 
-=======
+
+
             DBHandler db = new DBHandler();
             List<CounterCalender> counterCalender = new List<CounterCalender>();
 
             counterCalender = db.BLL_GetCounterCalender();
             hdfAdjustDate.Value = counterCalender[3].Val.ToString();
->>>>>>> a7767f59a9624b6d4779e9ea53e7329a9028d924
+
 
 
             if (Session["UserName"] != null)
