@@ -265,6 +265,15 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Button btnUpdateDateCounter;
         
         /// <summary>
+        /// btnReportViewMembers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReportViewMembers;
+        
+        /// <summary>
         /// lblTaskHead control.
         /// </summary>
         /// <remarks>
@@ -1433,5 +1442,41 @@ namespace Muslimeen.Content {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUpdateCancelAllMember;
+        
+        /// <summary>
+        /// divAdminReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAdminReports;
+        
+        /// <summary>
+        /// lblAdminReportHeading control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAdminReportHeading;
+        
+        /// <summary>
+        /// lnkAdminPrintPDF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkAdminPrintPDF;
+        
+        /// <summary>
+        /// grdAdminReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdAdminReports;
     }
 }

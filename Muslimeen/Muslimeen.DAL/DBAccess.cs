@@ -1839,7 +1839,6 @@ namespace Muslimeen.BLL
             }
             return DBHelper.NonQuery("uspInsertForumTopics", CommandType.StoredProcedure, parameters.ToArray());
         }
-
         public bool InsertPostings(uspGetPostings post)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
@@ -1867,7 +1866,6 @@ namespace Muslimeen.BLL
             }
             return DBHelper.NonQuery("uspDeleteForumTopic", CommandType.StoredProcedure, parameters.ToArray());
         }
-
         public bool DeletePostings(uspGetPostings post)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
@@ -1880,6 +1878,34 @@ namespace Muslimeen.BLL
                 }
             }
             return DBHelper.NonQuery("uspDeletePostings", CommandType.StoredProcedure, parameters.ToArray());
+        }
+        public List<uspReportGetAllMembers> ReportGetAllMembers()
+        {
+            List<uspReportGetAllMembers> list = new List<uspReportGetAllMembers>();
+            using (DataTable table = DBHelper.Select("uspReportGetAllMembers", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspReportGetAllMembers details = new uspReportGetAllMembers
+                        {
+                            MemberName = Convert.ToString(row["Name"]),
+                            MemberLastName = Convert.ToString(row["Last Name"]),
+                            MemberDOB = Convert.ToDateTime(row["Date of Birth"]),
+                            MemberType = Convert.ToChar(row["Member Type"]),
+                            ActiveTypeID = Convert.ToChar(row["Active"]),
+                            Email = Convert.ToString(row["Email Address"]),
+                            ContactNo = Convert.ToString(row["Contact Number"]),
+                            MosqueID = Convert.ToInt32(row["Mosque"]),
+                            ActivationDate = Convert.ToDateTime(row["Date Registered"]),
+                            
+                        };
+                        list.Add(details);
+                    }
+                }
+            }
+            return list;
         }
 
     }

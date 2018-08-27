@@ -632,9 +632,6 @@ namespace Muslimeen.Content.MyModerator
                         grdReports.HeaderRow.Cells[5].Text = "Date";
                     }
 
-
-
-
                     Font font = new Font();
                     font.Color = new BaseColor(grdReports.HeaderStyle.ForeColor);
 

@@ -391,5 +391,10 @@ namespace Muslimeen.BLL
             return dBAccess.DeletePostings(post);
         }
 
+        public List<uspReportGetAllMembers> BLL_ReportGetAllMembers()
+        {
+            return dBAccess.ReportGetAllMembers();
+        }
+
     }
 }

@@ -11,6 +11,10 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Globalization;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+
+
 
 namespace Muslimeen.Content
 {
@@ -78,7 +82,7 @@ namespace Muslimeen.Content
 
                         foreach (uspGetQualification qual in list)
                         {
-                            ddModQualification.Items.Add(new ListItem(qual.QualificationDescription.ToString(),
+                            ddModQualification.Items.Add(new System.Web.UI.WebControls.ListItem(qual.QualificationDescription.ToString(),
                                 qual.QualificationID.ToString()));
                         }
 
@@ -982,8 +986,6 @@ namespace Muslimeen.Content
 
                     }
                 }
-
-            udpOrgList.Update();
         }
 
         protected void btnAddZakaahOrg_Click(object sender, EventArgs e)
@@ -1513,9 +1515,9 @@ namespace Muslimeen.Content
 
             ddAllctiveTypeID.Items.Clear();
             activeType = db.BLL_GetAllActiveTypes();
-            ddAllctiveTypeID.Items.Add(new ListItem(activeType[0].ActiveDescription.ToString(), activeType[0].ActiveTypeID.ToString()));
-            ddAllctiveTypeID.Items.Add(new ListItem(activeType[1].ActiveDescription.ToString(), activeType[1].ActiveTypeID.ToString()));
-            ddAllctiveTypeID.Items.Add(new ListItem(activeType[2].ActiveDescription.ToString(), activeType[2].ActiveTypeID.ToString()));
+            ddAllctiveTypeID.Items.Add(new System.Web.UI.WebControls.ListItem(activeType[0].ActiveDescription.ToString(), activeType[0].ActiveTypeID.ToString()));
+            ddAllctiveTypeID.Items.Add(new System.Web.UI.WebControls.ListItem(activeType[1].ActiveDescription.ToString(), activeType[1].ActiveTypeID.ToString()));
+            ddAllctiveTypeID.Items.Add(new System.Web.UI.WebControls.ListItem(activeType[2].ActiveDescription.ToString(), activeType[2].ActiveTypeID.ToString()));
 
             lblAllMemberID.InnerText = member.MemberID;
             lblAllMemberName.InnerText = member.MemberName;
@@ -1576,6 +1578,90 @@ namespace Muslimeen.Content
             divMemberDetails.Visible = false;
             divMemberDetailsOverlay.Visible = false;
             lblTaskHead.InnerText = String.Empty;
+        }
+
+        protected void lnkAdminPrintPDF_ServerClick(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                if (lblAdminReportHeading.InnerText == "All Members Details Report")
+                {
+
+                    grdAdminReports.HeaderRow.Cells[0].Text = "Firstname";
+                    grdAdminReports.HeaderRow.Cells[1].Text = "Lastname";
+                    grdAdminReports.HeaderRow.Cells[2].Text = "Date Of Birth";
+                    grdAdminReports.HeaderRow.Cells[3].Text = "Member Type";
+                    grdAdminReports.HeaderRow.Cells[4].Text = "Active";
+                    grdAdminReports.HeaderRow.Cells[5].Text = "Email Address";
+                    grdAdminReports.HeaderRow.Cells[6].Text = "Contact Number";
+                    grdAdminReports.HeaderRow.Cells[7].Text = "Mosque";
+                    grdAdminReports.HeaderRow.Cells[8].Text = "Date Registered";
+                }
+
+
+                DBHandler han = new DBHandler();
+                PdfPTable pdfTable = new PdfPTable(grdAdminReports.HeaderRow.Cells.Count);
+                pdfTable.HorizontalAlignment = 0;
+
+
+                foreach (TableCell Headercell in grdAdminReports.HeaderRow.Cells)
+                {
+
+                    iTextSharp.text.Font font = new iTextSharp.text.Font();
+                    font.Color = new BaseColor(grdAdminReports.HeaderStyle.ForeColor);
+
+                    PdfPCell pdfCell = new PdfPCell(new Phrase(Headercell.Text, font));
+                    pdfCell.BackgroundColor = new BaseColor(grdAdminReports.HeaderStyle.BackColor);
+                    pdfTable.AddCell(pdfCell);
+                }
+
+                foreach (GridViewRow gridviewrow in grdAdminReports.Rows)
+                {
+                    foreach (TableCell tablecell in gridviewrow.Cells)
+                    {
+                        iTextSharp.text.Font font = new iTextSharp.text.Font();
+                        font.Color = new BaseColor(grdAdminReports.RowStyle.ForeColor);
+
+                        PdfPCell pdfcell = new PdfPCell(new Phrase(tablecell.Text));
+                        pdfcell.BackgroundColor = new BaseColor(grdAdminReports.RowStyle.BackColor);
+                        pdfTable.AddCell(pdfcell);
+                    }
+                }
+
+                Document pdfDocument = new Document(new RectangleReadOnly(842, 595), 10f, -200f, 10f, 0f);
+                PdfAWriter.GetInstance(pdfDocument, Response.OutputStream);
+
+                pdfDocument.Open();
+                pdfDocument.Add(pdfTable);
+                pdfDocument.Close();
+
+                Response.ContentType = "application/pdf";
+                Response.AppendHeader("content-disposition", "attachment;filename=MuslimeenReports.pdf");
+                Response.Write(pdfDocument);
+                Response.Flush();
+                Response.End();
+            }
+            catch(NullReferenceException)
+            {
+
+            }
+           
+        }
+
+        protected void btnReportViewMembers_Click(object sender, EventArgs e)
+        {
+            DBHandler db = new DBHandler();
+
+            lblAdminReportHeading.InnerText = "All Members Details Report";
+
+
+
+            grdAdminReports.DataSource = db.BLL_ReportGetAllMembers();
+            grdAdminReports.DataBind();
+
+
         }
     }
 }
