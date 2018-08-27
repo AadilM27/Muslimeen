@@ -31,22 +31,13 @@ namespace Muslimeen.Content.Learn_Islam {
         protected global::System.Web.UI.HtmlControls.HtmlForm frmLearnIslam;
         
         /// <summary>
-        /// hfAdjustDate control.
+        /// hdfAdjustDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfAdjustDate;
-        
-        /// <summary>
-        /// txtSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        protected global::System.Web.UI.WebControls.HiddenField hdfAdjustDate;
         
         /// <summary>
         /// btnLogin control.
@@ -175,13 +166,13 @@ namespace Muslimeen.Content.Learn_Islam {
         protected global::System.Web.UI.WebControls.Button btnAboutUs;
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// divPendingArticles control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPendingArticles;
         
         /// <summary>
         /// repeatLink control.
@@ -193,49 +184,49 @@ namespace Muslimeen.Content.Learn_Islam {
         protected global::System.Web.UI.WebControls.Repeater repeatLink;
         
         /// <summary>
-        /// Panel1 control.
+        /// divNoSelected control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divNoSelected;
         
         /// <summary>
-        /// hfdRej control.
+        /// hdfSchId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfdRej;
+        protected global::System.Web.UI.WebControls.HiddenField hdfSchId;
         
         /// <summary>
-        /// lblRTitle control.
+        /// divDisplayArticle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblRTitle;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDisplayArticle;
         
         /// <summary>
-        /// lblRContent control.
+        /// lblTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblRContent;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTitle;
         
         /// <summary>
-        /// lblRDate control.
+        /// lblContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblRDate;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblContent;
         
         /// <summary>
         /// lblScholar control.
@@ -245,5 +236,14 @@ namespace Muslimeen.Content.Learn_Islam {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblScholar;
+        
+        /// <summary>
+        /// lblDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDate;
     }
 }

@@ -21,20 +21,11 @@
             <nav class="navFixed">
                 <div class="row align-self-end">
                     <ul class=" col-7 navbar-nav flex-row justify-content-start">
-                        <asp:HiddenField runat="server" ID="hfAdjustDate" Value="-2" />
-                        <!--Need to get value from DB let admin adjust this -->
-                        <li class="nav-item ml-4 mr-0 mb-0 pt-2">
-                            <p class="IslamicDate mb-0" id="lstIslamicDate"></p>
-                        </li>
-                        <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
-                    </ul>
+                            <asp:HiddenField runat="server" ID="hdfAdjustDate" Value="" /> <!--Need to get value from DB let admin adjust this -->
+                            <li class="nav-item ml-4 mr-0 mb-0 pt-2"> <p class="IslamicDate mb-0" id="lstIslamicDate"></p></li>
+                            <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
+                        </ul>
                     <ul class="col-5 navbar-nav flex-row justify-content-end">
-                        <li class="nav-item ml-0 mr-0">
-                            <asp:TextBox ID="txtSearch" TextMode="Search" runat="server" class=" search-box form-control form-control-sm" autocomplete="off" placeholder="Search"></asp:TextBox>
-                        </li>
-                        <li class="nav-item mr-2">
-                            <asp:ImageButton runat="server" Text="Go" ImageUrl="~/Content/Default/icons/Search.png" Height="31px" Width="31px" CssClass="topnav search-btn form-control form-control-sm" />
-                        </li>
                         <li class=" nav-item mr-2">
                             <asp:Button runat="server" Text="Login" ID="btnLogin" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnLogin_Click" />
                         </li>
@@ -163,9 +154,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class=" col-12  bg-light position-static" runat="server" id="divEditEvent">
+                        <div class=" col-12  bg-light position-static" runat="server" id="divManageEvent">
                             <div class="row">
-                                <div class="col-3 p-0 mr-1">
+                                <div class="col-3 p-0 mr-1" runat="server" id="divEventDateSearch">
                                     <div class=" head-div-2 p-2 mb-0 text-left ">
                                         <p class="m-0">Select Event Date Range</p>
                                     </div>
@@ -216,10 +207,9 @@
                                         </asp:Repeater>
                                     </div>
                                 </div>
-                                <div runat="server" id="divDisplayEvent" class=" col-3 col-xl-4 flex-nowrap p-0">
-                                    <asp:HiddenField runat="server" ID="hdfEventId" Value="" />
+                                <div runat="server" id="divDisplayEditEvent" class=" col-3 col-xl-4 flex-nowrap p-0">
                                     <div class=" head-div-2 p-2 mb-0 text-left ">
-                                        <label runat="server" class="mb-0"></label>
+                                        <label runat="server" class="mb-0">Edit Selected Event:</label>
                                     </div>
                                     <hr class="m-3 ml-3 mr-3 bg-secondary" />
                                     <div class="container" runat="server" id="divEventDetails">
@@ -256,116 +246,85 @@
                                         <div class="row mb-1 position-static">
                                             <div class="col-3 position-static"><b>Description:</b></div>
                                             <div class="col position-static">
-                                                <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtUpdateEventDescription"></asp:TextBox>
+                                                <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtUpdateEventDescription" TextMode="MultiLine" MaxLength="2" Style="max-height: 200px; min-height: 50px"></asp:TextBox>
                                             </div>
                                         </div>
                                     </div>
-
-                                </div>
-                            </div>
-                        </div>
-						<div class=" col-12  bg-light position-static" runat="server" id="divDeleteEvent">
-                            <div class="row">
-                                <div class="col-3 p-0 mr-1">
-                                    <div class=" head-div-2 p-2 mb-0 text-left ">
-                                        <p class="m-0">Select Event Date Range</p>
-                                    </div>
-                                    <div class="table">
-                                        <div class="form-row">
-                                            <div class="form-group col-sm-6 mb-1">
-                                                <label class="col mb-0 p-0">Start Date: </label>
-                                                <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtDeleteStartDate"></asp:TextBox>
-                                            </div>
-                                            <div class="form-group col-sm-6 mb-1">
-                                                <label class="col mb-0 p-0">End Date: </label>
-                                                <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtDeleteEndDate"></asp:TextBox>
-                                            </div>
-                                            <div class="form-group col-1 mb-1 mt-1">
-                                                <asp:Button runat="server" ID="btnListDeleteEvents" Text="List Events" CssClass="topnav btn btn-md btn-outline-light" OnClick="btnDeleteEvent_Click"/>
-                                            </div>
+                                    <div class="container p-0 m-2 task-action">
+                                        <h6 class="w-100 card-title card-header">
+                                            <img class="figure-img mr-2 mb-1 " src="../MyAdmin/icons/outline_warning_black_18dp.png" />Confirm Event Update:</h6>
+                                        <div class="card-footer text-center position-static text-nowrap">
+                                            <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnUpdateEvent" Text="Update Event" OnClick="btnUpdateEvent_Click" />
+                                            <asp:Button CssClass=" topnav btn btn-sm btn-outline-light" runat="server" Text="Cancel" OnClick="btnNavEditEvent_Click" />
                                         </div>
-                                    </div>
-                                </div>
-                                    <div class=" head-div-2 p-2 mb-1 text-left">
-                                        <p class="m-0">Mosque Events</p>
-                                    </div>
-                                    <div class="p-1 lst-container" style="overflow-y: scroll;">
-                                        <asp:Repeater ID="Repeater1" runat="server">
-                                            <HeaderTemplate>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <asp:LinkButton ID="btnShow" CommandArgument='<%#Eval("EventID") %>' CssClass="position-static lstBtn btn btn-block" runat="server"  EnableViewState="true">
-                                                <div class="p-0 form-row m-0 position-static p-1">
-                                                    <div class=" col-auto position-static p-0">
-                                                        <div class="">
-                                                            <p style="font-size: small" class="p-0 m-0 text-truncate">
-                                                                <b>Event&nbsp;Title: </b><%#Eval("EventTitle").ToString()%><br />
-                                                            </p>
-                                                        </div>
-                                                        <hr class=" mr-4 m-0 p-0" />
-                                                        <div class="">
-                                                            <p style="font-size: smaller;" class="p-0 m-0 text-truncate"><b>Event Date: </b><%#Convert.ToDateTime(Eval("EventDate")).ToString("dd MM yyyy")%></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                </asp:LinkButton>
-                                                <hr class="p-0 m-1" />
-                                            </ItemTemplate>
-                                            <FooterTemplate>
-                                            </FooterTemplate>
-                                        </asp:Repeater>
                                     </div>
                                 </div>
                                 <div runat="server" id="divDisplayDeleteEvent" class=" col-3 col-xl-4 flex-nowrap p-0">
-                                    <asp:HiddenField runat="server" ID="HiddenField1" Value="" />
                                     <div class=" head-div-2 p-2 mb-0 text-left ">
-                                        <label runat="server" class="mb-0"></label>
+                                        <label runat="server" class="mb-0">Remove Selected Event</label>
                                     </div>
                                     <hr class="m-3 ml-3 mr-3 bg-secondary" />
-                                    <div class="container" runat="server" id="divDeleteEventDetails">
+                                    <div class="container" runat="server">
                                         <div class="row mb-1 position-static">
                                             <div class="col-3 position-static"><b>Event Title:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtDeleteEventTitle"></asp:TextBox>
+                                                <label class="m-0" runat="server" id="lblEventTitle"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col-3 position-static"><b>Speaker:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtDeleteSpeaker"></asp:TextBox>
+                                                <label class="m-0" runat="server" id="lblSpeaker"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col-3 position-static"><b>Event Date:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtUDeleteEventDate"></asp:TextBox>
+                                                <label class="m-0" runat="server" id="lblEventDate"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col-3 position-static"><b>Start Time:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtDeleteEventStartTime"></asp:TextBox>
+                                                <label class="m-0" runat="server" id="lblEventStartTime"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col-3 position-static"><b>End Time:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtDeleteEventEndTime"></asp:TextBox>
+                                                <label class="m-0" runat="server" id="lblEventEndTime"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col-3 position-static"><b>Description:</b></div>
                                             <div class="col position-static">
-                                                <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtDeleteEventDescription"></asp:TextBox>
+                                                <label class="m-0" runat="server" id="lblEventDescription"></label>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="container p-0 m-2 task-action">
+                                        <h6 class="w-100 card-title card-header">
+                                            <img class="figure-img mr-2 mb-1 " src="../MyAdmin/icons/outline_warning_black_18dp.png" />Confirm Event Removal:</h6>
+                                        <div class="card-footer text-center position-static text-nowrap">
+                                            <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnRemove" Text="Remove Event" OnClick="btnRemoveEvent_Click" />
+                                            <asp:Button CssClass=" topnav btn btn-sm btn-outline-light" runat="server" Text="Cancel" OnClick="btnNavRemoveEvent_Click" />
                                         </div>
                                     </div>
 
                                 </div>
+                                <div class="col-sm-3 col-xl-4 text-nowrap" runat="server" id="divEventOverlay">
+                                    <div class="w-100 h-100 container text-center">
+                                        <div class=" container h-25 mb-3"></div>
+                                        <h6 class="card-title h-50 mt-5 pt-5">
+                                            <img class="figure-img mr-2" src="../MyAdmin/icons/outline_error_outline_black_18dp.png" /><label id="lblEventError" runat="server"></label></h6>
+                                        <div class=" container h-25"></div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
                         <div class="col-12 bg-light position-static mt-0" runat="server" id="divManageTimes">
                             <div class="row flex-nowrap">
-                                <div class="col-sm-4 col-4 col-xl-3 p-0">
+                                <div class="col-sm-4 col-4 col-xl-3 p-0" id="divCalander" runat="server">
                                     <div class=" head-div-2 p-2 mb-1 text-left">
                                         <p class="m-0">Select a date to Add/Update Prayer</p>
                                     </div>
@@ -373,7 +332,7 @@
                                         <asp:Calendar ID="Calendar1" runat="server" CssClass="" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
                                     </div>
                                 </div>
-                                <div class="col-sm-9 col-9 col-xl-4 p-0 ml-2">
+                                <div class="col-sm-9 col-9 col-xl-4 p-0 ml-2" id="divTimes" runat="server">
                                     <div class=" head-div-2 p-2 mb-1 text-left">
                                         <p class="m-0">
                                             <asp:Label ID="lblMessage" runat="server"></asp:Label><asp:Label ID="lblDate" runat="server"></asp:Label>
@@ -396,10 +355,10 @@
                                                     <label class="mb-0 p-0 font-weight-bold">Fajr</label>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtFajrA" runat="server" MaxLength="5" CssClass=" form-control mb-1 border border-dark"></asp:TextBox>
+                                                    <asp:TextBox ID="txtFajrA" runat="server" MaxLength="5" CssClass=" form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtFajrJ" runat="server" MaxLength="5" CssClass=" form-control mb-1 border border-dark"></asp:TextBox>
+                                                    <asp:TextBox ID="txtFajrJ" runat="server" MaxLength="5"  CssClass=" form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -407,10 +366,10 @@
                                                     <label class=" mb-0 p-0 font-weight-bold">Dhuhr</label>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtDhuhrA" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark"></asp:TextBox>
+                                                    <asp:TextBox ID="txtDhuhrA" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtDhuhrJ" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark"></asp:TextBox>
+                                                    <asp:TextBox ID="txtDhuhrJ" runat="server" MaxLength="5"  CssClass="form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -418,10 +377,10 @@
                                                     <label class="col mb-0 p-0 font-weight-bold">Asr</label>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtAsrA" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark"></asp:TextBox>
+                                                    <asp:TextBox ID="txtAsrA" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtAsrJ" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark"></asp:TextBox>
+                                                    <asp:TextBox ID="txtAsrJ" runat="server" MaxLength="5"  CssClass="form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -429,10 +388,10 @@
                                                     <label class="col mb-0 p-0 font-weight-bold">Magrib</label>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtMagribA" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark"></asp:TextBox>
+                                                    <asp:TextBox ID="txtMagribA" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtMagribJ" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark"></asp:TextBox>
+                                                    <asp:TextBox ID="txtMagribJ" runat="server" MaxLength="5"  CssClass="form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -440,20 +399,21 @@
                                                     <label class="col mb-0 p-0 font-weight-bold">Eisha</label>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtEishaA" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark"></asp:TextBox>
+                                                    <asp:TextBox ID="txtEishaA" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtEishaJ" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark"></asp:TextBox>
+                                                    <asp:TextBox ID="txtEishaJ" runat="server" MaxLength="5" Onblur="verifyPrayerTimes();" CssClass="form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col col-xl-3 col-sm-2">
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
+                                                    <asp:Button ID="BtnAdd" runat="server" Text="Add Prayer" OnClick="BtnAdd_Click"  CssClass="topnav btn btn-md btn-outline-light" />
+                                                    <asp:Button ID="BtnUpdate" runat="server" Text="Update Prayer" OnClick="BtnUpdate_Click" CssClass="topnav btn btn-md btn-outline-light" />
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:Button ID="BtnAdd" runat="server" Text="Add Prayer" OnClick="BtnAdd_Click" CssClass="topnav btn btn-md btn-outline-light" />
-                                                    <asp:Button ID="BtnUpdate" runat="server" Text="Update Prayer" OnClick="BtnUpdate_Click" CssClass="topnav btn btn-md btn-outline-light" />
+                                                    <asp:Button ID="cancel" runat="server" Text="Cancel" OnClick="btnNavManageTimes_Click" CssClass="topnav btn btn-md btn-outline-light" />
                                                 </div>
                                             </div>
                                         </div>
@@ -520,6 +480,7 @@
         </div>
     </div>
     <script src="Default/Default.js" type="text/javascript"></script>
+    <script src="PrayerTimesJS.js"></script>
 </body>
 <script src="Default/Default.js" type="text/javascript"></script>
 </html>

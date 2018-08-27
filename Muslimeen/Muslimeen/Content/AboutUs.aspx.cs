@@ -17,6 +17,11 @@ namespace Muslimeen.Content
         {
             DBHandler dBHandler = new DBHandler();
 
+            DBHandler db = new DBHandler();
+            List<CounterCalender> counterCalender = new List<CounterCalender>();
+
+            counterCalender = db.BLL_GetCounterCalender();
+            hdfAdjustDate.Value = counterCalender[3].Val.ToString();
 
             if (Session["UserName"] != null)
             {
