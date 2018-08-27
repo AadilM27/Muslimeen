@@ -48,7 +48,12 @@ C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.pdb
 C:\Users\S216541816\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
+=======
+C:\Users\s216387108\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
+C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
+>>>>>>> 0690e81e3b6f888b42a61e7f9f929642e2e9838f
 =======
 C:\Users\s216387108\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
