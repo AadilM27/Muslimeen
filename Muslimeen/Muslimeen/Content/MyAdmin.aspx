@@ -24,12 +24,6 @@
                             <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
                         </ul>
                         <ul class="col-5 navbar-nav flex-row justify-content-end">
-                            <li class="nav-item ml-0 mr-0">
-                            <asp:TextBox ID="txtSearch" TextMode="Search" runat="server"  class="search-box form-control form-control-sm" autocomplete="off" placeholder="Search"></asp:TextBox>
-                            </li>
-                            <li class="nav-item mr-2">
-                                <asp:ImageButton runat="server" Text="Go" ImageUrl="~/Content/Default/icons/Search.png" Height="31px" Width="31px" CssClass="topnav search-btn form-control form-control-sm" />
-                            </li>
                             <li class=" nav-item mr-2">
                             <asp:Button runat="server" Text="Login" ID="btnLogin" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnLogin_Click" />
                             </li>
@@ -852,22 +846,22 @@
                                     <p class="m-0">Pending Registrations</p>
                                 </div>
                                 <div class=" p-1 lst-container"  style="overflow-y:scroll;" >
-                                    <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="rptViewPendingSch_ItemCommand">
+                                    <asp:Repeater ID="rptMemberList" runat="server" OnItemCommand="rptViewPendingSch_ItemCommand">
                                         <HeaderTemplate>
                                         </HeaderTemplate>
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="btnShow" CommandArgument='<%#Eval("MemberID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShow_Click">
-                                                    <div class="p-0 form-row m-0 position-static p-1">
-                                                        <div class="col-auto position-static">
-                                                            <p style="font-size:small" class="p-0 m-0 text-truncate"><b>User&nbsp;Name: </b><%#Eval("MemberName") + ("MemberLastName")%><br/></p>
+                                            <asp:LinkButton ID="btnShowMember" CommandArgument='<%#Eval("MemberID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShowMember_Click">
+                                                    <div class="p-0 m-0 position-static p-1">
+                                                        <div class="col-auto p-0 position-static">
+                                                            <p style="font-size:small" class="p-0 border-0 m-0 text-truncate"><b>User&nbsp;Name: </b><%#Eval("MemberID")%><br/></p>
                                                         </div>
                                                         <div class=" col-auto position-static p-0">
                                                             <div class="">
-                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>User&nbsp;Name: </b><%#Eval("MemberID")%><br/></p>
+                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Full&nbsp;Name: </b><%#Eval("MemberName")%> <%#Eval("MemberLastName")%><br/></p>
                                                             </div>
-                                                                <hr class=" mr-4 m-0 p-0"/>
+                                                                <hr class=" m-0 p-0"/>
                                                             <div class="">
-                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Registered: </b><%#Convert.ToDateTime(Eval("ActivationDate")).ToString("dd MM yyyy")%></p>
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Registration Date: </b><%#Convert.ToDateTime(Eval("ActivationDate")).ToString("dd MM yyyy")%>&emsp;<b>Active:</b> <%#Convert.ToString(Eval("ActiveTypeID")).Replace("Y", "Yes") .Replace("N", "No") .Replace("T", "Temporary")%></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -890,7 +884,7 @@
                             </div>
                             <%-- Display Details of All Members --%>
                             <div runat="server" id="divMemberDetails" class=" col-6 col-xl-4 flex-nowrap p-0">
-                                <asp:HiddenField runat="server" ID="hdfMemberID" Value="" />
+                                <asp:HiddenField runat="server" ID="hdfAllMemberID" Value="" />
                                 <div class=" head-div-2 p-2 mb-0 text-left ">
                                     <p class="m-0">Scholar Details</p>
                                 </div>
@@ -899,77 +893,77 @@
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>Member  ID:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label1"></label>
+                                                <label class="m-0" runat="server" id="lblAllMemberID"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>First Name:</b></div>
                                             <div  class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label2"></label>
+                                                <label class="m-0" runat="server" id="lblAllMemberName"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>Last Name:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label3"></label>
+                                                <label class="m-0" runat="server" id="lblAllMemberLastName"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>Date of Birth:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label4"></label>
+                                                <label class="m-0" runat="server" id="lblAllMemberDOB"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>Member Type:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label5"></label>
+                                                <label class="m-0" runat="server" id="lblAllMemberType"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>E-mail:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label6"></label>
+                                                <label class="m-0" runat="server" id="lblAllEmail"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>Contact No.</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label7"></label>
+                                                <label class="m-0" runat="server" id="lblAllContactNo"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
-                                            <div class="col position-static"><b>Activation Expiry:</b></div>
+                                            <div class="col position-static"><b>Mosque ID:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label8"></label>
+                                                <label class="m-0" runat="server" id="lblAllMosque"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>Activation Date:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label9"></label>
+                                                <label class="m-0" runat="server" id="lblAllActivationDate"></label>
                                             </div>
                                         </div>
                                         <div class="row mb-1 position-static">
-                                            <div class="col position-static "><b>Qualification:</b></div>
+                                            <div class="col position-static "><b>Active:</b></div>
                                             <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="Label10"></label>
+                                                <asp:DropDownList CssClass="form-control form-control-sm col main-txtb" runat="server" ID="ddAllctiveTypeID"></asp:DropDownList>
                                             </div>
                                         </div>
                                     </div>
                                         <hr class="m-3 ml-3 mr-3 bg-secondary"/>
                                     <div class="container p-0 m-2 task-action">
                                         <h6 class="w-100 card-title card-header">
-                                            <img class="figure-img mr-2 mb-1 " src="MyAdmin/icons/outline_warning_black_18dp.png" />Before accepting registration:</h6>
-                                        <div class=" position-static m-0 card-body">
+                                            <img class="figure-img mr-2 mb-1 " src="MyAdmin/icons/outline_warning_black_18dp.png" />Before Changing Members Active status</h6>
+                                        <div class=" position-static m-0 pb-sm-0 pb-xl-5 card-body">
                                             <ul class="pl-1">
-                                                <li><p class="mb-0" ><small class="card-text">The Qualification that the scholar claims to have must be verified</small></p></li>
-                                                <li><p class="mb-0"><small class="card-text">Admins may contact the members by phone or email to set up interviews</small></p></li>
+                                                <li><p class="mb-0" ><small class="card-text">Changing the active status will disable the members account</small></p></li>
+                                                <li><p class="mb-0"><small class="card-text">Mosque representative and the Mosque they represent will be disabled</small></p></li>
                                             </ul>
                                         </div>
                                         <div class="card-footer text-center position-static text-nowrap">
-                                            <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="Button1" Text="Accept Registration" OnClick="btnAcceptReg_Click" />
-                                            <asp:Button CssClass=" topnav btn btn-sm btn-outline-light" runat="server" ID="Button2" Text="Reject Registration" OnClick="btnRejectReg_Click" />
+                                            <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnUpdateAllMember" Text="Update Active Status" OnClick="btnUpdateAllMember_Click" />
+                                            <asp:Button CssClass=" topnav btn btn-sm btn-outline-light" runat="server" ID="btnUpdateCancelAllMember" Text="Cancel" OnClick="btnUpdateCancelAllMember_Click" />
                                         </div>
                                     </div>
                                 </div>

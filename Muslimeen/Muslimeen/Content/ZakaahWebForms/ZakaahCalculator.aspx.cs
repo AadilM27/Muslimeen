@@ -18,6 +18,11 @@ namespace Muslimeen.Content.ZakaahWebForms
         {
             try
             {
+                DBHandler db = new DBHandler();
+                List<CounterCalender> counterCalender = new List<CounterCalender>();
+
+                counterCalender = db.BLL_GetCounterCalender();
+                hdfAdjustDate.Value = counterCalender[3].Val.ToString();
 
                 DBHandler dBHandler = new DBHandler();
 

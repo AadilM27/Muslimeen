@@ -15,8 +15,12 @@ namespace Muslimeen.Content.Mosque
         DBHandler db = new DBHandler();
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-            
+            DBHandler db = new DBHandler();
+            List<CounterCalender> counterCalender = new List<CounterCalender>();
+
+            counterCalender = db.BLL_GetCounterCalender();
+            hdfAdjustDate.Value = counterCalender[3].Val.ToString();
+
 
             if (Session["UserName"] != null)
             {
@@ -47,7 +51,6 @@ namespace Muslimeen.Content.Mosque
             
             BtnUpdate.Visible = false;
             BtnAdd.Visible = false;
-            divUpdateEvent.Visible = false;
 
             if (!IsPostBack)
             {
@@ -56,13 +59,10 @@ namespace Muslimeen.Content.Mosque
                 divManageTimes.Visible = false;
                 List<uspGetMosqueEvents> list = new List<uspGetMosqueEvents>();
                 list = db.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
-                ddlUpdateEvent.Items.Add("Select Event Date");
 
                 foreach (uspGetMosqueEvents events in list)
                 {
-                    ddlUpdateEvent.Items.Add(new ListItem(events.EventDate.ToString().Substring(0, 10)));
                 }
-                ddlUpdateEvent.DataBind();
 
 
             }
@@ -377,19 +377,19 @@ namespace Muslimeen.Content.Mosque
 
         protected void ddlUpdateEvent_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlUpdateEvent.SelectedValue.ToString() != "Select Event Date")
-            {
-                rptUpdateEvents.Visible = true;
-                DateTime startDate = Convert.ToDateTime(ddlUpdateEvent.SelectedValue.ToString());
-                DateTime EndDate = Convert.ToDateTime(ddlUpdateEvent.SelectedValue.ToString());
-                rptUpdateEvents.DataSource = db.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
-                rptUpdateEvents.DataBind();
-            }
-            else if (ddlUpdateEvent.SelectedValue.ToString() == "Select Event Date")
-            {
-                rptUpdateEvents.DataSource = null;
-                rptUpdateEvents.DataBind();
-            }
+            //if (ddlUpdateEvent.SelectedValue.ToString() != "Select Event Date")
+            //{
+            //    rptUpdateEvents.Visible = true;
+            //    DateTime startDate = Convert.ToDateTime(ddlUpdateEvent.SelectedValue.ToString());
+            //    DateTime EndDate = Convert.ToDateTime(ddlUpdateEvent.SelectedValue.ToString());
+            //    rptUpdateEvents.DataSource = db.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
+            //    rptUpdateEvents.DataBind();
+            //}
+            //else if (ddlUpdateEvent.SelectedValue.ToString() == "Select Event Date")
+            //{
+            //    rptUpdateEvents.DataSource = null;
+            //    rptUpdateEvents.DataBind();
+            //}
         }
 
         protected void btnViewDetails_Click(object sender, EventArgs e)
@@ -400,8 +400,6 @@ namespace Muslimeen.Content.Mosque
         protected void btnSelectEvent_Click(object sender, EventArgs e)
         {
             LinkButton btn = (LinkButton)sender;
-            rptUpdateEvents.Visible = false;
-            divUpdateEvent.Visible = true;
             uspGetSpecificEvent events = new uspGetSpecificEvent();
             Session["EventID"] = btn.CommandArgument.ToString();
             events = db.BLL_GetuspGetSpecificEvent(int.Parse(btn.CommandArgument.ToString()));
@@ -421,7 +419,7 @@ namespace Muslimeen.Content.Mosque
             try
             {
                 Event events = new Event();
-                events.EventID = 1;
+               // events.EventID = 1;
 
                 events.EventTitle = txtUpdateEventTitle.Text.ToString();
                 events.EventDescription = txtUpdateEventDescription.Text.ToString();
@@ -430,35 +428,33 @@ namespace Muslimeen.Content.Mosque
                 events.EventDate = Convert.ToDateTime(txtUpdateEventDate.Text.ToString());
                 events.Speaker = txtUpdateSpeaker.Text.ToString();
                 events.MosqueID = int.Parse(Session["MosqueID"].ToString());
-                db.BLL_UpdateEvent(events);
-                ddlUpdateEvent.SelectedIndex = 0;
-            }
+                db.BLL_UpdateEvent(events);            }
             catch { }
         }
 
         protected void btnRemoveEvent_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Event events = new Event();
-                events.EventID = int.Parse(Session["EventID"].ToString());
-                db.BLL_RemoveEvent(events);
+            //try
+            //{
+            //    Event events = new Event();
+            //    events.EventID = int.Parse(Session["EventID"].ToString());
+            //    db.BLL_RemoveEvent(events);
 
-                List<uspGetMosqueEvents> list = new List<uspGetMosqueEvents>();
-                list = db.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
+            //    List<uspGetMosqueEvents> list = new List<uspGetMosqueEvents>();
+            //    list = db.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
 
-                ddlUpdateEvent.Items.Clear();
-                ddlUpdateEvent.Items.Add("Select Event Date");
+            //    ddlUpdateEvent.Items.Clear();
+            //    ddlUpdateEvent.Items.Add("Select Event Date");
 
-                foreach (uspGetMosqueEvents even in list)
-                {
-                    ddlUpdateEvent.Items.Add(new ListItem(even.EventDate.ToString().Substring(0, 10)));
-                }
-                ddlUpdateEvent.DataBind();
+            //    foreach (uspGetMosqueEvents even in list)
+            //    {
+            //        ddlUpdateEvent.Items.Add(new ListItem(even.EventDate.ToString().Substring(0, 10)));
+            //    }
+            //    ddlUpdateEvent.DataBind();
 
-                ddlUpdateEvent.SelectedIndex = 0;
-            }
-            catch { }
+            //    ddlUpdateEvent.SelectedIndex = 0;
+            //}
+            //catch { }
 
         }
 
@@ -468,6 +464,8 @@ namespace Muslimeen.Content.Mosque
             divAddEvent.Visible = true;
             divEditEvent.Visible = false;
             divManageTimes.Visible = false;
+            divDeleteEvent.Visible = false;
+
         }
 
         protected void btnNavEditEvent_Click(object sender, EventArgs e)
@@ -476,6 +474,8 @@ namespace Muslimeen.Content.Mosque
             divAddEvent.Visible = false;
             divEditEvent.Visible = true;
             divManageTimes.Visible = false;
+            divDeleteEvent.Visible = false;
+
         }
 
         protected void btnNavManageTimes_Click(object sender, EventArgs e)
@@ -484,6 +484,33 @@ namespace Muslimeen.Content.Mosque
             divAddEvent.Visible = false;
             divEditEvent.Visible = false;
             divManageTimes.Visible = true;
+            divDeleteEvent.Visible = false;
+
+        }
+
+        protected void btnEvent_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                divViewActiveEvents.Visible = true;
+                DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
+                DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
+                rptGetEvents.DataSource = db.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
+                rptGetEvents.DataBind();
+            }
+            catch
+            {
+            }
+        }
+
+        protected void btnNavRemoveEvent_Click(object sender, EventArgs e)
+        {
+            lblTaskHeader.InnerText = btnNavEditEvent.Text.ToString();
+            divAddEvent.Visible = false;
+            divEditEvent.Visible = false;
+            divManageTimes.Visible = false;
+            divDeleteEvent.Visible = true;
         }
     }
 }

@@ -40,15 +40,6 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.HiddenField hdfAdjustDate;
         
         /// <summary>
-        /// txtSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
-        
-        /// <summary>
         /// btnLogin control.
         /// </summary>
         /// <remarks>
@@ -1282,13 +1273,13 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAllMembersList;
         
         /// <summary>
-        /// Repeater1 control.
+        /// rptMemberList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater1;
+        protected global::System.Web.UI.WebControls.Repeater rptMemberList;
         
         /// <summary>
         /// divMemberDetailsOverlay control.
@@ -1309,13 +1300,13 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMemberDetails;
         
         /// <summary>
-        /// hdfMemberID control.
+        /// hdfAllMemberID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdfMemberID;
+        protected global::System.Web.UI.WebControls.HiddenField hdfAllMemberID;
         
         /// <summary>
         /// div2 control.
@@ -1327,111 +1318,111 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div2;
         
         /// <summary>
-        /// Label1 control.
+        /// lblAllMemberID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAllMemberID;
         
         /// <summary>
-        /// Label2 control.
+        /// lblAllMemberName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAllMemberName;
         
         /// <summary>
-        /// Label3 control.
+        /// lblAllMemberLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAllMemberLastName;
         
         /// <summary>
-        /// Label4 control.
+        /// lblAllMemberDOB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label4;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAllMemberDOB;
         
         /// <summary>
-        /// Label5 control.
+        /// lblAllMemberType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label5;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAllMemberType;
         
         /// <summary>
-        /// Label6 control.
+        /// lblAllEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label6;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAllEmail;
         
         /// <summary>
-        /// Label7 control.
+        /// lblAllContactNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label7;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAllContactNo;
         
         /// <summary>
-        /// Label8 control.
+        /// lblAllMosque control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label8;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAllMosque;
         
         /// <summary>
-        /// Label9 control.
+        /// lblAllActivationDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label9;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAllActivationDate;
         
         /// <summary>
-        /// Label10 control.
+        /// ddAllctiveTypeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label10;
+        protected global::System.Web.UI.WebControls.DropDownList ddAllctiveTypeID;
         
         /// <summary>
-        /// Button1 control.
+        /// btnUpdateAllMember control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnUpdateAllMember;
         
         /// <summary>
-        /// Button2 control.
+        /// btnUpdateCancelAllMember control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button btnUpdateCancelAllMember;
     }
 }

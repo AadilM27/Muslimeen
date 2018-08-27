@@ -1,86 +1,4 @@
-﻿* {
-    box-sizing: border-box;
-}
-
-.header {
-    background-color: #256297;
-    font-family: sans-serif;
-    text-decoration-color: white;
-    text-align: center;
-    color: white;
-    font-size: 50px;
-}
-
-.title {
-    font-family: sans-serif;
-    color: white;
-    text-align: center;
-}
-
-/* Create two equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 50%;
-    padding: 10px;
-    height: 300px; /* Should be removed. Only for demonstration */
-}
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-    .column {
-        width: 100%;
-    }
-}
-
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #888;
-}
-
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-    }
-
-
-.lstBtn {
-    position: static;
-    background-color: #6e9bc3;
-    color: black;
-    padding: 0;
-    border-radius: 0px;
-    text-align: start;
-    font-size: small;
-    border: thin solid #256297;
-}
-
-    .lstBtn:hover {
-        color: white;
-        position: static;
-        border: dashed 2px black;
-    }
-
-
-
-
-/* Start coping from here to get heade and footer styling*/
+﻿/*Start styling for header and footer.*/
 body {
     background-color: #256297;
     height: 100%;
@@ -90,7 +8,7 @@ body {
 }
 
 html {
-    width: auto;
+    width: 100%;
 }
 
 .frmDefault {
@@ -112,8 +30,8 @@ html {
 .navbaritems {
     padding-right: 10px;
     padding-left: 10px;
-    padding-bottom: 0px;
-    padding-top: 0px;
+    padding-bottom: 0;
+    padding-top: 0;
     border-radius: 2px;
 }
 
@@ -145,6 +63,8 @@ html {
 
 .content {
     background-color: white;
+    min-height: 598px;
+    padding-right: 0;
 }
 
 .sticky {
@@ -186,9 +106,9 @@ html {
     border-top-color: #3F84C1;
     border-left-color: white;
     border-right-color: #3F84C1;
-    border-left: 0px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     width: 35px;
     background-color: none;
 }
@@ -245,19 +165,143 @@ html {
     color: #256297;
     align-self: center;
 }
-/*End copying from here for Header and footer*/
-
-.ModalPopupBG {
-    background-color: #666699;
-    filter: alpha(opacity=50);
-    opacity: 0.7;
+/*end styling for header and footer.*/
+.taskBtn {
+    font-weight: 500;
+    position: static;
+    background-color: white;
+    color: black;
+    padding: 0;
+    border-radius: 0px;
+    text-align: start;
 }
 
-.HellowWorldPopup {
-    min-width: 500%;
-    max-width: 100%;
-    min-height: 300px;
+    .taskBtn:hover {
+        background-color: #3F84C1;
+        color: white;
+        position: static;
+    }
+
+.sub-taskBtn {
+    font-weight: 500;
+    position: static;
+    background-color: white;
+    color: black;
+    padding: 0;
+    border-radius: 0px;
+    text-align: start;
+    font-size: small;
+    margin-left: 30px;
+}
+
+    .sub-taskBtn:hover {
+        background-color: #3F84C1;
+        color: white;
+        position: static;
+    }
+
+.divContainers {
+    min-height: 595px;
+    position: center;
+}
+
+.divBtnList {
+    align-items: center;
+}
+
+.lstBtn {
+    position: static;
+    background-color: #6e9bc3;
+    color: black;
+    padding: 0;
+    border-radius: 0px;
+    text-align: start;
+    font-size: small;
+    border: 2px solid #256297;
+}
+
+    .lstBtn:hover {
+        color: white;
+        position: static;
+        border: dashed 2px black;
+    }
+
+.head-div {
+    background-color: #256297;
+    color: white;
+    vertical-align: middle;
+    text-align: center;
+    font-size: x-large;
+    height: 55px;
+}
+
+.head-div-2 {
+    background-color: #3F84C1;
+    color: white;
+    vertical-align: middle;
+    text-align: center;
+    font-size: large;
+}
+
+.body-div {
+    background-color: #3F84C1;
+    color: white;
+}
+
+.basic-div-styling {
+    border: solid;
+    border-width: 1px;
+    border-color: #3F84C1;
+    border-radius: 5px;
+}
+
+.basic-div-styling-2 {
+    border: solid;
+    border-width: 1px;
+    border-color: rgba(0, 123, 255, 0.25);
+    border-radius: 0;
+}
+
+.side-bar {
+    min-width: 250px;
+    min-height: 700px;
+    float: left;
+    position: static;
+}
+
+.right-container {
+    min-height: 700px;
+    max-height: 700px;
+    position: static;
+}
+
+/*.dash-content {
+    min-height: 640px;
     max-height: 100%;
-    background: white;
-    overflow: auto;
+    min-width: 50%;
+    max-width: 50%;
+    margin-right:3px;
+}*/
+
+.right-bottom-div {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 650px;
+    max-height: 650px;
+    position: static;
+}
+
+.lst-container {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 590px;
+    max-height: 590px;
+    position: static;
+}
+
+.task-action {
+    height: 250px;
+    width: 98%;
+    position: static;
+    padding-bottom: 3px;
 }

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TypeLib.ViewModels;
 using Muslimeen.BLL;
+using TypeLib.Models;
 
 namespace Muslimeen.Content.Mosque
 {
@@ -14,7 +15,12 @@ namespace Muslimeen.Content.Mosque
         DBHandler db = new DBHandler();
         protected void Page_Load(object sender, EventArgs e)
         {
-         
+            DBHandler db = new DBHandler();
+            List<CounterCalender> counterCalender = new List<CounterCalender>();
+
+            counterCalender = db.BLL_GetCounterCalender();
+            hdfAdjustDate.Value = counterCalender[3].Val.ToString();
+
             if (Session["UserName"] != null)
             {
                 uspGetMember uspGetMember = new uspGetMember();

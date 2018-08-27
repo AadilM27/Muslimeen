@@ -25,20 +25,11 @@
             <nav class="navFixed">
                 <div class="row align-self-end">
                     <ul class=" col-7 navbar-nav flex-row justify-content-start">
-                        <asp:HiddenField runat="server" ID="hfAdjustDate" Value="-2" />
-                        <!--Need to get value from DB let admin adjust this -->
-                        <li class="nav-item ml-4 mr-0 mb-0 pt-2">
-                            <p class="IslamicDate mb-0" id="lstIslamicDate"></p>
-                        </li>
-                        <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
-                    </ul>
+                            <asp:HiddenField runat="server" ID="hdfAdjustDate" Value="" /> <!--Need to get value from DB let admin adjust this -->
+                            <li class="nav-item ml-4 mr-0 mb-0 pt-2"> <p class="IslamicDate mb-0" id="lstIslamicDate"></p></li>
+                            <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
+                        </ul>
                     <ul class="col-5 navbar-nav flex-row justify-content-end">
-                        <li class="nav-item ml-0 mr-0">
-                            <asp:TextBox ID="txtSearch" TextMode="Search" runat="server" class=" search-box form-control form-control-sm" autocomplete="off" placeholder="Search"></asp:TextBox>
-                        </li>
-                        <li class="nav-item mr-2">
-                            <asp:ImageButton runat="server" Text="Go" ImageUrl="~/Content/Default/icons/Search.png" Height="31px" Width="31px" CssClass="topnav search-btn form-control form-control-sm" />
-                        </li>
                         <li class=" nav-item mr-2">
                             <asp:Button runat="server" Text="Login" ID="btnLogin" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnLogin_Click" />
                         </li>
@@ -172,98 +163,136 @@
                                         <asp:Label ID="lblEishaJamaat" runat="server"></asp:Label></td>
                                 </tr>
 
-                            </table>
+                            </table>  
                          </div>
+                            <div runat="server" id="divSaveSalaahs" class=" col-12 col-xl-12 mw-100 p-0" style="position: static">
+                                            <div class="m-0 p-0 pt-2 pl-2">
+                                                <a runat="server" id="PDF" onserverclick="PDF_ServerClick">
+                                                    <img src="../MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
+                                                
+                                            </div>
+                                            <div id="divgrid" runat="server">
+                                                <asp:GridView ID="grdSalaah" RowStyle-Wrap="true" runat="server" Style="position: static; font-size: smaller;" CellPadding="6" ForeColor="#333333" GridLines="none">
+                                                    <AlternatingRowStyle BackColor="White" />
+                                                    <EditRowStyle BackColor="#2461BF" />
+                                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                                    <RowStyle BackColor="#EFF3FB" Wrap="true" />
+                                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                                </asp:GridView>
+                                            </div>
+                                        </div>
                     </div>
                   
 
                         <!--view mosque events-->
 
-                        <div runat="server" id="divDisplayEvents" class="position-static row m-0 p-0">
-                            <div class=" col position-static p-0">                         
-                            <div class=" head-div-2 p-2 mb-0 ">
-                                    <p class="m-0">List events by date range</p>
-                            </div>
-                                                <asp:Label ID="lblEventList" runat="server" Text="Please select a start and end date below " Font-Size="Medium" CssClass="pl-2 mb-3"></asp:Label>                               
-                                                <asp:Label ID="lblStartDate" runat="server" Text="Start Date:" CssClass="pl-2 mb-1"></asp:Label>
-                                                <asp:TextBox ID="txtStartDate" runat="server" TextMode="Date" CssClass="pl-2 mb-1"></asp:TextBox>
-                                                <asp:Label ID="lblEndDate" runat="server" Text="End Date:" CssClass="pl-2 mb-1"></asp:Label>
-                                                <asp:TextBox ID="txtEndDate" runat="server" TextMode="Date" CssClass="pl-2 mb-1"></asp:TextBox>
-                                                <asp:Button CssClass="btn center btn-outline-light topnav" ID="btnListEvents" runat="server" Text="List Events" OnClick="btnListEvents_Click" />
-<%--                                            <asp:CompareValidator ID="cmpVal1" ControlToCompare="txtStartDate" ControlToValidate="txtEndDate" Type="Date" Operator="GreaterThanEqual" ErrorMessage="*The end date has to be greater than the start date" runat="server"></asp:CompareValidator>--%>
-                                    
-                                <asp:Label ID="lblDateError" runat="server" Text="Please ensure a date is selected and the start date is before the end date"></asp:Label>
-                            </div>
-                        </div>
+                             <div class=" row bg-light position-static ml-1 mr-1 w-100 flex-nowrap" runat="server" id="divDisplayEvents"><%--flex-nowrap--%>
+                                <div class="col-3 p-0 mr-1">
+                                    <div class=" head-div-2 p-2 mb-0 text-left ">
+                                        <p class="m-0">Select Event Date Range</p>
+                                    </div>
+                                    <div class="table">
+                                        <div class="form-row">
+                                            <div class="form-group col-sm-6 mb-1">
+                                                <label class="col mb-0 p-0">Start Date: </label>
+                                                <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtStartDate"></asp:TextBox>
+                                            </div>
+                                            <div class="form-group col-sm-6 mb-1">
+                                                <label class="col mb-0 p-0">End Date: </label>
+                                                <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtEndDate"></asp:TextBox>
+                                            </div>
+                                            <div class="form-group col-1 mb-1 mt-1">
+                                                <asp:Button runat="server" ID="btnListEvents" Text="List Events" CssClass="topnav btn btn-md btn-outline-light" OnClick="btnListEvents_Click" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <div class="row" runat="server" id="divListEventDetails">
-                        <div runat="server" id="divListEvent" class="position-static col m-0 p-0">
-                            <div class=" head-div-2 p-2 mb-0 ">
-                                    <p class="m-0">List of events:</p>
-                            </div>
-                            <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
-                                <asp:Repeater ID="RptEventList" runat="server" OnItemCommand="RptEventList_ItemCommand">
-                                    <HeaderTemplate>
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="btnEventList" CommandArgument='<%#Eval("EventID")%>' CssClass=" position-static list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnEventList_Click">
-                                        <div class="p-0 form-row m-0 position-static">                       
-                                                        <div class=" mr-4 m-0 p-0">
-                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Event&nbsp;Title: </b><%#Eval("EventTitle")%></p>                                       
+                                <div class="col-3 col-xl-4 p-0 mr-1" runat="server" id="divListEventDetails">
+                                    <div runat="server" id="divListEvent" class="position-static m-0 p-0">
+                                    <div class=" head-div-2 p-2 mb-1 text-left">
+                                        <p class="m-0">Mosque Events</p>
+                                    </div>
+                                    <div class="p-1 lst-container" style="overflow-y: scroll;">
+                                        <asp:Repeater ID="RptEventList" runat="server" OnItemCommand="RptEventList_ItemCommand">
+                                            <HeaderTemplate>
+                                            </HeaderTemplate>
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="btnEventList" CommandArgument='<%#Eval("EventID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnEventList_Click" EnableViewState="true">
+                                                <div class="p-0 form-row m-0 position-static p-1">
+                                                    <div class=" col-auto position-static p-0">
+                                                        <div class="">
+                                                            <p style="font-size: small" class="p-0 m-0 text-truncate">
+                                                                <b>Event&nbsp;Title: </b><%#Eval("EventTitle").ToString()%><br />
+                                                            </p>
                                                         </div>
-                                                       <div class=" mr-4 m-0 p-0">
-                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Event&nbsp;Date: </b><%# Convert.ToDateTime(Eval("EventDate")).ToString("dd MM yyyy")%></p>
+                                                        <hr class=" mr-4 m-0 p-0" />
+                                                        <div class="">
+                                                            <p style="font-size: smaller;" class="p-0 m-0 text-truncate"><b>Event Date: </b><%#Convert.ToDateTime(Eval("EventDate")).ToString("dd MM yyyy")%></p>
                                                         </div>
-                                              </div>
-                                        </asp:LinkButton>
-                                    </ItemTemplate>
-                                   <FooterTemplate>
-                                  </FooterTemplate>
-                                </asp:Repeater>
-                            </div>
-                        </div>
+                                                    </div>
+                                                </div>
+                                                </asp:LinkButton>
+                                                <hr class="p-0 m-1" />
+                                            </ItemTemplate>
+                                            <FooterTemplate>
+                                            </FooterTemplate>
+                                        </asp:Repeater>
+                                    </div>
+                                </div>
+                                    </div>
 
-                          <div runat="server" id="divEvent" class=" position-static col dash-content p-0 m-0">
-                            <asp:HiddenField runat="server" ID="hdfEvent" Value="" />
-                            <div class=" head-div-2 p-2 mb-0 ">
-                                    <p class="m-0">Selected Event Details:</p>
-                            </div>
-                            <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
-                                <div class="mt-0 p-2">
-                                     <div class="row position-static">
-                                        <div class="col position-static"><b>Event Description: </b></div>
-                                        <div class="col position-static">
-                                            <label runat="server" id="lblEventDescription"></label>
-                                        </div>
+                                <div runat="server" id="divEvent" class=" col-4 p-0 flex-nowrap mr-2">
+                                    <asp:HiddenField runat="server" ID="hdfEvent" Value="" />
+                                    <div class=" head-div-2 p-2 mb-0 text-left ">
+                                        <label runat="server" class="mb-0">Selected event details:</label>
                                     </div>
-                                    <div class="row position-static">
-                                        <div class="col position-static"><b>Speaker: </b></div>
-                                        <div class="col position-static">
-                                            <label runat="server" id="lblSpeaker"></label>
-                                        </div>
+                                    <div runat="server" id="lblEventTitle" class="">
+                                        <h5 class="p-0 m-0"></h5>
                                     </div>
-                                    <div class="row position-static">
-                                        <div class="col position-static"><b>Event Date: </b></div>
-                                        <div class="col position-static">
-                                            <label runat="server" id="lblEventDate"></label>
+                                    <hr class="m-3 ml-3 mr-3 bg-secondary" />
+                                    <div style="overflow-y: scroll; overflow-x:scroll;">
+                                    <div class="container" runat="server" id="divEventDetails">
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Speaker:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblSpeaker"></label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row position-static">
-                                        <div class="col position-static"><b>Start Time: </b></div>
-                                        <div class="col position-static">
-                                            <label runat="server" id="lblEventStarTime"></label>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Event Date:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblEventDate"></label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row position-static">
-                                        <div class="col position-static"><b>End Time: </b></div>
-                                        <div class="col position-static">
-                                            <label runat="server" id="lblEventEndTime"></label>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Start Time:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblEventStartTime"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>End Time:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblEventEndTime"></label>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-1 position-static">
+                                            <div class="col position-static"><b>Description:</b></div>
+                                            <div class="col position-static">
+                                                <label class="m-0" runat="server" id="lblEventDescription"></label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                            </div>
                         <!--Notifications-->
                         <div runat="server" id="divDiplayNotifications" class="position-static dash-content p-0">
                             <div class=" head-div-2 p-2 mb-0 ">
@@ -274,7 +303,7 @@
                                     <HeaderTemplate>
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnShowNotice" CommandArgument='<%#Eval("NoticeID")%>' CssClass=" position-static list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShowNotice_Click">
+                                        <asp:LinkButton ID="btnShowNotice" CommandArgument='<%#Eval("NoticeID")%>' CssClass="position-static lstBtn btn btn-block h-100" runat="server" OnClick="btnShowNotice_Click">
                                         <div class="p-0 form-row m-0 position-static">
                                                         <div class=" col-auto position-static p-0">
                                                             <div class="">
@@ -282,7 +311,7 @@
                                                             </div>
                                                             <hr class=" mr-4 m-0 p-0"/>
                                                             <div class="">
-                                                                 <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Notice&nbsp;Date: </b><%#Convert.ToDateTime(Eval("NoticeDate")).ToString("dd MM yyyy")%><br/></p>
+                                                                 <p style="font-size:small" class="p-0 m-0 text-truncate"><b>Notice&nbsp;Date: </b><%#Convert.ToDateTime(Eval("DateCreated")).ToString("dd MM yyyy")%><br/></p>
                                                             </div>
 
                                                         </div>
@@ -336,7 +365,7 @@
                                     <HeaderTemplate>
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnShowArt" EnableViewState="true" CommandArgument='<%#Eval("ArticleID")%>' CssClass=" position-static list-group-item list-group-item-action  p-1 m-0" runat="server" OnClick="btnShowArt_Click">
+                                        <asp:LinkButton ID="btnShowArt" EnableViewState="true" CommandArgument='<%#Eval("ArticleID")%>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShowArt_Click">
                                         <div class="p-0 form-row m-0 position-static">
                                                         <div class=" col-auto position-static p-0">
                                                             <div class="">
@@ -360,7 +389,7 @@
                             </div>
                         </div>
 
-                           <div class="container text-nowrap dash-content" runat="server" id="divSchDetailsOverlay">
+                           <div class="container text-nowrap dash-content col-3" runat="server" id="divSchDetailsOverlay">
                                 <div class="w-100 h-100 container text-center">
                                     <div class=" container h-25 mb-3"></div>
                                     <h6 class="card-title h-50 mt-5 pt-5"><img class="figure-img mr-2" src="MyAdmin/icons/outline_error_outline_black_18dp.png" />No selection was made </h6>

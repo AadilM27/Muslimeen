@@ -14,11 +14,22 @@ namespace Muslimeen.Content.Learn_Islam
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            DBHandler db = new DBHandler();
+            List<CounterCalender> counterCalender = new List<CounterCalender>();
+
+            counterCalender = db.BLL_GetCounterCalender();
+            hdfAdjustDate.Value = counterCalender[3].Val.ToString();
+
             DBHandler dBHandler = new DBHandler();
 
             //Pending Link Article Source
             repeatLink.DataSource = dBHandler.BLL_GetLearnArticle();
             repeatLink.DataBind();
+
+            divNoSelected.Visible = false;
+            divPendingArticles.Visible = true;
+            
 
             if (Session["UserName"] != null)
             {
@@ -127,21 +138,20 @@ namespace Muslimeen.Content.Learn_Islam
 
         protected void btnShow_Click(object sender, EventArgs e)
         {
+            divNoSelected.Visible = true;
 
             LinkButton linkButton = (LinkButton)sender;
 
             string art = linkButton.CommandArgument.ToString();
-            hfdRej.Value = art;
+            hdfSchId.Value = art;
 
             DBHandler han = new DBHandler();
             uspGetSelectedLearnArticle pen = new uspGetSelectedLearnArticle();
 
             pen = han.BLL_GetSelectedLearnArticle(int.Parse(art));
-            lblRTitle.InnerText = pen.ArticleTitle.ToString();
-            lblRContent.InnerText = pen.ArticleContent.ToString();
-            lblRDate.InnerText = pen.DateCreated.ToString();
-            lblScholar.InnerText = pen.ScholarID.ToString();
-
+            lblTitle.InnerText = pen.ArticleTitle.ToString();
+            lblContent.InnerText = pen.ArticleContent.ToString();
+            lblDate.InnerText = pen.DateCreated.ToString();
         }
     }
 }
