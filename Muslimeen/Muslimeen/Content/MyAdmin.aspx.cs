@@ -1598,21 +1598,23 @@ namespace Muslimeen.Content
                     grdAdminReports.HeaderRow.Cells[6].Text = "Contact Number";
                     grdAdminReports.HeaderRow.Cells[7].Text = "Mosque";
                     grdAdminReports.HeaderRow.Cells[8].Text = "Date Registered";
+
                 }
 
+                grdAdminReports.HeaderRow.Font.Size = 16;
 
-                DBHandler han = new DBHandler();
+               DBHandler han = new DBHandler();
                 PdfPTable pdfTable = new PdfPTable(grdAdminReports.HeaderRow.Cells.Count);
                 pdfTable.HorizontalAlignment = 0;
 
-
                 foreach (TableCell Headercell in grdAdminReports.HeaderRow.Cells)
                 {
-
-                    iTextSharp.text.Font font = new iTextSharp.text.Font();
+                    iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 11, iTextSharp.text.Font.BOLD);
                     font.Color = new BaseColor(grdAdminReports.HeaderStyle.ForeColor);
 
                     PdfPCell pdfCell = new PdfPCell(new Phrase(Headercell.Text, font));
+                    pdfCell.HorizontalAlignment = 1;
+                    pdfCell.Padding = 5;
                     pdfCell.BackgroundColor = new BaseColor(grdAdminReports.HeaderStyle.BackColor);
                     pdfTable.AddCell(pdfCell);
                 }
@@ -1623,8 +1625,10 @@ namespace Muslimeen.Content
                     {
                         iTextSharp.text.Font font = new iTextSharp.text.Font();
                         font.Color = new BaseColor(grdAdminReports.RowStyle.ForeColor);
-
-                        PdfPCell pdfcell = new PdfPCell(new Phrase(tablecell.Text));
+                        iTextSharp.text.Font content = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 9, iTextSharp.text.Font.BOLD);
+                        PdfPCell pdfcell = new PdfPCell(new Phrase(tablecell.Text, content));
+                        pdfcell.HorizontalAlignment = 1;
+                        pdfcell.VerticalAlignment = 2;
                         pdfcell.BackgroundColor = new BaseColor(grdAdminReports.RowStyle.BackColor);
                         pdfTable.AddCell(pdfcell);
                     }
@@ -1633,7 +1637,33 @@ namespace Muslimeen.Content
                 Document pdfDocument = new Document(new RectangleReadOnly(842, 595), 10f, -200f, 10f, 0f);
                 PdfAWriter.GetInstance(pdfDocument, Response.OutputStream);
 
+                pdfTable.DefaultCell.Padding = 5;
+                pdfTable.DefaultCell.VerticalAlignment = PdfPCell.ALIGN_CENTER;
+                
+                PdfPTable table = new PdfPTable(1);
+                iTextSharp.text.Font fontH1 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 24, iTextSharp.text.Font.BOLD);
+                iTextSharp.text.Font fontH2 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD);
+                table.WidthPercentage = 80;
+                table.HorizontalAlignment = 0;
+                table.DefaultCell.Padding = 30;
+                table.DefaultCell.HorizontalAlignment = 1;
+                table.DefaultCell.VerticalAlignment = 1;
+                Paragraph para = new Paragraph("Report of All Members Details", fontH1);
+                Paragraph para2 = new Paragraph("Muslimeen Website", fontH2);
+                para2.Alignment = 2;
+                Paragraph date = new Paragraph(DateTime.Now.Date.ToString("dd MMM yyyy"), fontH2);
+                PdfPCell header2 = new PdfPCell(date);
+                header2.AddElement(para2);
+                header2.HorizontalAlignment = 0;
+                header2.VerticalAlignment = 0;
+                header2.Padding = 10;
+                table.AddCell(para);
+                table.AddCell(header2);
+
+
                 pdfDocument.Open();
+                pdfDocument.AddTitle("All Members Details Report");
+                pdfDocument.Add(table);
                 pdfDocument.Add(pdfTable);
                 pdfDocument.Close();
 

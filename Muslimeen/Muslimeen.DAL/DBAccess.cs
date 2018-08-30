@@ -1888,19 +1888,26 @@ namespace Muslimeen.BLL
                 {
                     foreach (DataRow row in table.Rows)
                     {
-                        uspReportGetAllMembers details = new uspReportGetAllMembers
+                        uspReportGetAllMembers details = new uspReportGetAllMembers();
+
+
+                        details.MemberName = Convert.ToString(row["Name"]);
+                        details.MemberLastName = Convert.ToString(row["Last Name"]);
+                        details.MemberDOB = Convert.ToDateTime(row["Date of Birth"]);
+                        details.MemberType = Convert.ToChar(row["Member Type"]);
+                        details.ActiveTypeID = Convert.ToChar(row["Active"]);
+                        details.Email = Convert.ToString(row["Email Address"]);
+                        details.ContactNo = Convert.ToString(row["Contact Number"]);
+                        if (!(row["Mosque"] is DBNull))
                         {
-                            MemberName = Convert.ToString(row["Name"]),
-                            MemberLastName = Convert.ToString(row["Last Name"]),
-                            MemberDOB = Convert.ToDateTime(row["Date of Birth"]),
-                            MemberType = Convert.ToChar(row["Member Type"]),
-                            ActiveTypeID = Convert.ToChar(row["Active"]),
-                            Email = Convert.ToString(row["Email Address"]),
-                            ContactNo = Convert.ToString(row["Contact Number"]),
-                            MosqueID = Convert.ToInt32(row["Mosque"]),
-                            ActivationDate = Convert.ToDateTime(row["Date Registered"]),
-                            
-                        };
+                            details.MosqueID = Convert.ToInt32(row["Mosque"]);
+                        }
+                        else
+                        {
+                            details.MosqueID = null;
+                        }
+                        details.ActivationDate = Convert.ToDateTime(row["Date Registered"]);
+                        
                         list.Add(details);
                     }
                 }
