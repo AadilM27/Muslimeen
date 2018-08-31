@@ -39,12 +39,12 @@
                     </ul>
                     <!---->
                 </div>
-                <div class="row" runat="server" id="divUserProfile">
-                    <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
-                        <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
-                        </asp:HyperLink><asp:Image Style="height: 15px; width: 15px;" runat="server" ID="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="~/Content/Default/icons/EditProfile.png" />
-                    </div>
-                </div>
+                 <div class="row" runat="server" id="divUserProfile" >
+                        <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
+                            <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
+                            </asp:HyperLink><asp:Image style="height:15px; width:15px;" runat="server" id="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="~/Content/Default/icons/EditProfile.png"/>
+                        </div>
+                 </div>
             </nav>
             <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50);">
                 <div class=" text-center">
@@ -192,8 +192,8 @@
 
                         <!--view mosque events-->
 
-                             <div class=" row bg-light position-static ml-1 mr-1 w-100 flex-nowrap" runat="server" id="divDisplayEvents"><%--flex-nowrap--%>
-                                <div class="col-3 p-0 mr-1">
+                             <div class=" row bg-light position-static ml-1 mr-1 w-100 flex-nowrap col" runat="server" id="divDisplayEvents"><%--flex-nowrap--%>
+                                <div class="col p-0 mr-1">
                                     <div class=" head-div-2 p-2 mb-0 text-left ">
                                         <p class="m-0">Select Event Date Range</p>
                                     </div>
@@ -214,7 +214,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-3 col-xl-4 p-0 mr-1" runat="server" id="divListEventDetails">
+                                <div class="col col-xl-4 p-0 mr-1" runat="server" id="divListEventDetails">
                                     <div runat="server" id="divListEvent" class="position-static m-0 p-0">
                                     <div class=" head-div-2 p-2 mb-1 text-left">
                                         <p class="m-0">Mosque Events</p>
@@ -389,6 +389,8 @@
                             </div>
                         </div>
 
+
+                                   
                            <div class="container text-nowrap dash-content col-3" runat="server" id="divSchDetailsOverlay">
                                 <div class="w-100 h-100 container text-center">
                                     <div class=" container h-25 mb-3"></div>

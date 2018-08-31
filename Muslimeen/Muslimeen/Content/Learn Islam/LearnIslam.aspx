@@ -187,7 +187,6 @@
                                     </FooterTemplate>
                                 </asp:Repeater>
                             </div>
-<<<<<<< HEAD
                         </div>
 
                         
@@ -216,7 +215,6 @@
                                 </div>
                             </div>
                         </div>
-=======
                         </div>
 
                         
@@ -245,12 +243,9 @@
                                 </div>
                             </div>
                         </div>
->>>>>>> 0690e81e3b6f888b42a61e7f9f929642e2e9838f
                     </div>
                 </div>
-            </div>
-        </div>
-        
+            </div>        
     </form>
     
     <!--Footer-->
