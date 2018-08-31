@@ -89,6 +89,7 @@
                             <asp:Button ID="btnAddNotice" CssClass="pl-2 btn taskBtn mb-1"   runat ="server" Text="Add new Notice" OnClick="btnAddNotice_Click" />
                                 <asp:Button runat="server" ID="btnUpdateNotice" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnUpdateNotice_Click" Text="Update a Notice" />
                             <asp:Button runat="server" ID="btnUpdateDateCounter" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnUpdateDateCounter_Click" Text="Update Date and Count Down" />
+                            <asp:Button runat="server" ID="btnReportViewMembers" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnReportViewMembers_Click" Text="All Member Details Reports" />
                         </nav>
                     </div>
                     <div class=" position-static basic-div-styling p-0 w-100 position-relative">
@@ -967,6 +968,32 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div runat="server" id="divAdminReports" class=" col-12 col-xl-12 mw-100 p-0">
+                                    <div class=" head-div-2 p-2 mb-0 text-center ">
+                                        <p class="m-0" runat ="server" id ="lblAdminReportHeading">Report</p>
+                                    </div>
+                                    <div class="m-0 p-0 pt-2 pl-2">
+                                        <a runat="server" id="lnkAdminPrintPDF" onserverclick="lnkAdminPrintPDF_ServerClick"><img src="MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
+                                        <hr class="m-0 mt-1 p-0" style="background-color:#0026ff; height:1px;" />
+                                    </div>
+                                    <div class=" col-12 col-xl-12 p-2" style="overflow-x:scroll;position:static">
+                                        <asp:GridView ID="grdAdminReports" RowStyle-Wrap="true" runat="server" style="position:static; font-size:smaller;" CellPadding="6" ForeColor="#333333" GridLines="none" >
+                                            <AlternatingRowStyle BackColor="White" />
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                            <RowStyle BackColor="#EFF3FB"  Wrap="true" />
+                                            <SelectedRowStyle  BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                        </asp:GridView>
+                                    </div>
+                                </div>  
+
+
                         </div>
                     </div>
                 </div>

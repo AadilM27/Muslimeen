@@ -1502,7 +1502,7 @@ namespace Muslimeen.BLL
                     pen.ArticleTitle = Convert.ToString(row["ArticleTitle"]);
                     pen.ArticleContent = Convert.ToString(row["ArticleContent"]);
                     pen.DateCreated = Convert.ToDateTime(row["DateCreated"]).Date;
-                    pen.ScholarID = Convert.ToString(row["ScholarID"]);
+                    pen.ScholarName = Convert.ToString(row["Scholar Name"]);
                 }
             }
             return pen;
@@ -1839,7 +1839,6 @@ namespace Muslimeen.BLL
             }
             return DBHelper.NonQuery("uspInsertForumTopics", CommandType.StoredProcedure, parameters.ToArray());
         }
-
         public bool InsertPostings(uspGetPostings post)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
@@ -1867,7 +1866,6 @@ namespace Muslimeen.BLL
             }
             return DBHelper.NonQuery("uspDeleteForumTopic", CommandType.StoredProcedure, parameters.ToArray());
         }
-
         public bool DeletePostings(uspGetPostings post)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
@@ -1880,6 +1878,41 @@ namespace Muslimeen.BLL
                 }
             }
             return DBHelper.NonQuery("uspDeletePostings", CommandType.StoredProcedure, parameters.ToArray());
+        }
+        public List<uspReportGetAllMembers> ReportGetAllMembers()
+        {
+            List<uspReportGetAllMembers> list = new List<uspReportGetAllMembers>();
+            using (DataTable table = DBHelper.Select("uspReportGetAllMembers", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspReportGetAllMembers details = new uspReportGetAllMembers();
+
+
+                        details.MemberName = Convert.ToString(row["Name"]);
+                        details.MemberLastName = Convert.ToString(row["Last Name"]);
+                        details.MemberDOB = Convert.ToDateTime(row["Date of Birth"]);
+                        details.MemberType = Convert.ToChar(row["Member Type"]);
+                        details.ActiveTypeID = Convert.ToChar(row["Active"]);
+                        details.Email = Convert.ToString(row["Email Address"]);
+                        details.ContactNo = Convert.ToString(row["Contact Number"]);
+                        if (!(row["Mosque"] is DBNull))
+                        {
+                            details.MosqueID = Convert.ToInt32(row["Mosque"]);
+                        }
+                        else
+                        {
+                            details.MosqueID = null;
+                        }
+                        details.ActivationDate = Convert.ToDateTime(row["Date Registered"]);
+                        
+                        list.Add(details);
+                    }
+                }
+            }
+            return list;
         }
 
     }

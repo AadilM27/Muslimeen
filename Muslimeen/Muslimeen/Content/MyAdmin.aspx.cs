@@ -11,6 +11,10 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Globalization;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+
+
 
 namespace Muslimeen.Content
 {
@@ -78,7 +82,7 @@ namespace Muslimeen.Content
 
                         foreach (uspGetQualification qual in list)
                         {
-                            ddModQualification.Items.Add(new ListItem(qual.QualificationDescription.ToString(),
+                            ddModQualification.Items.Add(new System.Web.UI.WebControls.ListItem(qual.QualificationDescription.ToString(),
                                 qual.QualificationID.ToString()));
                         }
 
@@ -1511,9 +1515,9 @@ namespace Muslimeen.Content
 
             ddAllctiveTypeID.Items.Clear();
             activeType = db.BLL_GetAllActiveTypes();
-            ddAllctiveTypeID.Items.Add(new ListItem(activeType[0].ActiveDescription.ToString(), activeType[0].ActiveTypeID.ToString()));
-            ddAllctiveTypeID.Items.Add(new ListItem(activeType[1].ActiveDescription.ToString(), activeType[1].ActiveTypeID.ToString()));
-            ddAllctiveTypeID.Items.Add(new ListItem(activeType[2].ActiveDescription.ToString(), activeType[2].ActiveTypeID.ToString()));
+            ddAllctiveTypeID.Items.Add(new System.Web.UI.WebControls.ListItem(activeType[0].ActiveDescription.ToString(), activeType[0].ActiveTypeID.ToString()));
+            ddAllctiveTypeID.Items.Add(new System.Web.UI.WebControls.ListItem(activeType[1].ActiveDescription.ToString(), activeType[1].ActiveTypeID.ToString()));
+            ddAllctiveTypeID.Items.Add(new System.Web.UI.WebControls.ListItem(activeType[2].ActiveDescription.ToString(), activeType[2].ActiveTypeID.ToString()));
 
             lblAllMemberID.InnerText = member.MemberID;
             lblAllMemberName.InnerText = member.MemberName;
@@ -1574,6 +1578,120 @@ namespace Muslimeen.Content
             divMemberDetails.Visible = false;
             divMemberDetailsOverlay.Visible = false;
             lblTaskHead.InnerText = String.Empty;
+        }
+
+        protected void lnkAdminPrintPDF_ServerClick(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                if (lblAdminReportHeading.InnerText == "All Members Details Report")
+                {
+
+                    grdAdminReports.HeaderRow.Cells[0].Text = "Firstname";
+                    grdAdminReports.HeaderRow.Cells[1].Text = "Lastname";
+                    grdAdminReports.HeaderRow.Cells[2].Text = "Date Of Birth";
+                    grdAdminReports.HeaderRow.Cells[3].Text = "Member Type";
+                    grdAdminReports.HeaderRow.Cells[4].Text = "Active";
+                    grdAdminReports.HeaderRow.Cells[5].Text = "Email Address";
+                    grdAdminReports.HeaderRow.Cells[6].Text = "Contact Number";
+                    grdAdminReports.HeaderRow.Cells[7].Text = "Mosque";
+                    grdAdminReports.HeaderRow.Cells[8].Text = "Date Registered";
+
+                }
+
+                grdAdminReports.HeaderRow.Font.Size = 16;
+
+               DBHandler han = new DBHandler();
+                PdfPTable pdfTable = new PdfPTable(grdAdminReports.HeaderRow.Cells.Count);
+                pdfTable.HorizontalAlignment = 0;
+
+                foreach (TableCell Headercell in grdAdminReports.HeaderRow.Cells)
+                {
+                    iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 11, iTextSharp.text.Font.BOLD);
+                    font.Color = new BaseColor(grdAdminReports.HeaderStyle.ForeColor);
+
+                    PdfPCell pdfCell = new PdfPCell(new Phrase(Headercell.Text, font));
+                    pdfCell.HorizontalAlignment = 1;
+                    pdfCell.Padding = 5;
+                    pdfCell.BackgroundColor = new BaseColor(grdAdminReports.HeaderStyle.BackColor);
+                    pdfTable.AddCell(pdfCell);
+                }
+
+                foreach (GridViewRow gridviewrow in grdAdminReports.Rows)
+                {
+                    foreach (TableCell tablecell in gridviewrow.Cells)
+                    {
+                        iTextSharp.text.Font font = new iTextSharp.text.Font();
+                        font.Color = new BaseColor(grdAdminReports.RowStyle.ForeColor);
+                        iTextSharp.text.Font content = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 9, iTextSharp.text.Font.BOLD);
+                        PdfPCell pdfcell = new PdfPCell(new Phrase(tablecell.Text, content));
+                        pdfcell.HorizontalAlignment = 1;
+                        pdfcell.VerticalAlignment = 2;
+                        pdfcell.BackgroundColor = new BaseColor(grdAdminReports.RowStyle.BackColor);
+                        pdfTable.AddCell(pdfcell);
+                    }
+                }
+
+                Document pdfDocument = new Document(new RectangleReadOnly(842, 595), 10f, -200f, 10f, 0f);
+                PdfAWriter.GetInstance(pdfDocument, Response.OutputStream);
+
+                pdfTable.DefaultCell.Padding = 5;
+                pdfTable.DefaultCell.VerticalAlignment = PdfPCell.ALIGN_CENTER;
+                
+                PdfPTable table = new PdfPTable(1);
+                iTextSharp.text.Font fontH1 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 24, iTextSharp.text.Font.BOLD);
+                iTextSharp.text.Font fontH2 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD);
+                table.WidthPercentage = 80;
+                table.HorizontalAlignment = 0;
+                table.DefaultCell.Padding = 30;
+                table.DefaultCell.HorizontalAlignment = 1;
+                table.DefaultCell.VerticalAlignment = 1;
+                Paragraph para = new Paragraph("Report of All Members Details", fontH1);
+                Paragraph para2 = new Paragraph("Muslimeen Website", fontH2);
+                para2.Alignment = 2;
+                Paragraph date = new Paragraph(DateTime.Now.Date.ToString("dd MMM yyyy"), fontH2);
+                PdfPCell header2 = new PdfPCell(date);
+                header2.AddElement(para2);
+                header2.HorizontalAlignment = 0;
+                header2.VerticalAlignment = 0;
+                header2.Padding = 10;
+                table.AddCell(para);
+                table.AddCell(header2);
+
+
+                pdfDocument.Open();
+                pdfDocument.AddTitle("All Members Details Report");
+                pdfDocument.Add(table);
+                pdfDocument.Add(pdfTable);
+                pdfDocument.Close();
+
+                Response.ContentType = "application/pdf";
+                Response.AppendHeader("content-disposition", "attachment;filename=MuslimeenReports.pdf");
+                Response.Write(pdfDocument);
+                Response.Flush();
+                Response.End();
+            }
+            catch(NullReferenceException)
+            {
+
+            }
+           
+        }
+
+        protected void btnReportViewMembers_Click(object sender, EventArgs e)
+        {
+            DBHandler db = new DBHandler();
+
+            lblAdminReportHeading.InnerText = "All Members Details Report";
+
+
+
+            grdAdminReports.DataSource = db.BLL_ReportGetAllMembers();
+            grdAdminReports.DataBind();
+
+
         }
     }
 }

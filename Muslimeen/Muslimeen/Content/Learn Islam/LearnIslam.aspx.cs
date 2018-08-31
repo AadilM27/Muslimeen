@@ -151,7 +151,9 @@ namespace Muslimeen.Content.Learn_Islam
             pen = han.BLL_GetSelectedLearnArticle(int.Parse(art));
             lblTitle.InnerText = pen.ArticleTitle.ToString();
             lblContent.InnerText = pen.ArticleContent.ToString();
-            lblDate.InnerText = pen.DateCreated.ToString();
+            string dateCreated = pen.DateCreated.ToString("yyyy/MM/dd");
+            lblDate.InnerText = Convert.ToDateTime(dateCreated).ToString("dd/MM/yyyy");
+            lblScholar.InnerText = pen.ScholarName.ToString();
         }
     }
 }
