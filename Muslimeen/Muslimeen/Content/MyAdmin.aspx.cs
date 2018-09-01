@@ -27,6 +27,7 @@ namespace Muslimeen.Content
 
             try
             {
+                divAdminReports.Visible = false;
                 divAllMembersList.Visible = false;
                 divMemberDetails.Visible = false;
                 divMemberDetailsOverlay.Visible = false;
@@ -500,7 +501,7 @@ namespace Muslimeen.Content
                             txtContactNum.BorderColor = Color.Red;
                         }
                     }
-                    else if(ddMosqueActive.SelectedValue == "None")
+                    else if (ddMosqueActive.SelectedValue == "None")
                     {
                         lblError.Text = "Mosque has to be either Yes or No";
                         lblError.ForeColor = Color.Red;
@@ -555,7 +556,7 @@ namespace Muslimeen.Content
                         string fileName = fupMosqueImage.FileName.ToString();
                         string fileFormat = fileName.Substring(fileName.Length - 3); //get last character of Image name.
 
-                        fupMosqueImage.SaveAs(Server.MapPath("~/Content/Images/MosqueImages/") + txtMosqueName.Text.ToString().ToString() + "." +fileFormat.ToString()); //Image to upload ...
+                        fupMosqueImage.SaveAs(Server.MapPath("~/Content/Images/MosqueImages/") + txtMosqueName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
                         //Server.MapPath("~/") + filename
                         addMosque.MosqueImage = ("~/Content/Images/MosqueImages/" + txtMosqueName.Text.ToString() + "." + fileFormat.ToString());
                     }
@@ -824,7 +825,7 @@ namespace Muslimeen.Content
             hdfZakaahOrg.Value = orgID;
 
             Cache.Remove("divAddUpdateZakaahOrg");
-            
+
             DBHandler db = new DBHandler();
             Organization org = new Organization();
 
@@ -891,101 +892,101 @@ namespace Muslimeen.Content
                 }
             }
 
-                if (btnAddUpdateOrg.Text == "Add Organization")
+            if (btnAddUpdateOrg.Text == "Add Organization")
+            {
+                if (continueProcess == 0)
                 {
-                    if (continueProcess == 0)
+                    uspAddZakaahOrg addZakaahOrg = new uspAddZakaahOrg();
+
+                    addZakaahOrg.Name = txtOrgName.Text.ToString();
+                    addZakaahOrg.WebsiteAddress = txtOrgWebAddr.Text.ToString();
+                    addZakaahOrg.ContactNo = txtOrgContactNo.Text.ToString();
+                    addZakaahOrg.PhysicalAddress = txtOrgPhyAddress.Text.ToString();
+                    addZakaahOrg.Active = 'Y';
+                    if (fupOrgImage.HasFile)
                     {
-                        uspAddZakaahOrg addZakaahOrg = new uspAddZakaahOrg();
+                        string fileName = fupOrgImage.FileName.ToString();
+                        string fileFormat = fileName.Substring(fileName.Length - 3); //get last character of Image name.
 
-                        addZakaahOrg.Name = txtOrgName.Text.ToString();
-                        addZakaahOrg.WebsiteAddress = txtOrgWebAddr.Text.ToString();
-                        addZakaahOrg.ContactNo = txtOrgContactNo.Text.ToString();
-                        addZakaahOrg.PhysicalAddress = txtOrgPhyAddress.Text.ToString();
-                        addZakaahOrg.Active = 'Y';
-                        if (fupOrgImage.HasFile)
-                        {
-                            string fileName = fupOrgImage.FileName.ToString();
-                            string fileFormat = fileName.Substring(fileName.Length - 3); //get last character of Image name.
+                        fupOrgImage.SaveAs(Server.MapPath("/Content/Images/ZakaahOrgImages/") + txtOrgName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
 
-                            fupOrgImage.SaveAs(Server.MapPath("/Content/Images/ZakaahOrgImages/") + txtOrgName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
-
-                            addZakaahOrg.Image = ("/Content/Images/ZakaahOrgImages/" + txtOrgName.Text.ToString() + "." + fileFormat.ToString());
-                        }
-                        else
-                        {
-                            addZakaahOrg.Image = "/Content/Images/ImageUnavailable.jpg";
-                        }
-
-                        db.BLL_AddZakaahOrganization(addZakaahOrg);
-
-                        divZakaahOrgList.Visible = false;
-                        divAddUpdateZakaahOrg.Visible = true;
-                        ddOrgActive.Enabled = false;
-
-                        txtOrgName.Text = string.Empty;
-                        txtOrgWebAddr.Text = string.Empty;
-                        txtOrgContactNo.Text = string.Empty;
-                        txtOrgPhyAddress.Text = string.Empty;
-                        ddOrgActive.SelectedIndex = 0;
-                        fupOrgImage.Attributes.Clear();
-                        txtOrgName.BorderColor = Color.Empty;
-                        txtOrgContactNo.BorderColor = Color.Empty;
-                        lblOrgError.Text = String.Empty;
-
+                        addZakaahOrg.Image = ("/Content/Images/ZakaahOrgImages/" + txtOrgName.Text.ToString() + "." + fileFormat.ToString());
+                    }
+                    else
+                    {
+                        addZakaahOrg.Image = "/Content/Images/ImageUnavailable.jpg";
                     }
 
+                    db.BLL_AddZakaahOrganization(addZakaahOrg);
+
+                    divZakaahOrgList.Visible = false;
+                    divAddUpdateZakaahOrg.Visible = true;
+                    ddOrgActive.Enabled = false;
+
+                    txtOrgName.Text = string.Empty;
+                    txtOrgWebAddr.Text = string.Empty;
+                    txtOrgContactNo.Text = string.Empty;
+                    txtOrgPhyAddress.Text = string.Empty;
+                    ddOrgActive.SelectedIndex = 0;
+                    fupOrgImage.Attributes.Clear();
+                    txtOrgName.BorderColor = Color.Empty;
+                    txtOrgContactNo.BorderColor = Color.Empty;
+                    lblOrgError.Text = String.Empty;
+
                 }
-                else if (btnAddUpdateOrg.Text == "Update Details")
+
+            }
+            else if (btnAddUpdateOrg.Text == "Update Details")
+            {
+
+                if (continueProcess == 0)
                 {
+                    uspUpdateZakaahOrg updateZakaahOrg = new uspUpdateZakaahOrg();
 
-                    if (continueProcess == 0)
+                    updateZakaahOrg.OrganizationID = Convert.ToInt32(hdfZakaahOrg.Value);
+                    updateZakaahOrg.Name = txtOrgName.Text.ToString();
+                    updateZakaahOrg.WebsiteAddress = txtOrgWebAddr.Text.ToString();
+                    updateZakaahOrg.ContactNo = txtOrgContactNo.Text.ToString();
+                    updateZakaahOrg.PhysicalAddress = txtOrgPhyAddress.Text.ToString();
+                    updateZakaahOrg.Active = Convert.ToChar(ddOrgActive.SelectedValue);
+
+                    if (fupOrgImage.HasFile)
                     {
-                        uspUpdateZakaahOrg updateZakaahOrg = new uspUpdateZakaahOrg();
+                        string fileName = fupOrgImage.FileName.ToString();
+                        string fileFormat = fileName.Substring(fileName.Length - 3); //get last character of Image name eg(.jpg).
 
-                        updateZakaahOrg.OrganizationID = Convert.ToInt32(hdfZakaahOrg.Value);
-                        updateZakaahOrg.Name = txtOrgName.Text.ToString();
-                        updateZakaahOrg.WebsiteAddress = txtOrgWebAddr.Text.ToString();
-                        updateZakaahOrg.ContactNo = txtOrgContactNo.Text.ToString();
-                        updateZakaahOrg.PhysicalAddress = txtOrgPhyAddress.Text.ToString();
-                        updateZakaahOrg.Active = Convert.ToChar(ddOrgActive.SelectedValue);
+                        fupOrgImage.SaveAs(Server.MapPath("/Content/Images/ZakaahOrgImages/") + txtOrgName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
 
-                        if (fupOrgImage.HasFile)
-                        {
-                            string fileName = fupOrgImage.FileName.ToString();
-                            string fileFormat = fileName.Substring(fileName.Length - 3); //get last character of Image name eg(.jpg).
-
-                            fupOrgImage.SaveAs(Server.MapPath("/Content/Images/ZakaahOrgImages/") + txtOrgName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
-
-                            updateZakaahOrg.Image = ("/Content/Images/ZakaahOrgImages/" + txtOrgName.Text.ToString() + "." + fileFormat.ToString());
-
-                        }
-                        else
-                        {
-                            updateZakaahOrg.Image = imgOrgImage.ImageUrl.ToString();
-                        }
-                        db.BLL_UpdateZakaahOrg(updateZakaahOrg);
-
-                        //Refresh the List...
-                        rptZakaahOrg.DataSource = db.BLL_GetOrganization();
-                        rptZakaahOrg.DataBind();
-
-                        txtOrgName.Text = string.Empty;
-                        txtOrgWebAddr.Text = string.Empty;
-                        txtOrgContactNo.Text = string.Empty;
-                        txtOrgPhyAddress.Text = string.Empty;
-                        ddOrgActive.SelectedIndex = 0;
-                        fupOrgImage.Attributes.Clear();
-                        txtOrgName.BorderColor = Color.Empty;
-                        txtOrgContactNo.BorderColor = Color.Empty;
-                        lblOrgError.Text = String.Empty;
-
-                        divOrgImg.Visible = false;
-                        divAddUpdateZakaahOrg.Visible = false;
-                        divZakaahOrgList.Visible = true;
-                        divOrgOverlay.Visible = true;
+                        updateZakaahOrg.Image = ("/Content/Images/ZakaahOrgImages/" + txtOrgName.Text.ToString() + "." + fileFormat.ToString());
 
                     }
+                    else
+                    {
+                        updateZakaahOrg.Image = imgOrgImage.ImageUrl.ToString();
+                    }
+                    db.BLL_UpdateZakaahOrg(updateZakaahOrg);
+
+                    //Refresh the List...
+                    rptZakaahOrg.DataSource = db.BLL_GetOrganization();
+                    rptZakaahOrg.DataBind();
+
+                    txtOrgName.Text = string.Empty;
+                    txtOrgWebAddr.Text = string.Empty;
+                    txtOrgContactNo.Text = string.Empty;
+                    txtOrgPhyAddress.Text = string.Empty;
+                    ddOrgActive.SelectedIndex = 0;
+                    fupOrgImage.Attributes.Clear();
+                    txtOrgName.BorderColor = Color.Empty;
+                    txtOrgContactNo.BorderColor = Color.Empty;
+                    lblOrgError.Text = String.Empty;
+
+                    divOrgImg.Visible = false;
+                    divAddUpdateZakaahOrg.Visible = false;
+                    divZakaahOrgList.Visible = true;
+                    divOrgOverlay.Visible = true;
+
                 }
+            }
         }
 
         protected void btnAddZakaahOrg_Click(object sender, EventArgs e)
@@ -1103,7 +1104,7 @@ namespace Muslimeen.Content
                 divNoticeList.Visible = false;
                 divAddUpdateNotice.Visible = true;
             }
-            else if(btnAddUpdateNotice.Text == "Update Notice")
+            else if (btnAddUpdateNotice.Text == "Update Notice")
             {
                 divNoticeList.Visible = true;
                 divAddUpdateNotice.Visible = true;
@@ -1137,63 +1138,63 @@ namespace Muslimeen.Content
                 continueProcess += 1;
             }
 
-                if (btnAddUpdateNotice.Text == "Add Notice")
+            if (btnAddUpdateNotice.Text == "Add Notice")
+            {
+                if (continueProcess == 0)
                 {
-                    if (continueProcess == 0)
-                    {
 
-                        notice.NoticeTitle = txtNoticeTitle.Text;
-                        notice.NoticeDescription = txtNoticeDesc.Text;
-                        notice.MemberID = Session["UserName"].ToString();
-                        notice.DateCreated = Convert.ToDateTime(txtNoticeDateCreated.Text);
-                        notice.DateExpiry = Convert.ToDateTime(txtNoticeExpiryDate.Text);
-                        notice.Active = 'Y';
+                    notice.NoticeTitle = txtNoticeTitle.Text;
+                    notice.NoticeDescription = txtNoticeDesc.Text;
+                    notice.MemberID = Session["UserName"].ToString();
+                    notice.DateCreated = Convert.ToDateTime(txtNoticeDateCreated.Text);
+                    notice.DateExpiry = Convert.ToDateTime(txtNoticeExpiryDate.Text);
+                    notice.Active = 'Y';
 
-                        db.BLL_AddNotice(notice);
+                    db.BLL_AddNotice(notice);
 
-                        txtNoticeTitle.Text = string.Empty;
-                        txtNoticeTitle.BorderColor = Color.Empty;
-                        txtNoticeExpiryDate.BorderColor = Color.Empty;
-                        txtNoticeDesc.BorderColor = Color.Empty;
-                        txtNoticeDesc.Text = string.Empty;
-                        txtNoticeDateCreated.Text = string.Empty;
-                        txtNoticeExpiryDate.Text = string.Empty;
-                        txtNoticeMemberID.Text = string.Empty;
-                        ddNoticeActive.SelectedIndex = 0;
-                        lblNoticeError.Text = String.Empty;
-                    }
-
+                    txtNoticeTitle.Text = string.Empty;
+                    txtNoticeTitle.BorderColor = Color.Empty;
+                    txtNoticeExpiryDate.BorderColor = Color.Empty;
+                    txtNoticeDesc.BorderColor = Color.Empty;
+                    txtNoticeDesc.Text = string.Empty;
+                    txtNoticeDateCreated.Text = string.Empty;
+                    txtNoticeExpiryDate.Text = string.Empty;
+                    txtNoticeMemberID.Text = string.Empty;
+                    ddNoticeActive.SelectedIndex = 0;
+                    lblNoticeError.Text = String.Empty;
                 }
-                else if (btnAddUpdateNotice.Text == "Update Notice")
+
+            }
+            else if (btnAddUpdateNotice.Text == "Update Notice")
+            {
+                if (continueProcess == 0)
                 {
-                    if (continueProcess == 0)
-                    {
 
-                        notice.NoticeID = Convert.ToInt32(hdfNotice.Value);
-                        notice.NoticeTitle = txtNoticeTitle.Text;
-                        notice.NoticeDescription = txtNoticeDesc.Text;
-                        notice.MemberID = Session["UserName"].ToString();
-                        notice.DateCreated = DateTime.Today.ToLocalTime();
-                        notice.DateExpiry = Convert.ToDateTime(txtNoticeExpiryDate.Text);
-                        notice.Active = Convert.ToChar(ddNoticeActive.SelectedValue);
+                    notice.NoticeID = Convert.ToInt32(hdfNotice.Value);
+                    notice.NoticeTitle = txtNoticeTitle.Text;
+                    notice.NoticeDescription = txtNoticeDesc.Text;
+                    notice.MemberID = Session["UserName"].ToString();
+                    notice.DateCreated = DateTime.Today.ToLocalTime();
+                    notice.DateExpiry = Convert.ToDateTime(txtNoticeExpiryDate.Text);
+                    notice.Active = Convert.ToChar(ddNoticeActive.SelectedValue);
 
-                        db.BLL_UpdateNotice(notice);
+                    db.BLL_UpdateNotice(notice);
 
-                        //Refresh list...
-                        rptNotice.DataSource = db.BLL_GetAllNotices();
-                        rptNotice.DataBind();
+                    //Refresh list...
+                    rptNotice.DataSource = db.BLL_GetAllNotices();
+                    rptNotice.DataBind();
 
-                        txtNoticeTitle.Text = string.Empty;
-                        txtNoticeTitle.BorderColor = Color.Empty;
-                        txtNoticeDesc.Text = string.Empty;
-                        txtNoticeDateCreated.Text = string.Empty;
-                        txtNoticeExpiryDate.Text = string.Empty;
-                        txtNoticeExpiryDate.BorderColor = Color.Empty;
-                        txtNoticeMemberID.Text = string.Empty;
-                        ddNoticeActive.SelectedIndex = 0;
-                        lblNoticeError.Text = String.Empty;
-                    }
+                    txtNoticeTitle.Text = string.Empty;
+                    txtNoticeTitle.BorderColor = Color.Empty;
+                    txtNoticeDesc.Text = string.Empty;
+                    txtNoticeDateCreated.Text = string.Empty;
+                    txtNoticeExpiryDate.Text = string.Empty;
+                    txtNoticeExpiryDate.BorderColor = Color.Empty;
+                    txtNoticeMemberID.Text = string.Empty;
+                    ddNoticeActive.SelectedIndex = 0;
+                    lblNoticeError.Text = String.Empty;
                 }
+            }
         }
 
         protected void btnUpdateDateCounter_Click(object sender, EventArgs e)
@@ -1241,7 +1242,7 @@ namespace Muslimeen.Content
                 uspUpdateCountDown uspUpdateCountDown = new uspUpdateCountDown();
 
 
-                string[] endDate; 
+                string[] endDate;
                 endDate = txtCounterEndDate.Text.ToString().Split('/');
 
                 string endDate2 = endDate[2] + "-" + endDate[1] + "-" + endDate[0];
@@ -1307,83 +1308,83 @@ namespace Muslimeen.Content
             txtUpdateMosqueQuote.BorderColor = Color.Empty;
             lblUpdateMosqueError.Text = "";
 
-                DBHandler db = new DBHandler();
-                Encryption encryption = new Encryption();
-                uspAddMosque addMosque = new uspAddMosque();
-                int continueProcess = 0;
+            DBHandler db = new DBHandler();
+            Encryption encryption = new Encryption();
+            uspAddMosque addMosque = new uspAddMosque();
+            int continueProcess = 0;
 
-                if (lblUpdateMosqueError.Text == "" || lblUpdateMosqueError.Text == null)
+            if (lblUpdateMosqueError.Text == "" || lblUpdateMosqueError.Text == null)
+            {
+                if (txtUpdateMosqueName.Text == "" || txtUpdateMosqueName.Text == null)
                 {
-                    if (txtUpdateMosqueName.Text == "" || txtUpdateMosqueName.Text == null)
+                    txtUpdateMosqueName.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtUpdateMosqueAddr.Text == "" || txtUpdateMosqueAddr.Text == null)
+                {
+                    txtUpdateMosqueAddr.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtUpdateMosqueSuburb.Text == "" || txtUpdateMosqueSuburb.Text == null)
+                {
+                    txtUpdateMosqueSuburb.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (ddUpdateMosqueType.SelectedIndex == 0)
+                {
+                    ddUpdateMosqueType.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtUpdateMosqueEstab.Text == "dd --- yyyy")
+                {
+                    txtUpdateMosqueEstab.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (ddUpdateMosqueSize.SelectedIndex == 0)
+                {
+                    ddUpdateMosqueSize.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (ddUpdateMosqueType.SelectedValue == "None")
+                {
+                    ddUpdateMosqueType.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (ddUpdateMosqueSize.SelectedValue == "None")
+                {
+                    ddUpdateMosqueSize.BorderColor = Color.Red;
+                    continueProcess += 1;
+                    lblUpdateMosqueError.Text = "Registration type not selected";
+                    lblUpdateMosqueError.ForeColor = Color.Red;
+                }
+                else if (ddUpdateMosqueActive.SelectedValue == "None")
+                {
+                    lblUpdateMosqueError.Text = "Mosque has to be either Yes or No";
+                    lblUpdateMosqueError.ForeColor = Color.Red;
+                    continueProcess += 1;
+                    ddUpdateMosqueActive.BorderColor = Color.Red;
+                }
+                if (fupUpdateMosqueImage.HasFile)
+                {
+                    string fileName = fupUpdateMosqueImage.FileName.ToString();
+                    string fileFormat = fileName.Substring(fileName.Length - 3);
+                    switch (fileFormat)
                     {
-                        txtUpdateMosqueName.BorderColor = Color.Red;
-                        continueProcess += 1;
-                    }
-                    else if (txtUpdateMosqueAddr.Text == "" || txtUpdateMosqueAddr.Text == null)
-                    {
-                        txtUpdateMosqueAddr.BorderColor = Color.Red;
-                        continueProcess += 1;
-                    }
-                    else if (txtUpdateMosqueSuburb.Text == "" || txtUpdateMosqueSuburb.Text == null)
-                    {
-                        txtUpdateMosqueSuburb.BorderColor = Color.Red;
-                        continueProcess += 1;
-                    }
-                    else if (ddUpdateMosqueType.SelectedIndex == 0)
-                    {
-                        ddUpdateMosqueType.BorderColor = Color.Red;
-                        continueProcess += 1;
-                    }
-                    else if (txtUpdateMosqueEstab.Text == "dd --- yyyy")
-                    {
-                        txtUpdateMosqueEstab.BorderColor = Color.Red;
-                        continueProcess += 1;
-                    }
-                    else if (ddUpdateMosqueSize.SelectedIndex == 0)
-                    {
-                        ddUpdateMosqueSize.BorderColor = Color.Red;
-                        continueProcess += 1;
-                    }
-                    else if (ddUpdateMosqueType.SelectedValue == "None")
-                    {
-                        ddUpdateMosqueType.BorderColor = Color.Red;
-                        continueProcess += 1;
-                    }
-                    else if (ddUpdateMosqueSize.SelectedValue == "None")
-                    {
-                        ddUpdateMosqueSize.BorderColor = Color.Red;
-                        continueProcess += 1;
-                        lblUpdateMosqueError.Text = "Registration type not selected";
-                        lblUpdateMosqueError.ForeColor = Color.Red;
-                    }
-                    else if (ddUpdateMosqueActive.SelectedValue == "None")
-                    {
-                        lblUpdateMosqueError.Text = "Mosque has to be either Yes or No";
-                        lblUpdateMosqueError.ForeColor = Color.Red;
-                        continueProcess += 1;
-                        ddUpdateMosqueActive.BorderColor = Color.Red;
-                    }
-                    if (fupUpdateMosqueImage.HasFile)
-                    {
-                        string fileName = fupUpdateMosqueImage.FileName.ToString();
-                        string fileFormat = fileName.Substring(fileName.Length - 3);
-                        switch (fileFormat)
-                        {
-                            case "png":
-                            case "jpg":
-                            case "gif":
-                            case "bmp":
-                                break;
-                            default:
-                                continueProcess += 1;
-                                lblUpdateMosqueError.Text = "The file Uploaded is not of the correct format.";
-                                lblUpdateMosqueError.ForeColor = Color.Red;
-                                break;
-                        }
+                        case "png":
+                        case "jpg":
+                        case "gif":
+                        case "bmp":
+                            break;
+                        default:
+                            continueProcess += 1;
+                            lblUpdateMosqueError.Text = "The file Uploaded is not of the correct format.";
+                            lblUpdateMosqueError.ForeColor = Color.Red;
+                            break;
                     }
                 }
+            }
 
-            if(continueProcess == 0)
+            if (continueProcess == 0)
             {
                 Mosques mosque = new Mosques();
 
@@ -1400,7 +1401,7 @@ namespace Muslimeen.Content
                     string fileFormat = fileName.Substring(fileName.Length - 3); //get last character of Image name.
 
                     fupUpdateMosqueImage.SaveAs(Server.MapPath("/Content/Images/MosqueImages/") + txtUpdateMosqueName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
-                    
+
                     mosque.MosqueImage = ("/Content/Images/MosqueImages/" + txtUpdateMosqueName.Text.ToString() + "." + fileFormat.ToString());
                 }
                 else
@@ -1588,22 +1589,26 @@ namespace Muslimeen.Content
 
                 if (lblAdminReportHeading.InnerText == "All Members Details Report")
                 {
+                    grdAdminReports.HeaderRow.Cells[0].Text = "User Name";
+                    grdAdminReports.HeaderRow.Cells[1].Text = "Firstname";
+                    grdAdminReports.HeaderRow.Cells[2].Text = "Lastname";
+                    grdAdminReports.HeaderRow.Cells[3].Text = "Date Of Birth";
+                    grdAdminReports.HeaderRow.Cells[4].Text = "Member Type";
+                    grdAdminReports.HeaderRow.Cells[5].Text = "Active";
+                    grdAdminReports.HeaderRow.Cells[6].Text = "Email Address";
+                    grdAdminReports.HeaderRow.Cells[7].Text = "Contact Number";
+                    grdAdminReports.HeaderRow.Cells[8].Text = "Mosque";
+                    grdAdminReports.HeaderRow.Cells[9].Text = "Date Registered";
 
-                    grdAdminReports.HeaderRow.Cells[0].Text = "Firstname";
-                    grdAdminReports.HeaderRow.Cells[1].Text = "Lastname";
-                    grdAdminReports.HeaderRow.Cells[2].Text = "Date Of Birth";
-                    grdAdminReports.HeaderRow.Cells[3].Text = "Member Type";
-                    grdAdminReports.HeaderRow.Cells[4].Text = "Active";
-                    grdAdminReports.HeaderRow.Cells[5].Text = "Email Address";
-                    grdAdminReports.HeaderRow.Cells[6].Text = "Contact Number";
-                    grdAdminReports.HeaderRow.Cells[7].Text = "Mosque";
-                    grdAdminReports.HeaderRow.Cells[8].Text = "Date Registered";
+                }
+                if (lblAdminReportHeading.InnerText == "All Mosques Details Report")
+                {
 
                 }
 
                 grdAdminReports.HeaderRow.Font.Size = 16;
 
-               DBHandler han = new DBHandler();
+                DBHandler han = new DBHandler();
                 PdfPTable pdfTable = new PdfPTable(grdAdminReports.HeaderRow.Cells.Count);
                 pdfTable.HorizontalAlignment = 0;
 
@@ -1639,60 +1644,282 @@ namespace Muslimeen.Content
 
                 pdfTable.DefaultCell.Padding = 5;
                 pdfTable.DefaultCell.VerticalAlignment = PdfPCell.ALIGN_CENTER;
-                
                 PdfPTable table = new PdfPTable(1);
-                iTextSharp.text.Font fontH1 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 24, iTextSharp.text.Font.BOLD);
+                PdfPTable table2 = new PdfPTable(2);
+
                 iTextSharp.text.Font fontH2 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD);
-                table.WidthPercentage = 80;
-                table.HorizontalAlignment = 0;
-                table.DefaultCell.Padding = 30;
-                table.DefaultCell.HorizontalAlignment = 1;
-                table.DefaultCell.VerticalAlignment = 1;
-                Paragraph para = new Paragraph("Report of All Members Details", fontH1);
-                Paragraph para2 = new Paragraph("Muslimeen Website", fontH2);
-                para2.Alignment = 2;
-                Paragraph date = new Paragraph(DateTime.Now.Date.ToString("dd MMM yyyy"), fontH2);
-                PdfPCell header2 = new PdfPCell(date);
-                header2.AddElement(para2);
-                header2.HorizontalAlignment = 0;
-                header2.VerticalAlignment = 0;
-                header2.Padding = 10;
-                table.AddCell(para);
-                table.AddCell(header2);
+                table2.WidthPercentage = 80;
+                table2.HorizontalAlignment = 0;
+                table2.DefaultCell.Padding = 8;
+                table2.DefaultCell.HorizontalAlignment = 1;
+                table2.DefaultCell.VerticalAlignment = 1;
+                Paragraph date = new Paragraph("Date Created: " + DateTime.Now.Date.ToString("dd MMM yyyy"), fontH2);
+                Paragraph extraPara = new Paragraph("Muslimeen Adminstrator Reports", fontH2);
+                table2.AddCell(date);
+                table2.AddCell(extraPara);
 
+                if (lblAdminReportHeading.InnerText == "All Members Details Report" || lblAdminReportHeading.InnerText == "All Active Members Details Report" || lblAdminReportHeading.InnerText == "All Unactive Members Details Report")
+                {
+                    iTextSharp.text.Font fontH1 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 24, iTextSharp.text.Font.BOLD);
+                    table.WidthPercentage = 80;
+                    table.HorizontalAlignment = 0;
+                    table.DefaultCell.Padding = 20;
+                    table.DefaultCell.HorizontalAlignment = 1;
+                    table.DefaultCell.VerticalAlignment = 1;
+                    if (lblAdminReportHeading.InnerText == "All Members Details Report")
+                    {
+                        Paragraph para = new Paragraph("Report of All Members Details", fontH1);
+                        table.AddCell(para);
+                    }
+                    else if (lblAdminReportHeading.InnerText == "All Active Members Details Report")
+                    {
+                        Paragraph para = new Paragraph("Report of All Active Members Details", fontH1);
+                        table.AddCell(para);
+                    }
+                    else if (lblAdminReportHeading.InnerText == "All Unactive Members Details Report")
+                    {
+                        Paragraph para = new Paragraph("Report of All Unactive Members Details", fontH1);
+                        table.AddCell(para);
+                    }
 
-                pdfDocument.Open();
-                pdfDocument.AddTitle("All Members Details Report");
-                pdfDocument.Add(table);
-                pdfDocument.Add(pdfTable);
-                pdfDocument.Close();
+                    pdfDocument.Open();
+                    pdfDocument.AddTitle("All Mosques Details Report");
+                    pdfDocument.Add(table);
+                    pdfDocument.Add(table2);
+                    pdfDocument.Add(pdfTable);
+                    pdfDocument.Close();
 
-                Response.ContentType = "application/pdf";
-                Response.AppendHeader("content-disposition", "attachment;filename=MuslimeenReports.pdf");
-                Response.Write(pdfDocument);
-                Response.Flush();
-                Response.End();
+                    Response.ContentType = "application/pdf";
+                    Response.AppendHeader("content-disposition", "attachment;filename=" + lblAdminReportHeading.InnerText + ".pdf");
+                    Response.Write(pdfDocument);
+                    Response.Flush();
+                    Response.End();
+
+                }
+                else if (lblAdminReportHeading.InnerText == "All Mosques Details Report")
+                {
+                    iTextSharp.text.Font fontH1 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 24, iTextSharp.text.Font.BOLD);
+                    table.WidthPercentage = 80;
+                    table.HorizontalAlignment = 0;
+                    table.DefaultCell.Padding = 20;
+                    table.DefaultCell.HorizontalAlignment = 1;
+                    table.DefaultCell.VerticalAlignment = 1;
+                    Paragraph para = new Paragraph("Report of All Mosques Details", fontH1);
+                    table.AddCell(para);
+
+                    pdfDocument.Open();
+                    pdfDocument.AddTitle("All Mosques Details Report");
+                    pdfDocument.Add(table);
+                    pdfDocument.Add(table2);
+                    pdfDocument.Add(pdfTable);
+                    pdfDocument.Close();
+
+                    Response.ContentType = "application/pdf";
+                    Response.AppendHeader("content-disposition", "attachment;filename=" + lblAdminReportHeading.InnerText + ".pdf");
+                    Response.Write(pdfDocument);
+                    Response.Flush();
+                    Response.End();
+
+                }
+
             }
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
 
             }
-           
+
         }
 
         protected void btnReportViewMembers_Click(object sender, EventArgs e)
         {
+            divAdminReports.Visible = true;
+
             DBHandler db = new DBHandler();
+            List<uspReportGetAllMembers> reportGetAllMembers = new List<uspReportGetAllMembers>();
 
             lblAdminReportHeading.InnerText = "All Members Details Report";
 
+            reportGetAllMembers = db.BLL_ReportGetAllMembers("All Members");
 
-
-            grdAdminReports.DataSource = db.BLL_ReportGetAllMembers();
+            grdAdminReports.DataSource = reportGetAllMembers;
             grdAdminReports.DataBind();
 
+            //grdAdminReports.RowStyle.BorderWidth = 1;
+            //.Attributes["style"] = "border-width:2";
+            grdAdminReports.GridLines = GridLines.Both;
+            grdAdminReports.BorderColor = Color.Gray;
+            grdAdminReports.CellPadding = 8;
+
+            grdAdminReports.HeaderRow.Cells[0].Text = "User Name";
+            grdAdminReports.HeaderRow.Cells[1].Text = "Firstname";
+            grdAdminReports.HeaderRow.Cells[2].Text = "Lastname";
+            grdAdminReports.HeaderRow.Cells[3].Text = "Date Of Birth";
+            grdAdminReports.HeaderRow.Cells[4].Text = "Member Type";
+            grdAdminReports.HeaderRow.Cells[5].Text = "Active";
+            grdAdminReports.HeaderRow.Cells[6].Text = "Email Address";
+            grdAdminReports.HeaderRow.Cells[7].Text = "Contact Number";
+            grdAdminReports.HeaderRow.Cells[8].Text = "Mosque ID";
+            grdAdminReports.HeaderRow.Cells[9].Text = "Date Registered";
+
+            //go through all rows and change the date format and and other chars.
+            for (int i = 0; i < grdAdminReports.Rows.Count; i++)
+            {
+                DateTime DOB = Convert.ToDateTime(grdAdminReports.Rows[i].Cells[3].Text);
+                grdAdminReports.Rows[i].Cells[3].Text = DOB.ToString("dd MMM yyyy");
+
+                string memberType = grdAdminReports.Rows[i].Cells[4].Text;
+                grdAdminReports.Rows[i].Cells[4].Text = memberType.Replace("A", "Admin").Replace("M", "Member").Replace("O", "Moderater").Replace("S", "Scholar").Replace("R", "Mosque Rep");
+
+                string active = grdAdminReports.Rows[i].Cells[5].Text;
+                grdAdminReports.Rows[i].Cells[5].Text = active.Replace("N", "No").Replace("Y", "Yes").Replace("T", "Temporary");
+
+                string mosqueID = grdAdminReports.Rows[i].Cells[8].Text;
+                grdAdminReports.Rows[i].Cells[8].Text = mosqueID.Replace("&nbsp;", "No Mosque Assigned");
+
+                DateTime regDate = Convert.ToDateTime(grdAdminReports.Rows[i].Cells[9].Text);
+                grdAdminReports.Rows[i].Cells[9].Text = regDate.ToString("dd MMM yyyy");
+            }
+        }
+
+        protected void btnReportViewActiveMembers_Click(object sender, EventArgs e)
+        {
+            divAdminReports.Visible = true;
+
+            DBHandler db = new DBHandler();
+            List<uspReportGetAllMembers> reportGetAllMembers = new List<uspReportGetAllMembers>();
+
+            lblAdminReportHeading.InnerText = "All Active Members Details Report";
+
+            reportGetAllMembers = db.BLL_ReportGetAllMembers("Active");
+
+            grdAdminReports.DataSource = reportGetAllMembers;
+            grdAdminReports.DataBind();
+
+            //grdAdminReports.RowStyle.BorderWidth = 1;
+            //.Attributes["style"] = "border-width:2";
+            grdAdminReports.GridLines = GridLines.Both;
+            grdAdminReports.BorderColor = Color.Gray;
+            grdAdminReports.CellPadding = 8;
+
+            grdAdminReports.HeaderRow.Cells[0].Text = "User Name";
+            grdAdminReports.HeaderRow.Cells[1].Text = "Firstname";
+            grdAdminReports.HeaderRow.Cells[2].Text = "Lastname";
+            grdAdminReports.HeaderRow.Cells[3].Text = "Date Of Birth";
+            grdAdminReports.HeaderRow.Cells[4].Text = "Member Type";
+            grdAdminReports.HeaderRow.Cells[5].Text = "Active";
+            grdAdminReports.HeaderRow.Cells[6].Text = "Email Address";
+            grdAdminReports.HeaderRow.Cells[7].Text = "Contact Number";
+            grdAdminReports.HeaderRow.Cells[8].Text = "Mosque ID";
+            grdAdminReports.HeaderRow.Cells[9].Text = "Date Registered";
+
+            //go through all rows and change the date format and and other chars.
+            for (int i = 0; i < grdAdminReports.Rows.Count; i++)
+            {
+                DateTime DOB = Convert.ToDateTime(grdAdminReports.Rows[i].Cells[3].Text);
+                grdAdminReports.Rows[i].Cells[3].Text = DOB.ToString("dd MMM yyyy");
+
+                string memberType = grdAdminReports.Rows[i].Cells[4].Text;
+                grdAdminReports.Rows[i].Cells[4].Text = memberType.Replace("A", "Admin").Replace("M", "Member").Replace("O", "Moderater").Replace("S", "Scholar").Replace("R", "Mosque Rep");
+
+                string active = grdAdminReports.Rows[i].Cells[5].Text;
+                grdAdminReports.Rows[i].Cells[5].Text = active.Replace("N", "No").Replace("Y", "Yes").Replace("T", "Temporary");
+
+                string mosqueID = grdAdminReports.Rows[i].Cells[8].Text;
+                grdAdminReports.Rows[i].Cells[8].Text = mosqueID.Replace("&nbsp;", "No Mosque Assigned");
+
+                DateTime regDate = Convert.ToDateTime(grdAdminReports.Rows[i].Cells[9].Text);
+                grdAdminReports.Rows[i].Cells[9].Text = regDate.ToString("dd MMM yyyy");
+            }
+        }
+
+        protected void btnReportUnactiveMembers_Click(object sender, EventArgs e)
+        {
+            divAdminReports.Visible = true;
+
+            DBHandler db = new DBHandler();
+            List<uspReportGetAllMembers> reportGetAllMembers = new List<uspReportGetAllMembers>();
+
+            lblAdminReportHeading.InnerText = "All Unactive Members Details Report";
+
+            reportGetAllMembers = db.BLL_ReportGetAllMembers("Unactive");
+
+            grdAdminReports.DataSource = reportGetAllMembers;
+            grdAdminReports.DataBind();
+
+            grdAdminReports.GridLines = GridLines.Both;
+            grdAdminReports.BorderColor = Color.Gray;
+            grdAdminReports.CellPadding = 8;
+
+            grdAdminReports.HeaderRow.Cells[0].Text = "User Name";
+            grdAdminReports.HeaderRow.Cells[1].Text = "Firstname";
+            grdAdminReports.HeaderRow.Cells[2].Text = "Lastname";
+            grdAdminReports.HeaderRow.Cells[3].Text = "Date Of Birth";
+            grdAdminReports.HeaderRow.Cells[4].Text = "Member Type";
+            grdAdminReports.HeaderRow.Cells[5].Text = "Active";
+            grdAdminReports.HeaderRow.Cells[6].Text = "Email Address";
+            grdAdminReports.HeaderRow.Cells[7].Text = "Contact Number";
+            grdAdminReports.HeaderRow.Cells[8].Text = "Mosque ID";
+            grdAdminReports.HeaderRow.Cells[9].Text = "Date Registered";
+
+            //go through all rows and change the date format and and other chars.
+            for (int i = 0; i < grdAdminReports.Rows.Count; i++)
+            {
+                DateTime DOB = Convert.ToDateTime(grdAdminReports.Rows[i].Cells[3].Text);
+                grdAdminReports.Rows[i].Cells[3].Text = DOB.ToString("dd MMM yyyy");
+
+                string memberType = grdAdminReports.Rows[i].Cells[4].Text;
+                grdAdminReports.Rows[i].Cells[4].Text = memberType.Replace("A", "Admin").Replace("M", "Member").Replace("O", "Moderater").Replace("S", "Scholar").Replace("R", "Mosque Rep");
+
+                string active = grdAdminReports.Rows[i].Cells[5].Text;
+                grdAdminReports.Rows[i].Cells[5].Text = active.Replace("N", "No").Replace("Y", "Yes").Replace("T", "Temporary");
+
+                string mosqueID = grdAdminReports.Rows[i].Cells[8].Text;
+                grdAdminReports.Rows[i].Cells[8].Text = mosqueID.Replace("&nbsp;", "No Mosque Assigned");
+
+                DateTime regDate = Convert.ToDateTime(grdAdminReports.Rows[i].Cells[9].Text);
+                grdAdminReports.Rows[i].Cells[9].Text = regDate.ToString("dd MMM yyyy");
+            }
+        }
+
+        protected void btnReportAllMosques_Click(object sender, EventArgs e)
+        {
+            divAdminReports.Visible = true;
+
+            DBHandler db = new DBHandler();
+            List <uspReportGetAllMosques> mosques = new List<uspReportGetAllMosques>();
+
+            lblAdminReportHeading.InnerText = "All Mosques Details Report";
+
+            mosques = db.BLL_ReportGetAllMosques();
+
+            grdAdminReports.DataSource = mosques;
+            grdAdminReports.DataBind();
+
+            grdAdminReports.GridLines = GridLines.Both;
+            grdAdminReports.BorderColor = Color.Gray;
+            grdAdminReports.CellPadding = 8;
+
+            grdAdminReports.HeaderRow.Cells[0].Text = "Mosque ID";
+            grdAdminReports.HeaderRow.Cells[1].Text = "Name";
+            grdAdminReports.HeaderRow.Cells[2].Text = "Mosque Address";
+            grdAdminReports.HeaderRow.Cells[3].Text = "Mosque Suburb";
+            grdAdminReports.HeaderRow.Cells[4].Text = "Year Established";
+            grdAdminReports.HeaderRow.Cells[5].Text = "Mosque Type";
+            grdAdminReports.HeaderRow.Cells[6].Text = "Active";
+            grdAdminReports.HeaderRow.Cells[7].Text = "Mosque Size";
+            grdAdminReports.HeaderRow.Cells[8].Text = "Mosque Representative";
+
+            //go through all rows and change the date format and and other chars.
+            for (int i = 0; i < grdAdminReports.Rows.Count; i++)
+            {
+                DateTime DOB = Convert.ToDateTime(grdAdminReports.Rows[i].Cells[4].Text);
+                grdAdminReports.Rows[i].Cells[4].Text = DOB.ToString("dd MMM yyyy");
+
+                string active = grdAdminReports.Rows[i].Cells[6].Text;
+                grdAdminReports.Rows[i].Cells[6].Text = active.Replace("N", "No").Replace("Y", "Yes").Replace("T", "Temporary");
+            }
 
         }
+
     }
 }
-

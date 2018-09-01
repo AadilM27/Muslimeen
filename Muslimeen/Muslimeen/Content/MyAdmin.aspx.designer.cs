@@ -265,6 +265,33 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Button btnReportViewMembers;
         
         /// <summary>
+        /// btnReportViewActiveMembers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReportViewActiveMembers;
+        
+        /// <summary>
+        /// btnReportUnactiveMembers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReportUnactiveMembers;
+        
+        /// <summary>
+        /// btnReportAllMosques control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReportAllMosques;
+        
+        /// <summary>
         /// lblTaskHead control.
         /// </summary>
         /// <remarks>

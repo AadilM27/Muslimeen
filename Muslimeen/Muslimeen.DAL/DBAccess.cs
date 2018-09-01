@@ -1866,6 +1866,7 @@ namespace Muslimeen.BLL
             }
             return DBHelper.NonQuery("uspDeleteForumTopic", CommandType.StoredProcedure, parameters.ToArray());
         }
+
         public bool DeletePostings(uspGetPostings post)
         {
             List<SqlParameter> parameters = new List<SqlParameter>();
@@ -1879,10 +1880,16 @@ namespace Muslimeen.BLL
             }
             return DBHelper.NonQuery("uspDeletePostings", CommandType.StoredProcedure, parameters.ToArray());
         }
-        public List<uspReportGetAllMembers> ReportGetAllMembers()
+
+        public List<uspReportGetAllMembers> ReportGetAllMembers(string reportType)
         {
             List<uspReportGetAllMembers> list = new List<uspReportGetAllMembers>();
-            using (DataTable table = DBHelper.Select("uspReportGetAllMembers", CommandType.StoredProcedure))
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@ReportType", reportType)
+
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspReportGetAllMembers", CommandType.StoredProcedure, pars))
             {
                 if (table.Rows.Count > 0)
                 {
@@ -1890,7 +1897,7 @@ namespace Muslimeen.BLL
                     {
                         uspReportGetAllMembers details = new uspReportGetAllMembers();
 
-
+                        details.MemberID = Convert.ToString(row["User Name"]);
                         details.MemberName = Convert.ToString(row["Name"]);
                         details.MemberLastName = Convert.ToString(row["Last Name"]);
                         details.MemberDOB = Convert.ToDateTime(row["Date of Birth"]);
@@ -1909,11 +1916,39 @@ namespace Muslimeen.BLL
                         details.ActivationDate = Convert.ToDateTime(row["Date Registered"]);
                         
                         list.Add(details);
+
                     }
                 }
             }
             return list;
         }
 
+        public List<uspReportGetAllMosques> ReportGetAllMosques()
+        {
+            List<uspReportGetAllMosques> list = new List<uspReportGetAllMosques>();
+            using (DataTable table = DBHelper.Select("uspReportGetAllMosques", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspReportGetAllMosques mosque = new uspReportGetAllMosques();
+
+                        mosque.MosqueID = Convert.ToInt32(row["MosqueID"]);
+                        mosque.MosqueName = Convert.ToString(row["MosqueName"]);
+                        mosque.MosqueStreet = Convert.ToString(row["MosqueStreet"]);
+                        mosque.MosqueSuburb = Convert.ToString(row["MosqueSuburb"]);
+                        mosque.MosqueType = Convert.ToString(row["MosqueType"]);
+                        mosque.YearEstablished = Convert.ToDateTime(row["YearEstablished"]);
+                        mosque.MosqueSize = Convert.ToString(row["MosqueSize"]);
+                        mosque.Active = Convert.ToChar(row["Active"]);
+                        mosque.MemberID = Convert.ToString(row["MemberID"]);
+
+                        list.Add(mosque);
+                    }
+                }
+            }
+            return list;
+        }
     }
 }

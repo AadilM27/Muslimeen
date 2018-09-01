@@ -89,7 +89,13 @@
                             <asp:Button ID="btnAddNotice" CssClass="pl-2 btn taskBtn mb-1"   runat ="server" Text="Add new Notice" OnClick="btnAddNotice_Click" />
                                 <asp:Button runat="server" ID="btnUpdateNotice" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnUpdateNotice_Click" Text="Update a Notice" />
                             <asp:Button runat="server" ID="btnUpdateDateCounter" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnUpdateDateCounter_Click" Text="Update Date and Count Down" />
-                            <asp:Button runat="server" ID="btnReportViewMembers" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnReportViewMembers_Click" Text="All Member Details Reports" />
+                            <p class="pl-2 btn taskBtn mb-1">View Reports &#11167;</p>
+                                <asp:Button runat="server" ID="btnReportViewMembers" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportViewMembers_Click" Text="All Member Details Reports" />
+                                <asp:Button runat="server" ID="btnReportViewActiveMembers" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportViewActiveMembers_Click" Text="All Active Members" />
+                                <asp:Button runat="server" ID="btnReportUnactiveMembers" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportUnactiveMembers_Click" Text="All Unactive Members" />                     
+                                <asp:Button runat="server" ID="btnReportAllMosques" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportAllMosques_Click" Text="All Mosques Details" />                     
+                                <%--<asp:Button runat="server" ID="Button2" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportUnactiveMembers_Click" Text="All Unactive Members" />--%>                     
+                                
                         </nav>
                     </div>
                     <div class=" position-static basic-div-styling p-0 w-100 position-relative">
@@ -890,110 +896,106 @@
                                     <p class="m-0">Scholar Details</p>
                                 </div>
                                     <hr class="m-3 ml-3 mr-3 bg-secondary"/>
-                                    <div class="container text-nowrap" runat="server" id="div2">
-                                        <div class="row mb-1 position-static">
-                                            <div class="col position-static"><b>Member  ID:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="lblAllMemberID"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1 position-static">
-                                            <div class="col position-static"><b>First Name:</b></div>
-                                            <div  class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="lblAllMemberName"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1 position-static">
-                                            <div class="col position-static"><b>Last Name:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="lblAllMemberLastName"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1 position-static">
-                                            <div class="col position-static"><b>Date of Birth:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="lblAllMemberDOB"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1 position-static">
-                                            <div class="col position-static"><b>Member Type:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="lblAllMemberType"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1 position-static">
-                                            <div class="col position-static"><b>E-mail:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="lblAllEmail"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1 position-static">
-                                            <div class="col position-static"><b>Contact No.</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="lblAllContactNo"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1 position-static">
-                                            <div class="col position-static"><b>Mosque ID:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="lblAllMosque"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1 position-static">
-                                            <div class="col position-static"><b>Activation Date:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="lblAllActivationDate"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1 position-static">
-                                            <div class="col position-static "><b>Active:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <asp:DropDownList CssClass="form-control form-control-sm col main-txtb" runat="server" ID="ddAllctiveTypeID"></asp:DropDownList>
-                                            </div>
+                                <div class="container text-nowrap" runat="server" id="div2">
+                                    <div class="row mb-1 position-static">
+                                        <div class="col position-static"><b>Member  ID:</b></div>
+                                        <div class="col position-static text-truncate">
+                                            <label class="m-0" runat="server" id="lblAllMemberID"></label>
                                         </div>
                                     </div>
-                                        <hr class="m-3 ml-3 mr-3 bg-secondary"/>
-                                    <div class="container p-0 m-2 task-action">
-                                        <h6 class="w-100 card-title card-header">
-                                            <img class="figure-img mr-2 mb-1 " src="MyAdmin/icons/outline_warning_black_18dp.png" />Before Changing Members Active status</h6>
-                                        <div class=" position-static m-0 pb-sm-0 pb-xl-5 card-body">
-                                            <ul class="pl-1">
-                                                <li><p class="mb-0" ><small class="card-text">Changing the active status will disable the members account</small></p></li>
-                                                <li><p class="mb-0"><small class="card-text">Mosque representative and the Mosque they represent will be disabled</small></p></li>
-                                            </ul>
+                                    <div class="row mb-1 position-static">
+                                        <div class="col position-static"><b>First Name:</b></div>
+                                        <div  class="col position-static text-truncate">
+                                            <label class="m-0" runat="server" id="lblAllMemberName"></label>
                                         </div>
-                                        <div class="card-footer text-center position-static text-nowrap">
-                                            <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnUpdateAllMember" Text="Update Active Status" OnClick="btnUpdateAllMember_Click" />
-                                            <asp:Button CssClass=" topnav btn btn-sm btn-outline-light" runat="server" ID="btnUpdateCancelAllMember" Text="Cancel" OnClick="btnUpdateCancelAllMember_Click" />
+                                    </div>
+                                    <div class="row mb-1 position-static">
+                                        <div class="col position-static"><b>Last Name:</b></div>
+                                        <div class="col position-static text-truncate">
+                                            <label class="m-0" runat="server" id="lblAllMemberLastName"></label>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1 position-static">
+                                        <div class="col position-static"><b>Date of Birth:</b></div>
+                                        <div class="col position-static text-truncate">
+                                            <label class="m-0" runat="server" id="lblAllMemberDOB"></label>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1 position-static">
+                                        <div class="col position-static"><b>Member Type:</b></div>
+                                        <div class="col position-static text-truncate">
+                                            <label class="m-0" runat="server" id="lblAllMemberType"></label>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1 position-static">
+                                        <div class="col position-static"><b>E-mail:</b></div>
+                                        <div class="col position-static text-truncate">
+                                            <label class="m-0" runat="server" id="lblAllEmail"></label>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1 position-static">
+                                        <div class="col position-static"><b>Contact No.</b></div>
+                                        <div class="col position-static text-truncate">
+                                            <label class="m-0" runat="server" id="lblAllContactNo"></label>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1 position-static">
+                                        <div class="col position-static"><b>Mosque ID:</b></div>
+                                        <div class="col position-static text-truncate">
+                                            <label class="m-0" runat="server" id="lblAllMosque"></label>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1 position-static">
+                                        <div class="col position-static"><b>Activation Date:</b></div>
+                                        <div class="col position-static text-truncate">
+                                            <label class="m-0" runat="server" id="lblAllActivationDate"></label>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-1 position-static">
+                                        <div class="col position-static "><b>Active:</b></div>
+                                        <div class="col position-static text-truncate">
+                                            <asp:DropDownList CssClass="form-control form-control-sm col main-txtb" runat="server" ID="ddAllctiveTypeID"></asp:DropDownList>
                                         </div>
                                     </div>
                                 </div>
-                                <div runat="server" id="divAdminReports" class=" col-12 col-xl-12 mw-100 p-0">
-                                    <div class=" head-div-2 p-2 mb-0 text-center ">
-                                        <p class="m-0" runat ="server" id ="lblAdminReportHeading">Report</p>
+                                    <hr class="m-3 ml-3 mr-3 bg-secondary"/>
+                                <div class="container p-0 m-2 task-action">
+                                    <h6 class="w-100 card-title card-header">
+                                        <img class="figure-img mr-2 mb-1 " src="MyAdmin/icons/outline_warning_black_18dp.png" />Before Changing Members Active status</h6>
+                                    <div class=" position-static m-0 pb-sm-0 pb-xl-5 card-body">
+                                        <ul class="pl-1">
+                                            <li><p class="mb-0" ><small class="card-text">Changing the active status will disable the members account</small></p></li>
+                                            <li><p class="mb-0"><small class="card-text">Mosque representative and the Mosque they represent will be disabled</small></p></li>
+                                        </ul>
                                     </div>
-                                    <div class="m-0 p-0 pt-2 pl-2">
-                                        <a runat="server" id="lnkAdminPrintPDF" onserverclick="lnkAdminPrintPDF_ServerClick"><img src="MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
-                                        <hr class="m-0 mt-1 p-0" style="background-color:#0026ff; height:1px;" />
+                                    <div class="card-footer text-center position-static text-nowrap">
+                                        <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnUpdateAllMember" Text="Update Active Status" OnClick="btnUpdateAllMember_Click" />
+                                        <asp:Button CssClass=" topnav btn btn-sm btn-outline-light" runat="server" ID="btnUpdateCancelAllMember" Text="Cancel" OnClick="btnUpdateCancelAllMember_Click" />
                                     </div>
-                                    <div class=" col-12 col-xl-12 p-2" style="overflow-x:scroll;position:static">
-                                        <asp:GridView ID="grdAdminReports" RowStyle-Wrap="true" runat="server" style="position:static; font-size:smaller;" CellPadding="6" ForeColor="#333333" GridLines="none" >
-                                            <AlternatingRowStyle BackColor="White" />
-                                            <EditRowStyle BackColor="#2461BF" />
-                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                                            <RowStyle BackColor="#EFF3FB"  Wrap="true" />
-                                            <SelectedRowStyle  BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                            <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                                            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                                            <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                                            <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                                        </asp:GridView>
-                                    </div>
-                                </div>  
-
-
+                                </div>
+                            </div>
+                            <div runat="server" id="divAdminReports" class="col-8 col-sm-10 col-xs-10 col-xl-8 p-0">
+                                <div class=" head-div-2 p-2 mb-0 text-center ">
+                                    <p class="m-0" runat ="server" id ="lblAdminReportHeading">Report</p>
+                                </div>
+                                <div class="m-0 p-0 pt-2 pl-2">
+                                    <a runat="server" id="lnkAdminPrintPDF" onserverclick="lnkAdminPrintPDF_ServerClick"><img src="MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
+                                    <hr class="m-0 mt-1 p-0" style="background-color:#0026ff; height:1px;" />
+                                </div>
+                                <div class=" col-12 col-xl-12 p-2 pre-scrollable" >
+                                    <asp:GridView ID="grdAdminReports"  RowStyle-Wrap="true" runat="server" style="font-size:smaller;" ForeColor="#333333" >
+                                        <AlternatingRowStyle BackColor="White"  />
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" Font-Size="12" HorizontalAlign="Center" />
+                                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                        <RowStyle BackColor="#EFF3FB"  Wrap="true"  HorizontalAlign="Center"/>
+                                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                    </asp:GridView>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

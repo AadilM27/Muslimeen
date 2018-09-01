@@ -8,6 +8,7 @@ namespace TypeLib.ViewModels
 {
     public class uspReportGetAllMembers
     {
+        public string MemberID { get; set; }
         public string MemberName { get; set; }
         public string MemberLastName { get; set; }
         public DateTime MemberDOB { get; set; }

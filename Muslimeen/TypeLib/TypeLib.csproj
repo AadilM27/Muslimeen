@@ -106,6 +106,7 @@
     <Compile Include="ViewModels\uspGetSpecificEvent.cs" />
     <Compile Include="ViewModels\uspGetTopics.cs" />
     <Compile Include="ViewModels\uspReportGetAllMembers.cs" />
+    <Compile Include="ViewModels\uspReportGetAllMosques.cs" />
     <Compile Include="ViewModels\uspViewLatestArticles.cs" />
   </ItemGroup>
   <ItemGroup />
