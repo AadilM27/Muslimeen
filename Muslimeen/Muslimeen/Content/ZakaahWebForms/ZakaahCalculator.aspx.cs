@@ -51,7 +51,8 @@ namespace Muslimeen.Content.ZakaahWebForms
                     divUserProfile.Visible = false;
                     Session.Clear();
                 }
-               
+
+              
             }
             catch
             {
@@ -334,5 +335,11 @@ namespace Muslimeen.Content.ZakaahWebForms
         {
 
         }
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+           
+
+        }
+       
     }
 }

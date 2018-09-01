@@ -34,6 +34,7 @@
                             <asp:HiddenField runat="server" ID="hdfAdjustDate" Value="" /> <!--Need to get value from DB let admin adjust this -->
                             <li class="nav-item ml-4 mr-0 mb-0 pt-2"> <p class="IslamicDate mb-0" id="lstIslamicDate"></p></li>
                             <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
+                            <script src="../Default/DatesEnglishHijri.js"></script>
                         </ul>
                         <ul class="col-5 navbar-nav flex-row justify-content-end">
                             <li class=" nav-item mr-2">
