@@ -10,6 +10,7 @@ using TypeLib.Models;
 using System.Drawing;
 
 
+
 namespace Muslimeen.Content.ZakaahWebForms
 {
     public partial class ZakaahCalculator : System.Web.UI.Page
@@ -50,6 +51,7 @@ namespace Muslimeen.Content.ZakaahWebForms
                     divUserProfile.Visible = false;
                     Session.Clear();
                 }
+               
             }
             catch
             {
@@ -149,7 +151,7 @@ namespace Muslimeen.Content.ZakaahWebForms
         protected void Button1_Click1(object sender, EventArgs e)
         {
             try
-            {
+            { 
                 double total = 0;
                 if (txtCashAtHome.Text == "")
                 {
@@ -157,7 +159,7 @@ namespace Muslimeen.Content.ZakaahWebForms
                 }
                 else
                 {
-
+                                       
                     total += double.Parse(txtCashAtHome.Text);
                 }
 
@@ -287,9 +289,10 @@ namespace Muslimeen.Content.ZakaahWebForms
             }
         }
 
-        protected void txtCashAtHome_TextChanged(object sender, EventArgs e)
+        protected void txtCashAtHome_TextChanged(object sender, EventArgs  e)
         {
-
+            
+          
         }
 
         protected void txtBankAccount_TextChanged(object sender, EventArgs e)
