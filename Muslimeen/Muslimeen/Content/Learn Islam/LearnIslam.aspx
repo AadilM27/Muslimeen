@@ -150,7 +150,34 @@
                                         <label class="m-0" runat="server" id="lblContent"></label>
                                     </div>
                                 </div>
+<<<<<<< HEAD
+                                <div class="row mb-1 position-static text-right">
+                                    <div class="col position-static">
+                                        <label class="m-0 font-italic mt-2" runat="server" id="lblDate"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        
+
+                        <%--Display of Pending Articles--%>
+                        <div runat="server" id="divNoSelected" class="col-7 col-sm-7 col-xl-8 align p-0 text-justify">
+                            <asp:HiddenField runat="server" ID="hdfSchId" Value="" />
+                            <div class=" head-div-2 p-2 mb-0 text-left ">
+                                <p class="m-0 ">Article Selected</p>
+                            </div>
+                            <div class="container" runat="server" id="divDisplayArticle">
+                                <div class="row mb-3 mt-2">
+                                    <div class="col">
+                                        <label class="m-0 h2" runat="server" id="lblTitle"></label>
+                                    </div>
+                                </div>
+                                <div class="row mb-1 position-static">
+=======
                                 <div class="row mb-1 position-static text-left">
+>>>>>>> 4fccae91ccc38f2758d483a6450058bede54a0af
                                     <div class="col position-static">
                                         <label class="m-0 font-italic mt-2" runat="server" id="lblScholar"></label>
                                     </div>
@@ -162,7 +189,10 @@
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
+=======
                         </div>
+>>>>>>> 4fccae91ccc38f2758d483a6450058bede54a0af
                     </div>
                 </div>
             </div>        

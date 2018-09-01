@@ -17,6 +17,19 @@
      <link href="../Zakaah/css/Slideshow.css" rel="stylesheet" />
      <link href="../Zakaah/css/Zakaatcard.css" rel="stylesheet" />
      <script src="../../Login/LogIn_Bootstrap/js/jquery-3.3.1.min.js"></script>
+     <script language="JavaScript" type="text/javascript">
+        function onlyNumbers(evt)
+        {
+        var e = event || evt; // for trans-browser compatibility
+        var charCode = e.which || e.keyCode;
+
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+
+        }
+        </script>
 </head>
     <body>
        <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
@@ -28,6 +41,7 @@
                             <asp:HiddenField runat="server" ID="hdfAdjustDate" Value="" /> <!--Need to get value from DB let admin adjust this -->
                             <li class="nav-item ml-4 mr-0 mb-0 pt-2"> <p class="IslamicDate mb-0" id="lstIslamicDate"></p></li>
                             <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
+                            <script src="../Default/DatesEnglishHijri.js"></script>
                         </ul>
                         <ul class="col-5 navbar-nav flex-row justify-content-end">
                             <li class=" nav-item mr-2">
@@ -118,7 +132,7 @@
                     <asp:Label ID="Label1" runat="server" Text="Label">Cash at Home</asp:Label>
                     </div>
                     <div style="float: right;">
-                    <asp:TextBox ID="txtCashAtHome" CssClass="form-control form-control-sm topnav  mr-2 " runat="server" OnTextChanged="txtCashAtHome_TextChanged"></asp:TextBox>  
+                    <asp:TextBox ID="txtCashAtHome" CssClass="form-control form-control-sm topnav  mr-2 " runat="server" OnTextChanged="txtCashAtHome_TextChanged" onKeyPress ="return onlyNumbers();"></asp:TextBox>  
                     </div>
 
                     </div>
@@ -127,7 +141,7 @@
                     <asp:Label ID="Label2" runat="server" Text="Label">Balance held in Bank Account</asp:Label>
                     </div>
                     <div style="float: right;">
-                    <asp:TextBox ID="txtBankAccount" CssClass="form-control form-control-sm topnav  mr-2 " runat="server" OnTextChanged="txtBankAccount_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="txtBankAccount" CssClass="form-control form-control-sm topnav  mr-2 " runat="server" OnTextChanged="txtBankAccount_TextChanged" onKeyPress ="return onlyNumbers();" ></asp:TextBox>
                     </div>
 
                     </div>
@@ -136,7 +150,7 @@
                     <asp:Label ID="Label3" runat="server" Text="Label">short term investments</asp:Label>
                     </div>
                     <div style="float: right;">
-                    <asp:TextBox ID="txtInvestment" CssClass="form-control form-control-sm topnav   mr-2 "  runat="server" OnTextChanged="txtInvestment_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="txtInvestment" CssClass="form-control form-control-sm topnav   mr-2 "  runat="server" OnTextChanged="txtInvestment_TextChanged" onKeyPress ="return onlyNumbers();" ></asp:TextBox>
                     </div>
 
                     </div>
@@ -145,7 +159,7 @@
                     <asp:Label ID="Label4" runat="server" Text="Label">Business Merchandise</asp:Label>
                     </div>
                     <div style="float: right;" >
-                    <asp:TextBox ID="txtMerchandise" CssClass=" form-control form-control-sm topnav   mr-2 " runat="server" OnTextChanged="txtMerchandise_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="txtMerchandise" CssClass=" form-control form-control-sm topnav   mr-2 " runat="server" OnTextChanged="txtMerchandise_TextChanged" onKeyPress ="return onlyNumbers();"></asp:TextBox>
                     </div>
 
                     </div>
@@ -154,14 +168,14 @@
                    <asp:Label ID="Label5" runat="server" Text="Label">Gold &amp; Silver (at current value)</asp:Label>
                    </div>
                    <div style="float: right;">
-                   <asp:TextBox ID="txtGoldSilver" CssClass="form-control form-control-sm topnav   mr-2 " runat="server" OnTextChanged="txtGoldSilver_TextChanged"></asp:TextBox></div>
+                   <asp:TextBox ID="txtGoldSilver" CssClass="form-control form-control-sm topnav   mr-2 " runat="server" OnTextChanged="txtGoldSilver_TextChanged" onKeyPress ="return onlyNumbers();" ></asp:TextBox></div>
                    </div>
                    <div style="width:100%; height: 50px; clear: both;background-color:transparent" class=" btn btn-sm btn-outline-light mr-2 ">
                    <div style="float: left; color:white;color:#256297">
                    <asp:Label ID="Label6" runat="server" Text="Label">Total of Assets Liable for Zakah</asp:Label>
                    </div>
                    <div style="float: right;">
-                   <asp:TextBox ID="txtTotalAssets"  CssClass="form-control form-control-sm topnav   mr-2 "   runat="server" OnTextChanged ="txtTotalAssets_TextChanged" ReadOnly="true"></asp:TextBox>
+                   <asp:TextBox ID="txtTotalAssets"  CssClass="form-control form-control-sm topnav   mr-2 "   runat="server" OnTextChanged ="txtTotalAssets_TextChanged" ReadOnly="true" onKeyPress ="return onlyNumbers();" ></asp:TextBox>
                     <br />
                        <asp:Label ID="LblRequire" runat="server" Text=""></asp:Label>
                    </div>
@@ -172,7 +186,7 @@
                    <asp:Label ID="Label7" runat="server" Text="Label">Deduct Debts</asp:Label>
                    </div>
                    <div style="float: right;">
-                   <asp:Textbox ID="txtAllDebts" CssClass="form-control form-control-sm topnav   mr-2 "  runat="server" OnTextChanged="txtAllDebts_TextChanged"></asp:Textbox>
+                   <asp:Textbox ID="txtAllDebts" CssClass="form-control form-control-sm topnav   mr-2 "  runat="server" OnTextChanged="txtAllDebts_TextChanged" onKeyPress ="return onlyNumbers();"></asp:Textbox>
                        <br />
                        <asp:Label ID="LblRequire1" runat="server" Text=""></asp:Label>
                    </div>
@@ -183,7 +197,7 @@
                    <asp:Label ID="Label8" runat="server" Text="Label"><strong><em>Zakah-Eligible</em> Total</strong></asp:Label>
                    </div>
                    <div style="float: right;">
-                   <asp:TextBox ID="txtEligibleZakaah" CssClass="form-control form-control-sm topnav   mr-2 " runat="server" OnTextChanged="txtEligibleZakaah_TextChanged" ReadOnly="true"></asp:TextBox>
+                   <asp:TextBox ID="txtEligibleZakaah" CssClass="form-control form-control-sm topnav   mr-2 " runat="server" OnTextChanged="txtEligibleZakaah_TextChanged" ReadOnly="true" onKeyPress ="return onlyNumbers();"></asp:TextBox>
                    </div>
 
                   </div>
@@ -192,7 +206,7 @@
                   <strong >Total that Exceeds <em>Nisab</em></strong>
                   </div>
                   <div style="float: right;">
-                  <asp:TextBox ID="txtNisab" CssClass="form-control form-control-sm topnav   mr-2 " runat="server" value="4404" ReadOnly="true"></asp:TextBox>
+                  <asp:TextBox ID="txtNisab" CssClass="form-control form-control-sm topnav   mr-2 " runat="server" value="4404" ReadOnly="true" onKeyPress ="return onlyNumbers();"></asp:TextBox>
                   </div>
 
                   </div>
@@ -201,7 +215,7 @@
                   <asp:Label ID="Label9" runat="server" Text="Label"><strong>Your <em>Zakah</em></strong><strong>(2.5% Total)</strong></asp:Label>
                   </div>
                   <div style="float: right;">
-                  <asp:TextBox ID="txtCalculatedZakaah" CssClass="form-control form-control-sm topnav   mr-2 " runat="server" OnTextChanged="txtCalculatedZakaah_TextChanged" ReadOnly="true"></asp:TextBox> 
+                  <asp:TextBox ID="txtCalculatedZakaah" CssClass="form-control form-control-sm topnav   mr-2 " runat="server" OnTextChanged="txtCalculatedZakaah_TextChanged" ReadOnly="true" onKeyPress ="return onlyNumbers();"></asp:TextBox> 
                   </div>
 
                   </div>
@@ -240,9 +254,9 @@
                         <h2 style="background-color:#256297;color:white;text-align:center"> Zakaah Quotes</h2>
                     <div class="mySlides">
                       <q>“Zakah does not become obligatory except after the completion of one whole year.”</q>
-                      <p class="author">- Abu Huraira Prophet(Peace Be upon him)</p>
+                      <p class="author">- Prophet NABI(SAW -Peace Be upon him)</p>
                     </div>
-
+                    
                     <div class="mySlides">
                       <q>“Your ally is none but Allah and [therefore] His Messenger and those who have believed – those who establish prayer and give zakah, and they bow [in worship] </q>
                       <p class="author">- [Qur’an 5:55]</p>

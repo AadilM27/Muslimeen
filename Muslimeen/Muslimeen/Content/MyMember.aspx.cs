@@ -25,7 +25,7 @@ namespace Muslimeen.Content
             lblTaskHead.InnerText = "Please select a task";
 
             divListEventDetails.Visible = false;
-            divUserProfile.Visible = false;
+            divUserProfile.Visible = true;
             liMyMusbtn.Visible = true;
             liMyMusDivi.Visible = true;
             divDisplayEvents.Visible = false;
@@ -51,12 +51,19 @@ namespace Muslimeen.Content
 
                 if (Session["UserName"] != null)
                 {
-                    uspGetMember uspGetMember = new uspGetMember();
+                    try
+                    {
+                        uspGetMember uspGetMember = new uspGetMember();
 
-                    uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
-                    Session["MosqueID"] = uspGetMember.MosqueID.ToString();
-                    hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
+                        uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
+                        Session["MosqueID"] = uspGetMember.MosqueID.ToString();
+                        hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
+                        divUserProfile.Visible = true;
+                    }
+                    catch
+                    {
 
+                    }
                     btnLogin.Text = "Log out";
                     btnRegister.Visible = false;
 
@@ -66,11 +73,6 @@ namespace Muslimeen.Content
                     divUserProfile.Visible = false;
                     Session.Clear();
                 }
-                try
-                {  
-
-                }
-                catch { }
             }
             catch
             {
@@ -247,9 +249,9 @@ namespace Muslimeen.Content
         {
             divDisplaySalahTimetable.Visible = false;
             divSchDetailsOverlay.Visible = true;
+            divDisplayEvents.Visible = true;
             divListEvent.Visible = true;
             divListEventDetails.Visible = true;
-            divDisplayEvents.Visible = false;
             divEvent.Visible = false;
 
             lblTaskHead.InnerText = btnEvents.Text.ToString();
