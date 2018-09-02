@@ -578,7 +578,7 @@
                             <%-- Add a Administrator --%>
                             <div runat="server" id="divAddAdmin" class=" col-sm-12 col-xl-4 flex-nowrap p-0">
                                 <div class=" head-div-2 p-2 mb-0 text-left">
-                                    <p class="m-0">Add Details of Moderater</p>
+                                    <p class="m-0">Add Details of Administrator</p>
                                 </div>
                                 <div class=" position-static p-1 lst-container align-content-xl-center">
                                     <div class="form-row">
@@ -610,7 +610,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1">
                                             <label class="col mb-0 p-0"><small>E-mail*</small></label>
-                                            <asp:TextBox MaxLength="10" OnBlur="EmailValidationAdmin();" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtAdminEmail"></asp:TextBox>
+                                            <asp:TextBox  Onblur="EmailValidationAdmin();" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtAdminEmail"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-row">

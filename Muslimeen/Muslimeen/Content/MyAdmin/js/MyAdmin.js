@@ -149,16 +149,14 @@ function ShowPass() {
     if (password1.type === "password" ) {
 
         password1.type = "text";
-    } else if (password1.type === "text") {
-        password1.type = "password";
-    }
+    } 
 
     setTimeout(function Rollback() {
         if (password1.type === "text") {
 
             password1.type = "password";
         }
-    },3000)
+    },1500)
 
 }
 

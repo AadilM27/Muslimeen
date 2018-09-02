@@ -1923,17 +1923,160 @@ namespace Muslimeen.Content
         protected void btnAddAdmin_Click(object sender, EventArgs e)
         {
             divAddAdmin.Visible = true;
-
-
+            lblTaskHead.InnerText = btnAddAdmin.Text;
         }
 
         protected void btnRegAdmin_Click(object sender, EventArgs e)
         {
 
+            divAddAdmin.Visible = true;
+
+            DBHandler db = new DBHandler();
+
+            int continueProcess = 0;
+
+            if (txtAdminPassword.Text.ToString() != txtAdminRetypePassword.Text.ToString() ||
+                   txtAdminPassword.Text == null || txtAdminRetypePassword == null)
+            {
+                txtAdminRetypePassword.BorderColor = Color.Red;
+                txtAdminPassword.BorderColor = Color.Red;
+                lblAdminError.Text = "Passwords do not match";
+                lblAdminError.ForeColor = Color.Red;
+                continueProcess += 1;
+            }
+            else if (txtAdminUserName.Text == "" || txtAdminUserName.Text == null)
+            {
+                txtAdminUserName.BorderColor = Color.Red;
+                lblAdminError.Text = "User name field can not be empty";
+                continueProcess += 1;
+            }
+            else if (txtAdminUserName.Text.Length > 15 || txtAdminUserName.Text.Length < 5 || txtAdminUserName.Text == "")
+            {
+                txtAdminUserName.BackColor = Color.Red;
+                lblAdminError.Text = "User Name is too long or too short";
+                continueProcess += 1;
+            }
+            else if (txtAdminUserName.Text != "" || txtAdminUserName.Text != null)
+            {
+                try
+                {
+                    if (db.BLL_GetMember(txtAdminUserName.Text.ToString()) != null)
+                    {
+                        lblAdminError.Text = "User Name taken, Please retype a new one";
+                        txtAdminUserName.BorderColor = Color.Red;
+                        lblAdminError.ForeColor = Color.Red;
+                        continueProcess += 1;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    txtAdminUserName.BorderColor = Color.Red;
+                    lblAdminError.Text = ex.Message;
+                    lblAdminError.ForeColor = Color.Red;
+                    continueProcess += 1;
+                }
+            }
+
+            if (lblAdminError.Text == "" || lblAdminError.Text == null)
+            {
+                if (txtAdminFName.Text == "" || txtAdminFName.Text == null)
+                {
+                    txtAdminFName.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtAdminLName.Text == "" || txtAdminLName.Text == null)
+                {
+                    txtAdminLName.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtAdminDOB.Text == "" || txtAdminDOB == null)
+                {
+                    txtAdminDOB.BorderColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtAdminDOB.Text.Length > 10 || txtAdminDOB.Text.Length < 10)
+                {
+                    txtAdminDOB.BorderColor = Color.Red;
+                    continueProcess += 1;
+                    lblAdminError.Text = "Please follow the format: yyyy-mm-dd";
+                    lblAdminError.ForeColor = Color.Red;
+                }
+                else if (txtAdminEmail.Text == "" || txtAdminEmail == null)
+                {
+                    txtAdminEmail.BorderColor = Color.Red;
+                    lblAdminError.Text = "Please enter your Email address";
+                    lblAdminError.ForeColor = Color.Red;
+                    continueProcess += 1;
+                }
+                else if (txtAdminPassword.Text == null || txtAdminPassword.Text == "")
+                {
+                    lblAdminError.Text = "Please create a Password";
+                    lblAdminError.ForeColor = Color.Red;
+                    continueProcess += 1;
+                    txtAdminPassword.BorderColor = Color.Red;
+                }
+                else if (txtAdminRetypePassword.Text == null || txtAdminRetypePassword.Text == "")
+                {
+                    lblAdminError.Text = "Please retype your Password";
+                    lblAdminError.ForeColor = Color.Red;
+                    continueProcess += 1;
+                    txtAdminRetypePassword.BorderColor = Color.Red;
+                }
+                else if (txtAdminContactNo.Text.Length > 10 || txtAdminContactNo.Text.Length < 10)
+                {
+                    if (txtAdminContactNo.Text.Length != 0) //!0 contact number field is allowed to be left empty.
+                    {
+                        lblAdminError.Text = "Please enter a correct contact number";
+                        lblAdminError.ForeColor = Color.Red;
+                        continueProcess += 1;
+                        txtAdminContactNo.BorderColor = Color.Red;
+                    }
+                }
+            }
+
+            if (continueProcess == 0)
+            {
+                string encryptionPass = Convert.ToString(txtAdminUserName.Text);
+                Encryption encryption = new Encryption();
+                Member member = new Member();
+
+                string encryptedString = encryption.Encrypt(encryptionPass, Convert.ToString(txtAdminPassword.Text));
+
+                member.MemberID = Convert.ToString(txtAdminUserName.Text);
+                member.MemberName = Convert.ToString(txtAdminFName.Text);
+                member.MemberLastName = Convert.ToString(txtAdminLName.Text);
+                member.MemberDOB = Convert.ToDateTime(txtAdminDOB.Text);
+                member.Password = Convert.ToString(encryptedString);
+                member.MemberType = 'A';
+                member.ActiveTypeID = 'Y';
+                member.Email = Convert.ToString(txtAdminEmail.Text);
+                member.ContactNo = Convert.ToString(txtAdminContactNo.Text);
+                member.ActivationExpiry = Convert.ToDateTime(DateTime.Today.AddDays(1));
+                member.ActivationDate = Convert.ToDateTime(DateTime.Today.ToLocalTime());
+
+                bool success = db.BLL_AddMember(member);
+
+                txtAdminUserName.Text = string.Empty;
+                txtAdminFName.Text = string.Empty;
+                txtAdminLName.Text = string.Empty;
+                txtAdminContactNo.Text = string.Empty;
+                txtAdminDOB.Text = string.Empty;
+                txtAdminEmail.Text = string.Empty;
+
+            }
+
         }
 
         protected void btnAdminRegCancel_Click(object sender, EventArgs e)
         {
+            txtAdminUserName.Text = string.Empty;
+            txtAdminFName.Text = string.Empty;
+            txtAdminLName.Text = string.Empty;
+            txtAdminContactNo.Text = string.Empty;
+            txtAdminDOB.Text = string.Empty;
+            txtAdminEmail.Text = string.Empty;
+
+            divAddAdmin.Visible = true;
 
         }
     }
