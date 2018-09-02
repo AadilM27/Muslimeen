@@ -79,13 +79,13 @@ namespace Muslimeen.Login
                         }
                         else
                         {
-                            lblErrorPass.Text = "Incorrect password or Username";
+                            lblErrorPass.Text = "Incorrect password or User Name";
                         }
 
                     }
                     else
                     {
-                        lblErrorPass.Text = " Incorrect password or Username";
+                        lblErrorPass.Text = " Incorrect password or User Name";
                     }
                 }
                 else

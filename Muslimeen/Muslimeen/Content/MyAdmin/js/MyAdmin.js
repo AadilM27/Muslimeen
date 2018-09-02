@@ -13,13 +13,13 @@ function EmailValidation() {
     val = document.getElementById("txtUserEmail").value;
 
     if (val.indexOf("@") === -1 || val.length <= 8) {
-        document.getElementById("lblError").innerText = "Invalid Email Address, a correct E-mail is needed";
+        document.getElementById("lblError").innerText = "Invalid Email Address Format";
         document.getElementById("lblError").style.color = "Red";
         document.getElementById("txtUserEmail").style.borderColor = "Red";
         document.getElementById("btnRegMosque").disabled = true;
     }
     else if (val.indexOf(".") === -1) {
-        document.getElementById("lblError").innerText = "Invalid Email Address, a correct E-mail is needed";
+        document.getElementById("lblError").innerText = "Invalid Email Address Format";
         document.getElementById("lblError").style.color = "Red";
         document.getElementById("txtUserEmail").style.borderColor = "Red";
         document.getElementById("btnRegMosque").disabled = true;
@@ -32,17 +32,40 @@ function EmailValidation() {
     }
 }
 
+function EmailValidationAdmin() {
+    val = document.getElementById("txtAdminEmail").value;
+
+    if (val.indexOf("@") === -1 || val.length <= 8) {
+        document.getElementById("lblAdminError").innerText = "Invalid Email Address Format";
+        document.getElementById("lblAdminError").style.color = "Red";
+        document.getElementById("txtAdminEmail").style.borderColor = "Red";
+        document.getElementById("btnRegAdmin").disabled = true;
+    }
+    else if (val.indexOf(".") === -1) {
+        document.getElementById("lblAdminError").innerText = "Invalid Email Address Format";
+        document.getElementById("lblAdminError").style.color = "Red";
+        document.getElementById("txtAdminEmail").style.borderColor = "Red";
+        document.getElementById("btnRegAdmin").disabled = true;
+    }
+    else {
+        document.getElementById("lblAdminError").innerText = "";
+        document.getElementById("lblAdminError").style.color = "";
+        document.getElementById("txtAdminEmail").style.borderColor = "";
+        document.getElementById("btnRegAdmin").disabled = false;
+    }
+}
+
 function EmailValidationMod() {
     val = document.getElementById("txtModEmail").value;
 
     if (val.indexOf("@") === -1 || val.length <= 8) {
-        document.getElementById("lblModError").innerText = "Invalid Email Address, a correct E-mail is needed ";
+        document.getElementById("lblModError").innerText = "Invalid Email Address Format";
         document.getElementById("lblModError").style.color = "Red";
         document.getElementById("txtModEmail").style.borderColor = "Red";
         document.getElementById("btnRegModerater").disabled = true;
     }
     else if (val.indexOf(".") === -1) {
-        document.getElementById("lblModError").innerText = "Invalid Email Address, a correct E-mail is needed";
+        document.getElementById("lblModError").innerText = "Invalid Email Address Format";
         document.getElementById("lblModError").style.color = "Red";
         document.getElementById("txtModEmail").style.borderColor = "Red";
         document.getElementById("btnRegModerater").disabled = true;
@@ -58,7 +81,7 @@ function EmailValidationMod() {
 function NumbersOnlyRep() {
     val = document.getElementById("txtContactNum").value;
     if (!(/^[0-9]+$/.test(val)) && !(val === "")) {
-        document.getElementById("lblError").innerText = "Contact number is invalid";
+        document.getElementById("lblError").innerText = "Contact number format incorrect";
         document.getElementById("lblError").style.color = "Red";
         document.getElementById("txtContactNum").style.borderColor = "Red"
         document.getElementById("btnRegMosque").disabled = true;
@@ -74,7 +97,7 @@ function NumbersOnlyRep() {
 function NumbersOnlyOrg() {
     val = document.getElementById("txtOrgContactNo").value;
     if (!(/^[0-9]+$/.test(val)) && !(val === "")) {
-        document.getElementById("lblOrgError").innerText = "Contact number is invalid";
+        document.getElementById("lblOrgError").innerText = "Contact number format incorrect";
         document.getElementById("lblOrgError").style.color = "Red";
         document.getElementById("txtOrgContactNo").style.borderColor = "Red"
         document.getElementById("btnAddUpdateOrg").disabled = true;
@@ -100,5 +123,63 @@ function NumbersOnlyMod() {
         document.getElementById("lblModError").style.color = "";
         document.getElementById("txtModContactNo").style.borderColor = "";
         document.getElementById("btnRegModerater").disabled = false;
+    }
+}
+
+function NumbersOnlyAdmin() {
+    val = document.getElementById("txtAdminContactNo").value;
+    if (!(/^[0-9]+$/.test(val)) && !(val === "")) {
+        document.getElementById("lblAdminError").innerText = "Contact number format incorrect";
+        document.getElementById("lblAdminError").style.color = "Red";
+        document.getElementById("txtAdminContactNo").style.borderColor = "Red"
+        document.getElementById("btnRegAdmin").disabled = true;
+    }
+    else if (Number.isNaN(val) === false) {
+        document.getElementById("lblAdminError").innerText = "";
+        document.getElementById("lblAdminError").style.color = "";
+        document.getElementById("txtAdminContactNo").style.borderColor = "";
+        document.getElementById("btnRegAdmin").disabled = false;
+    }
+}
+
+//function can be used on any textbox password control.
+function ShowPass() {
+    var password1 = document.getElementById(event.target.id); //gets the control that triggered the function.
+
+    if (password1.type === "password" ) {
+
+        password1.type = "text";
+    } else if (password1.type === "text") {
+        password1.type = "password";
+    }
+
+    setTimeout(function Rollback() {
+        if (password1.type === "text") {
+
+            password1.type = "password";
+        }
+    },3000)
+
+}
+
+// Must contain minimum 8 letters, with at least a symbol, upper and lower case letters and a number.
+function VarifyPassword(btn, errorLbl) {
+    var password = document.getElementById(event.target.id); //gets the control that triggered the function.
+
+    var regExp = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+    var result = regExp.test(password.value);
+
+    if (result === false || result === 0) {
+        document.getElementById(btn).disabled = true;
+        document.getElementById(errorLbl).style.color = "Red";
+        document.getElementById(password.id).style.borderColor = "Red";
+        document.getElementById(errorLbl).innerText = "Password must contain a minimum of 8 letters, with at least a symbol, upper and lower case letters and a number.";
+    }
+    else{
+        document.getElementById(btn).disabled = false;
+        document.getElementById(errorLbl).style.color = "";
+        document.getElementById(password.id).style.borderColor = null;
+        document.getElementById(errorLbl).innerText = "";
     }
 }

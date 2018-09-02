@@ -84,6 +84,7 @@
                             <asp:Button runat="server" ToolTip="Add a Mosque on Muslimeen" ID="btnAddMosque" OnClick="btnAddMosque_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="Add Mosque" />
                                 <asp:Button ID="btnUpdateMosque" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="Update Mosque Details" OnClick="btnUpdateMosque_Click" />
                             <asp:Button runat="server" ID="btnAddMod" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnAddMod_Click" Text="Add a Moderater" />
+                            <asp:Button runat="server" ID="btnAddAdmin" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnAddAdmin_Click" Text="Add an Administrator" />
                             <asp:Button ID="btnAddZakaahOrg" CssClass="pl-2 btn taskBtn mb-1"   runat ="server" Text="Add New Organization" OnClick="btnAddZakaahOrg_Click" />
                                 <asp:Button runat="server" ID="btUpdateZakaahOrg" CssClass="pl-2 btn sub-taskBtn mb-1 pl-2 btn taskBtn mb-1" OnClick="btnUpdateZakaahOrg_Click" Text="Update Zakaah Organization" />
                             <asp:Button ID="btnAddNotice" CssClass="pl-2 btn taskBtn mb-1"   runat ="server" Text="Add new Notice" OnClick="btnAddNotice_Click" />
@@ -115,9 +116,6 @@
                                         <ItemTemplate>
                                             <asp:LinkButton ID="btnShow" CommandArgument='<%#Eval("MemberID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShow_Click">
                                                     <div class="p-0 form-row m-0 position-static p-1">
-                                                        <div class="col-auto position-static">
-                                                            <img src="MyAdmin/icons/PendingReg.png" class="" style="height:40px; width:35px;"/>
-                                                        </div>
                                                         <div class=" col-auto position-static p-0">
                                                             <div class="">
                                                                 <p style="font-size:small" class="p-0 m-0 text-truncate"><b>User&nbsp;Name: </b><%#Eval("MemberID")%><br/></p>
@@ -161,7 +159,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-6 mb-1 ">
                                             <label class="col mb-0 p-0 "><small>Contact Number</small></label>
-                                            <asp:TextBox MaxLength="12" onblur="NumbersOnlyRep();" CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="txtContactNum" ></asp:TextBox>
+                                            <asp:TextBox MaxLength="10" onblur="NumbersOnlyRep();" CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="txtContactNum" ></asp:TextBox>
                                         </div>
                                         <div class="form-group col-sm-6 mb-1">
                                             <label class="col mb-0 p-0 text "><small>Date of Birth*</small></label>
@@ -177,13 +175,13 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1 ">
                                             <label class="col mb-0 p-0 "><small>Password*</small></label>
-                                            <asp:TextBox TextMode="Password" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtPassword"></asp:TextBox>
+                                            <asp:TextBox TextMode="Password" Onkeyup="ShowPass();" Onblur="VarifyPassword('btnRegMosque','lblError');" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtPassword"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1 position-static">
                                             <label class="col mb-0 p-0 "><small>Retype Password*</small></label>
-                                            <asp:TextBox TextMode="Password" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtRetypePassword"></asp:TextBox>
+                                            <asp:TextBox TextMode="Password" Onkeyup="ShowPass();" Onblur="VarifyPassword('btnRegMosque','lblError');" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtRetypePassword"></asp:TextBox>
                                         </div>
                                     </div>
                                         <hr class="m-3 ml-3 mr-3 bg-secondary"/>
@@ -423,7 +421,7 @@
                                     <hr class="m-3 ml-3 mr-3 bg-secondary"/>
                                     <div class="container text-nowrap" runat="server" id="divSchDetails">
                                         <div class="row mb-1 position-static">
-                                            <div class="col position-static"><b>Member  ID:</b></div>
+                                            <div class="col position-static"><b>User Name:</b></div>
                                             <div class="col position-static text-truncate">
                                                 <label class="m-0" runat="server" id="lblMemberID"></label>
                                             </div>
@@ -524,7 +522,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-6 mb-1 ">
                                             <label class="col mb-0 p-0 "><small>Contact Number</small></label>
-                                            <asp:TextBox MaxLength="12" Onblur="NumbersOnlyMod();" CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="txtModContactNo"></asp:TextBox>
+                                            <asp:TextBox MaxLength="10" Onblur="NumbersOnlyMod();" CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="txtModContactNo"></asp:TextBox>
                                         </div>
                                         <div class="form-group col-sm-6 mb-1">
                                             <label class="col mb-0 p-0 text "><small>Date of Birth*</small></label>
@@ -544,13 +542,13 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1 ">
                                             <label class="col mb-0 p-0 "><small>Password*</small></label>
-                                            <asp:TextBox TextMode="Password" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtModPassword"></asp:TextBox>
+                                            <asp:TextBox TextMode="Password" Onkeyup="ShowPass();" Onblur="VarifyPassword('btnRegModerater','lblModError');" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtModPassword"></asp:TextBox>
                                         </div>
                                     </div>   
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1 position-static">
                                             <label class="col mb-0 p-0 "><small>Retype Password*</small></label>
-                                            <asp:TextBox TextMode="Password" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtModRetypePassword"></asp:TextBox>
+                                            <asp:TextBox TextMode="Password" Onkeyup="ShowPass();" Onblur="VarifyPassword('btnRegModerater','lblModError');" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtModRetypePassword"></asp:TextBox>
                                         </div>
                                     </div>
                                     <hr class="m-3 ml-3 mr-3 bg-secondary" />
@@ -571,6 +569,80 @@
                                         <div class="form-row mt-2 mb-0">
                                             <div class="form-group col-sm-12 m-0 flex-wrap text-truncate" style="overflow:hidden;">
                                                 <small><asp:Label runat="server" ID="lblModError" CssClass="col m-0 p-0"></asp:Label></small>
+                                            </div>
+                                        </div>
+                                        <hr class="mt-3 ml-3 mr-3 bg-secondary" />
+                                    </div>
+                                </div>
+                            </div>
+                            <%-- Add a Administrator --%>
+                            <div runat="server" id="divAddAdmin" class=" col-sm-12 col-xl-4 flex-nowrap p-0">
+                                <div class=" head-div-2 p-2 mb-0 text-left">
+                                    <p class="m-0">Add Details of Moderater</p>
+                                </div>
+                                <div class=" position-static p-1 lst-container align-content-xl-center">
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>User Name*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtAdminUserName"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-6 mb-1">
+                                            <label class="col mb-0 p-0 "><small>First Name*</small></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtAdminFName"></asp:TextBox>
+                                        </div>
+                                        <div class="form-group col-sm-6 mb-1 ">
+                                            <label class="col mb-0 p-0 "><small>Last Name*</small></label>
+                                            <asp:TextBox CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="txtAdminLName"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-6 mb-1 ">
+                                            <label class="col mb-0 p-0 "><small>Contact Number</small></label>
+                                            <asp:TextBox MaxLength="12" Onblur="NumbersOnlyAdmin();" CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="txtAdminContactNo"></asp:TextBox>
+                                        </div>
+                                        <div class="form-group col-sm-6 mb-1">
+                                            <label class="col mb-0 p-0 text "><small>Date of Birth*</small></label>
+                                            <asp:TextBox MaxLength="10" Onkeyup="AddDateChars();" CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="txtAdminDOB" placeholder="dd/mm/yyyy*"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0"><small>E-mail*</small></label>
+                                            <asp:TextBox MaxLength="10" OnBlur="EmailValidationAdmin();" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtAdminEmail"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1 ">
+                                            <label class="col mb-0 p-0 "><small>Password*</small></label>
+                                            <asp:TextBox TextMode="Password" Onkeyup="ShowPass();" Onblur="VarifyPassword('btnRegAdmin','lblAdminError');" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtAdminPassword"></asp:TextBox>
+                                        </div>
+                                    </div>   
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1 position-static">
+                                            <label class="col mb-0 p-0 "><small>Retype Password*</small></label>
+                                            <asp:TextBox TextMode="Password" Onkeyup="ShowPass();" Onblur="VarifyPassword('btnRegAdmin','lblAdminError');" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtAdminRetypePassword"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <hr class="m-3 ml-3 mr-3 bg-secondary" />
+                                    <div class=" p-0 m-1">
+                                        <h6 class="w-100 card-title card-header">
+                                            <img class="figure-img mr-2 mb-1 " src="MyAdmin/icons/outline_warning_black_18dp.png" />Before Registering:</h6>
+                                        <div class=" m-0 card-body p-2">
+                                            <ul class="pl-3 pb-3 mb-0">
+                                                <li>
+                                                    <p class="mb-0"><small class="card-text">Please make sure that the moderater is qualified for the membership</small></p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer text-center text-nowrap">
+                                            <asp:Button CssClass="topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnRegAdmin" OnClick="btnRegAdmin_Click" Text="Register Administrator" />
+                                            <asp:Button CssClass="topnav btn btn-sm btn-outline-light" runat="server" ID="btnAdminRegCancel" OnClick="btnAdminRegCancel_Click" Text="Cancel" />
+                                        </div>
+                                        <div class="form-row mt-2 mb-0">
+                                            <div class="form-group col-sm-12 m-0 flex-wrap text-truncate" style="overflow:hidden;">
+                                                <small><asp:Label runat="server" ID="lblAdminError" CssClass="col m-0 p-0"></asp:Label></small>
                                             </div>
                                         </div>
                                         <hr class="mt-3 ml-3 mr-3 bg-secondary" />
@@ -974,7 +1046,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div runat="server" id="divAdminReports" class="col-8 col-sm-10 col-xs-10 col-xl-8 p-0">
+                            <div runat="server" id="divAdminReports" class="col-12 col-xl-12 p-0 mr-1">
                                 <div class=" head-div-2 p-2 mb-0 text-center ">
                                     <p class="m-0" runat ="server" id ="lblAdminReportHeading">Report</p>
                                 </div>
@@ -982,8 +1054,8 @@
                                     <a runat="server" id="lnkAdminPrintPDF" onserverclick="lnkAdminPrintPDF_ServerClick"><img src="MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
                                     <hr class="m-0 mt-1 p-0" style="background-color:#0026ff; height:1px;" />
                                 </div>
-                                <div class=" col-12 col-xl-12 p-2 pre-scrollable" >
-                                    <asp:GridView ID="grdAdminReports"  RowStyle-Wrap="true" runat="server" style="font-size:smaller;" ForeColor="#333333" >
+                                <div class=" p-1 report-container pre-scrollable" >
+                                    <asp:GridView CssClass="flex-grow-1" ID="grdAdminReports"  RowStyle-Wrap="true" runat="server" style="font-size:smaller;" ForeColor="#333333" >
                                         <AlternatingRowStyle BackColor="White"  />
                                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                         <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" Font-Size="12" HorizontalAlign="Center" />

@@ -27,6 +27,7 @@ namespace Muslimeen.Content
 
             try
             {
+                divAddAdmin.Visible = false;
                 divAdminReports.Visible = false;
                 divAllMembersList.Visible = false;
                 divMemberDetails.Visible = false;
@@ -322,7 +323,7 @@ namespace Muslimeen.Content
         {
             divAddMosque.Visible = true;
             divAddMosqueRep.Visible = true;
-            ddMosqueActive.SelectedValue = "None";
+            ddMosqueActive.SelectedValue = "Y";
             ddMosqueActive.Enabled = false;
             lblTaskHead.InnerText = btnAddMosque.Text.ToString();
         }
@@ -1583,10 +1584,8 @@ namespace Muslimeen.Content
 
         protected void lnkAdminPrintPDF_ServerClick(object sender, EventArgs e)
         {
-
             try
             {
-
                 if (lblAdminReportHeading.InnerText == "All Members Details Report")
                 {
                     grdAdminReports.HeaderRow.Cells[0].Text = "User Name";
@@ -1921,5 +1920,21 @@ namespace Muslimeen.Content
 
         }
 
+        protected void btnAddAdmin_Click(object sender, EventArgs e)
+        {
+            divAddAdmin.Visible = true;
+
+
+        }
+
+        protected void btnRegAdmin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAdminRegCancel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

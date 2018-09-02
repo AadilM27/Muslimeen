@@ -305,3 +305,11 @@ html{
     position:static;
     padding-bottom:3px;
 }
+
+.report-container {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 555px;
+    max-height: 555px;
+    position: static;
+}
