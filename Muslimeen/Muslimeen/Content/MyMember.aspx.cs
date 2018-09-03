@@ -52,27 +52,37 @@ namespace Muslimeen.Content
 
                 if (Session["UserName"] != null)
                 {
-                    try
-                    {
+                   
                         uspGetMember uspGetMember = new uspGetMember();
 
                         uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
                         Session["MosqueID"] = uspGetMember.MosqueID.ToString();
+
+                    if (uspGetMember.MemberType == 'M')
+                    {
                         hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
                         divUserProfile.Visible = true;
-                    }
-                    catch
-                    {
 
+                        liMyMusbtn.Visible = true;
+                        liMyMusDivi.Visible = true;
+
+                        btnLogin.Text = "Log out";
+                        btnRegister.Visible = false;
                     }
-                    btnLogin.Text = "Log out";
-                    btnRegister.Visible = false;
+                    else
+                    {
+                        Response.Redirect("~/Content/Error.aspx");
+                    }
 
                 }
                 else if (Session["UserName"] == null)
                 {
+                    liMyMusbtn.Visible = false;
+                    liMyMusDivi.Visible = false;
+
                     divUserProfile.Visible = false;
                     Session.Clear();
+                    Response.Redirect("~/Login/Login.aspx");
                 }
             }
             catch
@@ -273,16 +283,28 @@ namespace Muslimeen.Content
             DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
             DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
 
+            if (startDate.Date == null )
+            {
+                lblEventError.InnerText = "No start date was selected";
+                divEventOverlay.Visible = true;
+            }
+            else if ( EndDate.Date==null)
+            {
+                lblEventError.InnerText = "No end date was selected";
+                divEventOverlay.Visible = true;
+            }
+
             if (startDate.Date <= EndDate.Date)
             {
                 RptEventList.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
                 RptEventList.DataBind();
                 if (RptEventList.Items.Count > 0)
                 {
-                    divListEvent.Visible = false;
-                    divListEventDetails.Visible = false;
-                    divDisplayEvents.Visible = false;
+                    divListEvent.Visible = true;
+                    divListEventDetails.Visible = true;
+                    divDisplayEvents.Visible = true;
                     divEvent.Visible = false;
+                    divEventOverlay.Visible = false;
                 }
                 else if (RptEventList.Items.Count <= 0)
                 {
@@ -297,18 +319,19 @@ namespace Muslimeen.Content
             }
             else if (startDate.Date > EndDate.Date)
             {
-                lblEventError.InnerText = "Invalid Date Range";
+                lblEventError.InnerText = "Invalid Date Range. The start date should be earlier than the end date.";
                 divEventOverlay.Visible = true;
             }
-
+            else
+            {
             divSchDetailsOverlay.Visible = false;
 
             divListEvent.Visible = true;
             divListEventDetails.Visible = true;
             divDisplayEvents.Visible = true;
-            divEvent.Visible = true;
+            divEvent.Visible = false;
             divEventOverlay.Visible = false;
-
+            }
 
         }
 
@@ -367,7 +390,7 @@ namespace Muslimeen.Content
             DBHandler dBHandler = new DBHandler();
 
                 DateTime dateToday = DateTime.Today;
-                DateTime date = DateTime.Now.AddDays(-7);
+                DateTime date = DateTime.Today.AddDays(-7);
 
                 rptDisplayArticles.DataSource = dBHandler.BLL_ViewLatestArticles(dateToday,date);
                 rptDisplayArticles.DataBind();

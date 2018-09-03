@@ -198,8 +198,8 @@
 
                         <!--view mosque events-->
 
-                             <div class=" row bg-light position-static ml-1 mr-1 w-100 flex-nowrap col" runat="server" id="divDisplayEvents"><%--flex-nowrap--%>
-                                <div class="col p-0 mr-1">
+                             <div class=" row bg-light position-static ml-1 mr-1 flex-nowrap col-12" runat="server" id="divDisplayEvents"><%--flex-nowrap w-100--%>
+                                <div class="col-3 col-xl-4 p-0 mr-1">
                                     <div class=" head-div-2 p-2 mb-0 text-left ">
                                         <p class="m-0">Select Event Date Range</p>
                                     </div>
@@ -254,7 +254,7 @@
                                 </div>
                                     </div>
 
-                                <div runat="server" id="divEvent" class=" col-4 p-0 flex-nowrap mr-2">
+                                <div runat="server" id="divEvent" class="col-3 col-xl-4 flex-nowrap p-0 mr-1">
                                     <asp:HiddenField runat="server" ID="hdfEvent" Value="" />
                                     <div class=" head-div-2 p-2 mb-0 text-left ">
                                         <label runat="server" class="mb-0">Selected event details:</label>
