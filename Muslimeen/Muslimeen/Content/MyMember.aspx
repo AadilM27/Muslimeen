@@ -85,6 +85,12 @@
                         <li class="nav-item navbarText navbaritems">
                             <asp:Button runat="server" ID="btnAboutUs" Text="About us" CssClass="nav-item navText btn-link btn" OnClick="btnAboutUs_Click" />
                         </li>
+                        <li class="NavDevider">|</li>
+                         <!--deviders-->
+                        <li class="nav-item navbarText navbaritems">
+                        <asp:LinkButton ID="LnkHelp" runat="server"  OnClick="btnHelp_Click" CssClass="nav-item navText btn-link btn" ToolTip="How this page works" ><%--CssClass="nav-item navText btn-link btn"--%>
+                         Help    <asp:Image runat="server" ID="ImgHelp" ImageUrl="~/Content/MyMember/icons/helpIcon.png " style="height: 1.1em; width:1.1em;" /></asp:LinkButton>   
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -168,8 +174,7 @@
                             <div runat="server" id="divSaveSalaahs" class=" col-12 col-xl-12 mw-100 p-0" style="position: static">
                                             <div class="m-0 p-0 pt-2 pl-2">
                                                 <a runat="server" id="PDF" onserverclick="PDF_ServerClick">
-                                                    <img src="../MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
-                                                
+                                                    <asp:Image runat="server" ImageUrl="~/Content/MyMember/icons/Adobe_PDF.png" Height="20" Width="20" /><small>Download as PDF</small></a>
                                             </div>
                                             <div id="divgrid" runat="server">
                                                 <asp:GridView ID="grdSalaah" RowStyle-Wrap="true" runat="server" Style="position: static; font-size: smaller;" CellPadding="6" ForeColor="#333333" GridLines="none">
@@ -188,6 +193,7 @@
                                             </div>
                                         </div>
                     </div>
+                         
                   
 
                         <!--view mosque events-->
@@ -214,7 +220,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col col-xl-4 p-0 mr-1" runat="server" id="divListEventDetails">
+                                <div class="col-3 col-xl-4 p-0 mr-1" runat="server" id="divListEventDetails">
                                     <div runat="server" id="divListEvent" class="position-static m-0 p-0">
                                     <div class=" head-div-2 p-2 mb-1 text-left">
                                         <p class="m-0">Mosque Events</p>
@@ -291,8 +297,17 @@
                                         </div>
                                     </div>
                                 </div>
+                                    <div class="col-sm-3 col-xl-4 text-nowrap" runat="server" id="divEventOverlay">
+                                    <div class="w-100 h-100 container text-center">
+                                        <div class=" container h-25 mb-3"></div>
+                                        <h6 class="card-title h-50 mt-5 pt-5">
+                                            <asp:Image runat="server" class="figure-img mr-2" ImageUrl="~/MyMember/icons/outline_error_outline_black_18dp.png" /><label id="lblEventError" runat="server"></label></h6>
+                                        <div class=" container h-25"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                         <!--Notifications-->
                         <div runat="server" id="divDiplayNotifications" class="position-static dash-content p-0">
                             <div class=" head-div-2 p-2 mb-0 ">

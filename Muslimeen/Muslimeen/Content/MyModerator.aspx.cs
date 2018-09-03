@@ -198,6 +198,10 @@ namespace Muslimeen.Content.MyModerator
         {
             Response.Redirect("~/Content/AboutUs.aspx");
         }
+        protected void btnHelp_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Content/HelpCenter.aspx");
+        }
 
         protected void btnMyMuslimeen_Click(object sender, EventArgs e)
         {

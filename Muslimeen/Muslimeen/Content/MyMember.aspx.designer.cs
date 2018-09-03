@@ -166,6 +166,24 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Button btnAboutUs;
         
         /// <summary>
+        /// LnkHelp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LnkHelp;
+        
+        /// <summary>
+        /// ImgHelp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ImgHelp;
+        
+        /// <summary>
         /// btnTodaysPrayerTimes control.
         /// </summary>
         /// <remarks>
@@ -497,6 +515,24 @@ namespace Muslimeen.Content {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventDescription;
+        
+        /// <summary>
+        /// divEventOverlay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEventOverlay;
+        
+        /// <summary>
+        /// lblEventError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventError;
         
         /// <summary>
         /// divDiplayNotifications control.
