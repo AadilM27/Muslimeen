@@ -1150,6 +1150,7 @@ namespace Muslimeen.BLL
                     pen.ArticleContent = Convert.ToString(row["ArticleContent"]);
                     string dateCreated = Convert.ToDateTime(row["DateCreated"]).ToString("dd MMM yyyy HH:mm:ss tt");
                     pen.DateCreated = Convert.ToDateTime(dateCreated);
+                    pen.ScholarName = Convert.ToString(row["Scholar Name"]);
                 }
             }
             return pen;

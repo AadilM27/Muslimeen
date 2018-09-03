@@ -39,6 +39,7 @@ namespace Muslimeen.Content.MyModerator
                 divDisplayReports.Visible = false;
                 divSchDetails.Visible = false;
                 divSchDetailsOverlay.Visible = false;
+                divDisplaySalahTimetable.Visible = false;
                 
 
                 if (Session["UserName"] != null)
@@ -343,8 +344,10 @@ namespace Muslimeen.Content.MyModerator
                 article = dBHandler.BLL_GetSelectedPendingArticle(Convert.ToInt32(articleId));
 
 
-                lblArticleTitle.InnerText = article.ArticleTitle.ToString();
-                lblArticleContent.InnerText = article.ArticleContent.ToString();
+                lblTitle.InnerText = article.ArticleTitle.ToString();
+                lblContent.InnerText = article.ArticleContent.ToString();
+                lblDate.InnerText = Convert.ToDateTime(article.DateCreated).ToString("dd/MM/yyyy");
+                lblScholar.InnerText = article.ScholarName.ToString();
 
                 divViewPendingArt.Visible = true;
                 divDisplaySch.Visible = false;
@@ -781,6 +784,34 @@ namespace Muslimeen.Content.MyModerator
             catch(NullReferenceException)
             {
                 throw;
+            }
+        }
+
+        protected void BtnSalaahTimeTable_Click(object sender, EventArgs e)
+        {
+            divDisplaySalahTimetable.Visible = true;
+            try
+            {
+                DBHandler dBHandler = new DBHandler();
+                DateTime todaysDate = DateTime.Today;
+
+                uspGetSpecificDayPrayerTimes prayertimes = new uspGetSpecificDayPrayerTimes();
+                prayertimes = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), todaysDate);
+
+                lblFajrAzaan.Text = prayertimes.FajrA.ToString();
+                lblFajrJamaat.Text = prayertimes.FajrJ.ToString();
+                lblDhuhrAzaan.Text = prayertimes.DhuhrA.ToString();
+                lblDhuhrJamaat.Text = prayertimes.DhuhrJ.ToString();
+                lblAsrAzaan.Text = prayertimes.AsrA.ToString();
+                lblAsrJamaat.Text = prayertimes.AsrJ.ToString();
+                lblMagribAzaan.Text = prayertimes.MagribA.ToString();
+                lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
+                lblEishaAzaan.Text = prayertimes.EishaA.ToString();
+                lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
+            }
+            catch(Exception)
+            {
+
             }
         }
     }

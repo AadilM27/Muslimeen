@@ -90,6 +90,8 @@
                                 <asp:Button ID="BtnRejectedArticles" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="Rejected Articles" OnClick="BtnRejectedArticles_Click" />
                                 <asp:Button ID="BtnMosqueReports" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="List of Mosques" OnClick="BtnMosqueReports_Click" />
                                 <asp:Button ID="BtnEventReports" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="List of Events" OnClick="BtnEventReports_Click" />
+                            <asp:Button ID="BtnSalaahTimeTable" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="Salaah TimeTable" OnClick="BtnSalaahTimeTable_Click" />
+
                         </nav>
                     </div>
                     <div class=" position-static basic-div-styling p-0  w-100" >
@@ -130,6 +132,7 @@
                                     </asp:Repeater>
                                 </div>
                             </div>
+                            <!---divViewPendingArticles-->
                             <div class="col-6 col-xl-4 p-0 mr-1" runat="server" id="divViewPendingArt" style="position:static">
                                 <!--Contains the List of items-->
                                 <div class=" head-div-2 p-2 mb-1 ">
@@ -171,6 +174,7 @@
                                     <div class=" container h-25"></div>
                                 </div>
                             </div>
+                            <!---divDisplayScholars-->
                             <div runat="server" id="divDisplaySch" class=" col-6 col-xl-4 flex-nowrap p-0" style="position:static">
                                 <asp:HiddenField runat="server" ID="hdfSchId" Value="" />
                                 <div class=" head-div-2 p-2 mb-0 text-left">
@@ -255,19 +259,35 @@
                                     </div>
                                   </div>
                                 </div>
-                            
+                            <!---divViewArticles--->
                             <div class=" col-12 col-md-8 flex-nowrap p-0" runat="server" id="divViewArt" style="position:static">
                                  <div class=" head-div-2 p-2 mb-0 ">
                                     <p class="m-0">Article Details:</p>
                                 </div>
-                                <div class="" style="overflow-x:scroll;overflow-y:scroll;position:static">
-                                    <div class="row ml-4" style="position:static">
-                                        <label runat="server" id="lblArticleTitle"></label>
-                                    </div>
-                                    <div class="row ml-4 p-2" style="position:static">
-                                        <label runat="server" id="lblArticleContent"></label>
+                                <div class="container" runat="server" id="divDisplayArticle" style="position:static;overflow-x:scroll;overflow-y:scroll">
+                                <div class="row mb-3 mt-2" style="position:static">
+                                    <div class="col position-static">
+                                        <label class="m-0 h2" runat="server" id="lblTitle"></label>
                                     </div>
                                 </div>
+                                <div class="row mb-1 position-static">
+                                    <div class="col position-static">
+                                        <label class="m-0" runat="server" id="lblContent"></label>
+                                    </div>
+                                </div>
+                                <div class="row mb-1 position-static">
+                                    <div class="col position-static font-italic text-left">
+                                        Author:
+                                        <label class="m-0 mt-2" runat="server" id="lblScholar"></label>
+                                    </div>
+                                    <div class="row mb-1 position-static text-right">
+                                        <div class="col position-static font-italic">
+                                            Date:
+                                        <label class="m-0 font-italic mt-2" runat="server" id="lblDate"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                                 <div class="card-footer text-center position-static text-nowrap" style="position:static">
                                     <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" ID="btnAccept" Text="Accept Article" OnClick="btnAccept_Click" />
                                     <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" ID="Button2" Text="Reject Article" OnClick="Button2_Click" />
@@ -302,6 +322,63 @@
                                     </asp:GridView>
                                 </div>
                             </div>  
+                            <!---divSalaahTimeTable-->
+                             <div runat="server" id="divDisplaySalahTimetable" class="bg-light position-static col p-3 divContainers">
+                            <div style="display: flex;justify-content: center" class=" position-static basic-div-styling w-50">
+                             <table class="table" style="justify-content: center; width: 50%; height: 20%; align-self: center">
+                                <tr>
+                                    <td rowspan="2"; colspan="1"><asp:Image ID="icoPrayer" ImageUrl="Mosque/download.png" runat="server" Height="110px" Width="110px" /> </td>
+               
+                                    <th colspan="2" class="text-uppercase m-0 font-weight-bold">Salah TimeTable</th>
+                                </tr>
+                                <tr>
+                                    <th>AZAAN</th>
+                                    <th>JAMAAT</th>
+                                </tr>
+
+                                <tr>
+                                    <th colspan="1">Fajr</th>
+                                    <td>
+                                        <asp:Label ID="lblFajrAzaan" runat="server"></asp:Label>
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lblFajrJamaat" runat="server"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th colspan="1">Dhuhr</th>
+                                    <td>
+                                        <asp:Label ID="lblDhuhrAzaan" runat="server"></asp:Label></td>
+                                    <td>
+                                        <asp:Label ID="lblDhuhrJamaat" runat="server"></asp:Label></td>
+                                </tr>
+                                <tr>
+                                    <th colspan="1">Asr</th>
+                                    <td>
+                                        <asp:Label ID="lblAsrAzaan" runat="server"></asp:Label></td>
+                                    <td>
+                                        <asp:Label ID="lblAsrJamaat" runat="server"></asp:Label></td>
+                                </tr>
+                                <tr>
+                                    <th>Magrib</th>
+                                    <td> 
+                                        <asp:Label ID="lblMagribAzaan" runat="server"></asp:Label></td>
+                                    <td>
+                                        <asp:Label ID="lblMagribJamaat" runat="server"></asp:Label></td>
+                                </tr>
+                                <tr>
+                                    <th>Eisha</th>
+                                    <td>
+                                        <asp:Label ID="lblEishaAzaan" runat="server"></asp:Label></td>
+                                    <td>
+                                        <asp:Label ID="lblEishaJamaat" runat="server"></asp:Label></td>
+                                </tr>
+
+                            </table>  
+                         </div>
+                           
+                    </div>
+                  
                         </div>
                     </div>
                 </div>
