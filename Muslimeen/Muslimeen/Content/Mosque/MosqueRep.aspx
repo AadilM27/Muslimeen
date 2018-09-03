@@ -480,7 +480,7 @@
         </div>
     </div>
     <script src="Default/Default.js" type="text/javascript"></script>
-    <script src="PrayerTimesJS.js"></script>
+  <%--  <script src="PrayerTimesJS.js"></script>--%>
 </body>
 <script src="Default/Default.js" type="text/javascript"></script>
 </html>

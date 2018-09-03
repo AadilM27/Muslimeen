@@ -20,10 +20,13 @@
             <nav class="navFixed">
                 <div class="row align-self-end">
                     <ul class=" col-7 navbar-nav flex-row justify-content-start">
-                            <asp:HiddenField runat="server" ID="hdfAdjustDate" Value="" /> <!--Need to get value from DB let admin adjust this -->
-                            <li class="nav-item ml-4 mr-0 mb-0 pt-2"> <p class="IslamicDate mb-0" id="lstIslamicDate"></p></li>
-                            <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
-                        </ul>
+                        <asp:HiddenField runat="server" ID="hdfAdjustDate" Value="" />
+                        <!--Need to get value from DB let admin adjust this -->
+                        <li class="nav-item ml-4 mr-0 mb-0 pt-2">
+                            <p class="IslamicDate mb-0" id="lstIslamicDate"></p>
+                        </li>
+                        <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
+                    </ul>
                     <ul class="col-5 navbar-nav flex-row justify-content-end">
                         <li class=" nav-item mr-2">
                             <asp:Button runat="server" Text="Login" ID="btnLogin" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnLogin_Click" />
@@ -284,7 +287,7 @@
                                 <div runat="server" id="divDisplayEvent" class=" col-3 col-xl-4 flex-nowrap p-0">
                                     <asp:HiddenField runat="server" ID="hdfEventId" Value="" />
                                     <div class=" head-div-2 p-2 mb-0 text-left ">
-                                        <label runat="server" class="mb-0">Virtues of Salah</label>
+                                        <label runat="server" class="mb-0" id="lblTitle"></label>
                                     </div>
                                     <hr class="m-3 ml-3 mr-3 bg-secondary" />
                                     <div class="container" runat="server" id="divEventDetails">
@@ -321,6 +324,15 @@
                                     </div>
 
                                 </div>
+                                <div class="col-3 col-sm-3 col-xl-4 text-nowrap" runat="server" id="divEventOverlay">
+                                    <div class="w-100 h-100 container text-center">
+                                        <div class=" container h-25 mb-3"></div>
+                                        <h6 class="card-title h-50 mt-5 pt-5">
+                                            <img class="figure-img mr-2" src="../MyAdmin/icons/outline_error_outline_black_18dp.png" /><label id="lblEventError" runat="server"></label></h6>
+                                        <div class=" container h-25"></div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class=" col-12 p-3 bg-light position-static" runat="server" id="divLocation">
@@ -453,7 +465,6 @@
                                             <tr>
                                                 <asp:Repeater ID="rptPrayerTimes" runat="server">
                                                     <ItemTemplate>
-
                                                         <tr>
                                                             <td>
                                                                 <asp:Label runat="server" Text='<%#Eval("PrayerDate").ToString().Substring(0,10)%>' ID="lblPrayerDate"></asp:Label><br />
@@ -492,7 +503,6 @@
                                                                 <asp:Label runat="server" Text='<%#Eval("EishaJ")%>' ID="lblEishaJ"></asp:Label><br />
                                                             </td>
                                                         </tr>
-
                                                     </ItemTemplate>
                                                 </asp:Repeater>
                                             </tr>
@@ -521,6 +531,15 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-3 col-sm-3 col-xl-4 text-nowrap" runat="server" id="divPrayerOverlay">
+                                    <div class="w-100 h-100 container text-center">
+                                        <div class=" container h-25 mb-3"></div>
+                                        <h6 class="card-title h-50 mt-5 pt-5">
+                                            <img class="figure-img mr-2" src="../MyAdmin/icons/outline_error_outline_black_18dp.png" /><label id="lblPrayerError" runat="server"></label></h6>
+                                        <div class=" container h-25"></div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
