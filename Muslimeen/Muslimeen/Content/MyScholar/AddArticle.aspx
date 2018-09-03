@@ -13,6 +13,8 @@
 
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/MyScholar.css" rel="stylesheet" />
+    <script src="js/AddArticle.js"></script>
+
     </head>
 <body>
     <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
@@ -109,7 +111,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-sm-12 col-12 mb-1">
                                         <label class="col mb-0 p-0 position-static"><strong>Heading:</strong></label>
-                                        <asp:TextBox CssClass="form-control" ID="txtHeading" runat="server"></asp:TextBox>
+                                        <asp:TextBox CssClass="form-control"  Onblur="heading();" ID="txtHeading" runat="server"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="form-row">

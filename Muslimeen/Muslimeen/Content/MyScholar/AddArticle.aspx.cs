@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using Muslimeen.BLL;
 using TypeLib.Models;
 using TypeLib.ViewModels;
+using System.Drawing;
 
 namespace Muslimeen.Content.MyScholar
 {
@@ -229,21 +230,30 @@ namespace Muslimeen.Content.MyScholar
             btnUpdate.Visible = false;
             lblTaskHead.InnerText = btnAddArticle.Text.ToString();
 
+            txtHeading.BorderColor = Color.Empty;
+            txtContent.BorderColor = Color.Empty;
+
             DBHandler dBHandler = new DBHandler();
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            DBHandler han = new DBHandler();
-            InsertArticle art = new InsertArticle();
-
-            //lblErrorPass.Text = "";
+            divAddArticle.Visible = true;
+            txtHeading.BorderColor = Color.Empty;
+            txtContent.BorderColor = Color.Empty;
 
             try
             {
-                if (txtHeading.Text == null && txtContent.Text == null)
+                DBHandler han = new DBHandler();
+                InsertArticle art = new InsertArticle();
+
+                if (txtHeading.Text == "" || txtHeading.Text == null)
                 {
-                    //lblErrorPass.Text = "One or more fields are left empty";
+                    txtHeading.BorderColor = Color.Red;
+                }
+                else if (txtContent.Text == "" || txtContent.Text == null)
+                {
+                    txtContent.BorderColor = Color.Red;
                 }
                 else
                 {
@@ -260,8 +270,8 @@ namespace Muslimeen.Content.MyScholar
 
                     han.BLL_InsertArticle(art);
 
-                    txtHeading.Text = " ";
-                    txtContent.Text = " ";
+                    txtHeading.Text = string.Empty;
+                    txtContent.Text = string.Empty;
 
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Added Article');</script>");
                 }

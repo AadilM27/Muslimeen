@@ -151,6 +151,7 @@
     <Content Include="Content\MyModerator\images %287%29.jpeg" />
     <Content Include="Content\MyScholar\AddArticle.aspx" />
     <Content Include="Content\MyScholar\css\MyScholar.css" />
+    <Content Include="Content\MyScholar\js\AddArticle.js" />
     <Content Include="Content\ProfileEditer.aspx" />
     <Content Include="Content\ProfileEditer\css\ProfileEditer.css" />
     <Content Include="Content\ZakaahWebForms\Zakaah.aspx" />
