@@ -55,7 +55,7 @@
                     <label>Contact Number: </label>
                 </div>
                 <div class="form-group text-left col-sm-7 mb-1 mt-1">
-                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtContactNum"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control col main-txtb" Onblur="NumbersOnly();"  runat="server" MaxLength="10" ID="txtContactNum"></asp:TextBox>
                 </div>
             </div>
             <div class="form-row">
@@ -71,7 +71,7 @@
                     <label>Email Address:* </label>
                 </div>
                 <div class="form-group col-sm-7  mb-1 mt-1">
-                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtUserEmail"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control col main-txtb" Onblur="EmailValidation();" runat="server" ID="txtUserEmail"></asp:TextBox>
                 </div>
             </div>
             <div class="form-row">
@@ -116,13 +116,13 @@
             <!--HIDE FROM HERE -->
             <div class="form-row" runat="server" id="divChangePassword">
                 <div class="form-group col-sm-12 mb-1 mt-1">
-                    <asp:TextBox runat="server" CssClass="form-control main-txtb" ID="txtOldPassword" type="password" placeholder="Old Password*"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control main-txtb"  Onblur="VarifyPassword('btnUpdate', 'lblErrorPass')" ID="txtOldPassword" type="password" placeholder="Old Password*"></asp:TextBox>
                 </div>
                 <div class="form-group col-sm-12 mb-1 mt-1">
-                    <asp:TextBox runat="server" CssClass="form-control main-txtb" ID="txtPassword" type="password" placeholder="New Password*"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control main-txtb" Onblur="VarifyPassword('btnUpdate', 'lblErrorPass')" ID="txtPassword" type="password" placeholder="New Password*"></asp:TextBox>
                 </div>
                 <div class=" form-group col-sm-12 mt-1 mb-2">
-                    <asp:TextBox runat="server"  CssClass="form-control" ID="txtRetypePass" type="password" placeholder="Retype New Password*"></asp:TextBox>
+                    <asp:TextBox runat="server"  CssClass="form-control" ID="txtRetypePass" Onblur="VarifyPassword('btnUpdate', 'lblErrorPass')" type="password" placeholder="Retype New Password*"></asp:TextBox>
                 </div>
                 <div style="text-align:left; padding-left:10px;" class=" form-group col-sm-12 mt-0 mb-0">
                     <input type="checkbox" id="chkShowPassword" onclick="CheckPassword()"/>

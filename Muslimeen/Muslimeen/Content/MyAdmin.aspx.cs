@@ -27,6 +27,7 @@ namespace Muslimeen.Content
 
             try
             {
+                divDisplaySalahTimetable.Visible = false;
                 divAddAdmin.Visible = false;
                 divAdminReports.Visible = false;
                 divAllMembersList.Visible = false;
@@ -2062,7 +2063,6 @@ namespace Muslimeen.Content
                 txtAdminContactNo.Text = string.Empty;
                 txtAdminDOB.Text = string.Empty;
                 txtAdminEmail.Text = string.Empty;
-
             }
 
         }
@@ -2077,6 +2077,38 @@ namespace Muslimeen.Content
             txtAdminEmail.Text = string.Empty;
 
             divAddAdmin.Visible = true;
+
+        }
+
+        protected void btnTodaysPrayerTime_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                    divDisplaySalahTimetable.Visible = true;
+                    lblTaskHead.InnerText = btnTodaysPrayerTime.Text.ToString();
+
+                    DBHandler dBHandler = new DBHandler();
+                    DateTime todaysDate = DateTime.Today;
+
+                    uspGetSpecificDayPrayerTimes prayertimes = new uspGetSpecificDayPrayerTimes();
+                    prayertimes = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), todaysDate);
+
+                    lblFajrAzaan.Text = prayertimes.FajrA.ToString();
+                    lblFajrJamaat.Text = prayertimes.FajrJ.ToString();
+                    lblDhuhrAzaan.Text = prayertimes.DhuhrA.ToString();
+                    lblDhuhrJamaat.Text = prayertimes.DhuhrJ.ToString();
+                    lblAsrAzaan.Text = prayertimes.AsrA.ToString();
+                    lblAsrJamaat.Text = prayertimes.AsrJ.ToString();
+                    lblMagribAzaan.Text = prayertimes.MagribA.ToString();
+                    lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
+                    lblEishaAzaan.Text = prayertimes.EishaA.ToString();
+                    lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
+            }
+            catch { }
+        }
+
+        protected void PDFSallaah_ServerClick(object sender, EventArgs e)
+        {
 
         }
     }
