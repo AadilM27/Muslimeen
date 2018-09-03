@@ -141,7 +141,7 @@
                             </div>
                         </div>
 
-                        <%--Display of Pending Articles--%>
+                        <%--Display of Articles--%>
                         <div runat="server" id="divNoSelected" class="col-7 col-sm-7 col-xl-8 align p-0 text-justify">
                             <asp:HiddenField runat="server" ID="hdfSchId" Value="" />
                             <div class=" head-div-2 p-2 mb-0 text-left ">
@@ -169,6 +169,26 @@
                                         <label class="m-0 font-italic mt-2" runat="server" id="lblDate"></label>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+
+                            <!--PDF Button-->
+                            <div runat="server" id="divAdminReports" class="col-12 col-xl-12 p-0 mr-1">                                
+                                <div class="m-0 p-0 pt-2 pl-2">
+                                    <a runat="server" id="lnkAdminPrintPDF" onserverclick="lnkAdminPrintPDF_ServerClick"><img src="../MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
+                                </div>
+                                <div class=" p-1 report-container pre-scrollable" >
+                                    <asp:GridView CssClass="flex-grow-1" ID="grdAdminReports"  RowStyle-Wrap="true" runat="server" style="font-size:smaller;" ForeColor="#333333" >
+                                        <AlternatingRowStyle BackColor="White"  />
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" Font-Size="12" HorizontalAlign="Center" />
+                                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                        <RowStyle BackColor="#EFF3FB"  Wrap="true"  HorizontalAlign="Center"/>
+                                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                    </asp:GridView>
                                 </div>
                             </div>
                         </div>
