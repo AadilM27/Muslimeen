@@ -39,6 +39,7 @@ namespace Muslimeen.Content.MyModerator
                 divDisplayReports.Visible = false;
                 divSchDetails.Visible = false;
                 divSchDetailsOverlay.Visible = false;
+                divDisplaySalahTimetable.Visible = false;
                 
 
                 if (Session["UserName"] != null)
@@ -198,6 +199,10 @@ namespace Muslimeen.Content.MyModerator
         {
             Response.Redirect("~/Content/AboutUs.aspx");
         }
+        protected void btnHelp_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Content/HelpCenter.aspx");
+        }
 
         protected void btnMyMuslimeen_Click(object sender, EventArgs e)
         {
@@ -343,8 +348,10 @@ namespace Muslimeen.Content.MyModerator
                 article = dBHandler.BLL_GetSelectedPendingArticle(Convert.ToInt32(articleId));
 
 
-                lblArticleTitle.InnerText = article.ArticleTitle.ToString();
-                lblArticleContent.InnerText = article.ArticleContent.ToString();
+                lblTitle.InnerText = article.ArticleTitle.ToString();
+                lblContent.InnerText = article.ArticleContent.ToString();
+                lblDate.InnerText = Convert.ToDateTime(article.DateCreated).ToString("dd/MM/yyyy");
+                lblScholar.InnerText = article.ScholarName.ToString();
 
                 divViewPendingArt.Visible = true;
                 divDisplaySch.Visible = false;
@@ -573,75 +580,116 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
+                if (Session["btnType"].ToString() == "AcceptedScholars")
+                {
+                    grdReports.HeaderRow.Cells[0].Text = "FirstName";
+                    grdReports.HeaderRow.Cells[1].Text = "LastName";
+                    grdReports.HeaderRow.Cells[2].Text = "Date Of Birth";
+                    grdReports.HeaderRow.Cells[3].Text = "Active";
+                    grdReports.HeaderRow.Cells[4].Text = "Email Address";
+                    grdReports.HeaderRow.Cells[5].Text = "Contact Number";
 
+                    for (int i = 0; i < grdReports.Rows.Count; i++)
+                    {
+                        DateTime DOB = Convert.ToDateTime(grdReports.Rows[i].Cells[2].Text);
+                        grdReports.Rows[i].Cells[2].Text = DOB.ToString("dd MMM yyyy");
 
+                        string active = grdReports.Rows[i].Cells[3].Text;
+                        grdReports.Rows[i].Cells[3].Text = active.Replace("N", "No").Replace("Y", "Yes").Replace("T", "Temporary");
+
+                    }
+                }
+                else if (Session["btnType"].ToString() == "RejectedScholars")
+                {
+                    grdReports.HeaderRow.Cells[0].Text = "FirstName";
+                    grdReports.HeaderRow.Cells[1].Text = "LastName";
+                    grdReports.HeaderRow.Cells[2].Text = "Date Of Birth";
+                    grdReports.HeaderRow.Cells[3].Text = "Active";
+                    grdReports.HeaderRow.Cells[4].Text = "Email Address";
+                    grdReports.HeaderRow.Cells[5].Text = "Contact Number";
+
+                    for (int i = 0; i < grdReports.Rows.Count; i++)
+                    {
+                        DateTime DOB = Convert.ToDateTime(grdReports.Rows[i].Cells[2].Text);
+                        grdReports.Rows[i].Cells[2].Text = DOB.ToString("dd MMM yyyy");
+
+                        string active = grdReports.Rows[i].Cells[3].Text;
+                        grdReports.Rows[i].Cells[3].Text = active.Replace("N", "No").Replace("Y", "Yes").Replace("T", "Temporary");
+
+                    }
+                }
+                else if (Session["btnType"].ToString() == "AcceptedArticle")
+                {
+                    grdReports.HeaderRow.Cells[0].Text = "Title";
+                    grdReports.HeaderRow.Cells[1].Text = "Content";
+                    grdReports.HeaderRow.Cells[2].Text = "Date Created";
+                    grdReports.HeaderRow.Cells[3].Text = "Scholar";
+                    grdReports.HeaderRow.Cells[4].Text = "Moderator";
+
+                    for (int i = 0; i < grdReports.Rows.Count; i++)
+                    {
+                     
+                        DateTime regDate = Convert.ToDateTime(grdReports.Rows[i].Cells[2].Text);
+                        grdReports.Rows[i].Cells[2].Text = regDate.ToString("dd MMM yyyy");
+                    }
+                }
+                else if (Session["btnType"].ToString() == "RejectedArticle")
+                {
+                    grdReports.HeaderRow.Cells[0].Text = "Title";
+                    grdReports.HeaderRow.Cells[1].Text = "Content";
+                    grdReports.HeaderRow.Cells[2].Text = "Date Created";
+                    grdReports.HeaderRow.Cells[3].Text = "Rejection Reason";
+                    grdReports.HeaderRow.Cells[4].Text = "Scholar";
+                    grdReports.HeaderRow.Cells[5].Text = "Moderator";
+
+                    for (int i = 0; i < grdReports.Rows.Count; i++)
+                    {
+
+                        DateTime regDate = Convert.ToDateTime(grdReports.Rows[i].Cells[2].Text);
+                        grdReports.Rows[i].Cells[2].Text = regDate.ToString("dd MMM yyyy");
+                    }
+
+                }
+                else if (Session["btnType"].ToString() == "MosqueReports")
+                {
+                    grdReports.HeaderRow.Cells[0].Text = "Mosque Name";
+                    grdReports.HeaderRow.Cells[1].Text = "Street";
+                    grdReports.HeaderRow.Cells[2].Text = "Suburb";
+                    grdReports.HeaderRow.Cells[3].Text = "Mosque Type";
+                    grdReports.HeaderRow.Cells[4].Text = "Mosque Size";
+
+                }
+                else if (Session["btnType"].ToString() == "EventsReports")
+                {
+                    grdReports.HeaderRow.Cells[0].Text = "Event Title";
+                    grdReports.HeaderRow.Cells[1].Text = "Start Time";
+                    grdReports.HeaderRow.Cells[2].Text = "End Time";
+                    grdReports.HeaderRow.Cells[3].Text = "Speaker";
+                    grdReports.HeaderRow.Cells[4].Text = "Event Description";
+                    grdReports.HeaderRow.Cells[5].Text = "Date";
+
+                    for (int i = 0; i < grdReports.Rows.Count; i++)
+                    {
+                      
+
+                        DateTime regDate = Convert.ToDateTime(grdReports.Rows[i].Cells[5].Text);
+                        grdReports.Rows[i].Cells[5].Text = regDate.ToString("dd MMM yyyy");
+                    }
+                }
+                grdReports.HeaderRow.Font.Size = 16;
                 DBHandler han = new DBHandler();
                 PdfPTable pdfTable = new PdfPTable(grdReports.HeaderRow.Cells.Count);
                 pdfTable.HorizontalAlignment = 0;
+
+               
                 foreach (TableCell Headercell in grdReports.HeaderRow.Cells)
                 {
-                    
-                    if(Session["btnType"].ToString() == "AcceptedScholars")
-                    {
-                        grdReports.HeaderRow.Cells[0].Text = "FirstName";
-                        grdReports.HeaderRow.Cells[1].Text = "LastName";
-                        grdReports.HeaderRow.Cells[2].Text = "Date Of Birth";
-                        grdReports.HeaderRow.Cells[3].Text = "Active";
-                        grdReports.HeaderRow.Cells[4].Text = "Email Address";
-                        grdReports.HeaderRow.Cells[5].Text = "Contact Number";
-                    }
-                     else if(Session["btnType"].ToString() == "RejectedScholars")
-                    {
-                        grdReports.HeaderRow.Cells[0].Text = "FirstName";
-                        grdReports.HeaderRow.Cells[1].Text = "LastName";
-                        grdReports.HeaderRow.Cells[2].Text = "Date Of Birth";
-                        grdReports.HeaderRow.Cells[3].Text = "Active";
-                        grdReports.HeaderRow.Cells[4].Text = "Email Address";
-                        grdReports.HeaderRow.Cells[5].Text = "Contact Number";
-                    }
-                    else if (Session["btnType"].ToString() == "AcceptedArticle")
-                    {
-                        grdReports.HeaderRow.Cells[0].Text = "Title";
-                        grdReports.HeaderRow.Cells[1].Text = "Content";
-                        grdReports.HeaderRow.Cells[2].Text = "Date Created";
-                        grdReports.HeaderRow.Cells[3].Text = "Scholar";
-                        grdReports.HeaderRow.Cells[4].Text = "Moderator";
-
-                    }
-                    else if (Session["btnType"].ToString() == "RejectedArticle")
-                    {
-                        grdReports.HeaderRow.Cells[0].Text = "Title";
-                        grdReports.HeaderRow.Cells[1].Text = "Content";
-                        grdReports.HeaderRow.Cells[2].Text = "Date Created";
-                        grdReports.HeaderRow.Cells[3].Text = "Rejection Reason";
-                        grdReports.HeaderRow.Cells[4].Text = "Scholar";
-                        grdReports.HeaderRow.Cells[5].Text = "Moderator";
-
-                    }
-                    else if(Session["btnType"].ToString() == "MosqueReports")
-                    {
-                        grdReports.HeaderRow.Cells[0].Text = "Mosque Name";
-                        grdReports.HeaderRow.Cells[1].Text = "Street";
-                        grdReports.HeaderRow.Cells[2].Text = "Suburb";
-                        grdReports.HeaderRow.Cells[3].Text = "Mosque Type";
-                        grdReports.HeaderRow.Cells[4].Text = "Mosque Size";
-                        
-
-                    }
-                    else if(Session["btnType"].ToString() == "EventsReports")
-                    {
-                        grdReports.HeaderRow.Cells[0].Text = "Event Title";
-                        grdReports.HeaderRow.Cells[1].Text = "Start Time";
-                        grdReports.HeaderRow.Cells[2].Text = "End Time";
-                        grdReports.HeaderRow.Cells[3].Text = "Speaker";
-                        grdReports.HeaderRow.Cells[4].Text = "Event Description";
-                        grdReports.HeaderRow.Cells[5].Text = "Date";
-                    }
-
-                    Font font = new Font();
+                    Font font = new Font(Font.FontFamily.HELVETICA, 11,Font.BOLD);
                     font.Color = new BaseColor(grdReports.HeaderStyle.ForeColor);
 
                     PdfPCell pdfCell = new PdfPCell(new Phrase(Headercell.Text, font));
+                    pdfCell.HorizontalAlignment = 1;
+                    pdfCell.Padding = 5;
                     pdfCell.BackgroundColor = new BaseColor(grdReports.HeaderStyle.BackColor);
                     pdfTable.AddCell(pdfCell);
 
@@ -651,10 +699,12 @@ namespace Muslimeen.Content.MyModerator
                 {
                     foreach (TableCell tablecell in gridviewrow.Cells)
                     {
-                        Font font = new Font();
+                        iTextSharp.text.Font font = new iTextSharp.text.Font();
                         font.Color = new BaseColor(grdReports.RowStyle.ForeColor);
-
-                        PdfPCell pdfcell = new PdfPCell(new Phrase(tablecell.Text));
+                        iTextSharp.text.Font content = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 9, iTextSharp.text.Font.BOLD);
+                        PdfPCell pdfcell = new PdfPCell(new Phrase(tablecell.Text, content));
+                        pdfcell.HorizontalAlignment = 1;
+                        pdfcell.VerticalAlignment = 2;
                         pdfcell.BackgroundColor = new BaseColor(grdReports.RowStyle.BackColor);
                         pdfTable.AddCell(pdfcell);
                     }
@@ -663,7 +713,69 @@ namespace Muslimeen.Content.MyModerator
                 Document pdfDocument = new Document(new RectangleReadOnly(842, 595), 10f, -200f, 10f, 0f);
                 PdfAWriter.GetInstance(pdfDocument, Response.OutputStream);
 
+                pdfTable.DefaultCell.Padding = 5;
+                pdfTable.DefaultCell.VerticalAlignment = PdfPCell.ALIGN_CENTER;
+                PdfPTable table = new PdfPTable(1);
+                PdfPTable table2 = new PdfPTable(2);
+
+                Font fontH2 = new Font(Font.FontFamily.HELVETICA, 12,Font.BOLD);
+                table2.WidthPercentage = 80;
+                table2.HorizontalAlignment = 0;
+                table2.DefaultCell.Padding = 8;
+                table2.DefaultCell.HorizontalAlignment = 1;
+                table2.DefaultCell.VerticalAlignment = 1;
+                Paragraph date = new Paragraph("Date Created: " + DateTime.Now.Date.ToString("dd MMM yyyy"), fontH2);
+                Paragraph extraPara = new Paragraph("Muslimeen Moderator Reports", fontH2);
+                table2.AddCell(date);
+                table2.AddCell(extraPara);
+
+                if (Session["btnType"].ToString() == "AcceptedScholars" || Session["btnType"].ToString() == "RejectedScholars" || Session["btnType"].ToString() == "AcceptedArticle" || Session["btnType"].ToString() == "RejectedArticle" || Session["btnType"].ToString() == "MosqueReports" || Session["btnType"].ToString() == "EventsReports")
+                {
+                    Font fontH1 = new Font(Font.FontFamily.HELVETICA, 24, Font.BOLD);
+                    table.WidthPercentage = 80;
+                    table.HorizontalAlignment = 0;
+                    table.DefaultCell.Padding = 20;
+                    table.DefaultCell.HorizontalAlignment = 1;
+                    table.DefaultCell.VerticalAlignment = 1;
+
+                    if (Session["btnType"].ToString() == "AcceptedScholars")
+                    {
+                        Paragraph para = new Paragraph("Report of All Accepted Scholars", fontH1);
+                        table.AddCell(para);
+                    }
+                    else if (Session["btnType"].ToString() == "RejectedScholars")
+                    {
+                        Paragraph para = new Paragraph("Report of All Rejected Scholars", fontH1);
+                        table.AddCell(para);
+                    }
+                    else if (Session["btnType"].ToString() == "AcceptedArticle")
+                    {
+                        Paragraph para = new Paragraph("Report of All Accepted Articles", fontH1);
+                        table.AddCell(para);
+                    }
+                    else if (Session["btnType"].ToString() == "RejectedArticle")
+                    {
+                        Paragraph para = new Paragraph("Report of All Rejected Articles", fontH1);
+                        table.AddCell(para);
+                    }
+                    else if (Session["btnType"].ToString() == "MosqueReports")
+                    {
+                        Paragraph para = new Paragraph("Report of All Mosques", fontH1);
+                        table.AddCell(para);
+                    }
+                    else if (Session["btnType"].ToString() == "EventsReports")
+                    {
+                        Paragraph para = new Paragraph("Report of All Events", fontH1);
+                        table.AddCell(para);
+                    }
+
+
+
+                }
+
                 pdfDocument.Open();
+                pdfDocument.Add(table);
+                pdfDocument.Add(table2);
                 pdfDocument.Add(pdfTable);
                 pdfDocument.Close();
 
@@ -676,6 +788,34 @@ namespace Muslimeen.Content.MyModerator
             catch(NullReferenceException)
             {
                 throw;
+            }
+        }
+
+        protected void BtnSalaahTimeTable_Click(object sender, EventArgs e)
+        {
+            divDisplaySalahTimetable.Visible = true;
+            try
+            {
+                DBHandler dBHandler = new DBHandler();
+                DateTime todaysDate = DateTime.Today;
+
+                uspGetSpecificDayPrayerTimes prayertimes = new uspGetSpecificDayPrayerTimes();
+                prayertimes = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), todaysDate);
+
+                lblFajrAzaan.Text = prayertimes.FajrA.ToString();
+                lblFajrJamaat.Text = prayertimes.FajrJ.ToString();
+                lblDhuhrAzaan.Text = prayertimes.DhuhrA.ToString();
+                lblDhuhrJamaat.Text = prayertimes.DhuhrJ.ToString();
+                lblAsrAzaan.Text = prayertimes.AsrA.ToString();
+                lblAsrJamaat.Text = prayertimes.AsrJ.ToString();
+                lblMagribAzaan.Text = prayertimes.MagribA.ToString();
+                lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
+                lblEishaAzaan.Text = prayertimes.EishaA.ToString();
+                lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
+            }
+            catch(Exception)
+            {
+
             }
         }
     }

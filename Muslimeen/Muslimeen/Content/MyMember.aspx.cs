@@ -37,6 +37,7 @@ namespace Muslimeen.Content
             divEvent.Visible = false;
             divListEvent.Visible = false;
             divSchDetailsOverlay.Visible = false;
+            divEventOverlay.Visible = false;
 
             DBHandler db = new DBHandler();
             List<CounterCalender> counterCalender = new List<CounterCalender>();
@@ -130,6 +131,11 @@ namespace Muslimeen.Content
         protected void btnAboutUs_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Content/AboutUs.aspx");
+        }
+
+        protected void btnHelp_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Content/HelpCenter.aspx");
         }
 
         protected void btnMyMuslimeen_Click(object sender, EventArgs e)
@@ -250,9 +256,10 @@ namespace Muslimeen.Content
             divDisplaySalahTimetable.Visible = false;
             divSchDetailsOverlay.Visible = true;
             divDisplayEvents.Visible = true;
-            divListEvent.Visible = true;
-            divListEventDetails.Visible = true;
+            divListEvent.Visible = false;
+            divListEventDetails.Visible = false;
             divEvent.Visible = false;
+            divEventOverlay.Visible = false;
 
             lblTaskHead.InnerText = btnEvents.Text.ToString();
 
@@ -266,14 +273,33 @@ namespace Muslimeen.Content
             DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
             DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
 
-            //if (startDate!=null)
-            //{
-            //    if (EndDate!=null)
-            //    {
-            //        btnListEvents.Visible = true;
-            //    }
+            if (startDate.Date <= EndDate.Date)
+            {
+                RptEventList.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
+                RptEventList.DataBind();
+                if (RptEventList.Items.Count > 0)
+                {
+                    divListEvent.Visible = false;
+                    divListEventDetails.Visible = false;
+                    divDisplayEvents.Visible = false;
+                    divEvent.Visible = false;
+                }
+                else if (RptEventList.Items.Count <= 0)
+                {
+                    divListEvent.Visible = false;
+                    divListEventDetails.Visible = false;
+                    divDisplayEvents.Visible = false;
+                    divEvent.Visible = false;
+                    lblEventError.InnerText = "No Events Found for Specified Date Range";
+                    divEventOverlay.Visible = true;
+                }
 
-            //}
+            }
+            else if (startDate.Date > EndDate.Date)
+            {
+                lblEventError.InnerText = "Invalid Date Range";
+                divEventOverlay.Visible = true;
+            }
 
             divSchDetailsOverlay.Visible = false;
 
@@ -281,12 +307,9 @@ namespace Muslimeen.Content
             divListEventDetails.Visible = true;
             divDisplayEvents.Visible = true;
             divEvent.Visible = true;
+            divEventOverlay.Visible = false;
 
-            RptEventList.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
-            RptEventList.DataBind();
-           
-           
-           
+
         }
 
         protected void btnEventList_Click(object sender, EventArgs e)
@@ -294,27 +317,24 @@ namespace Muslimeen.Content
             divDisplaySalahTimetable.Visible = false;
             lblTaskHead.InnerText = btnEvents.Text.ToString();
 
-            LinkButton linkButton = (LinkButton)sender;
+            LinkButton btn = (LinkButton)sender;
+            uspGetSpecificEvent events = new uspGetSpecificEvent();
+            Session["EventID"] = btn.CommandArgument.ToString();
+            events = dBHandler.BLL_GetuspGetSpecificEvent(int.Parse(btn.CommandArgument.ToString()));
 
-            string EventID = linkButton.CommandArgument.ToString();
-            hdfEvent.Value = EventID;
-
-            DBHandler dBHandler = new DBHandler();
-
-            Event ev = new Event();
-            ev = dBHandler.BLL_GetEventwithID(Convert.ToInt32(EventID));
-                lblEventTitle.InnerText = ev.EventTitle.ToString();
-                lblEventDescription.InnerText = ev.EventDescription.ToString();
-                lblSpeaker.InnerText = ev.Speaker.ToString();
-                lblEventDate.InnerText = Convert.ToDateTime(ev.EventDate).ToString("dd-MM-yyyy");
-                lblEventStartTime.InnerText = ev.EventStartTime.ToString();
-                lblEventEndTime.InnerText = ev.EventEndTime.ToString();
+                lblEventTitle.InnerText = events.EventTitle.ToString();
+                lblEventDescription.InnerText = events.EventDescription.ToString();
+                lblSpeaker.InnerText = events.Speaker.ToString();
+                lblEventDate.InnerText = Convert.ToDateTime(events.EventDate).ToString("dd-MM-yyyy");
+                lblEventStartTime.InnerText = events.EventStartTime.ToString();
+                lblEventEndTime.InnerText = events.EventEndTime.ToString();
 
                 divSchDetailsOverlay.Visible = false;
                 divListEvent.Visible = true;
                 divListEventDetails.Visible = true;
                 divDisplayEvents.Visible = true;
                 divEvent.Visible = true;
+                divEventOverlay.Visible = false;
 
 
         }
