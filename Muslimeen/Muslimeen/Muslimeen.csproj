@@ -145,6 +145,9 @@
     <Content Include="Content\MyAdmin\js\MyAdmin.js" />
     <Content Include="Content\MyMember.aspx" />
     <Content Include="Content\MyMember\css\MyMember.css" />
+    <Content Include="Content\MyMember\icons\Adobe_PDF.png" />
+    <Content Include="Content\MyMember\icons\helpIcon.png" />
+    <Content Include="Content\MyMember\icons\outline_error_outline_black_18dp.png" />
     <Content Include="Content\MyModerator.aspx" />
     <Content Include="Content\MyModerator\Adobe_PDF.png" />
     <Content Include="Content\MyModerator\css\MyModerator.css" />
@@ -1832,7 +1835,6 @@
     <Folder Include="Content\Error\css\" />
     <Folder Include="Content\Error\js\" />
     <Folder Include="Content\Images\ZakaahOrgImages\" />
-    <Folder Include="Content\MyMember\icons\" />
     <Folder Include="Content\MyModerator\js\" />
     <Folder Include="Content\Zakaah\js\" />
   </ItemGroup>

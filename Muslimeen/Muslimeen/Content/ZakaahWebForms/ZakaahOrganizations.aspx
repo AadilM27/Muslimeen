@@ -69,6 +69,12 @@
                             <li class="nav-item navbarText navbaritems">
                                 <asp:Button runat="server" ID="btnAboutUs" Text="About us"  CssClass="nav-item navText btn-link btn" OnClick="btnAboutUs_Click"/>
                             </li>
+                            <li class="NavDevider">|</li>
+                         <!--deviders-->
+                        <li class="nav-item navbarText navbaritems">
+                        <asp:LinkButton ID="LnkHelp" runat="server"  OnClick="btnHelp_Click" CssClass="nav-item navText btn-link btn" ToolTip="How this page works" ><%--CssClass="nav-item navText btn-link btn"--%>
+                         Help    <asp:Image runat="server" ID="ImgHelp" ImageUrl="~/Content/MyMember/icons/helpIcon.png " style="height: 1.1em; width:1.1em;" /></asp:LinkButton>   
+                        </li>
                         </ul>
                     </div>
                 </div>
