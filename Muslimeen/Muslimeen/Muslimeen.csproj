@@ -157,6 +157,7 @@
     <Content Include="Content\MyScholar\js\AddArticle.js" />
     <Content Include="Content\ProfileEditer.aspx" />
     <Content Include="Content\ProfileEditer\css\ProfileEditer.css" />
+    <Content Include="Content\ProfileEditer\js\ProfileEditer.js" />
     <Content Include="Content\ZakaahWebForms\Zakaah.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahCalculator.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahGallery.aspx" />

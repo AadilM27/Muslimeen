@@ -75,6 +75,7 @@ namespace Muslimeen.Login
                         {
                             Session["UserName"] = txtUserName.Text.ToString();
                             Session.Timeout = 30;
+                            Session["MosqueID"] = uspGetMember.MosqueID.ToString();
                             Response.Redirect("~/Content/Default.aspx");
                         }
                         else
