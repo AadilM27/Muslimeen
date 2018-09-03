@@ -151,18 +151,20 @@
                                     <div class="col position-static">
                                         <label class="m-0" runat="server" id="lblContent"></label>
                                     </div>
-                                </div>                                
+                                </div>
                                 <div class="row mb-1 position-static">
-                                    <div class="col position-static font-italic text-left">                                        
-                                        Author: 
+                                    <div class="col position-static font-italic text-left">
+                                        Author:
                                         <label class="m-0 mt-2" runat="server" id="lblScholar"></label>
                                     </div>
-                                    <div class="col position-static font-italic text-right">
-                                        Date: 
-                                        <label class="m-0  mt-2" runat="server" id="lblDate"></label>
-                                    </div>                                    
+                                    <div class="row mb-1 position-static text-right">
+                                        <div class="col position-static font-italic">
+                                            Date:
+                                        <label class="m-0 font-italic mt-2" runat="server" id="lblDate"></label>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div>

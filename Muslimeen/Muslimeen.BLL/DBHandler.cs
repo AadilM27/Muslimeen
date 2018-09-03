@@ -391,5 +391,14 @@ namespace Muslimeen.BLL
             return dBAccess.DeletePostings(post);
         }
 
+        public List<uspReportGetAllMembers> BLL_ReportGetAllMembers( string reportType)
+        {
+            return dBAccess.ReportGetAllMembers(reportType);
+        }
+
+        public List<uspReportGetAllMosques> BLL_ReportGetAllMosques()
+        {
+            return dBAccess.ReportGetAllMosques();
+        }
     }
 }

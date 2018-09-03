@@ -26,7 +26,7 @@ namespace Muslimeen.Register
             if (txtMemberID.Text == null || txtMemberID.Text == "")
             {
                 ContProcess += 1;
-                lblErrorPass.Text = "Please Enter your Member ID";
+                lblErrorPass.Text = "Please Enter your User Name";
             }
             else if (txtPassword.Text == null || txtPassword.Text == "")
             {

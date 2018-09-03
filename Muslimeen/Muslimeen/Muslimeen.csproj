@@ -91,6 +91,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -133,6 +134,7 @@
     <Content Include="Content\Mosque\ListMosque.aspx" />
     <Content Include="Content\Mosque\Mosque.aspx" />
     <Content Include="Content\Mosque\MosqueRep.aspx" />
+    <Content Include="Content\Mosque\PrayerTimesJS.js" />
     <Content Include="Content\Mosque\taqwa.png" />
     <Content Include="Content\MyAdmin.aspx" />
     <Content Include="Content\MyAdmin\css\MyAdmin.css" />

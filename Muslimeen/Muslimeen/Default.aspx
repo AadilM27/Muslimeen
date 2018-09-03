@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <p> Redirecting to Muslimeen </p>
+            <p>Redirecting to Muslimeen...</p>
         </div>
     </form>
 </body>
