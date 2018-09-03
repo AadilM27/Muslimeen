@@ -14,14 +14,6 @@ C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Musli
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csproj.CopyComplete
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.dll
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.pdb
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Muslimeen.DAL.dll
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Muslimeen.DAL.pdb
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\TypeLib.dll
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\TypeLib.pdb
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csprojResolveAssemblyReference.cache
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csproj.CoreCompileInputs.cache
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.dll
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.pdb
 C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Muslimeen.DAL.dll
 C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Muslimeen.DAL.pdb
 C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\TypeLib.dll
@@ -73,3 +65,11 @@ C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.dll
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.pdb
 C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csprojAssemblyReference.cache
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Muslimeen.DAL.dll
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\Muslimeen.DAL.pdb
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\TypeLib.dll
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Debug\TypeLib.pdb
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csprojResolveAssemblyReference.cache
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.csproj.CoreCompileInputs.cache
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.dll
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Debug\Muslimeen.DAL.pdb

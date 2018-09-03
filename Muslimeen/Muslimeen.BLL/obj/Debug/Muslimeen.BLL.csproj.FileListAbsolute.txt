@@ -18,16 +18,6 @@ C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Musli
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.csproj.CopyComplete
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.dll
 C:\Users\Adam\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.pdb
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.BLL.dll
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.BLL.pdb
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.DAL.dll
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\TypeLib.dll
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.DAL.pdb
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\TypeLib.pdb
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.csprojResolveAssemblyReference.cache
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.csproj.CoreCompileInputs.cache
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.dll
-C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.pdb
 C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.BLL.dll
 C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.BLL.pdb
 C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.DAL.dll
@@ -91,3 +81,13 @@ C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.csproj.CopyComplete
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.dll
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.pdb
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.BLL.dll
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.BLL.pdb
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.DAL.dll
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\TypeLib.dll
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\Muslimeen.DAL.pdb
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\bin\Debug\TypeLib.pdb
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.csprojResolveAssemblyReference.cache
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.csproj.CoreCompileInputs.cache
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.dll
+C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\Muslimeen.BLL\obj\Debug\Muslimeen.BLL.pdb

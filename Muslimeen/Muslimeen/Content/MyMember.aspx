@@ -171,34 +171,13 @@
 
                             </table>  
                          </div>
-                            <div runat="server" id="divSaveSalaahs" class=" col-12 col-xl-12 mw-100 p-0" style="position: static">
-                                            <div class="m-0 p-0 pt-2 pl-2">
-                                                <a runat="server" id="PDF" onserverclick="PDF_ServerClick">
-                                                    <asp:Image runat="server" ImageUrl="~/Content/MyMember/icons/Adobe_PDF.png" Height="20" Width="20" /><small>Download as PDF</small></a>
-                                            </div>
-                                            <div id="divgrid" runat="server">
-                                                <asp:GridView ID="grdSalaah" RowStyle-Wrap="true" runat="server" Style="position: static; font-size: smaller;" CellPadding="6" ForeColor="#333333" GridLines="none">
-                                                    <AlternatingRowStyle BackColor="White" />
-                                                    <EditRowStyle BackColor="#2461BF" />
-                                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                                                    <RowStyle BackColor="#EFF3FB" Wrap="true" />
-                                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                                                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                                                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                                                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                                                </asp:GridView>
-                                            </div>
-                                        </div>
                     </div>
                          
                   
 
                         <!--view mosque events-->
 
-                             <div class=" row bg-light position-static ml-1 mr-1 flex-nowrap col-12" runat="server" id="divDisplayEvents"><%--flex-nowrap w-100--%>
+                             <div class=" row bg-light position-static ml-1 mr-1 flex-nowrap col-12 pl-0" runat="server" id="divDisplayEvents"><%--flex-nowrap w-100--%>
                                 <div class="col-3 col-xl-4 p-0 mr-1">
                                     <div class=" head-div-2 p-2 mb-0 text-left ">
                                         <p class="m-0">Select Event Date Range</p>
@@ -263,7 +242,7 @@
                                         <h5 class="p-0 m-0"></h5>
                                     </div>
                                     <hr class="m-3 ml-3 mr-3 bg-secondary" />
-                                    <div style="overflow-y: scroll; overflow-x:scroll;">
+                                    <div style="overflow-y: scroll;">
                                     <div class="container" runat="server" id="divEventDetails">
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>Speaker:</b></div>
@@ -297,15 +276,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                    <div class="col-sm-3 col-xl-4 text-nowrap" runat="server" id="divEventOverlay">
-                                    <div class="w-100 h-100 container text-center">
-                                        <div class=" container h-25 mb-3"></div>
-                                        <h6 class="card-title h-50 mt-5 pt-5">
-                                            <asp:Image runat="server" class="figure-img mr-2" ImageUrl="~/MyMember/icons/outline_error_outline_black_18dp.png" /><label id="lblEventError" runat="server"></label></h6>
-                                        <div class=" container h-25"></div>
-                                    </div>
+                            </div>
+                            <div class="col-sm-3 col-xl-4 text-nowrap" runat="server" id="divEventOverlay">
+                                <div class="w-100 h-100 container text-center">
+                                    <div class=" container h-25 mb-3"></div>
+                                    <h6 class="card-title h-50 mt-5 pt-5">
+                                        <asp:Image runat="server" class="figure-img mr-2" ImageUrl="../Content/MyMember/icons/outline_error_outline_black_18dp.png" /><asp:Label ID="lblEventError" runat="server"></asp:Label></h6>
+                                    <div class=" container h-25"></div>
                                 </div>
                             </div>
+
                         </div>
 
                         <!--Notifications-->
@@ -392,7 +372,7 @@
                                                             </div>
                                                             <hr class=" mr-4 m-0 p-0"/>
                                                             <div class="">
-                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Created: </b><%#Convert.ToDateTime(Eval("DateCreated")).ToString("dd MM yyyy")%></p>
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Created: </b><%#Convert.ToDateTime(Eval("DateCreated")).ToString("dd MMM yyyy")%></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -422,18 +402,20 @@
                                     <p class="m-0">Selected Article Details</p>
                                 </div>
                             <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
-                                <div class="mt-0 p-2">
-                                    <div class="row position-static">
-                                        <div class="col position-static"><b>Article Title: </b></div>
-                                        <div class="col position-static">
-                                            <label runat="server" id="lblArticleTitle"></label>
-                                        </div>
+                                <div class="row mb-3 mt-2">
+                                    <div class="col">
+                                        <label class="m-0 h2" runat="server" id="lblArticleTitle"></label>
                                     </div>
-                                    <div class="row position-static">
-                                        <div class="col position-static"><b>Content: </b></div>
-                                        <div class="col position-static">
-                                            <label runat="server" id="lblArticleContent"></label>
-                                        </div>
+                                </div>
+                                <div class="row mb-1 position-static">
+                                    <div class="col position-static">
+                                        <label class="m-0" runat="server" id="lblArticleContent"></label>
+                                    </div>
+                                </div>
+                                <div class="row mb-1 position-static text-right">
+                                    <div class="col position-static">
+                                        -
+                                        <label class="m-0 font-italic mt-2" runat="server" id="lblDate"></label>
                                     </div>
                                 </div>
                             </div>

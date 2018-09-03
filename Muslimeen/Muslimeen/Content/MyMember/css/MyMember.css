@@ -1,6 +1,9 @@
 ﻿body {
     background-color: #256297;
     height: 100%;
+    width: inherit;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
  /* start code for header and footer */
@@ -177,14 +180,14 @@
     border-radius: 0px;
     text-align: start;
     font-size: small;
-    border: thin solid #256297;
+    border: solid 2px #256297;
 }
 
 .lstBtn:hover {
-        color: white;
-        position: static;
-        border: dashed 2px black;
-    }
+    color: white;
+    position: static;
+    border: dashed 2px black;
+}
 
 .head-div {
     background-color: #256297;

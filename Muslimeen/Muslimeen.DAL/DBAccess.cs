@@ -859,7 +859,9 @@ namespace Muslimeen.BLL
                     {
                         ArticleID = Convert.ToInt32(row["ArticleID"]),
                         ArticleTitle = Convert.ToString(row["ArticleTitle"]),
-                        ArticleContent = Convert.ToString(row["ArticleContent"])
+                        ArticleContent = Convert.ToString(row["ArticleContent"]),
+                        DateCreated =Convert.ToDateTime(row["DateCreated"]),
+                        ScholarID= Convert.ToString(row["ScholarID"])
                     };
                 }
             }
@@ -963,15 +965,17 @@ namespace Muslimeen.BLL
             {
                 if (table.Rows.Count > 0)
                 {
-                    DataRow row = table.Rows[0];
-                    notice = new uspGetNotifications
+                    foreach(DataRow row in table.Rows)
                     {
-                        NoticeID = Convert.ToInt32(row["NoticeID"]),
-                        DateCreated = Convert.ToDateTime(row["DateCreated"]),
-                        NoticeDescription = Convert.ToString(row["NoticeDescription"]),
-                        NoticeTitle = Convert.ToString(row["NoticeTitle"])
-                    };
-                    list.Add(notice);
+                        notice = new uspGetNotifications
+                        {
+                            NoticeID = Convert.ToInt32(row["NoticeID"]),
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]),
+                            NoticeDescription = Convert.ToString(row["NoticeDescription"]),
+                            NoticeTitle = Convert.ToString(row["NoticeTitle"])
+                        };
+                        list.Add(notice);
+                    }
                 }
             }
             return list;
@@ -990,15 +994,17 @@ namespace Muslimeen.BLL
             {
                 if (table.Rows.Count > 0)
                 {
-                    DataRow row = table.Rows[0];
-                    article = new uspViewLatestArticles
+                    foreach (DataRow row in table.Rows)
                     {
-                        ArticleID = Convert.ToInt32(row["ArticleID"]),
-                        ArticleTitle = Convert.ToString(row["ArticleTitle"]),
-                        DateCreated = Convert.ToDateTime(row["DateCreated"]),
-                        Names = Convert.ToString(row["Names"])
-                    };
-                    list.Add(article);
+                        article = new uspViewLatestArticles
+                        {
+                            ArticleID = Convert.ToInt32(row["ArticleID"]),
+                            ArticleTitle = Convert.ToString(row["ArticleTitle"]),
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]),
+                            Names = Convert.ToString(row["Names"])
+                        };
+                        list.Add(article);
+                    }
                 }
             }
             return list;
