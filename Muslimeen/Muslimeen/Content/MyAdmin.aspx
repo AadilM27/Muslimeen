@@ -34,8 +34,8 @@
                     </div>
                     <div class="row" runat="server" id="divUserProfile" >
                         <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
-                            <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
-                            </asp:HyperLink><asp:Image style="height:15px; width:15px;" runat="server" id="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="~/Content/Default/icons/EditProfile.png"/>
+                            <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="../Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
+                            </asp:HyperLink><asp:Image style="height:15px; width:15px;" runat="server" id="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="../Content/Default/icons/EditProfile.png"/>
                         </div>
                     </div>
                 </nav>
@@ -70,7 +70,7 @@
                          <!--deviders-->
                         <li class="nav-item navbarText navbaritems">
                         <asp:LinkButton ID="LnkHelp" runat="server"  OnClick="btnHelp_Click" CssClass="nav-item navText btn-link btn" ToolTip="How this page works" ><%--CssClass="nav-item navText btn-link btn"--%>
-                         Help    <asp:Image runat="server" ID="ImgHelp" ImageUrl="~/Content/MyMember/icons/helpIcon.png " style="height: 1.1em; width:1.1em;" /></asp:LinkButton>   
+                         Help    <asp:Image runat="server" ID="ImgHelp" ImageUrl="../Content/MyMember/icons/helpIcon.png " style="height: 1.1em; width:1.1em;" /></asp:LinkButton>   
                         </li>
                         </ul>
                     </div>
@@ -85,6 +85,7 @@
                             <p class="text-uppercase m-0 font-weight-bold">Admin Tasks</p>
                         </div>
                         <nav class="nav flex-column pt-2 pb-2 pr-0">
+                            <asp:Button runat="server" ToolTip="Go to the Home tab" ID="btnTodaysPrayerTime" OnClick="btnTodaysPrayerTime_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="Home" />
                             <asp:Button runat="server" ToolTip="View All Members with thier Details" ID="btnViewAllMembers" OnClick="btnViewAllMembers_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="View All Members" />
                             <asp:Button runat="server" ToolTip="Pending Scholar Registrations." ID="btnViewPendingSch" OnClick="btnViewPendingSch_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="View Pending Scholars" />
                             <asp:Button runat="server" ToolTip="Add a Mosque on Muslimeen" ID="btnAddMosque" OnClick="btnAddMosque_Click" CssClass="pl-2 btn mb-1 taskBtn" Text="Add Mosque" />
@@ -101,8 +102,7 @@
                                 <asp:Button runat="server" ID="btnReportViewActiveMembers" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportViewActiveMembers_Click" Text="All Active Members" />
                                 <asp:Button runat="server" ID="btnReportUnactiveMembers" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportUnactiveMembers_Click" Text="All Unactive Members" />                     
                                 <asp:Button runat="server" ID="btnReportAllMosques" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportAllMosques_Click" Text="All Mosques Details" />                     
-                                <%--<asp:Button runat="server" ID="Button2" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportUnactiveMembers_Click" Text="All Unactive Members" />--%>                     
-                                
+                                <%--<asp:Button runat="server" ID="Button2" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportUnactiveMembers_Click" Text="All Unactive Members" />--%>
                         </nav>
                     </div>
                     <div class=" position-static basic-div-styling p-0 w-100 position-relative">
@@ -721,7 +721,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1">
                                             <label class="col mb-0 p-0"><small>Contact Number*</small></label>
-                                            <asp:TextBox MaxLength="12" Onblur="NumbersOnlyOrg();" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtOrgContactNo"></asp:TextBox>
+                                            <asp:TextBox MaxLength="12" Onblur="NumbersOnly();" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtOrgContactNo"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -1073,6 +1073,57 @@
                                         <SortedDescendingHeaderStyle BackColor="#4870BE" />
                                     </asp:GridView>
                                 </div>
+                            </div>
+                            <div runat="server" id="divDisplaySalahTimetable" class="bg-light position-static col p-3 divContainers">
+                                <div style="display: flex;justify-content: center" class=" position-static basic-div-styling w-50">
+                                 <table class="table" style="justify-content: center; width: 50%; height: 20%; align-self: center">
+                                    <tr>
+                                        <td rowspan="2"; colspan="1"><asp:Image ID="icoPrayer" ImageUrl="Mosque/download.png" runat="server" Height="110px" Width="110px" /></td>
+                                        <th colspan="2" class="text-uppercase m-0 font-weight-bold">Salah TimeTable</th>
+                                    </tr>
+                                     <tr>
+                                         <th>AZAAN</th>
+                                         <th>JAMAAT</th>
+                                     </tr>
+                                     <tr>
+                                         <th colspan="1">Fajr</th>
+                                         <td>
+                                             <asp:Label ID="lblFajrAzaan" runat="server"></asp:Label>
+                                         </td>
+                                         <td>
+                                             <asp:Label ID="lblFajrJamaat" runat="server"></asp:Label>
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <th colspan="1">Dhuhr</th>
+                                         <td>
+                                             <asp:Label ID="lblDhuhrAzaan" runat="server"></asp:Label></td>
+                                         <td>
+                                             <asp:Label ID="lblDhuhrJamaat" runat="server"></asp:Label></td>
+                                     </tr>
+                                     <tr>
+                                         <th colspan="1">Asr</th>
+                                         <td>
+                                             <asp:Label ID="lblAsrAzaan" runat="server"></asp:Label></td>
+                                         <td>
+                                             <asp:Label ID="lblAsrJamaat" runat="server"></asp:Label></td>
+                                     </tr>
+                                     <tr>
+                                         <th>Magrib</th>
+                                         <td>
+                                             <asp:Label ID="lblMagribAzaan" runat="server"></asp:Label></td>
+                                         <td>
+                                             <asp:Label ID="lblMagribJamaat" runat="server"></asp:Label></td>
+                                     </tr>
+                                     <tr>
+                                         <th>Eisha</th>
+                                         <td>
+                                             <asp:Label ID="lblEishaAzaan" runat="server"></asp:Label></td>
+                                         <td>
+                                             <asp:Label ID="lblEishaJamaat" runat="server"></asp:Label></td>
+                                     </tr>
+                                 </table>  
+                             </div>
                             </div>
                         </div>
                     </div>

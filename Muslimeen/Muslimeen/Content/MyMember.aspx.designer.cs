@@ -337,42 +337,6 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Label lblEishaJamaat;
         
         /// <summary>
-        /// divSaveSalaahs control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSaveSalaahs;
-        
-        /// <summary>
-        /// PDF control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor PDF;
-        
-        /// <summary>
-        /// divgrid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divgrid;
-        
-        /// <summary>
-        /// grdSalaah control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdSalaah;
-        
-        /// <summary>
         /// divDisplayEvents control.
         /// </summary>
         /// <remarks>
@@ -532,7 +496,7 @@ namespace Muslimeen.Content {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventError;
+        protected global::System.Web.UI.WebControls.Label lblEventError;
         
         /// <summary>
         /// divDiplayNotifications control.
@@ -659,5 +623,14 @@ namespace Muslimeen.Content {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblArticleContent;
+        
+        /// <summary>
+        /// lblDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDate;
     }
 }

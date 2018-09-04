@@ -117,14 +117,14 @@ namespace Muslimeen.Content.Mosque
         {
             if (btnLogin.Text == "Login")
             {
-                Response.Redirect("~/Login/Login.aspx");
+                Response.Redirect("../Login/Login.aspx");
             }
             else if (btnLogin.Text == "Log out")
             {
 
                 Session.Clear();
                 Session.Abandon();
-                Response.Redirect("~/Content/Default.aspx");
+                Response.Redirect("../Content/Default.aspx");
                 btnLogin.Text = "Login";
                 btnRegister.Visible = true;
             }
@@ -132,17 +132,17 @@ namespace Muslimeen.Content.Mosque
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Register/Register.aspx");
+            Response.Redirect("../Register/Register.aspx");
         }
 
         protected void btnHome_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Default.aspx");
+            Response.Redirect("../Content/Default.aspx");
         }
 
         protected void btnMosques_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Mosque/ListMosque.aspx");
+            Response.Redirect("../Content/Mosque/ListMosque.aspx");
         }
 
         protected void btnScholars_Click(object sender, EventArgs e)
@@ -152,21 +152,21 @@ namespace Muslimeen.Content.Mosque
 
         protected void btnLearnIslam_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Learn Islam/LearnIslam.aspx");
+            Response.Redirect("../Content/Learn Islam/LearnIslam.aspx");
         }
 
         protected void btnZakaah_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/ZakaahWebForms/Zakaah.aspx");
+            Response.Redirect("../Content/ZakaahWebForms/Zakaah.aspx");
         }
 
         protected void btnAboutUs_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/AboutUs.aspx");
+            Response.Redirect("../Content/AboutUs.aspx");
         }
         protected void btnHelp_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/HelpCenter.aspx");
+            Response.Redirect("../Content/HelpCenter.aspx");
         }
         protected void btnMyMuslimeen_Click(object sender, EventArgs e)
         {
@@ -178,19 +178,19 @@ namespace Muslimeen.Content.Mosque
 
             if (uspGetMember.MemberType == 'A')
             {
-                Response.Redirect("~/Content/MyAdmin.aspx");
+                Response.Redirect("../Content/MyAdmin.aspx");
             }
             else if (uspGetMember.MemberType == 'M')
             {
-                Response.Redirect("~/Content/MyMember.aspx");
+                Response.Redirect("../Content/MyMember.aspx");
             }
             else if (uspGetMember.MemberType == 'O')
             {
-                Response.Redirect("~/Content/MyModerator.aspx");
+                Response.Redirect("../Content/MyModerator.aspx");
             }
             else if (uspGetMember.MemberType == 'S')
             {
-                Response.Redirect("~/Content/MyScholar/AddArticle.aspx");
+                Response.Redirect("../Content/MyScholar/AddArticle.aspx");
             }
 
 
@@ -200,17 +200,46 @@ namespace Muslimeen.Content.Mosque
         {
             try
             {
-               divViewActiveEvents.Visible = true;
-               DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
+                divEventOverlay.Visible = false;
+                divViewActiveEvents.Visible = false;
+                divDisplayEvent.Visible = false;
+
+                DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
                 DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
-                rptGetEvents.DataSource = db.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
-                rptGetEvents.DataBind();
+                if (startDate.Date <= EndDate.Date)
+                {
+                    rptGetEvents.DataSource = db.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
+                    rptGetEvents.DataBind();
+                    if (rptGetEvents.Items.Count > 0)
+                    {
+                        divViewActiveEvents.Visible = true;
+                        divDisplayEvent.Visible = false;
+                    }
+                    else if (rptGetEvents.Items.Count <= 0)
+                    {
+                        divViewActiveEvents.Visible = false;
+                        divDisplayEvent.Visible = false;
+                        lblEventError.InnerText = "No Events Found for Specified Date Range";
+                        divEventOverlay.Visible = true;
+                    }
+
+                }
+                else if (startDate.Date > EndDate.Date)
+                {
+                    divViewActiveEvents.Visible = false;
+                    divDisplayEvent.Visible = false;
+                    lblEventError.InnerText = "Invalid Date Range";
+                    divEventOverlay.Visible = true;
+                }
+
             }
             catch
             {
-
+                divViewActiveEvents.Visible = false;
+                divDisplayEvent.Visible = false;
+                lblEventError.InnerText = "Please Enter Required Date Fields";
+                divEventOverlay.Visible = true;
             }
-
         }
 
         protected void btnListPrayer_Click(object sender, EventArgs e)
@@ -219,72 +248,104 @@ namespace Muslimeen.Content.Mosque
             divDetails.Visible = false;
             divEvent.Visible = false;
             divLocation.Visible = false;
-            divPrayerTable.Visible = true;
             divgrid.Visible = false;
             try
             {
-                List<uspGetMosquePrayerTimes> list = new List<uspGetMosquePrayerTimes>();
-                List<uspGetSpecificDayPrayerTimes> times = new List<uspGetSpecificDayPrayerTimes>();
+
                 DateTime startDate = Convert.ToDateTime(txtPrayerStartDate.Text.ToString());
                 DateTime endDate = Convert.ToDateTime(txtPrayerEndDate.Text.ToString());
-                list = db.BLL_GetMosquePrayerTimes(int.Parse(Session["MosqueID"].ToString()), startDate, endDate);
 
-                int count = 0;
-
-                uspGetSpecificDayPrayerTimes pt = new uspGetSpecificDayPrayerTimes();
-
-                foreach (uspGetMosquePrayerTimes prayer in list)
+                if (startDate.Date <= endDate.Date)
                 {
 
-                    if (count == 0)
+                    List<uspGetMosquePrayerTimes> list = new List<uspGetMosquePrayerTimes>();
+                    List<uspGetSpecificDayPrayerTimes> times = new List<uspGetSpecificDayPrayerTimes>();
+                    list = db.BLL_GetMosquePrayerTimes(int.Parse(Session["MosqueID"].ToString()), startDate, endDate);
+                    int count = 0;
+
+                    uspGetSpecificDayPrayerTimes pt = new uspGetSpecificDayPrayerTimes();
+
+                    foreach (uspGetMosquePrayerTimes prayer in list)
                     {
 
+                        if (count == 0)
+                        {
 
-                        pt.PrayerDate = prayer.PrayerDate.Date;
-                        pt.PrayerDay = Convert.ToDateTime(pt.PrayerDate).DayOfWeek.ToString();
-                        pt.FajrA = prayer.AdhaanTime;
-                        pt.FajrJ = prayer.JamaatTime;
 
+                            pt.PrayerDate = prayer.PrayerDate.Date;
+                            pt.PrayerDay = Convert.ToDateTime(pt.PrayerDate).DayOfWeek.ToString();
+                            pt.FajrA = prayer.AdhaanTime;
+                            pt.FajrJ = prayer.JamaatTime;
+
+
+                        }
+                        else if (count == 1)
+                        {
+                            pt.DhuhrA = prayer.AdhaanTime;
+                            pt.DhuhrJ = prayer.JamaatTime;
+
+                        }
+                        else if (count == 2)
+                        {
+                            pt.AsrA = prayer.AdhaanTime;
+                            pt.AsrJ = prayer.JamaatTime;
+
+
+                        }
+                        else if (count == 3)
+                        {
+                            pt.MagribA = prayer.AdhaanTime;
+                            pt.MagribJ = prayer.JamaatTime;
+
+                        }
+                        else if (count == 4)
+                        {
+                            pt.EishaA = prayer.AdhaanTime;
+                            pt.EishaJ = prayer.JamaatTime;
+                            count = -1;
+                            times.Add(pt);
+                            pt = new uspGetSpecificDayPrayerTimes();
+
+                        }
+
+                        count++;
 
                     }
-                    else if (count == 1)
+
+                    rptPrayerTimes.DataSource = times;
+                    rptPrayerTimes.DataBind();
+                    grdReports.DataSource = times;
+                    grdReports.DataBind();
+                    if (rptPrayerTimes.Items.Count > 0)
                     {
-                        pt.DhuhrA = prayer.AdhaanTime;
-                        pt.DhuhrJ = prayer.JamaatTime;
-
+                        divPrayerTable.Visible = true;
+                        divPrayerOverlay.Visible = false;
                     }
-                    else if (count == 2)
+                    else if (rptPrayerTimes.Items.Count <= 0)
                     {
-                        pt.AsrA = prayer.AdhaanTime;
-                        pt.AsrJ = prayer.JamaatTime;
-
-
-                    }
-                    else if (count == 3)
-                    {
-                        pt.MagribA = prayer.AdhaanTime;
-                        pt.MagribJ = prayer.JamaatTime;
+                        divPrayerOverlay.Visible = true;
+                        divPrayerTable.Visible = false;
+                        lblPrayerError.InnerText = "No Prayer Times Found For Date Range";
 
                     }
-                    else if (count == 4)
-                    {
-                        pt.EishaA = prayer.AdhaanTime;
-                        pt.EishaJ = prayer.JamaatTime;
-                        count = -1;
-                        times.Add(pt);
-                        pt = new uspGetSpecificDayPrayerTimes();
-
-                    }
-
-                    count++;
 
                 }
-                rptPrayerTimes.DataSource = times;
-                rptPrayerTimes.DataBind();
-                grdReports.DataSource = times;
-                grdReports.DataBind();
+
+                else if (startDate.Date > endDate.Date)
+                {
+                    lblPrayerError.InnerText = "Invalid Date Range";
+                    divPrayerOverlay.Visible = true;
+                    divPrayerTable.Visible = false;
+
+                }
             }
-            catch { }
+            catch
+            {
+                lblPrayerError.InnerText = "Please Enter Required Date Range Fields";
+                divPrayerOverlay.Visible = true;
+                divPrayerTable.Visible = false;
+
+            }
         }
 
         protected void btnMosqueDetails_Click(object sender, EventArgs e)
@@ -307,6 +368,10 @@ namespace Muslimeen.Content.Mosque
             divgrid.Visible = false;
             divDisplayEvent.Visible = false;
             divViewActiveEvents.Visible = false;
+            divEventOverlay.Visible = false;
+            txtStartDate.Text = "";
+            txtEndDate.Text = "";
+
         }
 
         protected void btnAddress_Click(object sender, EventArgs e)
@@ -318,6 +383,8 @@ namespace Muslimeen.Content.Mosque
             divPrayerTimes.Visible = false;
             divPrayerTable.Visible = false;
             divgrid.Visible = false;
+            divEventOverlay.Visible = false;
+
 
 
         }
@@ -331,6 +398,10 @@ namespace Muslimeen.Content.Mosque
             divPrayerTimes.Visible = true;
             divPrayerTable.Visible = false;
             divgrid.Visible = false;
+            divPrayerOverlay.Visible = false;
+            txtPrayerStartDate.Text = "";
+            txtPrayerEndDate.Text = "";
+
 
         }
 
@@ -403,6 +474,7 @@ namespace Muslimeen.Content.Mosque
             uspGetSpecificEvent events = new uspGetSpecificEvent();
             divDisplayEvent.Visible = true;
             events = db.BLL_GetuspGetSpecificEvent(Convert.ToInt32(Convert.ToInt32(ID)));
+            lblTitle.InnerText = events.EventTitle;
             lblEventDescription.InnerText = events.EventDescription;
             lblEventStartTime.InnerText = events.EventStartTime;
             lblEventEndTime.InnerText = events.EventEndTime;

@@ -27,6 +27,7 @@ namespace Muslimeen.Content
 
             try
             {
+                divDisplaySalahTimetable.Visible = false;
                 divAddAdmin.Visible = false;
                 divAdminReports.Visible = false;
                 divAllMembersList.Visible = false;
@@ -91,7 +92,7 @@ namespace Muslimeen.Content
                     }
                     else
                     {
-                        Response.Redirect("~/Content/Error.aspx");
+                        Response.Redirect("../Content/Error.aspx");
                     }
                 }
                 else if (Session["UserName"] == null)
@@ -101,7 +102,7 @@ namespace Muslimeen.Content
 
                     divUserProfile.Visible = false;
                     Session.Clear();
-                    Response.Redirect("~/Login/Login.aspx");
+                    Response.Redirect("../Login/Login.aspx");
                 }
 
                 divDisplaySch.Visible = false;
@@ -133,14 +134,14 @@ namespace Muslimeen.Content
         {
             if (btnLogin.Text == "Login")
             {
-                Response.Redirect("~/Login/Login.aspx");
+                Response.Redirect("../Login/Login.aspx");
             }
             else if (btnLogin.Text == "Log out")
             {
 
                 Session.Clear();
                 Session.Abandon();
-                Response.Redirect("~/Content/MyAdmin.aspx");
+                Response.Redirect("../Content/MyAdmin.aspx");
                 btnLogin.Text = "Login";
                 btnRegister.Visible = true;
             }
@@ -148,17 +149,17 @@ namespace Muslimeen.Content
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Register/Register.aspx");
+            Response.Redirect("../Register/Register.aspx");
         }
 
         protected void btnHome_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Default.aspx");
+            Response.Redirect("../Content/Default.aspx");
         }
 
         protected void btnMosques_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Mosque/ListMosque.aspx");
+            Response.Redirect("../Content/Mosque/ListMosque.aspx");
         }
 
         protected void btnScholars_Click(object sender, EventArgs e)
@@ -168,21 +169,21 @@ namespace Muslimeen.Content
 
         protected void btnLearnIslam_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Learn Islam/LearnIslam.aspx");
+            Response.Redirect("../Content/Learn Islam/LearnIslam.aspx");
         }
 
         protected void btnZakaah_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/ZakaahWebForms/Zakaah.aspx");
+            Response.Redirect("../Content/ZakaahWebForms/Zakaah.aspx");
         }
 
         protected void btnAboutUs_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/AboutUs.aspx");
+            Response.Redirect("../Content/AboutUs.aspx");
         }
         protected void btnHelp_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/HelpCenter.aspx");
+            Response.Redirect("../Content/HelpCenter.aspx");
         }
 
         protected void btnMyMuslimeen_Click(object sender, EventArgs e)
@@ -197,19 +198,19 @@ namespace Muslimeen.Content
 
                 if (uspGetMember.MemberType == 'A')
                 {
-                    Response.Redirect("~/Content/MyAdmin.aspx");
+                    Response.Redirect("../Content/MyAdmin.aspx");
                 }
                 else if (uspGetMember.MemberType == 'M')
                 {
-                    Response.Redirect("~/Content/MyMember.aspx");
+                    Response.Redirect("../Content/MyMember.aspx");
                 }
                 else if (uspGetMember.MemberType == 'O')
                 {
-                    Response.Redirect("~/Content/MyModerator.aspx");
+                    Response.Redirect("../Content/MyModerator.aspx");
                 }
                 else if (uspGetMember.MemberType == 'S')
                 {
-                    Response.Redirect("~/Content/MyScholar/AddArticle.aspx");
+                    Response.Redirect("../Content/MyScholar/AddArticle.aspx");
                 }
             }
             catch
@@ -561,9 +562,9 @@ namespace Muslimeen.Content
                         string fileName = fupMosqueImage.FileName.ToString();
                         string fileFormat = fileName.Substring(fileName.Length - 3); //get last character of Image name.
 
-                        fupMosqueImage.SaveAs(Server.MapPath("~/Content/Images/MosqueImages/") + txtMosqueName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
-                        //Server.MapPath("~/") + filename
-                        addMosque.MosqueImage = ("~/Content/Images/MosqueImages/" + txtMosqueName.Text.ToString() + "." + fileFormat.ToString());
+                        fupMosqueImage.SaveAs(Server.MapPath("../Content/Images/MosqueImages/") + txtMosqueName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
+                        //Server.MapPath("../") + filename
+                        addMosque.MosqueImage = ("../Content/Images/MosqueImages/" + txtMosqueName.Text.ToString() + "." + fileFormat.ToString());
                     }
                     else
                     {
@@ -2066,7 +2067,6 @@ namespace Muslimeen.Content
                 txtAdminContactNo.Text = string.Empty;
                 txtAdminDOB.Text = string.Empty;
                 txtAdminEmail.Text = string.Empty;
-
             }
 
         }
@@ -2081,6 +2081,38 @@ namespace Muslimeen.Content
             txtAdminEmail.Text = string.Empty;
 
             divAddAdmin.Visible = true;
+
+        }
+
+        protected void btnTodaysPrayerTime_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                    divDisplaySalahTimetable.Visible = true;
+                    lblTaskHead.InnerText = btnTodaysPrayerTime.Text.ToString();
+
+                    DBHandler dBHandler = new DBHandler();
+                    DateTime todaysDate = DateTime.Today;
+
+                    uspGetSpecificDayPrayerTimes prayertimes = new uspGetSpecificDayPrayerTimes();
+                    prayertimes = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), todaysDate);
+
+                    lblFajrAzaan.Text = prayertimes.FajrA.ToString();
+                    lblFajrJamaat.Text = prayertimes.FajrJ.ToString();
+                    lblDhuhrAzaan.Text = prayertimes.DhuhrA.ToString();
+                    lblDhuhrJamaat.Text = prayertimes.DhuhrJ.ToString();
+                    lblAsrAzaan.Text = prayertimes.AsrA.ToString();
+                    lblAsrJamaat.Text = prayertimes.AsrJ.ToString();
+                    lblMagribAzaan.Text = prayertimes.MagribA.ToString();
+                    lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
+                    lblEishaAzaan.Text = prayertimes.EishaA.ToString();
+                    lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
+            }
+            catch { }
+        }
+
+        protected void PDFSallaah_ServerClick(object sender, EventArgs e)
+        {
 
         }
     }

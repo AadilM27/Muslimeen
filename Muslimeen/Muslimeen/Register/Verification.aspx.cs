@@ -91,7 +91,7 @@ namespace Muslimeen.Register
                 {
                     lblErrorPass.ForeColor = Color.Black;
                     lblErrorPass.Text = "Thank you";
-                    Response.Redirect("~/Content/Default.aspx");
+                    Response.Redirect("../Content/Default.aspx");
                 }
             }
         }

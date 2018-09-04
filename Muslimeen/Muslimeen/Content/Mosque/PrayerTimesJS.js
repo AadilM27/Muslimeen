@@ -27,15 +27,32 @@
                                             document.getElementById("BtnUpdate").disabled = false;
                                         }
                                     }
+                                    else
+                                        document.getElementById("txtEishaA").style.borderColor = "Red";
                                 }
+                                else
+                                    document.getElementById("txtMagribJ").style.borderColor = "Red";
                             }
+                            else
+                                document.getElementById("txtMagribA").style.borderColor = "Red";
                         }
+                        else
+                            document.getElementById("txtAsrJ").style.borderColor = "Red";
                     }
+                    else
+                        document.getElementById("txtAsrA").style.borderColor = "Red";
                 }
-                   
+                else
+                    document.getElementById("txtDhuhrJ").style.borderColor = "Red";
             }
+            else
+                document.getElementById("txtDhuhrA").style.borderColor = "Red";
         }
+        else
+            document.getElementById("txtFajrJ").style.borderColor = "Red";
     }
+    else
+        document.getElementById("txtFajrA").style.borderColor = "Red";
 
 
 

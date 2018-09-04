@@ -11,13 +11,13 @@ using iTextSharp;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.html.simpleparser;
-
+using System.Drawing;
 
 namespace Muslimeen.Content
 {
     public partial class MyMuslimeen_User_ : System.Web.UI.Page
     {
-        
+
         DBHandler dBHandler = new DBHandler();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -48,31 +48,41 @@ namespace Muslimeen.Content
             try
             {
                 DBHandler dBHandler = new DBHandler();
-               
+
 
                 if (Session["UserName"] != null)
                 {
-                    try
-                    {
-                        uspGetMember uspGetMember = new uspGetMember();
 
-                        uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
-                        Session["MosqueID"] = uspGetMember.MosqueID.ToString();
+                    uspGetMember uspGetMember = new uspGetMember();
+
+                    uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
+                    Session["MosqueID"] = uspGetMember.MosqueID.ToString();
+
+                    if (uspGetMember.MemberType == 'M')
+                    {
                         hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
                         divUserProfile.Visible = true;
-                    }
-                    catch
-                    {
 
+                        liMyMusbtn.Visible = true;
+                        liMyMusDivi.Visible = true;
+
+                        btnLogin.Text = "Log out";
+                        btnRegister.Visible = false;
                     }
-                    btnLogin.Text = "Log out";
-                    btnRegister.Visible = false;
+                    else
+                    {
+                        Response.Redirect("../Content/Error.aspx");
+                    }
 
                 }
                 else if (Session["UserName"] == null)
                 {
+                    liMyMusbtn.Visible = false;
+                    liMyMusDivi.Visible = false;
+
                     divUserProfile.Visible = false;
                     Session.Clear();
+                    Response.Redirect("../Login/Login.aspx");
                 }
             }
             catch
@@ -85,14 +95,14 @@ namespace Muslimeen.Content
         {
             if (btnLogin.Text == "Login")
             {
-                Response.Redirect("~/Login/Login.aspx");
+                Response.Redirect("../Login/Login.aspx");
             }
             else if (btnLogin.Text == "Log out")
             {
 
                 Session.Clear();
                 Session.Abandon();
-                Response.Redirect("~/Content/Default.aspx");
+                Response.Redirect("../Content/Default.aspx");
                 btnLogin.Text = "Login";
                 btnRegister.Visible = true;
             }
@@ -100,17 +110,17 @@ namespace Muslimeen.Content
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Register/Register.aspx");
+            Response.Redirect("../Register/Register.aspx");
         }
 
         protected void btnHome_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Default.aspx");
+            Response.Redirect("../Content/Default.aspx");
         }
 
         protected void btnMosques_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Mosque/ListMosque.aspx");
+            Response.Redirect("../Content/Mosque/ListMosque.aspx");
         }
 
         protected void btnScholars_Click(object sender, EventArgs e)
@@ -120,22 +130,22 @@ namespace Muslimeen.Content
 
         protected void btnLearnIslam_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/Learn Islam/LearnIslam.aspx");
+            Response.Redirect("../Content/Learn Islam/LearnIslam.aspx");
         }
 
         protected void btnZakaah_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/ZakaahWebForms/Zakaah.aspx");
+            Response.Redirect("../Content/ZakaahWebForms/Zakaah.aspx");
         }
 
         protected void btnAboutUs_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/AboutUs.aspx");
+            Response.Redirect("../Content/AboutUs.aspx");
         }
 
         protected void btnHelp_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Content/HelpCenter.aspx");
+            Response.Redirect("../Content/HelpCenter.aspx");
         }
 
         protected void btnMyMuslimeen_Click(object sender, EventArgs e)
@@ -150,19 +160,19 @@ namespace Muslimeen.Content
 
                 if (uspGetMember.MemberType == 'A')
                 {
-                    Response.Redirect("~/Content/MyAdmin.aspx");
+                    Response.Redirect("../Content/MyAdmin.aspx");
                 }
                 else if (uspGetMember.MemberType == 'M')
                 {
-                    Response.Redirect("~/Content/MyMember.aspx");
+                    Response.Redirect("../Content/MyMember.aspx");
                 }
                 else if (uspGetMember.MemberType == 'O')
                 {
-                    Response.Redirect("~/Content/MyModerator.aspx");
+                    Response.Redirect("../Content/MyModerator.aspx");
                 }
                 else if (uspGetMember.MemberType == 'S')
                 {
-                    Response.Redirect("~/Content/MyScholar/AddArticle.aspx");
+                    Response.Redirect("../Content/MyScholar/AddArticle.aspx");
                 }
             }
             catch
@@ -172,94 +182,35 @@ namespace Muslimeen.Content
         }
         protected void btnTodaysPrayerTime_Click(object sender, EventArgs e)
         {
-                divDisplaySalahTimetable.Visible = true;
-                lblTaskHead.InnerText = btnTodaysPrayerTimes.Text.ToString();
+            divDisplaySalahTimetable.Visible = true;
+            lblTaskHead.InnerText = btnTodaysPrayerTimes.Text.ToString();
 
-                DBHandler dBHandler = new DBHandler();
-                DateTime todaysDate = DateTime.Today;
+            DBHandler dBHandler = new DBHandler();
+            DateTime todaysDate = DateTime.Today;
 
-                uspGetSpecificDayPrayerTimes prayertimes = new uspGetSpecificDayPrayerTimes();
-                prayertimes = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), todaysDate);
+            uspGetSpecificDayPrayerTimes prayertimes = new uspGetSpecificDayPrayerTimes();
+            prayertimes = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), todaysDate);
 
-                lblFajrAzaan.Text = prayertimes.FajrA.ToString();
-                lblFajrJamaat.Text = prayertimes.FajrJ.ToString();
-                lblDhuhrAzaan.Text = prayertimes.DhuhrA.ToString();
-                lblDhuhrJamaat.Text = prayertimes.DhuhrJ.ToString();
-                lblAsrAzaan.Text = prayertimes.AsrA.ToString();
-                lblAsrJamaat.Text = prayertimes.AsrJ.ToString();
-                lblMagribAzaan.Text = prayertimes.MagribA.ToString();
-                lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
-                lblEishaAzaan.Text = prayertimes.EishaA.ToString();
-                lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
+            lblFajrAzaan.Text = prayertimes.FajrA.ToString();
+            lblFajrJamaat.Text = prayertimes.FajrJ.ToString();
+            lblDhuhrAzaan.Text = prayertimes.DhuhrA.ToString();
+            lblDhuhrJamaat.Text = prayertimes.DhuhrJ.ToString();
+            lblAsrAzaan.Text = prayertimes.AsrA.ToString();
+            lblAsrJamaat.Text = prayertimes.AsrJ.ToString();
+            lblMagribAzaan.Text = prayertimes.MagribA.ToString();
+            lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
+            lblEishaAzaan.Text = prayertimes.EishaA.ToString();
+            lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
 
 
         }
 
-        protected void PDF_ServerClick(object sender, EventArgs e)
-        {
-            try
-            {
-                PdfPTable pdfTable = new PdfPTable(grdSalaah.HeaderRow.Cells.Count);
-                pdfTable.HorizontalAlignment = 0;
-                foreach (TableCell Headercell in grdSalaah.HeaderRow.Cells)
-                {
-                    grdSalaah.HeaderRow.Cells[0].Text = "Date";
-                    grdSalaah.HeaderRow.Cells[1].Text = "Day";
-                    grdSalaah.HeaderRow.Cells[2].Text = "Fajr Adhaan";
-                    grdSalaah.HeaderRow.Cells[3].Text = "Fajr Jamaat";
-                    grdSalaah.HeaderRow.Cells[4].Text = "Dhuhr Adhaan";
-                    grdSalaah.HeaderRow.Cells[5].Text = "Dhuhr Jamaat ";
-                    grdSalaah.HeaderRow.Cells[6].Text = "Asr Adhaan";
-                    grdSalaah.HeaderRow.Cells[7].Text = "Asr Jamaat ";
-                    grdSalaah.HeaderRow.Cells[8].Text = "Magrib Adhaan";
-                    grdSalaah.HeaderRow.Cells[9].Text = "Magrib Jamaat ";
-                    grdSalaah.HeaderRow.Cells[10].Text = "Eisha Adhaan";
-                    grdSalaah.HeaderRow.Cells[11].Text = "Eisha Jamaat";
-                    Font font = new Font();
-                    font.Color = new BaseColor(grdSalaah.HeaderStyle.ForeColor);
-                    PdfPCell pdfCell = new PdfPCell(new Phrase(Headercell.Text, font));
-                    pdfCell.BackgroundColor = new BaseColor(grdSalaah.HeaderStyle.BackColor);
-                    pdfTable.AddCell(pdfCell); 
-                }
-
-                foreach (GridViewRow gridviewrow in grdSalaah.Rows)
-                {
-                    foreach (TableCell tablecell in gridviewrow.Cells)
-                    {
-                        Font font = new Font();
-                        font.Color = new BaseColor(grdSalaah.RowStyle.ForeColor);
-
-                        PdfPCell pdfcell = new PdfPCell(new Phrase(tablecell.Text));
-                        pdfcell.BackgroundColor = new BaseColor(grdSalaah.RowStyle.BackColor);
-                        pdfTable.AddCell(pdfcell);
-                    }
-                }
-
-                Document pdfDocument = new Document(new RectangleReadOnly(842, 595), 10f, -200f, 10f, 0f);
-                // Document pdfDocument = new Document(new RectangleReadOnly(842, 595), widthstart, cell width, heightstart);
-                PdfAWriter.GetInstance(pdfDocument, Response.OutputStream);
-
-                pdfDocument.Open();
-                pdfDocument.Add(pdfTable);
-                pdfDocument.Close();
-
-                Response.ContentType = "application/pdf";
-                Response.AppendHeader("content-disposition", "attachment;filename=PrayerTimeTable.pdf");
-                Response.Write(pdfDocument);
-                Response.Flush();
-                Response.End();
-            }
-            catch { }
-        }
         protected void btnEvents_Click(object sender, EventArgs e)
         {
             divDisplaySalahTimetable.Visible = false;
             divSchDetailsOverlay.Visible = true;
             divDisplayEvents.Visible = true;
-            divListEvent.Visible = false;
-            divListEventDetails.Visible = false;
-            divEvent.Visible = false;
-            divEventOverlay.Visible = false;
+            divEventOverlay.Visible = true;
 
             lblTaskHead.InnerText = btnEvents.Text.ToString();
 
@@ -267,22 +218,57 @@ namespace Muslimeen.Content
 
         protected void btnListEvents_Click(object sender, EventArgs e)
         {
-            divDisplaySalahTimetable.Visible = false;
             lblTaskHead.InnerText = btnListEvents.Text.ToString();
+            divDisplaySalahTimetable.Visible = false;
+            divDisplayEvents.Visible = true;
+            divEventOverlay.Visible = true;
+            lblEventError.Text =String.Empty;
+            lblEventError.ForeColor = Color.Empty;
+            txtStartDate.BorderColor = Color.Empty;
 
-            DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
-            DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
-
-            if (startDate.Date <= EndDate.Date)
+            int cont = 0;
+            if (txtStartDate.Text == null || txtStartDate.Text == "")
             {
-                RptEventList.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
+                lblEventError.Text = "No start date was selected";
+                lblEventError.ForeColor = Color.Red;
+                txtStartDate.BorderColor = Color.Red;
+                cont += 1;
+            }
+            else if (txtEndDate.Text == null || txtEndDate.Text == "")
+            {
+                lblEventError.Text = "No end date was selected";
+                lblEventError.ForeColor = Color.Red;
+                txtEndDate.BorderColor = Color.Red;
+                cont += 1;
+            }
+            else if (Convert.ToDateTime(txtStartDate.Text.ToString()) >= Convert.ToDateTime(txtEndDate.Text.ToString()))
+            {
+                lblEventError.Text = "Invalid date. The start date should be less than the end date.";
+                lblEventError.ForeColor = Color.Red;
+                txtStartDate.BorderColor = Color.Red;
+                txtEndDate.BorderColor = Color.Red;
+                cont += 1;
+            }
+            else if (Convert.ToDateTime(txtEndDate.Text.ToString()) <= Convert.ToDateTime(txtStartDate.Text.ToString()))
+            {
+                lblEventError.Text = "Invalid date. The end date should be later than the start date.";
+                lblEventError.ForeColor = Color.Red;
+                txtStartDate.BorderColor = Color.Red;
+                txtEndDate.BorderColor = Color.Red;
+                cont += 1;
+            }
+
+            if (cont == 0)
+            {
+                RptEventList.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), Convert.ToDateTime(txtStartDate.Text.ToString()), Convert.ToDateTime(txtEndDate.Text.ToString()));
                 RptEventList.DataBind();
                 if (RptEventList.Items.Count > 0)
                 {
-                    divListEvent.Visible = false;
-                    divListEventDetails.Visible = false;
-                    divDisplayEvents.Visible = false;
+                    divListEvent.Visible = true;
+                    divListEventDetails.Visible = true;
+                    divDisplayEvents.Visible = true;
                     divEvent.Visible = false;
+                    divEventOverlay.Visible = false;
                 }
                 else if (RptEventList.Items.Count <= 0)
                 {
@@ -290,27 +276,15 @@ namespace Muslimeen.Content
                     divListEventDetails.Visible = false;
                     divDisplayEvents.Visible = false;
                     divEvent.Visible = false;
-                    lblEventError.InnerText = "No Events Found for Specified Date Range";
+                    lblEventError.Text = "No Events Found for Specified Date Range";
                     divEventOverlay.Visible = true;
                 }
 
             }
-            else if (startDate.Date > EndDate.Date)
-            {
-                lblEventError.InnerText = "Invalid Date Range";
-                divEventOverlay.Visible = true;
-            }
-
-            divSchDetailsOverlay.Visible = false;
-
-            divListEvent.Visible = true;
-            divListEventDetails.Visible = true;
-            divDisplayEvents.Visible = true;
-            divEvent.Visible = true;
-            divEventOverlay.Visible = false;
-
 
         }
+
+
 
         protected void btnEventList_Click(object sender, EventArgs e)
         {
@@ -322,22 +296,23 @@ namespace Muslimeen.Content
             Session["EventID"] = btn.CommandArgument.ToString();
             events = dBHandler.BLL_GetuspGetSpecificEvent(int.Parse(btn.CommandArgument.ToString()));
 
-                lblEventTitle.InnerText = events.EventTitle.ToString();
-                lblEventDescription.InnerText = events.EventDescription.ToString();
-                lblSpeaker.InnerText = events.Speaker.ToString();
-                lblEventDate.InnerText = Convert.ToDateTime(events.EventDate).ToString("dd-MM-yyyy");
-                lblEventStartTime.InnerText = events.EventStartTime.ToString();
-                lblEventEndTime.InnerText = events.EventEndTime.ToString();
+            lblEventTitle.InnerText = events.EventTitle.ToString();
+            lblEventDescription.InnerText = events.EventDescription.ToString();
+            lblSpeaker.InnerText = events.Speaker.ToString();
+            lblEventDate.InnerText = Convert.ToDateTime(events.EventDate).ToString("dd-MM-yyyy");
+            lblEventStartTime.InnerText = events.EventStartTime.ToString();
+            lblEventEndTime.InnerText = events.EventEndTime.ToString();
 
-                divSchDetailsOverlay.Visible = false;
-                divListEvent.Visible = true;
-                divListEventDetails.Visible = true;
-                divDisplayEvents.Visible = true;
-                divEvent.Visible = true;
-                divEventOverlay.Visible = false;
+            divSchDetailsOverlay.Visible = false;
+            divListEvent.Visible = true;
+            divListEventDetails.Visible = true;
+            divDisplayEvents.Visible = true;
+            divEvent.Visible = true;
+            divEventOverlay.Visible = false;
 
 
         }
+
 
         protected void btnNotifications_Click(object sender, EventArgs e)
         {
@@ -366,11 +341,11 @@ namespace Muslimeen.Content
 
             DBHandler dBHandler = new DBHandler();
 
-                DateTime dateToday = DateTime.Today;
-                DateTime date = DateTime.Now.AddDays(-7);
+            DateTime dateToday = DateTime.Today;
+            DateTime date = dateToday.AddDays(-7);
 
-                rptDisplayArticles.DataSource = dBHandler.BLL_ViewLatestArticles(dateToday,date);
-                rptDisplayArticles.DataBind();
+            rptDisplayArticles.DataSource = dBHandler.BLL_ViewLatestArticles(dateToday,date);
+            rptDisplayArticles.DataBind();
 
 
         }
@@ -394,6 +369,7 @@ namespace Muslimeen.Content
 
             lblArticleTitle.InnerText = article.ArticleTitle.ToString();
             lblArticleContent.InnerText = article.ArticleContent.ToString();
+            lblDate.InnerText = article.DateCreated.ToString("dd/MMM/yyyy");
 
         }
         protected void btnShowNotice_Click(object sender, EventArgs e)

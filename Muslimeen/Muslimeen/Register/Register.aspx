@@ -40,10 +40,10 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-sm-5 mb-1 mt-1">
-                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" ID="txtContactNum" placeholder="Contact Number"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control col main-txtb" MaxLength="10" Onblur="NumbersOnly();" runat="server" ID="txtContactNum" placeholder="Contact Number"></asp:TextBox>
                 </div>
                 <div class="form-group col-sm-7 mb-1 mt-1">
-                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" Onkeyup="AddDateChars();" ID="txtDOB" placeholder="dd/mm/yyyy*"></asp:TextBox>
+                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" MaxLength="10" Onkeyup="AddDateChars();" ID="txtDOB" placeholder="dd/mm/yyyy*"></asp:TextBox>
                 </div>
             </div>
             <div class="form-row">
@@ -63,10 +63,10 @@
                     <asp:DropDownList runat="server" CssClass=" form-control main-txtb" Visible="false" ID="ddScholarQual" placeholder="Qualification description:"></asp:DropDownList>
                 </div>
                 <div class="form-group col-sm-12 mb-1 mt-1">
-                    <asp:TextBox runat="server" CssClass="form-control main-txtb" ID="txtPassword" type="password" placeholder="Password*"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control main-txtb" Onblur="VarifyPassword('btnRegister', 'lblErrorPass');" ID="txtPassword" type="password" placeholder="Password*"></asp:TextBox>
                 </div>
                 <div class=" form-group col-sm-12 mt-1 mb-2">
-                    <asp:TextBox runat="server"  CssClass="form-control" ID="txtRetypePass" type="password" placeholder="Retype Password*"></asp:TextBox>
+                    <asp:TextBox runat="server"  CssClass="form-control" Onblur="VarifyPassword('btnRegister','lblErrorPass');" ID="txtRetypePass" type="password" placeholder="Retype Password*"></asp:TextBox>
                 </div>
                 <div style="text-align:left; padding-left:10px;" class=" form-group col-sm-12 mt-0 mb-0">
 l                    <label  for="chkShowPassword"  runat="server">Show Password</label>
@@ -77,9 +77,9 @@ l                    <label  for="chkShowPassword"  runat="server">Show Password
             </div>
                 <asp:button runat="server" CssClass="btn btn-primary main-btn mt-2 " ID="btnRegister" Text="Register" OnClick="btnRegister_Click"></asp:button>
 
-            <p class="mt-3 mb-0">Have a account ? <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="~/Login/Login.aspx"  Text="Log in"></asp:HyperLink></p>
+            <p class="mt-3 mb-0">Have a account ? <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="../Login/Login.aspx"  Text="Log in"></asp:HyperLink></p>
             <asp:Label CssClass="" runat="server" Text="OR" Style="font-size:smaller;"></asp:Label>
-            <p class=" text-center">Go back to the <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="~/Content/Default.aspx"  Text="Home page"></asp:HyperLink></p>
+            <p class=" text-center">Go back to the <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="../Content/Default.aspx"  Text="Home page"></asp:HyperLink></p>
             <input type="hidden" id="hfdPassword" value=""/>
         </form>
      </div>

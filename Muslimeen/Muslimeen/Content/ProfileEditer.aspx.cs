@@ -56,6 +56,10 @@ namespace Muslimeen.Content
                     {
                         uspGetMember = dBHandler.BLL_GetMember(Session["UserName"].ToString());
                     }
+                    else if (Session["UserName"] == null)
+                    {
+                        Response.Redirect("../Content/Error.aspx");
+                    }
                     if (uspGetMember.MemberType.ToString() == "O") //O stands for Moderator.
                     {
                         uspGetModeratorDetails uspGetModeratorDetails = new uspGetModeratorDetails();
@@ -204,7 +208,7 @@ namespace Muslimeen.Content
                         emailService.AutoEmailService(txtUserEmail.Text.ToString(),
                             uspGetMember.MemberType.ToString(), "null", "ProfileUpdate", uspGetMember.MemberID.ToString(), "null"); //Add server Verification.aspx address.
 
-                        Response.Redirect("~/Content/Default.aspx");
+                        Response.Redirect("../Content/Default.aspx");
 
                     }
                 }
@@ -269,7 +273,7 @@ namespace Muslimeen.Content
                             emailService.AutoEmailService(txtUserEmail.Text.ToString(),
                                 uspGetMember.MemberType.ToString(), "null", "ProfileUpdate", uspGetMember.MemberID.ToString(), "null"); //Add server Verification.aspx address.
 
-                            Response.Redirect("~/Content/Default.aspx");
+                            Response.Redirect("../Content/Default.aspx");
                         }
                         else
                         {

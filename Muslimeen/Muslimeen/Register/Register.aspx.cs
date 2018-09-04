@@ -252,7 +252,7 @@ namespace Muslimeen.Register
                     emailService.AutoEmailService(txtUserEmail.Text.ToString(),
                         ddUsertype.SelectedItem.ToString(), "http://www.google.co.za", "Registration", "null", "null"); //Add server Verification.aspx address.
 
-                    Response.Redirect("~/Content/Default.aspx");
+                    Response.Redirect("../Content/Default.aspx");
                 }
             }
             catch (Exception ex)

@@ -65,7 +65,7 @@ namespace Muslimeen.Login
 
                     dBHandler.BLL_UpdateMemberPassword(updatePassword); //update user password.
 
-                    Response.Redirect("~/Content/Default.aspx");
+                    Response.Redirect("../Content/Default.aspx");
                 }
             }
             catch (Exception ex)

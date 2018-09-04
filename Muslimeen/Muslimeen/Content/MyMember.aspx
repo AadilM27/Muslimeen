@@ -16,6 +16,7 @@
     <link href="MyMember/css/MyMember.css" rel="stylesheet" />
     <link href="AboutUs/AboutUs.css" rel="stylesheet" />
     <link href="MyMember/css/MyMember.css" rel="stylesheet" />
+    <link href="../Content/MyMember/css/Slideshow.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -41,8 +42,8 @@
                 </div>
                  <div class="row" runat="server" id="divUserProfile" >
                         <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
-                            <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
-                            </asp:HyperLink><asp:Image style="height:15px; width:15px;" runat="server" id="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="~/Content/Default/icons/EditProfile.png"/>
+                            <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="../Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
+                            </asp:HyperLink><asp:Image style="height:15px; width:15px;" runat="server" id="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="../Content/Default/icons/EditProfile.png"/>
                         </div>
                  </div>
             </nav>
@@ -89,7 +90,7 @@
                          <!--deviders-->
                         <li class="nav-item navbarText navbaritems">
                         <asp:LinkButton ID="LnkHelp" runat="server"  OnClick="btnHelp_Click" CssClass="nav-item navText btn-link btn" ToolTip="How this page works" ><%--CssClass="nav-item navText btn-link btn"--%>
-                         Help    <asp:Image runat="server" ID="ImgHelp" ImageUrl="~/Content/MyMember/icons/helpIcon.png " style="height: 1.1em; width:1.1em;" /></asp:LinkButton>   
+                         Help    <asp:Image runat="server" ID="ImgHelp" ImageUrl="../Content/MyMember/icons/helpIcon.png " style="height: 1.1em; width:1.1em;" /></asp:LinkButton>   
                         </li>
                     </ul>
                 </div>
@@ -117,9 +118,9 @@
                     <div runat="server" id="lblTaskHead" class=" head-div text-center p-2 mb-1">
                         <h4 class="p-0 m-0"></h4>
                     </div>
-                    <div class="row p-0 m-0 tab-content right-bottom-div p-1 flex-nowrap">
-                        <div runat="server" id="divDisplaySalahTimetable" class="bg-light position-static col p-3 divContainers">
-                            <div style="display: flex;justify-content: center" class=" position-static basic-div-styling w-50">
+                    <div class="row p-0 m-0 tab-content right-bottom-div p-1 flex-nowrap mr-5">
+                        <div runat="server" id="divDisplaySalahTimetable" class="bg-light position-static col-12 p-3 divContainers flex-nowrap m-0 row">
+                            <div style="display: flex;justify-content: center" class=" col-6 position-static basic-div-styling w-50">
                              <table class="table" style="justify-content: center; width: 50%; height: 20%; align-self: center">
                                 <tr>
                                     <td rowspan="2"; colspan="1"><asp:Image ID="icoPrayer" ImageUrl="Mosque/download.png" runat="server" Height="110px" Width="110px" /> </td>
@@ -171,35 +172,48 @@
 
                             </table>  
                          </div>
-                            <div runat="server" id="divSaveSalaahs" class=" col-12 col-xl-12 mw-100 p-0" style="position: static">
-                                            <div class="m-0 p-0 pt-2 pl-2">
-                                                <a runat="server" id="PDF" onserverclick="PDF_ServerClick">
-                                                    <asp:Image runat="server" ImageUrl="~/Content/MyMember/icons/Adobe_PDF.png" Height="20" Width="20" /><small>Download as PDF</small></a>
-                                            </div>
-                                            <div id="divgrid" runat="server">
-                                                <asp:GridView ID="grdSalaah" RowStyle-Wrap="true" runat="server" Style="position: static; font-size: smaller;" CellPadding="6" ForeColor="#333333" GridLines="none">
-                                                    <AlternatingRowStyle BackColor="White" />
-                                                    <EditRowStyle BackColor="#2461BF" />
-                                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                                                    <RowStyle BackColor="#EFF3FB" Wrap="true" />
-                                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                                                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                                                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                                                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                                                </asp:GridView>
-                                            </div>
-                                        </div>
+
+                            
+                    
+                    <%--m-0 col-lg-4 ml-lg-5  position:static;--%><div class="slideshow-container ml-5" style="width:300px">
+                        <h2 style="background-color:#256297;color:white;text-align:center"> Salah Quotes</h2>
+                    <div class="mySlides">
+                      <q> And be steadfast in prayer; practise regular charity; and bow down your heads with those who bow down (in worship).</q>
+                      <p class="author">- Quraan [2:43]</p>
+                    </div>
+
+                    <div class="mySlides">
+                      <q>As long as you are performing prayer, you are knocking at the door of Allah, and whoever is knocking at the door of Allah, Allah will open it for him. </q>
+                      <p class="author">- Ibn-Al-Qayyim</p>
+                    </div>
+
+                    <div class="mySlides">
+                      <q>And establish prayer and give zakah, and whatever good you put forward for yourselves – you will find it with Allah. Indeed, Allah of what you do, is Seeing.</q>
+                      <p class="author"> – al-Quran 2:110</p>
+                    </div>
+                         <!-- Next/prev buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">❮</a>
+                    <a class="next" onclick="plusSlides(1)">❯</a>
+
+                    
+                        <!-- Dots/bullets/indicators -->
+                    <div class="dot-container" style= "position:static; width:300px"> <%--m-0 col-lg-4 ml-lg-5--%>
+                      <span class="dot" onclick="currentSlide(1)"></span> 
+                      <span class="dot" onclick="currentSlide(2)"></span> 
+                      <span class="dot" onclick="currentSlide(3)"></span> 
+                    </div>
+                        <script src="../Content/Zakaah/slideshow.js"></script>
+                  
+                        </div>
+
                     </div>
                          
                   
 
                         <!--view mosque events-->
 
-                             <div class=" row bg-light position-static ml-1 mr-1 w-100 flex-nowrap col" runat="server" id="divDisplayEvents"><%--flex-nowrap--%>
-                                <div class="col p-0 mr-1">
+                             <div class=" row bg-light position-static ml-1 mr-1 flex-nowrap col-12 pl-0" runat="server" id="divDisplayEvents"><%--flex-nowrap w-100--%>
+                                <div class="col-3 col-xl-4 p-0 mr-1">
                                     <div class=" head-div-2 p-2 mb-0 text-left ">
                                         <p class="m-0">Select Event Date Range</p>
                                     </div>
@@ -254,7 +268,7 @@
                                 </div>
                                     </div>
 
-                                <div runat="server" id="divEvent" class=" col-4 p-0 flex-nowrap mr-2">
+                                <div runat="server" id="divEvent" class="col-3 col-xl-4 flex-nowrap p-0 mr-1">
                                     <asp:HiddenField runat="server" ID="hdfEvent" Value="" />
                                     <div class=" head-div-2 p-2 mb-0 text-left ">
                                         <label runat="server" class="mb-0">Selected event details:</label>
@@ -263,7 +277,7 @@
                                         <h5 class="p-0 m-0"></h5>
                                     </div>
                                     <hr class="m-3 ml-3 mr-3 bg-secondary" />
-                                    <div style="overflow-y: scroll; overflow-x:scroll;">
+                                    <div style="overflow-y: scroll;">
                                     <div class="container" runat="server" id="divEventDetails">
                                         <div class="row mb-1 position-static">
                                             <div class="col position-static"><b>Speaker:</b></div>
@@ -297,15 +311,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                    <div class="col-sm-3 col-xl-4 text-nowrap" runat="server" id="divEventOverlay">
-                                    <div class="w-100 h-100 container text-center">
-                                        <div class=" container h-25 mb-3"></div>
-                                        <h6 class="card-title h-50 mt-5 pt-5">
-                                            <asp:Image runat="server" class="figure-img mr-2" ImageUrl="~/MyMember/icons/outline_error_outline_black_18dp.png" /><label id="lblEventError" runat="server"></label></h6>
-                                        <div class=" container h-25"></div>
-                                    </div>
+                            </div>
+                            <div class="col-sm-3 col-xl-4 text-nowrap" runat="server" id="divEventOverlay">
+                                <div class="w-100 h-100 container text-center">
+                                    <div class=" container h-25 mb-3"></div>
+                                    <h6 class="card-title h-50 mt-5 pt-5">
+                                        <asp:Image runat="server" class="figure-img mr-2" ImageUrl="../Content/MyMember/icons/outline_error_outline_black_18dp.png" /><asp:Label ID="lblEventError" runat="server"></asp:Label></h6>
+                                    <div class=" container h-25"></div>
                                 </div>
                             </div>
+
                         </div>
 
                         <!--Notifications-->
@@ -392,7 +407,7 @@
                                                             </div>
                                                             <hr class=" mr-4 m-0 p-0"/>
                                                             <div class="">
-                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Created: </b><%#Convert.ToDateTime(Eval("DateCreated")).ToString("dd MM yyyy")%></p>
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Created: </b><%#Convert.ToDateTime(Eval("DateCreated")).ToString("dd MMM yyyy")%></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -422,18 +437,20 @@
                                     <p class="m-0">Selected Article Details</p>
                                 </div>
                             <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
-                                <div class="mt-0 p-2">
-                                    <div class="row position-static">
-                                        <div class="col position-static"><b>Article Title: </b></div>
-                                        <div class="col position-static">
-                                            <label runat="server" id="lblArticleTitle"></label>
-                                        </div>
+                                <div class="row mb-3 mt-2">
+                                    <div class="col">
+                                        <label class="m-0 h2" runat="server" id="lblArticleTitle"></label>
                                     </div>
-                                    <div class="row position-static">
-                                        <div class="col position-static"><b>Content: </b></div>
-                                        <div class="col position-static">
-                                            <label runat="server" id="lblArticleContent"></label>
-                                        </div>
+                                </div>
+                                <div class="row mb-1 position-static">
+                                    <div class="col position-static">
+                                        <label class="m-0" runat="server" id="lblArticleContent"></label>
+                                    </div>
+                                </div>
+                                <div class="row mb-1 position-static text-right">
+                                    <div class="col position-static">
+                                        -
+                                        <label class="m-0 font-italic mt-2" runat="server" id="lblDate"></label>
                                     </div>
                                 </div>
                             </div>
