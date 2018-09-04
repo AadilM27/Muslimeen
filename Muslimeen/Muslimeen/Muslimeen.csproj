@@ -105,6 +105,7 @@
     <Content Include="Content\AboutUs\AboutUs.css" />
     <Content Include="Content\Default.aspx" />
     <Content Include="Content\Default\CountDown.js" />
+    <Content Include="Content\Default\css\Slideshow.css" />
     <Content Include="Content\Default\DatesEnglishHijri.js" />
     <Content Include="Content\Default\css\Default.css" />
     <Content Include="Content\Default\Default.js" />
@@ -145,6 +146,7 @@
     <Content Include="Content\MyAdmin\js\MyAdmin.js" />
     <Content Include="Content\MyMember.aspx" />
     <Content Include="Content\MyMember\css\MyMember.css" />
+    <Content Include="Content\MyMember\css\Slideshow.css" />
     <Content Include="Content\MyMember\icons\Adobe_PDF.png" />
     <Content Include="Content\MyMember\icons\helpIcon.png" />
     <Content Include="Content\MyMember\icons\outline_error_outline_black_18dp.png" />

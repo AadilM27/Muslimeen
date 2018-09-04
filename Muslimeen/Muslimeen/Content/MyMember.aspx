@@ -16,7 +16,7 @@
     <link href="MyMember/css/MyMember.css" rel="stylesheet" />
     <link href="AboutUs/AboutUs.css" rel="stylesheet" />
     <link href="MyMember/css/MyMember.css" rel="stylesheet" />
-    <link href="../Content/Zakaah/css/Slideshow.css" rel="stylesheet" />
+    <link href="../Content/MyMember/css/Slideshow.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -175,20 +175,20 @@
 
                             
                     
-                    <div class="slideshow-container m-0 col-lg-4 position-static ml-lg-5" style="width:300px">
-                        <h2 style="background-color:#256297;color:white;text-align:center"> Zakaah Quotes</h2>
+                    <%--m-0 col-lg-4 ml-lg-5  position:static;--%><div class="slideshow-container ml-5" style="width:300px">
+                        <h2 style="background-color:#256297;color:white;text-align:center"> Salah Quotes</h2>
                     <div class="mySlides">
-                      <q>“Zakah does not become obligatory except after the completion of one whole year.”</q>
-                      <p class="author">- Nabi Muhammed(SAW) Prophet(Peace Be upon him)</p>
+                      <q> And be steadfast in prayer; practise regular charity; and bow down your heads with those who bow down (in worship).</q>
+                      <p class="author">- Quraan [2:43]</p>
                     </div>
 
                     <div class="mySlides">
-                      <q>“Your ally is none but Allah and [therefore] His Messenger and those who have believed – those who establish prayer and give zakah, and they bow [in worship] </q>
-                      <p class="author">- [Qur’an 5:55]</p>
+                      <q>As long as you are performing prayer, you are knocking at the door of Allah, and whoever is knocking at the door of Allah, Allah will open it for him. </q>
+                      <p class="author">- Ibn-Al-Qayyim</p>
                     </div>
 
                     <div class="mySlides">
-                      <q>“And establish prayer and give zakah, and whatever good you put forward for yourselves – you will find it with Allah. Indeed, Allah of what you do, is Seeing.”</q>
+                      <q>And establish prayer and give zakah, and whatever good you put forward for yourselves – you will find it with Allah. Indeed, Allah of what you do, is Seeing.</q>
                       <p class="author"> – al-Quran 2:110</p>
                     </div>
                          <!-- Next/prev buttons -->
@@ -197,7 +197,7 @@
 
                     
                         <!-- Dots/bullets/indicators -->
-                    <div class="dot-container" style="width:300px">
+                    <div class="dot-container" style= "position:static; width:300px"> <%--m-0 col-lg-4 ml-lg-5--%>
                       <span class="dot" onclick="currentSlide(1)"></span> 
                       <span class="dot" onclick="currentSlide(2)"></span> 
                       <span class="dot" onclick="currentSlide(3)"></span> 
