@@ -13,6 +13,7 @@
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="Default/css/Default.css" rel="stylesheet" />
     <script src="../Login/LogIn_Bootstrap/js/jquery-3.3.1.min.js"></script>
+    <link href="../Content/Default/css/Slideshow.css" rel="stylesheet" />
 </head>
     <body>
         <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
@@ -104,6 +105,40 @@
                 <asp:HiddenField ID="hdfCounterTitle" runat="server" Value="" />
                 <script src="Default/CountDown.js" type="text/javascript"></script>
             </div>
+            <br />
+            <div class="row">
+            <div class=" col-5 ml-5 " style="width:300px; align-self:center" >
+                        <h2 style="background-color:#256297;color:white;text-align:center"> Islamic Quotes</h2>
+                    <div class="mySlides">
+                      <q> Don't ruin your happiness with worry, and don't ruin your mind with pessimism. Don't ruin your success with deception and don't ruin the optimism of others by destroying it. Don't ruin your day by looking back at yesterday</q>
+                      <p class="author">- Ibn-Al-Qayyim</p>
+                    </div>
+
+                    <div class="mySlides">
+                      <q>I am amazed by the believer. Verily, Allah does not decree anything for the believer except what is good for him. </q>
+                      <p class="author">- Ibn-Al-Qayyim</p>
+                    </div>
+
+                    <div class="mySlides">
+                      <q>A person does not have an understanding of the religion of Islam until he thinks of a hardship as being a blessing, and comfort and luxury as being a tribulation.</q>
+                      <p class="author"> – Ibn-Al-Qayyimp>
+                    </div>
+                         <!-- Next/prev buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">❮</a>
+                    <a class="next" onclick="plusSlides(1)">❯</a>
+
+                    
+                        <!-- Dots/bullets/indicators -->
+                    <div class="dot-container" style= "position:static; width:300px"> <%--m-0 col-lg-4 ml-lg-5--%>
+                      <span class="dot" onclick="currentSlide(1)"></span> 
+                      <span class="dot" onclick="currentSlide(2)"></span> 
+                      <span class="dot" onclick="currentSlide(3)"></span> 
+                    </div>
+                        <script src="../Content/Zakaah/slideshow.js"></script>
+                  
+                        </div>
+                </div>
+
         </div>
     </form>
               <div class="footerr"> <!--End of content, start of footer-->

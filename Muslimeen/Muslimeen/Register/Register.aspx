@@ -69,8 +69,7 @@
                     <asp:TextBox runat="server"  CssClass="form-control" Onblur="VarifyPassword('btnRegister','lblErrorPass');" ID="txtRetypePass" type="password" placeholder="Retype Password*"></asp:TextBox>
                 </div>
                 <div style="text-align:left; padding-left:10px;" class=" form-group col-sm-12 mt-0 mb-0">
-                    <input type="checkbox" id="chkShowPassword" onclick="CheckPassword()"/>
-                    <label  for="chkShowPassword"  runat="server">Show Password</label>
+l                    <label  for="chkShowPassword"  runat="server">Show Password</label>
                 </div>
                 <div class="form-group col " style="text-align:center;">
                     <asp:Label CssClass="lblError" runat="server" ID="lblErrorPass"></asp:Label>
