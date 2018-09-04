@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </nav>
-                <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50);">
+                <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50); z-index:1000">
                     <div class=" text-center">
                         <asp:Image runat="server" CssClass="mb-0 ml-0" src="/Login/LogIn_Bootstrap\logo.png" width="185" height="110"/>
                         </div>
@@ -107,7 +107,7 @@
             </div>
             <br />
             <div class="row">
-            <div class=" col-5 ml-5 " style="width:300px; align-self:center" >
+            <div class=" col-5 ml-5 " style="width:300px;" >
                         <h2 style="background-color:#256297;color:white;text-align:center"> Islamic Quotes</h2>
                     <div class="mySlides">
                       <q> Don't ruin your happiness with worry, and don't ruin your mind with pessimism. Don't ruin your success with deception and don't ruin the optimism of others by destroying it. Don't ruin your day by looking back at yesterday</q>
@@ -121,7 +121,7 @@
 
                     <div class="mySlides">
                       <q>A person does not have an understanding of the religion of Islam until he thinks of a hardship as being a blessing, and comfort and luxury as being a tribulation.</q>
-                      <p class="author"> – Ibn-Al-Qayyimp>
+                      <p class="author"> – Ibn-Al-Qayyim</p>
                     </div>
                          <!-- Next/prev buttons -->
                     <a class="prev" onclick="plusSlides(-1)">❮</a>
@@ -129,7 +129,7 @@
 
                     
                         <!-- Dots/bullets/indicators -->
-                    <div class="dot-container" style= "position:static; width:300px"> <%--m-0 col-lg-4 ml-lg-5--%>
+                    <div class="dot-container" style= "position:static"> <%--m-0 col-lg-4 ml-lg-5--%>
                       <span class="dot" onclick="currentSlide(1)"></span> 
                       <span class="dot" onclick="currentSlide(2)"></span> 
                       <span class="dot" onclick="currentSlide(3)"></span> 
