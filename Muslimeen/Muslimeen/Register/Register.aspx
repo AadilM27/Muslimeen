@@ -78,9 +78,9 @@
             </div>
                 <asp:button runat="server" CssClass="btn btn-primary main-btn mt-2 " ID="btnRegister" Text="Register" OnClick="btnRegister_Click"></asp:button>
 
-            <p class="mt-3 mb-0">Have a account ? <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="~/Login/Login.aspx"  Text="Log in"></asp:HyperLink></p>
+            <p class="mt-3 mb-0">Have a account ? <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="../Login/Login.aspx"  Text="Log in"></asp:HyperLink></p>
             <asp:Label CssClass="" runat="server" Text="OR" Style="font-size:smaller;"></asp:Label>
-            <p class=" text-center">Go back to the <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="~/Content/Default.aspx"  Text="Home page"></asp:HyperLink></p>
+            <p class=" text-center">Go back to the <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="../Content/Default.aspx"  Text="Home page"></asp:HyperLink></p>
             <input type="hidden" id="hfdPassword" value=""/>
         </form>
      </div>

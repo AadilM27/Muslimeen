@@ -58,7 +58,7 @@ namespace Muslimeen.Content
                     }
                     else if (Session["UserName"] == null)
                     {
-                        Response.Redirect("~/Content/Error.aspx");
+                        Response.Redirect("../Content/Error.aspx");
                     }
                     if (uspGetMember.MemberType.ToString() == "O") //O stands for Moderator.
                     {
@@ -208,7 +208,7 @@ namespace Muslimeen.Content
                         emailService.AutoEmailService(txtUserEmail.Text.ToString(),
                             uspGetMember.MemberType.ToString(), "null", "ProfileUpdate", uspGetMember.MemberID.ToString(), "null"); //Add server Verification.aspx address.
 
-                        Response.Redirect("~/Content/Default.aspx");
+                        Response.Redirect("../Content/Default.aspx");
 
                     }
                 }
@@ -273,7 +273,7 @@ namespace Muslimeen.Content
                             emailService.AutoEmailService(txtUserEmail.Text.ToString(),
                                 uspGetMember.MemberType.ToString(), "null", "ProfileUpdate", uspGetMember.MemberID.ToString(), "null"); //Add server Verification.aspx address.
 
-                            Response.Redirect("~/Content/Default.aspx");
+                            Response.Redirect("../Content/Default.aspx");
                         }
                         else
                         {

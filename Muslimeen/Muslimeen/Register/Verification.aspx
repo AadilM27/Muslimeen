@@ -9,13 +9,13 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 	
-        <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
+        <link rel="icon" href="../Login/LogIn_Bootstrap/muslimeen.ico"/>
 		
-        <link href="/Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 		
 		<title> Muslimeen - Verify Account </title>
 
-		<link href="/Login/LogIn_Bootstrap/css/Verification.css" rel="stylesheet"/>
+		<link href="../Login/LogIn_Bootstrap/css/Verification.css" rel="stylesheet"/>
 
 </head>
 <body class="text-center">
@@ -35,9 +35,9 @@
             </div>
 			<asp:button runat="server" CssClass="btn btn-primary main-btn" ID="btnVerify" Text="Verify Account" OnClick="btnVerify_Click"></asp:button>
 
-            <p class="mt-3 mb-0" style="font-size:smaller;">Don't want to verify your account ?<br /> <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="~/Register/Register.aspx"  Text="Register new account"></asp:HyperLink></p>
+            <p class="mt-3 mb-0" style="font-size:smaller;">Don't want to verify your account ?<br /> <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="../Register/Register.aspx"  Text="Register new account"></asp:HyperLink></p>
             <asp:Label CssClass="" runat="server" Text="OR" Style="font-size:smaller;"></asp:Label>
-            <p class=" text-center" style="font-size:smaller;">Go back to the <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="~/Content/Default.aspx"  Text="Home page"></asp:HyperLink></p>
+            <p class=" text-center" style="font-size:smaller;">Go back to the <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="../Content/Default.aspx"  Text="Home page"></asp:HyperLink></p>
 		</form>
         </div>
 	</body>

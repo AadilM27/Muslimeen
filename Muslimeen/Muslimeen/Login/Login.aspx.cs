@@ -76,7 +76,7 @@ namespace Muslimeen.Login
                             Session["UserName"] = txtUserName.Text.ToString();
                             Session.Timeout = 30;
                             Session["MosqueID"] = uspGetMember.MosqueID.ToString();
-                            Response.Redirect("~/Content/Default.aspx");
+                            Response.Redirect("../Content/Default.aspx");
                         }
                         else
                         {
@@ -173,7 +173,7 @@ namespace Muslimeen.Login
         protected void btnForgotPass_Click(object sender, EventArgs e)
         {
 
-            Response.Redirect("~/Login/ResetPassword.aspx");
+            Response.Redirect("../Login/ResetPassword.aspx");
         }
 
     }

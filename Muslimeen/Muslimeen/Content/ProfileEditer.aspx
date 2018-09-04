@@ -133,7 +133,7 @@
                 <div class="form-group col m-2" style="text-align:center;">
                     <asp:Label CssClass="lblError" runat="server" ID="lblErrorPass"></asp:Label>
                 </div>
-                <p class=" text-center mt-3">Go back to the <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="~/Content/Default.aspx"  Text="Home page"></asp:HyperLink></p>
+                <p class=" text-center mt-3">Go back to the <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="../Content/Default.aspx"  Text="Home page"></asp:HyperLink></p>
                 <input type="hidden" id="hfdPassword" value=""/>
         </form>
      </div>

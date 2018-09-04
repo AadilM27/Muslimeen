@@ -166,15 +166,7 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Button btnAboutUs;
         
         /// <summary>
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTodaysPrayerTime;
-        
-        /// <summary>
-        /// ImgHelp control.
+        /// LnkHelp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -190,6 +182,15 @@ namespace Muslimeen.Content {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image ImgHelp;
+        
+        /// <summary>
+        /// btnTodaysPrayerTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTodaysPrayerTime;
         
         /// <summary>
         /// btnViewAllMembers control.

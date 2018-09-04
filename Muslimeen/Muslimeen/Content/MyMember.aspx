@@ -16,6 +16,7 @@
     <link href="MyMember/css/MyMember.css" rel="stylesheet" />
     <link href="AboutUs/AboutUs.css" rel="stylesheet" />
     <link href="MyMember/css/MyMember.css" rel="stylesheet" />
+    <link href="../Content/Zakaah/css/Slideshow.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -41,8 +42,8 @@
                 </div>
                  <div class="row" runat="server" id="divUserProfile" >
                         <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
-                            <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="~/Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
-                            </asp:HyperLink><asp:Image style="height:15px; width:15px;" runat="server" id="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="~/Content/Default/icons/EditProfile.png"/>
+                            <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="../Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
+                            </asp:HyperLink><asp:Image style="height:15px; width:15px;" runat="server" id="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="../Content/Default/icons/EditProfile.png"/>
                         </div>
                  </div>
             </nav>
@@ -89,7 +90,7 @@
                          <!--deviders-->
                         <li class="nav-item navbarText navbaritems">
                         <asp:LinkButton ID="LnkHelp" runat="server"  OnClick="btnHelp_Click" CssClass="nav-item navText btn-link btn" ToolTip="How this page works" ><%--CssClass="nav-item navText btn-link btn"--%>
-                         Help    <asp:Image runat="server" ID="ImgHelp" ImageUrl="~/Content/MyMember/icons/helpIcon.png " style="height: 1.1em; width:1.1em;" /></asp:LinkButton>   
+                         Help    <asp:Image runat="server" ID="ImgHelp" ImageUrl="../Content/MyMember/icons/helpIcon.png " style="height: 1.1em; width:1.1em;" /></asp:LinkButton>   
                         </li>
                     </ul>
                 </div>
@@ -117,9 +118,9 @@
                     <div runat="server" id="lblTaskHead" class=" head-div text-center p-2 mb-1">
                         <h4 class="p-0 m-0"></h4>
                     </div>
-                    <div class="row p-0 m-0 tab-content right-bottom-div p-1 flex-nowrap">
-                        <div runat="server" id="divDisplaySalahTimetable" class="bg-light position-static col p-3 divContainers">
-                            <div style="display: flex;justify-content: center" class=" position-static basic-div-styling w-50">
+                    <div class="row p-0 m-0 tab-content right-bottom-div p-1 flex-nowrap mr-5">
+                        <div runat="server" id="divDisplaySalahTimetable" class="bg-light position-static col-12 p-3 divContainers flex-nowrap m-0 row">
+                            <div style="display: flex;justify-content: center" class=" col-6 position-static basic-div-styling w-50">
                              <table class="table" style="justify-content: center; width: 50%; height: 20%; align-self: center">
                                 <tr>
                                     <td rowspan="2"; colspan="1"><asp:Image ID="icoPrayer" ImageUrl="Mosque/download.png" runat="server" Height="110px" Width="110px" /> </td>
@@ -171,6 +172,40 @@
 
                             </table>  
                          </div>
+
+                            
+                    
+                    <div class="slideshow-container m-0 col-lg-4 position-static ml-lg-5" style="width:300px">
+                        <h2 style="background-color:#256297;color:white;text-align:center"> Zakaah Quotes</h2>
+                    <div class="mySlides">
+                      <q>“Zakah does not become obligatory except after the completion of one whole year.”</q>
+                      <p class="author">- Nabi Muhammed(SAW) Prophet(Peace Be upon him)</p>
+                    </div>
+
+                    <div class="mySlides">
+                      <q>“Your ally is none but Allah and [therefore] His Messenger and those who have believed – those who establish prayer and give zakah, and they bow [in worship] </q>
+                      <p class="author">- [Qur’an 5:55]</p>
+                    </div>
+
+                    <div class="mySlides">
+                      <q>“And establish prayer and give zakah, and whatever good you put forward for yourselves – you will find it with Allah. Indeed, Allah of what you do, is Seeing.”</q>
+                      <p class="author"> – al-Quran 2:110</p>
+                    </div>
+                         <!-- Next/prev buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">❮</a>
+                    <a class="next" onclick="plusSlides(1)">❯</a>
+
+                    
+                        <!-- Dots/bullets/indicators -->
+                    <div class="dot-container" style="width:300px">
+                      <span class="dot" onclick="currentSlide(1)"></span> 
+                      <span class="dot" onclick="currentSlide(2)"></span> 
+                      <span class="dot" onclick="currentSlide(3)"></span> 
+                    </div>
+                        <script src="../Content/Zakaah/slideshow.js"></script>
+                  
+                        </div>
+
                     </div>
                          
                   
