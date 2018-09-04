@@ -16,9 +16,11 @@ body {
 /* Slides */
 .mySlides {
     display: none;
-    padding: 80px;
+    padding: 60px;
     text-align: center;
     position: static;
+    max-height: 300px;
+    min-height: 300px;
 }
 
 /* Next & previous buttons */
@@ -28,7 +30,6 @@ body {
     top: 50%;
     width: auto;
     margin-top: -30px;
-    padding: 16px;
     color: #888;
     font-weight: bold;
     font-size: 20px;
@@ -44,10 +45,10 @@ body {
 }
 
     /* On hover, add a black background color with a little bit see-through */
-    .prev:hover, .next:hover {
-        background-color: rgba(0,0,0,0.8);
-        color: white;
-    }
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.2);
+    color: white;
+}
 
 /* The dot/bullet/indicator container */
 .dot-container {

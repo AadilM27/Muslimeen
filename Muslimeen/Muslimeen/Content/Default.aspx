@@ -68,13 +68,11 @@
                             </li><li class="NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems">
                                 <asp:Button runat="server" ID="btnAboutUs" Text="About us"  CssClass="nav-item navText btn-link btn" OnClick="btnAboutUs_Click"/>
+                            </li><li class="NavDevider">|</li><!--deviders-->
+                            <li class="nav-item navbarText navbaritems">
+                            <asp:LinkButton ID="LnkHelp" runat="server"  OnClick="btnHelp_Click" CssClass="nav-item navText btn-link btn" ToolTip="How this page works" ><%--CssClass="nav-item navText btn-link btn"--%>
+                                Help<asp:Image runat="server" ID="ImgHelp" ImageUrl="../Content/MyMember/icons/helpIcon.png" style="height: 1.1em; width:1.1em;" /></asp:LinkButton>   
                             </li>
-                            <li class="NavDevider">|</li>
-                         <!--deviders-->
-                        <li class="nav-item navbarText navbaritems">
-                        <asp:LinkButton ID="LnkHelp" runat="server"  OnClick="btnHelp_Click" CssClass="nav-item navText btn-link btn" ToolTip="How this page works" ><%--CssClass="nav-item navText btn-link btn"--%>
-                         Help    <asp:Image runat="server" ID="ImgHelp" ImageUrl="../Content/MyMember/icons/helpIcon.png " style="height: 1.1em; width:1.1em;" /></asp:LinkButton>   
-                        </li>
                         </ul>
                     </div>
                 </div>
@@ -106,9 +104,9 @@
                 <script src="Default/CountDown.js" type="text/javascript"></script>
             </div>
             <br />
-            <div class="row">
-            <div class=" col-5 ml-5 " style="width:300px;" >
-                        <h2 style="background-color:#256297;color:white;text-align:center"> Islamic Quotes</h2>
+            <div class=" row justify-content-center">
+            <div class="col-4 col-sm-5 col-xl-4 p-0 slideshow-container" >
+                        <h2 class="p-2" style="background-color:#256297;color:white;text-align:center"> Islamic Quotes</h2>
                     <div class="mySlides">
                       <q> Don't ruin your happiness with worry, and don't ruin your mind with pessimism. Don't ruin your success with deception and don't ruin the optimism of others by destroying it. Don't ruin your day by looking back at yesterday</q>
                       <p class="author">- Ibn-Al-Qayyim</p>
@@ -124,8 +122,8 @@
                       <p class="author"> – Ibn-Al-Qayyim</p>
                     </div>
                          <!-- Next/prev buttons -->
-                    <a class="prev" onclick="plusSlides(-1)">❮</a>
-                    <a class="next" onclick="plusSlides(1)">❯</a>
+                    <a class="prev pl-3 pr-2 m" onclick="plusSlides(-1)">❮</a>
+                    <a class="next pl-2 pr-3" onclick="plusSlides(1)">❯</a>
 
                     
                         <!-- Dots/bullets/indicators -->
