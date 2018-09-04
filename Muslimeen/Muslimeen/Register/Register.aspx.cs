@@ -223,7 +223,7 @@ namespace Muslimeen.Register
                     member.MemberID = Convert.ToString(txtUserName.Text);
                     member.MemberName = Convert.ToString(txtName.Text);
                     member.MemberLastName = Convert.ToString(txtLName.Text);
-                    member.MemberDOB = Convert.ToDateTime(txtDOB.Text).Date;
+                    member.MemberDOB = Convert.ToDateTime(txtDOB.Text);
                     member.Password = Convert.ToString(encryptedString);
                     member.MemberType = Convert.ToChar(ddUsertype.SelectedValue);
                     member.ActiveTypeID = 'T';
@@ -250,7 +250,7 @@ namespace Muslimeen.Register
                     EmailService emailService = new EmailService();
 
                     emailService.AutoEmailService(txtUserEmail.Text.ToString(),
-                        ddUsertype.SelectedItem.ToString(), "http://www.google.co.za", "Registration", "null", "null"); //Add server Verification.aspx address.
+                        ddUsertype.SelectedItem.ToString(), "http://sict-iis.nmmu.ac.za/NEXTECH/Register/Verification.aspx", "Registration", "null", "null"); //Add server Verification.aspx address.
 
                     Response.Redirect("../Content/Default.aspx");
                 }
