@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TypeLib.Models
+namespace TypeLib.ViewModels
 {
-    public class Comment
+    public class uspGetComment
     {
-        public int? CommentID { get; set; }
         public int ArticleID { get; set; }
-        public string MemberID { get; set; }
+        public string CommentMessage { get; set; }
         public DateTime CommentDate { get; set; }
-        public string CommentMessage {get;set;}
+        public string Name { get; set; }
     }
 }

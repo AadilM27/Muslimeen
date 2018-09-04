@@ -16,6 +16,17 @@
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/learnIslam.css" rel="stylesheet" />
 
+    <!--Comment Styliing-->
+    <style type="text/css">
+        .auto-style1 {
+            width: 86px;
+        }
+
+        .auto-style2 {
+            width: 201px;
+        }
+    </style>
+
 </head>
 <body style="background-color:white">
     <asp:HyperLink ID="lnk1" runat="server" src="HelpPage.aspx"></asp:HyperLink>
@@ -144,6 +155,7 @@
                         <%--Display of Articles--%>
                         <div runat="server" id="divNoSelected" class="col-7 col-sm-7 col-xl-8 align p-0 text-justify">
                             <asp:HiddenField runat="server" ID="hdfSchId" Value="" />
+                            <asp:HiddenField runat="server" ID="hdfArtID" Value="" />
                             <div class=" head-div-2 p-2 mb-0 text-left ">
                                 <p class="m-0 ">Article Selected</p>
                             </div>
@@ -189,6 +201,42 @@
                                         <SortedDescendingCellStyle BackColor="#E9EBEF" />
                                         <SortedDescendingHeaderStyle BackColor="#4870BE" />
                                     </asp:GridView>
+                                </div>
+                            </div>
+
+                            <!--Comment-->
+                            <div class="pre-scrollable">
+                                <div class="auto-style2">
+                                    <asp:TextBox ID="txtComment" runat="server" Height="44px" TextMode="MultiLine" Width="100px"></asp:TextBox>
+                                    &nbsp;
+                                    <asp:Button ID="btn_Submit" runat="server" Text="Comment" OnClick="btn_Submit_Click" />
+                                </div>
+                                <br />
+                                <h4 style="text-decoration:underline;">Comments:</h4>
+                                <br />
+                                <!--Comments Repeater-->
+                                <asp:Repeater ID="CommentRepeater" runat="server">
+                                    <ItemTemplate>
+                                        <div>
+                                            <asp:Label ID="lblCommentName" runat="server" Text='<%#Eval("Name") %>'></asp:Label> <br />
+                                            <asp:Label ID="lblComment" runat="server" Text='<%#Eval("CommentMessage") %>'></asp:Label> <br />
+                                            <asp:Label ID="lblCommentDate" runat="server" Text='<%#Eval("CommentDate") %>'></asp:Label>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+
+
+                                <%--<!--Page Numbers-->
+                                <div style="overflow: hidden;">
+                                    <asp:Repeater ID="rptPaging" runat="server" OnItemCommand="rptPaging_ItemCommand">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="btnPage"
+                                                Style="padding: 8px; margin: 2px; background: #007acc; border: solid 1px blue; font: 8px;"
+                                                CommandName="Page" CommandArgument="<%# Container.DataItem %>"
+                                                runat="server" ForeColor="White" Font-Bold="True" CausesValidation="false"><%# Container.DataItem %>
+                                            </asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:Repeater>--%>
                                 </div>
                             </div>
                         </div>

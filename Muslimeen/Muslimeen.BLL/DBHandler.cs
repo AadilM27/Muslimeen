@@ -400,5 +400,16 @@ namespace Muslimeen.BLL
         {
             return dBAccess.ReportGetAllMosques();
         }
+
+        //Adding Comment
+        public bool BLL_AddComment(Comment com)
+        {
+            return dBAccess.InsertComment(com);
+        }
+
+        public List<uspGetComment> BLL_GetComment(int art)
+        {
+            return dBAccess.Comment(art);
+        }
     }
 }

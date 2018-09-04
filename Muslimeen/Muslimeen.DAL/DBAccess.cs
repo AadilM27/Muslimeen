@@ -1951,5 +1951,49 @@ namespace Muslimeen.BLL
             }
             return list;
         }
+
+        //Adding Comment...
+        public bool InsertComment(Comment com)
+        {
+            List<SqlParameter> par = new List<SqlParameter>();
+            foreach (var p in com.GetType().GetProperties())
+            {
+                if (p.GetValue(com) != null)
+                {
+                    par.Add(new SqlParameter("@" + p.Name.ToString(), p.GetValue(com)));
+                }
+            }
+            return DBHelper.NonQuery("uspInsertComment", CommandType.StoredProcedure, par.ToArray());
+        }
+
+        //Get Comment
+        public List<uspGetComment> Comment(int art)
+        {
+            List<uspGetComment> list = new List<uspGetComment>();
+
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@art", art)
+
+            };
+
+            using (DataTable tbl = DBHelper.ParamSelect("uspGetComment", CommandType.StoredProcedure, pars))
+            {
+                if (tbl.Rows.Count > 0)
+                {                   
+                    foreach(DataRow row in tbl.Rows)
+                    {
+                        uspGetComment pen = new uspGetComment();
+
+                        pen.CommentMessage = Convert.ToString(row["CommentMessage"]);
+                        string dateCreated = Convert.ToDateTime(row["CommentDate"]).ToString("dd MMM yyyy HH:mm:ss tt");
+                        pen.Name = Convert.ToString(row["Name"]);
+
+                        list.Add(pen);
+                    }                    
+                }
+            }
+            return list;
+        }
     }
 }

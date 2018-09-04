@@ -150,17 +150,22 @@ namespace Muslimeen.Content.Learn_Islam
             LinkButton linkButton = (LinkButton)sender;
 
             string art = linkButton.CommandArgument.ToString();
-            hdfSchId.Value = art;
+            hdfArtID.Value = art;
 
             DBHandler han = new DBHandler();
             uspGetSelectedLearnArticle pen = new uspGetSelectedLearnArticle();
 
+            //Labels for Learn Article
             pen = han.BLL_GetSelectedLearnArticle(int.Parse(art));
             lblTitle.InnerText = pen.ArticleTitle.ToString();
             lblContent.InnerText = pen.ArticleContent.ToString();
             string dateCreated = pen.DateCreated.ToString("yyyy/MM/dd");
             lblDate.InnerText = Convert.ToDateTime(dateCreated).ToString("dd/MM/yyyy");
             lblScholar.InnerText = pen.ScholarName.ToString();
+
+            //Repeater Data Surce for Comments
+            CommentRepeater.DataSource = han.BLL_GetComment(int.Parse(art));
+            CommentRepeater.DataBind();            
         }
 
         protected void lnkAdminPrintPDF_ServerClick(object sender, EventArgs e)
@@ -249,6 +254,30 @@ namespace Muslimeen.Content.Learn_Islam
             catch (NullReferenceException)
             {
 
+            }
+        }
+
+        protected void btn_Submit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DBHandler han = new DBHandler();
+                Comment com = new Comment();
+
+                com.CommentMessage = Convert.ToString(txtComment.Text);
+                com.CommentDate = Convert.ToDateTime(DateTime.Today);
+                com.ArticleID = Convert.ToInt32(hdfArtID.Value);
+                com.MemberID = Convert.ToString(Session["UserName"]);
+                com.CommentID = null;
+
+                han.BLL_AddComment(com);
+
+                CommentRepeater.DataSource = han.BLL_GetComment(int.Parse(hdfArtID.Value));
+                CommentRepeater.DataBind();
+            }
+            catch
+            {
+                
             }
         }
     }
