@@ -47,7 +47,7 @@
                 </nav>
                 <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50); z-index:1000">
                     <div class=" text-center">
-                        <asp:Image runat="server" CssClass="mb-0 ml-0" src="/Login/LogIn_Bootstrap\logo.png" width="185" height="110"/>
+                        <asp:Image runat="server" CssClass="mb-0 ml-0" src="../../Login/LogIn_Bootstrap/logo.png" width="185" height="110"/>
                         </div>
                     <div class="ml-2 navbar-nav-scroll align-self-end justify-content-start">
                         <ul class="navbar-nav row">
@@ -307,16 +307,16 @@
                 <h6>Content</h6>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="footerr-text" href="Mosque.aspx">Mosques</a>
+                        <a class="footerr-text" href="../Mosque/Mosque.aspx">Mosques</a>
                     </li>
                     <li class="nav-item">
                         <a class="footerr-text" href="#">Scholars</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="#">Learn Islam</a>
+                        <a class="footerr-text" href="../Learn Islam/LearnIslam.aspx">Learn Islam</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="ZakaahWebForms/Zakaah.aspx">Zakaah</a>
+                        <a class="footerr-text" href="../ZakaahWebForms/Zakaah.aspx">Zakaah</a>
                     </li>
                 </ul>
             </div>
@@ -324,16 +324,16 @@
                 <h6>Support</h6>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="footerr-text" href="AboutUs.aspx">About Us</a>
+                        <a class="footerr-text" href="../AboutUs.aspx">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="HelpPage.aspx">Help</a>
+                        <a class="footerr-text" href="../HelpPage.aspx">Help</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="HelpCenter.aspx">Help Center</a>
+                        <a class="footerr-text" href="../HelpCenter.aspx">Help Center</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="TermsOfService.aspx">Terms</a>
+                        <a class="footerr-text" href="../TermsOfService.aspx">Terms</a>
                     </li>
                 </ul>
             </div>

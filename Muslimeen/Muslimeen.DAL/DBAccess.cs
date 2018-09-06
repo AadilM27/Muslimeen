@@ -1992,7 +1992,7 @@ namespace Muslimeen.BLL
                         uspGetComment pen = new uspGetComment();
 
                         pen.CommentMessage = Convert.ToString(row["CommentMessage"]);
-                        string dateCreated = Convert.ToDateTime(row["CommentDate"]).ToString("dd MMM yyyy HH:mm:ss tt");
+                        pen.CommentDate = Convert.ToDateTime(Convert.ToDateTime(row["CommentDate"]));
                         pen.Name = Convert.ToString(row["Name"]);
 
                         list.Add(pen);
