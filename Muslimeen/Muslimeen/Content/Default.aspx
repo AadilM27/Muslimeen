@@ -16,7 +16,7 @@
     <link href="../Content/Default/css/Slideshow.css" rel="stylesheet" />
 </head>
     <body>
-        <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
+        <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink> 
         <form id="frmScholar" runat="server" class=" ">   
             <header >
                 <nav class="navFixed">
