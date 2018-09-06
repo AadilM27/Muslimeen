@@ -356,10 +356,10 @@ namespace Muslimeen.BLL
                     {
                         uspGetOrganizations org = new uspGetOrganizations();
 
-                       
-                        org.OrgName = Convert.ToString(row["Name"]);                       
-                        org.Address = Convert.ToString(row["WebsiteAddress"]);
-                        org.OrgImageUrl = Convert.ToString(row["Image"]);
+                        org.OrganizationID = Convert.ToInt32(row["OrganizationID"]);
+                        org.Name = Convert.ToString(row["Name"]);                       
+                        org.WebsiteAddress = Convert.ToString(row["WebsiteAddress"]);
+                        org.Image = Convert.ToString(row["Image"]);
                         org.ContactNo = Convert.ToString(row["ContactNo"]);
                         org.PhysicalAddress = Convert.ToString(row["PhysicalAddress"]);
                         org.Active = Convert.ToChar(row["Active"]);
@@ -1994,7 +1994,7 @@ namespace Muslimeen.BLL
                         uspGetComment pen = new uspGetComment();
 
                         pen.CommentMessage = Convert.ToString(row["CommentMessage"]);
-                        string dateCreated = Convert.ToDateTime(row["CommentDate"]).ToString("dd MMM yyyy HH:mm:ss tt");
+                        pen.CommentDate = Convert.ToDateTime(Convert.ToDateTime(row["CommentDate"]));
                         pen.Name = Convert.ToString(row["Name"]);
 
                         list.Add(pen);

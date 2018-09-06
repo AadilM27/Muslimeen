@@ -1213,8 +1213,15 @@ namespace Muslimeen.Content
             counterCalender = db.BLL_GetCounterCalender();
             txtCurCounterTitle.Text = Convert.ToString(counterCalender[2].Val);
             txtCurCounterEndTitle.Text = Convert.ToString(counterCalender[1].Val);
-            DateTime islamiceDate = Convert.ToDateTime(counterCalender[0].Val);
-            txtCurCounterEndDate.Text = islamiceDate.ToString("dd MM yyyy");
+            if (counterCalender[0].Val == "" || counterCalender[0].Val == null)
+            {
+                txtCurCounterEndDate.Text = "No date set";
+            }
+            else if (!(counterCalender[0].Val == "") || !(counterCalender[0].Val == null))
+            {
+                DateTime islamiceDate = Convert.ToDateTime(counterCalender[0].Val);
+                txtCurCounterEndDate.Text = islamiceDate.ToString("dd MM yyyy");
+            }
             txtCurIsalmicDate.Text = Convert.ToString(counterCalender[3].Val);
         }
 
