@@ -24,10 +24,11 @@ namespace Muslimeen.Content.ZakaahWebForms
             try
             {
                 DBHandler dBHandler = new DBHandler();
-
-                rptOrganization.DataSource = dBHandler.BLL_GetOrganization();
-                rptOrganization.DataBind();
-
+                if (!IsPostBack)
+                {
+                    rptOrganization.DataSource = dBHandler.BLL_GetOrganization();
+                    rptOrganization.DataBind();
+                }
                 if (Session["UserName"] != null)
                 {
                     uspGetMember uspGetMember = new uspGetMember();

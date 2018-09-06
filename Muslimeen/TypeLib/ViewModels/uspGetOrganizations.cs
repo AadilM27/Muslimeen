@@ -8,9 +8,12 @@ namespace TypeLib.ViewModels
 {
     public class uspGetOrganizations
     {
-        public string OrgName { get; set; }
-        public string Address { get; set; }
-        public string OrgImageUrl { get; set; }
+        public int OrganizationID { get; set; }
+        public string Name { get; set; }
+        public string WebsiteAddress { get; set; }
+        public string Image { get; set; }
         public string ContactNo { get; set; }
+        public string PhysicalAddress { get; set; }
+        public char Active { get; set; }
     }
 }

@@ -345,21 +345,23 @@ namespace Muslimeen.BLL
             }
             return list;
         }
-        public List<Organization> GetOrganization()
+        public List<uspGetOrganizations> GetOrganization()
         {
-            List<Organization> list = new List<Organization>();
+            List<uspGetOrganizations> list = new List<uspGetOrganizations>();
             using (DataTable table = DBHelper.Select("uspOrganizations", CommandType.StoredProcedure))
             {
                 if (table.Rows.Count > 0)
                 {
                     foreach (DataRow row in table.Rows)
                     {
-                        Organization org = new Organization();
+                        uspGetOrganizations org = new uspGetOrganizations();
 
                         org.OrganizationID = Convert.ToInt32(row["OrganizationID"]);
-                        org.Name = Convert.ToString(row["Name"]);
+                        org.Name = Convert.ToString(row["Name"]);                       
                         org.WebsiteAddress = Convert.ToString(row["WebsiteAddress"]);
+                        org.Image = Convert.ToString(row["Image"]);
                         org.ContactNo = Convert.ToString(row["ContactNo"]);
+                        org.PhysicalAddress = Convert.ToString(row["PhysicalAddress"]);
                         org.Active = Convert.ToChar(row["Active"]);
 
                         list.Add(org);
