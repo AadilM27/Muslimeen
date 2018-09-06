@@ -246,7 +246,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-12 mb-1">
                                             <label class="col mb-0 p-0"><small>Date Established*</small></label>
-                                            <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtMosqueEstab"></asp:TextBox>
+                                            <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="dd/MM/yyyy" ID="txtMosqueEstab"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-row">
