@@ -16,17 +16,6 @@
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/learnIslam.css" rel="stylesheet" />
 
-    <!--Comment Styliing-->
-    <style type="text/css">
-        .auto-style1 {
-            width: 86px;
-        }
-
-        .auto-style2 {
-            width: 201px;
-        }
-    </style>
-
 </head>
 <body style="background-color:white">
     <asp:HyperLink ID="lnk1" runat="server" src="HelpPage.aspx"></asp:HyperLink>
@@ -56,7 +45,7 @@
                         </div>
                     </div>
                 </nav>
-                <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50);">
+                <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50); z-index:1000">
                     <div class=" text-center">
                         <asp:Image runat="server" CssClass="mb-0 ml-0" src="/Login/LogIn_Bootstrap\logo.png" width="185" height="110"/>
                         </div>
@@ -189,7 +178,7 @@
                                 <div class="m-0 p-0 pt-2 pl-2">
                                     <a runat="server" id="lnkAdminPrintPDF" onserverclick="lnkAdminPrintPDF_ServerClick"><img src="../MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
                                 </div>
-                                <div class=" p-1 report-container pre-scrollable" >
+                                <div>
                                     <asp:GridView CssClass="flex-grow-1" ID="grdAdminReports"  RowStyle-Wrap="true" runat="server" style="font-size:smaller;" ForeColor="#333333" >
                                         <AlternatingRowStyle BackColor="White"  />
                                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -203,47 +192,40 @@
                                     </asp:GridView>
                                 </div>
                             </div>
-
+                            <br />
                             <!--Comment-->
-                            <div class="pre-scrollable">
-                                <div class="auto-style2">
-                                    <asp:TextBox ID="txtComment" runat="server" Height="44px" TextMode="MultiLine" Width="100px"></asp:TextBox>
-                                    &nbsp;
-                                    <asp:Button ID="btn_Submit" runat="server" Text="Comment" OnClick="btn_Submit_Click" />
+                            <div class="" >
+                                <div class="row p-0 m-0 ">
+                                    <div class="col-10 ml-2" >
+                                        <asp:TextBox style="max-height:100px; min-height:40px;" CssClass="form-control col main-txtb" ID="txtComment" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <asp:Button ID="btn_Submit" runat="server" Text="Comment" CssClass=" btn btn-sm" OnClick="btn_Submit_Click" />
+                                    </div>
                                 </div>
                                 <br />
                                 <h4 style="text-decoration:underline;">Comments:</h4>
                                 <br />
                                 <!--Comments Repeater-->
-                                <asp:Repeater ID="CommentRepeater" runat="server">
-                                    <ItemTemplate>
-                                        <div>
-                                            <asp:Label ID="lblCommentName" runat="server" Text='<%#Eval("Name") %>'></asp:Label> <br />
-                                            <asp:Label ID="lblComment" runat="server" Text='<%#Eval("CommentMessage") %>'></asp:Label> <br />
-                                            <asp:Label ID="lblCommentDate" runat="server" Text='<%#Eval("CommentDate") %>'></asp:Label>
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:Repeater>
-
-
-                                <%--<!--Page Numbers-->
-                                <div style="overflow: hidden;">
-                                    <asp:Repeater ID="rptPaging" runat="server" OnItemCommand="rptPaging_ItemCommand">
-                                        <ItemTemplate>
-                                            <asp:LinkButton ID="btnPage"
-                                                Style="padding: 8px; margin: 2px; background: #007acc; border: solid 1px blue; font: 8px;"
-                                                CommandName="Page" CommandArgument="<%# Container.DataItem %>"
-                                                runat="server" ForeColor="White" Font-Bold="True" CausesValidation="false"><%# Container.DataItem %>
-                                            </asp:LinkButton>
-                                        </ItemTemplate>
-                                    </asp:Repeater>--%>
+                                    <div class="pre-scrollable">
+                                        <asp:Repeater ID="CommentRepeater" runat="server">
+                                            <ItemTemplate>
+                                                <div class="position-static" >
+                                                    <asp:Label ID="lblCommentName" runat="server" Text='<%#Eval("Name") %>'></asp:Label>
+                                                    <br />
+                                                    <asp:Label ID="lblComment" runat="server" Text='<%#Eval("CommentMessage") %>'></asp:Label>
+                                                    <br />
+                                                    <asp:Label ID="lblCommentDate" runat="server" Text='<%#Convert.ToDateTime(Eval("CommentDate")).ToString("dd MMM yyyy HH:mm:ss tt") %>'></asp:Label>
+                                                </div>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </form>
     
     <!--Footer-->

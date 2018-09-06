@@ -115,12 +115,12 @@ namespace Muslimeen.Content
 
         protected void btnHome_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/Default.aspx");
+            Response.Redirect("/Content/Default.aspx");
         }
 
         protected void btnMosques_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/Mosque/ListMosque.aspx");
+            Response.Redirect("/Content/Mosque/ListMosque.aspx");
         }
 
         protected void btnScholars_Click(object sender, EventArgs e)
@@ -398,6 +398,10 @@ namespace Muslimeen.Content
         protected void RptEventList_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
 
+        }
+        protected void lnkBack_ServerClick(object sender, EventArgs e)
+        {
+            Response.Redirect(Request.Url.ToString());
         }
     }
 
