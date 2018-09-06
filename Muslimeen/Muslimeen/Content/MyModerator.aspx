@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MyModerator.aspx.cs" Inherits="Muslimeen.Content.MyModerator.MyModerator" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,6 +14,27 @@
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="MyModerator/css/MyModerator.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+
+        <style type="text/css">
+        .Star {
+            background-image: url(images/Star.gif);
+            height: 17px;
+            width: 17px;
+        }
+
+        .WaitingStar {
+            background-image: url(images/WaitingStar.gif);
+            height: 17px;
+            width: 17px;
+        }
+
+        .FilledStar {
+            background-image: url(images/FilledStar.gif);
+            height: 17px;
+            width: 17px;
+        }
+        </style>
+
 </head>
     <body>
         <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
@@ -298,6 +320,16 @@
                                     <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" ID="btnAccept" Text="Accept Article" OnClick="btnAccept_Click" />
                                     <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" ID="Button2" Text="Reject Article" OnClick="Button2_Click" />
                                     <br />
+                                    <asp:ScriptManager ID="ScriptManager1" runat="server">
+                                    </asp:ScriptManager>
+                                    <ajaxToolkit:Rating ID="Rating1" AutoPostBack="true" OnClick="Rating1_Click" runat="server"
+                                        StarCssClass="Star" WaitingStarCssClass="WaitingStar" EmptyStarCssClass="Star"
+                                         FilledStarCssClass="FilledStar" >
+                                    </ajaxToolkit:Rating>
+                                    <br />
+                                    <asp:Button runat="server" Text="Rate this Article" ID="btnRate" OnClick="btnRate_Click" />
+
+                                    <asp:Label ID="lblRatingStatus" runat="server" Text=""></asp:Label>
                                     <br />
                                     <asp:Label ID="Label1" CssClass=" form-control-sm col main-txtb " ForeColor="#256297" runat="server" Text="Rejection Reason:"></asp:Label> <asp:TextBox runat="server" CssClass=" text-justify btn btn-sm  mr-2 position-static" ID="txtRejectReason" BorderColor="#256297" Width="50%" OnTextChanged="txtRejectReason_TextChanged" ></asp:TextBox>
                                     <br />
