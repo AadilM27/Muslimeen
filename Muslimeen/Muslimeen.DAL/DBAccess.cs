@@ -356,10 +356,10 @@ namespace Muslimeen.BLL
                     {
                         uspGetOrganizations org = new uspGetOrganizations();
 
-                       
-                        org.OrgName = Convert.ToString(row["Name"]);                       
-                        org.Address = Convert.ToString(row["WebsiteAddress"]);
-                        org.OrgImageUrl = Convert.ToString(row["Image"]);
+                        org.OrganizationID = Convert.ToInt32(row["OrganizationID"]);
+                        org.Name = Convert.ToString(row["Name"]);                       
+                        org.WebsiteAddress = Convert.ToString(row["WebsiteAddress"]);
+                        org.Image = Convert.ToString(row["Image"]);
                         org.ContactNo = Convert.ToString(row["ContactNo"]);
                         org.PhysicalAddress = Convert.ToString(row["PhysicalAddress"]);
                         org.Active = Convert.ToChar(row["Active"]);
@@ -1994,7 +1994,7 @@ namespace Muslimeen.BLL
                         uspGetComment pen = new uspGetComment();
 
                         pen.CommentMessage = Convert.ToString(row["CommentMessage"]);
-                        string dateCreated = Convert.ToDateTime(row["CommentDate"]).ToString("dd MMM yyyy HH:mm:ss tt");
+                        pen.CommentDate = Convert.ToDateTime(Convert.ToDateTime(row["CommentDate"]));
                         pen.Name = Convert.ToString(row["Name"]);
 
                         list.Add(pen);
@@ -2002,6 +2002,70 @@ namespace Muslimeen.BLL
                 }
             }
             return list;
+        }
+        public bool InsertRating(uspInsertRating rating)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var prop in rating.GetType().GetProperties())
+            {
+                if (prop.GetValue(rating) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(rating)));
+                }
+            }
+            return DBHelper.NonQuery("uspInsertRating", CommandType.StoredProcedure, parameters.ToArray());
+        }
+        public uspGetRatings GetRatings()
+        {
+            uspGetRatings rating = new uspGetRatings();
+            using (DataTable table = DBHelper.Select("uspGetRatings", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    {
+                        rating.AverageRating = Convert.ToInt32(row["AverageRating"]);
+                        rating.RatingCount = Convert.ToInt32(row["RatingCount"]);
+
+                    };
+                }
+            }
+            return rating;
+        }
+        public uspAverageRating GetAverageRating()
+        {
+            uspAverageRating rating = new uspAverageRating();
+            using (DataTable table = DBHelper.Select("uspGetAverageRatings", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    {
+                        rating.AverageRating = Convert.ToInt32(row["AverageRating"]);
+                        
+
+                    };
+                }
+            }
+            return rating;
+        }
+        public uspRatingCount GetRatingCount()
+        {
+            uspRatingCount count = new uspRatingCount();
+            using (DataTable table = DBHelper.Select("uspGetCountRatings", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    {
+                        count.RatingCount = Convert.ToInt32(row["RatingCount"]);
+
+
+                    };
+                }
+            }
+            return count;
         }
     }
 }

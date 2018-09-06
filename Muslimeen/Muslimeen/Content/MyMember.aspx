@@ -273,10 +273,10 @@
                                     <div class=" head-div-2 p-2 mb-0 text-left ">
                                         <label runat="server" class="mb-0">Selected event details:</label>
                                     </div>
-                                    <div runat="server" id="lblEventTitle" class="">
-                                        <h5 class="p-0 m-0"></h5>
+                                    <div runat="server" id="lblEventTitle" class="ml-3 p-2" style="font-weight:500" >
+                                        <h4 class="p-0 m-0" ></h4>
                                     </div>
-                                    <hr class="m-3 ml-3 mr-3 bg-secondary" />
+                                    <hr class="m-1 ml-3 mr-3 bg-secondary" />
                                     <div style="overflow-y: scroll;">
                                     <div class="container" runat="server" id="divEventDetails">
                                         <div class="row mb-1 position-static">
@@ -316,7 +316,7 @@
                                 <div class="w-100 h-100 container text-center">
                                     <div class=" container h-25 mb-3"></div>
                                     <h6 class="card-title h-50 mt-5 pt-5">
-                                        <asp:Image runat="server" class="figure-img mr-2" ImageUrl="../Content/MyMember/icons/outline_error_outline_black_18dp.png" /><asp:Label ID="lblEventError" runat="server"></asp:Label></h6>
+                                        <asp:Image runat="server" class="figure-img mr-2" ImageUrl="../Content/MyMember/icons/outline_error_outline_black_18dp.png" /><asp:Label ID="lblEventError" runat="server">Please select a start and end date.</asp:Label></h6>
                                     <div class=" container h-25"></div>
                                 </div>
                             </div>
@@ -430,7 +430,7 @@
                             </div>
 
                     
-                        <div runat="server" id="divDisplayArt" class=" position-static dash-content mw-100 align-self-center">
+                        <div runat="server" id="divDisplayArt" class=" mb-auto position-static dash-content mw-100 align-self-center">
                             
                             <asp:HiddenField runat="server" ID="hdfArticleID" Value="" />
                             <div class=" head-div-2 p-2 mb-0 ">
@@ -452,6 +452,9 @@
                                         -
                                         <label class="m-0 font-italic mt-2" runat="server" id="lblDate"></label>
                                     </div>
+                                </div>
+                                <div class="">
+                                    <a runat="server" id="lnkBack" onserverclick="lnkBack_ServerClick" ><small> << Back </small></a>
                                 </div>
                             </div>
                         </div>

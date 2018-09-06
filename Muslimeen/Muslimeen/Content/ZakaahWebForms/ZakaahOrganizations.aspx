@@ -123,19 +123,18 @@
                                                         <asp:Image ID="OrganizationIMG" ImageUrl='<%#Eval("Image")%>' runat="server" Width="200px" Height="180px" />
                                                     </td>
                                                     <td>
-                                                        <asp:Label ID="lblOrgName" runat="server" Text='<%#Eval("Name")%>'></asp:Label>
+                                                       <label style="font-size:20px;font-weight:500;color:#256297">Organization: </label> <asp:Label ID="lblOrgName" runat="server" Text='<%#Eval("Name")%>'></asp:Label>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
                                                        
-                                                    <asp:HyperLink ID="linkAddress" runat="server" NavigateUrl='<%#Eval("WebsiteAddress")%>' Text='<%#Eval("WebsiteAddress")%>' /> </td> 
+                                                    <label style="font-size:medium;font-weight:500;color:#256297">Website: </label>&nbsp<asp:HyperLink ID="linkAddress" runat="server" NavigateUrl='<%#Eval("WebsiteAddress")%>' Text='<%#Eval("WebsiteAddress")%>' /> </td> 
                                                    
                                                 </tr>
                                                 <tr>
-                                                    <td>Contact No: <asp:Label ID="lblContactNo" runat="server" Text='<%#Eval("ContactNo")%>'></asp:Label></td>
-                                                    <td>Physical Address:<asp:Label ID="LblPhysical" runat="server" Text='<%#Eval("PhysicalAddress")%>'></asp:Label></td>
-                                                    <td>Active:<asp:Label ID="Label1" runat="server" Text='<%#Eval("Active")%>'></asp:Label></td>
+                                                    <td><label style="font-size:medium;font-weight:500;color:#256297">ContactNo: </label><br /><asp:Label ID="lblContactNo" runat="server" Text='<%#Eval("ContactNo")%>'></asp:Label></td>
+                                                    <td><label style="font-size:medium;font-weight:500;color:#256297">Physical Address:</label><br /><asp:Label ID="LblPhysical" runat="server" Text='<%#Eval("PhysicalAddress")%>'></asp:Label></td>                                                
                                                     </tr>
                                             </table>
                                         </div>

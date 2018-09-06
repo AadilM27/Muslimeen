@@ -187,5 +187,57 @@ namespace Muslimeen.BLL
                 throw;
             }
         }
+
+        public bool DisableEnableMember(string memberEmail, string userName)
+        {
+            SmtpClient smtp = new SmtpClient();
+            if (true)
+            {
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential("nextechgrp@gmail.com", "nextechgrp786");
+                smtp.Timeout = 20000;
+            }
+
+            MailAddress fromAddress = new MailAddress("nextechgrp@gmail.com", "Muslimeen");
+            MailAddress toAddress = new MailAddress(memberEmail);
+            //MailAddress ccAddress = new MailAddress("");
+
+            //Passing values to smtp object
+            dynamic message = new MailMessage(fromAddress, toAddress);
+
+            message.IsBodyHtml = true;
+            //message.CC.Add(ccAddress);
+
+            message.Subject = "Muslimeen Membership";
+            message.Body = String.Format(@"
+                                                <html lang=""en"" style=""height:100%"">    
+                                                    <body>
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
+                                                            <h1 style=""font-weight:bolder; font-size:25px;"">Muslimeen<br/>Membership</h1>
+                                                        </div>
+                                                        <div style=""background-color:#ffffff; text-align:left;"">
+                                                            <hr/>
+                                                            <h4 tyle=""text-align:center; padding:0;"">Greetings {0}</h4>
+                                                                <p>Your Muslimeen Membership has been deactivated.<br/><br/>You will no longer be able to access your account.</p>
+                                                                    <br/><br/>
+                                                                <hr/>
+                                                        </div>
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
+                                                            <h2>Thank you</h2>
+                                                        </div>
+                                                    </body>
+                                                </html>
+                                                ", userName);//Send email
+            smtp.Send(message);
+
+            return true;
+        }
+
+
+
     }
 }

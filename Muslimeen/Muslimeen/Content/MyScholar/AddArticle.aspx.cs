@@ -66,7 +66,7 @@ namespace Muslimeen.Content.MyScholar
 
                     divUserProfile.Visible = false;
                     Session.Clear();
-                    Response.Redirect("../Login/Login.aspx");
+                    Response.Redirect("../../Login/Login.aspx");
                 }
 
                 if (!IsPostBack)
@@ -90,7 +90,7 @@ namespace Muslimeen.Content.MyScholar
         {
             if (btnLogin.Text == "Login")
             {
-                Response.Redirect("../Login/Login.aspx");
+                Response.Redirect("../../Login/Login.aspx");
             }
             else if (btnLogin.Text == "Log out")
             {

@@ -64,7 +64,7 @@ namespace Muslimeen.Content.Learn_Islam
         {
             if (btnLogin.Text == "Login")
             {
-                Response.Redirect("../Login/Login.aspx");
+                Response.Redirect("../../Login/Login.aspx");
             }
             else if (btnLogin.Text == "Log out")
             {
@@ -265,7 +265,7 @@ namespace Muslimeen.Content.Learn_Islam
                 Comment com = new Comment();
 
                 com.CommentMessage = Convert.ToString(txtComment.Text);
-                com.CommentDate = Convert.ToDateTime(DateTime.Today);
+                com.CommentDate = DateTime.Now;
                 com.ArticleID = Convert.ToInt32(hdfArtID.Value);
                 com.MemberID = Convert.ToString(Session["UserName"]);
                 com.CommentID = null;
@@ -274,6 +274,8 @@ namespace Muslimeen.Content.Learn_Islam
 
                 CommentRepeater.DataSource = han.BLL_GetComment(int.Parse(hdfArtID.Value));
                 CommentRepeater.DataBind();
+
+                divNoSelected.Visible = true;
             }
             catch
             {
