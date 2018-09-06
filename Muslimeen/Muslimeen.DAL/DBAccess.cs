@@ -356,10 +356,10 @@ namespace Muslimeen.BLL
                     {
                         uspGetOrganizations org = new uspGetOrganizations();
 
-                       
-                        org.OrgName = Convert.ToString(row["Name"]);                       
-                        org.Address = Convert.ToString(row["WebsiteAddress"]);
-                        org.OrgImageUrl = Convert.ToString(row["Image"]);
+                        org.OrganizationID = Convert.ToInt32(row["OrganizationID"]);
+                        org.Name = Convert.ToString(row["Name"]);                       
+                        org.WebsiteAddress = Convert.ToString(row["WebsiteAddress"]);
+                        org.Image = Convert.ToString(row["Image"]);
                         org.ContactNo = Convert.ToString(row["ContactNo"]);
                         org.PhysicalAddress = Convert.ToString(row["PhysicalAddress"]);
                         org.Active = Convert.ToChar(row["Active"]);
