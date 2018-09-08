@@ -47,7 +47,7 @@
                 </nav>
                 <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50); z-index:1000">
                     <div class=" text-center">
-                        <asp:Image runat="server" CssClass="mb-0 ml-0" src="/Login/LogIn_Bootstrap\logo.png" width="185" height="110"/>
+                        <asp:Image runat="server" CssClass="mb-0 ml-0" src="../../Login/LogIn_Bootstrap/logo.png" width="185" height="110"/>
                         </div>
                     <div class="ml-2 navbar-nav-scroll align-self-end justify-content-start">
                         <ul class="navbar-nav row">
@@ -167,7 +167,7 @@
                                     <div class="row mb-1 position-static text-right">
                                         <div class="col position-static font-italic">
                                             Date:
-                                        <label class="m-0 font-italic mt-2" runat="server" id="lblDate"></label>
+                                        <label class="m-0 font-italic mt-2 mr-2" runat="server" id="lblDate"></label>
                                         </div>
                                     </div>
                                 </div>
@@ -207,19 +207,28 @@
                                 <h4 style="text-decoration:underline;">Comments:</h4>
                                 <br />
                                 <!--Comments Repeater-->
-                                    <div class="pre-scrollable">
-                                        <asp:Repeater ID="CommentRepeater" runat="server">
-                                            <ItemTemplate>
-                                                <div class="position-static" >
-                                                    <asp:Label ID="lblCommentName" runat="server" Text='<%#Eval("Name") %>'></asp:Label>
-                                                    <br />
+                                <div class="position-static container pre-scrollable" style="overflow-y:scroll">
+                                    <asp:Repeater ID="CommentRepeater" runat="server">
+                                        <ItemTemplate>
+                                            <div class="row" >
+                                                <div class="col">
+                                                    <strong><asp:Label ID="lblCommentName" runat="server" Text='<%#Eval("Name") %>'></asp:Label></strong>
+                                                </div>
+                                            </div>
+                                            <div class="row" >
+                                                <div class="col">
                                                     <asp:Label ID="lblComment" runat="server" Text='<%#Eval("CommentMessage") %>'></asp:Label>
-                                                    <br />
+                                                </div>
+                                            </div>
+                                            <div class="row" >
+                                                <div class="col">
                                                     <asp:Label ID="lblCommentDate" runat="server" Text='<%#Convert.ToDateTime(Eval("CommentDate")).ToString("dd MMM yyyy HH:mm:ss tt") %>'></asp:Label>
                                                 </div>
-                                            </ItemTemplate>
-                                        </asp:Repeater>
-                                    </div>
+                                            </div>
+                                            <hr />
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                </div>
                                 </div>
                             </div>
                         </div>
