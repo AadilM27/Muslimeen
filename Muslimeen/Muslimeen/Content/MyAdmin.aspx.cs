@@ -490,13 +490,6 @@ namespace Muslimeen.Content
                         continueProcess += 1;
                         txtRetypePassword.BorderColor = Color.Red;
                     }
-                    else if (!(int.TryParse(txtDOB.Text, out int parsedValue2)))
-                    {
-                        lblError.Text = "Date must only contain numbers";
-                        lblError.ForeColor = Color.Red;
-                        continueProcess += 1;
-                        txtDOB.BorderColor = Color.Red;
-                    }
                     else if (txtContactNum.Text.Length > 10 || txtContactNum.Text.Length < 10)
                     {
                         if (txtContactNum.Text.Length != 0)
@@ -574,8 +567,10 @@ namespace Muslimeen.Content
                     addMosque.MosqueQuote = txtMosqueQuote.Text.ToString();
                     string yearEstablished = Convert.ToDateTime(txtMosqueEstab.Text).ToString("yyyy-MM-dd");
                     addMosque.YearEstablished = Convert.ToDateTime(yearEstablished);
-
+                    addMosque.Active = 'Y';
                     db.BLL_AddMosque(addMosque);
+
+
 
                     //Clear the textboxes.
                     txtUserName.Text = string.Empty;
@@ -1583,6 +1578,10 @@ namespace Muslimeen.Content
 
             rptMemberList.DataSource = dBHandler.BLL_GetAllMembers();
             rptMemberList.DataBind();
+
+            EmailService emailService = new EmailService();
+
+            emailService.DisableEnableMember(member.Email.ToString(), member.MemberID); //notify the member via email.
 
         }
 

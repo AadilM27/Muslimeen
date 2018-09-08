@@ -2003,5 +2003,69 @@ namespace Muslimeen.BLL
             }
             return list;
         }
+        public bool InsertRating(uspInsertRating rating)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var prop in rating.GetType().GetProperties())
+            {
+                if (prop.GetValue(rating) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(rating)));
+                }
+            }
+            return DBHelper.NonQuery("uspInsertRating", CommandType.StoredProcedure, parameters.ToArray());
+        }
+        public uspGetRatings GetRatings()
+        {
+            uspGetRatings rating = new uspGetRatings();
+            using (DataTable table = DBHelper.Select("uspGetRatings", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    {
+                        rating.AverageRating = Convert.ToInt32(row["AverageRating"]);
+                        rating.RatingCount = Convert.ToInt32(row["RatingCount"]);
+
+                    };
+                }
+            }
+            return rating;
+        }
+        public uspAverageRating GetAverageRating()
+        {
+            uspAverageRating rating = new uspAverageRating();
+            using (DataTable table = DBHelper.Select("uspGetAverageRatings", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    {
+                        rating.AverageRating = Convert.ToInt32(row["AverageRating"]);
+                        
+
+                    };
+                }
+            }
+            return rating;
+        }
+        public uspRatingCount GetRatingCount()
+        {
+            uspRatingCount count = new uspRatingCount();
+            using (DataTable table = DBHelper.Select("uspGetCountRatings", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    {
+                        count.RatingCount = Convert.ToInt32(row["RatingCount"]);
+
+
+                    };
+                }
+            }
+            return count;
+        }
     }
 }

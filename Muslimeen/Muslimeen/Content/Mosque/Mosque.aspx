@@ -84,10 +84,13 @@
                             <asp:Button runat="server" ID="btnAboutUs" Text="About us" CssClass="nav-item navText btn-link btn" OnClick="btnAboutUs_Click" />
                         </li>
                         <li class="NavDevider">|</li>
-                         <!--deviders-->
+                        <!--deviders-->
                         <li class="nav-item navbarText navbaritems">
-                        <asp:LinkButton ID="LnkHelp" runat="server"  OnClick="btnHelp_Click" CssClass="nav-item navText btn-link btn" ToolTip="How this page works" ><%--CssClass="nav-item navText btn-link btn"--%>
-                         Help    <asp:Image runat="server" ID="ImgHelp" ImageUrl="../Content/MyMember/icons/helpIcon.png " style="height: 1.1em; width:1.1em;" /></asp:LinkButton>   
+                            <asp:LinkButton ID="LnkHelp" runat="server" OnClick="btnHelp_Click" CssClass="nav-item navText btn-link btn" ToolTip="How this page works">
+                                <%--CssClass="nav-item navText btn-link btn"--%>
+                         Help   
+                                <asp:Image runat="server" ID="ImgHelp" ImageUrl="../Content/MyMember/icons/helpIcon.png " Style="height: 1.1em; width: 1.1em;" />
+                            </asp:LinkButton>
                         </li>
                     </ul>
                 </div>
@@ -440,7 +443,7 @@
                                     <div class=" head-div-2 p-2 mb-1 text-left">
                                         <p class="m-0">Prayer Table</p>
                                     </div>
-                                    <div class="table">
+                                    <div class="table" style="overflow-y: scroll; max-height: 75%">
                                         <table class="table table-primary">
                                             <thead>
                                                 <tr>
@@ -468,7 +471,7 @@
 
                                                 </tr>
                                             </thead>
-                                            <tr>
+                                            <tbody>
                                                 <asp:Repeater ID="rptPrayerTimes" runat="server">
                                                     <ItemTemplate>
                                                         <tr>
@@ -511,16 +514,17 @@
                                                         </tr>
                                                     </ItemTemplate>
                                                 </asp:Repeater>
-                                            </tr>
+                                            </tbody>
                                         </table>
+                                    </div>
+                                    <div>
                                         <div runat="server" id="divDisplayReports" class=" col-12 col-xl-12 mw-100 p-0" style="position: static">
                                             <div class="m-0 p-0 pt-2 pl-2">
                                                 <a runat="server" id="PDF" onserverclick="PDF_ServerClick">
                                                     <img src="../MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
-                                                <hr class="m-0 mt-1 p-0" style="background-color: #0026ff; height: 1px;" />
                                             </div>
                                             <div id="divgrid" runat="server">
-                                                <asp:GridView ID="grdReports" RowStyle-Wrap="true" runat="server" Style="position: static; font-size: smaller;" CellPadding="6" ForeColor="#333333" GridLines="none">
+                                                <asp:GridView ID="grdReports" RowStyle-Wrap="true" runat="server" Style="position: static; font-size: x-small;" CellPadding="6" ForeColor="#333333" GridLines="none">
                                                     <AlternatingRowStyle BackColor="White" />
                                                     <EditRowStyle BackColor="#2461BF" />
                                                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

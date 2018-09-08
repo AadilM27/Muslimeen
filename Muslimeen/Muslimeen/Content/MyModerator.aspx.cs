@@ -12,6 +12,7 @@ using iTextSharp;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.html.simpleparser;
+using AjaxControlToolkit;
 
 
 
@@ -40,6 +41,8 @@ namespace Muslimeen.Content.MyModerator
                 divSchDetails.Visible = false;
                 divSchDetailsOverlay.Visible = false;
                 divDisplaySalahTimetable.Visible = false;
+               
+                
                 
 
                 if (Session["UserName"] != null)
@@ -74,8 +77,9 @@ namespace Muslimeen.Content.MyModerator
                     Response.Redirect("../Login/Login.aspx");
                 }
 
-
+                
                 divDisplaySch.Visible = false;
+               
             }
             catch
             {
@@ -90,6 +94,7 @@ namespace Muslimeen.Content.MyModerator
                 LblHeading.Text = "Articles";
                 divDisplaySch.Visible = false;
                 divViewPendingSch.Visible = false;
+                Rating1.Visible = true;
                
 
                 divViewPendingArt.Visible = true;
@@ -817,6 +822,38 @@ namespace Muslimeen.Content.MyModerator
             {
 
             }
+        }
+
+        protected void btnRate_Click(object sender, EventArgs e)
+        {
+          
+
+        }
+        protected void Rating1_Click(object sender,EventArgs e)
+        {
+            DBHandler handler = new DBHandler();
+            uspInsertRating rating = new uspInsertRating();
+            rating.rating = Rating1.CurrentRating;
+
+            uspAverageRating average = new uspAverageRating();
+            if (!IsPostBack)
+            {
+                handler.BLL_GetRatings();
+                Rating1.CurrentRating = Convert.ToInt32(handler.BLL_AverageRating());
+
+                GetRating();
+            }
+
+            handler.BLL_InsertRating(rating);
+            Response.Redirect(Request.Url.AbsoluteUri);
+
+        }
+        private void GetRating()
+        {
+            DBHandler han = new DBHandler();
+            uspRatingCount count = new uspRatingCount();
+            lblRatingStatus.Text = "Members rated.Average rating is";
+            han.BLL_RatingCount(); lblRatingStatus.ToString(); han.BLL_AverageRating();
         }
     }
 }
