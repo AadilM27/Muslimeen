@@ -41,6 +41,12 @@ namespace Muslimeen.Content.MyModerator
                 divSchDetails.Visible = false;
                 divSchDetailsOverlay.Visible = false;
                 divDisplaySalahTimetable.Visible = false;
+                
+                
+               if(rptViewPendingArticles.Visible == true)
+                {
+                    divRating.Visible = true;
+                }
                
                 
                 
@@ -76,8 +82,8 @@ namespace Muslimeen.Content.MyModerator
                     Session.Clear();
                     Response.Redirect("../Login/Login.aspx");
                 }
+               
 
-                
                 divDisplaySch.Visible = false;
                
             }
@@ -94,7 +100,7 @@ namespace Muslimeen.Content.MyModerator
                 LblHeading.Text = "Articles";
                 divDisplaySch.Visible = false;
                 divViewPendingSch.Visible = false;
-                Rating1.Visible = true;
+                divRating.Visible = true;
                
 
                 divViewPendingArt.Visible = true;
@@ -115,7 +121,7 @@ namespace Muslimeen.Content.MyModerator
             try
             {
                 divViewPendingArt.Visible = false;
-               
+                divRating.Visible = false;
                 divDisplaySch.Visible = true;
                 divViewPendingSch.Visible = true;
 
@@ -829,31 +835,61 @@ namespace Muslimeen.Content.MyModerator
           
 
         }
-        protected void Rating1_Click(object sender,EventArgs e)
+        protected void Rating1_Click(object sender,AjaxControlToolkit.RatingEventArgs e)
         {
-            DBHandler handler = new DBHandler();
-            uspInsertRating rating = new uspInsertRating();
-            rating.rating = Rating1.CurrentRating;
-
-            uspAverageRating average = new uspAverageRating();
-            if (!IsPostBack)
+            try
             {
-                handler.BLL_GetRatings();
-                Rating1.CurrentRating = Convert.ToInt32(handler.BLL_AverageRating());
+                if (!IsPostBack)
+                {
+                    divRating.Visible = true;
 
-                GetRating();
+                    divViewPendingArt.Visible = true;
+                    divDisplayArticle.Visible = true;
+                    divDisplayReports.Visible = false;
+                    divDisplaySch.Visible = false;
+                    divDisplaySalahTimetable.Visible = false;
+                    divViewPendingSch.Visible = false;
+
+                   
+                }
+                if (Session["UserName"] != null)
+                { 
+                   
+                    DBHandler handler = new DBHandler();
+                    
+                    uspInsertRating rating = new uspInsertRating();
+                  
+
+                    string articleId = hdfSchId.Value.ToString();
+                   
+
+
+                    rating.articleID = Convert.ToInt32(articleId);
+                    rating.rating = Rating1.CurrentRating;
+
+                    handler.BLL_InsertRating(rating);
+                   
+              
+
+                   
+                    
+                   
+                    Response.Redirect(Request.Url.AbsoluteUri);
+
+
+                    
+                }
+                
             }
-
-            handler.BLL_InsertRating(rating);
-            Response.Redirect(Request.Url.AbsoluteUri);
-
+            catch(Exception)
+            {
+                throw;
+            }
+                
+            
+           
+            
         }
-        private void GetRating()
-        {
-            DBHandler han = new DBHandler();
-            uspRatingCount count = new uspRatingCount();
-            lblRatingStatus.Text = "Members rated.Average rating is";
-            han.BLL_RatingCount(); lblRatingStatus.ToString(); han.BLL_AverageRating();
-        }
+      
     }
 }
