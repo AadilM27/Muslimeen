@@ -8,6 +8,11 @@ using TypeLib.ViewModels;
 using TypeLib.Models;
 using Muslimeen.BLL;
 using System.Drawing;
+using iTextSharp;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.html.simpleparser;
+
 
 namespace Muslimeen.Content.Mosque
 {
@@ -34,15 +39,22 @@ namespace Muslimeen.Content.Mosque
                 uspGetMember = db.BLL_GetMember(Convert.ToString(Session["UserName"]));
                 Session["MosqueID"] = uspGetMember.MosqueID.ToString();
 
-                hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
-                divUserProfile.Visible = true;
+                if (uspGetMember.MemberType == 'R')
+                {
 
-                liMyMusbtn.Visible = true;
-                liMyMusDivi.Visible = true;
+                    hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
+                    divUserProfile.Visible = true;
 
-                btnLogin.Text = "Log out";
-                btnRegister.Visible = false;
+                    liMyMusbtn.Visible = true;
+                    liMyMusDivi.Visible = true;
 
+                    btnLogin.Text = "Log out";
+                    btnRegister.Visible = false;
+                }
+                else
+                {
+                    Response.Redirect("../Error.aspx");
+                }
             }
             else if (Session["UserName"] == null)
             {
@@ -51,17 +63,18 @@ namespace Muslimeen.Content.Mosque
 
                 divUserProfile.Visible = false;
                 Session.Clear();
+                Response.Redirect("../../Login/Login.aspx");
             }
 
 
-            BtnUpdate.Visible = false;
-            BtnAdd.Visible = false;
+
 
             if (!IsPostBack)
             {
                 divAddEvent.Visible = false;
                 divManageTimes.Visible = false;
                 divManageEvent.Visible = false;
+                divPrayerTimes.Visible = false;
                 Session["Event"] = "N";
                 List<uspGetMosqueEvents> list = new List<uspGetMosqueEvents>();
                 list = db.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
@@ -76,14 +89,14 @@ namespace Muslimeen.Content.Mosque
         {
             if (btnLogin.Text == "Login")
             {
-                Response.Redirect("../Login/Login.aspx");
+                Response.Redirect("../../Login/Login.aspx");
             }
             else if (btnLogin.Text == "Log out")
             {
 
                 Session.Clear();
                 Session.Abandon();
-                Response.Redirect("../Content/Default.aspx");
+                Response.Redirect("../Default.aspx");
                 btnLogin.Text = "Login";
                 btnRegister.Visible = true;
             }
@@ -94,11 +107,11 @@ namespace Muslimeen.Content.Mosque
         }
         protected void btnHome_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/Default.aspx");
+            Response.Redirect("../Default.aspx");
         }
         protected void btnMosques_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/Mosque/ListMosque.aspx");
+            Response.Redirect("../Mosque/ListMosque.aspx");
         }
         protected void btnScholars_Click(object sender, EventArgs e)
         {
@@ -106,19 +119,19 @@ namespace Muslimeen.Content.Mosque
         }
         protected void btnLearnIslam_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/Learn Islam/LearnIslam.aspx");
+            Response.Redirect("../Learn Islam/LearnIslam.aspx");
         }
         protected void btnZakaah_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/ZakaahWebForms/Zakaah.aspx");
+            Response.Redirect("../ZakaahWebForms/Zakaah.aspx");
         }
         protected void btnAboutUs_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/AboutUs.aspx");
+            Response.Redirect("../AboutUs.aspx");
         }
         protected void btnHelp_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/HelpCenter.aspx");
+            Response.Redirect("../HelpCenter.aspx");
         }
         protected void btnMyMuslimeen_Click(object sender, EventArgs e)
         {
@@ -130,26 +143,40 @@ namespace Muslimeen.Content.Mosque
 
             if (uspGetMember.MemberType == 'A')
             {
-                Response.Redirect("../Content/MyAdmin.aspx");
+                Response.Redirect("../MyAdmin.aspx");
             }
             else if (uspGetMember.MemberType == 'M')
             {
-                Response.Redirect("../Content/MyMember.aspx");
+                Response.Redirect("../MyMember.aspx");
             }
             else if (uspGetMember.MemberType == 'O')
             {
-                Response.Redirect("../Content/MyModerator.aspx");
+                Response.Redirect("../MyModerator.aspx");
             }
             else if (uspGetMember.MemberType == 'S')
             {
-                Response.Redirect("../Content/MyScholar/AddArticle.aspx");
+                Response.Redirect("../MyScholar/AddArticle.aspx");
             }
-
+            else if (uspGetMember.MemberType == 'R')
+            {
+                Response.Redirect("MosqueRep.aspx");
+            }
 
         }
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
-        
+
+            txtFajrA.BorderColor = Color.Empty;
+            txtFajrJ.BorderColor = Color.Empty;
+            txtDhuhrA.BorderColor = Color.Empty;
+            txtDhuhrJ.BorderColor = Color.Empty;
+            txtAsrA.BorderColor = Color.Empty;
+            txtAsrJ.BorderColor = Color.Empty;
+            txtMagribA.BorderColor = Color.Empty;
+            txtMagribJ.BorderColor = Color.Empty;
+            txtEishaA.BorderColor = Color.Empty;
+            txtEishaJ.BorderColor = Color.Empty;
+
             lblDate.Text = Calendar1.SelectedDate.ToShortDateString();
             divTimes.Visible = true;
             uspGetSpecificDayPrayerTimes time = new uspGetSpecificDayPrayerTimes();
@@ -175,6 +202,7 @@ namespace Muslimeen.Content.Mosque
             }
             else
             {
+
                 lblMessage.Text = "Add Prayer Times For ";
                 txtFajrA.Text = "";
                 txtFajrJ.Text = "";
@@ -189,84 +217,183 @@ namespace Muslimeen.Content.Mosque
                 BtnUpdate.Visible = false;
                 BtnAdd.Visible = true;
             }
-            txtFajrA.BorderColor = Color.Empty;
-            txtFajrJ.BorderColor = Color.Empty;
-            txtDhuhrA.BorderColor = Color.Empty;
-            txtDhuhrJ.BorderColor = Color.Empty;
-            txtAsrA.BorderColor = Color.Empty;
-            txtAsrJ.BorderColor = Color.Empty;
-            txtMagribA.BorderColor = Color.Empty;
-            txtMagribJ.BorderColor = Color.Empty;
-            txtEishaA.BorderColor = Color.Empty;
-            txtEishaJ.BorderColor = Color.Empty;
+
         }
         protected void BtnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-            
+
+
 
                 if (txtFajrA.Text != "" && txtFajrJ.Text != "" && txtDhuhrA.Text != "" && txtDhuhrJ.Text != "" && txtAsrA.Text != "" && txtAsrJ.Text != "" && txtMagribA.Text != "" && txtMagribJ.Text != "" && txtEishaA.Text != "" && txtEishaJ.Text != "")
                 {
-                    Prayer prayer = new Prayer();
-                    prayer.PrayerDate = Calendar1.SelectedDate.Date;
-                    prayer.MosqueID = Convert.ToInt32(Session["MosqueID"]);
-                    db.BLL_InsertPrayer(prayer);
-                    PrayerType type = new PrayerType();
-                    int count = 1;
-                    if (Session["MosqueID"] != null)
+
+
+                    bool valid = false;
+                    int FajrA = Convert.ToInt32(txtFajrA.Text.ToString().Replace(":", string.Empty));
+                    int FajrJ = Convert.ToInt32(txtFajrJ.Text.ToString().Replace(":", string.Empty));
+                    int DhuhrA = Convert.ToInt32(txtDhuhrA.Text.ToString().Replace(":", string.Empty));
+                    int DhuhrJ = Convert.ToInt32(txtDhuhrJ.Text.ToString().Replace(":", string.Empty));
+                    int AsrA = Convert.ToInt32(txtAsrA.Text.ToString().Replace(":", string.Empty));
+                    int AsrJ = Convert.ToInt32(txtAsrJ.Text.ToString().Replace(":", string.Empty));
+                    int MagribA = Convert.ToInt32(txtMagribA.Text.ToString().Replace(":", string.Empty));
+                    int MagribJ = Convert.ToInt32(txtMagribJ.Text.ToString().Replace(":", string.Empty));
+                    int EishaA = Convert.ToInt32(txtEishaA.Text.ToString().Replace(":", string.Empty));
+                    int EishaJ = Convert.ToInt32(txtEishaJ.Text.ToString().Replace(":", string.Empty));
+
+                    if (FajrA < FajrJ)
                     {
-                        while (count <= 5)
+                        txtFajrJ.BorderColor = Color.Empty;
+                        if (FajrJ < DhuhrA)
                         {
-                            if (count == 1)
+                            txtDhuhrA.BorderColor = Color.Empty;
+
+                            if (DhuhrA < DhuhrJ)
                             {
-                                type.PrayerDescription = "Fajr";
-                                type.PrayerDate = Calendar1.SelectedDate;
-                                type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
-                                type.AdhaanTime = txtFajrA.Text.ToString();
-                                type.JamaatTime = txtFajrJ.Text.ToString();
-                                db.BLL_InsertPrayerType(type);
+                                txtDhuhrJ.BorderColor = Color.Empty;
+
+                                if (DhuhrJ < AsrA)
+                                {
+                                    txtAsrA.BorderColor = Color.Empty;
+
+                                    if (AsrA < AsrJ)
+                                    {
+                                        txtAsrJ.BorderColor = Color.Empty;
+
+                                        if (AsrJ < MagribA)
+                                        {
+                                            txtMagribA.BorderColor = Color.Empty;
+
+                                            if (MagribA < MagribJ)
+                                            {
+                                                txtMagribJ.BorderColor = Color.Empty;
+
+                                                if (MagribJ < EishaA)
+                                                {
+                                                    txtEishaA.BorderColor = Color.Empty;
+
+                                                    if (EishaA < EishaJ)
+                                                    {
+                                                        txtEishaJ.BorderColor = Color.Empty;
+                                                        valid = true;
+                                                    }
+                                                    else
+                                                    {
+                                                        valid = false;
+                                                        txtEishaJ.BorderColor = Color.Red;
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    valid = false;
+                                                    txtEishaA.BorderColor = Color.Red;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                valid = false;
+                                                txtMagribJ.BorderColor = Color.Red;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            valid = false;
+                                            txtMagribA.BorderColor = Color.Red;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        valid = false;
+                                        txtAsrJ.BorderColor = Color.Red;
+                                    }
+                                }
+                                else
+                                {
+                                    valid = false;
+                                    txtAsrA.BorderColor = Color.Red;
+                                }
                             }
-                            else if (count == 2)
+                            else
                             {
-                                type.PrayerDate = Calendar1.SelectedDate;
-                                type.PrayerDescription = "Dhuhr";
-                                type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
-                                type.AdhaanTime = txtDhuhrA.Text.ToString();
-                                type.JamaatTime = txtDhuhrJ.Text.ToString();
-                                db.BLL_InsertPrayerType(type);
+                                valid = false;
+                                txtDhuhrJ.BorderColor = Color.Red;
                             }
-                            else if (count == 3)
+                        }
+                        else
+                        {
+                            valid = false;
+                            txtDhuhrA.BorderColor = Color.Red;
+                        }
+                    }
+                    else
+                    {
+                        valid = false;
+                        txtFajrJ.BorderColor = Color.Red;
+                    }
+
+                    if (valid == true)
+                    {
+                        Prayer prayer = new Prayer();
+                        prayer.PrayerDate = Calendar1.SelectedDate.Date;
+                        prayer.MosqueID = Convert.ToInt32(Session["MosqueID"]);
+                        db.BLL_InsertPrayer(prayer);
+                        PrayerType type = new PrayerType();
+                        int count = 1;
+                        if (Session["MosqueID"] != null)
+                        {
+                            while (count <= 5)
                             {
-                                type.PrayerDate = Calendar1.SelectedDate;
-                                type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
-                                type.PrayerDescription = "Asr";
-                                type.AdhaanTime = txtAsrA.Text.ToString();
-                                type.JamaatTime = txtAsrJ.Text.ToString();
-                                db.BLL_InsertPrayerType(type);
+                                if (count == 1)
+                                {
+                                    type.PrayerDescription = "Fajr";
+                                    type.PrayerDate = Calendar1.SelectedDate;
+                                    type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
+                                    type.AdhaanTime = txtFajrA.Text.ToString();
+                                    type.JamaatTime = txtFajrJ.Text.ToString();
+                                    db.BLL_InsertPrayerType(type);
+                                }
+                                else if (count == 2)
+                                {
+                                    type.PrayerDate = Calendar1.SelectedDate;
+                                    type.PrayerDescription = "Dhuhr";
+                                    type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
+                                    type.AdhaanTime = txtDhuhrA.Text.ToString();
+                                    type.JamaatTime = txtDhuhrJ.Text.ToString();
+                                    db.BLL_InsertPrayerType(type);
+                                }
+                                else if (count == 3)
+                                {
+                                    type.PrayerDate = Calendar1.SelectedDate;
+                                    type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
+                                    type.PrayerDescription = "Asr";
+                                    type.AdhaanTime = txtAsrA.Text.ToString();
+                                    type.JamaatTime = txtAsrJ.Text.ToString();
+                                    db.BLL_InsertPrayerType(type);
+                                }
+                                else if (count == 4)
+                                {
+                                    type.PrayerDate = Calendar1.SelectedDate;
+                                    type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
+                                    type.PrayerDescription = "Magrib";
+                                    type.AdhaanTime = txtMagribA.Text.ToString();
+                                    type.JamaatTime = txtMagribJ.Text.ToString();
+                                    db.BLL_InsertPrayerType(type);
+                                }
+                                else if (count == 5)
+                                {
+                                    type.PrayerDate = Calendar1.SelectedDate;
+                                    type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
+                                    type.PrayerDescription = "Eisha";
+                                    type.AdhaanTime = txtEishaA.Text.ToString();
+                                    type.JamaatTime = txtEishaJ.Text.ToString();
+                                    db.BLL_InsertPrayerType(type);
+                                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Added Prayer Times');</script>");
+                                    BtnAdd.Visible = false;
+                                    BtnUpdate.Visible = false;
+                                }
+                                count++;
                             }
-                            else if (count == 4)
-                            {
-                                type.PrayerDate = Calendar1.SelectedDate;
-                                type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
-                                type.PrayerDescription = "Magrib";
-                                type.AdhaanTime = txtMagribA.Text.ToString();
-                                type.JamaatTime = txtMagribJ.Text.ToString();
-                                db.BLL_InsertPrayerType(type);
-                            }
-                            else if (count == 5)
-                            {
-                                type.PrayerDate = Calendar1.SelectedDate;
-                                type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
-                                type.PrayerDescription = "Eisha";
-                                type.AdhaanTime = txtEishaA.Text.ToString();
-                                type.JamaatTime = txtEishaJ.Text.ToString();
-                                db.BLL_InsertPrayerType(type);
-                                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Added Prayer Times');</script>");
-                                BtnAdd.Visible = false;
-                                BtnUpdate.Visible = false;
-                            }
-                            count++;
                         }
                     }
                 }
@@ -274,122 +401,255 @@ namespace Muslimeen.Content.Mosque
                 {
                     if (txtFajrA.Text == "")
                     {
-                        txtFajrA.BackColor = Color.Red;
+                        txtFajrA.BorderColor = Color.Red;
                     }
+                    else
+                        txtFajrA.BorderColor = Color.Empty;
                     if (txtFajrJ.Text == "")
                     {
-                        txtFajrJ.BackColor = Color.Red;
+                        txtFajrJ.BorderColor = Color.Red;
                     }
+                    else
+                        txtFajrJ.BackColor = Color.Empty;
+
                     if (txtDhuhrA.Text == "")
                     {
-                        txtDhuhrA.BackColor = Color.Red;
+                        txtDhuhrA.BorderColor = Color.Red;
                     }
+                    else
+                        txtDhuhrA.BorderColor = Color.Empty;
+
                     if (txtDhuhrJ.Text == "")
                     {
-                        txtDhuhrJ.BackColor = Color.Red;
+                        txtDhuhrJ.BorderColor = Color.Red;
                     }
+                    else
+                        txtDhuhrJ.BorderColor = Color.Empty;
+
                     if (txtAsrA.Text == "")
                     {
-                        txtAsrA.BackColor = Color.Red;
+                        txtAsrA.BorderColor = Color.Red;
                     }
+                    else
+                        txtAsrA.BorderColor = Color.Empty;
+
                     if (txtAsrJ.Text == "")
                     {
-                        txtAsrJ.BackColor = Color.Red;
+                        txtAsrJ.BorderColor = Color.Red;
                     }
+                    else
+                        txtAsrJ.BorderColor = Color.Empty;
+
                     if (txtMagribA.Text == "")
                     {
-                        txtMagribA.BackColor = Color.Red;
+                        txtMagribA.BorderColor = Color.Red;
                     }
+                    else
+                        txtMagribA.BorderColor = Color.Empty;
+
                     if (txtMagribJ.Text == "")
                     {
-                        txtMagribJ.BackColor = Color.Red;
+                        txtMagribJ.BorderColor = Color.Red;
                     }
+                    else
+                        txtMagribJ.BorderColor = Color.Empty;
+
                     if (txtEishaA.Text == "")
                     {
-                        txtEishaA.BackColor = Color.Red;
+                        txtEishaA.BorderColor = Color.Red;
                     }
+                    else
+                        txtEishaA.BorderColor = Color.Empty;
+
                     if (txtEishaJ.Text == "")
                     {
-                        txtEishaJ.BackColor = Color.Red;
+                        txtEishaJ.BorderColor = Color.Red;
                     }
+                    else
+                        txtEishaJ.BorderColor = Color.Empty;
+
 
                 }
 
-               
+
             }
 
-            catch
+            catch (Exception ex)
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Add Unsuccesfull');</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Add Unsuccesfull+" + ex + "+');</script>");
+
             }
 
-         
+
         }
         protected void BtnUpdate_Click(object sender, EventArgs e)
         {
             try
             {
-            
+
 
                 if (txtFajrA.Text != "" && txtFajrJ.Text != "" && txtDhuhrA.Text != "" && txtDhuhrJ.Text != "" && txtAsrA.Text != "" && txtAsrJ.Text != "" && txtMagribA.Text != "" && txtMagribJ.Text != "" && txtEishaA.Text != "" && txtEishaJ.Text != "")
                 {
-                    BtnAdd.Visible = false;
-                    BtnUpdate.Visible = true;
-                    int count = 1;
-                    PrayerType type = new PrayerType();
+                    bool valid = false;
+                    int FajrA = Convert.ToInt32(txtFajrA.Text.ToString().Replace(":", string.Empty));
+                    int FajrJ = Convert.ToInt32(txtFajrJ.Text.ToString().Replace(":", string.Empty));
+                    int DhuhrA = Convert.ToInt32(txtDhuhrA.Text.ToString().Replace(":", string.Empty));
+                    int DhuhrJ = Convert.ToInt32(txtDhuhrJ.Text.ToString().Replace(":", string.Empty));
+                    int AsrA = Convert.ToInt32(txtAsrA.Text.ToString().Replace(":", string.Empty));
+                    int AsrJ = Convert.ToInt32(txtAsrJ.Text.ToString().Replace(":", string.Empty));
+                    int MagribA = Convert.ToInt32(txtMagribA.Text.ToString().Replace(":", string.Empty));
+                    int MagribJ = Convert.ToInt32(txtMagribJ.Text.ToString().Replace(":", string.Empty));
+                    int EishaA = Convert.ToInt32(txtEishaA.Text.ToString().Replace(":", string.Empty));
+                    int EishaJ = Convert.ToInt32(txtEishaJ.Text.ToString().Replace(":", string.Empty));
 
-                    if (Session["MosqueID"] != null)
+                    if (FajrA < FajrJ)
                     {
-                        while (count <= 5)
+                        txtFajrJ.BorderColor = Color.Empty;
+                        if (FajrJ < DhuhrA)
                         {
-                            if (count == 1)
-                            {
-                                type.PrayerDescription = "Fajr";
-                                type.PrayerDate = Calendar1.SelectedDate;
-                                type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
-                                type.AdhaanTime = txtFajrA.Text.ToString();
-                                type.JamaatTime = txtFajrJ.Text.ToString();
-                                db.BLL_UpdatePrayerType(type);
-                            }
-                            else if (count == 2)
-                            {
-                                type.PrayerDate = Calendar1.SelectedDate;
-                                type.PrayerDescription = "Dhuhr";
-                                type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
-                                type.AdhaanTime = txtDhuhrA.Text.ToString();
-                                type.JamaatTime = txtDhuhrJ.Text.ToString();
-                                db.BLL_UpdatePrayerType(type);
-                            }
-                            else if (count == 3)
-                            {
-                                type.PrayerDate = Calendar1.SelectedDate;
-                                type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
-                                type.PrayerDescription = "Asr";
-                                type.AdhaanTime = txtAsrA.Text.ToString();
-                                type.JamaatTime = txtAsrJ.Text.ToString();
-                                db.BLL_UpdatePrayerType(type);
-                            }
-                            else if (count == 4)
-                            {
-                                type.PrayerDate = Calendar1.SelectedDate;
-                                type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
-                                type.PrayerDescription = "Magrib";
-                                type.AdhaanTime = txtMagribA.Text.ToString();
-                                type.JamaatTime = txtMagribJ.Text.ToString();
-                                db.BLL_UpdatePrayerType(type);
-                            }
-                            else if (count == 5)
-                            {
-                                type.PrayerDate = Calendar1.SelectedDate;
-                                type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
-                                type.PrayerDescription = "Eisha";
-                                type.AdhaanTime = txtEishaA.Text.ToString();
-                                type.JamaatTime = txtEishaJ.Text.ToString();
-                                db.BLL_UpdatePrayerType(type);
-                                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Updated Prayer Times');</script>");
-                            }
+                            txtDhuhrA.BorderColor = Color.Empty;
 
-                            count++;
+                            if (DhuhrA < DhuhrJ)
+                            {
+                                txtDhuhrJ.BorderColor = Color.Empty;
+
+                                if (DhuhrJ < AsrA)
+                                {
+                                    txtAsrA.BorderColor = Color.Empty;
+
+                                    if (AsrA < AsrJ)
+                                    {
+                                        txtAsrJ.BorderColor = Color.Empty;
+
+                                        if (AsrJ < MagribA)
+                                        {
+                                            txtMagribA.BorderColor = Color.Empty;
+
+                                            if (MagribA < MagribJ)
+                                            {
+                                                txtMagribJ.BorderColor = Color.Empty;
+
+                                                if (MagribJ < EishaA)
+                                                {
+                                                    txtEishaA.BorderColor = Color.Empty;
+
+                                                    if (EishaA < EishaJ)
+                                                    {
+                                                        txtEishaJ.BorderColor = Color.Empty;
+                                                        valid = true;
+                                                    }
+                                                    else
+                                                    {
+                                                        valid = false;
+                                                        txtEishaJ.BorderColor = Color.Red;
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    valid = false;
+                                                    txtEishaA.BorderColor = Color.Red;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                valid = false;
+                                                txtMagribJ.BorderColor = Color.Red;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            valid = false;
+                                            txtMagribA.BorderColor = Color.Red;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        valid = false;
+                                        txtAsrJ.BorderColor = Color.Red;
+                                    }
+                                }
+                                else
+                                {
+                                    valid = false;
+                                    txtAsrA.BorderColor = Color.Red;
+                                }
+                            }
+                            else
+                            {
+                                valid = false;
+                                txtDhuhrJ.BorderColor = Color.Red;
+                            }
+                        }
+                        else
+                        {
+                            valid = false;
+                            txtDhuhrA.BorderColor = Color.Red;
+                        }
+                    }
+                    else
+                    {
+                        valid = false;
+                        txtFajrJ.BorderColor = Color.Red;
+                    }
+
+                    if (valid == true)
+                    {
+                        int count = 1;
+                        PrayerType type = new PrayerType();
+
+                        if (Session["MosqueID"] != null)
+                        {
+                            while (count <= 5)
+                            {
+                                if (count == 1)
+                                {
+                                    type.PrayerDescription = "Fajr";
+                                    type.PrayerDate = Calendar1.SelectedDate;
+                                    type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
+                                    type.AdhaanTime = txtFajrA.Text.ToString();
+                                    type.JamaatTime = txtFajrJ.Text.ToString();
+                                    db.BLL_UpdatePrayerType(type);
+                                }
+                                else if (count == 2)
+                                {
+                                    type.PrayerDate = Calendar1.SelectedDate;
+                                    type.PrayerDescription = "Dhuhr";
+                                    type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
+                                    type.AdhaanTime = txtDhuhrA.Text.ToString();
+                                    type.JamaatTime = txtDhuhrJ.Text.ToString();
+                                    db.BLL_UpdatePrayerType(type);
+                                }
+                                else if (count == 3)
+                                {
+                                    type.PrayerDate = Calendar1.SelectedDate;
+                                    type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
+                                    type.PrayerDescription = "Asr";
+                                    type.AdhaanTime = txtAsrA.Text.ToString();
+                                    type.JamaatTime = txtAsrJ.Text.ToString();
+                                    db.BLL_UpdatePrayerType(type);
+                                }
+                                else if (count == 4)
+                                {
+                                    type.PrayerDate = Calendar1.SelectedDate;
+                                    type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
+                                    type.PrayerDescription = "Magrib";
+                                    type.AdhaanTime = txtMagribA.Text.ToString();
+                                    type.JamaatTime = txtMagribJ.Text.ToString();
+                                    db.BLL_UpdatePrayerType(type);
+                                }
+                                else if (count == 5)
+                                {
+                                    type.PrayerDate = Calendar1.SelectedDate;
+                                    type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
+                                    type.PrayerDescription = "Eisha";
+                                    type.AdhaanTime = txtEishaA.Text.ToString();
+                                    type.JamaatTime = txtEishaJ.Text.ToString();
+                                    db.BLL_UpdatePrayerType(type);
+                                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Updated Prayer Times');</script>");
+                                }
+
+                                count++;
+                            }
                         }
                     }
                 }
@@ -397,45 +657,67 @@ namespace Muslimeen.Content.Mosque
                 {
                     if (txtFajrA.Text == "")
                     {
-                        txtFajrA.BackColor = Color.Red;
+                        txtFajrA.BorderColor = Color.Red;
                     }
+                    else
+                        txtFajrA.BorderColor = Color.Red;
+
                     if (txtFajrJ.Text == "")
                     {
-                        txtFajrJ.BackColor = Color.Red;
+                        txtFajrJ.BorderColor = Color.Red;
                     }
+                    else
+                        txtFajrJ.BorderColor = Color.Red;
                     if (txtDhuhrA.Text == "")
                     {
-                        txtDhuhrA.BackColor = Color.Red;
+                        txtDhuhrA.BorderColor = Color.Red;
                     }
+                    else
+                        txtDhuhrA.BorderColor = Color.Red;
                     if (txtDhuhrJ.Text == "")
                     {
-                        txtDhuhrJ.BackColor = Color.Red;
+                        txtDhuhrJ.BorderColor = Color.Red;
                     }
+                    else
+                        txtDhuhrJ.BorderColor = Color.Red;
                     if (txtAsrA.Text == "")
                     {
-                        txtAsrA.BackColor = Color.Red;
+                        txtAsrA.BorderColor = Color.Red;
                     }
+                    else
+                        txtAsrA.BorderColor = Color.Red;
                     if (txtAsrJ.Text == "")
                     {
-                        txtAsrJ.BackColor = Color.Red;
+                        txtAsrJ.BorderColor = Color.Red;
                     }
+                    else
+                        txtAsrJ.BorderColor = Color.Red;
                     if (txtMagribA.Text == "")
                     {
-                        txtMagribA.BackColor = Color.Red;
+                        txtMagribA.BorderColor = Color.Red;
                     }
+                    else
+                        txtMagribA.BorderColor = Color.Red;
                     if (txtMagribJ.Text == "")
                     {
-                        txtMagribJ.BackColor = Color.Red;
+                        txtMagribJ.BorderColor = Color.Red;
                     }
+                    else
+                        txtMagribJ.BorderColor = Color.Red;
                     if (txtEishaA.Text == "")
                     {
-                        txtEishaA.BackColor = Color.Red;
+                        txtEishaA.BorderColor = Color.Red;
                     }
+                    else
+                        txtEishaA.BorderColor = Color.Red;
                     if (txtEishaJ.Text == "")
                     {
-                        txtEishaJ.BackColor = Color.Red;
+                        txtEishaJ.BorderColor = Color.Red;
                     }
-                 
+                    else
+                        txtEishaJ.BorderColor = Color.Red;
+
+                
                 }
             }
             catch
@@ -478,26 +760,38 @@ namespace Muslimeen.Content.Mosque
                         {
                             txtEventTitle.BorderColor = Color.Red;
                         }
+                        else
+                            txtEventTitle.BorderColor = Color.Empty;
                         if (txtEventDescription.Text == "")
                         {
                             txtEventDescription.BorderColor = Color.Red;
                         }
+                        else
+                            txtEventDescription.BorderColor = Color.Empty;
                         if (txtEventStartTime.Text == "")
                         {
                             txtEventStartTime.BorderColor = Color.Red;
                         }
+                        else
+                            txtEventStartTime.BorderColor = Color.Empty;
                         if (txtEventEndTime.Text == "")
                         {
                             txtEventEndTime.BorderColor = Color.Red;
                         }
+                        else
+                            txtEventEndTime.BorderColor = Color.Empty;
                         if (txtEventDate.Text == "")
                         {
                             txtEventDate.BorderColor = Color.Red;
                         }
+                        else
+                            txtEventDate.BorderColor = Color.Empty;
                         if (txtSpeaker.Text == "")
                         {
                             txtSpeaker.BorderColor = Color.Red;
                         }
+                        else
+                            txtSpeaker.BorderColor = Color.Empty;
 
 
                     }
@@ -538,6 +832,14 @@ namespace Muslimeen.Content.Mosque
                 txtUpdateEventEndTime.Text = events.EventEndTime;
                 txtUpdateEventDate.Text = events.EventDate.ToString().Substring(0, 10);
                 txtUpdateSpeaker.Text = events.Speaker;
+                txtUpdateEventTitle.BorderColor = Color.Empty;
+                txtUpdateEventDescription.BorderColor = Color.Empty;
+                txtUpdateEventStartTime.BorderColor = Color.Empty;
+                txtUpdateEventEndTime.BorderColor = Color.Empty;
+                txtUpdateEventDate.BorderColor = Color.Empty;
+                txtUpdateSpeaker.BorderColor = Color.Empty;
+
+
             }
 
 
@@ -546,25 +848,68 @@ namespace Muslimeen.Content.Mosque
         {
             try
             {
-                Event events = new Event();
-                events.EventTitle = txtUpdateEventTitle.Text.ToString();
-                events.EventDescription = txtUpdateEventDescription.Text.ToString();
-                events.EventStartTime = txtUpdateEventStartTime.Text.ToString();
-                events.EventEndTime = txtUpdateEventEndTime.Text.ToString();
-                events.EventDate = Convert.ToDateTime(txtUpdateEventDate.Text.ToString());
-                events.Speaker = txtUpdateSpeaker.Text.ToString();
-                events.EventID = int.Parse(Session["EventID"].ToString());
-                events.MosqueID = int.Parse(Session["MosqueID"].ToString());
-                db.BLL_UpdateEvent(events);
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Updated Event');</script>");
-                divAddEvent.Visible = false;
-                divManageTimes.Visible = false;
-                divManageEvent.Visible = true;
-                divEventDateSearch.Visible = true;
-                divEventOverlay.Visible = false;
-                divViewActiveEvents.Visible = false;
-                divDisplayEditEvent.Visible = false;
-                divDisplayDeleteEvent.Visible = false;
+                if (txtUpdateEventDate.Text != "" && txtUpdateEventTitle.Text != "" && txtUpdateEventDescription.Text != "" && txtUpdateEventStartTime.Text != "" && txtUpdateEventEndTime.Text != "" && txtUpdateSpeaker.Text != "")
+                {
+                    Event events = new Event();
+                    events.EventTitle = txtUpdateEventTitle.Text.ToString();
+                    events.EventDescription = txtUpdateEventDescription.Text.ToString();
+                    events.EventStartTime = txtUpdateEventStartTime.Text.ToString();
+                    events.EventEndTime = txtUpdateEventEndTime.Text.ToString();
+                    events.EventDate = Convert.ToDateTime(txtUpdateEventDate.Text.ToString());
+                    events.Speaker = txtUpdateSpeaker.Text.ToString();
+                    events.EventID = int.Parse(Session["EventID"].ToString());
+                    events.MosqueID = int.Parse(Session["MosqueID"].ToString());
+                    db.BLL_UpdateEvent(events);
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Updated Event');</script>");
+                    divAddEvent.Visible = false;
+                    divManageTimes.Visible = false;
+                    divManageEvent.Visible = true;
+                    divEventDateSearch.Visible = true;
+                    divEventOverlay.Visible = false;
+                    divViewActiveEvents.Visible = false;
+                    divDisplayEditEvent.Visible = false;
+                    divDisplayDeleteEvent.Visible = false;
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Please Enter Required Fields');</script>");
+                    if (txtUpdateEventTitle.Text == "")
+                    {
+                        txtUpdateEventTitle.BorderColor = Color.Red;
+                    }
+                    else
+                        txtUpdateEventTitle.BorderColor = Color.Empty;
+                    if (txtUpdateEventDescription.Text == "")
+                    {
+                        txtUpdateEventDescription.BorderColor = Color.Red;
+                    }
+                    else
+                        txtUpdateEventDescription.BorderColor = Color.Empty;
+                    if (txtUpdateEventStartTime.Text == "")
+                    {
+                        txtUpdateEventStartTime.BorderColor = Color.Red;
+                    }
+                    else
+                        txtUpdateEventStartTime.BorderColor = Color.Empty;
+                    if (txtUpdateEventEndTime.Text == "")
+                    {
+                        txtUpdateEventEndTime.BorderColor = Color.Red;
+                    }
+                    else
+                        txtUpdateEventEndTime.BorderColor = Color.Empty;
+                    if (txtUpdateEventDate.Text == "")
+                    {
+                        txtUpdateEventDate.BorderColor = Color.Red;
+                    }
+                    else
+                        txtUpdateEventDate.BorderColor = Color.Empty;
+                    if (txtUpdateSpeaker.Text == "")
+                    {
+                        txtUpdateSpeaker.BorderColor = Color.Red;
+                    }
+                    else
+                        txtUpdateSpeaker.BorderColor = Color.Empty;
+                }
 
             }
             catch
@@ -731,6 +1076,227 @@ namespace Muslimeen.Content.Mosque
             divDisplayDeleteEvent.Visible = false;
         }
 
+        protected void btnNavSalahTimes_Click(object sender, EventArgs e)
+        {
+            lblTaskHeader.InnerText = btnNavSalahTimes.Text.ToString();
+            divAddEvent.Visible = false;
+            divManageTimes.Visible = false;
+            divManageEvent.Visible = false;
+            divEventDateSearch.Visible = false;
+            divEventOverlay.Visible = false;
+            divViewActiveEvents.Visible = false;
+            divDisplayEditEvent.Visible = false;
+            divDisplayDeleteEvent.Visible = false;
+            divPrayerTimes.Visible = true;
+            divPrayerTable.Visible = false;
+            divPrayerOverlay.Visible = false;
+            divgrid.Visible = false;
+            txtPrayerStartDate.Text = "";
+            txtPrayerEndDate.Text = "";
+        }
+
+        protected void btnListPrayer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                DateTime startDate = Convert.ToDateTime(txtPrayerStartDate.Text.ToString());
+                DateTime endDate = Convert.ToDateTime(txtPrayerEndDate.Text.ToString());
+
+                if (startDate.Date <= endDate.Date)
+                {
+
+                    List<uspGetMosquePrayerTimes> list = new List<uspGetMosquePrayerTimes>();
+                    List<uspGetSpecificDayPrayerTimes> times = new List<uspGetSpecificDayPrayerTimes>();
+                    list = db.BLL_GetMosquePrayerTimes(int.Parse(Session["MosqueID"].ToString()), startDate, endDate);
+                    int count = 0;
+
+                    uspGetSpecificDayPrayerTimes pt = new uspGetSpecificDayPrayerTimes();
+
+                    foreach (uspGetMosquePrayerTimes prayer in list)
+                    {
+
+                        if (count == 0)
+                        {
+
+
+                            pt.PrayerDate = prayer.PrayerDate.Date;
+                            pt.PrayerDay = Convert.ToDateTime(pt.PrayerDate).DayOfWeek.ToString();
+                            pt.FajrA = prayer.AdhaanTime;
+                            pt.FajrJ = prayer.JamaatTime;
+
+
+                        }
+                        else if (count == 1)
+                        {
+                            pt.DhuhrA = prayer.AdhaanTime;
+                            pt.DhuhrJ = prayer.JamaatTime;
+
+                        }
+                        else if (count == 2)
+                        {
+                            pt.AsrA = prayer.AdhaanTime;
+                            pt.AsrJ = prayer.JamaatTime;
+
+
+                        }
+                        else if (count == 3)
+                        {
+                            pt.MagribA = prayer.AdhaanTime;
+                            pt.MagribJ = prayer.JamaatTime;
+
+                        }
+                        else if (count == 4)
+                        {
+                            pt.EishaA = prayer.AdhaanTime;
+                            pt.EishaJ = prayer.JamaatTime;
+                            count = -1;
+                            times.Add(pt);
+                            pt = new uspGetSpecificDayPrayerTimes();
+
+                        }
+
+                        count++;
+
+                    }
+
+                    rptPrayerTimes.DataSource = times;
+                    rptPrayerTimes.DataBind();
+                    grdReports.DataSource = times;
+                    grdReports.DataBind();
+                    if (rptPrayerTimes.Items.Count > 0)
+                    {
+                        divPrayerTable.Visible = true;
+                        divPrayerOverlay.Visible = false;
+                    }
+                    else if (rptPrayerTimes.Items.Count <= 0)
+                    {
+                        divPrayerOverlay.Visible = true;
+                        divPrayerTable.Visible = false;
+                        lblPrayerError.InnerText = "No Prayer Times Found For Date Range";
+
+                    }
+
+                }
+
+                else if (startDate.Date > endDate.Date)
+                {
+                    lblPrayerError.InnerText = "Invalid Date Range";
+                    divPrayerOverlay.Visible = true;
+                    divPrayerTable.Visible = false;
+
+                }
+            }
+            catch
+            {
+                lblPrayerError.InnerText = "Please Enter Required Date Range Fields";
+                divPrayerOverlay.Visible = true;
+                divPrayerTable.Visible = false;
+
+            }
+
+
+        }
+        protected void PDF_ServerClick(object sender, EventArgs e)
+        {
+            try
+            {
+                for (int i = 0; i < grdReports.Rows.Count; i++)
+                {
+                    DateTime DOB = Convert.ToDateTime(grdReports.Rows[i].Cells[0].Text);
+                    grdReports.Rows[i].Cells[0].Text = DOB.ToString("dd MMM yyyy");
+
+                }
+
+                PdfPTable pdfTable = new PdfPTable(grdReports.HeaderRow.Cells.Count);
+                pdfTable.HorizontalAlignment = 0;
+                grdReports.HeaderRow.Cells[0].Text = "Date";
+                grdReports.HeaderRow.Cells[1].Text = "Day";
+                grdReports.HeaderRow.Cells[2].Text = "Fajr Adhaan";
+                grdReports.HeaderRow.Cells[3].Text = "Fajr Jamaat";
+                grdReports.HeaderRow.Cells[4].Text = "Dhuhr Adhaan";
+                grdReports.HeaderRow.Cells[5].Text = "Dhuhr Jamaat ";
+                grdReports.HeaderRow.Cells[6].Text = "Asr Adhaan";
+                grdReports.HeaderRow.Cells[7].Text = "Asr Jamaat ";
+                grdReports.HeaderRow.Cells[8].Text = "Magrib Adhaan";
+                grdReports.HeaderRow.Cells[9].Text = "Magrib Jamaat ";
+                grdReports.HeaderRow.Cells[10].Text = "Eisha Adhaan";
+                grdReports.HeaderRow.Cells[11].Text = "Eisha Jamaat";
+                foreach (TableCell Headercell in grdReports.HeaderRow.Cells)
+                {
+                    iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 11, iTextSharp.text.Font.BOLD);
+                    font.Color = new BaseColor(grdReports.HeaderStyle.ForeColor);
+
+                    PdfPCell pdfCell = new PdfPCell(new Phrase(Headercell.Text, font));
+                    pdfCell.HorizontalAlignment = 1;
+                    pdfCell.Padding = 5;
+                    pdfCell.BackgroundColor = new BaseColor(grdReports.HeaderStyle.BackColor);
+                    pdfTable.AddCell(pdfCell);
+                }
+
+
+                foreach (GridViewRow gridviewrow in grdReports.Rows)
+                {
+                    foreach (TableCell tablecell in gridviewrow.Cells)
+                    {
+                        iTextSharp.text.Font font = new iTextSharp.text.Font();
+                        font.Color = new BaseColor(grdReports.RowStyle.ForeColor);
+                        iTextSharp.text.Font content = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 9, iTextSharp.text.Font.BOLD);
+                        PdfPCell pdfcell = new PdfPCell(new Phrase(tablecell.Text, content));
+                        pdfcell.HorizontalAlignment = 1;
+                        pdfcell.VerticalAlignment = 2;
+                        pdfcell.BackgroundColor = new BaseColor(grdReports.RowStyle.BackColor);
+                        pdfTable.AddCell(pdfcell);
+                    }
+                }
+
+                Document pdfDocument = new Document(new RectangleReadOnly(842, 595), 10f, -200f, 10f, 0f);
+                // Document pdfDocument = new Document(new RectangleReadOnly(842, 595), widthstart, cell width, heightstart);
+                PdfAWriter.GetInstance(pdfDocument, Response.OutputStream);
+
+                PdfPTable table = new PdfPTable(1);
+                PdfPTable table2 = new PdfPTable(2);
+
+                iTextSharp.text.Font fontH2 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD);
+                table2.WidthPercentage = 80;
+                table2.HorizontalAlignment = 0;
+                table2.DefaultCell.Padding = 8;
+                table2.DefaultCell.HorizontalAlignment = 1;
+                table2.DefaultCell.VerticalAlignment = 1;
+                Paragraph date = new Paragraph("Selected Date Range: " + Convert.ToDateTime(txtPrayerStartDate.Text).ToString("dd MMM yyyy") + " to " + Convert.ToDateTime(txtPrayerEndDate.Text).ToString("dd MMM yyyy"), fontH2);
+                Paragraph extraPara = new Paragraph("Date Created: " + DateTime.Now.Date.ToString("dd MMM yyyy"), fontH2);
+
+                table2.AddCell(date);
+                table2.AddCell(extraPara);
+
+                iTextSharp.text.Font fontH1 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 24, iTextSharp.text.Font.BOLD);
+                table.WidthPercentage = 80;
+                table.HorizontalAlignment = 0;
+                table.DefaultCell.Padding = 20;
+                table.DefaultCell.HorizontalAlignment = 1;
+                table.DefaultCell.VerticalAlignment = 1;
+                Paragraph para = new Paragraph("Salah Time Table For " + Session["lblMosqueName"].ToString(), fontH1);
+                table.AddCell(para);
+
+                pdfDocument.Open();
+                pdfDocument.AddTitle("Prayer Time Table");
+                pdfDocument.Add(table);
+                pdfDocument.Add(table2);
+                pdfDocument.Add(pdfTable);
+                pdfDocument.Close();
+
+                Response.ContentType = "application/pdf";
+                Response.AppendHeader("content-disposition", "attachment;filename=PrayerTimeTable.pdf");
+                Response.Write(pdfDocument);
+                Response.Flush();
+                Response.End();
+
+
+            }
+            catch { }
+
+
+        }
 
     }
 }

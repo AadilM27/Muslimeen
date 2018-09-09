@@ -117,14 +117,14 @@ namespace Muslimeen.Content.Mosque
         {
             if (btnLogin.Text == "Login")
             {
-                Response.Redirect("../Login/Login.aspx");
+                Response.Redirect("../../Login/Login.aspx");
             }
             else if (btnLogin.Text == "Log out")
             {
 
                 Session.Clear();
                 Session.Abandon();
-                Response.Redirect("../Content/Default.aspx");
+                Response.Redirect("../Default.aspx");
                 btnLogin.Text = "Login";
                 btnRegister.Visible = true;
             }
@@ -132,17 +132,17 @@ namespace Muslimeen.Content.Mosque
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Register/Register.aspx");
+            Response.Redirect("../../Register/Register.aspx");
         }
 
         protected void btnHome_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/Default.aspx");
+            Response.Redirect("../Default.aspx");
         }
 
         protected void btnMosques_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/Mosque/ListMosque.aspx");
+            Response.Redirect("../Mosque/ListMosque.aspx");
         }
 
         protected void btnScholars_Click(object sender, EventArgs e)
@@ -152,21 +152,21 @@ namespace Muslimeen.Content.Mosque
 
         protected void btnLearnIslam_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/Learn Islam/LearnIslam.aspx");
+            Response.Redirect("../Learn Islam/LearnIslam.aspx");
         }
 
         protected void btnZakaah_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/ZakaahWebForms/Zakaah.aspx");
+            Response.Redirect("../ZakaahWebForms/Zakaah.aspx");
         }
 
         protected void btnAboutUs_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/AboutUs.aspx");
+            Response.Redirect("../AboutUs.aspx");
         }
         protected void btnHelp_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/HelpCenter.aspx");
+            Response.Redirect("../HelpCenter.aspx");
         }
         protected void btnMyMuslimeen_Click(object sender, EventArgs e)
         {
@@ -178,19 +178,23 @@ namespace Muslimeen.Content.Mosque
 
             if (uspGetMember.MemberType == 'A')
             {
-                Response.Redirect("../Content/MyAdmin.aspx");
+                Response.Redirect("../MyAdmin.aspx");
             }
             else if (uspGetMember.MemberType == 'M')
             {
-                Response.Redirect("../Content/MyMember.aspx");
+                Response.Redirect("../MyMember.aspx");
             }
             else if (uspGetMember.MemberType == 'O')
             {
-                Response.Redirect("../Content/MyModerator.aspx");
+                Response.Redirect("../MyModerator.aspx");
             }
             else if (uspGetMember.MemberType == 'S')
             {
-                Response.Redirect("../Content/MyScholar/AddArticle.aspx");
+                Response.Redirect("../MyScholar/AddArticle.aspx");
+            }
+            else if (uspGetMember.MemberType == 'R')
+            {
+                Response.Redirect("MosqueRep.aspx");
             }
 
 
@@ -414,37 +418,50 @@ namespace Muslimeen.Content.Mosque
         {
             try
             {
+                for (int i = 0; i < grdReports.Rows.Count; i++)
+                {
+                    DateTime DOB = Convert.ToDateTime(grdReports.Rows[i].Cells[0].Text);
+                    grdReports.Rows[i].Cells[0].Text = DOB.ToString("dd MMM yyyy");
+
+                }
+
                 PdfPTable pdfTable = new PdfPTable(grdReports.HeaderRow.Cells.Count);
                 pdfTable.HorizontalAlignment = 0;
+                grdReports.HeaderRow.Cells[0].Text = "Date";
+                grdReports.HeaderRow.Cells[1].Text = "Day";
+                grdReports.HeaderRow.Cells[2].Text = "Fajr Adhaan";
+                grdReports.HeaderRow.Cells[3].Text = "Fajr Jamaat";
+                grdReports.HeaderRow.Cells[4].Text = "Dhuhr Adhaan";
+                grdReports.HeaderRow.Cells[5].Text = "Dhuhr Jamaat ";
+                grdReports.HeaderRow.Cells[6].Text = "Asr Adhaan";
+                grdReports.HeaderRow.Cells[7].Text = "Asr Jamaat ";
+                grdReports.HeaderRow.Cells[8].Text = "Magrib Adhaan";
+                grdReports.HeaderRow.Cells[9].Text = "Magrib Jamaat ";
+                grdReports.HeaderRow.Cells[10].Text = "Eisha Adhaan";
+                grdReports.HeaderRow.Cells[11].Text = "Eisha Jamaat";
                 foreach (TableCell Headercell in grdReports.HeaderRow.Cells)
                 {
-                    grdReports.HeaderRow.Cells[0].Text = "Date";
-                    grdReports.HeaderRow.Cells[1].Text = "Day";
-                    grdReports.HeaderRow.Cells[2].Text = "Fajr Adhaan";
-                    grdReports.HeaderRow.Cells[3].Text = "Fajr Jamaat";
-                    grdReports.HeaderRow.Cells[4].Text = "Dhuhr Adhaan";
-                    grdReports.HeaderRow.Cells[5].Text = "Dhuhr Jamaat ";
-                    grdReports.HeaderRow.Cells[6].Text = "Asr Adhaan";
-                    grdReports.HeaderRow.Cells[7].Text = "Asr Jamaat ";
-                    grdReports.HeaderRow.Cells[8].Text = "Magrib Adhaan";
-                    grdReports.HeaderRow.Cells[9].Text = "Magrib Jamaat ";
-                    grdReports.HeaderRow.Cells[10].Text = "Eisha Adhaan";
-                    grdReports.HeaderRow.Cells[11].Text = "Eisha Jamaat";
-                    Font font = new Font();
+                    iTextSharp.text.Font font = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 11, iTextSharp.text.Font.BOLD);
                     font.Color = new BaseColor(grdReports.HeaderStyle.ForeColor);
+
                     PdfPCell pdfCell = new PdfPCell(new Phrase(Headercell.Text, font));
+                    pdfCell.HorizontalAlignment = 1;
+                    pdfCell.Padding = 5;
                     pdfCell.BackgroundColor = new BaseColor(grdReports.HeaderStyle.BackColor);
                     pdfTable.AddCell(pdfCell);
                 }
+
 
                 foreach (GridViewRow gridviewrow in grdReports.Rows)
                 {
                     foreach (TableCell tablecell in gridviewrow.Cells)
                     {
-                        Font font = new Font();
+                        iTextSharp.text.Font font = new iTextSharp.text.Font();
                         font.Color = new BaseColor(grdReports.RowStyle.ForeColor);
-
-                        PdfPCell pdfcell = new PdfPCell(new Phrase(tablecell.Text));
+                        iTextSharp.text.Font content = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 9, iTextSharp.text.Font.BOLD);
+                        PdfPCell pdfcell = new PdfPCell(new Phrase(tablecell.Text, content));
+                        pdfcell.HorizontalAlignment = 1;
+                        pdfcell.VerticalAlignment = 2;
                         pdfcell.BackgroundColor = new BaseColor(grdReports.RowStyle.BackColor);
                         pdfTable.AddCell(pdfcell);
                     }
@@ -454,7 +471,34 @@ namespace Muslimeen.Content.Mosque
                 // Document pdfDocument = new Document(new RectangleReadOnly(842, 595), widthstart, cell width, heightstart);
                 PdfAWriter.GetInstance(pdfDocument, Response.OutputStream);
 
+                PdfPTable table = new PdfPTable(1);
+                PdfPTable table2 = new PdfPTable(2);
+
+                iTextSharp.text.Font fontH2 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD);
+                table2.WidthPercentage = 80;
+                table2.HorizontalAlignment = 0;
+                table2.DefaultCell.Padding = 8;
+                table2.DefaultCell.HorizontalAlignment = 1;
+                table2.DefaultCell.VerticalAlignment = 1;
+                Paragraph date = new Paragraph("Selected Date Range: " + Convert.ToDateTime(txtPrayerStartDate.Text).ToString("dd MMM yyyy") + " to " + Convert.ToDateTime(txtPrayerEndDate.Text).ToString("dd MMM yyyy"), fontH2);
+                Paragraph extraPara = new Paragraph("Date Created: " + DateTime.Now.Date.ToString("dd MMM yyyy"), fontH2);
+              
+                table2.AddCell(date);
+                table2.AddCell(extraPara);
+
+                iTextSharp.text.Font fontH1 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 24, iTextSharp.text.Font.BOLD);
+                table.WidthPercentage = 80;
+                table.HorizontalAlignment = 0;
+                table.DefaultCell.Padding = 20;
+                table.DefaultCell.HorizontalAlignment = 1;
+                table.DefaultCell.VerticalAlignment = 1;
+                Paragraph para = new Paragraph("Salah Time Table For "+Session["lblMosqueName"].ToString(), fontH1);
+                table.AddCell(para);
+
                 pdfDocument.Open();
+                pdfDocument.AddTitle("Prayer Time Table");
+                pdfDocument.Add(table);
+                pdfDocument.Add(table2);
                 pdfDocument.Add(pdfTable);
                 pdfDocument.Close();
 
@@ -463,8 +507,23 @@ namespace Muslimeen.Content.Mosque
                 Response.Write(pdfDocument);
                 Response.Flush();
                 Response.End();
+
+
+
+
+
+
+
+
             }
             catch { }
+
+
+
+
+
+
+
         }
 
         protected void btnShow_Click(object sender, EventArgs e)

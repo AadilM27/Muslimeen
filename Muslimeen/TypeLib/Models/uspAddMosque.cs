@@ -27,5 +27,6 @@ namespace TypeLib.Models
         public string MosqueSize { get; set; }
         public string MosqueQuote { get; set; }
         public DateTime? YearEstablished { get; set; }
+        public char Active { get; set; }
     }
 }

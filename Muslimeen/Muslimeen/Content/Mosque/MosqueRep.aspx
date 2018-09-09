@@ -11,7 +11,7 @@
 
     <title>MyMuslimeen - Home</title>
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico" />
+    <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico" />
     <link href="css/MyMosque.css" rel="stylesheet" />
 
 </head>
@@ -21,10 +21,13 @@
             <nav class="navFixed">
                 <div class="row align-self-end">
                     <ul class=" col-7 navbar-nav flex-row justify-content-start">
-                            <asp:HiddenField runat="server" ID="hdfAdjustDate" Value="" /> <!--Need to get value from DB let admin adjust this -->
-                            <li class="nav-item ml-4 mr-0 mb-0 pt-2"> <p class="IslamicDate mb-0" id="lstIslamicDate"></p></li>
-                            <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
-                        </ul>
+                        <asp:HiddenField runat="server" ID="hdfAdjustDate" Value="" />
+                        <!--Need to get value from DB let admin adjust this -->
+                        <li class="nav-item ml-4 mr-0 mb-0 pt-2">
+                            <p class="IslamicDate mb-0" id="lstIslamicDate"></p>
+                        </li>
+                        <script src="../Default/DatesEnglishHijri.js" type="text/javascript"></script>
+                    </ul>
                     <ul class="col-5 navbar-nav flex-row justify-content-end">
                         <li class=" nav-item mr-2">
                             <asp:Button runat="server" Text="Login" ID="btnLogin" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnLogin_Click" />
@@ -38,13 +41,13 @@
                 <div class="row" runat="server" id="divUserProfile">
                     <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
                         <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="../Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
-                        </asp:HyperLink><asp:Image Style="height: 15px; width: 15px;" runat="server" ID="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="../Content/Default/icons/EditProfile.png" />
+                        </asp:HyperLink><asp:Image Style="height: 15px; width: 15px;" runat="server" ID="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="../Default/icons/EditProfile.png" />
                     </div>
                 </div>
             </nav>
-            <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50);">
+            <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50); z-index:1000;">
                 <div class=" text-center">
-                    <asp:Image runat="server" CssClass="mb-0 ml-0" src="/Login/LogIn_Bootstrap\logo.png" Width="185" Height="110" />
+                    <asp:Image runat="server" CssClass="mb-0 ml-0" src="../../Login/LogIn_Bootstrap/logo.png" Width="185" Height="110" />
                 </div>
                 <div class="ml-2 navbar-nav-scroll align-self-end justify-content-start">
                     <ul class="navbar-nav row">
@@ -82,10 +85,13 @@
                             <asp:Button runat="server" ID="btnAboutUs" Text="About us" CssClass="nav-item navText btn-link btn" OnClick="btnAboutUs_Click" />
                         </li>
                         <li class="NavDevider">|</li>
-                         <!--deviders-->
+                        <!--deviders-->
                         <li class="nav-item navbarText navbaritems">
-                        <asp:LinkButton ID="LnkHelp" runat="server"  OnClick="btnHelp_Click" CssClass="nav-item navText btn-link btn" ToolTip="How this page works" ><%--CssClass="nav-item navText btn-link btn"--%>
-                         Help    <asp:Image runat="server" ID="ImgHelp" ImageUrl="../Content/MyMember/icons/helpIcon.png " style="height: 1.1em; width:1.1em;" /></asp:LinkButton>   
+                            <asp:LinkButton ID="LnkHelp" runat="server" OnClick="btnHelp_Click" CssClass="nav-item navText btn-link btn" ToolTip="How this page works">
+                                <%--CssClass="nav-item navText btn-link btn"--%>
+                         Help   
+                                <asp:Image runat="server" ID="ImgHelp" ImageUrl="../MyMember/icons/helpIcon.png" Style="height: 1.1em; width: 1.1em;" />
+                            </asp:LinkButton>
                         </li>
                     </ul>
                 </div>
@@ -104,6 +110,8 @@
                         <asp:Button runat="server" ID="btnNavEditEvent" CssClass="pl-2 btn mb-1 taskBtn" Text="Update Event" OnClick="btnNavEditEvent_Click" />
                         <asp:Button runat="server" ID="btnNavRemoveEvent" CssClass="pl-2 btn mb-1 taskBtn" Text="Remove Event" OnClick="btnNavRemoveEvent_Click" />
                         <asp:Button runat="server" ID="btnNavManageTimes" CssClass="pl-2 btn mb-1 taskBtn" Text="Manage Prayer Times" OnClick="btnNavManageTimes_Click" />
+                        <asp:Button runat="server" ID="btnNavSalahTimes" CssClass="pl-2 btn mb-1 taskBtn" Text="Salah Prayer Times" OnClick="btnNavSalahTimes_Click" />
+
                     </nav>
                 </div>
                 <div class=" position-static basic-div-styling p-0  w-100">
@@ -361,10 +369,10 @@
                                                     <label class="mb-0 p-0 font-weight-bold">Fajr</label>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtFajrA" runat="server" MaxLength="5" CssClass=" form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
+                                                    <asp:TextBox ID="txtFajrA" runat="server" MaxLength="5" CssClass=" form-control main-txtb" TextMode="Time"></asp:TextBox>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtFajrJ" runat="server" MaxLength="5"  CssClass=" form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
+                                                    <asp:TextBox ID="txtFajrJ" runat="server" MaxLength="5" CssClass=" form-control main-txtb" TextMode="Time"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -372,10 +380,10 @@
                                                     <label class=" mb-0 p-0 font-weight-bold">Dhuhr</label>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtDhuhrA" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
+                                                    <asp:TextBox ID="txtDhuhrA" runat="server" MaxLength="5" CssClass="form-control main-txtb" TextMode="Time"></asp:TextBox>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtDhuhrJ" runat="server" MaxLength="5"  CssClass="form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
+                                                    <asp:TextBox ID="txtDhuhrJ" runat="server" MaxLength="5" CssClass="form-control main-txtb" TextMode="Time"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -383,10 +391,10 @@
                                                     <label class="col mb-0 p-0 font-weight-bold">Asr</label>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtAsrA" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
+                                                    <asp:TextBox ID="txtAsrA" runat="server" MaxLength="5" CssClass="form-control main-txtb" TextMode="Time"></asp:TextBox>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtAsrJ" runat="server" MaxLength="5"  CssClass="form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
+                                                    <asp:TextBox ID="txtAsrJ" runat="server" MaxLength="5" CssClass="form-control main-txtb" TextMode="Time"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -394,10 +402,10 @@
                                                     <label class="col mb-0 p-0 font-weight-bold">Magrib</label>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtMagribA" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
+                                                    <asp:TextBox ID="txtMagribA" runat="server" MaxLength="5" CssClass="form-control  main-txtb" TextMode="Time"></asp:TextBox>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtMagribJ" runat="server" MaxLength="5"  CssClass="form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
+                                                    <asp:TextBox ID="txtMagribJ" runat="server" MaxLength="5" CssClass="form-control  main-txtb" TextMode="Time"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -405,17 +413,17 @@
                                                     <label class="col mb-0 p-0 font-weight-bold">Eisha</label>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtEishaA" runat="server" MaxLength="5" CssClass="form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
+                                                    <asp:TextBox ID="txtEishaA" runat="server" MaxLength="5" CssClass="form-control mb-1  main-txtb" TextMode="Time"></asp:TextBox>
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:TextBox ID="txtEishaJ" runat="server" MaxLength="5" Onblur="verifyPrayerTimes();" CssClass="form-control mb-1 border border-dark" TextMode="Time"></asp:TextBox>
+                                                    <asp:TextBox ID="txtEishaJ" runat="server" MaxLength="5" CssClass="form-control mb-1  main-txtb" TextMode="Time"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col col-xl-3 col-sm-2">
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
-                                                    <asp:Button ID="BtnAdd" runat="server" Text="Add Prayer" OnClick="BtnAdd_Click"  CssClass="topnav btn btn-md btn-outline-light" />
+                                                    <asp:Button ID="BtnAdd" runat="server" Text="Add Prayer" OnClick="BtnAdd_Click" CssClass="topnav btn btn-md btn-outline-light" />
                                                     <asp:Button ID="BtnUpdate" runat="server" Text="Update Prayer" OnClick="BtnUpdate_Click" CssClass="topnav btn btn-md btn-outline-light" />
                                                 </div>
                                                 <div class="form-group col col-xl-3 col-sm-2">
@@ -425,6 +433,141 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-12 ml-1 bg-light position-static" runat="server" id="divPrayerTimes">
+                            <div class="row">
+                                <div class="col-3 ml-0 p-0">
+                                    <div class=" head-div-2 p-2 mb-1 text-left">
+                                        <p class="m-0">Enter Prayer Date Range</p>
+                                    </div>
+                                    <div class="table">
+                                        <div class="form-row">
+                                            <div class="form-group col-sm-6 mb-1">
+                                                <label class="col mb-0 p-0">Start Date: </label>
+                                                <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtPrayerStartDate"></asp:TextBox>
+                                            </div>
+                                            <div class="form-group col-sm-6 mb-1">
+                                                <label class="col mb-0 p-0">End Date: </label>
+                                                <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtPrayerEndDate"></asp:TextBox>
+                                            </div>
+                                            <div class="form-group col-1 mb-1 mt-1">
+                                                <asp:Button runat="server" ID="btnListPrayer" Text="List Prayers" OnClick="btnListPrayer_Click" CssClass="topnav btn btn-md btn-outline-light" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-9" id="divPrayerTable" runat="server">
+                                    <div class=" head-div-2 p-2 mb-1 text-left">
+                                        <p class="m-0">Prayer Table</p>
+                                    </div>
+                                    <div class="table" style="overflow-y: scroll; max-height: 75%">
+                                        <table class="table table-primary">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2"></th>
+                                                    <th colspan="2">Fajr</th>
+                                                    <th colspan="2">Dhuhr</th>
+                                                    <th colspan="2">Asr</th>
+                                                    <th colspan="2">Magrib</th>
+                                                    <th colspan="2">Eisha</th>
+
+                                                </tr>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Day</th>
+                                                    <th>Azaan</th>
+                                                    <th>Jamaat</th>
+                                                    <th>Azaan</th>
+                                                    <th>Jamaat</th>
+                                                    <th>Azaan</th>
+                                                    <th>Jamaat</th>
+                                                    <th>Azaan</th>
+                                                    <th>Jamaat</th>
+                                                    <th>Azaan</th>
+                                                    <th>Jamaat</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <asp:Repeater ID="rptPrayerTimes" runat="server">
+                                                    <ItemTemplate>
+                                                        <tr>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("PrayerDate").ToString().Substring(0,10)%>' ID="lblPrayerDate"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("PrayerDay")%>' ID="lblDay"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("FajrA")%>' ID="lblFajrA"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("FajrJ")%>' ID="lblFajrJ"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("DhuhrA")%>' ID="lblDhurA"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("DhuhrJ")%>' ID="lblDhuhrJ"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("AsrA")%>' ID="lblAsrA"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("AsrJ")%>' ID="lblAsrJ"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("MagribA")%>' ID="lblMagribA"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("MagribJ")%>' ID="lblMagribJ"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("EishaA")%>' ID="lblEishaA"></asp:Label><br />
+                                                            </td>
+                                                            <td>
+                                                                <asp:Label runat="server" Text='<%#Eval("EishaJ")%>' ID="lblEishaJ"></asp:Label><br />
+                                                            </td>
+                                                        </tr>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div>
+                                        <div runat="server" id="divDisplayReports" class=" col-12 col-xl-12 mw-100 p-0" style="position: static">
+                                            <div class="m-0 p-0 pt-2 pl-2">
+                                                <a runat="server" id="PDF" onserverclick="PDF_ServerClick">
+                                                    <img src="../MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
+                                            </div>
+                                            <div id="divgrid" runat="server">
+                                                <asp:GridView ID="grdReports" RowStyle-Wrap="true" runat="server" Style="position: static; font-size: x-small;" CellPadding="6" ForeColor="#333333" GridLines="none">
+                                                    <AlternatingRowStyle BackColor="White" />
+                                                    <EditRowStyle BackColor="#2461BF" />
+                                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                                    <RowStyle BackColor="#EFF3FB" Wrap="true" />
+                                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                                </asp:GridView>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 col-sm-3 col-xl-4 text-nowrap" runat="server" id="divPrayerOverlay">
+                                    <div class="w-100 h-100 container text-center">
+                                        <div class=" container h-25 mb-3"></div>
+                                        <h6 class="card-title h-50 mt-5 pt-5">
+                                            <img class="figure-img mr-2" src="../MyAdmin/icons/outline_error_outline_black_18dp.png" /><label id="lblPrayerError" runat="server"></label></h6>
+                                        <div class=" container h-25"></div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -442,13 +585,13 @@
                         <a class="footerr-text" href="Mosque.aspx">Mosques</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="#">Scholars</a>
+                        <a class="footerr-text" href="../ListScholars">Scholars</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="#">Learn Islam</a>
+                        <a class="footerr-text" href="../Learn Islam/LearnIslam.aspx">Learn Islam</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="ZakaahWebForms/Zakaah.aspx">Zakaah</a>
+                        <a class="footerr-text" href="../ZakaahWebForms/Zakaah.aspx">Zakaah</a>
                     </li>
                 </ul>
             </div>
@@ -456,16 +599,16 @@
                 <h6>Support</h6>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="footerr-text" href="AboutUs.aspx">About Us</a>
+                        <a class="footerr-text" href="../AboutUs.aspx">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="HelpPage.aspx">Help</a>
+                        <a class="footerr-text" href="../HelpPage.aspx">Help</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="HelpCenter.aspx">Help Center</a>
+                        <a class="footerr-text" href="../HelpCenter.aspx">Help Center</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="TermsOfService.aspx">Terms</a>
+                        <a class="footerr-text" href="../TermsOfService.aspx">Terms</a>
                     </li>
                 </ul>
             </div>
@@ -485,8 +628,6 @@
             </div>
         </div>
     </div>
-    <script src="Default/Default.js" type="text/javascript"></script>
-  <%--  <script src="PrayerTimesJS.js"></script>--%>
+    <script src="../Default/Default.js" type="text/javascript"></script>
 </body>
-<script src="Default/Default.js" type="text/javascript"></script>
 </html>

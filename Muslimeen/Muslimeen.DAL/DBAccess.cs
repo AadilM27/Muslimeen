@@ -1519,22 +1519,26 @@ namespace Muslimeen.BLL
 
         public List<CounterCalender> GetCounterCalender()
         {
-            List<CounterCalender> list = new List<CounterCalender>();
-            using (DataTable table = DBHelper.Select("uspGetCounterCalender", CommandType.StoredProcedure))
+                List<CounterCalender> list = new List<CounterCalender>();
+            try
             {
-                if (table.Rows.Count > 0)
+                using (DataTable table = DBHelper.Select("uspGetCounterCalender", CommandType.StoredProcedure))
                 {
-                    foreach (DataRow row in table.Rows)
+                    if (table.Rows.Count > 0)
                     {
-                        CounterCalender cc = new CounterCalender
+                        foreach (DataRow row in table.Rows)
                         {
-                            ID = Convert.ToString(row["ID"]),
-                            Val = Convert.ToString(row["Val"])
-                        };
-                        list.Add(cc);
+                            CounterCalender cc = new CounterCalender
+                            {
+                                ID = Convert.ToString(row["ID"]),
+                                Val = Convert.ToString(row["Val"])
+                            };
+                            list.Add(cc);
+                        }
                     }
                 }
             }
+            catch { }
             return list;
         }
 
@@ -2003,5 +2007,95 @@ namespace Muslimeen.BLL
             }
             return list;
         }
+        public bool InsertRating(uspInsertRating rating)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var prop in rating.GetType().GetProperties())
+            {
+                if (prop.GetValue(rating) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(rating)));
+                }
+            }
+            return DBHelper.NonQuery("uspInsertRating", CommandType.StoredProcedure, parameters.ToArray());
+        }
+ 
+        public uspGetRatings GetRatings(int articleID)
+        {
+
+            uspGetRatings rating = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@articleID",articleID),
+
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetRatings",
+                    CommandType.StoredProcedure, pars))
+            {
+                if (table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    rating = new uspGetRatings
+                    {
+                        AverageRating = Convert.ToInt32(row["AverageRating"].ToString()),
+                        RatingCount = Convert.ToInt32(row["RatingCount"].ToString()),
+                    };
+
+
+                }//end if
+            }//end using
+            return rating;
+        }//End GetRatings for specific Article
+        public uspAverageRating GetAverageRating(int articleID)
+        {
+
+            uspAverageRating rating = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@articleID",articleID),
+
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetAverageRatings",
+                    CommandType.StoredProcedure, pars))
+            {
+                if (table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    rating = new uspAverageRating
+                    {
+                        AverageRating = Convert.ToInt32(row["AverageRating"].ToString()),
+                    };
+
+
+                }//end if
+            }//end using
+            return rating;
+        }//End GetAverageRating for specific Article
+        public uspRatingCount GetRatingCount(int articleID)
+        {
+
+            uspRatingCount count= null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@articleID",articleID),
+
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetCountRatings",
+                    CommandType.StoredProcedure, pars))
+            {
+                if (table.Rows.Count == 1)
+                {
+                    DataRow row = table.Rows[0];
+                    count = new uspRatingCount
+                    {
+                        RatingCount = Convert.ToInt32(row["RatingCount"].ToString()),
+                    };
+
+
+                }//end if
+            }//end using
+            return count;
+        }//End GetRatingCount for specific Article
     }
 }

@@ -57,6 +57,7 @@
     <Compile Include="Models\PrayerType.cs" />
     <Compile Include="Models\Qualification.cs" />
     <Compile Include="Models\Quotes.cs" />
+    <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\RejectArticle.cs" />
     <Compile Include="Models\Scholar.cs" />
     <Compile Include="Models\Topic.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Models\Zakaah.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\RejectedArticlesReport.cs" />
+    <Compile Include="ViewModels\uspAverageRating.cs" />
     <Compile Include="ViewModels\uspGetAcceptedArticle.cs" />
     <Compile Include="ViewModels\uspGetAcceptedScholars.cs" />
     <Compile Include="ViewModels\uspGetAllMosques.cs" />
@@ -99,6 +101,7 @@
     <Compile Include="ViewModels\uspGetQualification.cs" />
     <Compile Include="ViewModels\uspGetRamadaanDate.cs" />
     <Compile Include="Models\uspVerifyMember.cs" />
+    <Compile Include="ViewModels\uspGetRatings.cs" />
     <Compile Include="ViewModels\uspGetRejectedArticle.cs" />
     <Compile Include="ViewModels\uspGetScholarDetails.cs" />
     <Compile Include="ViewModels\uspGetSelectedLearnArticle.cs" />
@@ -107,6 +110,8 @@
     <Compile Include="ViewModels\uspGetSpecificDayPrayerTimes.cs" />
     <Compile Include="ViewModels\uspGetSpecificEvent.cs" />
     <Compile Include="ViewModels\uspGetTopics.cs" />
+    <Compile Include="ViewModels\uspInsertRating.cs" />
+    <Compile Include="ViewModels\uspRatingCount.cs" />
     <Compile Include="ViewModels\uspReportGetAllMembers.cs" />
     <Compile Include="ViewModels\uspReportGetAllMosques.cs" />
     <Compile Include="ViewModels\uspViewLatestArticles.cs" />

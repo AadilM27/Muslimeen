@@ -411,5 +411,21 @@ namespace Muslimeen.BLL
         {
             return dBAccess.Comment(art);
         }
+        public bool BLL_InsertRating(uspInsertRating rating)
+        {
+            return dBAccess.InsertRating(rating);
+        }
+        public uspAverageRating BLL_AverageRating(int articleID)
+        {
+            return dBAccess.GetAverageRating(articleID);
+        }
+        public uspRatingCount BLL_RatingCount(int articleID)
+        {
+            return dBAccess.GetRatingCount(articleID);
+        }
+        public uspGetRatings BLL_GetRatings(int articleID)
+        {
+            return dBAccess.GetRatings(articleID);
+        }
     }
 }

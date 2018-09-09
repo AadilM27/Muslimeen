@@ -8,19 +8,19 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 	
-		<link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
+		<link rel="icon" href="../Login/LogIn_Bootstrap/muslimeen.ico"/>
 	
-		<link href="/Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 		
 		<title> Muslimeen - Register a account </title>
 
-        <script src="/Register/Register.js" type="text/javascript"></script>
+        <script src="Register.js" type="text/javascript"></script>
 
-		<link href="/Login/LogIn_Bootstrap/css/register.css" rel="stylesheet"/>
+		<link href="../Login/LogIn_Bootstrap/css/register.css" rel="stylesheet"/>
 </head>
 <body class="text-center">
     <div class="main-div">
-			<asp:Image runat="server" CssClass="mb-2 mt-2" src="/Login/LogIn_Bootstrap/logo.png" width="200" height="130"/>
+			<asp:Image runat="server" CssClass="mb-2 mt-2" src="../Login/LogIn_Bootstrap/logo.png" width="200" height="130"/>
 			<h1 class="h3 mb-1 mt-2 font-weight-bold">Register on Muslimeen</h1>
             <h1 class="h6 text-black-50 mt-2 mb-3">Access Muslimeen with<br />a free account</h1>
             
