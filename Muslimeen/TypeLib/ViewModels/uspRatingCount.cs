@@ -9,5 +9,6 @@ namespace TypeLib.ViewModels
     public class uspRatingCount
     {
         public int RatingCount { get; set; }
+        public int ArticleID { get; set; }
     }
 }

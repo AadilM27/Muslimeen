@@ -265,21 +265,30 @@ namespace Muslimeen.Content.Learn_Islam
         {
             try
             {
-                DBHandler han = new DBHandler();
-                Comment com = new Comment();
+                if (Session["UserName"] != null)
+                {
+                    DBHandler han = new DBHandler();
+                    Comment com = new Comment();
 
-                com.CommentMessage = Convert.ToString(txtComment.Text);
-                com.CommentDate = DateTime.Now;
-                com.ArticleID = Convert.ToInt32(hdfArtID.Value);
-                com.MemberID = Convert.ToString(Session["UserName"]);
-                com.CommentID = null;
+                    com.CommentMessage = Convert.ToString(txtComment.Text);
+                    com.CommentDate = DateTime.Now;
+                    com.ArticleID = Convert.ToInt32(hdfArtID.Value);
+                    com.MemberID = Convert.ToString(Session["UserName"]);
+                    com.CommentID = null;
 
-                han.BLL_AddComment(com);
+                    han.BLL_AddComment(com);
 
-                CommentRepeater.DataSource = han.BLL_GetComment(int.Parse(hdfArtID.Value));
-                CommentRepeater.DataBind();
+                    CommentRepeater.DataSource = han.BLL_GetComment(int.Parse(hdfArtID.Value));
+                    CommentRepeater.DataBind();
 
-                divNoSelected.Visible = true;
+                    divNoSelected.Visible = true;
+
+                    txtComment.Text = string.Empty;
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Please login to add comment.');</script>");
+                }
             }
             catch
             {

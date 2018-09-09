@@ -535,6 +535,15 @@ namespace Muslimeen.Content.MyModerator {
         protected global::System.Web.UI.WebControls.Button Button2;
         
         /// <summary>
+        /// divRating control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRating;
+        
+        /// <summary>
         /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
@@ -553,22 +562,13 @@ namespace Muslimeen.Content.MyModerator {
         protected global::AjaxControlToolkit.Rating Rating1;
         
         /// <summary>
-        /// btnRate control.
+        /// lblRating control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRate;
-        
-        /// <summary>
-        /// lblRatingStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRatingStatus;
+        protected global::System.Web.UI.WebControls.Label lblRating;
         
         /// <summary>
         /// Label1 control.

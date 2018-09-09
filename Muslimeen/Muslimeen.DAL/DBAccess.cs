@@ -2016,56 +2016,82 @@ namespace Muslimeen.BLL
             }
             return DBHelper.NonQuery("uspInsertRating", CommandType.StoredProcedure, parameters.ToArray());
         }
-        public uspGetRatings GetRatings()
+ 
+        public uspGetRatings GetRatings(int articleID)
         {
-            uspGetRatings rating = new uspGetRatings();
-            using (DataTable table = DBHelper.Select("uspGetRatings", CommandType.StoredProcedure))
+
+            uspGetRatings rating = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@articleID",articleID),
+
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetRatings",
+                    CommandType.StoredProcedure, pars))
             {
                 if (table.Rows.Count == 1)
                 {
                     DataRow row = table.Rows[0];
+                    rating = new uspGetRatings
                     {
-                        rating.AverageRating = Convert.ToInt32(row["AverageRating"]);
-                        rating.RatingCount = Convert.ToInt32(row["RatingCount"]);
-
+                        AverageRating = Convert.ToInt32(row["AverageRating"].ToString()),
+                        RatingCount = Convert.ToInt32(row["RatingCount"].ToString()),
                     };
-                }
-            }
+
+
+                }//end if
+            }//end using
             return rating;
-        }
-        public uspAverageRating GetAverageRating()
+        }//End GetRatings for specific Article
+        public uspAverageRating GetAverageRating(int articleID)
         {
-            uspAverageRating rating = new uspAverageRating();
-            using (DataTable table = DBHelper.Select("uspGetAverageRatings", CommandType.StoredProcedure))
+
+            uspAverageRating rating = null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@articleID",articleID),
+
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetAverageRatings",
+                    CommandType.StoredProcedure, pars))
             {
                 if (table.Rows.Count == 1)
                 {
                     DataRow row = table.Rows[0];
+                    rating = new uspAverageRating
                     {
-                        rating.AverageRating = Convert.ToInt32(row["AverageRating"]);
-                        
-
+                        AverageRating = Convert.ToInt32(row["AverageRating"].ToString()),
                     };
-                }
-            }
+
+
+                }//end if
+            }//end using
             return rating;
-        }
-        public uspRatingCount GetRatingCount()
+        }//End GetAverageRating for specific Article
+        public uspRatingCount GetRatingCount(int articleID)
         {
-            uspRatingCount count = new uspRatingCount();
-            using (DataTable table = DBHelper.Select("uspGetCountRatings", CommandType.StoredProcedure))
+
+            uspRatingCount count= null;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@articleID",articleID),
+
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetCountRatings",
+                    CommandType.StoredProcedure, pars))
             {
                 if (table.Rows.Count == 1)
                 {
                     DataRow row = table.Rows[0];
+                    count = new uspRatingCount
                     {
-                        count.RatingCount = Convert.ToInt32(row["RatingCount"]);
-
-
+                        RatingCount = Convert.ToInt32(row["RatingCount"].ToString()),
                     };
-                }
-            }
+
+
+                }//end if
+            }//end using
             return count;
-        }
+        }//End GetRatingCount for specific Article
     }
 }

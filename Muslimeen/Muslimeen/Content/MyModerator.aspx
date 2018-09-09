@@ -320,16 +320,19 @@
                                     <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" ID="btnAccept" Text="Accept Article" OnClick="btnAccept_Click" />
                                     <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" ID="Button2" Text="Reject Article" OnClick="Button2_Click" />
                                     <br />
+                                    <div id="divRating" runat="server">
                                     <asp:ScriptManager ID="ScriptManager1" runat="server">
                                     </asp:ScriptManager>
                                     <ajaxToolkit:Rating ID="Rating1" AutoPostBack="true" OnClick="Rating1_Click" runat="server"
                                         StarCssClass="Star" WaitingStarCssClass="WaitingStar" EmptyStarCssClass="Star"
                                          FilledStarCssClass="FilledStar" >
                                     </ajaxToolkit:Rating>
+                                         <asp:Label ID="lblRating" runat="server"  ></asp:Label>                            
+                                        </div>
+                                   
                                     <br />
-                                    <asp:Button runat="server" Text="Rate this Article" ID="btnRate" OnClick="btnRate_Click" />
-
-                                    <asp:Label ID="lblRatingStatus" runat="server" Text=""></asp:Label>
+                                   
+                                     
                                     <br />
                                     <asp:Label ID="Label1" CssClass=" form-control-sm col main-txtb " ForeColor="#256297" runat="server" Text="Rejection Reason:"></asp:Label> <asp:TextBox runat="server" CssClass=" text-justify btn btn-sm  mr-2 position-static" ID="txtRejectReason" BorderColor="#256297" Width="50%" OnTextChanged="txtRejectReason_TextChanged" ></asp:TextBox>
                                     <br />
