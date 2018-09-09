@@ -447,15 +447,41 @@
                                         <label class="m-0" runat="server" id="lblArticleContent"></label>
                                     </div>
                                 </div>
-                                <div class="row mb-1 position-static text-right">
-                                    <div class="col position-static">
-                                        -
+                               <div class="row mb-1 position-static">
+                                  <%--  <div class="col position-static font-italic text-left">
+                                        Author:
+                                        <label class="m-0 mt-2" runat="server" id="lblScholar"></label>
+                                    </div>--%>
+                                    <div class="row mb-1 position-static text-right">
+                                        <div class="col position-static font-italic">
+                                            Date:
                                         <label class="m-0 font-italic mt-2" runat="server" id="lblDate"></label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="">
                                     <a runat="server" id="lnkBack" onserverclick="lnkBack_ServerClick" ><small> << Back </small></a>
                                 </div>
+                                <div runat="server" id="divAdminReports" class="col-12 col-xl-12 p-0 mr-1">                                
+                                <div class="m-0 p-0 pt-2 pl-2">
+                                    <a runat="server" id="lnkAdminPrintPDF" onserverclick="lnkAdminPrintPDF_ServerClick" style="width:15px; height:15px"><img src="../Content/MyMember/icons/Adobe_PDF.png" /><small>Download as PDF</small></a>
+                                </div>
+                                  <%--  PDF BUTTON--%>
+                                <div>
+                                    <asp:GridView CssClass="flex-grow-1" ID="grdAdminReports"  RowStyle-Wrap="true" runat="server" style="font-size:smaller;" ForeColor="#333333" >
+                                        <AlternatingRowStyle BackColor="White"  />
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" Font-Size="12" HorizontalAlign="Center" />
+                                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                        <RowStyle BackColor="#EFF3FB"  Wrap="true"  HorizontalAlign="Center"/>
+                                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                    </asp:GridView>
+                                </div>
+                            </div>
+                            <br />
                             </div>
                         </div>
                     </div>
