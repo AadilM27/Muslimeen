@@ -27,6 +27,7 @@ namespace Muslimeen.Content
 
             try
             {
+                divDisplayEvents.Visible = false;
                 divDisplaySalahTimetable.Visible = false;
                 divAddAdmin.Visible = false;
                 divAdminReports.Visible = false;
@@ -2241,10 +2242,6 @@ namespace Muslimeen.Content
                 lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
                 lblEishaAzaan.Text = prayertimes.EishaA.ToString();
                 lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
-            }
-            catch (NullReferenceException ex)
-            {
-
             }
             catch
             {

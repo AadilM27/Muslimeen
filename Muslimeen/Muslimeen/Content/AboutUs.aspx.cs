@@ -67,7 +67,7 @@ namespace Muslimeen.Content
             {
                 Session.Clear();
                 Session.Abandon();
-                Response.Redirect("../Content/AboutUs.aspx");
+                Response.Redirect("AboutUs.aspx");
                 btnLogin.Text = "Login";
                 btnRegister.Visible = true;
             }
