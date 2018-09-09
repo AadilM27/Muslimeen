@@ -10,7 +10,7 @@
 
     <title>MyMuslimeen - Home</title>
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico" />
+    <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico" />
     <link href="../MyAdmin/css/MyAdmin.css" rel="stylesheet" />
 
 </head>
@@ -25,7 +25,7 @@
                         <li class="nav-item ml-4 mr-0 mb-0 pt-2">
                             <p class="IslamicDate mb-0" id="lstIslamicDate"></p>
                         </li>
-                        <script src="Default/DatesEnglishHijri.js" type="text/javascript"></script>
+                        <script src="../Default/DatesEnglishHijri.js" type="text/javascript"></script>
                     </ul>
                     <ul class="col-5 navbar-nav flex-row justify-content-end">
                         <li class=" nav-item mr-2">
@@ -39,14 +39,14 @@
                 </div>
                 <div class="row" runat="server" id="divUserProfile">
                     <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
-                        <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="../Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
-                        </asp:HyperLink><asp:Image Style="height: 15px; width: 15px;" runat="server" ID="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="../Content/Default/icons/EditProfile.png" />
+                        <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="../ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
+                        </asp:HyperLink><asp:Image Style="height: 15px; width: 15px;" runat="server" ID="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="../Default/icons/EditProfile.png" />
                     </div>
                 </div>
             </nav>
             <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50);">
                 <div class=" text-center">
-                    <asp:Image runat="server" CssClass="mb-0 ml-0" src="/Login/LogIn_Bootstrap\logo.png" Width="185" Height="110" />
+                    <asp:Image runat="server" CssClass="mb-0 ml-0" src="../../Login/LogIn_Bootstrap/logo.png" Width="185" Height="110" />
                 </div>
                 <div class="ml-2 navbar-nav-scroll align-self-end justify-content-start">
                     <ul class="navbar-nav row">
@@ -89,7 +89,7 @@
                             <asp:LinkButton ID="LnkHelp" runat="server" OnClick="btnHelp_Click" CssClass="nav-item navText btn-link btn" ToolTip="How this page works">
                                 <%--CssClass="nav-item navText btn-link btn"--%>
                          Help   
-                                <asp:Image runat="server" ID="ImgHelp" ImageUrl="../Content/MyMember/icons/helpIcon.png " Style="height: 1.1em; width: 1.1em;" />
+                                <asp:Image runat="server" ID="ImgHelp" ImageUrl="../MyMember/icons/helpIcon.png" Style="height: 1.1em; width: 1.1em;" />
                             </asp:LinkButton>
                         </li>
                     </ul>
@@ -565,16 +565,16 @@
                 <h6>Content</h6>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="footerr-text" href="Mosque.aspx">Mosques</a>
+                        <a class="footerr-text" href="ListMosque.aspx">Mosques</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="#">Scholars</a>
+                        <a class="footerr-text" href="ListScholar.aspx">Scholars</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="#">Learn Islam</a>
+                        <a class="footerr-text" href="../Learn Islam/LearnIslam.aspx">Learn Islam</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="ZakaahWebForms/Zakaah.aspx">Zakaah</a>
+                        <a class="footerr-text" href="../ZakaahWebForms/Zakaah.aspx">Zakaah</a>
                     </li>
                 </ul>
             </div>
@@ -582,16 +582,16 @@
                 <h6>Support</h6>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="footerr-text" href="AboutUs.aspx">About Us</a>
+                        <a class="footerr-text" href="../AboutUs.aspx">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="HelpPage.aspx">Help</a>
+                        <a class="footerr-text" href="../HelpPage.aspx">Help</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="HelpCenter.aspx">Help Center</a>
+                        <a class="footerr-text" href="../HelpCenter.aspx">Help Center</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="TermsOfService.aspx">Terms</a>
+                        <a class="footerr-text" href="../TermsOfService.aspx">Terms</a>
                     </li>
                 </ul>
             </div>
@@ -611,7 +611,6 @@
             </div>
         </div>
     </div>
-    <script src="Default/Default.js" type="text/javascript"></script>
+    <script src="../Default/Default.js" type="text/javascript"></script>
 </body>
-<script src="Default/Default.js" type="text/javascript"></script>
 </html>
