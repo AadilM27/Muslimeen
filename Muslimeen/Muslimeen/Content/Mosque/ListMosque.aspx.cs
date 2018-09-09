@@ -17,36 +17,35 @@ namespace Muslimeen.Content.Mosque
         {
             DBHandler db = new DBHandler();
             List<CounterCalender> counterCalender = new List<CounterCalender>();
-
-            counterCalender = db.BLL_GetCounterCalender();
-            hdfAdjustDate.Value = counterCalender[3].Val.ToString();
-
-            if (Session["UserName"] != null)
-            {
-                uspGetMember uspGetMember = new uspGetMember();
-
-                uspGetMember = db.BLL_GetMember(Convert.ToString(Session["UserName"]));
-                hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
-                divUserProfile.Visible = true;
-
-                liMyMusbtn.Visible = true;
-                liMyMusDivi.Visible = true;
-
-                btnLogin.Text = "Log out";
-                btnRegister.Visible = false;
-
-            }
-            else if (Session["UserName"] == null)
-            {
-                liMyMusbtn.Visible = false;
-                liMyMusDivi.Visible = false;
-           
-                divUserProfile.Visible = false;
-                Session.Clear();
-            }
-
             try
             {
+                counterCalender = db.BLL_GetCounterCalender();
+                hdfAdjustDate.Value = counterCalender[3].Val.ToString();
+
+                if (Session["UserName"] != null)
+                {
+                    uspGetMember uspGetMember = new uspGetMember();
+
+                    uspGetMember = db.BLL_GetMember(Convert.ToString(Session["UserName"]));
+                    hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
+                    divUserProfile.Visible = true;
+
+                    liMyMusbtn.Visible = true;
+                    liMyMusDivi.Visible = true;
+
+                    btnLogin.Text = "Log out";
+                    btnRegister.Visible = false;
+
+                }
+                else if (Session["UserName"] == null)
+                {
+                    liMyMusbtn.Visible = false;
+                    liMyMusDivi.Visible = false;
+
+                    divUserProfile.Visible = false;
+                    Session.Clear();
+                }
+
                 if (!IsPostBack)
                 {
                     List<uspGetAllMosqueSuburbs> list = new List<uspGetAllMosqueSuburbs>();

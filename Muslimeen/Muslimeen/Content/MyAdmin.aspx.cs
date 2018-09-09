@@ -572,13 +572,13 @@ namespace Muslimeen.Content
                         string fileName = fupMosqueImage.FileName.ToString();
                         string fileFormat = fileName.Substring(fileName.Length - 3); //get last character of Image name.
 
-                        fupMosqueImage.SaveAs(Server.MapPath("../Content/Images/MosqueImages/") + txtMosqueName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
-                        //Server.MapPath("../") + filename
-                        addMosque.MosqueImage = ("../../Content/Images/MosqueImages/" + txtMosqueName.Text.ToString() + "." + fileFormat.ToString());
+                        fupMosqueImage.SaveAs(Server.MapPath("Images/MosqueImages/") + txtMosqueName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
+
+                        addMosque.MosqueImage = ("Images/MosqueImages/" + txtMosqueName.Text.ToString() + "." + fileFormat.ToString());
                     }
                     else
                     {
-                        addMosque.MosqueImage = "../../Content/Images/ImageUnavailable.jpg";
+                        addMosque.MosqueImage = "Images/ImageUnavailable.jpg";
                     }
                     addMosque.MosqueSize = ddMosqueSize.SelectedValue.ToString();
                     addMosque.MosqueQuote = txtMosqueQuote.Text.ToString();
@@ -955,13 +955,13 @@ namespace Muslimeen.Content
                             string fileName = fupOrgImage.FileName.ToString();
                             string fileFormat = fileName.Substring(fileName.Length - 3); //get last character of Image name.
 
-                            fupOrgImage.SaveAs(Server.MapPath("/Content/Images/ZakaahOrgImages/") + txtOrgName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
+                            fupOrgImage.SaveAs(Server.MapPath("Images/ZakaahOrgImages/") + txtOrgName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
 
-                            addZakaahOrg.Image = ("../../Content/Images/ZakaahOrgImages/" + txtOrgName.Text.ToString() + "." + fileFormat.ToString());
+                            addZakaahOrg.Image = ("Images/ZakaahOrgImages/" + txtOrgName.Text.ToString() + "." + fileFormat.ToString());
                         }
                         else
                         {
-                            addZakaahOrg.Image = "../../Content/Images/ImageUnavailable.jpg";
+                            addZakaahOrg.Image = "Images/ImageUnavailable.jpg";
                         }
 
                         db.BLL_AddZakaahOrganization(addZakaahOrg);
@@ -1002,9 +1002,9 @@ namespace Muslimeen.Content
                             string fileName = fupOrgImage.FileName.ToString();
                             string fileFormat = fileName.Substring(fileName.Length - 3); //get last character of Image name eg(.jpg).
 
-                            fupOrgImage.SaveAs(Server.MapPath("/Content/Images/ZakaahOrgImages/") + txtOrgName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
+                            fupOrgImage.SaveAs(Server.MapPath("Images/ZakaahOrgImages/") + txtOrgName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
 
-                            updateZakaahOrg.Image = ("../../Content/Images/ZakaahOrgImages/" + txtOrgName.Text.ToString() + "." + fileFormat.ToString());
+                            updateZakaahOrg.Image = ("Images/ZakaahOrgImages/" + txtOrgName.Text.ToString() + "." + fileFormat.ToString());
 
                         }
                         else
@@ -1279,8 +1279,25 @@ namespace Muslimeen.Content
                 DBHandler db = new DBHandler();
                 List<CounterCalender> counterCalender = new List<CounterCalender>();
                 counterCalender = db.BLL_GetCounterCalender();
-                txtCurCounterTitle.Text = Convert.ToString(counterCalender[2].Val);
-                txtCurCounterEndTitle.Text = Convert.ToString(counterCalender[1].Val);
+
+                if (counterCalender[2].Val != null || counterCalender[2].Val != "")
+                {
+                    txtCurCounterTitle.Text = Convert.ToString(counterCalender[2].Val);
+                }
+                else if (counterCalender[2].Val == null || counterCalender[2].Val == "")
+                {
+                    txtCurCounterTitle.Text = "No Title";
+                }
+
+                if (counterCalender[1].Val != null || counterCalender[1].Val != "")
+                {
+                    txtCurCounterEndTitle.Text = Convert.ToString(counterCalender[1].Val);
+                }
+                else if (counterCalender[1].Val == null || counterCalender[1].Val == "")
+                {
+                    txtCurCounterEndTitle.Text = "End Title not set";
+                }
+
                 if (counterCalender[0].Val == "" || counterCalender[0].Val == null)
                 {
                     txtCurCounterEndDate.Text = "No date set";
@@ -1290,9 +1307,17 @@ namespace Muslimeen.Content
                     DateTime islamiceDate = Convert.ToDateTime(counterCalender[0].Val);
                     txtCurCounterEndDate.Text = islamiceDate.ToString("dd MM yyyy");
                 }
-                txtCurIsalmicDate.Text = Convert.ToString(counterCalender[3].Val);
+
+                if (counterCalender[3].Val != null || counterCalender[3].Val != "")
+                {
+                    txtCurIsalmicDate.Text = Convert.ToString(counterCalender[3].Val);
+                }
+                else if (counterCalender[3].Val == null || counterCalender[3].Val == "")
+                {
+                    txtCurIsalmicDate.Text = "0";
+                }
             }
-            catch
+            catch (FormatException)
             {
                 divCounterCalander.Visible = true;
                 lblTaskHead.InnerText = btnUpdateDateCounter.Text;
@@ -1508,9 +1533,9 @@ namespace Muslimeen.Content
                         string fileName = fupUpdateMosqueImage.FileName.ToString();
                         string fileFormat = fileName.Substring(fileName.Length - 3); //get last character of Image name.
 
-                        fupUpdateMosqueImage.SaveAs(Server.MapPath("/Content/Images/MosqueImages/") + txtUpdateMosqueName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
+                        fupUpdateMosqueImage.SaveAs(Server.MapPath("Images/MosqueImages/") + txtUpdateMosqueName.Text.ToString().ToString() + "." + fileFormat.ToString()); //Image to upload ...
 
-                        mosque.MosqueImage = ("../../Content/Images/MosqueImages/" + txtUpdateMosqueName.Text.ToString() + "." + fileFormat.ToString());
+                        mosque.MosqueImage = ("Images/MosqueImages/" + txtUpdateMosqueName.Text.ToString() + "." + fileFormat.ToString());
                     }
                     else
                     {

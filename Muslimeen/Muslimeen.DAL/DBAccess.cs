@@ -1519,22 +1519,26 @@ namespace Muslimeen.BLL
 
         public List<CounterCalender> GetCounterCalender()
         {
-            List<CounterCalender> list = new List<CounterCalender>();
-            using (DataTable table = DBHelper.Select("uspGetCounterCalender", CommandType.StoredProcedure))
+                List<CounterCalender> list = new List<CounterCalender>();
+            try
             {
-                if (table.Rows.Count > 0)
+                using (DataTable table = DBHelper.Select("uspGetCounterCalender", CommandType.StoredProcedure))
                 {
-                    foreach (DataRow row in table.Rows)
+                    if (table.Rows.Count > 0)
                     {
-                        CounterCalender cc = new CounterCalender
+                        foreach (DataRow row in table.Rows)
                         {
-                            ID = Convert.ToString(row["ID"]),
-                            Val = Convert.ToString(row["Val"])
-                        };
-                        list.Add(cc);
+                            CounterCalender cc = new CounterCalender
+                            {
+                                ID = Convert.ToString(row["ID"]),
+                                Val = Convert.ToString(row["Val"])
+                            };
+                            list.Add(cc);
+                        }
                     }
                 }
             }
+            catch { }
             return list;
         }
 
