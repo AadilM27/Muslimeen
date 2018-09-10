@@ -119,7 +119,7 @@
                                             <table class="table table-active align-content-center shadow-lg" style="color: gray">
                                                 <tr>
                                                     <td rowspan="3">
-                                                        <asp:Image ID="OrganizationIMG" ImageUrl='<%#Eval("Image")%>' runat="server" Width="200px" Height="180px" />
+                                                        <asp:Image ID="OrganizationIMG" ImageUrl='<%# "../" + Eval("Image")%>' runat="server" Width="200px" Height="180px" />
                                                     </td>
                                                     <td>
                                                        <label style="font-size:20px;font-weight:500;color:#256297">Organization: </label> <asp:Label ID="lblOrgName" runat="server" Text='<%#Eval("Name")%>'></asp:Label>

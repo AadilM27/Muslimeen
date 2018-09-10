@@ -298,40 +298,42 @@
                                     <div class=" head-div-2 p-2 mb-0 text-left ">
                                         <label runat="server" class="mb-0" id="lblTitle"></label>
                                     </div>
-                                    <hr class="m-3 ml-3 mr-3 bg-secondary" />
                                     <div class="container" runat="server" id="divEventDetails">
-                                        <div class="row mb-1 position-static">
-                                            <div class="col-3 position-static"><b>Speaker:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="lblSpeaker"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1 position-static">
-                                            <div class="col-3 position-static"><b>Event Date:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="lblEventDate"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1 position-static">
-                                            <div class="col-3 position-static"><b>Start Time:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="lblEventStartTime"></label>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-1 position-static">
-                                            <div class="col-3 position-static"><b>End Time:</b></div>
-                                            <div class="col position-static text-truncate">
-                                                <label class="m-0" runat="server" id="lblEventEndTime"></label>
-                                            </div>
-                                        </div>
                                         <div class="row mb-1 position-static">
                                             <div class="col-3 position-static"><b>Description:</b></div>
                                             <div class="col position-static">
                                                 <label class="m-0" runat="server" id="lblEventDescription"></label>
                                             </div>
                                         </div>
+                                        <hr class="m-0 bg-secondary" />
+                                        <div class="row mb-1 position-static">
+                                            <div class="col-3 position-static"><b>Speaker:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblSpeaker"></label>
+                                            </div>
+                                        </div>
+                                        <hr class="m-0 bg-secondary" />
+                                        <div class="row mb-1 position-static">
+                                            <div class="col-3 position-static"><b>Event Date:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblEventDate"></label>
+                                            </div>
+                                        </div>
+                                        <hr class="m-0 bg-secondary" />
+                                        <div class="row mb-1 position-static">
+                                            <div class="col-3 position-static"><b>Start Time:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblEventStartTime"></label>
+                                            </div>
+                                        </div>
+                                        <hr class="m-0 bg-secondary" />
+                                        <div class="row mb-1 position-static">
+                                            <div class="col-3 position-static"><b>End Time:</b></div>
+                                            <div class="col position-static text-truncate">
+                                                <label class="m-0" runat="server" id="lblEventEndTime"></label>
+                                            </div>
+                                        </div>
                                     </div>
-
                                 </div>
                                 <div class="col-3 col-sm-3 col-xl-4 text-nowrap" runat="server" id="divEventOverlay">
                                     <div class="w-100 h-100 container text-center">
@@ -341,7 +343,6 @@
                                         <div class=" container h-25"></div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <div class=" col-12 p-3 bg-light position-static" runat="server" id="divLocation">

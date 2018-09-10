@@ -100,13 +100,13 @@
                         </div>
                         <div class="form-group mb-1 ml-2 mr-2">
                             <strong><asp:Label ID="Label2" runat="server" Text="Topic: "></asp:Label></strong>
-                            <asp:DropDownList ID="drpTopic" runat="server" CssClass="form-control main-txtb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" AutoPostBack="true"></asp:DropDownList>
+                            <asp:DropDownList ID="drpTopic" runat="server" CssClass="form-control main-txtb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" AutoPostBack="true" OnSelectedIndexChanged="drpTopic_SelectedIndexChanged"></asp:DropDownList>
                         </div>
                     </nav>
                 </div>
                 <div class=" position-static basic-div-styling p-0  w-100">
                     <div class=" head-div text-center p-2 mb-1">
-                        <h4 class="p-0 m-0">Learn Islam</h4>
+                        <h4 class="p-0 m-0" id="lblTaskHeader" runat="server">Learn Islam</h4>
                     </div>
                     <div class="row p-0 m-0 right-bottom-div p-1 flex-nowrap">
                         <%--Pending Articles--%>
@@ -205,7 +205,7 @@
                             <div class="" >
                                 <div class="row p-0 m-0 ">
                                     <div class="col-10 ml-2" >
-                                        <asp:TextBox style="max-height:100px; min-height:40px;" CssClass="form-control col main-txtb" ID="txtComment" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                        <asp:TextBox style="max-height:50px; min-height:50px;" CssClass="form-control col main-txtb" ID="txtComment" runat="server" TextMode="MultiLine"></asp:TextBox>
                                     </div>
                                     <div class="align-self-center">
                                         <asp:Button ID="btn_Submit" runat="server" Text="Comment" CssClass=" btn btn-sm" OnClick="btn_Submit_Click" />
@@ -215,7 +215,7 @@
                                 <h4 style="text-decoration:underline;">Comments:</h4>
                                 <br />
                                 <!--Comments Repeater-->
-                                <div class="position-static container pre-scrollable" style="overflow-y:scroll">
+                                <div class="position-static container pre-scrollable" style="overflow-y:scroll;max-height:250px;">
                                     <asp:Repeater ID="CommentRepeater" runat="server">
                                         <ItemTemplate>
                                             <div class="row" >

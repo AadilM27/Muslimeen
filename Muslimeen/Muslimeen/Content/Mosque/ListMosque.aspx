@@ -119,7 +119,7 @@
                         <table border="0" class="table" style="color: gray">
                             <tr>
                                 <td style="width: 200px">
-                                    <asp:Image ID="MosquePic" ImageUrl='<%#Eval("MosqueImage")%>' runat="server" Width="200px" Height="180px" /></td>
+                                    <asp:Image ID="MosquePic" ImageUrl='<%# "../" + Eval("MosqueImage")%>' runat="server" Width="200px" Height="180px" /></td>
                                 <td>
 
                                     <table  style="width: 100%; height: 100%;color:#256297;font-weight:bold;border:none">

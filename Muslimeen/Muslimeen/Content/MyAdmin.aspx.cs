@@ -27,7 +27,11 @@ namespace Muslimeen.Content
 
             try
             {
+                divListEvent.Visible = false;
+                divEventOverlay.Visible = false;
                 divDisplayEvents.Visible = false;
+                divEvent.Visible = false;
+                divListEventDetails.Visible = false;
                 divDisplaySalahTimetable.Visible = false;
                 divAddAdmin.Visible = false;
                 divAdminReports.Visible = false;
@@ -618,7 +622,7 @@ namespace Muslimeen.Content
             }
             catch
             {
-
+                throw;
             }
         }
 
@@ -2242,6 +2246,8 @@ namespace Muslimeen.Content
                 lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
                 lblEishaAzaan.Text = prayertimes.EishaA.ToString();
                 lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
+
+
             }
             catch
             {
@@ -2249,5 +2255,126 @@ namespace Muslimeen.Content
             }
         }
 
+        protected void btnMosqueEvents_Click(object sender, EventArgs e) //button after the dates have been typed out.
+        {
+            divDisplaySalahTimetable.Visible = false;
+            divDisplayEvents.Visible = true;
+            divEventOverlay.Visible = true;
+
+            lblTaskHead.InnerText = btnMosqueEvents.Text.ToString();
+        }
+
+        protected void btnEventList_Click(object sender, EventArgs e) //display selected event
+        {
+            divEvent.Visible = true;
+            divDisplaySalahTimetable.Visible = false;
+            lblTaskHead.InnerText = btnMosqueEvents.Text.ToString();
+
+            LinkButton btn = (LinkButton)sender;
+            uspGetSpecificEvent events = new uspGetSpecificEvent();
+            DBHandler db = new DBHandler();
+            Session["EventID"] = btn.CommandArgument.ToString();
+            events = db.BLL_GetuspGetSpecificEvent(int.Parse(btn.CommandArgument.ToString()));
+
+            lblEventTitle.InnerText = events.EventTitle.ToString();
+            lblEventDescription.InnerText = events.EventDescription.ToString();
+            lblSpeaker.InnerText = events.Speaker.ToString();
+            lblEventDate.InnerText = Convert.ToDateTime(events.EventDate).ToString("dd-MM-yyyy");
+            lblEventStartTime.InnerText = events.EventStartTime.ToString();
+            lblEventEndTime.InnerText = events.EventEndTime.ToString();
+
+            divListEvent.Visible = true;
+            divListEventDetails.Visible = true;
+            divDisplayEvents.Visible = true;
+            divEvent.Visible = true;
+            divEventOverlay.Visible = false;
+        }
+
+        protected void btnListEvents_Click(object sender, EventArgs e) //Show the list rpt.
+        {
+
+            lblTaskHead.InnerText = btnListEvents.Text.ToString();
+            divDisplaySalahTimetable.Visible = false;
+            divDisplayEvents.Visible = true;
+            divEventOverlay.Visible = true;
+            lblEventError.Text = String.Empty;
+            lblEventError.ForeColor = Color.Empty;
+            txtStartDate.BorderColor = Color.Empty;
+
+            DBHandler db = new DBHandler();
+
+            int cont = 0;
+            if (txtStartDate.Text == null || txtStartDate.Text == "")
+            {
+                lblEventError.Text = "No start date was selected";
+                lblEventError.ForeColor = Color.Red;
+                txtStartDate.BorderColor = Color.Red;
+                cont += 1;
+            }
+            else if (txtEndDate.Text == null || txtEndDate.Text == "")
+            {
+                lblEventError.Text = "No end date was selected";
+                lblEventError.ForeColor = Color.Red;
+                txtEndDate.BorderColor = Color.Red;
+                cont += 1;
+            }
+            else if (Convert.ToDateTime(txtStartDate.Text.ToString()) >= Convert.ToDateTime(txtEndDate.Text.ToString()))
+            {
+                lblEventError.Text = "Invalid date. The start date should be less than the end date.";
+                lblEventError.ForeColor = Color.Red;
+                txtStartDate.BorderColor = Color.Red;
+                txtEndDate.BorderColor = Color.Red;
+                cont += 1;
+            }
+            else if (Convert.ToDateTime(txtEndDate.Text.ToString()) <= Convert.ToDateTime(txtStartDate.Text.ToString()))
+            {
+                lblEventError.Text = "Invalid date. The end date should be later than the start date.";
+                lblEventError.ForeColor = Color.Red;
+                txtStartDate.BorderColor = Color.Red;
+                txtEndDate.BorderColor = Color.Red;
+                cont += 1;
+            }
+
+            if (cont == 0)
+            {
+                RptEventList.DataSource = db.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), Convert.ToDateTime(txtStartDate.Text.ToString()), Convert.ToDateTime(txtEndDate.Text.ToString()));
+                RptEventList.DataBind();
+                DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
+                DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
+                if (startDate.Date <= EndDate.Date)
+                {
+
+                    if (RptEventList.Items.Count > 0)
+                    {
+                        divListEvent.Visible = true;
+                        divListEventDetails.Visible = true;
+                        divDisplayEvents.Visible = true;
+                        divEvent.Visible = false;
+                        divEventOverlay.Visible = false;
+                    }
+                    else if (RptEventList.Items.Count <= 0)
+                    {
+                        divListEvent.Visible = false;
+                        divListEventDetails.Visible = false;
+                        divDisplayEvents.Visible = true;
+                        divEvent.Visible = false;
+                        lblEventError.Text = "No Events Found for Specified Date Range";
+                        divEventOverlay.Visible = true;
+                    }
+                }
+                else if (startDate.Date > EndDate.Date)
+                {
+                    divListEvent.Visible = false;
+                    divListEventDetails.Visible = false;
+                    divDisplayEvents.Visible = true;
+                    divEvent.Visible = false;
+                    lblEventError.Text = "Invalid Date Range";
+                    divEventOverlay.Visible = true;
+                }
+            }
+            
+
+        }
+        
     }
 }

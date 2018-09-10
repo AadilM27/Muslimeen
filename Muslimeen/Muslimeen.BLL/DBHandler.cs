@@ -252,9 +252,9 @@ namespace Muslimeen.BLL
         }
 
         //Learn Page Articles
-        public List<Article> BLL_GetLearnArticle()
+        public List<Article> BLL_GetLearnArticle(string scholarID,string topic)
         {
-            return dBAccess.GetLearnArticle();
+            return dBAccess.GetLearnArticle(scholarID,topic);
         }
 
         public uspGetSelectedLearnArticle BLL_GetSelectedLearnArticle(int articleID)

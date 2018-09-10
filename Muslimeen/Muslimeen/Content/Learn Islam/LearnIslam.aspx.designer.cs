@@ -220,6 +220,15 @@ namespace Muslimeen.Content.Learn_Islam {
         protected global::System.Web.UI.WebControls.DropDownList drpTopic;
         
         /// <summary>
+        /// lblTaskHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTaskHeader;
+        
+        /// <summary>
         /// divPendingArticles control.
         /// </summary>
         /// <remarks>
