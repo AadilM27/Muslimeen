@@ -2096,6 +2096,27 @@ namespace Muslimeen.BLL
                 }//end if
             }//end using
             return count;
+        }
+
+        //Get All Scholar for Learn Islam
+        public List<uspGetScholarList> GetScholar()
+        {
+            List<uspGetScholarList> list = new List<uspGetScholarList>();
+            using (DataTable tbl = DBHelper.Select("uspGetScholarList", CommandType.StoredProcedure))
+            {
+                if (tbl.Rows.Count > 0)
+                {
+                    foreach (DataRow row in tbl.Rows)
+                    {
+                        uspGetScholarList tops = new uspGetScholarList
+                        {                            
+                            ScholarID = Convert.ToString(row["Name"])
+                        };
+                        list.Add(tops);
+                    }
+                }
+            }
+            return list;
         }//End GetRatingCount for specific Article
     }
 }

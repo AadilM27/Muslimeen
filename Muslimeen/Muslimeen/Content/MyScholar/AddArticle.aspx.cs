@@ -73,11 +73,12 @@ namespace Muslimeen.Content.MyScholar
                 {
                     //Populating dropdown box wiht values
                     List<uspGetTopics> tops = dBHandler.BLL_GetTopics();
-
+                    drpTopics.Items.Add("Select");
                     foreach (uspGetTopics qual in tops)
                     {
                         drpTopics.Items.Add(new ListItem(qual.TopicDescription.ToString(), qual.TopicID.ToString()));
                     }
+                    drpTopics.DataBind();
                 }
             }
             catch

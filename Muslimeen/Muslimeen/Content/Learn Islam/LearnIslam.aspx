@@ -90,10 +90,18 @@
                 <div class="side-bar p-0 basic-div-styling mr-1">
                     <!--contains the buttons-->
                     <div class="head-div text-center p-2">
-                        <p class="text-uppercase m-0 font-weight-bold">Search:</p>
+                        <h4 class="p-0 m-0">Search:</h4>
                     </div>
                     <nav class="nav flex-column pt-2 pb-2 pr-0">
                         <!--Searching options will go here.-->
+                        <div class="form-group mb-1 ml-2 mr-2">
+                            <strong><asp:Label ID="Label1" runat="server" Text="Author: "></asp:Label></strong>
+                            <asp:DropDownList ID="drpScholar" runat="server" CssClass="form-control main-txtb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" AutoPostBack="true" OnSelectedIndexChanged="drpScholar_SelectedIndexChanged" OnTextChanged="drpScholar_SelectedIndexChanged"></asp:DropDownList>
+                        </div>
+                        <div class="form-group mb-1 ml-2 mr-2">
+                            <strong><asp:Label ID="Label2" runat="server" Text="Topic: "></asp:Label></strong>
+                            <asp:DropDownList ID="drpTopic" runat="server" CssClass="form-control main-txtb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" AutoPostBack="true"></asp:DropDownList>
+                        </div>
                     </nav>
                 </div>
                 <div class=" position-static basic-div-styling p-0  w-100">
