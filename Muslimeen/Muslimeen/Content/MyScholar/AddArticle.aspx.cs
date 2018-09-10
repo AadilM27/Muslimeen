@@ -73,11 +73,12 @@ namespace Muslimeen.Content.MyScholar
                 {
                     //Populating dropdown box wiht values
                     List<uspGetTopics> tops = dBHandler.BLL_GetTopics();
-
+                    drpTopics.Items.Add("Select");
                     foreach (uspGetTopics qual in tops)
                     {
                         drpTopics.Items.Add(new ListItem(qual.TopicDescription.ToString(), qual.TopicID.ToString()));
                     }
+                    drpTopics.DataBind();
                 }
             }
             catch
@@ -366,17 +367,18 @@ namespace Muslimeen.Content.MyScholar
 
             art.ArticleTitle = Convert.ToString(txtHeading.Text);
             art.ArticleContent = Convert.ToString(txtContent.Text);
-            art.ArticleTopic = Convert.ToInt32(drpTopics.SelectedValue);
+            art.ArticleTopic = Convert.ToInt32(drpTopics.SelectedValue.ToString());
             art.ArticleID = Convert.ToInt32(hfdRej.Value);
             art.Status = Convert.ToChar("P");
             art.Active = Convert.ToChar("T");
+            art.ScholarID = Convert.ToString(Session["UserName"]);
 
             han.BLL_UpdateArticle(art);
 
-            txtHeading.Text = " ";
-            txtContent.Text = " ";
+            txtHeading.Text = string.Empty;
+            txtContent.Text = string.Empty;
 
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Added Article');</script>");
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Updated Article');</script>");
         }
     }
 }

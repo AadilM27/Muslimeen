@@ -83,6 +83,7 @@
     <Compile Include="ViewModels\uspGetAllPendingModeraters.cs" />
     <Compile Include="ViewModels\uspGetAllMosqueSuburbs.cs" />
     <Compile Include="ViewModels\uspGetAllPendingScholars.cs" />
+    <Compile Include="ViewModels\uspGetAllScholars.cs" />
     <Compile Include="ViewModels\uspGetComment.cs" />
     <Compile Include="ViewModels\uspGetEventReports.cs" />
     <Compile Include="ViewModels\uspGetForumTopics.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="ViewModels\uspGetRatings.cs" />
     <Compile Include="ViewModels\uspGetRejectedArticle.cs" />
     <Compile Include="ViewModels\uspGetScholarDetails.cs" />
+    <Compile Include="ViewModels\uspGetScholarList.cs" />
     <Compile Include="ViewModels\uspGetSelectedLearnArticle.cs" />
     <Compile Include="ViewModels\uspGetSelectedPendingArticle.cs" />
     <Compile Include="ViewModels\uspGetSelectedRejectedArticle.cs" />

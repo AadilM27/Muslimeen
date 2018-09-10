@@ -357,7 +357,7 @@ namespace Muslimeen.BLL
                         uspGetOrganizations org = new uspGetOrganizations();
 
                         org.OrganizationID = Convert.ToInt32(row["OrganizationID"]);
-                        org.Name = Convert.ToString(row["Name"]);                       
+                        org.Name = Convert.ToString(row["Name"]);
                         org.WebsiteAddress = Convert.ToString(row["WebsiteAddress"]);
                         org.Image = Convert.ToString(row["Image"]);
                         org.ContactNo = Convert.ToString(row["ContactNo"]);
@@ -862,8 +862,8 @@ namespace Muslimeen.BLL
                         ArticleID = Convert.ToInt32(row["ArticleID"]),
                         ArticleTitle = Convert.ToString(row["ArticleTitle"]),
                         ArticleContent = Convert.ToString(row["ArticleContent"]),
-                        DateCreated =Convert.ToDateTime(row["DateCreated"]),
-                        ScholarID= Convert.ToString(row["ScholarID"])
+                        DateCreated = Convert.ToDateTime(row["DateCreated"]),
+                        ScholarID = Convert.ToString(row["ScholarID"])
                     };
                 }
             }
@@ -967,7 +967,7 @@ namespace Muslimeen.BLL
             {
                 if (table.Rows.Count > 0)
                 {
-                    foreach(DataRow row in table.Rows)
+                    foreach (DataRow row in table.Rows)
                     {
                         notice = new uspGetNotifications
                         {
@@ -1462,10 +1462,15 @@ namespace Muslimeen.BLL
             return notice;
         }
 
-        public List<Article> GetLearnArticle()
+        public List<Article> GetLearnArticle(string scholarID, string topic)
         {
+            SqlParameter[] pars = new SqlParameter[]
+         {
+                new SqlParameter("@topic", topic),
+                 new SqlParameter("@scholarID", scholarID)
+         };
             List<Article> list = new List<Article>();
-            using (DataTable table = DBHelper.Select("uspGetLearnArticle", CommandType.StoredProcedure))
+            using (DataTable table = DBHelper.ParamSelect("uspGetLearnArticle", CommandType.StoredProcedure, pars))
             {
                 if (table.Rows.Count > 0)
                 {
@@ -1519,7 +1524,7 @@ namespace Muslimeen.BLL
 
         public List<CounterCalender> GetCounterCalender()
         {
-                List<CounterCalender> list = new List<CounterCalender>();
+            List<CounterCalender> list = new List<CounterCalender>();
             try
             {
                 using (DataTable table = DBHelper.Select("uspGetCounterCalender", CommandType.StoredProcedure))
@@ -1794,7 +1799,7 @@ namespace Muslimeen.BLL
             }
             return list;
         }
-        
+
         public List<uspGetPostings> GetPostings(int ForumTopicID)
         {
             List<uspGetPostings> list = new List<uspGetPostings>();
@@ -1802,7 +1807,7 @@ namespace Muslimeen.BLL
             SqlParameter[] pars = new SqlParameter[]
             {
                 new SqlParameter("@forumTopicID", ForumTopicID)
-                
+
             };
             using (DataTable table = DBHelper.ParamSelect("uspGetPostings",
                     CommandType.StoredProcedure, pars))
@@ -1812,14 +1817,14 @@ namespace Muslimeen.BLL
 
                     uspGetPostings post = new uspGetPostings();
 
-                            post.PostID = Convert.ToInt32(row["PostID"]);
-                            post.PostContent = Convert.ToString(row["PostContent"]);
-                            post.PostCreateDate = Convert.ToDateTime(row["PostCreateDate"]);
-                            post.PostCreateName = Convert.ToString(row["PostCreateName"]);
-                            post.ForumTopicID = Convert.ToInt32(row["ForumTopicID"]);
+                    post.PostID = Convert.ToInt32(row["PostID"]);
+                    post.PostContent = Convert.ToString(row["PostContent"]);
+                    post.PostCreateDate = Convert.ToDateTime(row["PostCreateDate"]);
+                    post.PostCreateName = Convert.ToString(row["PostCreateName"]);
+                    post.ForumTopicID = Convert.ToInt32(row["ForumTopicID"]);
 
 
-                        list.Add(post);
+                    list.Add(post);
                 }
             }
             return list;
@@ -1927,7 +1932,7 @@ namespace Muslimeen.BLL
                             details.MosqueID = null;
                         }
                         details.ActivationDate = Convert.ToDateTime(row["Date Registered"]);
-                        
+
                         list.Add(details);
 
                     }
@@ -1992,8 +1997,8 @@ namespace Muslimeen.BLL
             using (DataTable tbl = DBHelper.ParamSelect("uspGetComment", CommandType.StoredProcedure, pars))
             {
                 if (tbl.Rows.Count > 0)
-                {                   
-                    foreach(DataRow row in tbl.Rows)
+                {
+                    foreach (DataRow row in tbl.Rows)
                     {
                         uspGetComment pen = new uspGetComment();
 
@@ -2002,7 +2007,7 @@ namespace Muslimeen.BLL
                         pen.Name = Convert.ToString(row["Name"]);
 
                         list.Add(pen);
-                    }                    
+                    }
                 }
             }
             return list;
@@ -2020,7 +2025,7 @@ namespace Muslimeen.BLL
             }
             return DBHelper.NonQuery("uspInsertRating", CommandType.StoredProcedure, parameters.ToArray());
         }
- 
+
         public uspGetRatings GetRatings(int articleID)
         {
 
@@ -2075,7 +2080,7 @@ namespace Muslimeen.BLL
         public uspRatingCount GetRatingCount(int articleID)
         {
 
-            uspRatingCount count= null;
+            uspRatingCount count = null;
             SqlParameter[] pars = new SqlParameter[]
             {
                 new SqlParameter("@articleID",articleID),
@@ -2096,11 +2101,33 @@ namespace Muslimeen.BLL
                 }//end if
             }//end using
             return count;
+        }
+
+        //Get All Scholar for Learn Islam
+        public List<uspGetScholarList> GetScholar()
+        {
+            List<uspGetScholarList> list = new List<uspGetScholarList>();
+            using (DataTable tbl = DBHelper.Select("uspGetScholarList", CommandType.StoredProcedure))
+            {
+                if (tbl.Rows.Count > 0)
+                {
+                    foreach (DataRow row in tbl.Rows)
+                    {
+                        uspGetScholarList tops = new uspGetScholarList
+                        {
+                            ScholarID = Convert.ToString(row["MemberID"]),
+                            ScholarName = Convert.ToString(row["Name"])
+                        };
+                        list.Add(tops);
+                    }
+                }
+            }
+            return list;
         }//End GetRatingCount for specific Article
 
-        public int GetArticleRating(int articleID,string memberID)
+        public int GetArticleRating(int articleID, string memberID)
         {
-            int rate=0 ;
+            int rate = 0;
             SqlParameter[] pars = new SqlParameter[]
             {
                 new SqlParameter("@articleID", articleID),
@@ -2112,15 +2139,59 @@ namespace Muslimeen.BLL
                 {
 
                     DataRow row = table.Rows[0];
-             
+
 
                     rate = Convert.ToInt32(row["rating"]);
-                    
-                   
+
+
 
                 }
             }
             return rate;
+        }//Get All Scholars
+        public List<uspGetAllScholars> GetAllScholars()
+        {
+            List<uspGetAllScholars> scholarsList = new List<uspGetAllScholars>();
+            using (DataTable table = DBHelper.Select("uspGetAllScholars", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetAllScholars scholar = new uspGetAllScholars();
+
+                        scholar.MemberID = Convert.ToString(row["MemberID"]);
+                        scholar.MemberName = Convert.ToString(row["MemberName"]);
+                        scholar.MemberLastName = Convert.ToString(row["MemberLastName"]);
+                        scholar.MemberDOB = Convert.ToDateTime(row["MemberDOB"]).Date;
+                        scholar.Password = Convert.ToString(row["Password"]);
+                        scholar.MemberType = Convert.ToChar(row["MemberType"]);
+                        scholar.ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]);
+                        scholar.Email = Convert.ToString(row["Email"]);
+                        scholar.ContactNo = Convert.ToString(row["ContactNo"]);
+                        if (!(row["MosqueID"] is DBNull))
+                        {
+                            scholar.MosqueID = Convert.ToInt32(row["MosqueID"]);
+                        }
+                        else
+                        {
+                            scholar.MosqueID = null;
+                        }
+                        if (!(row["ActivationExpiry"] is DBNull))
+                        {
+                            scholar.ActivationExpiry = Convert.ToDateTime(row["ActivationExpiry"]).Date;
+                        }
+                        else
+                        {
+
+                        }
+                        scholar.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
+
+                        scholarsList.Add(scholar);
+                    }
+                }
+            }
+            return scholarsList;
         }
     }
 }

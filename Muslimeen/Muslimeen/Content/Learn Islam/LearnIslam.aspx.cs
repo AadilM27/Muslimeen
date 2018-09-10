@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using TypeLib.ViewModels;
 using Muslimeen.BLL;
 using TypeLib.Models;
+using System.Data.SqlClient;
 using System.Data;
 using iTextSharp.text;
 using System.IO;
@@ -27,13 +28,11 @@ namespace Muslimeen.Content.Learn_Islam
 
             DBHandler dBHandler = new DBHandler();
 
-            //Pending Link Article Source
-            repeatLink.DataSource = dBHandler.BLL_GetLearnArticle();
-            repeatLink.DataBind();
+         
 
             divNoSelected.Visible = false;
             divPendingArticles.Visible = true;
-            
+
 
             if (Session["UserName"] != null)
             {
@@ -57,6 +56,33 @@ namespace Muslimeen.Content.Learn_Islam
 
                 divUserProfile.Visible = false;
                 Session.Clear();
+            }
+
+            if (!IsPostBack)
+            {
+                //Link Article Source
+                repeatLink.DataSource = dBHandler.BLL_GetLearnArticle("Select", "Select");
+                repeatLink.DataBind();
+                List<uspGetScholarList> scholar = dBHandler.BLL_GetScholar();
+
+
+                drpScholar.Items.Add("Select");
+                foreach (uspGetScholarList sch in scholar)
+                {
+                    drpScholar.Items.Add(new System.Web.UI.WebControls.ListItem(sch.ScholarName.ToString(), sch.ScholarID.ToString()));
+
+                }
+
+                drpScholar.DataBind();
+
+                //Populating dropdown box wiht values
+                List<uspGetTopics> tops = dBHandler.BLL_GetTopics();
+                drpTopic.Items.Add("Select");
+                foreach (uspGetTopics qual in tops)
+                {
+                    drpTopic.Items.Add(new System.Web.UI.WebControls.ListItem(qual.TopicDescription.ToString(), qual.TopicID.ToString()));
+                }
+                drpTopic.DataBind();
             }
         }
 
@@ -169,19 +195,19 @@ namespace Muslimeen.Content.Learn_Islam
 
             //Repeater Data Surce for Comments
             CommentRepeater.DataSource = han.BLL_GetComment(int.Parse(art));
-            CommentRepeater.DataBind();            
+            CommentRepeater.DataBind();
         }
 
         protected void lnkAdminPrintPDF_ServerClick(object sender, EventArgs e)
         {
             try
-            {      
+            {
                 DBHandler han = new DBHandler();
                 //Title and Content will be in this table.
                 PdfPTable pdfTop = new PdfPTable(1);
                 //Author and Date will be in this table.
                 PdfPTable pdfBottom = new PdfPTable(2);
-                
+
                 pdfTop.HorizontalAlignment = 0;
                 pdfBottom.HorizontalAlignment = 0;
                 iTextSharp.text.Font fontH3 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 18, iTextSharp.text.Font.BOLD);
@@ -194,7 +220,7 @@ namespace Muslimeen.Content.Learn_Islam
                 PdfPCell pdfContent = new PdfPCell(new Phrase(lblContent.InnerText, content));
 
                 PdfPCell pdfAuthor = new PdfPCell(new Phrase("Author: " + lblScholar.InnerText, content));
-                PdfPCell pdfDate = new PdfPCell(new Phrase("Date: " + lblDate.InnerText, content));
+                PdfPCell pdfDate = new PdfPCell(new Phrase("Date Written: " + lblDate.InnerText, content));
 
                 pdfTitle.HorizontalAlignment = 1;
                 pdfTitle.VerticalAlignment = 2;
@@ -224,7 +250,7 @@ namespace Muslimeen.Content.Learn_Islam
                 table2.DefaultCell.HorizontalAlignment = 1;
                 table2.DefaultCell.VerticalAlignment = 1;
                 Paragraph date = new Paragraph("Date Printed: " + DateTime.Now.Date.ToString("dd MMM yyyy"), fontH2);
-                Paragraph extraPara = new Paragraph("Muslimeen Article", fontH2);
+                Paragraph extraPara = new Paragraph("Muslimeen Article", fontH2); //Change this to something meaningfull.
                 table2.AddCell(date);
                 table2.AddCell(extraPara);
 
@@ -238,7 +264,7 @@ namespace Muslimeen.Content.Learn_Islam
 
                 Paragraph para = new Paragraph("Muslimeen Article", fontH1);
                 table.AddCell(para);
-                    
+
 
                 pdfDocument.Open();
                 pdfDocument.AddTitle("Muslimeen Article");
@@ -292,8 +318,88 @@ namespace Muslimeen.Content.Learn_Islam
             }
             catch
             {
-                
+
             }
+        }
+
+        protected void drpScholar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                divNoSelected.Visible = false;
+                divAdminReports.Visible = false;
+                divPendingArticles.Visible = true;
+
+
+                DBHandler dBHandler = new DBHandler();
+                if (drpScholar.SelectedValue.ToString() != "Select")
+                {
+                    if (drpTopic.SelectedItem.ToString() != "Select")
+                    {
+                        repeatLink.DataSource = dBHandler.BLL_GetLearnArticle(drpScholar.SelectedValue.ToString(), drpTopic.SelectedItem.ToString());
+                        repeatLink.DataBind();
+                    }
+                    else
+                    {
+                        repeatLink.DataSource = dBHandler.BLL_GetLearnArticle(drpScholar.SelectedValue.ToString(), "Select");
+                        repeatLink.DataBind();
+                    }
+                }
+                else
+                {
+                    if (drpTopic.SelectedItem.ToString() != "Select")
+                    {
+                        repeatLink.DataSource = dBHandler.BLL_GetLearnArticle("Select", drpTopic.SelectedItem.ToString());
+                        repeatLink.DataBind();
+                    }
+                    else
+                    {
+                        repeatLink.DataSource = dBHandler.BLL_GetLearnArticle("Select", "Select");
+                        repeatLink.DataBind();
+                    }
+                }
+            }
+            catch { }
+
+        }
+
+        protected void drpTopic_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                divNoSelected.Visible = false;
+                divAdminReports.Visible = false;
+                divPendingArticles.Visible = true;
+
+                DBHandler dBHandler = new DBHandler();
+                if (drpScholar.SelectedValue.ToString() != "Select")
+                {
+                    if (drpTopic.SelectedItem.ToString() != "Select")
+                    {
+                        repeatLink.DataSource = dBHandler.BLL_GetLearnArticle(drpScholar.SelectedValue.ToString(), drpTopic.SelectedItem.ToString());
+                        repeatLink.DataBind();
+                    }
+                    else
+                    {
+                        repeatLink.DataSource = dBHandler.BLL_GetLearnArticle(drpScholar.SelectedValue.ToString(), "Select");
+                        repeatLink.DataBind();
+                    }
+                }
+                else
+                {
+                    if (drpTopic.SelectedItem.ToString() != "Select")
+                    {
+                        repeatLink.DataSource = dBHandler.BLL_GetLearnArticle("Select", drpTopic.SelectedItem.ToString());
+                        repeatLink.DataBind();
+                    }
+                    else
+                    {
+                        repeatLink.DataSource = dBHandler.BLL_GetLearnArticle("Select", "Select");
+                        repeatLink.DataBind();
+                    }
+                }
+            }
+            catch { }
         }
     }
 }
