@@ -75,6 +75,7 @@
     <Compile Include="Models\Zakaah.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\RejectedArticlesReport.cs" />
+    <Compile Include="ViewModels\uspArticleRating.cs" />
     <Compile Include="ViewModels\uspAverageRating.cs" />
     <Compile Include="ViewModels\uspGetAcceptedArticle.cs" />
     <Compile Include="ViewModels\uspGetAcceptedScholars.cs" />

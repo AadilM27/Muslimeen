@@ -2097,5 +2097,30 @@ namespace Muslimeen.BLL
             }//end using
             return count;
         }//End GetRatingCount for specific Article
+
+        public int GetArticleRating(int articleID,string memberID)
+        {
+            int rate=0 ;
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@articleID", articleID),
+                new SqlParameter("@MemberID", memberID)
+            };
+            using (DataTable table = DBHelper.ParamSelect("uspGetArticleRating", CommandType.StoredProcedure, pars))
+            {
+                if (table.Rows.Count == 1)
+                {
+
+                    DataRow row = table.Rows[0];
+             
+
+                    rate = Convert.ToInt32(row["rating"]);
+                    
+                   
+
+                }
+            }
+            return rate;
+        }
     }
 }

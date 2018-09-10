@@ -427,5 +427,9 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetRatings(articleID);
         }
+        public int BLL_GetArticleRating(int articleID,string memberID)
+        {
+            return dBAccess.GetArticleRating(articleID, memberID);
+        }
     }
 }

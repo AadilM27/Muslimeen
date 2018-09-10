@@ -323,11 +323,18 @@
                                     <div id="divRating" runat="server">
                                     <asp:ScriptManager ID="ScriptManager1" runat="server">
                                     </asp:ScriptManager>
+                                        <asp:UpdatePanel ID ="updatepnl1" runat="server">
+                                            <ContentTemplate>
                                     <ajaxToolkit:Rating ID="Rating1" AutoPostBack="true" OnClick="Rating1_Click" runat="server"
                                         StarCssClass="Star" WaitingStarCssClass="WaitingStar" EmptyStarCssClass="Star"
                                          FilledStarCssClass="FilledStar" >
                                     </ajaxToolkit:Rating>
-                                         <asp:Label ID="lblRating" runat="server"  ></asp:Label>                            
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
+
+                                      <asp:Label ID="lblRating" runat="server"  ></asp:Label>   
+                      
+                                    
                                         </div>
                                    
                                     <br />

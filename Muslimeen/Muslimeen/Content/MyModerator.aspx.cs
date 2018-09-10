@@ -31,12 +31,26 @@ namespace Muslimeen.Content.MyModerator
 
             try
             {
-                DBHandler dBHandler = new DBHandler();
                
-                divViewPendingArt.Visible = false;
+                DBHandler dBHandler = new DBHandler();
+
+                //AjaxControlToolkit.Rating rating = (AjaxControlToolkit.Rating)sender;
+
+                //if (rating != null)
+                //{
+                //    divViewPendingArt.Visible = true;
+                //    divViewArt.Visible = true;
+                //}
+                //else if(rating == null)
+                //{
+                //    divViewPendingArt.Visible = false;
+                //    divViewArt.Visible = false;
+                //}
+                
+                divViewPendingArt.Visible =false;
+                divViewArt.Visible = false;
                 divViewPendingSch.Visible = false;
                 divDisplaySch.Visible = false;
-                divViewArt.Visible = false;
                 divDisplayReports.Visible = false;
                 divSchDetails.Visible = false;
                 divSchDetailsOverlay.Visible = false;
@@ -109,6 +123,8 @@ namespace Muslimeen.Content.MyModerator
 
                 rptViewPendingArticles.DataSource = dBHandler.BLL_GetPendingArticle();
                 rptViewPendingArticles.DataBind();
+
+               
             }
             catch
             {
@@ -368,6 +384,11 @@ namespace Muslimeen.Content.MyModerator
                 lblContent.InnerText = article.ArticleContent.ToString();
                 lblDate.InnerText = Convert.ToDateTime(article.DateCreated).ToString("dd/MM/yyyy");
                 lblScholar.InnerText = article.ScholarName.ToString();
+
+                int articleid = Convert.ToInt32(hdfSchId.Value.ToString());
+            
+
+                Rating1.CurrentRating = dBHandler.BLL_GetArticleRating(articleid, Session["UserName"].ToString());
 
                 divViewPendingArt.Visible = true;
                 divDisplaySch.Visible = false;
@@ -840,61 +861,47 @@ namespace Muslimeen.Content.MyModerator
           
 
         }
-        protected void Rating1_Click(object sender,AjaxControlToolkit.RatingEventArgs e)
+        protected void Rating1_Click(object sender,RatingEventArgs e)
         {
             try
             {
-                if (!IsPostBack)
-                {
-                    divRating.Visible = true;
 
-                    divViewPendingArt.Visible = true;
-                    divDisplayArticle.Visible = true;
-                    divDisplayReports.Visible = false;
-                    divDisplaySch.Visible = false;
-                    divDisplaySalahTimetable.Visible = false;
-                    divViewPendingSch.Visible = false;
-
-                   
-                }
                 if (Session["UserName"] != null)
-                { 
-                   
+                {
+
                     DBHandler handler = new DBHandler();
-                    
+
                     uspInsertRating rating = new uspInsertRating();
-                  
+
 
                     string articleId = hdfSchId.Value.ToString();
-                   
+
 
 
                     rating.articleID = Convert.ToInt32(articleId);
                     rating.rating = Rating1.CurrentRating;
 
                     handler.BLL_InsertRating(rating);
-                   
-              
-
-                   
-                    
-                   
+                    lblRating.Text = e.ToString();
                     Response.Redirect(Request.Url.AbsoluteUri);
-
-
-                    
+                   
                 }
-                
+
+                divViewPendingArt.Visible = true;
+                divDisplayArticle.Visible = true;
+                divRating.Visible = true;
+
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
             }
-                
-            
-           
-            
+
+
+
+
         }
-      
+       
+
     }
 }

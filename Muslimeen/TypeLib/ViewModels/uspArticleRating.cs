@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace TypeLib.Models
+namespace TypeLib.ViewModels
 {
-    public class Rating
-    { 
+    public class uspArticleRating
+    {
         public string MemberID { get; set; }
         public int ArticleID { get; set; }
         public int rating { get; set; }
