@@ -38,6 +38,9 @@ namespace Muslimeen.Content.Mosque
 
                 uspGetMember = db.BLL_GetMember(Convert.ToString(Session["UserName"]));
                 Session["MosqueID"] = uspGetMember.MosqueID.ToString();
+                uspGetMosque mosque = new uspGetMosque();
+                mosque = db.GetMosque(int.Parse(Session["MosqueID"].ToString()));
+                Session["lblMosqueName"] = mosque.MosqueName.ToString();
 
                 if (uspGetMember.MemberType == 'R')
                 {
@@ -944,6 +947,7 @@ namespace Muslimeen.Content.Mosque
                 divViewActiveEvents.Visible = false;
                 divDisplayEditEvent.Visible = false;
                 divDisplayDeleteEvent.Visible = false;
+                divPrayerTimes.Visible = false;
                 txtStartDate.Text = "";
                 txtEndDate.Text = "";
             }
@@ -970,6 +974,7 @@ namespace Muslimeen.Content.Mosque
             divAddEvent.Visible = true;
             divManageTimes.Visible = false;
             divManageEvent.Visible = false;
+            divPrayerTimes.Visible = false;
             txtEventTitle.BorderColor = Color.Empty;
             txtEventDescription.BorderColor = Color.Empty;
             txtEventStartTime.BorderColor = Color.Empty;
@@ -999,6 +1004,8 @@ namespace Muslimeen.Content.Mosque
             divViewActiveEvents.Visible = false;
             divDisplayEditEvent.Visible = false;
             divDisplayDeleteEvent.Visible = false;
+            divPrayerTimes.Visible = false;
+
         }
         protected void btnNavManageTimes_Click(object sender, EventArgs e)
         {
@@ -1008,6 +1015,8 @@ namespace Muslimeen.Content.Mosque
             divManageEvent.Visible = false;
             divCalander.Visible = true;
             divTimes.Visible = false;
+            divPrayerTimes.Visible = false;
+
         }
         protected void btnEvent_Click(object sender, EventArgs e)
         {
@@ -1074,6 +1083,8 @@ namespace Muslimeen.Content.Mosque
             divViewActiveEvents.Visible = false;
             divDisplayEditEvent.Visible = false;
             divDisplayDeleteEvent.Visible = false;
+            divPrayerTimes.Visible = false;
+
         }
 
         protected void btnNavSalahTimes_Click(object sender, EventArgs e)
@@ -1199,8 +1210,7 @@ namespace Muslimeen.Content.Mosque
         }
         protected void PDF_ServerClick(object sender, EventArgs e)
         {
-            try
-            {
+           
                 for (int i = 0; i < grdReports.Rows.Count; i++)
                 {
                     DateTime DOB = Convert.ToDateTime(grdReports.Rows[i].Cells[0].Text);
@@ -1292,9 +1302,7 @@ namespace Muslimeen.Content.Mosque
                 Response.End();
 
 
-            }
-            catch { }
-
+            
 
         }
 
