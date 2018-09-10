@@ -51,17 +51,6 @@ namespace Muslimeen.Content.Forum
             }
             
         }
-        public string AdminVisible()
-        {
-            if (Session["admin"] == "yes")
-            {
-                return " Visible=true";
-            }
-            else
-            {
-                return "";
-            }
-        }
         public void DoAddPost(object sender,EventArgs e)
         {
             try
