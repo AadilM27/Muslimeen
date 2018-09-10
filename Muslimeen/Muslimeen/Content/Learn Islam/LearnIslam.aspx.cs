@@ -28,13 +28,11 @@ namespace Muslimeen.Content.Learn_Islam
 
             DBHandler dBHandler = new DBHandler();
 
-            //Link Article Source
-            repeatLink.DataSource = dBHandler.BLL_GetLearnArticle();
-            repeatLink.DataBind();
+         
 
             divNoSelected.Visible = false;
             divPendingArticles.Visible = true;
-            
+
 
             if (Session["UserName"] != null)
             {
@@ -62,13 +60,19 @@ namespace Muslimeen.Content.Learn_Islam
 
             if (!IsPostBack)
             {
+                //Link Article Source
+                repeatLink.DataSource = dBHandler.BLL_GetLearnArticle("Select", "Select");
+                repeatLink.DataBind();
                 List<uspGetScholarList> scholar = dBHandler.BLL_GetScholar();
+
 
                 drpScholar.Items.Add("Select");
                 foreach (uspGetScholarList sch in scholar)
                 {
-                    drpScholar.Items.Add(new System.Web.UI.WebControls.ListItem(sch.ScholarID.ToString()));
+                    drpScholar.Items.Add(new System.Web.UI.WebControls.ListItem(sch.ScholarName.ToString(), sch.ScholarID.ToString()));
+
                 }
+
                 drpScholar.DataBind();
 
                 //Populating dropdown box wiht values
@@ -191,19 +195,19 @@ namespace Muslimeen.Content.Learn_Islam
 
             //Repeater Data Surce for Comments
             CommentRepeater.DataSource = han.BLL_GetComment(int.Parse(art));
-            CommentRepeater.DataBind();            
+            CommentRepeater.DataBind();
         }
 
         protected void lnkAdminPrintPDF_ServerClick(object sender, EventArgs e)
         {
             try
-            {      
+            {
                 DBHandler han = new DBHandler();
                 //Title and Content will be in this table.
                 PdfPTable pdfTop = new PdfPTable(1);
                 //Author and Date will be in this table.
                 PdfPTable pdfBottom = new PdfPTable(2);
-                
+
                 pdfTop.HorizontalAlignment = 0;
                 pdfBottom.HorizontalAlignment = 0;
                 iTextSharp.text.Font fontH3 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 18, iTextSharp.text.Font.BOLD);
@@ -260,7 +264,7 @@ namespace Muslimeen.Content.Learn_Islam
 
                 Paragraph para = new Paragraph("Muslimeen Article", fontH1);
                 table.AddCell(para);
-                    
+
 
                 pdfDocument.Open();
                 pdfDocument.AddTitle("Muslimeen Article");
@@ -314,18 +318,88 @@ namespace Muslimeen.Content.Learn_Islam
             }
             catch
             {
-                
+
             }
         }
 
         protected void drpScholar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            divNoSelected.Visible = false;
-            divAdminReports.Visible = false;
-            divPendingArticles.Visible = false;
-            
-            DBHandler han = new DBHandler();
-            
+            try
+            {
+                divNoSelected.Visible = false;
+                divAdminReports.Visible = false;
+                divPendingArticles.Visible = true;
+
+
+                DBHandler dBHandler = new DBHandler();
+                if (drpScholar.SelectedValue.ToString() != "Select")
+                {
+                    if (drpTopic.SelectedItem.ToString() != "Select")
+                    {
+                        repeatLink.DataSource = dBHandler.BLL_GetLearnArticle(drpScholar.SelectedValue.ToString(), drpTopic.SelectedItem.ToString());
+                        repeatLink.DataBind();
+                    }
+                    else
+                    {
+                        repeatLink.DataSource = dBHandler.BLL_GetLearnArticle(drpScholar.SelectedValue.ToString(), "Select");
+                        repeatLink.DataBind();
+                    }
+                }
+                else
+                {
+                    if (drpTopic.SelectedItem.ToString() != "Select")
+                    {
+                        repeatLink.DataSource = dBHandler.BLL_GetLearnArticle("Select", drpTopic.SelectedItem.ToString());
+                        repeatLink.DataBind();
+                    }
+                    else
+                    {
+                        repeatLink.DataSource = dBHandler.BLL_GetLearnArticle("Select", "Select");
+                        repeatLink.DataBind();
+                    }
+                }
+            }
+            catch { }
+
+        }
+
+        protected void drpTopic_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                divNoSelected.Visible = false;
+                divAdminReports.Visible = false;
+                divPendingArticles.Visible = true;
+
+                DBHandler dBHandler = new DBHandler();
+                if (drpScholar.SelectedValue.ToString() != "Select")
+                {
+                    if (drpTopic.SelectedItem.ToString() != "Select")
+                    {
+                        repeatLink.DataSource = dBHandler.BLL_GetLearnArticle(drpScholar.SelectedValue.ToString(), drpTopic.SelectedItem.ToString());
+                        repeatLink.DataBind();
+                    }
+                    else
+                    {
+                        repeatLink.DataSource = dBHandler.BLL_GetLearnArticle(drpScholar.SelectedValue.ToString(), "Select");
+                        repeatLink.DataBind();
+                    }
+                }
+                else
+                {
+                    if (drpTopic.SelectedItem.ToString() != "Select")
+                    {
+                        repeatLink.DataSource = dBHandler.BLL_GetLearnArticle("Select", drpTopic.SelectedItem.ToString());
+                        repeatLink.DataBind();
+                    }
+                    else
+                    {
+                        repeatLink.DataSource = dBHandler.BLL_GetLearnArticle("Select", "Select");
+                        repeatLink.DataBind();
+                    }
+                }
+            }
+            catch { }
         }
     }
 }

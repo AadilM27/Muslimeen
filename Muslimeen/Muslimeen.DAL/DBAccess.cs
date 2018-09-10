@@ -1462,10 +1462,15 @@ namespace Muslimeen.BLL
             return notice;
         }
 
-        public List<Article> GetLearnArticle()
+        public List<Article> GetLearnArticle(string scholarID,string topic)
         {
+            SqlParameter[] pars = new SqlParameter[]
+         {
+                new SqlParameter("@topic", topic),
+                 new SqlParameter("@scholarID", scholarID)
+         };
             List<Article> list = new List<Article>();
-            using (DataTable table = DBHelper.Select("uspGetLearnArticle", CommandType.StoredProcedure))
+            using (DataTable table = DBHelper.ParamSelect("uspGetLearnArticle", CommandType.StoredProcedure,pars))
             {
                 if (table.Rows.Count > 0)
                 {
@@ -2109,8 +2114,9 @@ namespace Muslimeen.BLL
                     foreach (DataRow row in tbl.Rows)
                     {
                         uspGetScholarList tops = new uspGetScholarList
-                        {                            
-                            ScholarID = Convert.ToString(row["Name"])
+                        {              
+                            ScholarID = Convert.ToString(row["MemberID"]),
+                            ScholarName = Convert.ToString(row["Name"])
                         };
                         list.Add(tops);
                     }

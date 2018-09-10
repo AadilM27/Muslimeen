@@ -9,5 +9,6 @@ namespace TypeLib.ViewModels
     public class uspGetScholarList
     {
         public string ScholarID { get; set; }
+        public string ScholarName { get; set; }
     }
 }

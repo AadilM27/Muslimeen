@@ -537,7 +537,7 @@ namespace Muslimeen.Content.Mosque
             lblEventDescription.InnerText = events.EventDescription;
             lblEventStartTime.InnerText = events.EventStartTime;
             lblEventEndTime.InnerText = events.EventEndTime;
-            lblEventDate.InnerText = events.EventDate.ToString();
+            lblEventDate.InnerText = events.EventDate.ToString().Substring(0,10);
             lblSpeaker.InnerText = events.Speaker;
 
         }
