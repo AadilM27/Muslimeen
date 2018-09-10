@@ -2096,7 +2096,6 @@ namespace Muslimeen.BLL
                 }//end if
             }//end using
             return count;
-<<<<<<< HEAD
         }
 
         //Get All Scholar for Learn Islam
@@ -2118,9 +2117,6 @@ namespace Muslimeen.BLL
                 }
             }
             return list;
-        }
-=======
         }//End GetRatingCount for specific Article
->>>>>>> 6556d637ad469666f351f973dd815cbd774a04aa
     }
 }
