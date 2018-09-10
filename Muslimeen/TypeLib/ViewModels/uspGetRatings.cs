@@ -10,5 +10,6 @@ namespace TypeLib.ViewModels
     {
         public int AverageRating { get; set; }
         public int RatingCount { get; set; }
+        public int articleID { get; set; }
     }
 }

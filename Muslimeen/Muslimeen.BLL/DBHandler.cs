@@ -415,17 +415,17 @@ namespace Muslimeen.BLL
         {
             return dBAccess.InsertRating(rating);
         }
-        public uspAverageRating BLL_AverageRating()
+        public uspAverageRating BLL_AverageRating(int articleID)
         {
-            return dBAccess.GetAverageRating();
+            return dBAccess.GetAverageRating(articleID);
         }
-        public uspRatingCount BLL_RatingCount()
+        public uspRatingCount BLL_RatingCount(int articleID)
         {
-            return dBAccess.GetRatingCount();
+            return dBAccess.GetRatingCount(articleID);
         }
-        public uspGetRatings BLL_GetRatings()
+        public uspGetRatings BLL_GetRatings(int articleID)
         {
-            return dBAccess.GetRatings();
+            return dBAccess.GetRatings(articleID);
         }
         //Get All Scholar Learn Islam
         public List<uspGetScholarList> BLL_GetScholar()

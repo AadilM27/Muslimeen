@@ -11,5 +11,6 @@ namespace TypeLib.Models
     { 
         public int id { get; set; }
         public int rating { get; set; }
+        public int ArticleID { get; set; }
     }
 }

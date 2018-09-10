@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <title>My Muslimeen</title>
-    <link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico" />
+    <link rel="icon" href="../Login/LogIn_Bootstrap/muslimeen.ico" />
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="MyMember/css/MyMember.css" rel="stylesheet" />
     <link href="AboutUs/AboutUs.css" rel="stylesheet" />
@@ -42,14 +42,14 @@
                 </div>
                  <div class="row" runat="server" id="divUserProfile" >
                         <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
-                            <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="../Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
-                            </asp:HyperLink><asp:Image style="height:15px; width:15px;" runat="server" id="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="../Content/Default/icons/EditProfile.png"/>
+                            <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
+                            </asp:HyperLink><asp:Image style="height:15px; width:15px;" runat="server" id="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="Default/icons/EditProfile.png"/>
                         </div>
                  </div>
             </nav>
             <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50); z-index:1000">
                 <div class=" text-center">
-                    <asp:Image runat="server" CssClass="mb-0 ml-0" src="/Login/LogIn_Bootstrap\logo.png" Width="185" Height="110" />
+                    <asp:Image runat="server" CssClass="mb-0 ml-0" src="../Login/LogIn_Bootstrap/logo.png" Width="185" Height="110" />
                 </div>
                 <div class="ml-2 navbar-nav-scroll align-self-end justify-content-start">
                     <ul class="navbar-nav row">
@@ -89,8 +89,8 @@
                         <li class="NavDevider">|</li>
                          <!--deviders-->
                         <li class="nav-item navbarText navbaritems">
-                        <asp:LinkButton ID="LnkHelp" runat="server"  OnClick="btnHelp_Click" CssClass="nav-item navText btn-link btn" ToolTip="How this page works" ><%--CssClass="nav-item navText btn-link btn"--%>
-                         Help    <asp:Image runat="server" ID="ImgHelp" ImageUrl="../Content/MyMember/icons/helpIcon.png " style="height: 1.1em; width:1.1em;" /></asp:LinkButton>   
+                        <asp:LinkButton ID="LnkHelp" runat="server"  OnClick="btnHelp_Click" CssClass="nav-item navText btn-link btn" ToolTip="How this page works" >
+                         Help<asp:Image runat="server" ID="ImgHelp" ImageUrl="MyMember/icons/helpIcon.png" style="height: 1.1em; width:1.1em;" /></asp:LinkButton>   
                         </li>
                     </ul>
                 </div>
@@ -316,7 +316,7 @@
                                 <div class="w-100 h-100 container text-center">
                                     <div class=" container h-25 mb-3"></div>
                                     <h6 class="card-title h-50 mt-5 pt-5">
-                                        <asp:Image runat="server" class="figure-img mr-2" ImageUrl="../Content/MyMember/icons/outline_error_outline_black_18dp.png" /><asp:Label ID="lblEventError" runat="server">Please select a start and end date.</asp:Label></h6>
+                                        <asp:Image runat="server" class="figure-img mr-2" ImageUrl="MyMember/icons/outline_error_outline_black_18dp.png" /><asp:Label ID="lblEventError" runat="server">Please select a start and end date.</asp:Label></h6>
                                     <div class=" container h-25"></div>
                                 </div>
                             </div>
@@ -429,7 +429,6 @@
                                 </div>
                             </div>
 
-                    
                         <div runat="server" id="divDisplayArt" class=" mb-auto position-static dash-content mw-100 align-self-center">
                             
                             <asp:HiddenField runat="server" ID="hdfArticleID" Value="" />
@@ -447,15 +446,41 @@
                                         <label class="m-0" runat="server" id="lblArticleContent"></label>
                                     </div>
                                 </div>
-                                <div class="row mb-1 position-static text-right">
-                                    <div class="col position-static">
-                                        -
+                               <div class="row mb-1 position-static">
+                                  <%--  <div class="col position-static font-italic text-left">
+                                        Author:
+                                        <label class="m-0 mt-2" runat="server" id="lblScholar"></label>
+                                    </div>--%>
+                                    <div class="row mb-1 position-static text-right">
+                                        <div class="col position-static font-italic">
+                                            Date:
                                         <label class="m-0 font-italic mt-2" runat="server" id="lblDate"></label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="">
                                     <a runat="server" id="lnkBack" onserverclick="lnkBack_ServerClick" ><small> << Back </small></a>
                                 </div>
+                                <div runat="server" id="divAdminReports" class="col-12 col-xl-12 p-0 mr-1">                                
+                                <div class="m-0 p-0 pt-2 pl-2">
+                                    <a runat="server" id="lnkAdminPrintPDF" onserverclick="lnkAdminPrintPDF_ServerClick" style="width:15px; height:15px"><img src="../Content/MyMember/icons/Adobe_PDF.png" /><small>Download as PDF</small></a>
+                                </div>
+                                  <%--  PDF BUTTON--%>
+                                <div>
+                                    <asp:GridView CssClass="flex-grow-1" ID="grdAdminReports"  RowStyle-Wrap="true" runat="server" style="font-size:smaller;" ForeColor="#333333" >
+                                        <AlternatingRowStyle BackColor="White"  />
+                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" Font-Size="12" HorizontalAlign="Center" />
+                                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                        <RowStyle BackColor="#EFF3FB"  Wrap="true"  HorizontalAlign="Center"/>
+                                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                    </asp:GridView>
+                                </div>
+                            </div>
+                            <br />
                             </div>
                         </div>
                     </div>
@@ -472,13 +497,13 @@
                     <h6>Content</h6>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="footerr-text" href="Mosque.aspx">Mosques</a>
+                            <a class="footerr-text" href="Mosque/ListMosque.aspx">Mosques</a>
                         </li>
                         <li class="nav-item">
-                            <a class="footerr-text" href="#">Scholars</a>
+                            <a class="footerr-text" href="ListScholars.aspx">Scholars</a>
                         </li>
                         <li class="nav-item">
-                            <a class="footerr-text" href="#">Learn Islam</a>
+                            <a class="footerr-text" href="Learn Islam/LearnIslam.aspx">Learn Islam</a>
                         </li>
                         <li class="nav-item">
                             <a class="footerr-text" href="ZakaahWebForms/Zakaah.aspx">Zakaah</a>

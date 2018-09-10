@@ -6,17 +6,17 @@
 <head runat="server">
         <meta charset="utf-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes"/>
 	
-		<link rel="icon" href="/Login/LogIn_Bootstrap/muslimeen.ico"/>
+		<link rel="icon" href="../Login/LogIn_Bootstrap/muslimeen.ico"/>
 	
-		<link href="/Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 		
 		<title> Muslimeen - Edit Profile</title>
 
-        <script src="/Register/Register.js" type="text/javascript"></script>
+        <script src="../Register/Register.js" type="text/javascript"></script>
 
-		<link href="..\Content\ProfileEditer\css\ProfileEditer.css" rel="stylesheet"/>
+		<link href="ProfileEditer/css/ProfileEditer.css" rel="stylesheet"/>
 </head>
 <body class="text-center">
     <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>

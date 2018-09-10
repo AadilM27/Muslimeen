@@ -93,7 +93,7 @@ namespace Muslimeen.Content.Learn_Islam
 
                 Session.Clear();
                 Session.Abandon();
-                Response.Redirect("../Content/Default.aspx");
+                Response.Redirect("../Default.aspx");
                 btnLogin.Text = "Login";
                 btnRegister.Visible = true;
             }
@@ -106,12 +106,12 @@ namespace Muslimeen.Content.Learn_Islam
 
         protected void btnHome_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/Default.aspx");
+            Response.Redirect("../Default.aspx");
         }
 
         protected void btnMosques_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/Mosque/ListMosque.aspx");
+            Response.Redirect("../Mosque/ListMosque.aspx");
         }
 
         protected void btnScholars_Click(object sender, EventArgs e)
@@ -121,21 +121,21 @@ namespace Muslimeen.Content.Learn_Islam
 
         protected void btnLearnIslam_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/Learn Islam/LearnIslam.aspx");
+            Response.Redirect("../Learn Islam/LearnIslam.aspx");
         }
 
         protected void btnZakaah_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/ZakaahWebForms/Zakaah.aspx");
+            Response.Redirect("../ZakaahWebForms/Zakaah.aspx");
         }
 
         protected void btnAboutUs_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/AboutUs.aspx");
+            Response.Redirect("../AboutUs.aspx");
         }
         protected void btnHelp_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/HelpCenter.aspx");
+            Response.Redirect("../HelpCenter.aspx");
         }
         protected void btnMyMuslimeen_Click(object sender, EventArgs e)
         {
@@ -147,19 +147,23 @@ namespace Muslimeen.Content.Learn_Islam
 
             if (uspGetMember.MemberType == 'A')
             {
-                Response.Redirect("../Content/MyAdmin.aspx");
+                Response.Redirect("../MyAdmin.aspx");
             }
             else if (uspGetMember.MemberType == 'M')
             {
-                Response.Redirect("../Content/MyMember.aspx");
+                Response.Redirect("../MyMember.aspx");
             }
             else if (uspGetMember.MemberType == 'O')
             {
-                Response.Redirect("../Content/MyModerator.aspx");
+                Response.Redirect("../MyModerator.aspx");
             }
             else if (uspGetMember.MemberType == 'S')
             {
-                Response.Redirect("../Content/MyScholar/AddArticle.aspx");
+                Response.Redirect("../AddArticle.aspx");
+            }
+            else if (uspGetMember.MemberType == 'R')
+            {
+                Response.Redirect("../Mosque/MosqueRep.aspx");
             }
 
 
