@@ -499,6 +499,15 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEventDetails;
         
         /// <summary>
+        /// lblEventDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventDescription;
+        
+        /// <summary>
         /// lblSpeaker control.
         /// </summary>
         /// <remarks>
@@ -533,15 +542,6 @@ namespace Muslimeen.Content.Mosque {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventEndTime;
-        
-        /// <summary>
-        /// lblEventDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventDescription;
         
         /// <summary>
         /// divEventOverlay control.
