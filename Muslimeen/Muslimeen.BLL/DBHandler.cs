@@ -427,5 +427,10 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetRatings();
         }
+        //Get All Scholar Learn Islam
+        public List<uspGetScholarList> BLL_GetScholar()
+        {
+            return dBAccess.GetScholar();
+        }
     }
 }

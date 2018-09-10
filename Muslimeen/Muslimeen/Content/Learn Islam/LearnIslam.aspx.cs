@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using TypeLib.ViewModels;
 using Muslimeen.BLL;
 using TypeLib.Models;
+using System.Data.SqlClient;
 using System.Data;
 using iTextSharp.text;
 using System.IO;
@@ -27,7 +28,7 @@ namespace Muslimeen.Content.Learn_Islam
 
             DBHandler dBHandler = new DBHandler();
 
-            //Pending Link Article Source
+            //Link Article Source
             repeatLink.DataSource = dBHandler.BLL_GetLearnArticle();
             repeatLink.DataBind();
 
@@ -57,6 +58,27 @@ namespace Muslimeen.Content.Learn_Islam
 
                 divUserProfile.Visible = false;
                 Session.Clear();
+            }
+
+            if (!IsPostBack)
+            {
+                List<uspGetScholarList> scholar = dBHandler.BLL_GetScholar();
+
+                drpScholar.Items.Add("Select");
+                foreach (uspGetScholarList sch in scholar)
+                {
+                    drpScholar.Items.Add(new System.Web.UI.WebControls.ListItem(sch.ScholarID.ToString()));
+                }
+                drpScholar.DataBind();
+
+                //Populating dropdown box wiht values
+                List<uspGetTopics> tops = dBHandler.BLL_GetTopics();
+                drpTopic.Items.Add("Select");
+                foreach (uspGetTopics qual in tops)
+                {
+                    drpTopic.Items.Add(new System.Web.UI.WebControls.ListItem(qual.TopicDescription.ToString(), qual.TopicID.ToString()));
+                }
+                drpTopic.DataBind();
             }
         }
 
@@ -190,7 +212,7 @@ namespace Muslimeen.Content.Learn_Islam
                 PdfPCell pdfContent = new PdfPCell(new Phrase(lblContent.InnerText, content));
 
                 PdfPCell pdfAuthor = new PdfPCell(new Phrase("Author: " + lblScholar.InnerText, content));
-                PdfPCell pdfDate = new PdfPCell(new Phrase("Date: " + lblDate.InnerText, content));
+                PdfPCell pdfDate = new PdfPCell(new Phrase("Date Written: " + lblDate.InnerText, content));
 
                 pdfTitle.HorizontalAlignment = 1;
                 pdfTitle.VerticalAlignment = 2;
@@ -220,7 +242,7 @@ namespace Muslimeen.Content.Learn_Islam
                 table2.DefaultCell.HorizontalAlignment = 1;
                 table2.DefaultCell.VerticalAlignment = 1;
                 Paragraph date = new Paragraph("Date Printed: " + DateTime.Now.Date.ToString("dd MMM yyyy"), fontH2);
-                Paragraph extraPara = new Paragraph("Muslimeen Article", fontH2);
+                Paragraph extraPara = new Paragraph("Muslimeen Article", fontH2); //Change this to something meaningfull.
                 table2.AddCell(date);
                 table2.AddCell(extraPara);
 
@@ -290,6 +312,16 @@ namespace Muslimeen.Content.Learn_Islam
             {
                 
             }
+        }
+
+        protected void drpScholar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            divNoSelected.Visible = false;
+            divAdminReports.Visible = false;
+            divPendingArticles.Visible = false;
+            
+            DBHandler han = new DBHandler();
+            
         }
     }
 }
