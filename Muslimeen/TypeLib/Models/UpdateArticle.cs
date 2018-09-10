@@ -14,5 +14,6 @@ namespace TypeLib.Models
         public int ArticleTopic { get; set; }
         public char Status { get; set; }
         public char Active { get; set; }
+        public string ScholarID { get; set; }
     }
 }

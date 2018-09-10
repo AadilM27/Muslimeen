@@ -162,6 +162,8 @@
     <Content Include="Content\ProfileEditer.aspx" />
     <Content Include="Content\ProfileEditer\css\ProfileEditer.css" />
     <Content Include="Content\ProfileEditer\js\ProfileEditer.js" />
+    <Content Include="Content\Scholar.aspx" />
+    <Content Include="Content\Scholar\css\Scholar.css" />
     <Content Include="Content\ZakaahWebForms\Zakaah.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahCalculator.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahGallery.aspx" />
@@ -1762,6 +1764,13 @@
     </Compile>
     <Compile Include="Content\PrivacyAndSafety.aspx.designer.cs">
       <DependentUpon>PrivacyAndSafety.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\Scholar.aspx.cs">
+      <DependentUpon>Scholar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\Scholar.aspx.designer.cs">
+      <DependentUpon>Scholar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\ZakaahWebForms\Zakaah.aspx.cs">
       <DependentUpon>Zakaah.aspx</DependentUpon>
