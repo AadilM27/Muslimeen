@@ -184,6 +184,15 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Image ImgHelp;
         
         /// <summary>
+        /// btnMosqueEvents control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMosqueEvents;
+        
+        /// <summary>
         /// btnTodaysPrayerTime control.
         /// </summary>
         /// <remarks>
@@ -1849,6 +1858,15 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divEventDetails;
         
         /// <summary>
+        /// lblEventDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventDescription;
+        
+        /// <summary>
         /// lblSpeaker control.
         /// </summary>
         /// <remarks>
@@ -1883,15 +1901,6 @@ namespace Muslimeen.Content {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventEndTime;
-        
-        /// <summary>
-        /// lblEventDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblEventDescription;
         
         /// <summary>
         /// divEventOverlay control.
