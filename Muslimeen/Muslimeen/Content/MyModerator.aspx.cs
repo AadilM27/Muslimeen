@@ -874,17 +874,31 @@ namespace Muslimeen.Content.MyModerator
                     uspInsertRating rating = new uspInsertRating();
 
 
-                    string articleId = hdfSchId.Value.ToString();
+                    int articleId =Convert.ToInt32(hdfSchId.Value.ToString());//gets article id  from repeater when clicked on and saves n into hidden field
 
+                    Rating1.MaxRating = 5;
+                    
+                    if (Rating1.CurrentRating.ToString() == null)//when user hasnt rated an article in goes into method to execute an insert to allow that user to rate an article.
+                    {
+                        rating.MemberID = Session["UserName"].ToString();                
+                        rating.articleID = Convert.ToInt32(articleId);
+                        rating.rating = Rating1.CurrentRating;
 
+                        handler.BLL_InsertRating(rating);
+                        Response.Redirect(Request.Url.AbsoluteUri);
+                    }
+                    else if (Rating1.CurrentRating > 0)
+                    {
+                        uspUpdateRating upRate = new uspUpdateRating();
+                        upRate.ArticleID = Convert.ToInt32(hdfSchId.Value.ToString());
+                        upRate.MemberID = Session["UserName"].ToString();
+                        upRate.rating = Rating1.CurrentRating;
 
-                    rating.articleID = Convert.ToInt32(articleId);
-                    rating.rating = Rating1.CurrentRating;
+                        handler.BLL_UpdateRating(upRate);                       
+                        Response.Redirect(Request.Url.AbsoluteUri);
+                    }
+                    
 
-                    handler.BLL_InsertRating(rating);
-                    lblRating.Text = e.ToString();
-                    Response.Redirect(Request.Url.AbsoluteUri);
-                   
                 }
 
                 divViewPendingArt.Visible = true;

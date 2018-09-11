@@ -117,6 +117,7 @@
     <Compile Include="ViewModels\uspRatingCount.cs" />
     <Compile Include="ViewModels\uspReportGetAllMembers.cs" />
     <Compile Include="ViewModels\uspReportGetAllMosques.cs" />
+    <Compile Include="ViewModels\uspUpdateRating.cs" />
     <Compile Include="ViewModels\uspViewLatestArticles.cs" />
   </ItemGroup>
   <ItemGroup />

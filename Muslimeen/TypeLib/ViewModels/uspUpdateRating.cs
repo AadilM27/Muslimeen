@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace TypeLib.ViewModels
 {
-    public class uspInsertRating
+    public class uspUpdateRating
     {
         public string MemberID { get; set; }
-        public int articleID { get; set; }
+        public int ArticleID { get; set; }
         public int rating { get; set; }
     }
 }

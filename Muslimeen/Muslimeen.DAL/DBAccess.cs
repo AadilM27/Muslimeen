@@ -2025,33 +2025,21 @@ namespace Muslimeen.BLL
             }
             return DBHelper.NonQuery("uspInsertRating", CommandType.StoredProcedure, parameters.ToArray());
         }
-
-        public uspGetRatings GetRatings(int articleID)
+        public bool UpdateRating(uspUpdateRating rating)
         {
+            List<SqlParameter> parameters = new List<SqlParameter>();
 
-            uspGetRatings rating = null;
-            SqlParameter[] pars = new SqlParameter[]
+            foreach (var prop in rating.GetType().GetProperties())
             {
-                new SqlParameter("@articleID",articleID),
-
-            };
-            using (DataTable table = DBHelper.ParamSelect("uspGetRatings",
-                    CommandType.StoredProcedure, pars))
-            {
-                if (table.Rows.Count == 1)
+                if (prop.GetValue(rating) != null)
                 {
-                    DataRow row = table.Rows[0];
-                    rating = new uspGetRatings
-                    {
-                        AverageRating = Convert.ToInt32(row["AverageRating"].ToString()),
-                        RatingCount = Convert.ToInt32(row["RatingCount"].ToString()),
-                    };
+                    parameters.Add(new SqlParameter("@" + prop.Name.ToString(), prop.GetValue(rating)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdateRating", CommandType.StoredProcedure, parameters.ToArray());
+        }
 
 
-                }//end if
-            }//end using
-            return rating;
-        }//End GetRatings for specific Article
         public uspAverageRating GetAverageRating(int articleID)
         {
 

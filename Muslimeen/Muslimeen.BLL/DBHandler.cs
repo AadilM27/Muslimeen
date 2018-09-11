@@ -423,10 +423,6 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetRatingCount(articleID);
         }
-        public uspGetRatings BLL_GetRatings(int articleID)
-        {
-            return dBAccess.GetRatings(articleID);
-        }
         public int BLL_GetArticleRating(int articleID, string memberID)
         {
             return dBAccess.GetArticleRating(articleID, memberID);
@@ -439,6 +435,10 @@ namespace Muslimeen.BLL
         public List<uspGetAllScholars> BLL_GetAllScholars()
         {
             return dBAccess.GetAllScholars();
+        }
+        public bool BLL_UpdateRating(uspUpdateRating rating)
+        {
+            return dBAccess.UpdateRating(rating);
         }
     }
 }
