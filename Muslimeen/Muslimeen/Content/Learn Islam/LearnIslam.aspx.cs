@@ -116,7 +116,7 @@ namespace Muslimeen.Content.Learn_Islam
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Register/Register.aspx");
+            Response.Redirect("../../Register/Register.aspx");
         }
 
         protected void btnHome_Click(object sender, EventArgs e)
