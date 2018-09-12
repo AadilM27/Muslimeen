@@ -15,6 +15,26 @@
     <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/learnIslam.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .Star {
+            background-image: url(../Images/Star.gif);
+            height: 17px;
+            width: 17px;
+        }
+
+        .WaitingStar {
+            background-image: url(../Images/WaitingStar.gif);
+            height: 17px;
+            width: 17px;
+        }
+
+        .FilledStar {
+            background-image: url(../Images/FilledStar.gif);
+            height: 17px;
+            width: 17px;
+        }
+        </style>
     
 </head>
 <body style="background-color:white">
@@ -177,14 +197,26 @@
                                             Date:
                                         <label class="m-0 font-italic mt-2 mr-2" runat="server" id="lblDate"></label>
                                         </div>
+                                        <!--article rating-->                                     
                                     </div>
-                                </div>
+                                </div>                              
                             </div>
-
                             <!--PDF Button-->
                             <div runat="server" id="divAdminReports" class="col-12 col-xl-12 p-0 mr-1">                                
                                 <div class="m-0 p-0 pt-2 pl-2">
                                     <a runat="server" id="lnkAdminPrintPDF" onserverclick="lnkAdminPrintPDF_ServerClick"><img src="../MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
+                                     <div id="divRating" runat="server" style="position:static;padding-left:2em;padding-right:2em;padding-top:0,1em;float:left">
+                                     Rating:&nbsp<asp:ScriptManager ID="ScriptManager1" runat="server">
+                                    </asp:ScriptManager>
+                                        <asp:UpdatePanel ID ="updatepnl1" runat="server">
+                                            <ContentTemplate>
+                                   <ajaxToolkit:Rating ID="Rating1" AutoPostBack="true" OnClick="Rating1_Click" runat="server"
+                                        StarCssClass="Star" WaitingStarCssClass="WaitingStar" EmptyStarCssClass="Star"
+                                         FilledStarCssClass="FilledStar" >
+                                    </ajaxToolkit:Rating>
+                                                 </ContentTemplate>
+                                            </asp:UpdatePanel>            
+                                        </div>
                                 </div>
                                 <div>
                                     <asp:GridView CssClass="flex-grow-1" ID="grdAdminReports"  RowStyle-Wrap="true" runat="server" style="font-size:smaller;" ForeColor="#333333" >
@@ -215,12 +247,12 @@
                                 <h4 style="text-decoration:underline;">Comments:</h4>
                                 <br />
                                 <!--Comments Repeater-->
-                                <div class="position-static container pre-scrollable" style="overflow-y:scroll;max-height:250px;">
+                                <div class="position-static container pre-scrollable" style="overflow-y:scroll;max-height:230px;">
                                     <asp:Repeater ID="CommentRepeater" runat="server">
                                         <ItemTemplate>
                                             <div class="row" >
                                                 <div class="col">
-                                                    <strong><asp:Label ID="lblCommentName" runat="server" Text='<%#Eval("Name") %>'></asp:Label></strong>
+                                                    <strong><asp:Label ID="lblCommentName" ForeColor="#256297" runat="server" Text='<%#Eval("Name") %>'></asp:Label></strong>
                                                 </div>
                                             </div>
                                             <div class="row" >

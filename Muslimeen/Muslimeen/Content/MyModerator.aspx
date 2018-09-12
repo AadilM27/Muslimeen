@@ -15,26 +15,6 @@
     <link href="MyModerator/css/MyModerator.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 
-        <style type="text/css">
-        .Star {
-            background-image: url(images/Star.gif);
-            height: 17px;
-            width: 17px;
-        }
-
-        .WaitingStar {
-            background-image: url(images/WaitingStar.gif);
-            height: 17px;
-            width: 17px;
-        }
-
-        .FilledStar {
-            background-image: url(images/FilledStar.gif);
-            height: 17px;
-            width: 17px;
-        }
-        </style>
-
 </head>
     <body>
         <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
@@ -320,27 +300,8 @@
                                     <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" ID="btnAccept" Text="Accept Article" OnClick="btnAccept_Click" />
                                     <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" ID="Button2" Text="Reject Article" OnClick="Button2_Click" />
                                     <br />
-                                    <div id="divRating" runat="server">
-                                    <asp:ScriptManager ID="ScriptManager1" runat="server">
-                                    </asp:ScriptManager>
-                                        <asp:UpdatePanel ID ="updatepnl1" runat="server">
-                                            <ContentTemplate>
-                                    <ajaxToolkit:Rating ID="Rating1" AutoPostBack="true" OnClick="Rating1_Click" runat="server"
-                                        StarCssClass="Star" WaitingStarCssClass="WaitingStar" EmptyStarCssClass="Star"
-                                         FilledStarCssClass="FilledStar" >
-                                    </ajaxToolkit:Rating>
-                                                </ContentTemplate>
-                                            </asp:UpdatePanel>
-
-                                      <asp:Label ID="lblRating" runat="server"  ></asp:Label>   
-                      
+                                    <br />   
                                     
-                                        </div>
-                                   
-                                    <br />
-                                   
-                                     
-                                    <br />
                                     <asp:Label ID="Label1" CssClass=" form-control-sm col main-txtb " ForeColor="#256297" runat="server" Text="Rejection Reason:"></asp:Label> <asp:TextBox runat="server" CssClass=" text-justify btn btn-sm  mr-2 position-static" ID="txtRejectReason" BorderColor="#256297" Width="50%" OnTextChanged="txtRejectReason_TextChanged" ></asp:TextBox>
                                     <br />
                                     <asp:Label ID="lblRejection" CssClass="align-content-center" ForeColor="Red" runat="server" Text=""></asp:Label>
