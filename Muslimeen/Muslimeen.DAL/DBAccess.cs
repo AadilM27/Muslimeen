@@ -2254,5 +2254,10 @@ namespace Muslimeen.BLL
             }
             return list;
         }
+
+        public bool ClearUnverifiedMembers()
+        {
+            return DBHelper.Query("uspClearUnverifiedMembers", CommandType.StoredProcedure);
+        }
     }
 }
