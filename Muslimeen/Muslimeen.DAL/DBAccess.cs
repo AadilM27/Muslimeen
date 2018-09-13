@@ -150,6 +150,7 @@ namespace Muslimeen.BLL
                     mosque.MosqueType = row["MosqueType"].ToString();
                     mosque.MosqueSize = row["MosqueSize"].ToString();
                     mosque.MosqueQuote = row["MosqueQuote"].ToString();
+                    mosque.YearEstablished = Convert.ToDateTime(row["YearEstablished"].ToString());
                     mosque.MemberCount = int.Parse(row["MemberCount"].ToString());
                     if (!(row["MosqueImage"] is DBNull))
                     {
@@ -2253,6 +2254,11 @@ namespace Muslimeen.BLL
                 }
             }
             return list;
+        }
+
+        public bool ClearUnverifiedMembers()
+        {
+            return DBHelper.Query("uspClearUnverifiedMembers", CommandType.StoredProcedure);
         }
     }
 }

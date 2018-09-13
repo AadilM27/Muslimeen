@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </nav>
-            <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50);">
+            <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50); z-index: 1000;">
                 <div class=" text-center">
                     <asp:Image runat="server" CssClass="mb-0 ml-0" src="../../Login/LogIn_Bootstrap/logo.png" Width="185" Height="110" />
                 </div>
@@ -110,6 +110,9 @@
                         <asp:Button runat="server" ID="btnEvents" CssClass="pl-2 btn mb-1 taskBtn" Text="Mosque Events" OnClick="btnEvents_Click" />
                         <asp:Button runat="server" ID="btnAddress" CssClass="pl-2 btn mb-1 taskBtn" Text="Mosque Location" OnClick="btnAddress_Click" />
                         <asp:Button runat="server" ID="btnPrayerTimes" CssClass="pl-2 btn mb-1 taskBtn" Text="Prayer Times" OnClick="btnPrayerTimes_Click" />
+                        <button class="collapsible" style="background-color: #256297; width: 100%; position: static">To whom is Zakaah Applicable?</button>
+                 
+
 
                     </nav>
                 </div>
@@ -120,64 +123,70 @@
                     <div class="row p-0 m-0 tab-content right-bottom-div p-1">
                         <div class="col-12 bg-light position-static mt-2" runat="server" id="divDetails">
                             <div class="row">
-                                <div class="col-8">
+                                <div class="col-7">
                                     <div class=" head-div-2 p-2 mb-1 text-left">
                                         <p class="m-0">Mosque Details</p>
                                     </div>
-                                    <table class="table table-borderless">
-                                        <tr>
-                                            <td rowspan="7" style="width: 30%">
-
-                                                <asp:Image runat="server" Height="50%" Width="100%" ID="imgMosque" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h5>&nbsp;Address:
-                                    <asp:Label runat="server" Text="" ID="lblMosqueAddress"></asp:Label></h5>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h5>&nbsp;Year Established:
-                                    <asp:Label runat="server" Text="" ID="lblYearEstablished"></asp:Label></h5>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h5>&nbsp;Mosque Type:
-                                    <asp:Label runat="server" Text="" ID="lblMosqueType"></asp:Label></h5>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h5>&nbsp;Mosque Size:
-                                <asp:Label runat="server" Text="" ID="lblMosqueSize"></asp:Label></h5>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h5>&nbsp;Active Members:
-                                <asp:Label runat="server" Text="" ID="lblMembers"></asp:Label></h5>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h5>&nbsp;Mosque Representative: 
-                                <asp:Label runat="server" Text="" ID="lblMosqueRep"></asp:Label></h5>
-                                            </td>
-                                        </tr>
-
-
-                                        <tr>
-                                            <td colspan="2">
-                                                <div>
-                                                    <i>
-                                                        <asp:Label runat="server" Text="" ID="lblQuote"></asp:Label></i>
+                                    <div class="table">
+                                        <div class="form-row">
+                                            <div class="col-4">
+                                                <asp:Image runat="server" Height="290px" Width="300px" ID="imgMosque" />
+                                            </div>
+                                            <div class="col-7 ml-1 mt-5">
+                                                <div class="row mb-1 position-static">
+                                                    <div class="col-6 position-static"><b>Address:</b></div>
+                                                    <div class="col-6 position-static text-truncate">
+                                                        <asp:Label runat="server" Text="" ID="lblMosqueAddress"></asp:Label>
+                                                    </div>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                                <div class="row mb-1 position-static">
+                                                    <div class="col-6 position-static"><b>Year Established:</b></div>
+                                                    <div class="col-6 position-static text-truncate">
+                                                        <asp:Label runat="server" Text="" ID="lblYearEstablished"></asp:Label>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-1 position-static">
+                                                    <div class="col-6 position-static"><b>Mosque Type:</b></div>
+                                                    <div class="col-6 position-static text-truncate">
+                                                        <asp:Label runat="server" Text="" ID="lblMosqueType"></asp:Label>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-1 position-static">
+                                                    <div class="col-6 position-static"><b>Mosque Size:</b></div>
+                                                    <div class="col-6 position-static text-truncate">
+                                                        <asp:Label runat="server" Text="" ID="lblMosqueSize"></asp:Label>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-1 position-static">
+                                                    <div class="col-6 position-static"><b>Active Members:</b></div>
+                                                    <div class="col-6 position-static text-truncate">
+                                                        <asp:Label runat="server" Text="" ID="lblMembers"></asp:Label>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-1 position-static">
+                                                    <div class="col-6 position-static"><b>Mosque Representative:</b></div>
+                                                    <div class="col-6 position-static text-truncate">
+                                                        <asp:Label runat="server" Text="" ID="lblMosqueRep"></asp:Label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-12">
+                                                <div class="row mb-1 position-static">
+                                                    <div class="col position-static text-truncate">
+                                                        <br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-1 position-static">
+                                                <div class="col-12 position-static">
+                                                    <i>Quote: 
+                                                    <asp:Label runat="server" Text="" ID="lblQuote"></asp:Label></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-4">
                                     <div class=" head-div-2 p-2 mb-1 text-left">
@@ -613,5 +622,6 @@
         </div>
     </div>
     <script src="../Default/Default.js" type="text/javascript"></script>
+    <script src="../Zakaah/newZakaah.js"></script>
 </body>
 </html>
