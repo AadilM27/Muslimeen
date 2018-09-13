@@ -337,6 +337,24 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Label lblEishaJamaat;
         
         /// <summary>
+        /// divNoSalaah control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divNoSalaah;
+        
+        /// <summary>
+        /// lblNoSalaah control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNoSalaah;
+        
+        /// <summary>
         /// divDisplayEvents control.
         /// </summary>
         /// <remarks>

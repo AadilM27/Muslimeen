@@ -38,12 +38,14 @@ namespace Muslimeen.Content
             divListEvent.Visible = false;
             divSchDetailsOverlay.Visible = false;
             divEventOverlay.Visible = false;
+            divNoSalaah.Visible = false;
 
-            DBHandler db = new DBHandler();
             List<CounterCalender> counterCalender = new List<CounterCalender>();
 
-            counterCalender = db.BLL_GetCounterCalender();
+            counterCalender = dBHandler.BLL_GetCounterCalender();
             hdfAdjustDate.Value = counterCalender[3].Val.ToString();
+            
+           
 
             try
             {
@@ -57,6 +59,22 @@ namespace Muslimeen.Content
 
                     uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
                     Session["MosqueID"] = uspGetMember.MosqueID.ToString();
+
+                    DateTime todaysDate = DateTime.Today;
+
+                    uspGetSpecificDayPrayerTimes prayertimes = new uspGetSpecificDayPrayerTimes();
+                    prayertimes = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), todaysDate);
+
+                    lblFajrAzaan.Text = prayertimes.FajrA.ToString();
+                    lblFajrJamaat.Text = prayertimes.FajrJ.ToString();
+                    lblDhuhrAzaan.Text = prayertimes.DhuhrA.ToString();
+                    lblDhuhrJamaat.Text = prayertimes.DhuhrJ.ToString();
+                    lblAsrAzaan.Text = prayertimes.AsrA.ToString();
+                    lblAsrJamaat.Text = prayertimes.AsrJ.ToString();
+                    lblMagribAzaan.Text = prayertimes.MagribA.ToString();
+                    lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
+                    lblEishaAzaan.Text = prayertimes.EishaA.ToString();
+                    lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
 
                     if (uspGetMember.MemberType == 'M')
                     {
@@ -187,26 +205,33 @@ namespace Muslimeen.Content
         }
         protected void btnTodaysPrayerTime_Click(object sender, EventArgs e)
         {
-            divDisplaySalahTimetable.Visible = true;
-            lblTaskHead.InnerText = btnTodaysPrayerTimes.Text.ToString();
+            try
+            {
+                divDisplaySalahTimetable.Visible = true;
+                lblTaskHead.InnerText = btnTodaysPrayerTimes.Text.ToString();
 
-            DBHandler dBHandler = new DBHandler();
-            DateTime todaysDate = DateTime.Today;
+                DBHandler dBHandler = new DBHandler();
+                DateTime todaysDate = DateTime.Today;
 
-            uspGetSpecificDayPrayerTimes prayertimes = new uspGetSpecificDayPrayerTimes();
-            prayertimes = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), todaysDate);
+                uspGetSpecificDayPrayerTimes prayertimes = new uspGetSpecificDayPrayerTimes();
+                prayertimes = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), todaysDate);
 
-            lblFajrAzaan.Text = prayertimes.FajrA.ToString();
-            lblFajrJamaat.Text = prayertimes.FajrJ.ToString();
-            lblDhuhrAzaan.Text = prayertimes.DhuhrA.ToString();
-            lblDhuhrJamaat.Text = prayertimes.DhuhrJ.ToString();
-            lblAsrAzaan.Text = prayertimes.AsrA.ToString();
-            lblAsrJamaat.Text = prayertimes.AsrJ.ToString();
-            lblMagribAzaan.Text = prayertimes.MagribA.ToString();
-            lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
-            lblEishaAzaan.Text = prayertimes.EishaA.ToString();
-            lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
+                lblFajrAzaan.Text = prayertimes.FajrA.ToString();
+                lblFajrJamaat.Text = prayertimes.FajrJ.ToString();
+                lblDhuhrAzaan.Text = prayertimes.DhuhrA.ToString();
+                lblDhuhrJamaat.Text = prayertimes.DhuhrJ.ToString();
+                lblAsrAzaan.Text = prayertimes.AsrA.ToString();
+                lblAsrJamaat.Text = prayertimes.AsrJ.ToString();
+                lblMagribAzaan.Text = prayertimes.MagribA.ToString();
+                lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
+                lblEishaAzaan.Text = prayertimes.EishaA.ToString();
+                lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
+            }
 
+            catch
+            {
+                divNoSalaah.Visible = true;
+            }
 
         }
 
@@ -223,75 +248,62 @@ namespace Muslimeen.Content
 
         protected void btnListEvents_Click(object sender, EventArgs e)
         {
-            lblTaskHead.InnerText = btnListEvents.Text.ToString();
-            divDisplaySalahTimetable.Visible = false;
-            divDisplayEvents.Visible = true;
-            divEventOverlay.Visible = true;
-            lblEventError.Text =String.Empty;
-            lblEventError.ForeColor = Color.Empty;
-            txtStartDate.BorderColor = Color.Empty;
+            try
+            {
+                lblTaskHead.InnerText = btnListEvents.Text.ToString();
+                divDisplaySalahTimetable.Visible = false;
+                divDisplayEvents.Visible = true;
+                divEventOverlay.Visible = true;
+                lblEventError.Text = String.Empty;
+                lblEventError.ForeColor = Color.Empty;
+                txtStartDate.BorderColor = Color.Empty;
+                txtEndDate.BorderColor = Color.Empty;
 
-            int cont = 0;
-            if (txtStartDate.Text == null || txtStartDate.Text == "")
-            {
-                lblEventError.Text = "No start date was selected";
-                lblEventError.ForeColor = Color.Red;
-                txtStartDate.BorderColor = Color.Red;
-                cont += 1;
-            }
-            else if (txtEndDate.Text == null || txtEndDate.Text == "")
-            {
-                lblEventError.Text = "No end date was selected";
-                lblEventError.ForeColor = Color.Red;
-                txtEndDate.BorderColor = Color.Red;
-                cont += 1;
-            }
-            else if (Convert.ToDateTime(txtStartDate.Text.ToString()) >= Convert.ToDateTime(txtEndDate.Text.ToString()))
-            {
-                lblEventError.Text = "Invalid date. The start date should be less than the end date.";
-                lblEventError.ForeColor = Color.Red;
-                txtStartDate.BorderColor = Color.Red;
-                txtEndDate.BorderColor = Color.Red;
-                cont += 1;
-            }
-            else if (Convert.ToDateTime(txtEndDate.Text.ToString()) <= Convert.ToDateTime(txtStartDate.Text.ToString()))
-            {
-                lblEventError.Text = "Invalid date. The end date should be later than the start date.";
-                lblEventError.ForeColor = Color.Red;
-                txtStartDate.BorderColor = Color.Red;
-                txtEndDate.BorderColor = Color.Red;
-                cont += 1;
-            }
+                DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
+                DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
 
-            if (cont == 0)
-            {
-                RptEventList.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), Convert.ToDateTime(txtStartDate.Text.ToString()), Convert.ToDateTime(txtEndDate.Text.ToString()));
-                RptEventList.DataBind();
-                if (RptEventList.Items.Count > 0)
+                if (startDate.Date <= EndDate.Date)
                 {
-                    divListEvent.Visible = true;
-                    divListEventDetails.Visible = true;
-                    divDisplayEvents.Visible = true;
-                    divEvent.Visible = false;
-                    divEventOverlay.Visible = false;
-                }
-                else if (RptEventList.Items.Count <= 0)
-                {
-                    divListEvent.Visible = false;
-                    divListEventDetails.Visible = false;
-                    divDisplayEvents.Visible = false;
-                    divEvent.Visible = false;
-                    lblEventError.Text = "No Events Found for Specified Date Range";
-                    divEventOverlay.Visible = true;
+                    RptEventList.DataSource = dBHandler.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), Convert.ToDateTime(txtStartDate.Text.ToString()), Convert.ToDateTime(txtEndDate.Text.ToString()));
+                    RptEventList.DataBind();
+                    if (RptEventList.Items.Count > 0)
+                    {
+                        divListEvent.Visible = true;
+                        divListEventDetails.Visible = true;
+                        divDisplayEvents.Visible = true;
+                        divEvent.Visible = false;
+                        divEventOverlay.Visible = false;
+                    }
+                    else if (RptEventList.Items.Count <= 0)
+                    {
+                        divListEvent.Visible = false;
+                        divListEventDetails.Visible = false;
+                        divDisplayEvents.Visible = true;
+                        divEvent.Visible = false;
+                        lblEventError.Text = "No Events Found for Specified Date Range";
+                        divEventOverlay.Visible = true;
+                    }
                 }
 
+                else if (startDate.Date > EndDate.Date)
+                {
+                    lblEventError.Text = "Invalid date. The start date should be less than the end date.";
+                    lblEventError.ForeColor = Color.Red;
+                    txtStartDate.BorderColor = Color.Red;
+                    txtEndDate.BorderColor = Color.Red;
+                }
+            }
+            catch
+            {
+                lblEventError.Text = "Please enter required date fields.";
+                lblEventError.ForeColor = Color.Red;
+                txtStartDate.BorderColor = Color.Red;
+                txtEndDate.BorderColor = Color.Red;
             }
 
         }
 
-
-
-        protected void btnEventList_Click(object sender, EventArgs e)
+    protected void btnEventList_Click(object sender, EventArgs e)
         {
             divDisplaySalahTimetable.Visible = false;
             lblTaskHead.InnerText = btnEvents.Text.ToString();

@@ -8,9 +8,9 @@ namespace Muslimeen.BLL
 {
     public class BGProcesses
     {
-        public bool ClearUnverifiedMembers()
-        {
+        //public bool ClearUnverifiedMembers()
+        //{
             
-        }
+        //}
     }
 }

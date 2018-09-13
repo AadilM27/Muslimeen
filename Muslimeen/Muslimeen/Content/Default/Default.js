@@ -23,4 +23,22 @@ function AddDateChars() {
         document.getElementById("txtDOB").value += "/";
     }
 }
+
+function flashDiv(div)
+{
+    document.getElementById(div).style.backgroundColor = "lightgreen";
+
+    setTimeout(function Flash1()
+    {
+        document.getElementById(div).style.backgroundColor = "";
+
+        setTimeout(function Flash2() {
+            document.getElementById(div).style.backgroundColor = "lightgreen";
+
+            setTimeout(function Flash3() {
+                document.getElementById(div).style.backgroundColor = "";
+            }, 500)
+        }, 500)
+    }, 500)
+}
     

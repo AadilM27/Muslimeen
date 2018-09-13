@@ -87,21 +87,14 @@
                         <p class="text-uppercase m-0 font-weight-bold">Index :</p>
                    </div>
                      <nav class="list-group m-1" id="scrollspy">
-<%--                         <asp:Button runat="server" ID="btnArticles" CssClass="pl-2 ml-1 btn taskBtn mb-1"  onclick="#divUser" Text="User" />--%>
                          
-                             <a class="list-group-item list-group-item-action" href="#divUser">User</a>
-                             <a class="list-group-item list-group-item-action" href="#divScholar">Scholar</a>
-                             <a class="list-group-item list-group-item-action" href="#divMosqueRep">Mosque Representitive</a>
-                             <a class="list-group-item list-group-item-action" href="#divAdmin">Admin</a>
-                             <a class="list-group-item list-group-item-action" href="#divModerator">Moderator</a>
+                             <a class="list-group-item list-group-item-action" onclick="flashDiv('divUser');" href="#divUser">User</a>
+                             <a class="list-group-item list-group-item-action" onclick="flashDiv('divScholar');" href="#divScholar">Scholar</a>
+                             <a class="list-group-item list-group-item-action" onclick="flashDiv('divMosqueRep');" href="#divMosqueRep">Mosque Representitive</a>
+                             <a class="list-group-item list-group-item-action" onclick="flashDiv('divAdmin');" href="#divAdmin">Admin</a>
+                             <a class="list-group-item list-group-item-action" onclick="flashDiv('divModerator');" href="#divModerator">Moderator</a>
                        
                          
-                         
-<%--                         <asp:Button runat="server" /><a type="button" href="#divUser" class="pl-2 ml-1 btn taskBtn mb-1" >User</a>
-                         <a type="button" href="#divMosqueRep" class="pl-2 ml-1 btn taskBtn mb-1">Mosque Representitve</a>
-                         <a type="button" href="#divScholar" class="pl-2 ml-1 btn taskBtn mb-1">Scholar</a>
-                         <a type="button" href="#divAdmin" class="pl-2 ml-1 btn taskBtn mb-1">Admin</a>
-                         <a type="button" href="#divModerator" class="pl-2 ml-1 btn taskBtn mb-1">Moderator</a>--%>
                      </nav>
                 </div>
                 <!--End menu-->
