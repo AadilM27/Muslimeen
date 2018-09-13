@@ -12,7 +12,7 @@
     <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico" />    
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../Default/css/Default.css" rel="stylesheet" />
-    <link href="../Zakaah/css/newZakaah.css" rel="stylesheet" />
+    
 </head>
 <body>
     <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
