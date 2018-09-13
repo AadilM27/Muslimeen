@@ -2181,5 +2181,78 @@ namespace Muslimeen.BLL
             }
             return scholarsList;
         }
+
+        //Get Mosque List
+        public List<uspGetMosqueList> GetMosqueList()
+        {
+            List<uspGetMosqueList> list = new List<uspGetMosqueList>();
+            using (DataTable tbl = DBHelper.Select("uspGetMosqueList", CommandType.StoredProcedure))
+            {
+                if (tbl.Rows.Count > 0)
+                {
+                    foreach (DataRow row in tbl.Rows)
+                    {
+                        uspGetMosqueList tops = new uspGetMosqueList
+                        {
+                            MosqueID = Convert.ToInt32(row["MosqueID"]),
+                            MosqueName = Convert.ToString(row["MosqueName"])
+                        };
+                        list.Add(tops);
+                    }
+                }
+            }
+            return list;
+        }
+
+        //Get Scholar By Mosque
+        public List<uspGetAllScholars> GetScholarByMosque(int MosqueID)
+        {
+            SqlParameter[] pars = new SqlParameter[]
+            {
+                new SqlParameter("@MosqueID", MosqueID)
+            };
+
+            List<uspGetAllScholars> list = new List<uspGetAllScholars>();
+            using (DataTable table = DBHelper.ParamSelect("uspGetScholarByMosque", CommandType.StoredProcedure, pars))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        uspGetAllScholars scholar = new uspGetAllScholars();
+
+                        scholar.MemberID = Convert.ToString(row["MemberID"]);
+                        scholar.MemberName = Convert.ToString(row["MemberName"]);
+                        scholar.MemberLastName = Convert.ToString(row["MemberLastName"]);
+                        scholar.MemberDOB = Convert.ToDateTime(row["MemberDOB"]).Date;
+                        scholar.Password = Convert.ToString(row["Password"]);
+                        scholar.MemberType = Convert.ToChar(row["MemberType"]);
+                        scholar.ActiveTypeID = Convert.ToChar(row["ActiveTypeID"]);
+                        scholar.Email = Convert.ToString(row["Email"]);
+                        scholar.ContactNo = Convert.ToString(row["ContactNo"]);
+                        if (!(row["MosqueID"] is DBNull))
+                        {
+                            scholar.MosqueID = Convert.ToInt32(row["MosqueID"]);
+                        }
+                        else
+                        {
+                            scholar.MosqueID = null;
+                        }
+                        if (!(row["ActivationExpiry"] is DBNull))
+                        {
+                            scholar.ActivationExpiry = Convert.ToDateTime(row["ActivationExpiry"]).Date;
+                        }
+                        else
+                        {
+
+                        }
+                        scholar.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
+
+                        list.Add(scholar);
+                    }
+                }
+            }
+            return list;
+        }
     }
 }

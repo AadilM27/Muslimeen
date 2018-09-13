@@ -193,13 +193,13 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// drpScholar control.
+        /// drpMosque control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpScholar;
+        protected global::System.Web.UI.WebControls.DropDownList drpMosque;
         
         /// <summary>
         /// lblTaskHead control.

@@ -440,5 +440,17 @@ namespace Muslimeen.BLL
         {
             return dBAccess.UpdateRating(rating);
         }
+
+        //Get Mosque List
+        public List<uspGetMosqueList> BLL_GetMosqueList()
+        {
+            return dBAccess.GetMosqueList();
+        }
+
+        //Scholar By Mosque
+        public List<uspGetAllScholars> BLL_GetScholarByMosque(int MosqueID)
+        {
+            return dBAccess.GetScholarByMosque(MosqueID);
+        }
     }
 }

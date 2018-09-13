@@ -27,19 +27,19 @@ namespace Muslimeen.Content
 
             DBHandler han = new DBHandler();
 
-            rptViewPendingSch.DataSource = han.BLL_GetAllScholars();
+            rptViewPendingSch.DataSource = han.BLL_GetScholarByMosque(Int32.Parse("Select"));
             rptViewPendingSch.DataBind();
 
             if (!IsPostBack)
             {
-                List<uspGetScholarList> scholar = han.BLL_GetScholar();///Change this to Mosque
+                List<uspGetMosqueList> mosque = han.BLL_GetMosqueList();
 
-                drpScholar.Items.Add("Select");
-                foreach (uspGetScholarList sch in scholar)
+                drpMosque.Items.Add("Select");
+                foreach (uspGetMosqueList mos in mosque)
                 {
-                    drpScholar.Items.Add(new System.Web.UI.WebControls.ListItem(sch.ScholarID.ToString()));
+                    drpMosque.Items.Add(new System.Web.UI.WebControls.ListItem(mos.MosqueName.ToString(), mos.MosqueID.ToString()));
                 }
-                drpScholar.DataBind();
+                drpMosque.DataBind();
             }
         }
 
@@ -166,14 +166,22 @@ namespace Muslimeen.Content
             }
         }
 
-        protected void drpScholar_SelectedIndexChanged(object sender, EventArgs e)
+        protected void drpMosque_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try
+            {
+                DBHandler han = new DBHandler();
 
-        }
+                if (drpMosque.SelectedItem.ToString() != "Select")
+                {
+                    rptViewPendingSch.DataSource = han.BLL_GetScholarByMosque(Int32.Parse(drpMosque.SelectedItem.ToString()));
+                    rptViewPendingSch.DataBind();
+                }
+            }
+            catch
+            {
 
-        protected void drpScholar_TextChanged(object sender, EventArgs e)
-        {
-
+            }
         }
     }
 }

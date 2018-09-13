@@ -46,6 +46,7 @@
     <Compile Include="Models\CounterCalender.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\Feeds.cs" />
     <Compile Include="Models\ForumTopics.cs" />
     <Compile Include="Models\InsertArticle.cs" />
     <Compile Include="Models\Moderater.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="ViewModels\uspGetMosque.cs" />
     <Compile Include="ViewModels\uspGetMosqueEvents.cs" />
     <Compile Include="ViewModels\uspGetMosqueEventsDateRange.cs" />
+    <Compile Include="ViewModels\uspGetMosqueList.cs" />
     <Compile Include="ViewModels\uspGetMosquePrayerTimes.cs" />
     <Compile Include="ViewModels\uspGetMosqueReports.cs" />
     <Compile Include="ViewModels\uspGetMosques.cs" />

@@ -80,64 +80,129 @@
         <div class="content" id="content"><!--add content here -->
             <div class=" pt-2 countDown-div">
                 <div id="clockdiv" class="col">
-                    <h2 style="font-family: Arial; color:#3F84C1" runat="server" id="lblCounterTitle"></h2>
-                  <div class="">
-                    <span id="spDays" class="days"></span>
-                    <div class="smalltext">Days</div>
-                  </div>
-                  <div class="">
-                    <span id="spHours" class="hours"></span>
-                    <div class="smalltext">Hours</div>
-                  </div>
-                  <div class="">
-                    <span id="spMinutes" class="minutes"></span>
-                    <div class="smalltext">Minutes</div>
-                  </div>
-                  <div class="">
-                    <span id="spSeconds" class="seconds"></span>
-                    <div class="smalltext">Seconds</div>
-                  </div>
+                    <h2 style="font-family: Arial; color: #3F84C1" runat="server" id="lblCounterTitle"></h2>
+                    <div class="">
+                        <span id="spDays" class="days"></span>
+                        <div class="smalltext">Days</div>
+                    </div>
+                    <div class="">
+                        <span id="spHours" class="hours"></span>
+                        <div class="smalltext">Hours</div>
+                    </div>
+                    <div class="">
+                        <span id="spMinutes" class="minutes"></span>
+                        <div class="smalltext">Minutes</div>
+                    </div>
+                    <div class="">
+                        <span id="spSeconds" class="seconds"></span>
+                        <div class="smalltext">Seconds</div>
+                    </div>
                 </div>
-                <asp:HiddenField ID="hdfCounterDate" runat="server" Value="" /> <!--updated by the admin yyyy-mm-dd-->
+                <asp:HiddenField ID="hdfCounterDate" runat="server" Value="" />
+                <!--updated by the admin yyyy-mm-dd-->
                 <asp:HiddenField ID="hdfCounterFinishTitle" runat="server" Value="" />
                 <asp:HiddenField ID="hdfCounterTitle" runat="server" Value="" />
                 <script src="Default/CountDown.js" type="text/javascript"></script>
             </div>
             <br />
+            <!--Islamic Quotes-->
             <div class=" row justify-content-center">
-            <div class="col-4 col-sm-5 col-xl-4 p-0 slideshow-container" >
-                        <h2 class="p-2" style="background-color:#256297;color:white;text-align:center"> Islamic Quotes</h2>
+                <div class="col-4 col-sm-5 col-xl-4 p-0 slideshow-container">
+                    <h2 class="p-2" style="background-color: #256297; color: white; text-align: center">Islamic Quotes</h2>
                     <div class="mySlides">
-                      <q> Don't ruin your happiness with worry, and don't ruin your mind with pessimism. Don't ruin your success with deception and don't ruin the optimism of others by destroying it. Don't ruin your day by looking back at yesterday</q>
-                      <p class="author">- Ibn-Al-Qayyim</p>
+                        <q>Don't ruin your happiness with worry, and don't ruin your mind with pessimism. Don't ruin your success with deception and don't ruin the optimism of others by destroying it. Don't ruin your day by looking back at yesterday</q>
+                        <p class="author">- Ibn-Al-Qayyim (R.A)</p>
                     </div>
 
                     <div class="mySlides">
-                      <q>I am amazed by the believer. Verily, Allah does not decree anything for the believer except what is good for him. </q>
-                      <p class="author">- Ibn-Al-Qayyim</p>
+                        <q>I am amazed by the believer. Verily, Allah does not decree anything for the believer except what is good for him. </q>
+                        <p class="author">- Ibn Al-Qayyim (R.A)</p>
                     </div>
 
                     <div class="mySlides">
-                      <q>A person does not have an understanding of the religion of Islam until he thinks of a hardship as being a blessing, and comfort and luxury as being a tribulation.</q>
-                      <p class="author"> – Ibn-Al-Qayyim</p>
+                        <q>A person does not have an understanding of the religion of Islam until he thinks of a hardship as being a blessing, and comfort and luxury as being a tribulation.</q>
+                        <p class="author">– Ibn Al-Qayyim (R.A)</p>
                     </div>
-                         <!-- Next/prev buttons -->
+
+                    <div class="mySlides">
+                        <q>Don't depend too much on anyone in this world becayse even your own shadow leaves you when you are in the dark.</q>
+                        <p class="author">– Ibn Taymiyyah (R.A)</p>
+                    </div>
+
+                    <div class="mySlides">
+                        <q>Know that the happiest people are those who are stringest in their love of God.</q>
+                        <p class="author">– Imaam Al-Ghazali</p>
+                    </div>
+                    <div class="mySlides">
+                        <q>A person's tongue can give you the taste of his heart.</q>
+                        <p class="author">– Ibn Al-Qayyim</p>
+                    </div>
+                    <div class="mySlides">
+                        <q>Do not be fooled by the one who recites the Quran. His recitation is but speech, but look to those who act according to it.</q>
+                        <p class="author">– Hazrat Umar ibn al-Khattab (R.A)</p>
+                    </div>
+                    <!-- Next/prev buttons -->
                     <a class="prev pl-3 pr-2 m" onclick="plusSlides(-1)">❮</a>
                     <a class="next pl-2 pr-3" onclick="plusSlides(1)">❯</a>
 
-                    
-                        <!-- Dots/bullets/indicators -->
-                    <div class="dot-container" style= "position:static"> <%--m-0 col-lg-4 ml-lg-5--%>
-                      <span class="dot" onclick="currentSlide(1)"></span> 
-                      <span class="dot" onclick="currentSlide(2)"></span> 
-                      <span class="dot" onclick="currentSlide(3)"></span> 
-                    </div>
-                        <script src="Zakaah/slideshow.js"></script>
-                  
-                        </div>
-                </div>
 
-        </div>
+                    <!-- Dots/bullets/indicators -->
+                    <div class="dot-container" style="position: static">
+                        <%--m-0 col-lg-4 ml-lg-5--%>
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                        <span class="dot" onclick="currentSlide(5)"></span>
+                        <span class="dot" onclick="currentSlide(6)"></span>
+                        <span class="dot" onclick="currentSlide(7)"></span>
+                    </div>
+                    <script src="Zakaah/slideshow.js"></script>
+                </div>
+            </div>
+            <br />
+            <!--RSS Feed-->
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <h2 class="p-2 col" style="font-family: Arial; background-color: #256297; color:white; text-align: center" runat="server" id="H2">RSS Feed</h2> 
+                    <div style="max-height: 350px; overflow: auto" class="col position-static container pre-scrollable">
+                        <asp:GridView ID="gvRss" runat="server" AutoGenerateColumns="false" ShowHeader="false" Width="100%">
+                            <Columns>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                            <table style="width:100%; border:none; border-color:#256297" cellpadding:0; cellspacing:5>
+                                            <tr>
+                                                <td>
+                                                    <h3 style="color: #3F84C1"><%#Eval("Title") %></h3>
+                                                </td>
+                                                <td>
+                                                    <%#Eval("PublishDate") %>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <hr />
+                                                    <%#Eval("Description") %>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td style="text-align:right">
+                                                    <a href='<%#Eval("Link") %>' target="_blank">Read More...</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <!--Calendar-->
+        </div>                       
+            
     </form>
               <div class="footerr"> <!--End of content, start of footer-->
                 <div class="row bg-light">

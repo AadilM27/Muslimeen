@@ -88,8 +88,8 @@
                     <nav class="nav flex-column pt-2 pb-2 pr-0">
                         <!--ADD LEFT NAVBAR ITEMS-->
                         <div class="form-group mb-1 ml-2 mr-2">
-                            <strong><asp:Label ID="Label1" runat="server" Text="Scholar: "></asp:Label></strong>
-                            <asp:DropDownList ID="drpScholar" runat="server" CssClass="form-control main-txtb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" AutoPostBack="true" OnSelectedIndexChanged="drpScholar_SelectedIndexChanged" OnTextChanged="drpScholar_TextChanged"></asp:DropDownList>
+                            <strong><asp:Label ID="Label1" runat="server" Text="Mosque: "></asp:Label></strong>
+                            <asp:DropDownList ID="drpMosque" runat="server" CssClass="form-control main-txtb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" AutoPostBack="true" OnSelectedIndexChanged="drpMosque_SelectedIndexChanged"></asp:DropDownList>
                         </div>
                     </nav>
                 </div>

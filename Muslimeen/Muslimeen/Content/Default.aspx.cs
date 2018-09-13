@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using TypeLib.Models;
 using TypeLib.ViewModels;
 using Muslimeen.BLL;
+using System.Xml.Linq;
 
 namespace Muslimeen.Content
 {
@@ -49,6 +50,8 @@ namespace Muslimeen.Content
                     divUserProfile.Visible = false;
                     Session.Clear();
                 }
+
+                this.PopulateRssFeed();
             }
             catch
             {
@@ -149,6 +152,47 @@ namespace Muslimeen.Content
 
             }
 
+        }
+
+        private void PopulateRssFeed()
+        {
+            string RssFeedUrl = "https://www.islamtimes.org/rssf0.47wrywq44r,6mp73f.wiwe7xyx.ar.xml";
+            List<Feeds> feeds = new List<Feeds>();
+            try
+            {
+                XDocument xDoc = new XDocument();
+                xDoc = XDocument.Load(RssFeedUrl);
+                var items = (from x in xDoc.Descendants("item")
+                             select new
+                             {
+                                 title = x.Element("title").Value,
+                                 link = x.Element("link").Value,
+                                 pubDate = x.Element("pubDate").Value,
+                                 description = x.Element("description").Value
+                             });
+                if (items != null)
+                {
+                    foreach (var i in items)
+                    {
+                        Feeds f = new Feeds
+                        {
+                            Title = i.title,
+                            Link = i.link,
+                            PublishDate = i.pubDate,
+                            Description = i.description
+                        };
+
+                        feeds.Add(f);
+                    }
+                }
+
+                gvRss.DataSource = feeds;
+                gvRss.DataBind();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }        
         }
     }
 }
