@@ -55,16 +55,7 @@ namespace Muslimeen.Content.MyModerator
                 divSchDetails.Visible = false;
                 divSchDetailsOverlay.Visible = false;
                 divDisplaySalahTimetable.Visible = false;
-                
-                
-               if(rptViewPendingArticles.Visible == true)
-                {
-                    divRating.Visible = true;
-                }
                
-                
-                
-
                 if (Session["UserName"] != null)
                 {
                     uspGetMember uspGetMember = new uspGetMember();
@@ -114,7 +105,7 @@ namespace Muslimeen.Content.MyModerator
                 LblHeading.Text = "Articles";
                 divDisplaySch.Visible = false;
                 divViewPendingSch.Visible = false;
-                divRating.Visible = true;
+                
                
 
                 divViewPendingArt.Visible = true;
@@ -137,7 +128,6 @@ namespace Muslimeen.Content.MyModerator
             try
             {
                 divViewPendingArt.Visible = false;
-                divRating.Visible = false;
                 divDisplaySch.Visible = true;
                 divViewPendingSch.Visible = true;
 
@@ -385,11 +375,7 @@ namespace Muslimeen.Content.MyModerator
                 lblDate.InnerText = Convert.ToDateTime(article.DateCreated).ToString("dd/MM/yyyy");
                 lblScholar.InnerText = article.ScholarName.ToString();
 
-                int articleid = Convert.ToInt32(hdfSchId.Value.ToString());
             
-
-                Rating1.CurrentRating = dBHandler.BLL_GetArticleRating(articleid, Session["UserName"].ToString());
-
                 divViewPendingArt.Visible = true;
                 divDisplaySch.Visible = false;
                 divViewArt.Visible = true;
@@ -863,54 +849,7 @@ namespace Muslimeen.Content.MyModerator
         }
         protected void Rating1_Click(object sender,RatingEventArgs e)
         {
-            try
-            {
-
-                if (Session["UserName"] != null)
-                {
-
-                    DBHandler handler = new DBHandler();
-
-                    uspInsertRating rating = new uspInsertRating();
-
-
-                    int articleId =Convert.ToInt32(hdfSchId.Value.ToString());//gets article id  from repeater when clicked on and saves n into hidden field
-
-                    Rating1.MaxRating = 5;
-                    
-                    if (Rating1.CurrentRating.ToString() == null)//when user hasnt rated an article in goes into method to execute an insert to allow that user to rate an article.
-                    {
-                        rating.MemberID = Session["UserName"].ToString();                
-                        rating.articleID = Convert.ToInt32(articleId);
-                        rating.rating = Rating1.CurrentRating;
-
-                        handler.BLL_InsertRating(rating);
-                        Response.Redirect(Request.Url.AbsoluteUri);
-                    }
-                    else if (Rating1.CurrentRating > 0)
-                    {
-                        uspUpdateRating upRate = new uspUpdateRating();
-                        upRate.ArticleID = Convert.ToInt32(hdfSchId.Value.ToString());
-                        upRate.MemberID = Session["UserName"].ToString();
-                        upRate.rating = Rating1.CurrentRating;
-
-                        handler.BLL_UpdateRating(upRate);                       
-                        Response.Redirect(Request.Url.AbsoluteUri);
-                    }
-                    
-
-                }
-
-                divViewPendingArt.Visible = true;
-                divDisplayArticle.Visible = true;
-                divRating.Visible = true;
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
+           
 
 
 

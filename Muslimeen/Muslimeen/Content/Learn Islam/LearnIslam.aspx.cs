@@ -13,6 +13,7 @@ using iTextSharp.text;
 using System.IO;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
+using AjaxControlToolkit;
 
 namespace Muslimeen.Content.Learn_Islam
 {
@@ -20,69 +21,79 @@ namespace Muslimeen.Content.Learn_Islam
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            DBHandler db = new DBHandler();
-            List<CounterCalender> counterCalender = new List<CounterCalender>();
-
-            counterCalender = db.BLL_GetCounterCalender();
-            hdfAdjustDate.Value = counterCalender[3].Val.ToString();
-
-            DBHandler dBHandler = new DBHandler();
-
-         
-
-            divNoSelected.Visible = false;
-            divPendingArticles.Visible = true;
-
-
-            if (Session["UserName"] != null)
+            try
             {
-                uspGetMember uspGetMember = new uspGetMember();
-
-                uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
-                hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
-                divUserProfile.Visible = true;
-
-                liMyMusbtn.Visible = true;
-                liMyMusDivi.Visible = true;
-
-                btnLogin.Text = "Log out";
-                btnRegister.Visible = false;
-
-            }
-            else if (Session["UserName"] == null)
-            {
-                liMyMusbtn.Visible = false;
-                liMyMusDivi.Visible = false;
-
-                divUserProfile.Visible = false;
-                Session.Clear();
-            }
-
-            if (!IsPostBack)
-            {
-                //Link Article Source
-                repeatLink.DataSource = dBHandler.BLL_GetLearnArticle("Select", "Select");
-                repeatLink.DataBind();
-                List<uspGetScholarList> scholar = dBHandler.BLL_GetScholar();
 
 
-                drpScholar.Items.Add("Select");
-                foreach (uspGetScholarList sch in scholar)
+                DBHandler db = new DBHandler();
+                List<CounterCalender> counterCalender = new List<CounterCalender>();
+
+                counterCalender = db.BLL_GetCounterCalender();
+                hdfAdjustDate.Value = counterCalender[3].Val.ToString();
+
+                DBHandler dBHandler = new DBHandler();
+
+
+
+                divNoSelected.Visible = false;
+                divPendingArticles.Visible = true;
+                divRating.Visible = true;
+
+
+                if (Session["UserName"] != null)
                 {
-                    drpScholar.Items.Add(new System.Web.UI.WebControls.ListItem(sch.ScholarName.ToString(), sch.ScholarID.ToString()));
+                    uspGetMember uspGetMember = new uspGetMember();
+
+                    uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
+                    hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
+                    divUserProfile.Visible = true;
+
+                    liMyMusbtn.Visible = true;
+                    liMyMusDivi.Visible = true;
+
+                    btnLogin.Text = "Log out";
+                    btnRegister.Visible = false;
 
                 }
-
-                drpScholar.DataBind();
-
-                //Populating dropdown box wiht values
-                List<uspGetTopics> tops = dBHandler.BLL_GetTopics();
-                drpTopic.Items.Add("Select");
-                foreach (uspGetTopics qual in tops)
+                else if (Session["UserName"] == null)
                 {
-                    drpTopic.Items.Add(new System.Web.UI.WebControls.ListItem(qual.TopicDescription.ToString(), qual.TopicID.ToString()));
+                    liMyMusbtn.Visible = false;
+                    liMyMusDivi.Visible = false;
+
+                    divUserProfile.Visible = false;
+                    Session.Clear();
                 }
-                drpTopic.DataBind();
+
+                if (!IsPostBack)
+                {
+                    //Link Article Source
+                    repeatLink.DataSource = dBHandler.BLL_GetLearnArticle("Select", "Select");
+                    repeatLink.DataBind();
+                    List<uspGetScholarList> scholar = dBHandler.BLL_GetScholar();
+
+
+                    drpScholar.Items.Add("Select");
+                    foreach (uspGetScholarList sch in scholar)
+                    {
+                        drpScholar.Items.Add(new System.Web.UI.WebControls.ListItem(sch.ScholarName.ToString(), sch.ScholarID.ToString()));
+
+                    }
+
+                    drpScholar.DataBind();
+
+                    //Populating dropdown box wiht values
+                    List<uspGetTopics> tops = dBHandler.BLL_GetTopics();
+                    drpTopic.Items.Add("Select");
+                    foreach (uspGetTopics qual in tops)
+                    {
+                        drpTopic.Items.Add(new System.Web.UI.WebControls.ListItem(qual.TopicDescription.ToString(), qual.TopicID.ToString()));
+                    }
+                    drpTopic.DataBind();
+                }
+            }
+            catch
+            {
+
             }
         }
 
@@ -105,7 +116,7 @@ namespace Muslimeen.Content.Learn_Islam
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Register/Register.aspx");
+            Response.Redirect("../../Register/Register.aspx");
         }
 
         protected void btnHome_Click(object sender, EventArgs e)
@@ -176,26 +187,35 @@ namespace Muslimeen.Content.Learn_Islam
         protected void btnShow_Click(object sender, EventArgs e)
         {
             divNoSelected.Visible = true;
+            try
+            {
 
-            LinkButton linkButton = (LinkButton)sender;
+                LinkButton linkButton = (LinkButton)sender;
 
-            string art = linkButton.CommandArgument.ToString();
-            hdfArtID.Value = art;
+                string art = linkButton.CommandArgument.ToString();
+                hdfArtID.Value = art;
 
-            DBHandler han = new DBHandler();
-            uspGetSelectedLearnArticle pen = new uspGetSelectedLearnArticle();
+                DBHandler han = new DBHandler();
+                uspGetSelectedLearnArticle pen = new uspGetSelectedLearnArticle();
 
-            //Labels for Learn Article
-            pen = han.BLL_GetSelectedLearnArticle(int.Parse(art));
-            lblTitle.InnerText = pen.ArticleTitle.ToString();
-            lblContent.InnerText = pen.ArticleContent.ToString();
-            string dateCreated = pen.DateCreated.ToString("yyyy/MM/dd");
-            lblDate.InnerText = Convert.ToDateTime(dateCreated).ToString("dd/MM/yyyy");
-            lblScholar.InnerText = pen.ScholarName.ToString();
+                //Labels for Learn Article
+                pen = han.BLL_GetSelectedLearnArticle(int.Parse(art));
+                lblTitle.InnerText = pen.ArticleTitle.ToString();
+                lblContent.InnerText = pen.ArticleContent.ToString();
+                string dateCreated = pen.DateCreated.ToString("yyyy/MM/dd");
+                lblDate.InnerText = Convert.ToDateTime(dateCreated).ToString("dd/MM/yyyy");
+                lblScholar.InnerText = pen.ScholarName.ToString();
 
-            //Repeater Data Surce for Comments
-            CommentRepeater.DataSource = han.BLL_GetComment(int.Parse(art));
-            CommentRepeater.DataBind();
+                //Repeater Data Surce for Comments
+                CommentRepeater.DataSource = han.BLL_GetComment(int.Parse(art));
+                CommentRepeater.DataBind();
+
+                Rating1.CurrentRating = han.BLL_GetArticleRating(int.Parse(art), Session["UserName"].ToString());
+               
+            }
+            catch(NullReferenceException)
+            { 
+            }
         }
 
         protected void lnkAdminPrintPDF_ServerClick(object sender, EventArgs e)
@@ -400,6 +420,56 @@ namespace Muslimeen.Content.Learn_Islam
                 }
             }
             catch { }
+        }
+        protected void Rating1_Click(object sender,AjaxControlToolkit.RatingEventArgs e)
+        {
+            try
+            {              
+                if (Session["UserName"] != null)
+                {
+                    DBHandler handler = new DBHandler();
+
+                    uspInsertRating rating = new uspInsertRating();
+
+                    int articleId = Convert.ToInt32(hdfArtID.Value.ToString());//gets article id  from repeater when clicked on and saves n into hidden field
+
+                    Rating1.MaxRating = 5;
+
+                    if (handler.BLL_GetArticleRating(articleId, Session["UserName"].ToString()) == 0 || handler.BLL_GetArticleRating(articleId, Session["UserName"].ToString()).ToString() == null)//when user hasnt rated an article in goes into method to execute an insert to allow that user to rate an article.
+                    {
+                        rating.MemberID = Session["UserName"].ToString();
+                        rating.articleID = Convert.ToInt32(articleId);
+                        rating.rating = Rating1.CurrentRating;
+
+                        handler.BLL_InsertRating(rating);
+                        Response.Redirect(Request.Url.AbsoluteUri);
+                    }
+                    else if (handler.BLL_GetArticleRating(articleId, Session["UserName"].ToString()) > 0 && handler.BLL_GetArticleRating(articleId, Session["UserName"].ToString()) <= Rating1.MaxRating)
+                    {
+                        uspUpdateRating upRate = new uspUpdateRating();
+                        upRate.ArticleID = Convert.ToInt32(hdfArtID.Value.ToString());
+                        upRate.MemberID = Session["UserName"].ToString();
+                        upRate.rating = Rating1.CurrentRating;
+
+                        handler.BLL_UpdateRating(upRate);
+                        Response.Redirect(Request.Url.AbsoluteUri);
+                    }
+
+
+
+                }
+                divDisplayArticle.Visible = true;
+                divRating.Visible = true;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+
+
+
         }
     }
 }
