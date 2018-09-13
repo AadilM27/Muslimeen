@@ -69,13 +69,39 @@ namespace Muslimeen.BLL
                     }
                     catch
                     {
-                        throw;
+                       
                     }
                 }
             }
             return result > 0;
         }
         #endregion NonQuery()
+
+        #region Query()
+        public static bool Query(string commandName, CommandType cmdType)
+        {
+            int result = 0;
+            SqlConnection con = new SqlConnection(connString);
+            SqlCommand cmd = con.CreateCommand();
+
+            cmd.CommandType = cmdType;
+            cmd.CommandText = commandName;
+
+            try
+            {
+                if (con.State != ConnectionState.Open)
+                {
+                    con.Open();
+                }
+                result = cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+               
+            }
+            return result > 0;
+        }
+        #endregion Query()
         #region Select()
         public static DataTable Select(string commandName, CommandType cmdType)
         {

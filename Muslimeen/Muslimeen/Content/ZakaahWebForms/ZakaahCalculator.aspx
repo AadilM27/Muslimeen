@@ -13,9 +13,7 @@
      
      <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
      <link href="../Default/css/Default.css" rel="stylesheet" />
-     <link href="../Zakaah/css/newZakaah.css" rel="stylesheet" />
-     <link href="../Zakaah/css/Slideshow.css" rel="stylesheet" />
-     <link href="../Zakaah/css/Zakaatcard.css" rel="stylesheet" />
+     
      <script src="../../Login/LogIn_Bootstrap/js/jquery-3.3.1.min.js"></script>
      <script language="JavaScript" type="text/javascript">
         function onlyNumbers(evt)

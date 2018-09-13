@@ -452,5 +452,10 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetScholarByMosque(MosqueID);
         }
+
+        public bool BLL_ClearUnverifiedMembers()
+        {
+            return dBAccess.ClearUnverifiedMembers();
+        }
     }
 }
