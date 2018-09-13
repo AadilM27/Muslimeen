@@ -88,11 +88,11 @@ namespace Muslimeen.Content.Mosque
                     Session["lblMosqueName"] = mosque.MosqueName.ToString();
                     lblMosqueAddress.Text = mosque.MosqueStreet + " " + mosque.MosqueSuburb;
                     Session["Address"] = lblMosqueAddress.Text.ToString();
-                    lblYearEstablished.Text = mosque.YearEstablished.ToString().Substring(0, 10);
+                    lblYearEstablished.Text = mosque.YearEstablished.ToString().Substring(0,10);
                     lblMosqueType.Text = mosque.MosqueType;
                     lblMosqueSize.Text = mosque.MosqueSize;
-                    lblQuote.Text = mosque.MosqueQuote;
-                    imgMosque.ImageUrl = mosque.MosqueImage;
+                    lblQuote.Text = "'"+mosque.MosqueQuote+"'";
+                    imgMosque.ImageUrl = "../"+ mosque.MosqueImage;
                     lblMembers.Text = mosque.MemberCount.ToString();
                     uspGetMember member = new uspGetMember();
                     member = db.BLL_GetMosqueRep(int.Parse(Session["MosqueID"].ToString()));
@@ -110,6 +110,7 @@ namespace Muslimeen.Content.Mosque
                 divPrayerTimes.Visible = false;
                 divPrayerTable.Visible = false;
                 divgrid.Visible = false;
+
             }
         }
 
@@ -541,5 +542,7 @@ namespace Muslimeen.Content.Mosque
             lblSpeaker.InnerText = events.Speaker;
 
         }
+
+    
     }
 }
