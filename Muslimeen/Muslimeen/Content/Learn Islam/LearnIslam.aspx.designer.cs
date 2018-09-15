@@ -298,7 +298,7 @@ namespace Muslimeen.Content.Learn_Islam {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblContent;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea lblContent;
         
         /// <summary>
         /// lblScholar control.
@@ -398,6 +398,15 @@ namespace Muslimeen.Content.Learn_Islam {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_Submit;
+        
+        /// <summary>
+        /// lblCommentCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCommentCount;
         
         /// <summary>
         /// CommentRepeater control.

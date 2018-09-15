@@ -23,8 +23,6 @@ namespace Muslimeen.Content.Learn_Islam
         {
             try
             {
-
-
                 DBHandler db = new DBHandler();
                 List<CounterCalender> counterCalender = new List<CounterCalender>();
 
@@ -32,8 +30,6 @@ namespace Muslimeen.Content.Learn_Islam
                 hdfAdjustDate.Value = counterCalender[3].Val.ToString();
 
                 DBHandler dBHandler = new DBHandler();
-
-
 
                 divNoSelected.Visible = false;
                 divPendingArticles.Visible = true;
@@ -90,6 +86,10 @@ namespace Muslimeen.Content.Learn_Islam
                     }
                     drpTopic.DataBind();
                 }
+
+                CommentRepeater.DataSource = dBHandler.BLL_GetComment(int.Parse(hdfArtID.Value));
+                CommentRepeater.DataBind();
+
             }
             catch
             {
@@ -131,7 +131,7 @@ namespace Muslimeen.Content.Learn_Islam
 
         protected void btnScholars_Click(object sender, EventArgs e)
         {
-            //redirect user to the scholars list page.
+            Response.Redirect("../ListScholar.aspx");
         }
 
         protected void btnLearnIslam_Click(object sender, EventArgs e)
@@ -202,8 +202,8 @@ namespace Muslimeen.Content.Learn_Islam
                 pen = han.BLL_GetSelectedLearnArticle(int.Parse(art));
                 lblTitle.InnerText = pen.ArticleTitle.ToString();
                 lblContent.InnerText = pen.ArticleContent.ToString();
-                string dateCreated = pen.DateCreated.ToString("yyyy/MM/dd");
-                lblDate.InnerText = Convert.ToDateTime(dateCreated).ToString("dd/MM/yyyy");
+                string dateCreated = pen.DateCreated.ToString();
+                lblDate.InnerText = Convert.ToDateTime(dateCreated).ToString();
                 lblScholar.InnerText = pen.ScholarName.ToString();
 
                 //Repeater Data Surce for Comments
@@ -211,7 +211,9 @@ namespace Muslimeen.Content.Learn_Islam
                 CommentRepeater.DataBind();
 
                 Rating1.CurrentRating = han.BLL_GetArticleRating(int.Parse(art), Session["UserName"].ToString());
-               
+
+                string commentCount = CommentRepeater.Items.Count.ToString();
+                lblCommentCount.Text =  "Comments: " + commentCount;
             }
             catch(NullReferenceException)
             { 
@@ -324,16 +326,13 @@ namespace Muslimeen.Content.Learn_Islam
 
                     han.BLL_AddComment(com);
 
-                    CommentRepeater.DataSource = han.BLL_GetComment(int.Parse(hdfArtID.Value));
-                    CommentRepeater.DataBind();
-
                     divNoSelected.Visible = true;
 
                     txtComment.Text = string.Empty;
                 }
                 else
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Please login to add comment.');</script>");
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Please login to add comment.');</script>");
                 }
             }
             catch
@@ -462,9 +461,9 @@ namespace Muslimeen.Content.Learn_Islam
                 divRating.Visible = true;
 
             }
-            catch (Exception)
+            catch
             {
-                throw;
+                
             }
 
 

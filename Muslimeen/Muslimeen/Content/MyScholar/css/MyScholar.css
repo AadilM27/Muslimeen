@@ -195,11 +195,11 @@ html {
     position: static;
     background-color: #6e9bc3;
     color: black;
-    padding: 0;
+    padding: 3px;
     border-radius: 0px;
     text-align: start;
     font-size: small;
-    border: thin solid #256297;
+    border: 2px solid #256297;
 }
 
     .lstBtn:hover {

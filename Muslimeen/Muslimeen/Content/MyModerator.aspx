@@ -272,7 +272,7 @@
                                  <div class=" head-div-2 p-2 mb-0 ">
                                     <p class="m-0">Article Details:</p>
                                 </div>
-                                <div class="container" runat="server" id="divDisplayArticle" style="position:static;overflow-x:scroll;overflow-y:scroll">
+                                <div class="container" runat="server" id="divDisplayArticle" style="position:static;overflow-x:scroll;overflow-y:scroll; height:490px;">
                                 <div class="row mb-3 mt-2" style="position:static">
                                     <div class="col position-static">
                                         <label class="m-0 h2" runat="server" id="lblTitle"></label>
@@ -307,6 +307,14 @@
                                     <asp:Label ID="lblRejection" CssClass="align-content-center" ForeColor="Red" runat="server" Text=""></asp:Label>
                                 </div>
                         </div>
+                             <%-- Overlay for Articles List selection--%>
+                            <div class="col-6 col-xl-4 text-nowrap" runat="server" id="divArticleOverlay">
+                                <div class="w-100 h-100 container text-center">
+                                    <div class=" container h-25 mb-3"></div>
+                                        <h6 class="card-title h-50 mt-5 pt-5"><img class="figure-img mr-2" src="MyAdmin/icons/outline_error_outline_black_18dp.png" />No Article selected.</h6>
+                                    <div class=" container h-25"></div>
+                                </div>
+                            </div>
                             <div runat="server" id="divDisplayReports" class=" col-12 col-xl-12 mw-100 p-0" style="position:static">
                                 <div class=" head-div-2 p-2 mb-0 text-center ">
                                     <p class="m-0" runat ="server" id ="reportHeading">Report</p>

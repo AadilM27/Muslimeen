@@ -46,7 +46,7 @@ namespace Muslimeen.Content.MyModerator
                 //    divViewPendingArt.Visible = false;
                 //    divViewArt.Visible = false;
                 //}
-                
+                divArticleOverlay.Visible = false;
                 divViewPendingArt.Visible =false;
                 divViewArt.Visible = false;
                 divViewPendingSch.Visible = false;
@@ -109,7 +109,8 @@ namespace Muslimeen.Content.MyModerator
                
 
                 divViewPendingArt.Visible = true;
-                divViewArt.Visible = true;
+                divArticleOverlay.Visible = true;
+                divViewArt.Visible = false;
                 DBHandler dBHandler = new DBHandler();
 
                 rptViewPendingArticles.DataSource = dBHandler.BLL_GetPendingArticle();
@@ -372,7 +373,7 @@ namespace Muslimeen.Content.MyModerator
 
                 lblTitle.InnerText = article.ArticleTitle.ToString();
                 lblContent.InnerText = article.ArticleContent.ToString();
-                lblDate.InnerText = Convert.ToDateTime(article.DateCreated).ToString("dd/MM/yyyy");
+                lblDate.InnerText = Convert.ToDateTime(article.DateCreated).ToString();
                 lblScholar.InnerText = article.ScholarName.ToString();
 
             

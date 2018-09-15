@@ -356,8 +356,13 @@ namespace Muslimeen.Content.MyScholar
             divAddArticle.Visible = true;
             lblTaskHead.InnerText = "Edit Article";
 
+            DBHandler db = new DBHandler();
+
+            drpTopics.SelectedValue = db.BLL_GetSelectedRejectedArticle(Convert.ToInt32(hfdRej.Value)).TopicID.ToString();
             txtContent.Text = lblRContent.InnerText;
             txtHeading.Text = lblRTitle.InnerText;
+
+
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)

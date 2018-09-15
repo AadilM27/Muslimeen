@@ -11,7 +11,7 @@ namespace Muslimeen
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("../Content/Default.aspx");
+            Response.Redirect("Content/Default.aspx");
         }
     }
 }

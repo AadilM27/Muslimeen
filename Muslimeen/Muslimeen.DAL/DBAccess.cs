@@ -1297,8 +1297,10 @@ namespace Muslimeen.BLL
 
                     pen.ArticleTitle = Convert.ToString(row["ArticleTitle"]);
                     pen.ArticleContent = Convert.ToString(row["ArticleContent"]);
-                    pen.DateCreated = Convert.ToDateTime(row["DateCreated"]).Date;
+                    string dateCreated = Convert.ToDateTime(row["DateCreated"]).ToString("dd MMM yyyy HH:mm:ss tt");
+                    pen.DateCreated = Convert.ToDateTime(dateCreated);
                     pen.RejectionReason = Convert.ToString(row["RejectionReason"]);
+                    pen.TopicID = Convert.ToInt32(row["TopicID"]);
                 }
             }
             return pen;
@@ -1516,7 +1518,8 @@ namespace Muslimeen.BLL
 
                     pen.ArticleTitle = Convert.ToString(row["ArticleTitle"]);
                     pen.ArticleContent = Convert.ToString(row["ArticleContent"]);
-                    pen.DateCreated = Convert.ToDateTime(row["DateCreated"]).Date;
+                    string dateCreated = Convert.ToDateTime(row["DateCreated"]).ToString("dd MMM yyyy HH:mm:ss tt");
+                    pen.DateCreated = Convert.ToDateTime(dateCreated);
                     pen.ScholarName = Convert.ToString(row["Scholar Name"]);
                 }
             }

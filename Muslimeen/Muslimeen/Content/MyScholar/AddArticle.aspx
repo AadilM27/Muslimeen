@@ -55,7 +55,7 @@
                                 <asp:Button runat="server" ID="btnHome" Text="Home"  CssClass=" btn btn-link nav-item navText" OnClick="btnHome_Click"/>
                             </li><li class="NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems" runat="server" id="liMyMusbtn">
-                                <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen"  CssClass=" btn btn-link nav-item navText" OnClick="btnMyMuslimeen_Click"/>
+                                <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen" CssClass=" btn btn-link nav-item navText" OnClick="btnMyMuslimeen_Click"/>
                             </li><li runat="server" id="liMyMusDivi" class=" NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems">
                                 <asp:Button runat="server" ID="btnMosques" Text="Mosques"  CssClass="nav-item navText btn-link btn" OnClick="btnMosques_Click"/>
@@ -187,7 +187,7 @@
                             <div class=" head-div-2 p-2 mb-0 text-left ">
                                 <p class="m-0 ">Article Selected</p>
                             </div>
-                            <div class="container pre-scrollable" runat="server" id="divDisplayArticle">
+                            <div class="container mt-2 pre-scrollable" runat="server" id="divDisplayArticle">
                                 <div class="row mb-3 mt-2">
                                     <div class="col">
                                         <label class="m-0 h2" runat="server" id="lblTitle"></label>
@@ -253,7 +253,7 @@
                             <div class=" head-div-2 p-2 mb-0 text-left ">
                                 <p class="m-0">Article Selected</p>
                             </div>
-                            <div class="container" runat="server" id="divDisplayRejected">
+                            <div class="container mt-2" runat="server" id="divDisplayRejected">
                                 <div class="row mb-1 position-static">
                                     <div class="col-2 position-static"><b>Title:</b></div>
                                     <div class="col position-static text-truncate">

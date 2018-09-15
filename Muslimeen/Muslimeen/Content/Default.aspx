@@ -12,10 +12,18 @@
     <link rel="icon" href="../Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="Default/css/Default.css" rel="stylesheet" />
+    <script src="../Login/LogIn_Bootstrap/js/popper.min.js"></script>
     <script src="../Login/LogIn_Bootstrap/js/jquery-3.3.1.min.js"></script>
-    <link href="Default/css/Slideshow.css" rel="stylesheet" />
+    <link href="Default/css/Slideshow.css" rel="stylesheet" />    
 </head>
     <body>
+        <script type="text/javascript">
+//Initialize tooltip with jQuery
+        $(document).ready(function () {
+            $('.tooltips').tooltip();
+        });
+    </script>
+
         <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink> 
         <form id="frmScholar" runat="server" class=" ">   
             <header >
@@ -52,7 +60,7 @@
                                 <asp:Button runat="server" ID="btnHome" Text="Home"  CssClass=" btn btn-link nav-item navText" OnClick="btnHome_Click"/>
                             </li><li class="NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems" runat="server" id="liMyMusbtn">
-                                <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen"  CssClass=" btn btn-link nav-item navText" OnClick="btnMyMuslimeen_Click"/>
+                                <asp:Button runat="server" ID="btnMyMuslimeen" Text="MyMuslimeen" data-toggle="tooltip" data-trigger="hover" data-placement="Top" tooltip="My Dashboard" CssClass="btn btn-link nav-item navText" OnClick="btnMyMuslimeen_Click"/>
                             </li><li runat="server" id="liMyMusDivi" class=" NavDevider">|</li><!--deviders-->
                             <li class="nav-item navbarText navbaritems">
                                 <asp:Button runat="server" ID="btnMosques" Text="Mosques"  CssClass="nav-item navText btn-link btn" OnClick="btnMosques_Click"/>

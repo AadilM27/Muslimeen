@@ -562,6 +562,15 @@ namespace Muslimeen.Content.MyModerator {
         protected global::System.Web.UI.WebControls.Label lblRejection;
         
         /// <summary>
+        /// divArticleOverlay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divArticleOverlay;
+        
+        /// <summary>
         /// divDisplayReports control.
         /// </summary>
         /// <remarks>

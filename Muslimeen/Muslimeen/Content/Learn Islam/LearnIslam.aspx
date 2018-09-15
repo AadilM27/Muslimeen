@@ -139,25 +139,23 @@
                                     <HeaderTemplate>
                                     </HeaderTemplate>
                                     <ItemTemplate>
-                                        <div class="p-0 form-row m-0 position-static">
+                                        <div class="p-2 form-row m-0 position-static" style="background-color:lightgray;">
                                             <div class=" col-auto position-static p-0">
                                                 <div class="">
-                                                    <p style="font-size: small" class="p-0 m-0 text-truncate">
+                                                    <p class="p-0 pb-1 m-0 text-truncate h5">
                                                         <b>Article&nbsp;Title: </b><%#Eval("ArticleTitle")%><br />
                                                     </p>
                                                 </div>
-                                                <hr class=" mr-4 m-0 p-0" />
                                                 <div class="">
-                                                    <p style="font-size: small" class="p-0 m-0 text-truncate">
+                                                    <p style="font-size:medium" class="p-0 m-0 text-truncate">
                                                         <b>Content: </b><%#Eval("ArticleContent").ToString().PadRight(30).Substring(0,30).TrimEnd() + "..."%>
                                                         <asp:LinkButton ID="btnShow" CommandArgument='<%#Eval("ArticleID") %>' runat="server" OnClick="btnShow_Click">
                                                             Read More
                                                         </asp:LinkButton>
                                                     </p>
                                                 </div>
-                                                <hr class=" mr-4 m-0 p-0" />
                                                 <div class="">
-                                                    <p style="font-size: small;" class="p-0 m-0 text-truncate"><b>Date Created: </b><%#Convert.ToDateTime(Eval("DateCreated")).ToString("dd/MM/yyyy")%></p>
+                                                    <p style="font-size: small;" class="p-0 m-0 text-truncate"><b>Date Created: </b><%#Convert.ToDateTime(Eval("DateCreated")).ToString("dd MMM yyyy HH:mm:ss tt")%></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -176,6 +174,7 @@
                             <div class=" head-div-2 p-2 mb-0 text-left ">
                                 <p class="m-0 ">Article Selected</p>
                             </div>
+                            <div class="container" style="overflow-y:scroll; height:600px" >
                             <div class="container" runat="server" id="divDisplayArticle">
                                 <div class="row mb-3 mt-2">
                                     <div class="col">
@@ -184,7 +183,7 @@
                                 </div>
                                 <div class="row mb-1 position-static">
                                     <div class="col position-static">
-                                        <label class="m-0" runat="server" id="lblContent"></label>
+                                        <textarea class="m-0 article-content" readonly="readonly" runat="server" id="lblContent"/>
                                     </div>
                                 </div>
                                 <div class="row mb-1 position-static">
@@ -199,44 +198,46 @@
                                         </div>
                                         <!--article rating-->                                     
                                     </div>
-                                </div>                              
+                                </div>
                             </div>
+                            <hr class="p-0 m-1" />
                             <!--PDF Button-->
-                            <div runat="server" id="divAdminReports" class="col-12 col-xl-12 p-0 mr-1">                                
+                            <div runat="server" id="divAdminReports" class="col-12 col-xl-12 p-0 mr-1 mt-4">                                
                                 <div class="m-0 p-0 pt-2 pl-2">
-                                    <a runat="server" id="lnkAdminPrintPDF" onserverclick="lnkAdminPrintPDF_ServerClick"><img src="../MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
-                                     <div id="divRating" runat="server" style="position:static;padding-left:2em;padding-right:2em;padding-top:0,1em;float:left">
-                                     Rating:&nbsp<asp:ScriptManager ID="ScriptManager1" runat="server">
-                                    </asp:ScriptManager>
-                                        <asp:UpdatePanel ID ="updatepnl1" runat="server">
+                                    <a runat="server" id="lnkAdminPrintPDF" onserverclick="lnkAdminPrintPDF_ServerClick">
+                                        <img src="../MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
+                                    <div id="divRating" runat="server" style="position: static; padding-left: 2em; padding-right: 2em; padding-top: 0,1em; float: right" class="row">
+                                        <p class="text-nowrap h5 mr-1">Rating:&nbsp<asp:ScriptManager ID="ScriptManager1" runat="server">
+                                        </asp:ScriptManager>
+                                        <asp:UpdatePanel ID="updatepnl1" runat="server" class="pt-1">
                                             <ContentTemplate>
-                                   <ajaxToolkit:Rating ID="Rating1" AutoPostBack="true" OnClick="Rating1_Click" runat="server"
-                                        StarCssClass="Star" WaitingStarCssClass="WaitingStar" EmptyStarCssClass="Star"
-                                         FilledStarCssClass="FilledStar" >
-                                    </ajaxToolkit:Rating>
-                                                 </ContentTemplate>
-                                            </asp:UpdatePanel>            
-                                        </div>
+                                                <ajaxToolkit:Rating ID="Rating1" AutoPostBack="true" OnClick="Rating1_Click" runat="server"
+                                                    StarCssClass="Star" WaitingStarCssClass="WaitingStar" EmptyStarCssClass="Star"
+                                                    FilledStarCssClass="FilledStar">
+                                                </ajaxToolkit:Rating>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel></p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <asp:GridView CssClass="flex-grow-1" ID="grdAdminReports"  RowStyle-Wrap="true" runat="server" style="font-size:smaller;" ForeColor="#333333" >
-                                        <AlternatingRowStyle BackColor="White"  />
-                                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" Font-Size="12" HorizontalAlign="Center" />
-                                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                                        <RowStyle BackColor="#EFF3FB"  Wrap="true"  HorizontalAlign="Center"/>
-                                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                                    </asp:GridView>
-                                </div>
+                                <!--PDF GridView-->
+                                <asp:GridView CssClass="flex-grow-1" ID="grdAdminReports"  RowStyle-Wrap="true" runat="server" style="font-size:smaller;" ForeColor="#333333" >
+                                    <AlternatingRowStyle BackColor="White"  />
+                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" Font-Size="12" HorizontalAlign="Center" />
+                                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                    <RowStyle BackColor="#EFF3FB"  Wrap="true"  HorizontalAlign="Center"/>
+                                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                </asp:GridView>
                             </div>
                             <br />
+                            <hr class="p-0 m-1" />
                             <!--Comment-->
                             <div class="" >
                                 <div class="row p-0 m-0 ">
-                                    <div class="col-10 ml-2" >
+                                    <div class="col-10 ml-2 mt-3" >
                                         <asp:TextBox style="max-height:50px; min-height:50px;" CssClass="form-control col main-txtb" ID="txtComment" runat="server" TextMode="MultiLine"></asp:TextBox>
                                     </div>
                                     <div class="align-self-center">
@@ -244,7 +245,7 @@
                                     </div>
                                 </div>
                                 <br />
-                                <h4 style="text-decoration:underline;">Comments:</h4>
+                                <asp:Label runat="server" ID="lblCommentCount"></asp:Label>
                                 <br />
                                 <!--Comments Repeater-->
                                 <div class="position-static container pre-scrollable" style="overflow-y:scroll;max-height:230px;">
@@ -261,13 +262,14 @@
                                                 </div>
                                             </div>
                                             <div class="row" >
-                                                <div class="col">
+                                                <div style="font-size: small" class="col">
                                                     <asp:Label ID="lblCommentDate" runat="server" Text='<%#Convert.ToDateTime(Eval("CommentDate")).ToString("dd MMM yyyy HH:mm:ss tt") %>'></asp:Label>
                                                 </div>
                                             </div>
                                             <hr />
                                         </ItemTemplate>
                                     </asp:Repeater>
+                                </div>
                                 </div>
                                 </div>
                             </div>
@@ -287,7 +289,7 @@
                                <a class="footerr-text" href="../Mosque/ListMosque.aspx">Mosques</a>
                            </li>
                            <li class="nav-item">
-                               <a class="footerr-text" href="../ListScholars">Scholars</a>
+                               <a class="footerr-text" href="../ListScholar">Scholars</a>
                            </li>
                            <li class="nav-item">
                                <a class="footerr-text" href="../Learn Islam/LearnIslam.aspx">Learn Islam</a>

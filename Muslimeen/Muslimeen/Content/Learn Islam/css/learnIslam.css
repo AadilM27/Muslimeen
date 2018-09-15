@@ -323,3 +323,11 @@ html {
     position: static;
     padding-bottom: 3px;
 }
+
+.article-content {
+    max-height: 450px;
+    min-height: 450px;
+    width: 100%;
+    border:none;
+    
+}

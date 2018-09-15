@@ -13,5 +13,6 @@ namespace TypeLib.ViewModels
         public string ArticleContent { get; set; }
         public DateTime DateCreated { get; set; }
         public string RejectionReason { get; set; }
+        public int TopicID { get; set; }
     }
 }
