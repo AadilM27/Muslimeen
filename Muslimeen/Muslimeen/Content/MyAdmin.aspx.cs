@@ -27,6 +27,7 @@ namespace Muslimeen.Content
 
             try
             {
+
                 divListEvent.Visible = false;
                 divEventOverlay.Visible = false;
                 divDisplayEvents.Visible = false;

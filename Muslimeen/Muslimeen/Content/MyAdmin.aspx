@@ -14,8 +14,9 @@
 </head>
     <body>
         <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
+        <input type="hidden" id="isClicked" />
         <form id="frmScholar" runat="server" class="">   
-            <header >
+            <header>
                 <nav class="navFixed">
                     <div class="row align-self-end">
                         <ul class=" col-7 navbar-nav flex-row justify-content-start">
@@ -99,12 +100,13 @@
                             <asp:Button ID="btnAddNotice" CssClass="pl-2 btn taskBtn mb-1"   runat ="server" Text="Add new Notice" OnClick="btnAddNotice_Click" />
                                 <asp:Button runat="server" ID="btnUpdateNotice" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnUpdateNotice_Click" Text="Update a Notice" />
                             <asp:Button runat="server" ID="btnUpdateDateCounter" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnUpdateDateCounter_Click" Text="Update Date and Count Down" />
-                            <p class="pl-2 btn taskBtn mb-1">View Reports &#11167;</p>
-                                <asp:Button runat="server" ID="btnReportViewMembers" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportViewMembers_Click" Text="All Member Details Reports" />
-                                <asp:Button runat="server" ID="btnReportViewActiveMembers" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportViewActiveMembers_Click" Text="All Active Members" />
-                                <asp:Button runat="server" ID="btnReportUnactiveMembers" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportUnactiveMembers_Click" Text="All Unactive Members" />                     
-                                <asp:Button runat="server" ID="btnReportAllMosques" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportAllMosques_Click" Text="All Mosques Details" />                     
-                                <%--<asp:Button runat="server" ID="Button2" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportUnactiveMembers_Click" Text="All Unactive Members" />--%>
+                            <a class="pl-2 btn taskBtn mb-1" onclick="DropDown('divReports');">View Reports &#11167;</a>
+                                <div id="divReports" class="d-flex flex-column collapsing">
+                                    <asp:Button runat="server" ID="btnReportViewMembers" CssClass="pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportViewMembers_Click" Text="All Member Details Reports" />
+                                    <asp:Button runat="server" ID="btnReportViewActiveMembers" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportViewActiveMembers_Click" Text="All Active Members" />
+                                    <asp:Button runat="server" ID="btnReportUnactiveMembers" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportUnactiveMembers_Click" Text="All Unactive Members" />                     
+                                    <asp:Button runat="server" ID="btnReportAllMosques" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportAllMosques_Click" Text="All Mosques Details" />                     
+                                </div>
                         </nav>
                     </div>
                     <div class=" position-static basic-div-styling p-0 w-100 position-relative">
@@ -800,7 +802,7 @@
                                 </div>
                             </div>
                             <%-- Add/Update Notices --%>
-                            <div runat="server" id="divAddUpdateNotice" class=" col-sm-6 col-xl-4 flex-nowrap p-0">
+                            <div runat="server" id="divAddUpdateNotice" class=" col-sm-10 col-xl-4 flex-nowrap p-0">
                                 <div class=" head-div-2 p-2 mb-0 text-left ">
                                     <p class="m-0">Add Notice details</p>
                                 </div>
@@ -1130,7 +1132,7 @@
                             <%-- View Events--%>
                             <div class=" row bg-light position-static ml-1 mr-1 flex-nowrap col-12 pl-0" runat="server" id="divDisplayEvents">
                                 <%--flex-nowrap w-100--%>
-                                <div class="col-3 col-xl-4 p-0 mr-1">
+                                <div class="col-3 col-sm-5 col-xl-4 p-0 mr-1">
                                     <div class=" head-div-2 p-2 mb-0 text-left ">
                                         <p class="m-0">Select Event Date Range</p>
                                     </div>

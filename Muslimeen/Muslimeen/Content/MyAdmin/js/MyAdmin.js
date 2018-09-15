@@ -181,3 +181,24 @@ function VarifyPassword(btn, errorLbl) {
         document.getElementById(errorLbl).innerText = "";
     }
 }
+
+function DropDown(div) {
+    
+    var divButtons = document.getElementById(div);
+
+    if (divButtons.classList.contains("collapsing")) {
+        divButtons.classList.remove("collapsing");
+        document.getElementById('isClicked').value = divButtons;
+    } else if (!divButtons.classList.contains("collapsing")) {
+        divButtons.classList.add("collapsing");
+        document.getElementById('isClicked').value = "";
+    }
+}
+
+var isClicked = document.getElementById('isClicked').value;
+if (!isClicked.isEmpty) {
+    //add all div tags that you wish to keep displayed in left nav bar on load. 
+    var div1 = document.getElementById(isClicked);
+    div1.classList.remove("collapsing");
+}
+

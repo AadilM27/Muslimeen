@@ -20,6 +20,9 @@ namespace Muslimeen.Content
                 DBHandler db = new DBHandler();
                 List<CounterCalender> counterCalender = new List<CounterCalender>();
 
+                BGProcesses bgp = new BGProcesses();
+                bgp.ClearUnverifiedMembers(); //Sets All unverified members active status to 'N'.
+
                 counterCalender = db.BLL_GetCounterCalender();
                 hdfCounterTitle.Value = counterCalender[2].Val.ToString();
                 hdfCounterFinishTitle.Value = counterCalender[1].Val.ToString();
