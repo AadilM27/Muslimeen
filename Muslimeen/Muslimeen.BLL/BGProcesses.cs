@@ -10,7 +10,7 @@ namespace Muslimeen.BLL
 {
     public class BGProcesses
     {
-        public void ClearUnverifiedMembers()
+        public bool ClearUnverifiedMembers()
         {
             DBHandler db = new DBHandler();
             db.BLL_ClearUnverifiedMembers();
