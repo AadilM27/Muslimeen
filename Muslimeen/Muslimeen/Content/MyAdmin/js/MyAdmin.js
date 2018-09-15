@@ -156,7 +156,7 @@ function ShowPass() {
 
             password1.type = "password";
         }
-    },1500)
+    },500)
 
 }
 

@@ -187,7 +187,7 @@
                             <div class=" head-div-2 p-2 mb-0 text-left ">
                                 <p class="m-0 ">Article Selected</p>
                             </div>
-                            <div class="container" runat="server" id="divDisplayArticle">
+                            <div class="container pre-scrollable" runat="server" id="divDisplayArticle">
                                 <div class="row mb-3 mt-2">
                                     <div class="col">
                                         <label class="m-0 h2" runat="server" id="lblTitle"></label>

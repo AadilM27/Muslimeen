@@ -121,7 +121,7 @@ namespace Muslimeen.Content.MyScholar
 
         protected void btnScholars_Click(object sender, EventArgs e)
         {
-            //redirect user to the scholars list page.
+            Response.Redirect("../ListScholar.aspx");
         }
 
         protected void btnLearnIslam_Click(object sender, EventArgs e)
@@ -287,7 +287,7 @@ namespace Muslimeen.Content.MyScholar
             }
             catch
             {
-                throw;
+                
             }
         }
 

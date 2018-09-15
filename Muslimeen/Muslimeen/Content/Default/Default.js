@@ -26,19 +26,27 @@ function AddDateChars() {
 
 function flashDiv(div)
 {
-    document.getElementById(div).style.backgroundColor = "lightgreen";
+    document.getElementById(div).style.backgroundColor = "#88c7f7";
 
     setTimeout(function Flash1()
     {
         document.getElementById(div).style.backgroundColor = "";
 
         setTimeout(function Flash2() {
-            document.getElementById(div).style.backgroundColor = "lightgreen";
+            document.getElementById(div).style.backgroundColor = "#88c7f7";
 
             setTimeout(function Flash3() {
                 document.getElementById(div).style.backgroundColor = "";
-            }, 500)
-        }, 500)
-    }, 500)
+
+                setTimeout(function Flash3() {
+                    document.getElementById(div).style.backgroundColor = "#88c7f7";
+
+                    setTimeout(function Flash3() {
+                        document.getElementById(div).style.backgroundColor = "";
+                    }, 300)
+                }, 300)
+            }, 300)
+        }, 300)
+    }, 300)
 }
     

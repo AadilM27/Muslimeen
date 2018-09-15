@@ -191,14 +191,14 @@
                   
                         </div>
 
-                             <div class="col-sm-3 col-xl-4 text-nowrap" runat="server" id="divNoSalaah">
+                             <%--<div class="col-sm-3 col-xl-4 text-nowrap" runat="server" id="divNoSalaah">
                                 <div class="w-100 h-100 container text-center">
                                     <div class=" container h-25 mb-3"></div>
                                     <h6 class="card-title h-50 mt-5 pt-5">
                                         <asp:Image runat="server" class="figure-img mr-2" ImageUrl="MyMember/icons/outline_error_outline_black_18dp.png" /><asp:Label ID="lblNoSalaah" runat="server">No salaah times were entered as yet.</asp:Label></h6>
                                     <div class=" container h-25"></div>
                                 </div>
-                            </div>
+                            </div>--%>
 
                     </div>
                          
@@ -267,7 +267,7 @@
                                     <div class=" head-div-2 p-2 mb-0 text-left ">
                                         <label runat="server" class="mb-0">Selected event details:</label>
                                     </div>
-                                    <div runat="server" id="lblEventTitle" class="ml-3 p-2" style="font-weight:500" >
+                                    <div runat="server" id="lblEventTitle" class=" h4 font-weight-bold  ml-3 p-2" style="font-weight:500" >
                                         <h4 class="p-0 m-0" ></h4>
                                     </div>
                                     <hr class="m-1 ml-3 mr-3 bg-secondary" />
@@ -495,7 +495,7 @@
                             <a class="footerr-text" href="Mosque/ListMosque.aspx">Mosques</a>
                         </li>
                         <li class="nav-item">
-                            <a class="footerr-text" href="ListScholars.aspx">Scholars</a>
+                            <a class="footerr-text" href="ListScholar.aspx">Scholars</a>
                         </li>
                         <li class="nav-item">
                             <a class="footerr-text" href="Learn Islam/LearnIslam.aspx">Learn Islam</a>

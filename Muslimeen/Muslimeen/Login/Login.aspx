@@ -16,6 +16,7 @@
 		<title> Muslimeen - Log In </title>
 	
 		<link href="LogIn_Bootstrap/css/LogIn.css" rel="stylesheet"/>
+        
 
 </head>
 <body class="text-center">
@@ -29,7 +30,7 @@
                 <asp:TextBox runat="server" ID="txtUserName" CssClass=" form-control main-txtb" placeholder="User name" OnTextChanged="txtUserName_TextChanged"/>
             </div>
 			<div class="mb-2">
-                <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" CssClass="form-control main-txtb" placeholder="Password"/>
+                <asp:TextBox runat="server" ID="txtPassword" onkeyup="ShowPass();" TextMode="Password" CssClass="form-control main-txtb" placeholder="Password"/>
 			</div>
 			<div class=" form-check mt-3 mb-3">
                 <asp:CheckBox runat="server" AutoPostBack="true" ID="chkRememberMe" CssClass="form-check-input position-static"/>

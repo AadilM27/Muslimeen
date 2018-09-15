@@ -38,7 +38,7 @@ namespace Muslimeen.Content
             divListEvent.Visible = false;
             divSchDetailsOverlay.Visible = false;
             divEventOverlay.Visible = false;
-            divNoSalaah.Visible = false;
+            //divNoSalaah.Visible = false;
 
             List<CounterCalender> counterCalender = new List<CounterCalender>();
 
@@ -60,22 +60,6 @@ namespace Muslimeen.Content
                     uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
                     Session["MosqueID"] = uspGetMember.MosqueID.ToString();
 
-                    DateTime todaysDate = DateTime.Today;
-
-                    uspGetSpecificDayPrayerTimes prayertimes = new uspGetSpecificDayPrayerTimes();
-                    prayertimes = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), todaysDate);
-
-                    lblFajrAzaan.Text = prayertimes.FajrA.ToString();
-                    lblFajrJamaat.Text = prayertimes.FajrJ.ToString();
-                    lblDhuhrAzaan.Text = prayertimes.DhuhrA.ToString();
-                    lblDhuhrJamaat.Text = prayertimes.DhuhrJ.ToString();
-                    lblAsrAzaan.Text = prayertimes.AsrA.ToString();
-                    lblAsrJamaat.Text = prayertimes.AsrJ.ToString();
-                    lblMagribAzaan.Text = prayertimes.MagribA.ToString();
-                    lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
-                    lblEishaAzaan.Text = prayertimes.EishaA.ToString();
-                    lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
-
                     if (uspGetMember.MemberType == 'M')
                     {
                         hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
@@ -92,6 +76,31 @@ namespace Muslimeen.Content
                         Response.Redirect("../Error.aspx");
                     }
 
+                    DateTime todaysDate = DateTime.Today;
+
+                    
+                    uspGetSpecificDayPrayerTimes prayertimes = new uspGetSpecificDayPrayerTimes();
+                    prayertimes = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), todaysDate);
+                    if (prayertimes != null)
+                    {
+                        lblFajrAzaan.Text = prayertimes.FajrA.ToString();
+                        lblFajrJamaat.Text = prayertimes.FajrJ.ToString();
+                        lblDhuhrAzaan.Text = prayertimes.DhuhrA.ToString();
+                        lblDhuhrJamaat.Text = prayertimes.DhuhrJ.ToString();
+                        lblAsrAzaan.Text = prayertimes.AsrA.ToString();
+                        lblAsrJamaat.Text = prayertimes.AsrJ.ToString();
+                        lblMagribAzaan.Text = prayertimes.MagribA.ToString();
+                        lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
+                        lblEishaAzaan.Text = prayertimes.EishaA.ToString();
+                        lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
+                    }
+                    else if (prayertimes == null)
+                    {
+                        if (!IsPostBack)
+                        {
+                            Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('The Mosque you are assigned to has no available prayer times.');</script>");
+                        }
+                    }
                 }
                 else if (Session["UserName"] == null)
                 {
@@ -120,7 +129,7 @@ namespace Muslimeen.Content
 
                 Session.Clear();
                 Session.Abandon();
-                Response.Redirect("../Default.aspx");
+                Response.Redirect("Default.aspx");
                 btnLogin.Text = "Login";
                 btnRegister.Visible = true;
             }
@@ -143,7 +152,7 @@ namespace Muslimeen.Content
 
         protected void btnScholars_Click(object sender, EventArgs e)
         {
-            //redirect user to the scholars list page.
+            Response.Redirect("ListScholar.aspx");
         }
 
         protected void btnLearnIslam_Click(object sender, EventArgs e)
@@ -230,7 +239,7 @@ namespace Muslimeen.Content
 
             catch
             {
-                divNoSalaah.Visible = true;
+                //divNoSalaah.Visible = true;
             }
 
         }

@@ -578,7 +578,7 @@
                         <a class="footerr-text" href="ListMosque.aspx">Mosques</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="ListScholar.aspx">Scholars</a>
+                        <a class="footerr-text" href="../ListScholar.aspx">Scholars</a>
                     </li>
                     <li class="nav-item">
                         <a class="footerr-text" href="../Learn Islam/LearnIslam.aspx">Learn Islam</a>

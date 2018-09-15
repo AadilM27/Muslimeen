@@ -164,7 +164,7 @@
             <!--RSS Feed-->
             <div class="row justify-content-center">
                 <div class="col-10">
-                    <h2 class="p-2 col" style="font-family: Arial; background-color: #256297; color:white; text-align: center" runat="server" id="H2">RSS Feed</h2> 
+                    <h2 class="p-2 col" style="font-family: Arial; background-color: #256297; color:white; text-align: center" runat="server" id="H2">Islamic World News</h2> 
                     <div style="max-height: 350px; overflow: auto" class="col position-static container pre-scrollable">
                         <asp:GridView ID="gvRss" runat="server" AutoGenerateColumns="false" ShowHeader="false" Width="100%">
                             <Columns>
@@ -213,7 +213,7 @@
                                <a class="footerr-text" href="Mosque/ListMosque.aspx">Mosques</a>
                            </li>
                            <li class="nav-item">
-                               <a class="footerr-text" href="ListScholars.aspx">Scholars</a>
+                               <a class="footerr-text" href="ListScholar.aspx">Scholars</a>
                            </li>
                            <li class="nav-item">
                                <a class="footerr-text" href="Learn Islam/LearnIslam.aspx">Learn Islam</a>

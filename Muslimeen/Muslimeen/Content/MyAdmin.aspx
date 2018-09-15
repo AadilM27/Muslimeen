@@ -101,7 +101,7 @@
                                 <asp:Button runat="server" ID="btnUpdateNotice" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnUpdateNotice_Click" Text="Update a Notice" />
                             <asp:Button runat="server" ID="btnUpdateDateCounter" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnUpdateDateCounter_Click" Text="Update Date and Count Down" />
                             <a class="pl-2 btn taskBtn mb-1" onclick="DropDown('divReports');">View Reports &#11167;</a>
-                                <div id="divReports" class="d-flex flex-column collapsing">
+                                <div id="divReports" class="d-flex flex-column collapsing" runat="server">
                                     <asp:Button runat="server" ID="btnReportViewMembers" CssClass="pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportViewMembers_Click" Text="All Member Details Reports" />
                                     <asp:Button runat="server" ID="btnReportViewActiveMembers" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportViewActiveMembers_Click" Text="All Active Members" />
                                     <asp:Button runat="server" ID="btnReportUnactiveMembers" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportUnactiveMembers_Click" Text="All Unactive Members" />                     
@@ -1259,7 +1259,7 @@
                                    <a class="footerr-text" href="Mosque.aspx">Mosques</a>
                                </li>
                                <li class="nav-item">
-                                   <a class="footerr-text" href="ListScholars.aspx">Scholars</a>
+                                   <a class="footerr-text" href="ListScholar.aspx">Scholars</a>
                                </li>
                                <li class="nav-item">
                                    <a class="footerr-text" href="Learn Islam/LearnIslam.aspx">Learn Islam</a>

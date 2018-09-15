@@ -87,7 +87,7 @@ namespace Muslimeen.Content
 
         protected void btnScholars_Click(object sender, EventArgs e)
         {
-            //redirect user to the scholars list page.
+            Response.Redirect("ListScholar.aspx");
         }
 
         protected void btnLearnIslam_Click(object sender, EventArgs e)

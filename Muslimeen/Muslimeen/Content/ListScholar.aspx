@@ -91,6 +91,10 @@
                             <strong><asp:Label ID="Label1" runat="server" Text="Mosque: "></asp:Label></strong>
                             <asp:DropDownList ID="drpMosque" runat="server" CssClass="form-control main-txtb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" AutoPostBack="true" OnSelectedIndexChanged="drpMosque_SelectedIndexChanged"></asp:DropDownList>
                         </div>
+                        <div class="form-group mb-1 ml-2 mr-2">
+                            <strong><asp:Label ID="Label2" runat="server" Text="Qualification: "></asp:Label></strong>
+                            <asp:DropDownList ID="drpQuali" runat="server" CssClass="form-control main-txtb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" AutoPostBack="true" OnSelectedIndexChanged="drpQuali_SelectedIndexChanged"></asp:DropDownList>
+                        </div>
                     </nav>
                 </div>
                 <div class=" position-static basic-div-styling p-0 w-100 position-relative">
@@ -207,7 +211,7 @@
                         <a class="footerr-text" href="Mosque.aspx">Mosques</a>
                     </li>
                     <li class="nav-item">
-                        <a class="footerr-text" href="ListScholars.aspx">Scholars</a>
+                        <a class="footerr-text" href="ListScholar.aspx">Scholars</a>
                     </li>
                     <li class="nav-item">
                         <a class="footerr-text" href="Learn Islam/LearnIslam.aspx">Learn Islam</a>

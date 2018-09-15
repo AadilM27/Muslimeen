@@ -186,6 +186,7 @@ namespace Muslimeen.Content
                     if (!(continueProcess > 0))
                     {
                         uspGetMember uspGetMember = new uspGetMember();
+
                         uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
 
                         Encryption encryption = new Encryption();
@@ -208,7 +209,7 @@ namespace Muslimeen.Content
                         emailService.AutoEmailService(txtUserEmail.Text.ToString(),
                             uspGetMember.MemberType.ToString(), "null", "ProfileUpdate", uspGetMember.MemberID.ToString(), "null"); //Add server Verification.aspx address.
 
-                        Response.Redirect("Default.aspx");
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>function SuccessPopup() {alert('Profile updated succesfully');}</script>");
 
                     }
                 }

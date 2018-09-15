@@ -62,6 +62,12 @@ namespace Muslimeen.Content
                 ddModQualification.Items.Clear();
                 ddModQualification.Dispose();
 
+                //Collapsing of the dropdown list...
+                if (IsPostBack)
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>if(divReports.classList.contains('collapsing')){divReports.classList.remove('collapsing');} else{divReports.classList.add('collapsing');}</script>");
+                }
+
                 DBHandler dBHandler = new DBHandler();
                 DBHandler db = new DBHandler();
                 List<CounterCalender> counterCalender = new List<CounterCalender>();
@@ -175,7 +181,7 @@ namespace Muslimeen.Content
 
         protected void btnScholars_Click(object sender, EventArgs e)
         {
-            //redirect user to the scholars list page.
+            Response.Redirect("ListScholar.aspx");
         }
 
         protected void btnLearnIslam_Click(object sender, EventArgs e)
@@ -1979,7 +1985,6 @@ namespace Muslimeen.Content
         protected void btnReportUnactiveMembers_Click(object sender, EventArgs e)
         {
             divAdminReports.Visible = true;
-
             DBHandler db = new DBHandler();
             List<uspReportGetAllMembers> reportGetAllMembers = new List<uspReportGetAllMembers>();
 
@@ -1990,21 +1995,33 @@ namespace Muslimeen.Content
             grdAdminReports.DataSource = reportGetAllMembers;
             grdAdminReports.DataBind();
 
-            grdAdminReports.GridLines = GridLines.Both;
-            grdAdminReports.BorderColor = Color.Gray;
-            grdAdminReports.CellPadding = 8;
+            try
+            { 
+                grdAdminReports.GridLines = GridLines.Both;
+                grdAdminReports.BorderColor = Color.Gray;
+                grdAdminReports.CellPadding = 8;
 
-            grdAdminReports.HeaderRow.Cells[0].Text = "User Name";
-            grdAdminReports.HeaderRow.Cells[1].Text = "Firstname";
-            grdAdminReports.HeaderRow.Cells[2].Text = "Lastname";
-            grdAdminReports.HeaderRow.Cells[3].Text = "Date Of Birth";
-            grdAdminReports.HeaderRow.Cells[4].Text = "Member Type";
-            grdAdminReports.HeaderRow.Cells[5].Text = "Active";
-            grdAdminReports.HeaderRow.Cells[6].Text = "Email Address";
-            grdAdminReports.HeaderRow.Cells[7].Text = "Contact Number";
-            grdAdminReports.HeaderRow.Cells[8].Text = "Mosque ID";
-            grdAdminReports.HeaderRow.Cells[9].Text = "Date Registered";
-
+                grdAdminReports.HeaderRow.Cells[0].Text = "User Name";
+                grdAdminReports.HeaderRow.Cells[1].Text = "Firstname";
+                grdAdminReports.HeaderRow.Cells[2].Text = "Lastname";
+                grdAdminReports.HeaderRow.Cells[3].Text = "Date Of Birth";
+                grdAdminReports.HeaderRow.Cells[4].Text = "Member Type";
+                grdAdminReports.HeaderRow.Cells[5].Text = "Active";
+                grdAdminReports.HeaderRow.Cells[6].Text = "Email Address";
+                grdAdminReports.HeaderRow.Cells[7].Text = "Contact Number";
+                grdAdminReports.HeaderRow.Cells[8].Text = "Mosque ID";
+                grdAdminReports.HeaderRow.Cells[9].Text = "Date Registered";
+            }
+            catch (NullReferenceException)
+            {
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('There are no unactive members.');</script>");
+                divAdminReports.Visible = false;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('There are no unactive members.');</script>");
+                divAdminReports.Visible = false;
+            }
             //go through all rows and change the date format and and other chars.
             for (int i = 0; i < grdAdminReports.Rows.Count; i++)
             {

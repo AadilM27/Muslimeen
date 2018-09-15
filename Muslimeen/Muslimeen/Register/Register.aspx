@@ -65,11 +65,11 @@
                 <div class="form-group col-sm-12 mb-1 mt-1">
                     <asp:TextBox runat="server" CssClass="form-control main-txtb" Onblur="VarifyPassword('btnRegister', 'lblErrorPass');" ID="txtPassword" type="password" placeholder="Password*"></asp:TextBox>
                 </div>
-                <div class=" form-group col-sm-12 mt-1 mb-2">
+                <div class=" form-group col-sm-12 mt-1 mb-1">
                     <asp:TextBox runat="server"  CssClass="form-control" Onblur="VarifyPassword('btnRegister','lblErrorPass');" ID="txtRetypePass" type="password" placeholder="Retype Password*"></asp:TextBox>
                 </div>
                 <div style="text-align:left; padding-left:10px;" class=" form-group col-sm-12 mt-0 mb-0">
-l                    <label  for="chkShowPassword"  runat="server">Show Password</label>
+                    <input type="checkbox" onclick="CheckPassword()" />Show Password
                 </div>
                 <div class="form-group col " style="text-align:center;">
                     <asp:Label CssClass="lblError" runat="server" ID="lblErrorPass"></asp:Label>

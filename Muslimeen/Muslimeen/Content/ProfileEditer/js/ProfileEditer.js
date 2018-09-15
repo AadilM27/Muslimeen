@@ -54,3 +54,8 @@ function NumbersOnly() {
         document.getElementById("btnRegister").disabled = false;
     }
 }
+
+
+function SuccessPopup() {
+    alert('Profile updated succesfully');
+}

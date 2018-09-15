@@ -112,12 +112,6 @@
     <Content Include="Content\Default\Default.js" />
     <Content Include="Content\Default\DefaultJq.js" />
     <Content Include="Content\Error.aspx" />
-    <Content Include="Content\Forum\AddTopic.aspx" />
-    <Content Include="Content\Forum\css\Forum.css" />
-    <Content Include="Content\Forum\DeleteRecordForum.aspx" />
-    <Content Include="Content\Forum\ForumUser.aspx" />
-    <Content Include="Content\Forum\Postings.aspx" />
-    <Content Include="Content\Forum\Topics.aspx" />
     <Content Include="Content\HelpCenter.aspx" />
     <Content Include="Content\Default\icons\EditProfile.png" />
     <Content Include="Content\Default\icons\Search.png" />
@@ -1646,41 +1640,6 @@
     </Compile>
     <Compile Include="Content\Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Content\Forum\AddTopic.aspx.cs">
-      <DependentUpon>AddTopic.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Content\Forum\AddTopic.aspx.designer.cs">
-      <DependentUpon>AddTopic.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Content\Forum\DeleteRecordForum.aspx.cs">
-      <DependentUpon>DeleteRecordForum.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Content\Forum\DeleteRecordForum.aspx.designer.cs">
-      <DependentUpon>DeleteRecordForum.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Content\Forum\ForumUser.aspx.cs">
-      <DependentUpon>ForumUser.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Content\Forum\ForumUser.aspx.designer.cs">
-      <DependentUpon>ForumUser.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Content\Forum\Postings.aspx.cs">
-      <DependentUpon>Postings.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Content\Forum\Postings.aspx.designer.cs">
-      <DependentUpon>Postings.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Content\Forum\Topics.aspx.cs">
-      <DependentUpon>Topics.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Content\Forum\Topics.aspx.designer.cs">
-      <DependentUpon>Topics.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\HelpCenter.aspx.cs">
       <DependentUpon>HelpCenter.aspx</DependentUpon>
