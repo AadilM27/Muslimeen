@@ -386,6 +386,8 @@ namespace Muslimeen.Content
                 DBHandler db = new DBHandler();
                 Encryption encryption = new Encryption();
                 uspAddMosque addMosque = new uspAddMosque();
+                EmailService emailService = new EmailService();
+
                 int continueProcess = 0;
 
                 if (txtPassword.Text.ToString() != txtRetypePassword.Text.ToString() ||
@@ -597,29 +599,41 @@ namespace Muslimeen.Content
                     string yearEstablished = Convert.ToDateTime(txtMosqueEstab.Text).ToString("yyyy-MM-dd");
                     addMosque.YearEstablished = Convert.ToDateTime(yearEstablished);
                     addMosque.Active = 'Y';
-                    db.BLL_AddMosque(addMosque);
 
+                    bool unsuccess = db.BLL_AddMosque(addMosque); // if true mosque has been added.
 
+                    if (unsuccess == true)
+                    {
+                        emailService.AddMosque(txtUserName.Text.ToString(), (txtName.Text.ToString() + " " + txtLName.Text.ToString()), txtMosqueName.Text.ToString(), txtPassword.Text.ToString(), txtUserEmail.Text.ToString());
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Mosque has been succesfully added.');</script>");
+                        divAddMosque.Visible = false;
+                        divAddMosqueRep.Visible = false;
+                        
+                        //Clear the textboxes.
+                        txtUserName.Text = string.Empty;
+                        txtName.Text = string.Empty;
+                        txtLName.Text = string.Empty;
+                        txtContactNum.Text = string.Empty;
+                        txtDOB.Text = string.Empty;
+                        txtUserEmail.Text = string.Empty;
+                        txtPassword.Text = string.Empty;
+                        txtRetypePassword.Text = string.Empty;
 
-                    //Clear the textboxes.
-                    txtUserName.Text = string.Empty;
-                    txtName.Text = string.Empty;
-                    txtLName.Text = string.Empty;
-                    txtContactNum.Text = string.Empty;
-                    txtDOB.Text = string.Empty;
-                    txtUserEmail.Text = string.Empty;
-                    txtPassword.Text = string.Empty;
-                    txtRetypePassword.Text = string.Empty;
+                        txtMosqueName.Text = string.Empty;
+                        txtMosqueAddr.Text = string.Empty;
+                        txtMosqueSuburb.Text = string.Empty;
+                        ddMosqueType.SelectedIndex = 0;
+                        txtMosqueEstab.Text = "";
+                        ddMosqueSize.SelectedIndex = 0;
+                        txtMosqueQuote.Text = string.Empty;
+                        fupMosqueImage.Attributes.Clear();
 
-                    txtMosqueName.Text = string.Empty;
-                    txtMosqueAddr.Text = string.Empty;
-                    txtMosqueSuburb.Text = string.Empty;
-                    ddMosqueType.SelectedIndex = 0;
-                    txtMosqueEstab.Text = "";
-                    ddMosqueSize.SelectedIndex = 0;
-                    txtMosqueQuote.Text = string.Empty;
-                    fupMosqueImage.Attributes.Clear();
-
+                        btnTodaysPrayerTime_Click(sender, e);
+                    }
+                    else
+                    {
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Mosque registration was unsucessful, please try again.');</script>");
+                    }
                 }
                 else if (lblError.Text == "")
                 {
@@ -629,7 +643,7 @@ namespace Muslimeen.Content
             }
             catch
             {
-                throw;
+
             }
         }
 

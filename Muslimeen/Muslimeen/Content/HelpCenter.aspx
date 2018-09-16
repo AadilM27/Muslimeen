@@ -103,7 +103,7 @@
                         <h4 class="p-0 m-0">Welcome to our help center<asp:Image runat="server" CssClass="mb-0 ml-0" src="HelpPage/icons/help.png" width="70" height="50"/></h4>
                     </div>
 
-                <div class="container" data-spy="scroll" data-target="#scrollspy" data-offset="20">
+                <div class="container" data-spy="scroll" data-target="#scrollspy">
                 <div class="position-static basic-div-styling p-0">
                     <div class="head-div-2 p-2 mb-0">
                         <h5 class="text-center">Getting started </h5>
@@ -148,8 +148,8 @@
                      <div class=" paragraphDisplay p-2">
                      <p>
                          All accounts are verified via e-mail. When registering, a valid e-mail address should be used. A password containing one capital
-                         letter and one number will be required for security purposes. Your account and privacy is fully protected. Should you want
-                         to update any account details, you may do so by going to MyMuslimeen.
+                         letter, one number and a special character will be required for security purposes. Your account and privacy is fully protected. Should you want
+                         to update any account details, you may do so by going to MyMuslimeen(Your Dashboard).
                      </p>
                      </div>
                 </div>
