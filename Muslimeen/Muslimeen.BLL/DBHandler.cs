@@ -100,6 +100,10 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetPendingArticle();
         }
+        public List<Article> BLL_GetRemoveAcceptedArticle()
+        {
+            return dBAccess.GetRemoveAcceptedArticle();
+        }
 
         public bool BLL_RejectReg(uspRejectReg uspRejectReg)
         {
@@ -303,6 +307,14 @@ namespace Muslimeen.BLL
         public bool BLL_RejectArticle(RejectArticle rejectArticle)
         {
             return dBAccess.RejectArticle(rejectArticle);
+        }
+        public bool BLL_updateRemoveArticle(RemoveArticle remove)
+        {
+            return dBAccess.RemoveArticle(remove);
+        }
+        public List<uspGetRemovedArticles> BLL_GetRemovedArticles()
+        {
+            return dBAccess.GetRemovedArticles();
         }
 
         public List<CounterCalender> BLL_GetCounterCalender()

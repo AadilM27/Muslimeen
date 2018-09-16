@@ -55,6 +55,8 @@ namespace Muslimeen.Content.MyModerator
                 divSchDetails.Visible = false;
                 divSchDetailsOverlay.Visible = false;
                 divDisplaySalahTimetable.Visible = false;
+                divViewRemoveAcceptedArticle.Visible = false;
+                divDisplayRemoveAcceptedArticles.Visible = false;
                
                 if (Session["UserName"] != null)
                 {
@@ -594,6 +596,25 @@ namespace Muslimeen.Content.MyModerator
 
             }
         }
+        protected void BtnAllRemovedArticles_Click(object sender,EventArgs e)
+        {
+            Session["btnType"] = "RemovedArticles";
+            try
+            {
+                reportHeading.InnerText = "Removed Articles Report";
+                divDisplayReports.Visible = true;
+
+                DBHandler han = new DBHandler();
+                uspGetRemovedArticles mr = new uspGetRemovedArticles();
+
+                grdReports.DataSource = han.BLL_GetRemovedArticles();
+                grdReports.DataBind();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
 
         protected void BtnPDF_Click(object sender, EventArgs e)
         {
@@ -663,6 +684,23 @@ namespace Muslimeen.Content.MyModerator
                     grdReports.HeaderRow.Cells[1].Text = "Content";
                     grdReports.HeaderRow.Cells[2].Text = "Date Created";
                     grdReports.HeaderRow.Cells[3].Text = "Rejection Reason";
+                    grdReports.HeaderRow.Cells[4].Text = "Scholar";
+                    grdReports.HeaderRow.Cells[5].Text = "Moderator";
+
+                    for (int i = 0; i < grdReports.Rows.Count; i++)
+                    {
+
+                        DateTime regDate = Convert.ToDateTime(grdReports.Rows[i].Cells[2].Text);
+                        grdReports.Rows[i].Cells[2].Text = regDate.ToString("dd MMM yyyy");
+                    }
+
+                }
+                else if (Session["btnType"].ToString() == "RemovedArticles")
+                {
+                    grdReports.HeaderRow.Cells[0].Text = "Title";
+                    grdReports.HeaderRow.Cells[1].Text = "Content";
+                    grdReports.HeaderRow.Cells[2].Text = "Date Created";
+                    grdReports.HeaderRow.Cells[3].Text = "Removal Reason";
                     grdReports.HeaderRow.Cells[4].Text = "Scholar";
                     grdReports.HeaderRow.Cells[5].Text = "Moderator";
 
@@ -753,7 +791,7 @@ namespace Muslimeen.Content.MyModerator
                 table2.AddCell(date);
                 table2.AddCell(extraPara);
 
-                if (Session["btnType"].ToString() == "AcceptedScholars" || Session["btnType"].ToString() == "RejectedScholars" || Session["btnType"].ToString() == "AcceptedArticle" || Session["btnType"].ToString() == "RejectedArticle" || Session["btnType"].ToString() == "MosqueReports" || Session["btnType"].ToString() == "EventsReports")
+                if (Session["btnType"].ToString() == "AcceptedScholars" || Session["btnType"].ToString() == "RejectedScholars" || Session["btnType"].ToString() == "AcceptedArticle" || Session["btnType"].ToString() == "RejectedArticle" || Session["btnType"].ToString() == "MosqueReports" || Session["btnType"].ToString() == "EventsReports" || Session["btnType"].ToString() == "RemovedArticles")
                 {
                     Font fontH1 = new Font(Font.FontFamily.HELVETICA, 24, Font.BOLD);
                     table.WidthPercentage = 80;
@@ -790,6 +828,11 @@ namespace Muslimeen.Content.MyModerator
                     else if (Session["btnType"].ToString() == "EventsReports")
                     {
                         Paragraph para = new Paragraph("Report of All Events", fontH1);
+                        table.AddCell(para);
+                    }
+                    else if (Session["btnType"].ToString() == "RemovedArticles")
+                    {
+                        Paragraph para = new Paragraph("Report of All Articles Removed", fontH1);
                         table.AddCell(para);
                     }
 
@@ -855,7 +898,118 @@ namespace Muslimeen.Content.MyModerator
 
 
         }
-       
 
+        protected void BtnRemoveArticles_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LblHeading.Text = "Accepted Articles";
+                divDisplaySch.Visible = false;
+                divViewPendingSch.Visible = false;
+                divViewPendingArt.Visible = false;
+                divViewArt.Visible = false;
+
+
+
+                divViewRemoveAcceptedArticle.Visible = true;
+                divArticleOverlay.Visible = true;
+                divDisplayRemoveAcceptedArticles.Visible = false;
+                DBHandler dBHandler = new DBHandler();
+
+                rptRemoveAcceptedArticles.DataSource = dBHandler.BLL_GetRemoveAcceptedArticle();
+                rptRemoveAcceptedArticles.DataBind();
+
+
+            }
+            catch
+            {
+
+            }
+        }
+        protected void btnShowRemoveAcceptArt_Click(object sender,EventArgs e)
+        {
+            try
+            {
+                LinkButton linkButton = (LinkButton)sender;
+
+                string articleId = linkButton.CommandArgument.ToString();
+                hdfSchId.Value = articleId;
+
+                DBHandler dBHandler = new DBHandler();
+                uspGetSelectedPendingArticle article = new uspGetSelectedPendingArticle();
+                article = dBHandler.BLL_GetSelectedPendingArticle(Convert.ToInt32(articleId));
+
+
+                lblRemoveAcceptTitle.InnerText = article.ArticleTitle.ToString();
+                lblRemoveAcceptContent.InnerText = article.ArticleContent.ToString();
+                lblRemoveDate.InnerText = Convert.ToDateTime(article.DateCreated).ToString();
+                lblRemoveAcceptScholar.InnerText = article.ScholarName.ToString();
+
+
+                divViewRemoveAcceptedArticle.Visible = true;
+                divDisplaySch.Visible = false;
+                divDisplayRemoveAcceptedArticles.Visible = true;
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+
+        }
+
+        protected void BtnRemoveAcceptedArticle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if ( txtRemovalReason.Text.ToString() == "" || txtRemovalReason == null)
+                {
+                    lblRemovalDisplay.Text = "Cannot remove an article without a reason!";
+                    txtRemovalReason.BorderColor = System.Drawing.Color.Red;
+
+                }
+                else
+                {
+
+                    DBHandler dBHandler = new DBHandler();
+                    RemoveArticle remove = new RemoveArticle();
+
+                    string articleId = hdfSchId.Value.ToString();
+
+                    remove.ArticleID = Convert.ToInt32(articleId);
+                    remove.Status = 'N';
+                    remove.RemovalReason = txtRemovalReason.Text.ToString();
+                    remove.Active = 'N';
+                    remove.ModeratorID = Session["UserName"].ToString();
+
+                    if (dBHandler.BLL_updateRemoveArticle(remove))
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('This Article has been removed from Learn Islam')", true);
+                    }
+                        lblRemovalDisplay.Text = "";
+                        txtRemovalReason.Text = "";
+                        txtRemovalReason.BorderColor = System.Drawing.Color.Empty;
+                    
+
+                }
+
+                divDisplayRemoveAcceptedArticles.Visible = true;
+                divViewRemoveAcceptedArticle.Visible = true;
+            }
+            catch(NullReferenceException)
+            {
+
+            }
+        }
+
+        protected void txtRemovalReason_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

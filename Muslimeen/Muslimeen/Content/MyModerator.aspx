@@ -96,9 +96,11 @@
                                 <asp:Button ID="btnRejectedScholars"  CssClass=" pl-2 btn sub-taskBtn mb-1" runat="server" Text="Rejected Scholars" OnClick="btnRejectedScholars_Click" />
                                 <asp:Button ID="BtnAcceptedArticles" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="Accepted Articles" OnClick="BtnAcceptedArticles_Click" />
                                 <asp:Button ID="BtnRejectedArticles" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="Rejected Articles" OnClick="BtnRejectedArticles_Click" />
+                                 <asp:Button ID="BtnAllRemovedArticles" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="Removed Articles" OnClick="BtnAllRemovedArticles_Click" />
                                 <asp:Button ID="BtnMosqueReports" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="List of Mosques" OnClick="BtnMosqueReports_Click" />
                                 <asp:Button ID="BtnEventReports" CssClass=" pl-2 btn sub-taskBtn mb-1"   runat ="server" Text="List of Events" OnClick="BtnEventReports_Click" />
                             <asp:Button ID="BtnSalaahTimeTable" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="Salaah TimeTable" OnClick="BtnSalaahTimeTable_Click" />
+                            <asp:Button ID="BtnRemoveArticles" CssClass=" pl-2 btn taskBtn mb-1"   runat ="server" Text="Remove Articles" OnClick="BtnRemoveArticles_Click" />
 
                         </nav>
                     </div>
@@ -152,6 +154,39 @@
                                         </HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:LinkButton ID="btnShowArt" CommandArgument='<%#Eval("ArticleID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShowArt_Click">
+                                                    <div class="p-0 form-row m-0 position-static">
+                                                        <div class="col-auto position-static">
+                                                            <img src="MyAdmin/icons/PendingReg.png" class="" style="height:40px; width:35px;"/>
+                                                        </div>
+                                                        <div class=" col-auto position-static p-0">
+                                                            <div class="">
+                                                                <p style="font-size:small" class="p-0 m-0 text-truncate"><b>User&nbsp;Name: </b><%#Eval("ArticleTitle")%><br/></p>
+                                                            </div>
+                                                                <hr class=" mr-4 m-0 p-0"/>
+                                                            <div class="">
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Registered: </b><%#Eval("DateCreated")%></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </asp:LinkButton>
+                                            <hr class="p-0 m-1" />
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                        </FooterTemplate>
+                                    </asp:Repeater>
+                                </div>
+                            </div>
+                             <div class="col-6 col-xl-4 p-0 mr-1" runat="server" id="divViewRemoveAcceptedArticle" style="position:static">
+                                <!--Contains the List of items-->
+                                <div class=" head-div-2 p-2 mb-1 ">
+                                    <p class="m-0">Learn Islam Articles</p>
+                                </div>
+                                <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
+                                    <asp:Repeater ID="rptRemoveAcceptedArticles" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                                        <HeaderTemplate>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="btnShowRemoveAcceptArt" CommandArgument='<%#Eval("ArticleID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShowRemoveAcceptArt_Click">
                                                     <div class="p-0 form-row m-0 position-static">
                                                         <div class="col-auto position-static">
                                                             <img src="MyAdmin/icons/PendingReg.png" class="" style="height:40px; width:35px;"/>
@@ -307,6 +342,46 @@
                                     <asp:Label ID="lblRejection" CssClass="align-content-center" ForeColor="Red" runat="server" Text=""></asp:Label>
                                 </div>
                         </div>
+                            <!---divViewRemoveAcceptArticles--->
+                            <div class=" col-12 col-md-8 flex-nowrap p-0" runat="server" id="divDisplayRemoveAcceptedArticles" style="position:static">
+                                 <div class=" head-div-2 p-2 mb-0 ">
+                                    <p class="m-0">Article Details:</p>
+                                </div>
+                                <div class="container" runat="server" id="div2" style="position:static;overflow-x:scroll;overflow-y:scroll; height:490px;">
+                                <div class="row mb-3 mt-2" style="position:static">
+                                    <div class="col position-static">
+                                        <label class="m-0 h2" runat="server" id="lblRemoveAcceptTitle"></label>
+                                    </div>
+                                </div>
+                                <div class="row mb-1 position-static">
+                                    <div class="col position-static">
+                                        <label class="m-0" runat="server" id="lblRemoveAcceptContent"></label>
+                                    </div>
+                                </div>
+                                <div class="row mb-1 position-static">
+                                    <div class="col position-static font-italic text-left">
+                                        Author:
+                                        <label class="m-0 mt-2" runat="server" id="lblRemoveAcceptScholar"></label>
+                                    </div>
+                                    <div class="row mb-1 position-static text-right">
+                                        <div class="col position-static font-italic">
+                                            Date:
+                                        <label class="m-0 font-italic mt-2" runat="server" id="lblRemoveDate"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="card-footer text-center position-static text-nowrap" style="position:static">
+                                    <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2 " runat="server" ID="BtnRemoveAcceptedArticle" Text="Remove Article" OnClick="BtnRemoveAcceptedArticle_Click" />
+                                   
+                                    <br />
+                                    <br />   
+                                    
+                                    <asp:Label ID="Label6" CssClass=" form-control-sm col main-txtb " ForeColor="#256297" runat="server" Text="Removal Reason:"></asp:Label> <asp:TextBox runat="server" CssClass=" text-justify btn btn-sm  mr-2 position-static" ID="txtRemovalReason" BorderColor="#256297" Width="50%" OnTextChanged="txtRemovalReason_TextChanged" ></asp:TextBox>
+                                    <br />
+                                    <asp:Label ID="lblRemovalDisplay" CssClass="align-content-center" ForeColor="Red" runat="server" Text=""></asp:Label>
+                                </div>
+                        </div>
                              <%-- Overlay for Articles List selection--%>
                             <div class="col-6 col-xl-4 text-nowrap" runat="server" id="divArticleOverlay">
                                 <div class="w-100 h-100 container text-center">
@@ -323,7 +398,7 @@
                                     <a runat="server" id="PDF" onserverclick="PDF_ServerClick"><img src="MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
                                     <hr class="m-0 mt-1 p-0" style="background-color:#0026ff; height:1px;" />
                                 </div>
-                                <div class=" col-12 col-xl-12 p-2" style="overflow-x:scroll;position:static">
+                                <div class=" col-12 col-xl-12 p-2" style="overflow-x:scroll;overflow-y:scroll;position:static;max-height:500px;max-width:1550px">
                                     <asp:GridView ID="grdReports" RowStyle-Wrap="true" runat="server" style="position:static; font-size:smaller;" CellPadding="6" ForeColor="#333333" GridLines="none" >
                                         <AlternatingRowStyle BackColor="White" />
                                         <EditRowStyle BackColor="#2461BF" />

@@ -420,7 +420,7 @@ namespace Muslimeen.Content.Learn_Islam
             }
             catch { }
         }
-        protected void Rating1_Click(object sender,AjaxControlToolkit.RatingEventArgs e)
+        protected void Rating1_Click(object sender,EventArgs e)
         {
             try
             {              

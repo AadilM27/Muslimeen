@@ -448,6 +448,38 @@ namespace Muslimeen.BLL
             }
             return list;
         }
+        //get accepted articles to remove
+        public List<Article> GetRemoveAcceptedArticle()
+        {
+            List<Article> list = new List<Article>();
+
+            using (DataTable table = DBHelper.Select("uspGetRemoveAcceptedArticle", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        Article art = new Article
+                        {
+                            ArticleID = Convert.ToInt32(row["ArticleID"]),
+                            ArticleTitle = Convert.ToString(row["ArticleTitle"]),
+                            ArticleContent = Convert.ToString(row["ArticleContent"]),
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]),
+                            Status = Convert.ToChar(row["Status"]),
+                            RejectionReason = Convert.ToString(row["RejectionReason"]),
+                            Active = Convert.ToChar(row["Active"]),
+                            RemovalReason = Convert.ToString(row["RemovalReason"]),
+                            ScholarID = Convert.ToString(row["ScholarID"]),
+                            ModeratorID = Convert.ToString(row["ModeratorID"]),
+                            TopicID = Convert.ToInt32(row["TopicID"])
+                        };
+                        list.Add(art);
+                    }
+                }
+            }
+            return list;
+        }
+
 
         public bool RejectReg(uspRejectReg reject)
         {
@@ -924,6 +956,19 @@ namespace Muslimeen.BLL
                 }
             }
             return DBHelper.NonQuery("uspUpdateRejectArticle", CommandType.StoredProcedure, parameters.ToArray());
+        }
+        public bool RemoveArticle(RemoveArticle removeArticle)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+
+            foreach (var property in removeArticle.GetType().GetProperties())
+            {
+                if (property.GetValue(removeArticle) != null)
+                {
+                    parameters.Add(new SqlParameter("@" + property.Name.ToString(), property.GetValue(removeArticle)));
+                }
+            }
+            return DBHelper.NonQuery("uspUpdateRemoveArticle", CommandType.StoredProcedure, parameters.ToArray());
         }
 
         //Rejected Articles
@@ -2200,6 +2245,30 @@ namespace Muslimeen.BLL
                         scholar.ActivationDate = Convert.ToDateTime(row["ActivationDate"]);
 
                         list.Add(scholar);
+                    }
+                }
+            }
+            return list;
+        }
+        public List<uspGetRemovedArticles> GetRemovedArticles()
+        {
+            List<uspGetRemovedArticles> list = new List<uspGetRemovedArticles>();
+            using (DataTable tbl = DBHelper.Select("uspGetRemovedArticles", CommandType.StoredProcedure))
+            {
+                if (tbl.Rows.Count > 0)
+                {
+                    foreach (DataRow row in tbl.Rows)
+                    {
+                        uspGetRemovedArticles rem = new uspGetRemovedArticles
+                        {
+                            ArticleTitle = Convert.ToString(row["ArticleTitle"]),
+                            ArticleContent = Convert.ToString(row["ArticleContent"]),
+                            DateCreated = Convert.ToDateTime(row["DateCreated"]),
+                            RemovalReason = Convert.ToString(row["RemovalReason"]),
+                            ScholarID = Convert.ToString(row["ScholarID"]),
+                            ModeratorID = Convert.ToString(row["ModeratorID"])
+                        };
+                        list.Add(rem);
                     }
                 }
             }
