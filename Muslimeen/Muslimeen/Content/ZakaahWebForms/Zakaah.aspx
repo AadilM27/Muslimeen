@@ -110,12 +110,12 @@
                     <div class="container" style="margin-top:10px; position:static;">
                       <div class="row" style="position:static;right:50px">
                           <div class="col-lg-8" style="position:static;">
-                              <button id="btnWhatIsZakaah" class="collapsible" style="background-color:#256297;width:100%;position:static;">What is Zakaah or Zakat?</button>
+                              <button id="btnWhatIsZakaah" class="collapsible" style="background-color:#256297;width:100%;position:static;color:white">What is Zakaah or Zakat?</button>
                     <div class="content2" style="background-color:white">
                         <br />
                         <asp:Label ID="LblWhatIsZakaah" runat="server" ></asp:Label>
                     </div>
-                    <button class="collapsible"  style="background-color:#256297;width:100%;position:static;">Conditions of Zakaah</button>
+                    <button class="collapsible"  style="background-color:#256297;width:100%;position:static;color:white">Conditions of Zakaah</button>
                     <div class="content2" style="background-color:white">
                         <br />
                       <h2>Conditions of Zakat</h2>
@@ -124,27 +124,27 @@
                         <br />
                         <asp:Label ID="LblConditions" runat="server" Text=""></asp:Label>
                      </div>
-                    <button class="collapsible" style="background-color:#256297;width:100%;position:static" >Cautions of Zakaah</button>
+                    <button class="collapsible" style="background-color:#256297;width:100%;position:static;color:white" >Cautions of Zakaah</button>
                     <div class="content2"style="background-color:white" >
                         <br />
                         <asp:Label ID="LblCaution" runat="server" Text=""></asp:Label>
                                           </div>
-                    <button class="collapsible" style="background-color:#256297;width:100%;position:static" >To whom is Zakaah permissible?</button>
+                    <button class="collapsible" style="background-color:#256297;width:100%;position:static;color:white" >To whom is Zakaah permissible?</button>
                     <div class="content2"style="background-color:white" >
                         <br />
                         <asp:Label ID="LblPermissble" runat="server" Text=""></asp:Label>
                     </div>
-                     <button class="collapsible" style="background-color:#256297;width:100%;position:static" >Assets Of Zakaah</button>
+                     <button class="collapsible" style="background-color:#256297;width:100%;position:static;color:white" >Assets Of Zakaah</button>
                     <div class="content2" style="background-color:white">
                         <br />
                         <asp:Label ID="LblAssets" runat="server" Text=""></asp:Label>
                     </div>
-                     <button class="collapsible" style="background-color:#256297;width:100%;position:static" >To whom is Zakaah Applicable?</button>
+                     <button class="collapsible" style="background-color:#256297;width:100%;position:static;color:white" >To whom is Zakaah Applicable?</button>
                     <div class="content2" style="background-color:white">
                         <br />
                         <asp:Label ID="LblApplicable" runat="server" Text=""></asp:Label>
                     </div>
-                     <button class="collapsible" style="background-color:#256297;width:100%;position:static" >Calculation of Zakaah?</button>
+                     <button class="collapsible" style="background-color:#256297;width:100%;position:static;color:white" >Calculation of Zakaah?</button>
                     <div class="content2"style="background-color:white" >
                         <br />
                         <asp:Label ID="LblCalculations" runat="server" Text=""></asp:Label>
@@ -158,45 +158,19 @@
 
                     <div class="carder" style="width:500px">
                         <img src="../Zakaah/ZakaahPics/SANZAF_580x363.jpg" alt="zakaat" style="width:100%"/>
-                      <h1 style="color:#256297">SANZAF</h1>
-                      <p class="titler">South African National Zakaah Fund</p>
+                        <div class="container-fluid" style="background-color:#256297;color:white;padding-left:10em">
+                      <h1 >SANZAF</h1>
+                       </div>
+                        <div class ="container-fluid" style="color:#256297;padding-left:7em">
+                      <p >South African National Zakaah Fund</p>
                       <p>Bursary Scheme for those in need.</p>
                         <div class="button" >
-                     <a href="https://sanzaf.org.za/appeals/sanzaf-bursary-program.html" style="color:white;">Contact:WWW.SANZAF.ORG.ZA</a>
+                     <a href="https://sanzaf.org.za/appeals/sanzaf-bursary-program.html">Contact:WWW.SANZAF.ORG.ZA</a>
+                       </div>
                        </div>
                     </div>
                         <br />
-                    <div class="rightcolumn">
-                    
-                    <div class="slideshow-container" style="width:300px">
-                        <h2 style="background-color:#256297;color:white;text-align:center"> Zakaah Quotes</h2>
-                    <div class="mySlides">
-                      <q>“Zakah does not become obligatory except after the completion of one whole year.”</q>
-                      <p class="author">- Nabi Muhammed(SAW) Prophet(Peace Be upon him)</p>
-                    </div>
-
-                    <div class="mySlides">
-                      <q>“Your ally is none but Allah and [therefore] His Messenger and those who have believed – those who establish prayer and give zakah, and they bow [in worship] </q>
-                      <p class="author">- [Qur’an 5:55]</p>
-                    </div>
-
-                    <div class="mySlides">
-                      <q>“And establish prayer and give zakah, and whatever good you put forward for yourselves – you will find it with Allah. Indeed, Allah of what you do, is Seeing.”</q>
-                      <p class="author"> – al-Quran 2:110</p>
-                    </div>
-                         <!-- Next/prev buttons -->
-                    <a class="prev" onclick="plusSlides(-1)">❮</a>
-                    <a class="next" onclick="plusSlides(1)">❯</a>
-
-                    </div>
-                        <!-- Dots/bullets/indicators -->
-                    <div class="dot-container" style="width:300px">
-                      <span class="dot" onclick="currentSlide(1)"></span> 
-                      <span class="dot" onclick="currentSlide(2)"></span> 
-                      <span class="dot" onclick="currentSlide(3)"></span> 
-                    </div>
-                        <script src="../Zakaah/slideshow.js"></script>
-                   </div>
+                  
                       </div>
                     </div>
            </div>

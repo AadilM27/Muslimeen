@@ -75,7 +75,7 @@ namespace Muslimeen.Content.ZakaahWebForms
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Register/Register.aspx");
+            Response.Redirect("../../Register/Register.aspx");
         }
 
         protected void btnHome_Click(object sender, EventArgs e)

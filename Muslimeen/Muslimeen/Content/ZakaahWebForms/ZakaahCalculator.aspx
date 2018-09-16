@@ -232,57 +232,27 @@
                   <asp:Button ID="Button2" runat="server" Text="Calculate Zakaah" CssClass=" topnav btn btn-sm btn-outline-light mr-2 " ToolTip="Calculate your zakaah after deductions" autopostback="true" OnClick="Button2_Click"/>
                   </div>
                               <br />
-                   <div style="text-align:center;color:white;background-color:#256297;font-size:20px;width:100%" class=" topnav btn btn-sm btn-outline-light mr-2 ">
-                    <strong >Example of how Zakaat can be calculated:</strong>
-                    </div>
-                              <div style="text-align:center;color:white;font-size:20px;width:100%" class=" btn-sm btn-outline-light mr-2 ">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/zERfWrdCrEY"></iframe>
-                                  </div>
+                  
                   </div>
                   <div class="col-lg-4" style="position:static;">
                        <!---javascript code to translate language--->
-                       <div class="carder" style="width:500px">
+                      <div class="carder" style="width:500px">
                         <img src="../Zakaah/ZakaahPics/SANZAF_580x363.jpg" alt="zakaat" style="width:100%"/>
-                      <h1 style="color:#256297">SANZAF</h1>
-                      <p class="titler">South African National Zakaah Fund</p>
+                        <div class="container-fluid" style="background-color:#256297;color:white;padding-left:10em">
+                      <h1 >SANZAF</h1>
+                       </div>
+                        <div class ="container-fluid" style="color:#256297;padding-left:7em">
+                      <p >South African National Zakaah Fund</p>
                       <p>Bursary Scheme for those in need.</p>
                         <div class="button" >
-                     <a href="https://sanzaf.org.za/appeals/sanzaf-bursary-program.html" style="color:white">Contact:WWW.SANZAF.ORG.ZA</a>
+                     <a href="https://sanzaf.org.za/appeals/sanzaf-bursary-program.html">Contact:WWW.SANZAF.ORG.ZA</a>
+                       </div>
                        </div>
                     </div>
                         <br /> 
-                    <div class="rightcolumn" style="margin-left:27px">
-                    
-                    <div class="slideshow-container" style="width:300px">
-                        <h2 style="background-color:#256297;color:white;text-align:center"> Zakaah Quotes</h2>
-                    <div class="mySlides">
-                      <q>“Zakah does not become obligatory except after the completion of one whole year.”</q>
-                      <p class="author">- Prophet NABI(SAW -Peace Be upon him)</p>
-                    </div>
-                    
-                    <div class="mySlides">
-                      <q>“Your ally is none but Allah and [therefore] His Messenger and those who have believed – those who establish prayer and give zakah, and they bow [in worship] </q>
-                      <p class="author">- [Qur’an 5:55]</p>
-                    </div>
-
-                    <div class="mySlides">
-                      <q>“And establish prayer and give zakah, and whatever good you put forward for yourselves – you will find it with Allah. Indeed, Allah of what you do, is Seeing.”</q>
-                      <p class="author"> – al-Quran 2:110</p>
-                    </div>
-
-                    <a class="prev" onclick="plusSlides(-1)">❮</a>
-                    <a class="next" onclick="plusSlides(1)">❯</a>
-
-                    </div>
-
-                    <div class="dot-container" style="width:300px">
-                      <span class="dot" onclick="currentSlide(1)"></span> 
-                      <span class="dot" onclick="currentSlide(2)"></span> 
-                      <span class="dot" onclick="currentSlide(3)"></span> 
-                    </div>
-                        <script src="../Zakaah/slideshow.js"></script>
-                      </div>      
-                      </div>
+                      
+                   
+                  </div>
                 </div>
                         
                 </div>

@@ -64,7 +64,7 @@ namespace Muslimeen.Content.ZakaahWebForms
         {
             if (btnLogin.Text == "Login")
             {
-                Response.Redirect("../Login/Login.aspx");
+                Response.Redirect("../../Login/Login.aspx");
             }
             else if (btnLogin.Text == "Log out")
             {
