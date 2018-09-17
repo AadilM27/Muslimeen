@@ -14,6 +14,7 @@ using System.IO;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
 using AjaxControlToolkit;
+using System.Drawing;
 
 namespace Muslimeen.Content.Learn_Islam
 {
@@ -311,31 +312,37 @@ namespace Muslimeen.Content.Learn_Islam
 
         protected void btn_Submit_Click(object sender, EventArgs e)
         {
+            txtComment.BorderColor = Color.Red;
+
             try
             {
                 DBHandler han = new DBHandler();
                 Comment com = new Comment();
                 if (Session["UserName"] != null)
                 {
+                    if (txtComment.Text != "")
+                    { 
+                        com.CommentMessage = Convert.ToString(txtComment.Text);
+                        com.CommentDate = DateTime.Now;
+                        com.ArticleID = Convert.ToInt32(hdfArtID.Value);
+                        com.MemberID = Convert.ToString(Session["UserName"]);
+                        com.CommentID = null;
 
+                        han.BLL_AddComment(com);
+                        Response.Redirect(Request.RawUrl);
 
+                        txtComment.Text = string.Empty;
 
-                    com.CommentMessage = Convert.ToString(txtComment.Text);
-                    com.CommentDate = DateTime.Now;
-                    com.ArticleID = Convert.ToInt32(hdfArtID.Value);
-                    com.MemberID = Convert.ToString(Session["UserName"]);
-                    com.CommentID = null;
+                        CommentRepeater.DataSource = han.BLL_GetComment(int.Parse(hdfArtID.Value));
+                        CommentRepeater.DataBind();
 
-                    han.BLL_AddComment(com);
-                    Response.Redirect(Request.Url.AbsoluteUri);
-
-
-                    txtComment.Text = string.Empty;
-
-                    CommentRepeater.DataSource = han.BLL_GetComment(int.Parse(hdfArtID.Value));
-                    CommentRepeater.DataBind();
-                    string commentCount = CommentRepeater.Items.Count.ToString();
-                    lblCommentCount.Text = "Comments: " + commentCount;
+                        string commentCount = CommentRepeater.Items.Count.ToString();
+                        lblCommentCount.Text = "Comments: " + commentCount;
+                    }
+                    else
+                    {
+                        txtComment.BorderColor = Color.Red;
+                    }
                 }
                 else
                 {
@@ -345,7 +352,7 @@ namespace Muslimeen.Content.Learn_Islam
                     CommentRepeater.DataBind();
                     string commentCount = CommentRepeater.Items.Count.ToString();
                     lblCommentCount.Text = "Comments: " + commentCount;
-                }
+                }                
             }
             catch
             {

@@ -544,6 +544,15 @@ namespace Muslimeen.Content.MyScholar {
         protected global::System.Web.UI.WebControls.TextBox txtContent;
         
         /// <summary>
+        /// TextBoxCounter1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::skmControls2.TextBoxCounter TextBoxCounter1;
+        
+        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>

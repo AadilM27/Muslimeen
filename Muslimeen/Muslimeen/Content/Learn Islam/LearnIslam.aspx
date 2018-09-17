@@ -15,6 +15,7 @@
     <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/learnIslam.css" rel="stylesheet" />
+    <script src="js/LearnIslam.js"></script>
 
     <style type="text/css">
         .Star {

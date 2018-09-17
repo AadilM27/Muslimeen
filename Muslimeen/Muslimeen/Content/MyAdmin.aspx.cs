@@ -1286,18 +1286,31 @@ namespace Muslimeen.Content
                         notice.DateExpiry = Convert.ToDateTime(txtNoticeExpiryDate.Text);
                         notice.Active = 'Y';
 
-                        db.BLL_AddNotice(notice);
+                        bool noticeAdd = db.BLL_AddNotice(notice);
 
-                        txtNoticeTitle.Text = string.Empty;
-                        txtNoticeTitle.BorderColor = Color.Empty;
-                        txtNoticeExpiryDate.BorderColor = Color.Empty;
-                        txtNoticeDesc.BorderColor = Color.Empty;
-                        txtNoticeDesc.Text = string.Empty;
-                        txtNoticeDateCreated.Text = string.Empty;
-                        txtNoticeExpiryDate.Text = string.Empty;
-                        txtNoticeMemberID.Text = string.Empty;
-                        ddNoticeActive.SelectedIndex = 0;
-                        lblNoticeError.Text = String.Empty;
+                        if (noticeAdd == true)
+                        {
+                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Notice added.');</script>");
+
+                            txtNoticeTitle.Text = string.Empty;
+                            txtNoticeTitle.BorderColor = Color.Empty;
+                            txtNoticeExpiryDate.BorderColor = Color.Empty;
+                            txtNoticeDesc.BorderColor = Color.Empty;
+                            txtNoticeDesc.Text = string.Empty;
+                            txtNoticeDateCreated.Text = string.Empty;
+                            txtNoticeExpiryDate.Text = string.Empty;
+                            txtNoticeMemberID.Text = string.Empty;
+                            ddNoticeActive.SelectedIndex = 0;
+                            lblNoticeError.Text = String.Empty;
+
+                            Response.Redirect(Request.Url.AbsoluteUri);
+                        }
+                        else
+                        {
+                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert(' Failed to add the Notice, please try again.');</script>");
+                        }
+
+
                     }
 
                 }
@@ -1373,7 +1386,7 @@ namespace Muslimeen.Content
                 }
                 else if (counterCalender[1].Val == null || counterCalender[1].Val == "")
                 {
-                    txtCurCounterEndTitle.Text = "End Title not set";
+                    txtCurCounterEndTitle.Text = "No End Title added";
                 }
 
                 if (counterCalender[0].Val == "" || counterCalender[0].Val == null)
@@ -1443,14 +1456,23 @@ namespace Muslimeen.Content
                     uspUpdateCountDown.CounterFinishTitle = txtCounterEndTitle.Text;
                     uspUpdateCountDown.CounterTitle = txtCounterTitle.Text;
 
-                    db.BLL_UpdateCountDown(uspUpdateCountDown);
+                    bool updateCOuntDown = db.BLL_UpdateCountDown(uspUpdateCountDown);
 
-                    txtCounterEndTitle.BorderColor = Color.Empty;
-                    txtCounterEndTitle.Text = String.Empty;
-                    txtCounterEndDate.BorderColor = Color.Empty;
-                    txtCounterEndDate.Text = String.Empty;
-                    txtCounterTitle.BorderColor = Color.Empty;
-                    txtCounterTitle.Text = String.Empty;
+                    if (updateCOuntDown == true)
+                    {
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Update unsuccessful.');</script>");
+
+                        txtCounterEndTitle.BorderColor = Color.Empty;
+                        txtCounterEndTitle.Text = String.Empty;
+                        txtCounterEndDate.BorderColor = Color.Empty;
+                        txtCounterEndDate.Text = String.Empty;
+                        txtCounterTitle.BorderColor = Color.Empty;
+                        txtCounterTitle.Text = String.Empty;
+                    }
+                    else
+                    {
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Update successful.');</script>");
+                    }
                 }
             }
             catch
@@ -1479,10 +1501,19 @@ namespace Muslimeen.Content
 
                     uspUpdateIslamicDate.IslamicDate = Convert.ToString(txtIslamicDate.Text); //adjustment digit not actually a date.
 
-                    db.BLL_UpdateIslamicDate(uspUpdateIslamicDate);
+                    bool islamicDate = db.BLL_UpdateIslamicDate(uspUpdateIslamicDate);
 
-                    txtIslamicDate.BackColor = Color.Empty;
+                    if (islamicDate == true)
+                    {
+                        txtIslamicDate.BackColor = Color.Empty;
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Update successful.');</script>");
+                    }
+                    else
+                    {
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Update unsuccessful.');</script>");
+                    }
                 }
+
             }
             catch
             {
@@ -1622,17 +1653,25 @@ namespace Muslimeen.Content
                     mosque.MosqueSize = ddUpdateMosqueSize.SelectedValue;
                     mosque.MosqueQuote = txtUpdateMosqueQuote.Text;
 
-                    db.BLL_UpdateMosque(mosque);
+                    bool mosqueUpdate = db.BLL_UpdateMosque(mosque);
 
-                    txtUpdateMosqueName.Text = string.Empty;
-                    txtUpdateMosqueAddr.Text = string.Empty;
-                    txtUpdateMosqueSuburb.Text = string.Empty;
-                    ddUpdateMosqueType.SelectedValue = "None";
-                    txtUpdateMosqueEstab.Text = string.Empty;
-                    ddUpdateMosqueActive.SelectedValue = "None";
-                    ddUpdateMosqueSize.SelectedValue = "None";
-                    txtUpdateMosqueQuote.Text = string.Empty;
+                    if (mosqueUpdate == true)
+                    {
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Mosque update successful.');</script>");
 
+                        txtUpdateMosqueName.Text = string.Empty;
+                        txtUpdateMosqueAddr.Text = string.Empty;
+                        txtUpdateMosqueSuburb.Text = string.Empty;
+                        ddUpdateMosqueType.SelectedValue = "None";
+                        txtUpdateMosqueEstab.Text = string.Empty;
+                        ddUpdateMosqueActive.SelectedValue = "None";
+                        ddUpdateMosqueSize.SelectedValue = "None";
+                        txtUpdateMosqueQuote.Text = string.Empty;
+                    }
+                    else
+                    {
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Mosque update Unsuccessful.');</script>");
+                    }
                 }
 
                 Cache.Remove("divMosqueList");
@@ -2376,87 +2415,97 @@ namespace Muslimeen.Content
 
         protected void btnListEvents_Click(object sender, EventArgs e) //Show the list rpt.
         {
+            try
+            {
 
-            lblTaskHead.InnerText = btnListEvents.Text.ToString();
-            divDisplaySalahTimetable.Visible = false;
-            divDisplayEvents.Visible = true;
-            divEventOverlay.Visible = true;
-            lblEventError.Text = String.Empty;
-            lblEventError.ForeColor = Color.Empty;
-            txtStartDate.BorderColor = Color.Empty;
+                lblTaskHead.InnerText = btnListEvents.Text.ToString();
+                divDisplaySalahTimetable.Visible = false;
+                divDisplayEvents.Visible = true;
+                divEventOverlay.Visible = true;
+                lblEventError.Text = String.Empty;
+                lblEventError.ForeColor = Color.Empty;
+                txtStartDate.BorderColor = Color.Empty;
 
-            DBHandler db = new DBHandler();
+                DBHandler db = new DBHandler();
 
-            int cont = 0;
-            if (txtStartDate.Text == null || txtStartDate.Text == "")
-            {
-                lblEventError.Text = "No start date was selected";
-                lblEventError.ForeColor = Color.Red;
-                txtStartDate.BorderColor = Color.Red;
-                cont += 1;
-            }
-            else if (txtEndDate.Text == null || txtEndDate.Text == "")
-            {
-                lblEventError.Text = "No end date was selected";
-                lblEventError.ForeColor = Color.Red;
-                txtEndDate.BorderColor = Color.Red;
-                cont += 1;
-            }
-            else if (Convert.ToDateTime(txtStartDate.Text.ToString()) >= Convert.ToDateTime(txtEndDate.Text.ToString()))
-            {
-                lblEventError.Text = "Invalid date. The start date should be less than the end date.";
-                lblEventError.ForeColor = Color.Red;
-                txtStartDate.BorderColor = Color.Red;
-                txtEndDate.BorderColor = Color.Red;
-                cont += 1;
-            }
-            else if (Convert.ToDateTime(txtEndDate.Text.ToString()) <= Convert.ToDateTime(txtStartDate.Text.ToString()))
-            {
-                lblEventError.Text = "Invalid date. The end date should be later than the start date.";
-                lblEventError.ForeColor = Color.Red;
-                txtStartDate.BorderColor = Color.Red;
-                txtEndDate.BorderColor = Color.Red;
-                cont += 1;
-            }
-
-            if (cont == 0)
-            {
-                RptEventList.DataSource = db.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), Convert.ToDateTime(txtStartDate.Text.ToString()), Convert.ToDateTime(txtEndDate.Text.ToString()));
-                RptEventList.DataBind();
-                DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
-                DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
-                if (startDate.Date <= EndDate.Date)
+                int cont = 0;
+                if (txtStartDate.Text == null || txtStartDate.Text == "")
                 {
+                    lblEventError.Text = "No start date was selected";
+                    lblEventError.ForeColor = Color.Red;
+                    txtStartDate.BorderColor = Color.Red;
+                    cont += 1;
+                }
+                else if (txtEndDate.Text == null || txtEndDate.Text == "")
+                {
+                    lblEventError.Text = "No end date was selected";
+                    lblEventError.ForeColor = Color.Red;
+                    txtEndDate.BorderColor = Color.Red;
+                    cont += 1;
+                }
+                else if (Convert.ToDateTime(txtStartDate.Text.ToString()) >= Convert.ToDateTime(txtEndDate.Text.ToString()))
+                {
+                    lblEventError.Text = "Invalid date. The start date should be less than the end date.";
+                    lblEventError.ForeColor = Color.Red;
+                    txtStartDate.BorderColor = Color.Red;
+                    txtEndDate.BorderColor = Color.Red;
+                    cont += 1;
+                }
+                else if (Convert.ToDateTime(txtEndDate.Text.ToString()) <= Convert.ToDateTime(txtStartDate.Text.ToString()))
+                {
+                    lblEventError.Text = "Invalid date. The end date should be later than the start date.";
+                    lblEventError.ForeColor = Color.Red;
+                    txtStartDate.BorderColor = Color.Red;
+                    txtEndDate.BorderColor = Color.Red;
+                    cont += 1;
+                }
 
-                    if (RptEventList.Items.Count > 0)
+                if (cont == 0)
+                {
+                    RptEventList.DataSource = db.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), Convert.ToDateTime(txtStartDate.Text.ToString()), Convert.ToDateTime(txtEndDate.Text.ToString()));
+                    RptEventList.DataBind();
+                    DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
+                    DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
+                    if (startDate.Date <= EndDate.Date)
                     {
-                        divListEvent.Visible = true;
-                        divListEventDetails.Visible = true;
-                        divDisplayEvents.Visible = true;
-                        divEvent.Visible = false;
-                        divEventOverlay.Visible = false;
+
+                        if (RptEventList.Items.Count > 0)
+                        {
+                            divListEvent.Visible = true;
+                            divListEventDetails.Visible = true;
+                            divDisplayEvents.Visible = true;
+                            divEvent.Visible = false;
+                            divEventOverlay.Visible = false;
+                        }
+                        else if (RptEventList.Items.Count <= 0)
+                        {
+                            divListEvent.Visible = false;
+                            divListEventDetails.Visible = false;
+                            divDisplayEvents.Visible = true;
+                            divEvent.Visible = false;
+                            lblEventError.Text = "No Events Found for Specified Date Range";
+                            divEventOverlay.Visible = true;
+                        }
                     }
-                    else if (RptEventList.Items.Count <= 0)
+                    else if (startDate.Date > EndDate.Date)
                     {
                         divListEvent.Visible = false;
                         divListEventDetails.Visible = false;
                         divDisplayEvents.Visible = true;
                         divEvent.Visible = false;
-                        lblEventError.Text = "No Events Found for Specified Date Range";
+                        lblEventError.Text = "Invalid Date Range";
                         divEventOverlay.Visible = true;
                     }
                 }
-                else if (startDate.Date > EndDate.Date)
-                {
-                    divListEvent.Visible = false;
-                    divListEventDetails.Visible = false;
-                    divDisplayEvents.Visible = true;
-                    divEvent.Visible = false;
-                    lblEventError.Text = "Invalid Date Range";
-                    divEventOverlay.Visible = true;
-                }
             }
-            
+            catch(FormatException)
+            {
+                lblEventError.Text = "Start date or End date is incorrect.";
+            }
+            catch
+            {
+
+            }
 
         }
         
