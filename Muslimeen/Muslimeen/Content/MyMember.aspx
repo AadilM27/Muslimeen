@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MyMember.aspx.cs" Inherits="Muslimeen.Content.MyMuslimeen_User_" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,6 +19,28 @@
     <link href="AboutUs/AboutUs.css" rel="stylesheet" />
     <link href="MyMember/css/MyMember.css" rel="stylesheet" />
     <link href="../Content/MyMember/css/Slideshow.css" rel="stylesheet" />
+
+     <style type="text/css">
+        .Star {
+            background-image: url(../Content/MyMember/icons/Star.gif);
+            height: 17px;
+            width: 17px;
+        }
+
+        .WaitingStar {
+            background-image: url(../Content/MyMember/icons/WaitingStar.gif);
+            height: 17px;
+            width: 17px;
+        }
+
+        .FilledStar {
+            background-image: url(../Content/MyMember/icons/FilledStar.gif);
+            height: 17px;
+            width: 17px;
+        }
+        </style>
+
+    
 
 </head>
 <body>
@@ -430,7 +454,7 @@
                             <div class=" head-div-2 p-2 mb-0 ">
                                     <p class="m-0">Selected Article Details</p>
                                 </div>
-                            <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
+                            <div class="position-static p-1 lst-container m-2" style="overflow-y:scroll;">
                                 <div class="row mb-3 mt-2">
                                     <div class="col">
                                         <label class="m-0 h2" runat="server" id="lblArticleTitle"></label>
@@ -446,21 +470,34 @@
                                         Author:
                                         <label class="m-0 mt-2" runat="server" id="lblScholar"></label>
                                     </div>--%>
-                                    <div class="row mb-1 position-static text-right">
+                                    <div class="row mb-1 position-static text-right m-2">
                                         <div class="col position-static font-italic">
                                             Date:
                                         <label class="m-0 font-italic mt-2" runat="server" id="lblDate"></label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="">
+                                <!--PDF BUTTON-->
+                                <div class="m-2">
                                     <a runat="server" id="lnkBack" onserverclick="lnkBack_ServerClick" ><small> << Back </small></a>
                                 </div>
                                 <div runat="server" id="divAdminReports" class="col-12 col-xl-12 p-0 mr-1">                                
                                 <div class="m-0 p-0 pt-2 pl-2">
                                     <a runat="server" id="lnkAdminPrintPDF" onserverclick="lnkAdminPrintPDF_ServerClick" style="width:15px; height:15px"><img src="../Content/MyMember/icons/Adobe_PDF.png" /><small>Download as PDF</small></a>
+                                <div id="divRating" runat="server" style="position: static; padding-left: 2em; padding-right: 2em; padding-top: 0,1em; float: right" class="row">
+                                        <p class="text-nowrap h5 mr-4">Rating:&nbsp<asp:ScriptManager ID="ScriptManager1" runat="server">
+                                        </asp:ScriptManager>
+                                        <asp:UpdatePanel ID="updatepnl1" runat="server" class="pt-1">
+                                            <ContentTemplate>
+                                                <ajaxToolkit:rating ID="Rating1" AutoPostBack="true" OnClick="Rating1_Click" runat="server"
+                                                    StarCssClass="Star" WaitingStarCssClass="WaitingStar" EmptyStarCssClass="Star"
+                                                    FilledStarCssClass="FilledStar">
+                                                </ajaxToolkit:rating>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel></p>
+                                    </div>
                                 </div>
-                                  <%--  PDF BUTTON--%>
+                                  <%--  PDF GRID--%>
                                 <div>
                                     <asp:GridView CssClass="flex-grow-1" ID="grdAdminReports"  RowStyle-Wrap="true" runat="server" style="font-size:smaller;" ForeColor="#333333" >
                                         <AlternatingRowStyle BackColor="White"  />
@@ -476,6 +513,44 @@
                                 </div>
                             </div>
                             <br />
+                                                        <hr class="p-0 m-1" />
+                            <!--Comment-->
+                            <div class="" >
+                                <div class="row p-0 m-0 ">
+                                    <div class="col-10 ml-2 mt-3" >
+                                        <asp:TextBox style="max-height:50px; min-height:50px;" CssClass="form-control col main-txtb" ID="txtComment" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <asp:Button ID="btn_Submit" runat="server" Text="Comment" CssClass=" btn btn-sm" OnClick="btn_Submit_Click" />
+                                    </div>
+                                </div>
+                                <br />
+                                <asp:Label runat="server" ID="lblCommentCount"></asp:Label>
+                                <br />
+                                <!--Comments Repeater-->
+                                <div class="position-static container pre-scrollable" style="overflow-y:scroll;max-height:230px;">
+                                    <asp:Repeater ID="CommentRepeater" runat="server">
+                                        <ItemTemplate>
+                                            <div class="row" >
+                                                <div class="col">
+                                                    <strong><asp:Label ID="lblCommentName" ForeColor="#256297" runat="server" Text='<%#Eval("Name") %>'></asp:Label></strong>
+                                                </div>
+                                            </div>
+                                            <div class="row" >
+                                                <div class="col">
+                                                    <asp:Label ID="lblComment" runat="server" Text='<%#Eval("CommentMessage") %>'></asp:Label>
+                                                </div>
+                                            </div>
+                                            <div class="row" >
+                                                <div style="font-size: small" class="col">
+                                                    <asp:Label ID="lblCommentDate" runat="server" Text='<%#Convert.ToDateTime(Eval("CommentDate")).ToString("dd MMM yyyy HH:mm:ss tt") %>'></asp:Label>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                </div>
+                                </div>
                             </div>
                         </div>
                     </div>
