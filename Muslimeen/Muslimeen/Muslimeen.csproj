@@ -145,8 +145,12 @@
     <Content Include="Content\MyMember\css\MyMember.css" />
     <Content Include="Content\MyMember\css\Slideshow.css" />
     <Content Include="Content\MyMember\icons\Adobe_PDF.png" />
+    <Content Include="Content\MyMember\icons\FilledStar.gif" />
     <Content Include="Content\MyMember\icons\helpIcon.png" />
+    <Content Include="Content\MyMember\icons\ImageUnavailable.jpg" />
     <Content Include="Content\MyMember\icons\outline_error_outline_black_18dp.png" />
+    <Content Include="Content\MyMember\icons\Star.gif" />
+    <Content Include="Content\MyMember\icons\WaitingStar.gif" />
     <Content Include="Content\MyModerator.aspx" />
     <Content Include="Content\MyModerator\Adobe_PDF.png" />
     <Content Include="Content\MyModerator\css\MyModerator.css" />
