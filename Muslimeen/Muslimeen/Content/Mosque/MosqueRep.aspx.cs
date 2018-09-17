@@ -917,7 +917,7 @@ namespace Muslimeen.Content.Mosque
             }
             catch
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Update Event Unsucessfull');</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Update Event Unsuccessfull');</script>");
                 divAddEvent.Visible = false;
                 divManageTimes.Visible = false;
                 divManageEvent.Visible = true;

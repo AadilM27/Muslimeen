@@ -194,7 +194,7 @@ namespace Muslimeen.Content
             }
             catch (Exception ex)
             {
-                throw;
+
             }        
         }
     }
