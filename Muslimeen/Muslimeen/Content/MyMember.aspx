@@ -334,9 +334,11 @@
                             <div class="col-sm-3 col-xl-4 text-nowrap" runat="server" id="divEventOverlay">
                                 <div class="w-100 h-100 container text-center">
                                     <div class=" container h-25 mb-3"></div>
+                                    <div id="divimageError" runat="server">
                                     <h6 class="card-title h-50 mt-5 pt-5">
                                         <asp:Image runat="server" class="figure-img mr-2" ImageUrl="MyMember/icons/outline_error_outline_black_18dp.png" /><asp:Label ID="lblEventError" runat="server">Please select a start and end date.</asp:Label></h6>
-                                    <div class=" container h-25"></div>
+                                    </div>
+                                        <div class=" container h-25"></div>
                                 </div>
                             </div>
 

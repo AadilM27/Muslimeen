@@ -40,6 +40,7 @@ namespace Muslimeen.Content
             divListEvent.Visible = false;
             divSchDetailsOverlay.Visible = false;
             divEventOverlay.Visible = false;
+            divimageError.Visible = false;
             //divNoSalaah.Visible = false;
 
             List<CounterCalender> counterCalender = new List<CounterCalender>();
@@ -291,6 +292,7 @@ namespace Muslimeen.Content
                         divListEventDetails.Visible = false;
                         divDisplayEvents.Visible = true;
                         divEvent.Visible = false;
+                        divimageError.Visible = true;
                         lblEventError.Text = "No Events Found for Specified Date Range";
                         divEventOverlay.Visible = true;
                     }
@@ -298,6 +300,7 @@ namespace Muslimeen.Content
 
                 else if (startDate.Date > EndDate.Date)
                 {
+                    divimageError.Visible = true;
                     lblEventError.Text = "Invalid date. The start date should be less than the end date.";
                     lblEventError.ForeColor = Color.Red;
                     txtStartDate.BorderColor = Color.Red;
@@ -306,6 +309,7 @@ namespace Muslimeen.Content
             }
             catch
             {
+                divimageError.Visible = true;
                 lblEventError.Text = "Please enter required date fields.";
                 lblEventError.ForeColor = Color.Red;
                 txtStartDate.BorderColor = Color.Red;
