@@ -213,10 +213,10 @@ namespace Muslimeen.Content.Learn_Islam
                 Rating1.CurrentRating = han.BLL_GetArticleRating(int.Parse(art), Session["UserName"].ToString());
 
                 string commentCount = CommentRepeater.Items.Count.ToString();
-                lblCommentCount.Text =  "Comments: " + commentCount;
+                lblCommentCount.Text = "Comments: " + commentCount;
             }
-            catch(NullReferenceException)
-            { 
+            catch (NullReferenceException)
+            {
             }
         }
 
@@ -313,10 +313,12 @@ namespace Muslimeen.Content.Learn_Islam
         {
             try
             {
+                DBHandler han = new DBHandler();
+                Comment com = new Comment();
                 if (Session["UserName"] != null)
                 {
-                    DBHandler han = new DBHandler();
-                    Comment com = new Comment();
+
+
 
                     com.CommentMessage = Convert.ToString(txtComment.Text);
                     com.CommentDate = DateTime.Now;
@@ -325,14 +327,24 @@ namespace Muslimeen.Content.Learn_Islam
                     com.CommentID = null;
 
                     han.BLL_AddComment(com);
+                    Response.Redirect(Request.Url.AbsoluteUri);
 
-                    divNoSelected.Visible = true;
 
                     txtComment.Text = string.Empty;
+
+                    CommentRepeater.DataSource = han.BLL_GetComment(int.Parse(hdfArtID.Value));
+                    CommentRepeater.DataBind();
+                    string commentCount = CommentRepeater.Items.Count.ToString();
+                    lblCommentCount.Text = "Comments: " + commentCount;
                 }
                 else
                 {
                     Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Please login to add comment.');</script>");
+                    txtComment.Text = string.Empty;
+                    CommentRepeater.DataSource = han.BLL_GetComment(int.Parse(hdfArtID.Value));
+                    CommentRepeater.DataBind();
+                    string commentCount = CommentRepeater.Items.Count.ToString();
+                    lblCommentCount.Text = "Comments: " + commentCount;
                 }
             }
             catch
@@ -420,10 +432,10 @@ namespace Muslimeen.Content.Learn_Islam
             }
             catch { }
         }
-        protected void Rating1_Click(object sender,EventArgs e)
+        protected void Rating1_Click(object sender, EventArgs e)
         {
             try
-            {              
+            {
                 if (Session["UserName"] != null)
                 {
                     DBHandler handler = new DBHandler();
@@ -442,6 +454,7 @@ namespace Muslimeen.Content.Learn_Islam
 
                         handler.BLL_InsertRating(rating);
                         Response.Redirect(Request.Url.AbsoluteUri);
+                        divNoSelected.Visible = true;
                     }
                     else if (handler.BLL_GetArticleRating(articleId, Session["UserName"].ToString()) > 0 && handler.BLL_GetArticleRating(articleId, Session["UserName"].ToString()) <= Rating1.MaxRating)
                     {
@@ -452,6 +465,8 @@ namespace Muslimeen.Content.Learn_Islam
 
                         handler.BLL_UpdateRating(upRate);
                         Response.Redirect(Request.Url.AbsoluteUri);
+                        divNoSelected.Visible = true;
+
                     }
 
 
@@ -463,7 +478,7 @@ namespace Muslimeen.Content.Learn_Islam
             }
             catch
             {
-                
+
             }
 
 
