@@ -23,9 +23,9 @@ html {
     color: #256297;
 }
 
-.user:hover {
-    font-weight: 500;
-}
+    .user:hover {
+        font-weight: 500;
+    }
 
 .navbaritems {
     padding-right: 10px;
@@ -165,6 +165,24 @@ html {
     color: #256297;
     align-self: center;
 }
+
+.label {
+    display: inline-block;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    padding: 4px 8px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #256297;
+}
+
+    .label.label-primary {
+        background-color: #2196F3
+    }
+
 /*end styling for header and footer.*/
 .taskBtn {
     font-weight: 500;
@@ -176,29 +194,29 @@ html {
     text-align: start;
 }
 
-.taskBtn:hover {
-    background-color: #3F84C1;
-    color: white;
-    position: static;
-}
+    .taskBtn:hover {
+        background-color: #3F84C1;
+        color: white;
+        position: static;
+    }
 
 .sub-taskBtn {
-    font-weight:lighter;
+    font-weight: 500;
     position: static;
     background-color: white;
     color: black;
     padding: 0;
     border-radius: 0px;
     text-align: start;
-    font-size:small;
-    margin-left:30px;
+    font-size: small;
+    margin-left: 30px;
 }
 
-.sub-taskBtn:hover {
-    background-color: #3F84C1;
-    color: white;
-    position: static;
-}
+    .sub-taskBtn:hover {
+        background-color: #3F84C1;
+        color: white;
+        position: static;
+    }
 
 .divContainers {
     min-height: 595px;
@@ -253,7 +271,6 @@ html {
     border-width: 1px;
     border-color: #3F84C1;
     border-radius: 5px;
-    
 }
 
 .basic-div-styling-2 {
@@ -276,12 +293,13 @@ html {
     position: static;
 }
 
-.dash-content {
+/*.dash-content {
     min-height: 640px;
-    max-height: 640px;
+    max-height: 100%;
     min-width: 50%;
     max-width: 50%;
-}
+    margin-right:3px;
+}*/
 
 .right-bottom-div {
     max-width: 100%;
@@ -299,9 +317,16 @@ html {
     position: static;
 }
 
-.dash-content2 {
-    min-height: 640px;
-    max-height: 640px;
-    min-width: 50%;
-    max-width: 100%;
+.task-action {
+    height: 250px;
+    width: 98%;
+    position: static;
+    padding-bottom: 3px;
+}
+
+.article-content {
+    max-height: 450px;
+    min-height: 450px;
+    width: 100%;
+    border: none;
 }

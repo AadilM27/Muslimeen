@@ -430,6 +430,9 @@ namespace Muslimeen.Content.MyModerator
 
                     divViewArt.Visible = true;
                     divViewPendingArt.Visible = true;
+                    rptViewPendingArticles.DataSource = dBHandler.BLL_GetPendingArticle();
+                    rptViewPendingArticles.DataBind();
+
                 }
             }
             catch
@@ -468,9 +471,12 @@ namespace Muslimeen.Content.MyModerator
                     lblRejection.Text = "";
                     txtRejectReason.Text = "";
                     txtRejectReason.BorderColor = System.Drawing.Color.Empty;
+                    rptViewPendingArticles.DataSource = dBHandler.BLL_GetPendingArticle();
+                    rptViewPendingArticles.DataBind();
+
 
                 }
-                
+
                 divViewArt.Visible = true;
                 divViewPendingArt.Visible = true;
             }
@@ -982,8 +988,9 @@ namespace Muslimeen.Content.MyModerator
                         lblRemovalDisplay.Text = "";
                         txtRemovalReason.Text = "";
                         txtRemovalReason.BorderColor = System.Drawing.Color.Empty;
+                    rptRemoveAcceptedArticles.DataSource = dBHandler.BLL_GetRemoveAcceptedArticle();
+                    rptRemoveAcceptedArticles.DataBind();
 
-                   
                 }
 
                 divDisplayRemoveAcceptedArticles.Visible = true;
