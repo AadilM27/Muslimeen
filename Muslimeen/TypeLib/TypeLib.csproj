@@ -52,7 +52,6 @@
     <Compile Include="Models\Mosques.cs" />
     <Compile Include="Models\Notice.cs" />
     <Compile Include="Models\Organization.cs" />
-    <Compile Include="Models\Postings.cs" />
     <Compile Include="Models\Prayer.cs" />
     <Compile Include="Models\PrayerType.cs" />
     <Compile Include="Models\Qualification.cs" />
