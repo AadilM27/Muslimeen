@@ -34,6 +34,13 @@ namespace Muslimeen.Content.MyScholar
                 divNoRejectedSelected.Visible = false;
                 divDisplayArticle.Visible = false;
                 divDisplayRejected.Visible = false;
+                divDisplaySalahTimetable.Visible = false;
+                divDisplayEvents.Visible = false;
+                divListEventDetails.Visible = false;
+                divListEvent.Visible = false;
+                divEvent.Visible = false;
+                divEventDetails.Visible = false;
+                divEventOverlay.Visible = false;
 
                 DBHandler dBHandler = new DBHandler();
 
@@ -250,19 +257,30 @@ namespace Muslimeen.Content.MyScholar
             divAddArticle.Visible = true;
             txtHeading.BorderColor = Color.Empty;
             txtContent.BorderColor = Color.Empty;
+            drpTopics.BorderColor = Color.Empty;
 
             try
             {
                 DBHandler han = new DBHandler();
                 InsertArticle art = new InsertArticle();
 
-                if (txtHeading.Text == "" || txtHeading.Text == null)
+                if(drpTopics.SelectedValue.ToString() == "Select" && txtHeading.Text == null && txtContent.Text == null)
+                {
+                    drpTopics.BorderColor = Color.Red;
+                    txtHeading.BorderColor = Color.Red;
+                    txtHeading.BorderColor = Color.Red;
+                }
+                else if(drpTopics.SelectedValue.ToString() == "Select")
+                {
+                    drpTopics.BorderColor = Color.Red;
+                }
+                else if (txtHeading.Text == "" || txtHeading.Text == null)
                 {
                     txtHeading.BorderColor = Color.Red;
                 }
                 else if (txtContent.Text == "" || txtContent.Text == null)
                 {
-                    txtContent.BorderColor = Color.Red;
+                    txtHeading.BorderColor = Color.Red;
                 }
                 else
                 {
@@ -278,11 +296,12 @@ namespace Muslimeen.Content.MyScholar
                     art.ArticleContent = Convert.ToString(txtContent.Text);
 
                     han.BLL_InsertArticle(art);
-
+                    divAddArticle.Visible = true;
                     txtHeading.Text = string.Empty;
                     txtContent.Text = string.Empty;
 
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Added Article');</script>");
+                    Response.Redirect("../MyScholar/AddArticle.aspx", true);
                 }
             }
             catch
@@ -384,6 +403,157 @@ namespace Muslimeen.Content.MyScholar
             txtContent.Text = string.Empty;
 
             Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Updated Article');</script>");
+        }
+
+        protected void btnMosqueEvents_Click(object sender, EventArgs e)
+        {
+            divDisplaySalahTimetable.Visible = false;
+            divDisplayEvents.Visible = true;
+            divEventOverlay.Visible = true;
+
+            lblTaskHead.InnerText = btnMosqueEvents.Text.ToString();
+        }
+
+        protected void btnTodaysPrayerTime_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                divDisplaySalahTimetable.Visible = true;
+                lblTaskHead.InnerText = btnTodaysPrayerTime.Text.ToString();
+
+                DBHandler dBHandler = new DBHandler();
+                DateTime todaysDate = DateTime.Today;
+
+                uspGetSpecificDayPrayerTimes prayertimes = new uspGetSpecificDayPrayerTimes();
+                prayertimes = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), todaysDate);
+
+                lblFajrAzaan.Text = prayertimes.FajrA.ToString();
+                lblFajrJamaat.Text = prayertimes.FajrJ.ToString();
+                lblDhuhrAzaan.Text = prayertimes.DhuhrA.ToString();
+                lblDhuhrJamaat.Text = prayertimes.DhuhrJ.ToString();
+                lblAsrAzaan.Text = prayertimes.AsrA.ToString();
+                lblAsrJamaat.Text = prayertimes.AsrJ.ToString();
+                lblMagribAzaan.Text = prayertimes.MagribA.ToString();
+                lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
+                lblEishaAzaan.Text = prayertimes.EishaA.ToString();
+                lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
+
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void btnListEvents_Click(object sender, EventArgs e)
+        {
+            lblTaskHead.InnerText = btnListEvents.Text.ToString();
+            divDisplaySalahTimetable.Visible = false;
+            divDisplayEvents.Visible = true;
+            divEventOverlay.Visible = true;
+            lblEventError.Text = String.Empty;
+            lblEventError.ForeColor = Color.Empty;
+            txtStartDate.BorderColor = Color.Empty;
+
+            DBHandler db = new DBHandler();
+
+            int cont = 0;
+            if (txtStartDate.Text == null || txtStartDate.Text == "")
+            {
+                lblEventError.Text = "No start date was selected";
+                lblEventError.ForeColor = Color.Red;
+                txtStartDate.BorderColor = Color.Red;
+                cont += 1;
+            }
+            else if (txtEndDate.Text == null || txtEndDate.Text == "")
+            {
+                lblEventError.Text = "No end date was selected";
+                lblEventError.ForeColor = Color.Red;
+                txtEndDate.BorderColor = Color.Red;
+                cont += 1;
+            }
+            else if (Convert.ToDateTime(txtStartDate.Text.ToString()) >= Convert.ToDateTime(txtEndDate.Text.ToString()))
+            {
+                lblEventError.Text = "Invalid date. The start date should be less than the end date.";
+                lblEventError.ForeColor = Color.Red;
+                txtStartDate.BorderColor = Color.Red;
+                txtEndDate.BorderColor = Color.Red;
+                cont += 1;
+            }
+            else if (Convert.ToDateTime(txtEndDate.Text.ToString()) <= Convert.ToDateTime(txtStartDate.Text.ToString()))
+            {
+                lblEventError.Text = "Invalid date. The end date should be later than the start date.";
+                lblEventError.ForeColor = Color.Red;
+                txtStartDate.BorderColor = Color.Red;
+                txtEndDate.BorderColor = Color.Red;
+                cont += 1;
+            }
+
+            if (cont == 0)
+            {
+                RptEventList.DataSource = db.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), Convert.ToDateTime(txtStartDate.Text.ToString()), Convert.ToDateTime(txtEndDate.Text.ToString()));
+                RptEventList.DataBind();
+                DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
+                DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
+                if (startDate.Date <= EndDate.Date)
+                {
+
+                    if (RptEventList.Items.Count > 0)
+                    {
+                        divListEvent.Visible = true;
+                        divListEventDetails.Visible = true;
+                        divDisplayEvents.Visible = true;
+                        divEvent.Visible = false;
+                        divEventOverlay.Visible = false;
+                    }
+                    else if (RptEventList.Items.Count <= 0)
+                    {
+                        divListEvent.Visible = false;
+                        divListEventDetails.Visible = false;
+                        divDisplayEvents.Visible = true;
+                        divEvent.Visible = false;
+                        lblEventError.Text = "No Events Found for Specified Date Range";
+                        divEventOverlay.Visible = true;
+                    }
+                }
+                else if (startDate.Date > EndDate.Date)
+                {
+                    divListEvent.Visible = false;
+                    divListEventDetails.Visible = false;
+                    divDisplayEvents.Visible = true;
+                    divEvent.Visible = false;
+                    lblEventError.Text = "Invalid Date Range";
+                    divEventOverlay.Visible = true;
+                }
+            }
+        }
+
+        protected void btnEventList_Click(object sender, EventArgs e)
+        {
+            divEvent.Visible = true;
+            divDisplaySalahTimetable.Visible = false;
+            lblTaskHead.InnerText = btnMosqueEvents.Text.ToString();
+
+            LinkButton btn = (LinkButton)sender;
+            uspGetSpecificEvent events = new uspGetSpecificEvent();
+            DBHandler db = new DBHandler();
+            Session["EventID"] = btn.CommandArgument.ToString();
+            events = db.BLL_GetuspGetSpecificEvent(int.Parse(btn.CommandArgument.ToString()));
+
+            lblEventTitle.InnerText = events.EventTitle.ToString();
+            lblEventDescription.InnerText = events.EventDescription.ToString();
+            lblSpeaker.InnerText = events.Speaker.ToString();
+            lblEventDate.InnerText = Convert.ToDateTime(events.EventDate).ToString("dd-MM-yyyy");
+            lblEventStartTime.InnerText = events.EventStartTime.ToString();
+            lblEventEndTime.InnerText = events.EventEndTime.ToString();
+
+            divListEvent.Visible = true;
+            divListEventDetails.Visible = true;
+            divDisplayEvents.Visible = true;
+            divEvent.Visible = true;
+            divEventOverlay.Visible = false;
+            divEventDetails.Visible = true;
         }
     }
 }
