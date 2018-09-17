@@ -113,7 +113,7 @@
                             <p>
                             <b>User:</b><br />
                             A user will register on My Muslimeen. Once the user is registered and assigned himself to a mosque, he may then have the option to view his mosque 
-                            details, events and notifications or all mosque events and notifications. He may view mosques and scholars within
+                            salaah times, mosque events and notifications for this week or the latest articles. He may view mosques and scholars within
                             his city.
                             <br />
                             <br />
@@ -168,7 +168,9 @@
                                 <li>View/edit profile</li>
                                 <li>View prayer times</li>
                                 <li>View mosque events</li>
-                                <li>Serach for specific results</li>
+                                <li>View notifications for this week</li>
+                                <li>View latest articles</li>
+                                <li>Search for specific results</li>
                                 <li>View zakaah information, organisations as well as calculate zakaah</li>
                                 <li>View Scholars</li>
                                 <li>View a list of mosques and filter according to their needs</li>
@@ -185,7 +187,7 @@
                                 <li>View mosque details</li>
                                 <li>View/Update profile</li>
                                 <li>View number of assigned users to a specific mosque</li>
-                                <li>Serach for specific results</li>
+                                <li>Search for specific results</li>
                                 <li>View zakaah information, organisations as well as calculate zakaah</li>
                                 <li>View Scholars</li>
                                 <li>View a list of mosques and filter according to their needs</li>
@@ -200,7 +202,7 @@
                                 <li>View/edit profile</li>
                                 <li>View prayer times</li>
                                 <li>View mosque events</li>
-                                <li>Serach for specific results</li>
+                                <li>Search for specific results</li>
                                 <li>View zakaah information, organisations as well as calculate zakaah</li>
                                 <li>View Scholars</li>
                                 <li>View a list of mosques and filter according to their needs</li>

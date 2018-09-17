@@ -268,3 +268,20 @@
     position: static;
     padding-bottom: 3px;
 }
+.Star {
+    background-image: url(../Images/Star.gif);
+    height: 17px;
+    width: 17px;
+}
+
+.WaitingStar {
+    background-image: url(../Images/WaitingStar.gif);
+    height: 17px;
+    width: 17px;
+}
+
+.FilledStar {
+    background-image: url(../Images/FilledStar.gif);
+    height: 17px;
+    width: 17px;
+}
