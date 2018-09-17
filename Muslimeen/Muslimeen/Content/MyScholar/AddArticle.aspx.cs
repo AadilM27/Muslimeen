@@ -20,8 +20,7 @@ namespace Muslimeen.Content.MyScholar
             DBHandler db = new DBHandler();
             List<CounterCalender> counterCalender = new List<CounterCalender>();
 
-            counterCalender = db.BLL_GetCounterCalender();
-            hdfAdjustDate.Value = counterCalender[3].Val.ToString();
+            
 
             try
             {
@@ -41,6 +40,9 @@ namespace Muslimeen.Content.MyScholar
                 divEvent.Visible = false;
                 divEventDetails.Visible = false;
                 divEventOverlay.Visible = false;
+
+                counterCalender = db.BLL_GetCounterCalender();
+                hdfAdjustDate.Value = counterCalender[3].Val.ToString();
 
                 DBHandler dBHandler = new DBHandler();
 
