@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddArticle.aspx.cs" Inherits="Muslimeen.Content.MyScholar.AddArticle" %>
 
+<%@ Register Assembly="skmControls2" Namespace="skmControls2" TagPrefix="skm" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -290,13 +292,14 @@
                                 <div class="form-row">
                                     <div class="form-group col-sm-12 col-12 mb-1">
                                         <label class="col mb-0 p-0 position-static"><strong>Heading:</strong></label>
-                                        <asp:TextBox CssClass="form-control"  Onblur="heading();" ID="txtHeading" runat="server"></asp:TextBox>
+                                        <asp:TextBox CssClass="form-control"  Onblur="heading();" ID="txtHeading" runat="server" placeholder="Enter Heading"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-sm-12 mb-1">
                                         <label class="col mb-0 p-0 position-static"><strong>Content:</strong></label>
-                                        <asp:TextBox CssClass="form-control" ID="txtContent" runat="server" Style="max-height:350px; min-height:350px;" TextMode="MultiLine"></asp:TextBox>
+                                        <asp:TextBox CssClass="form-control" ID="txtContent" runat="server" Style="max-height:350px; min-height:350px;" TextMode="MultiLine" placeholder="Enter Content"></asp:TextBox>
+                                        <skm:TextBoxCounter runat="server" TextBoxControlId="txtContent" ID="TextBoxCounter1"></skm:TextBoxCounter>
                                     </div>
                                 </div>
                                 <br />
