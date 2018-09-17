@@ -238,10 +238,10 @@
                             <div class="" >
                                 <div class="row p-0 m-0 ">
                                     <div class="col-10 ml-2 mt-3" >
-                                        <asp:TextBox style="max-height:50px; min-height:50px;" CssClass="form-control col main-txtb" ID="txtComment" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                        <asp:TextBox style="max-height:50px; min-height:50px;" CssClass="form-control col main-txtb" ID="txtComment" runat="server" TextMode="MultiLine" EnableViewState="false"></asp:TextBox>
                                     </div>
                                     <div class="align-self-center">
-                                        <asp:Button ID="btn_Submit" runat="server" Text="Comment" CssClass=" btn btn-sm" OnClick="btn_Submit_Click" />
+                                        <asp:Button ID="btn_Submit" runat="server" Text="Comment" CssClass=" btn btn-sm" OnClick="btn_Submit_Click" EnableViewState="false" />
                                     </div>
                                 </div>
                                 <br />

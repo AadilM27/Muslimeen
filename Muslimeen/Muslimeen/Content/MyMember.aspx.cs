@@ -7,11 +7,13 @@ using System.Web.UI.WebControls;
 using TypeLib.Models;
 using TypeLib.ViewModels;
 using Muslimeen.BLL;
+using System.IO;
 using iTextSharp;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.html.simpleparser;
 using System.Drawing;
+using AjaxControlToolkit;
 
 namespace Muslimeen.Content
 {
@@ -38,6 +40,7 @@ namespace Muslimeen.Content
             divListEvent.Visible = false;
             divSchDetailsOverlay.Visible = false;
             divEventOverlay.Visible = false;
+            divimageError.Visible = false;
             //divNoSalaah.Visible = false;
 
             List<CounterCalender> counterCalender = new List<CounterCalender>();
@@ -289,6 +292,7 @@ namespace Muslimeen.Content
                         divListEventDetails.Visible = false;
                         divDisplayEvents.Visible = true;
                         divEvent.Visible = false;
+                        divimageError.Visible = true;
                         lblEventError.Text = "No Events Found for Specified Date Range";
                         divEventOverlay.Visible = true;
                     }
@@ -296,6 +300,7 @@ namespace Muslimeen.Content
 
                 else if (startDate.Date > EndDate.Date)
                 {
+                    divimageError.Visible = true;
                     lblEventError.Text = "Invalid date. The start date should be less than the end date.";
                     lblEventError.ForeColor = Color.Red;
                     txtStartDate.BorderColor = Color.Red;
@@ -304,6 +309,7 @@ namespace Muslimeen.Content
             }
             catch
             {
+                divimageError.Visible = true;
                 lblEventError.Text = "Please enter required date fields.";
                 lblEventError.ForeColor = Color.Red;
                 txtStartDate.BorderColor = Color.Red;
@@ -378,26 +384,38 @@ namespace Muslimeen.Content
 
         protected void btnShowArt_Click(object sender, EventArgs e)
         {
-            lblTaskHead.InnerText = btnArticles.Text.ToString();
+            try
+            {
+                lblTaskHead.InnerText = btnArticles.Text.ToString();
 
-            divDisplayArt.Visible = true;
-            divDisplaySalahTimetable.Visible = false;
+                divDisplayArt.Visible = true;
+                divDisplaySalahTimetable.Visible = false;
 
-            LinkButton linkButton = (LinkButton)sender;
+                LinkButton linkButton = (LinkButton)sender;
 
-            string articleId = linkButton.CommandArgument.ToString();
-            hdfArticleID.Value = articleId;
+                string articleId = linkButton.CommandArgument.ToString();
+                hdfArticleID.Value = articleId;
 
-            DBHandler dBHandler = new DBHandler();
-            Article article = new Article();
-            article = dBHandler.BLL_GetArticle(Convert.ToInt32(articleId));
+                DBHandler dBHandler = new DBHandler();
+                Article article = new Article();
+                article = dBHandler.BLL_GetArticle(Convert.ToInt32(articleId));
 
 
-            lblArticleTitle.InnerText = article.ArticleTitle.ToString();
-            lblArticleContent.InnerText = article.ArticleContent.ToString();
-            lblDate.InnerText = article.DateCreated.ToString("dd/MMM/yyyy");
+                lblArticleTitle.InnerText = article.ArticleTitle.ToString();
+                lblArticleContent.InnerText = article.ArticleContent.ToString();
+                lblDate.InnerText = article.DateCreated.ToString("dd/MMM/yyyy");
 
-           
+                CommentRepeater.DataSource = dBHandler.BLL_GetComment(int.Parse(articleId));
+                CommentRepeater.DataBind();
+
+                Rating1.CurrentRating = dBHandler.BLL_GetArticleRating(int.Parse(articleId), Session["UserName"].ToString());
+
+                string commentCount = CommentRepeater.Items.Count.ToString();
+                lblCommentCount.Text = "Comments: " + commentCount;
+            }
+            catch (NullReferenceException)
+            { }
+
 
         }
         protected void btnShowNotice_Click(object sender, EventArgs e)
@@ -515,6 +533,85 @@ namespace Muslimeen.Content
 
             }
             catch (NullReferenceException)
+            {
+
+            }
+        }
+        protected void Rating1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Session["UserName"] != null)
+                {
+                    DBHandler handler = new DBHandler();
+
+                    uspInsertRating rating = new uspInsertRating();
+
+                    int articleId = Convert.ToInt32(hdfArticleID.Value.ToString());//gets article id  from repeater when clicked on and saves n into hidden field
+
+                    Rating1.MaxRating = 5;
+
+                    if (handler.BLL_GetArticleRating(articleId, Session["UserName"].ToString()) == 0 || handler.BLL_GetArticleRating(articleId, Session["UserName"].ToString()).ToString() == null)//when user hasnt rated an article in goes into method to execute an insert to allow that user to rate an article.
+                    {
+                        rating.MemberID = Session["UserName"].ToString();
+                        rating.articleID = Convert.ToInt32(articleId);
+                        rating.rating = Rating1.CurrentRating;
+
+                        handler.BLL_InsertRating(rating);
+                        Response.Redirect(Request.Url.AbsoluteUri);
+                    }
+                    else if (handler.BLL_GetArticleRating(articleId, Session["UserName"].ToString()) > 0 && handler.BLL_GetArticleRating(articleId, Session["UserName"].ToString()) <= Rating1.MaxRating)
+                    {
+                        uspUpdateRating upRate = new uspUpdateRating();
+                        upRate.ArticleID = Convert.ToInt32(hdfArticleID.Value.ToString());
+                        upRate.MemberID = Session["UserName"].ToString();
+                        upRate.rating = Rating1.CurrentRating;
+
+                        handler.BLL_UpdateRating(upRate);
+                        Response.Redirect(Request.Url.AbsoluteUri);
+                    }
+
+
+
+                }
+                divDisplayArt.Visible = true;
+                divRating.Visible = true;
+
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        protected void btn_Submit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Session["UserName"] != null)
+                {
+                    DBHandler han = new DBHandler();
+                    Comment com = new Comment();
+
+                    com.CommentMessage = Convert.ToString(txtComment.Text);
+                    com.CommentDate = DateTime.Now;
+                    com.ArticleID = Convert.ToInt32(hdfArticleID.Value);
+                    com.MemberID = Convert.ToString(Session["UserName"]);
+                    com.CommentID = null;
+
+                    han.BLL_AddComment(com);
+
+                    //divNoSelected.Visible = true;
+
+                    txtComment.Text = string.Empty;
+                }
+                else
+                {
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Please login to add comment.');</script>");
+                }
+            }
+            catch
             {
 
             }

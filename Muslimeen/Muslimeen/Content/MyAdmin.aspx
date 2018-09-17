@@ -542,7 +542,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-6 mb-1">
                                             <label class="col mb-0 p-0"><small>E-mail*</small></label>
-                                            <asp:TextBox MaxLength="10" OnBlur="EmailValidationMod();" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtModEmail"></asp:TextBox>
+                                            <asp:TextBox OnBlur="EmailValidationMod();" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtModEmail"></asp:TextBox>
                                         </div>
                                         <div class="form-group col-sm-6 mb-1">
                                             <label class="col mb-0 p-0 text "><small>Qualification*</small></label>
