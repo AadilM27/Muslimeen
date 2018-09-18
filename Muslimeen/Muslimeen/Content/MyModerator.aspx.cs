@@ -988,6 +988,7 @@ namespace Muslimeen.Content.MyModerator
                         lblRemovalDisplay.Text = "";
                         txtRemovalReason.Text = "";
                         txtRemovalReason.BorderColor = System.Drawing.Color.Empty;
+
                     rptRemoveAcceptedArticles.DataSource = dBHandler.BLL_GetRemoveAcceptedArticle();
                     rptRemoveAcceptedArticles.DataBind();
 

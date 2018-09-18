@@ -246,6 +246,9 @@
                                     </div>
                                 </div>
                                 <br />
+                                <div style="position: static; padding-left: 2em; padding-right: 2em; padding-top: 0,1em; float: right" class="row" >
+                                <asp:Label runat="server" ID ="lblRatingCount"></asp:Label>
+                                </div>
                                 <asp:Label runat="server" ID="lblCommentCount"></asp:Label>
                                 <br />
                                 <!--Comments Repeater-->

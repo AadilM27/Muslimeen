@@ -401,7 +401,7 @@ namespace Muslimeen.BLL
         {
             return dBAccess.GetAverageRating(articleID);
         }
-        public uspRatingCount BLL_RatingCount(int articleID)
+        public int BLL_RatingCount(int articleID)
         {
             return dBAccess.GetRatingCount(articleID);
         }

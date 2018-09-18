@@ -215,6 +215,13 @@ namespace Muslimeen.Content.Learn_Islam
 
                 string commentCount = CommentRepeater.Items.Count.ToString();
                 lblCommentCount.Text = "Comments: " + commentCount;
+                uspRatingCount count = new uspRatingCount();
+
+               
+                lblRatingCount.Text = count.RatingCount.ToString();
+                han.BLL_RatingCount(int.Parse(art));
+
+
             }
             catch (NullReferenceException)
             {

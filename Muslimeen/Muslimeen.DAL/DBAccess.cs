@@ -2005,10 +2005,10 @@ namespace Muslimeen.BLL
             }//end using
             return rating;
         }//End GetAverageRating for specific Article
-        public uspRatingCount GetRatingCount(int articleID)
+        public int GetRatingCount(int articleID)
         {
 
-            uspRatingCount count = null;
+            int count = 0;
             SqlParameter[] pars = new SqlParameter[]
             {
                 new SqlParameter("@articleID",articleID),
@@ -2020,10 +2020,9 @@ namespace Muslimeen.BLL
                 if (table.Rows.Count == 1)
                 {
                     DataRow row = table.Rows[0];
-                    count = new uspRatingCount
-                    {
-                        RatingCount = Convert.ToInt32(row["RatingCount"].ToString()),
-                    };
+
+                    count = Convert.ToInt32(row["RatingCount"]);
+                    
 
 
                 }//end if
@@ -2051,7 +2050,7 @@ namespace Muslimeen.BLL
                 }
             }
             return list;
-        }//End GetRatingCount for specific Article
+        }
 
         public int GetArticleRating(int articleID, string memberID)
         {
