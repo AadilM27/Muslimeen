@@ -98,7 +98,10 @@ namespace Muslimeen.Content.Mosque
                     member = db.BLL_GetMosqueRep(int.Parse(Session["MosqueID"].ToString()));
                     lblMosqueRep.Text = member.MemberName.ToString() + " " + member.MemberLastName.ToString();
                 }
-                catch { throw; }
+                catch
+                {
+
+                }
                 #endregion LoadAdd/UpdatePrayer
             }
             catch { }

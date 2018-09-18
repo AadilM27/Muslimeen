@@ -14,6 +14,7 @@ using System.IO;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
 using AjaxControlToolkit;
+using System.Drawing;
 
 namespace Muslimeen.Content.Learn_Islam
 {
@@ -213,10 +214,17 @@ namespace Muslimeen.Content.Learn_Islam
                 Rating1.CurrentRating = han.BLL_GetArticleRating(int.Parse(art), Session["UserName"].ToString());
 
                 string commentCount = CommentRepeater.Items.Count.ToString();
-                lblCommentCount.Text =  "Comments: " + commentCount;
+                lblCommentCount.Text = "Comments: " + commentCount;
+                uspRatingCount count = new uspRatingCount();
+
+               
+                lblRatingCount.Text = count.RatingCount.ToString();
+                han.BLL_RatingCount(int.Parse(art));
+
+
             }
-            catch(NullReferenceException)
-            { 
+            catch (NullReferenceException)
+            {
             }
         }
 
@@ -311,29 +319,47 @@ namespace Muslimeen.Content.Learn_Islam
 
         protected void btn_Submit_Click(object sender, EventArgs e)
         {
+            txtComment.BorderColor = Color.Red;
+
             try
             {
+                DBHandler han = new DBHandler();
+                Comment com = new Comment();
                 if (Session["UserName"] != null)
                 {
-                    DBHandler han = new DBHandler();
-                    Comment com = new Comment();
+                    if (txtComment.Text != "")
+                    { 
+                        com.CommentMessage = Convert.ToString(txtComment.Text);
+                        com.CommentDate = DateTime.Now;
+                        com.ArticleID = Convert.ToInt32(hdfArtID.Value);
+                        com.MemberID = Convert.ToString(Session["UserName"]);
+                        com.CommentID = null;
 
-                    com.CommentMessage = Convert.ToString(txtComment.Text);
-                    com.CommentDate = DateTime.Now;
-                    com.ArticleID = Convert.ToInt32(hdfArtID.Value);
-                    com.MemberID = Convert.ToString(Session["UserName"]);
-                    com.CommentID = null;
+                        han.BLL_AddComment(com);
+                        Response.Redirect(Request.RawUrl);
 
-                    han.BLL_AddComment(com);
+                        txtComment.Text = string.Empty;
 
-                    divNoSelected.Visible = true;
+                        CommentRepeater.DataSource = han.BLL_GetComment(int.Parse(hdfArtID.Value));
+                        CommentRepeater.DataBind();
 
-                    txtComment.Text = string.Empty;
+                        string commentCount = CommentRepeater.Items.Count.ToString();
+                        lblCommentCount.Text = "Comments: " + commentCount;
+                    }
+                    else
+                    {
+                        txtComment.BorderColor = Color.Red;
+                    }
                 }
                 else
                 {
                     Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Please login to add comment.');</script>");
-                }
+                    txtComment.Text = string.Empty;
+                    CommentRepeater.DataSource = han.BLL_GetComment(int.Parse(hdfArtID.Value));
+                    CommentRepeater.DataBind();
+                    string commentCount = CommentRepeater.Items.Count.ToString();
+                    lblCommentCount.Text = "Comments: " + commentCount;
+                }                
             }
             catch
             {
@@ -420,10 +446,10 @@ namespace Muslimeen.Content.Learn_Islam
             }
             catch { }
         }
-        protected void Rating1_Click(object sender,EventArgs e)
+        protected void Rating1_Click(object sender, EventArgs e)
         {
             try
-            {              
+            {
                 if (Session["UserName"] != null)
                 {
                     DBHandler handler = new DBHandler();
@@ -442,6 +468,7 @@ namespace Muslimeen.Content.Learn_Islam
 
                         handler.BLL_InsertRating(rating);
                         Response.Redirect(Request.Url.AbsoluteUri);
+                        divNoSelected.Visible = true;
                     }
                     else if (handler.BLL_GetArticleRating(articleId, Session["UserName"].ToString()) > 0 && handler.BLL_GetArticleRating(articleId, Session["UserName"].ToString()) <= Rating1.MaxRating)
                     {
@@ -452,6 +479,8 @@ namespace Muslimeen.Content.Learn_Islam
 
                         handler.BLL_UpdateRating(upRate);
                         Response.Redirect(Request.Url.AbsoluteUri);
+                        divNoSelected.Visible = true;
+
                     }
 
 
@@ -463,7 +492,7 @@ namespace Muslimeen.Content.Learn_Islam
             }
             catch
             {
-                
+
             }
 
 

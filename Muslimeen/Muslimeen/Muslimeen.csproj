@@ -125,6 +125,7 @@
     <Content Include="Content\Images\Star.gif" />
     <Content Include="Content\Images\WaitingStar.gif" />
     <Content Include="Content\Learn Islam\css\learnIslam.css" />
+    <Content Include="Content\Learn Islam\js\LearnIslam.js" />
     <Content Include="Content\Learn Islam\LearnIslam.aspx" />
     <Content Include="Content\Mosque\css\MyMosque.css" />
     <Content Include="Content\Mosque\download.png" />

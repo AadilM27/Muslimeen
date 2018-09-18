@@ -298,7 +298,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-sm-12 col-12 mb-1">
                                         <label class="col mb-0 p-0 position-static"><strong>Heading:</strong></label>
-                                        <asp:TextBox CssClass="form-control" Onblur="heading();" ID="txtHeading" runat="server"></asp:TextBox>
+                                        <asp:TextBox CssClass="form-control"  Onblur="heading();" ID="txtHeading" runat="server" placeholder="Enter Heading"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="form-row">

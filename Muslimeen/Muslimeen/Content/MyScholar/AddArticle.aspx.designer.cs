@@ -551,7 +551,7 @@ namespace Muslimeen.Content.MyScholar {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtContent;
-        
+                
         /// <summary>
         /// btnSave control.
         /// </summary>
