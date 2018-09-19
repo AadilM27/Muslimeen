@@ -27,7 +27,7 @@
 <body>
     <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
 
-    <form id="frmAddArticle" runat="server">
+    <form id="frmAddArticle" runat="server" >
         <!--Header-->
         <header >
                 <nav class="navFixed">

@@ -296,29 +296,44 @@ namespace Muslimeen.Content
                     string memberId = hdfSchId.Value.ToString();
 
                     uspVerifyMember.MemberID = memberId;
-                    db.BLL_VerifyMember(uspVerifyMember);
+                    bool verifySchSuccess = db.BLL_VerifyMember(uspVerifyMember);
 
-                    //Sends an email informing the scholar that his registration has be accepted.
-                    EmailService email = new EmailService();
-                    uspGetMember member = new uspGetMember();
-                    member = db.BLL_GetMember(hdfSchId.Value.ToString());
+                    if (verifySchSuccess == true)
+                    {
+                        //Sends an email informing the scholar that his registration has be accepted.
+                        EmailService email = new EmailService();
+                        uspGetMember member = new uspGetMember();
+                        member = db.BLL_GetMember(hdfSchId.Value.ToString());
 
-                    email.AutoEmailService(member.Email, "null", "null", "AcceptedScholars", member.MemberID.ToString(), "null");
+                        email.AutoEmailService(member.Email, "null", "null", "AcceptedScholars", member.MemberID.ToString(), "null");
 
-                    //Help with keeping selected task open.
+                        //Help with keeping selected task open.
+                        divViewPendingSch.Visible = true;
+                        divDisplaySch.Visible = false;
+                        divSchDetailsOverlay.Visible = true;
+
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Scholar Registration accepted.');</script>");
+
+                        rptViewPendingSch.DataSource = db.BLL_GetAllPendingScholars();
+                        rptViewPendingSch.DataBind();
+                    }
+                    else
+                    {
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Scholar Registration rejected.');</script>");
+                    }
+                }
+                else
+                {
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Failed to perform action, please try again.');</script>");
+                    divViewPendingSch.Visible = false;
                     divDisplaySch.Visible = false;
-                    divSchDetailsOverlay.Visible = true;
-                    divViewPendingSch.Visible = true;
-
-                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Scholar registration Accepted.');</script>");
-
-                    Response.Redirect(Request.Url.AbsoluteUri);
+                    divSchDetails.Visible = false;
 
                 }
             }
             catch
             {
-
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Failed to perform action, please try again.');</script>");
             }
         }
 
@@ -330,22 +345,39 @@ namespace Muslimeen.Content
                 uspRejectReg rejectReg = new uspRejectReg();
 
                 rejectReg.MemberID = hdfSchId.Value.ToString();
-                db.BLL_RejectReg(rejectReg);
+                bool rejectSchReg = db.BLL_RejectReg(rejectReg);
 
-                EmailService email = new EmailService();
-                uspGetMember member = new uspGetMember();
-                member = db.BLL_GetMember(hdfSchId.Value.ToString());
+                if (rejectSchReg == true)
+                {
+                    EmailService email = new EmailService();
+                    uspGetMember member = new uspGetMember();
+                    member = db.BLL_GetMember(hdfSchId.Value.ToString());
 
-                email.AutoEmailService(member.Email, "null", "null", "RejectedScholars", member.MemberID.ToString(), "null");
+                    email.AutoEmailService(member.Email, "null", "null", "RejectedScholars", member.MemberID.ToString(), "null");
 
-                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Scholar registration Rejected.');</script>");
+                    divViewPendingSch.Visible = true;
+                    divDisplaySch.Visible = false;
+                    divSchDetailsOverlay.Visible = true;
 
-                Response.Redirect(Request.Url.AbsoluteUri);
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Scholar registration rejected.');</script>");
 
+                    rptViewPendingSch.DataSource = db.BLL_GetAllPendingScholars();
+                    rptViewPendingSch.DataBind();
+                }
+                else
+                {
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Scholar registration rejection failed.');</script>");
+                    divViewPendingSch.Visible = false;
+                    divDisplaySch.Visible = false;
+                    divSchDetails.Visible = false;
+                }
             }
             catch
             {
-
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Failed to perform action, please try again.');</script>");
+                divViewPendingSch.Visible = false;
+                divDisplaySch.Visible = false;
+                divSchDetails.Visible = false;
             }
         }
 
@@ -1819,15 +1851,23 @@ namespace Muslimeen.Content
             updateMemberActiveStatus.MemberType = Convert.ToChar(member.MemberType);
             updateMemberActiveStatus.ActiveTypeID = Convert.ToChar(ddAllctiveTypeID.SelectedValue);
 
-            dBHandler.BLL_UpdateMemberActiveStatus(updateMemberActiveStatus);
+            bool memberUpdated = dBHandler.BLL_UpdateMemberActiveStatus(updateMemberActiveStatus);
 
-            rptMemberList.DataSource = dBHandler.BLL_GetAllMembers();
-            rptMemberList.DataBind();
+            if (memberUpdated == true)
+            {
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Member active status update successful.');</script>");
 
-            EmailService emailService = new EmailService();
+                rptMemberList.DataSource = dBHandler.BLL_GetAllMembers();
+                rptMemberList.DataBind();
 
-            emailService.DisableEnableMember(member.Email.ToString(), member.MemberID); //notify the member via email.
+                EmailService emailService = new EmailService();
 
+                emailService.DisableEnableMember(member.Email.ToString(), member.MemberID); //notify the member via email.
+            }
+            else
+            {
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Member active status update failed.');</script>");
+            }
         }
 
         protected void btnUpdateCancelAllMember_Click(object sender, EventArgs e)

@@ -322,7 +322,7 @@ namespace Muslimeen.BLL
                                                 <html lang=""en"" style=""height:100%"">    
                                                     <body>
                                                         <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
-                                                            <h1 style=""font-weight:bolder; font-size:25px;"">Muslimeen<br/>Mosque Rep Membership</h1>
+                                                            <h1 style=""font-weight:bolder; font-size:25px;"">Muslimeen<br/>Muslimeen Moderater Membership</h1>
                                                         </div>
                                                         <div style=""background-color:#ffffff; text-align:left;"">
                                                             <hr/>

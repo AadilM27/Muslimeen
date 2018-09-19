@@ -20,10 +20,9 @@ namespace Muslimeen.Content.MyScholar
             DBHandler db = new DBHandler();
             List<CounterCalender> counterCalender = new List<CounterCalender>();
 
-            
-
             try
             {
+
                 divAddArticle.Visible = false;
                 divPendingArticles.Visible = false;
                 divRejectedArticles.Visible = false;

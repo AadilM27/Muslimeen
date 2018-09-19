@@ -418,7 +418,7 @@
                             <div class="col-6 col-sm-6 col-xl-4 text-nowrap" runat="server" id="divSchDetailsOverlay">
                                 <div class="w-100 h-100 container text-center">
                                     <div class=" container h-25 mb-3"></div>
-                                        <h6 class="card-title h-50 mt-5 pt-5"><img class="figure-img mr-2" src="MyAdmin/icons/outline_error_outline_black_18dp.png" />No Mosque Selected.</h6>
+                                        <h6 class="card-title h-50 mt-5 pt-5"><img class="figure-img mr-2" src="MyAdmin/icons/outline_error_outline_black_18dp.png" />No Scholar Selected.</h6>
                                     <div class=" container h-25"></div>
                                 </div>
                             </div>

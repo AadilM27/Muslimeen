@@ -336,7 +336,7 @@ namespace Muslimeen.Content.Learn_Islam
                         com.CommentID = null;
 
                         han.BLL_AddComment(com);
-                        Response.Redirect(Request.RawUrl);
+                        //Response.Redirect(Request.RawUrl);
 
                         txtComment.Text = string.Empty;
 
