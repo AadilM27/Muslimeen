@@ -191,24 +191,8 @@
                                     <div class="col position-static font-italic text-left">
                                         Author:
                                         <label class="m-0 mt-2" runat="server" id="lblScholar"></label>
-                                    </div>
-                                    <div class="row mb-1 position-static text-right">
-                                        <div class="col position-static font-italic">
-                                            Date:
-                                        <label class="m-0 font-italic mt-2 mr-2" runat="server" id="lblDate"></label>
-                                        </div>
-                                        <!--article rating-->                                     
-                                    </div>
-                                </div>
-                            </div>
-                            <hr class="p-0 m-1" />
-                            <!--PDF Button-->
-                            <div runat="server" id="divAdminReports" class="col-12 col-xl-12 p-0 mr-1 mt-4">                                
-                                <div class="m-0 p-0 pt-2 pl-2">
-                                    <a runat="server" id="lnkAdminPrintPDF" onserverclick="lnkAdminPrintPDF_ServerClick">
-                                        <img src="../MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>
-                                    <div id="divRating" runat="server" style="position: static; padding-left: 2em; padding-right: 2em; padding-top: 0,1em; float: right" class="row">
-                                        <p class="text-nowrap h5 mr-1">Rating:&nbsp<asp:ScriptManager ID="ScriptManager1" runat="server">
+                                             <div id="divRating" runat="server" style="position: static; padding-left: 1em; padding-right: 2em; padding-top: 0.2em; float: inherit" class="row">
+                                        <p class="text-nowrap h5 mr-1" style="font-size:large;color:#256297;font-weight:bold">Rating:&nbsp<asp:ScriptManager ID="ScriptManager1" runat="server">
                                         </asp:ScriptManager>
                                         <asp:UpdatePanel ID="updatepnl1" runat="server" class="pt-1">
                                             <ContentTemplate>
@@ -219,6 +203,26 @@
                                             </ContentTemplate>
                                         </asp:UpdatePanel></p>
                                     </div>
+                                    </div>
+                                    <div class="row mb-1 position-static text-right">
+                                        <div class="col position-static font-italic">
+                                            Date:
+                                        <label class="m-0 font-italic mt-2 mr-2" runat="server" id="lblDate"></label>
+                                              <div style="position: static; padding-left: 1em; padding-right: 2em; padding-top: 0,1em;float:inherit" class="row" >
+                                <asp:Label runat="server" ID ="lblRatingCount" Font-Size="Large" Font-Bold="true" ForeColor="#256297"></asp:Label>
+                                </div>
+                                        </div>
+                                       
+                                        <!--article rating-->                                     
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="p-0 m-1" />
+                            <!--PDF Button-->
+                            <div runat="server" id="divAdminReports" class="col-12 col-xl-12 p-0 mr-1 mt-4">                                
+                                <div class="m-0 p-0 pt-2 pl-2">
+                                    <a runat="server" id="lnkAdminPrintPDF" onserverclick="lnkAdminPrintPDF_ServerClick">
+                                        <img src="../MyModerator/Adobe_PDF.png" /><small>Download as PDF</small></a>                               
                                 </div>
                                 <!--PDF GridView-->
                                 <asp:GridView CssClass="flex-grow-1" ID="grdAdminReports"  RowStyle-Wrap="true" runat="server" style="font-size:smaller;" ForeColor="#333333" >
@@ -246,10 +250,8 @@
                                     </div>
                                 </div>
                                 <br />
-                                <div style="position: static; padding-left: 2em; padding-right: 2em; padding-top: 0,1em; float: right" class="row" >
-                                <asp:Label runat="server" ID ="lblRatingCount"></asp:Label>
-                                </div>
-                                <asp:Label runat="server" ID="lblCommentCount"></asp:Label>
+                               
+                                <asp:Label runat="server" ID="lblCommentCount" Font-Size="Larger"  Font-Bold="true"></asp:Label>
                                 <br />
                                 <!--Comments Repeater-->
                                 <div class="position-static container pre-scrollable" style="overflow-y:scroll;max-height:230px;">

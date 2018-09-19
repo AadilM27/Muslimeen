@@ -1165,7 +1165,11 @@ namespace Muslimeen.Content.MyModerator
                     }
                 }
             }
-            catch(NullReferenceException)
+            catch(FormatException)
+            {
+                lblEventError.Text = "Incorrect Format";
+            }
+            catch
             {
 
             }
