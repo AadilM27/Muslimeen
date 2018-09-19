@@ -42,7 +42,7 @@
     <asp:HyperLink ID="lnk1" runat="server" src="../HelpPage.aspx"></asp:HyperLink>
     <form id="frmLearnIslam" runat="server">
         <!--Header-->
-        <header >
+        <header onload="RemoveView();" >
                 <nav class="navFixed">
                     <div class="row align-self-end">
                          <ul class=" col-7 navbar-nav flex-row justify-content-start">

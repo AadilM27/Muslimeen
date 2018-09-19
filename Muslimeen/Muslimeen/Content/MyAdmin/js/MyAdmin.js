@@ -1,4 +1,10 @@
-﻿function AddDateChars() {
+﻿function RemoveView() {
+    var viewstate = document.getElementById("__VIEWSTATE").value;
+    if (!empty(viewstate)) {
+        document.getElementById("__VIEWSTATE").value = "";
+    }
+}
+function AddDateChars() {
     val = document.getElementById(event.target.id).value;
     var key = event.which || event.keyCode || event.charCode;
     if (key != 8) {
