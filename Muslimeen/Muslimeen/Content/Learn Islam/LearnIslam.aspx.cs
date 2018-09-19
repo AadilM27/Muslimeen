@@ -219,7 +219,7 @@ namespace Muslimeen.Content.Learn_Islam
 
                
                 lblRatingCount.Text = count.RatingCount.ToString();
-                han.BLL_RatingCount(int.Parse(art));
+                lblRatingCount.Text = "Members rated: " +  han.BLL_RatingCount(int.Parse(art)).ToString();
 
 
             }
@@ -486,6 +486,8 @@ namespace Muslimeen.Content.Learn_Islam
 
 
                 }
+              
+
                 divDisplayArticle.Visible = true;
                 divRating.Visible = true;
 

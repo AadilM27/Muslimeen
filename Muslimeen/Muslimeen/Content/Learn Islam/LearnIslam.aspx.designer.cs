@@ -310,33 +310,6 @@ namespace Muslimeen.Content.Learn_Islam {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblScholar;
         
         /// <summary>
-        /// lblDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDate;
-        
-        /// <summary>
-        /// divAdminReports control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAdminReports;
-        
-        /// <summary>
-        /// lnkAdminPrintPDF control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkAdminPrintPDF;
-        
-        /// <summary>
         /// divRating control.
         /// </summary>
         /// <remarks>
@@ -373,6 +346,42 @@ namespace Muslimeen.Content.Learn_Islam {
         protected global::AjaxControlToolkit.Rating Rating1;
         
         /// <summary>
+        /// lblDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDate;
+        
+        /// <summary>
+        /// lblRatingCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRatingCount;
+        
+        /// <summary>
+        /// divAdminReports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAdminReports;
+        
+        /// <summary>
+        /// lnkAdminPrintPDF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkAdminPrintPDF;
+        
+        /// <summary>
         /// grdAdminReports control.
         /// </summary>
         /// <remarks>
@@ -398,15 +407,6 @@ namespace Muslimeen.Content.Learn_Islam {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_Submit;
-        
-        /// <summary>
-        /// lblRatingCount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRatingCount;
         
         /// <summary>
         /// lblCommentCount control.
