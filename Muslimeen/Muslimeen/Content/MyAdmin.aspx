@@ -610,7 +610,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-6 mb-1 ">
                                             <label class="col mb-0 p-0 "><small>Contact Number</small></label>
-                                            <asp:TextBox MaxLength="12" Onblur="NumbersOnlyAdmin();" CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="txtAdminContactNo"></asp:TextBox>
+                                            <asp:TextBox MaxLength="10" Onblur="NumbersOnlyAdmin();" CssClass=" form-control form-control-sm col main-txtb" runat="server" ID="txtAdminContactNo"></asp:TextBox>
                                         </div>
                                         <div class="form-group col-sm-6 mb-1">
                                             <label class="col mb-0 p-0 text "><small>Date of Birth*</small></label>
@@ -779,7 +779,7 @@
                                                             </div>
                                                                 <hr class=" mr-4 m-0 p-0"/>
                                                             <div class="">
-                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Expiry Date: </b><%#Convert.ToDateTime(Eval("DateExpiry")).ToString("dd MM yyyy")%>&emsp;<b>Active:</b> <%#Convert.ToString(Eval("Active")).Replace("Y", "Yes") .Replace("N", "No")%></p>
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Expiry Date: </b><%#Convert.ToDateTime(Eval("DateExpiry")).ToString("dd MMM yyyy")%>&emsp;<b>Active:</b> <%#Convert.ToString(Eval("Active")).Replace("Y", "Yes") .Replace("N", "No")%></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -838,7 +838,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-sm-6 mb-1">
                                             <label class="col mb-0 p-0"><small>Date Added</small></label>
-                                            <asp:TextBox Enabled="false" CssClass="form-control form-control-sm col main-txtb" runat="server" MaxLength="35" ID="txtNoticeDateCreated"></asp:TextBox>
+                                            <asp:TextBox  Enabled="false" CssClass="form-control form-control-sm col main-txtb" runat="server" MaxLength="35" ID="txtNoticeDateCreated"></asp:TextBox>
                                         </div>
                                         <div class="form-group col-sm-6 mb-1">
                                             <label class="col mb-0 p-0"><small>Notice Expiry Date*</small></label>
@@ -882,7 +882,7 @@
                                                 <asp:TextBox Enabled="false" CssClass="form-control form-control-sm col main-txtb border-0" runat="server" ID="txtCurCounterEndTitle"></asp:TextBox>
                                             </div>
                                             <div class="form-group col-12 mb-1">
-                                                <label class="col mb-0 p-0"><small> Current Counter End Date*</small></label>
+                                                <label class="col mb-0 p-0"><small> Current Counter End Date</small></label>
                                                 <asp:TextBox Enabled="false" CssClass="form-control form-control-sm col main-txtb border-0" runat="server" ID="txtCurCounterEndDate"></asp:TextBox>
                                             </div>
                                         </div>
@@ -897,7 +897,7 @@
                                             </div>
                                             <div class="form-group col-12 mb-1">
                                                 <label class="col mb-0 p-0"><small>Counter End Date*</small></label>
-                                                <asp:TextBox PlaceHolder="dd/mm/yyyy" Onkeyup="AddDateChars();"  CssClass="form-control form-control-sm col main-txtb" MaxLength="10" runat="server" ID="txtCounterEndDate"></asp:TextBox>
+                                                <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtCounterEndDate"></asp:TextBox>
                                             </div>
                                         </div>
                                     </div>
@@ -950,7 +950,7 @@
                                                             </div>
                                                                 <hr class=" m-0 p-0"/>
                                                             <div class="">
-                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Registration Date: </b><%#Convert.ToDateTime(Eval("ActivationDate")).ToString("dd MM yyyy")%>&emsp;<b>Active:</b> <%#Convert.ToString(Eval("ActiveTypeID")).Replace("Y", "Yes") .Replace("N", "No") .Replace("T", "Temporary")%></p>
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Registration Date: </b><%#Convert.ToDateTime(Eval("ActivationDate")).ToString("dd MMM yyyy")%>&emsp;<b>Active:</b> <%#Convert.ToString(Eval("ActiveTypeID")).Replace("Y", "Yes") .Replace("N", "No") .Replace("T", "Temporary")%></p>
                                                             </div>
                                                         </div>
                                                     </div>

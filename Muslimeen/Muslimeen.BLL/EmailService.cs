@@ -187,32 +187,36 @@ namespace Muslimeen.BLL
             }
         }
 
-        public bool DisableEnableMember(string memberEmail, string userName)
+        public bool DisableEnableMember(string memberEmail, string userName, string acceptOrReject)
         {
-            SmtpClient smtp = new SmtpClient();
-            if (true)
+            try
             {
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.EnableSsl = true;
-                smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("nextechgrp@gmail.com", "nextechgrp786");
-                smtp.Timeout = 20000;
-            }
+                SmtpClient smtp = new SmtpClient();
+                if (true)
+                {
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new NetworkCredential("nextechgrp@gmail.com", "nextechgrp786");
+                    smtp.Timeout = 20000;
+                }
 
-            MailAddress fromAddress = new MailAddress("nextechgrp@gmail.com", "Muslimeen");
-            MailAddress toAddress = new MailAddress(memberEmail);
-            //MailAddress ccAddress = new MailAddress("");
+                MailAddress fromAddress = new MailAddress("nextechgrp@gmail.com", "Muslimeen");
+                MailAddress toAddress = new MailAddress(memberEmail);
+                //MailAddress ccAddress = new MailAddress("");
 
-            //Passing values to smtp object
-            dynamic message = new MailMessage(fromAddress, toAddress);
+                //Passing values to smtp object
+                dynamic message = new MailMessage(fromAddress, toAddress);
 
-            message.IsBodyHtml = true;
-            //message.CC.Add(ccAddress);
+                message.IsBodyHtml = true;
+                //message.CC.Add(ccAddress);
 
-            message.Subject = "Muslimeen Membership";
-            message.Body = String.Format(@"
+                if (acceptOrReject == "reject")
+                {
+                    message.Subject = "Muslimeen Membership";
+                    message.Body = String.Format(@"
                                                 <html lang=""en"" style=""height:100%"">    
                                                     <body>
                                                         <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
@@ -231,37 +235,92 @@ namespace Muslimeen.BLL
                                                     </body>
                                                 </html>
                                                 ", userName);//Send email
-            smtp.Send(message);
+                    smtp.Send(message);
+                }
+                else if (acceptOrReject == "accept")
+                {
+                    message.Subject = "Muslimeen Membership";
+                    message.Body = String.Format(@"
+                                                <html lang=""en"" style=""height:100%"">    
+                                                    <body>
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
+                                                            <h1 style=""font-weight:bolder; font-size:25px;"">Muslimeen<br/>Membership</h1>
+                                                        </div>
+                                                        <div style=""background-color:#ffffff; text-align:left;"">
+                                                            <hr/>
+                                                            <h4 tyle=""text-align:center; padding:0;"">Greetings {0}</h4>
+                                                                <p>Your Muslimeen Membership has been activated.<br/><br/>You will now be able to access your account.</p>
+                                                                    <br/><br/>
+                                                                <hr/>
+                                                        </div>
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
+                                                            <h2>Thank you</h2>
+                                                        </div>
+                                                    </body>
+                                                </html>
+                                                ", userName);//Send email
+                    smtp.Send(message);
+                }
+                else if (acceptOrReject == "temp")
+                {
+                    message.Subject = "Muslimeen Membership";
+                    message.Body = String.Format(@"
+                                                <html lang=""en"" style=""height:100%"">    
+                                                    <body>
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
+                                                            <h1 style=""font-weight:bolder; font-size:25px;"">Muslimeen<br/>Membership</h1>
+                                                        </div>
+                                                        <div style=""background-color:#ffffff; text-align:left;"">
+                                                            <hr/>
+                                                            <h4 tyle=""text-align:center; padding:0;"">Greetings {0}</h4>
+                                                                <p>Your Muslimeen Membership has been set to ""unverified"".<br/><br/>You will need to verify your account <a style=""font-size:15px;"" href=""http://sict-iis.nmmu.ac.za/NEXTECH/Register/Verification.aspx"">here</a>.</p>
+                                                                    <br/><br/>
+                                                                <hr/>
+                                                        </div>
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
+                                                            <h2>Thank you</h2>
+                                                        </div>
+                                                    </body>
+                                                </html>
+                                                ", userName);//Send email
+                    smtp.Send(message);
+                }
+            }
+            catch
+            {
 
+            }
             return true;
         }
 
         public bool AddMosque(string repID, string repName, string mosqueID, string repPass, string repEmail)
         {
-            SmtpClient smtp = new SmtpClient();
-            if (true)
+            try
             {
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.EnableSsl = true;
-                smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("nextechgrp@gmail.com", "nextechgrp786");
-                smtp.Timeout = 20000;
-            }
+                SmtpClient smtp = new SmtpClient();
+                if (true)
+                {
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new NetworkCredential("nextechgrp@gmail.com", "nextechgrp786");
+                    smtp.Timeout = 20000;
+                }
 
-            MailAddress fromAddress = new MailAddress("nextechgrp@gmail.com", "Muslimeen");
-            MailAddress toAddress = new MailAddress(repEmail);
-            //MailAddress ccAddress = new MailAddress("");
+                MailAddress fromAddress = new MailAddress("nextechgrp@gmail.com", "Muslimeen");
+                MailAddress toAddress = new MailAddress(repEmail);
+                //MailAddress ccAddress = new MailAddress("");
 
-            //Passing values to smtp object
-            dynamic message = new MailMessage(fromAddress, toAddress);
+                //Passing values to smtp object
+                dynamic message = new MailMessage(fromAddress, toAddress);
 
-            message.IsBodyHtml = true;
-            //message.CC.Add(ccAddress);
+                message.IsBodyHtml = true;
+                //message.CC.Add(ccAddress);
 
-            message.Subject = "Muslimeen Mosque Rep Membership";
-            message.Body = String.Format(@"
+                message.Subject = "Muslimeen Mosque Rep Membership";
+                message.Body = String.Format(@"
                                                 <html lang=""en"" style=""height:100%"">    
                                                     <body>
                                                         <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
@@ -284,8 +343,13 @@ namespace Muslimeen.BLL
                                                     </body>
                                                 </html>
                                                 ", repName, repID, mosqueID, repPass);//Send email
-            smtp.Send(message);
+                smtp.Send(message);
 
+            }
+            catch
+            {
+
+            }
             return true;
         }
 
@@ -317,7 +381,7 @@ namespace Muslimeen.BLL
                 //message.CC.Add(ccAddress);
 
 
-                    message.Subject = "Muslimeen Mosque Rep Membership";
+                    message.Subject = "Muslimeen Moderater Membership";
                     message.Body = String.Format(@"
                                                 <html lang=""en"" style=""height:100%"">    
                                                     <body>
@@ -342,6 +406,69 @@ namespace Muslimeen.BLL
                                                 </html>
                                                 ", modName, modID, modPass);//Send email
                     smtp.Send(message);
+
+            }
+            catch
+            {
+
+            }
+
+            return true;
+        }
+
+        public bool AddAdmin(string adminID, string adminName, string adminEmail, string adminPass)
+        {
+            try
+            {
+                //Assign the smtp credentials for gmail
+                SmtpClient smtp = new SmtpClient();
+                if (true)
+                {
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new NetworkCredential("nextechgrp@gmail.com", "nextechgrp786");
+                    smtp.Timeout = 20000;
+                }
+
+                MailAddress fromAddress = new MailAddress("nextechgrp@gmail.com", "Muslimeen");
+                MailAddress toAddress = new MailAddress(adminEmail);
+                //MailAddress ccAddress = new MailAddress("");
+
+                //Passing values to smtp object
+                dynamic message = new MailMessage(fromAddress, toAddress);
+
+                message.IsBodyHtml = true;
+                //message.CC.Add(ccAddress);
+
+
+                message.Subject = "Muslimeen Administrator Membership";
+                message.Body = String.Format(@"
+                                                <html lang=""en"" style=""height:100%"">    
+                                                    <body>
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
+                                                            <h1 style=""font-weight:bolder; font-size:25px;"">Muslimeen<br/>Muslimeen Administrator Membership</h1>
+                                                        </div>
+                                                        <div style=""background-color:#ffffff; text-align:left;"">
+                                                            <hr/>
+                                                            <h4 tyle=""text-align:center; padding:0;"">Greetings {0}</h4>
+                                                                <p>You have been successfully regsitered as a Administrator<br/><br/>We welcome you to muslimeen, your details are as follows: </p>
+                                                                    <br/>
+                                                                    <ul style=""text-align:left;""><li><b>User Name:</b> {1}</li>
+                                                                    <li><b>Your temporary password:</b> {2}</li></ul>
+                                                                <br/>
+                                                                <p>*We recommend you change your password after logging in for the first time.</p>
+                                                                <hr/>
+                                                        </div>
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
+                                                            <h2>Thank you</h2>
+                                                        </div>
+                                                    </body>
+                                                </html>
+                                                ", adminName, adminID, adminPass);//Send email
+                smtp.Send(message);
 
             }
             catch
