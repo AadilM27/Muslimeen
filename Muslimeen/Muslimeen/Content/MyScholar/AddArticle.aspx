@@ -15,6 +15,14 @@
     <link href="css/MyScholar.css" rel="stylesheet" />
     <script src="js/AddArticle.js"></script>
 
+    <script type ="text/javascript">
+        function count(txt)
+        {
+            var lbl = document.getElementById("Label1");
+            lbl.innerHTML = txt.value.length;
+        }
+    </script>
+
     </head>
 <body>
     <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
@@ -295,8 +303,8 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-sm-12 mb-1">
-                                        <label class="col mb-0 p-0 position-static"><strong>Content:</strong></label>
-                                        <asp:TextBox CssClass="form-control" ID="txtContent" runat="server" Style="max-height:350px; min-height:350px;" TextMode="MultiLine" placeholder="Enter Content"></asp:TextBox>
+                                        <label class="col mb-0 p-0 position-static"><strong>Content:</strong></label><asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+                                        <asp:TextBox CssClass="form-control" onkeyup="count(this)" ID="txtContent" runat="server" Style="max-height:350px; min-height:350px;" TextMode="MultiLine"></asp:TextBox>
                                     </div>
                                 </div>
                                 <br />
