@@ -1,5 +1,8 @@
-html{
+html {
     height: 100%;
+    background-image: url('../../../Content/Images/BackgroundImages/BlueMosque1.jpg');
+    background-position:center;
+    background-repeat:no-repeat;
 }
 
 body {
@@ -9,7 +12,7 @@ body {
     align-items: center;
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: #256297;
+    background-color:transparent;
     height: 100%;
 }
 
@@ -39,13 +42,13 @@ body {
 }
 .main-div {
     background-color: #ffffff;
-    border-radius: 8px;
+    border-radius: 1px;
     position: relative;
     text-align: center;
     width: 404px;
     margin: auto;
     min-height: 520px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.45);
+    box-shadow: 8px 10px 15px rgba(0, 0, 0, 0.7);
 }
 .main-btn {
     background-color: #256297;
@@ -64,6 +67,26 @@ body {
     color:red;
 }
 
+.bottom-nav {
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+    overflow: visible;
+    /*z-index: 99;*/
+    clear: both;
+    background-color: rgba(0,0,0,.7);
+    text-align:right;
+}
+
+.bottom-nav-text {
+    color: #fff;
+    font-size: 12px;
+    line-height: 28px;
+    white-space: nowrap;
+    display: inline-block;
+    margin-left: 8px;
+    margin-right: 30px;
+}
 
 
 /*

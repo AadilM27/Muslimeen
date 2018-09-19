@@ -120,6 +120,7 @@
     <Content Include="Content\HelpPage\icons\docs.png" />
     <Content Include="Content\HelpPage\icons\help.png" />
     <Content Include="Content\HelpPage\icons\lock.png" />
+    <Content Include="Content\Images\BackgroundImages\BlueMosque1.jpg" />
     <Content Include="Content\Images\FilledStar.gif" />
     <Content Include="Content\Images\ImageUnavailable.jpg" />
     <Content Include="Content\Images\Star.gif" />
