@@ -56,11 +56,12 @@ namespace Muslimeen.Content.Learn_Islam
                 {
                     liMyMusbtn.Visible = false;
                     liMyMusDivi.Visible = false;
-
+                    Rating1.CurrentRating = 0;
                     divUserProfile.Visible = false;
                     Session.Clear();
+                    Rating1.ReadOnly = true;
                 }
-
+              
                 if (!IsPostBack)
                 {
                     //Link Article Source
@@ -198,6 +199,7 @@ namespace Muslimeen.Content.Learn_Islam
 
                 DBHandler han = new DBHandler();
                 uspGetSelectedLearnArticle pen = new uspGetSelectedLearnArticle();
+                uspRatingCount count = new uspRatingCount();
 
                 //Labels for Learn Article
                 pen = han.BLL_GetSelectedLearnArticle(int.Parse(art));
@@ -215,12 +217,11 @@ namespace Muslimeen.Content.Learn_Islam
 
                 string commentCount = CommentRepeater.Items.Count.ToString();
                 lblCommentCount.Text = "Comments: " + commentCount;
-                uspRatingCount count = new uspRatingCount();
-
                
-                lblRatingCount.Text = count.RatingCount.ToString();
-                lblRatingCount.Text = "Members rated: " +  han.BLL_RatingCount(int.Parse(art)).ToString();
-
+                 
+                lblRatingCount.Text = "Members rated: " + han.BLL_RatingCount(int.Parse(art)).ToString();
+                
+               
 
             }
             catch (NullReferenceException)
@@ -482,10 +483,14 @@ namespace Muslimeen.Content.Learn_Islam
                         divNoSelected.Visible = true;
 
                     }
+                  
 
 
 
                 }
+               
+                  
+                
               
 
                 divDisplayArticle.Visible = true;
