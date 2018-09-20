@@ -15,7 +15,10 @@
     <body>
         <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
         <input type="hidden" id="isClicked" />
-        <form id="frmScholar" runat="server" class="">   
+        <div id="divAlertPopup" runat="server" class="container-fluid p-2 w-100 bg-warning">
+                <label id="lblAlertError"  runat="server" ></label>
+        </div>
+        <form id="frmScholar" runat="server" class="">
             <header>
                 <nav class="navFixed">
                     <div class="row align-self-end">
@@ -132,7 +135,7 @@
                                                             </div>
                                                                 <hr class=" mr-4 m-0 p-0"/>
                                                             <div class="">
-                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Registered: </b><%#Convert.ToDateTime(Eval("ActivationDate")).ToString("dd MM yyyy")%></p>
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Registered: </b><%#Convert.ToDateTime(Eval("ActivationDate")).ToString("dd MMM yyyy")%></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1051,7 +1054,7 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer text-center position-static text-nowrap">
-                                        <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnUpdateAllMember" Text="Update Active Status" OnClick="btnUpdateAllMember_Click" />
+                                        <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnUpdateAllMember" OnClientClick="Popup('divAlertPopup');" Text="Update Active Status" OnClick="btnUpdateAllMember_Click" />
                                         <asp:Button CssClass=" topnav btn btn-sm btn-outline-light" runat="server" ID="btnUpdateCancelAllMember" Text="Cancel" OnClick="btnUpdateCancelAllMember_Click" />
                                     </div>
                                 </div>

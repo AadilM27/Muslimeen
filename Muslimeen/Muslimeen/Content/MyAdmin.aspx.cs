@@ -27,7 +27,7 @@ namespace Muslimeen.Content
 
             try
             {
-
+                divAlertPopup.Visible = true;
                 divListEvent.Visible = false;
                 divEventOverlay.Visible = false;
                 divDisplayEvents.Visible = false;
@@ -1819,15 +1819,23 @@ namespace Muslimeen.Content
             updateMemberActiveStatus.MemberType = Convert.ToChar(member.MemberType);
             updateMemberActiveStatus.ActiveTypeID = Convert.ToChar(ddAllctiveTypeID.SelectedValue);
 
-            dBHandler.BLL_UpdateMemberActiveStatus(updateMemberActiveStatus);
+            bool updateMember = dBHandler.BLL_UpdateMemberActiveStatus(updateMemberActiveStatus);
 
-            rptMemberList.DataSource = dBHandler.BLL_GetAllMembers();
-            rptMemberList.DataBind();
+            if (updateMember == true)
+            {
+                rptMemberList.DataSource = dBHandler.BLL_GetAllMembers();
+                rptMemberList.DataBind();
 
-            EmailService emailService = new EmailService();
+                EmailService emailService = new EmailService();
 
-            emailService.DisableEnableMember(member.Email.ToString(), member.MemberID); //notify the member via email.
+                emailService.DisableEnableMember(member.Email.ToString(), member.MemberID); //notify the member via email.
 
+                divAlertPopup.Visible = true;
+                lblAlertError.InnerText = "Successfully updated member active status";
+            }
+            else
+            {
+            }
         }
 
         protected void btnUpdateCancelAllMember_Click(object sender, EventArgs e)
@@ -2425,6 +2433,8 @@ namespace Muslimeen.Content
                 lblEventError.Text = String.Empty;
                 lblEventError.ForeColor = Color.Empty;
                 txtStartDate.BorderColor = Color.Empty;
+                txtEndDate.BorderColor = Color.Empty;
+                lblEventError.Text = "Please select a date range.";
 
                 DBHandler db = new DBHandler();
 

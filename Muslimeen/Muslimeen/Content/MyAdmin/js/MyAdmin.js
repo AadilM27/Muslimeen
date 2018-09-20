@@ -202,3 +202,9 @@ if (!isClicked.isEmpty) {
     div1.classList.remove("collapsing");
 }
 
+function Popup(divpop1) {
+    var divpop = document.getElementById(divpop1);
+    setTimeout(function Flash3() {
+        divpop.style.display = "none";
+        }, 1000)
+}

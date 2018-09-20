@@ -1,0 +1,6 @@
+C:\Users\S216541816\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\bin\Release\TypeLib.dll
+C:\Users\S216541816\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\bin\Release\TypeLib.pdb
+C:\Users\S216541816\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Release\TypeLib.csprojResolveAssemblyReference.cache
+C:\Users\S216541816\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Release\TypeLib.csproj.CoreCompileInputs.cache
+C:\Users\S216541816\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Release\TypeLib.dll
+C:\Users\S216541816\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Release\TypeLib.pdb

@@ -1,0 +1,8 @@
+C:\Users\S216541816\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Release\Muslimeen.DAL.dll
+C:\Users\S216541816\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Release\Muslimeen.DAL.pdb
+C:\Users\S216541816\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Release\TypeLib.dll
+C:\Users\S216541816\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\bin\Release\TypeLib.pdb
+C:\Users\S216541816\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Release\Muslimeen.DAL.csprojResolveAssemblyReference.cache
+C:\Users\S216541816\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Release\Muslimeen.DAL.csproj.CoreCompileInputs.cache
+C:\Users\S216541816\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Release\Muslimeen.DAL.dll
+C:\Users\S216541816\Documents\GitHub\Muslimeen\Muslimeen\Muslimeen.DAL\obj\Release\Muslimeen.DAL.pdb

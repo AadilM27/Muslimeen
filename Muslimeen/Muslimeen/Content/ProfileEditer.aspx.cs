@@ -202,15 +202,22 @@ namespace Muslimeen.Content
                         updateMember.ContactNo = txtContactNum.Text.ToString();
                         updateMember.Email = txtUserEmail.Text.ToString();
 
-                        dBHandler.BLL_UpdateMember(updateMember);
+                        bool editSuccess = dBHandler.BLL_UpdateMember(updateMember);
 
-                        EmailService emailService = new EmailService();
 
-                        emailService.AutoEmailService(txtUserEmail.Text.ToString(),
+                        if (editSuccess == true)
+                        {
+                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Profile updated succesfully');</script>");
+
+                            EmailService emailService = new EmailService();
+
+                            emailService.AutoEmailService(txtUserEmail.Text.ToString(),
                             uspGetMember.MemberType.ToString(), "null", "ProfileUpdate", uspGetMember.MemberID.ToString(), "null"); //Add server Verification.aspx address.
-
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>function SuccessPopup() {alert('Profile updated succesfully');}</script>");
-
+                        }
+                        else
+                        {
+                            Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Profile updated unsuccesfully');</script>");
+                        }
                     }
                 }
                 else if (chkChangePassword.Checked == true)

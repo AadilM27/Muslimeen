@@ -1599,6 +1599,7 @@
     <Content Include="Signin_Bootstrap\js\bootstrap.js.map" />
     <Content Include="Signin_Bootstrap\js\bootstrap.min.js.map" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

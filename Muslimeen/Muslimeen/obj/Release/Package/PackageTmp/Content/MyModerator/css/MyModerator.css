@@ -1,0 +1,332 @@
+﻿/*Start styling for header and footer.*/
+body {
+    background-color: #256297;
+    height: 100%;
+    width: inherit;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+html {
+    width: 100%;
+}
+
+.frmDefault {
+    width: unset;
+}
+
+.navv {
+    background-color: white;
+}
+
+.user {
+    color: #256297;
+}
+
+    .user:hover {
+        font-weight: 500;
+    }
+
+.navbaritems {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 0;
+    padding-top: 0;
+    border-radius: 2px;
+}
+
+.navText {
+    font-size: large;
+    font-weight: 500;
+    color: #256297;
+}
+
+    .navText:hover {
+        color: white;
+        background-color: #3F84C1;
+        text-decoration: none;
+        border-radius: 2px;
+    }
+
+.navbar {
+    background-color: white;
+    border-color: white;
+    overflow: hidden;
+}
+
+.navFixed {
+    width: 100%;
+    background-color: white;
+    border-color: white;
+    padding: 10px;
+}
+
+.content {
+    background-color: white;
+    min-height: 598px;
+    padding-right: 0;
+}
+
+.sticky {
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.contentPad {
+    padding-top: 125px;
+}
+
+.navbtn {
+    text-decoration-color: #256297;
+}
+
+    .navbtn:hover {
+        color: white;
+        background-color: #3F84C1;
+        text-decoration: none;
+        border-radius: 2px;
+    }
+
+.topnav {
+    border-color: #3F84C1;
+    font-weight: 400;
+    color: #256297;
+}
+
+    .topnav:hover {
+        color: white;
+        background-color: #3F84C1;
+        text-decoration: none;
+        border-radius: 3px;
+    }
+
+.search-btn {
+    border-bottom-color: #3F84C1;
+    border-top-color: #3F84C1;
+    border-left-color: white;
+    border-right-color: #3F84C1;
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 35px;
+    background-color: none;
+}
+
+.search-box:focus.search-btn:hover {
+    box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+}
+
+.search-box {
+    width: 110px;
+    float: right;
+    transition: width 0.2s ease-out;
+    -webkit-transition: width 0.2s ease-out;
+    border-bottom-color: #3F84C1;
+    border-top-color: #3F84C1;
+    border-left-color: #3F84C1;
+    border-right-color: white;
+    border-right: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+    .search-box:focus {
+        width: 100%;
+        box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+    }
+
+.footerr {
+    width: 100%;
+    background-color: white;
+    border-color: white;
+    bottom: 0;
+    left: 0;
+    padding: 25px;
+}
+
+.footerr-text {
+    color: #3F84C1;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.h1header {
+    font-family: 'Dr Sugiyama',Arial;
+    font-size: 65px;
+    color: #3F84C1;
+}
+
+.IslamicDate {
+    color: #256297;
+}
+
+.NavDevider {
+    color: #256297;
+    align-self: center;
+}
+
+.label {
+    display: inline-block;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    padding: 4px 8px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #256297;
+}
+
+    .label.label-primary {
+        background-color: #2196F3
+    }
+
+/*end styling for header and footer.*/
+.taskBtn {
+    font-weight: 500;
+    position: static;
+    background-color: white;
+    color: black;
+    padding: 0;
+    border-radius: 0px;
+    text-align: start;
+}
+
+    .taskBtn:hover {
+        background-color: #3F84C1;
+        color: white;
+        position: static;
+    }
+
+.sub-taskBtn {
+    font-weight: 500;
+    position: static;
+    background-color: white;
+    color: black;
+    padding: 0;
+    border-radius: 0px;
+    text-align: start;
+    font-size: small;
+    margin-left: 30px;
+}
+
+    .sub-taskBtn:hover {
+        background-color: #3F84C1;
+        color: white;
+        position: static;
+    }
+
+.divContainers {
+    min-height: 595px;
+    position: center;
+}
+
+.divBtnList {
+    align-items: center;
+}
+
+.lstBtn {
+    position: static;
+    background-color: #6e9bc3;
+    color: black;
+    padding: 0;
+    border-radius: 0px;
+    text-align: start;
+    font-size: small;
+    border: 2px solid #256297;
+}
+
+    .lstBtn:hover {
+        color: white;
+        position: static;
+        border: dashed 2px black;
+    }
+
+.head-div {
+    background-color: #256297;
+    color: white;
+    vertical-align: middle;
+    text-align: center;
+    font-size: x-large;
+    height: 55px;
+}
+
+.head-div-2 {
+    background-color: #3F84C1;
+    color: white;
+    vertical-align: middle;
+    text-align: center;
+    font-size: large;
+}
+
+.body-div {
+    background-color: #3F84C1;
+    color: white;
+}
+
+.basic-div-styling {
+    border: solid;
+    border-width: 1px;
+    border-color: #3F84C1;
+    border-radius: 5px;
+}
+
+.basic-div-styling-2 {
+    border: solid;
+    border-width: 1px;
+    border-color: rgba(0, 123, 255, 0.25);
+    border-radius: 0;
+}
+
+.side-bar {
+    min-width: 250px;
+    min-height: 700px;
+    float: left;
+    position: static;
+}
+
+.right-container {
+    min-height: 700px;
+    max-height: 700px;
+    position: static;
+}
+
+/*.dash-content {
+    min-height: 640px;
+    max-height: 100%;
+    min-width: 50%;
+    max-width: 50%;
+    margin-right:3px;
+}*/
+
+.right-bottom-div {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 650px;
+    max-height: 650px;
+    position: static;
+}
+
+.lst-container {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 590px;
+    max-height: 590px;
+    position: static;
+}
+
+.task-action {
+    height: 250px;
+    width: 98%;
+    position: static;
+    padding-bottom: 3px;
+}
+
+.article-content {
+    max-height: 450px;
+    min-height: 450px;
+    width: 100%;
+    border: none;
+}
