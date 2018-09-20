@@ -82,7 +82,7 @@ namespace Muslimeen.Content.Mosque
                 List<uspGetMosqueEvents> list = new List<uspGetMosqueEvents>();
                 list = db.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
             }
-
+         
         }
         protected void btnLogin_Click(object sender, EventArgs e)
         {
@@ -734,6 +734,7 @@ namespace Muslimeen.Content.Mosque
 
                     if (txtEventTitle.Text != "" && txtEventDescription.Text != "" && txtEventStartTime.Text != "" && txtEventEndTime.Text != "" && txtEventDate.Text != "" && txtSpeaker.Text != "")
                     {
+                        divAddEventOverlay.Visible = false;
                         Event mosqueEvent = new Event();
                         mosqueEvent.EventTitle = txtEventTitle.Text.ToString();
                         mosqueEvent.EventDescription = txtEventDescription.Text.ToString();
@@ -744,13 +745,23 @@ namespace Muslimeen.Content.Mosque
                         mosqueEvent.Speaker = txtSpeaker.Text.ToString();
                         mosqueEvent.Active = 'Y';
                         db.BLL_InsertEvent(mosqueEvent);
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Successfully Added Event');</script>");
-                        Response.Redirect(Request.Url.AbsoluteUri);
-
+                        txtEventTitle.BorderColor = Color.Empty;
+                        txtEventDescription.BorderColor = Color.Empty;
+                        txtEventStartTime.BorderColor = Color.Empty;
+                        txtEventEndTime.BorderColor = Color.Empty;
+                        txtEventDate.BorderColor = Color.Empty;
+                        txtSpeaker.BorderColor = Color.Empty;
+                        txtEventTitle.Text = "";
+                        txtEventDescription.Text = "";
+                        txtEventStartTime.Text = "";
+                        txtEventEndTime.Text = "";
+                        txtEventDate.Text = "";
+                        txtSpeaker.Text = "";
                     }
                     else
                     {
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Please Enter Required Fields');</script>");
+                        divAddEventOverlay.Visible = true;
+                        lblAddEventOverlay.InnerText = "Please Enter Required Fields";
                         if (txtEventTitle.Text == "")
                         {
                             txtEventTitle.BorderColor = Color.Red;
@@ -856,13 +867,43 @@ namespace Muslimeen.Content.Mosque
                     events.EventID = int.Parse(Session["EventID"].ToString());
                     events.MosqueID = int.Parse(Session["MosqueID"].ToString());
                     db.BLL_UpdateEvent(events);
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Updated Event');</script>");
+                    DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
+                    DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
+                    if (startDate.Date <= EndDate.Date)
+                    {
+                        rptGetEvents.DataSource = db.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
+                        rptGetEvents.DataBind();
+                        if (rptGetEvents.Items.Count > 0)
+                        {
+                            divViewActiveEvents.Visible = true;
+                            divDisplayEditEvent.Visible = false;
+                            divDisplayDeleteEvent.Visible = false;
+                        }
+                        else if (rptGetEvents.Items.Count <= 0)
+                        {
+                            divViewActiveEvents.Visible = false;
+                            divDisplayEditEvent.Visible = false;
+                            divDisplayDeleteEvent.Visible = false;
+                            lblEventError.InnerText = "No Events Found for Specified Date Range";
+                            divEventOverlay.Visible = true;
+                        }
+
+                    }
+                    else if (startDate.Date > EndDate.Date)
+                    {
+                        divViewActiveEvents.Visible = false;
+                        divDisplayEditEvent.Visible = false;
+                        divDisplayDeleteEvent.Visible = false;
+                        lblEventError.InnerText = "Invalid Date Range";
+                        divEventOverlay.Visible = true;
+                    }
+
                     divAddEvent.Visible = false;
                     divManageTimes.Visible = false;
                     divManageEvent.Visible = true;
                     divEventDateSearch.Visible = true;
                     divEventOverlay.Visible = false;
-                    divViewActiveEvents.Visible = false;
+                    divViewActiveEvents.Visible =true;
                     divDisplayEditEvent.Visible = false;
                     divDisplayDeleteEvent.Visible = false;
                 }
@@ -968,6 +1009,7 @@ namespace Muslimeen.Content.Mosque
             divManageTimes.Visible = false;
             divManageEvent.Visible = false;
             divPrayerTimes.Visible = false;
+            divAddEventOverlay.Visible = false;
             txtEventTitle.BorderColor = Color.Empty;
             txtEventDescription.BorderColor = Color.Empty;
             txtEventStartTime.BorderColor = Color.Empty;

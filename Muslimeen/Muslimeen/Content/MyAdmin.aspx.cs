@@ -258,7 +258,7 @@ namespace Muslimeen.Content
                 lblMemberID.InnerText = scholarDetails.ScholarID.ToString();
                 lblMemberName.InnerText = scholarDetails.MemberName.ToString();
                 lblMemberLastName.InnerText = scholarDetails.MemberLastName.ToString();
-                lblMemberDOB.InnerText = scholarDetails.MemberDOB.ToString("dd MM yyyy");
+                lblMemberDOB.InnerText = scholarDetails.MemberDOB.ToString("dd MMM yyyy");
                 switch (scholarDetails.MemberType.ToString())
                 {
                     case "S":
@@ -267,8 +267,8 @@ namespace Muslimeen.Content
                 }
                 lblEmail.InnerText = scholarDetails.Email.ToString();
                 lblContactNo.InnerText = scholarDetails.ContactNo.ToString();
-                lblActivationExpiry.InnerText = scholarDetails.ActivationExpiry.ToString("dd MM yyyy");
-                lblActivationDate.InnerText = scholarDetails.ActivationDate.ToString("dd MM yyyy");
+                lblActivationExpiry.InnerText = scholarDetails.ActivationExpiry.ToString("dd MMM yyyy");
+                lblActivationDate.InnerText = scholarDetails.ActivationDate.ToString("dd MMM yyyy");
                 lblScholarQual.InnerText = scholarDetails.QualificationDescription.ToString();
 
                 divViewPendingSch.Visible = true;
@@ -296,29 +296,44 @@ namespace Muslimeen.Content
                     string memberId = hdfSchId.Value.ToString();
 
                     uspVerifyMember.MemberID = memberId;
-                    db.BLL_VerifyMember(uspVerifyMember);
+                    bool verifySchSuccess = db.BLL_VerifyMember(uspVerifyMember);
 
-                    //Sends an email informing the scholar that his registration has be accepted.
-                    EmailService email = new EmailService();
-                    uspGetMember member = new uspGetMember();
-                    member = db.BLL_GetMember(hdfSchId.Value.ToString());
+                    if (verifySchSuccess == true)
+                    {
+                        //Sends an email informing the scholar that his registration has be accepted.
+                        EmailService email = new EmailService();
+                        uspGetMember member = new uspGetMember();
+                        member = db.BLL_GetMember(hdfSchId.Value.ToString());
 
-                    email.AutoEmailService(member.Email, "null", "null", "AcceptedScholars", member.MemberID.ToString(), "null");
+                        email.AutoEmailService(member.Email, "null", "null", "AcceptedScholars", member.MemberID.ToString(), "null");
 
-                    //Help with keeping selected task open.
+                        //Help with keeping selected task open.
+                        divViewPendingSch.Visible = true;
+                        divDisplaySch.Visible = false;
+                        divSchDetailsOverlay.Visible = true;
+
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Scholar Registration accepted.');</script>");
+
+                        rptViewPendingSch.DataSource = db.BLL_GetAllPendingScholars();
+                        rptViewPendingSch.DataBind();
+                    }
+                    else
+                    {
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Scholar Registration rejected.');</script>");
+                    }
+                }
+                else
+                {
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Failed to perform action, please try again.');</script>");
+                    divViewPendingSch.Visible = false;
                     divDisplaySch.Visible = false;
-                    divSchDetailsOverlay.Visible = true;
-                    divViewPendingSch.Visible = true;
-
-                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Scholar registration Accepted.');</script>");
-
-                    Response.Redirect(Request.Url.AbsoluteUri);
+                    divSchDetails.Visible = false;
 
                 }
             }
             catch
             {
-
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Failed to perform action, please try again.');</script>");
             }
         }
 
@@ -330,22 +345,39 @@ namespace Muslimeen.Content
                 uspRejectReg rejectReg = new uspRejectReg();
 
                 rejectReg.MemberID = hdfSchId.Value.ToString();
-                db.BLL_RejectReg(rejectReg);
+                bool rejectSchReg = db.BLL_RejectReg(rejectReg);
 
-                EmailService email = new EmailService();
-                uspGetMember member = new uspGetMember();
-                member = db.BLL_GetMember(hdfSchId.Value.ToString());
+                if (rejectSchReg == true)
+                {
+                    EmailService email = new EmailService();
+                    uspGetMember member = new uspGetMember();
+                    member = db.BLL_GetMember(hdfSchId.Value.ToString());
 
-                email.AutoEmailService(member.Email, "null", "null", "RejectedScholars", member.MemberID.ToString(), "null");
+                    email.AutoEmailService(member.Email, "null", "null", "RejectedScholars", member.MemberID.ToString(), "null");
 
-                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Scholar registration Rejected.');</script>");
+                    divViewPendingSch.Visible = true;
+                    divDisplaySch.Visible = false;
+                    divSchDetailsOverlay.Visible = true;
 
-                Response.Redirect(Request.Url.AbsoluteUri);
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Scholar registration rejected.');</script>");
 
+                    rptViewPendingSch.DataSource = db.BLL_GetAllPendingScholars();
+                    rptViewPendingSch.DataBind();
+                }
+                else
+                {
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Scholar registration rejection failed.');</script>");
+                    divViewPendingSch.Visible = false;
+                    divDisplaySch.Visible = false;
+                    divSchDetails.Visible = false;
+                }
             }
             catch
             {
-
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Failed to perform action, please try again.');</script>");
+                divViewPendingSch.Visible = false;
+                divDisplaySch.Visible = false;
+                divSchDetails.Visible = false;
             }
         }
 
@@ -718,6 +750,7 @@ namespace Muslimeen.Content
                 {
                     txtModUserName.BorderColor = Color.Red;
                     lblModError.Text = "User name field can not be empty";
+                    lblModError.ForeColor = Color.Red;
                     continueProcess += 1;
                 }
                 else if (txtModUserName.Text.Length > 15 || txtModUserName.Text.Length < 5 || txtModUserName.Text == "")
@@ -725,12 +758,13 @@ namespace Muslimeen.Content
                     txtModUserName.BackColor = Color.Red;
                     lblModError.Text = "User Name is too long or too short";
                     continueProcess += 1;
+                    lblModError.ForeColor = Color.Red;
                 }
                 else if (txtModUserName.Text != "" || txtModUserName.Text != null)
                 {
                     try
                     {
-                        if (db.BLL_GetMember(txtModUserName.Text.ToString()) != null)
+                        if (db.BLL_GetMember(txtModUserName.Text.ToString()) != null)//check if user exists in system.
                         {
                             lblModError.Text = "User Name taken, Please retype a new one";
                             txtModUserName.BorderColor = Color.Red;
@@ -809,6 +843,7 @@ namespace Muslimeen.Content
                     string encryptionPass = Convert.ToString(txtModUserName.Text);
                     Encryption encryption = new Encryption();
                     Member member = new Member();
+                    Moderater moderater = new Moderater();
 
                     string encryptedString = encryption.Encrypt(encryptionPass, Convert.ToString(txtModPassword.Text));
 
@@ -824,12 +859,10 @@ namespace Muslimeen.Content
                     member.ActivationExpiry = Convert.ToDateTime(DateTime.Today.AddDays(1));
                     member.ActivationDate = Convert.ToDateTime(DateTime.Today.ToLocalTime());
 
-                    bool MemberRegsuccess = db.BLL_AddMember(member);
-
-                    Moderater moderater = new Moderater();
                     moderater.ModeraterID = txtModUserName.Text;
                     moderater.QualificationID = ddModQualification.SelectedValue.ToString();
 
+                    bool MemberRegsuccess = db.BLL_AddMember(member);
                     bool modQualSuccess = db.BLL_AddModeraterQualification(moderater);
 
                     if (modQualSuccess == true && MemberRegsuccess == true)
@@ -845,13 +878,17 @@ namespace Muslimeen.Content
                         txtModContactNo.Text = string.Empty;
                         txtModDOB.Text = string.Empty;
                         txtModEmail.Text = string.Empty;
-                        Response.Redirect(Request.Url.AbsoluteUri);
                     }
                     else
                     {
                         Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Moderater registration was unsuccessful, please try again.');</script>");
                     }
 
+                }
+                else
+                {
+                    lblModError.Text = "Incomplete form.";
+                    lblModError.ForeColor = Color.Red;
                 }
             }
             catch
@@ -862,8 +899,8 @@ namespace Muslimeen.Content
 
         protected void btnModRegCancel_Click(object sender, EventArgs e)
         {
-            divAddMod.Visible = true;
-
+            divAddMod.Visible = false;
+            Form.Dispose();
             txtModUserName.Text = string.Empty;
             txtModFName.Text = string.Empty;
             txtModLName.Text = string.Empty;
@@ -1016,10 +1053,10 @@ namespace Muslimeen.Content
 
                         if (OrgSuccess == true) //test
                         {
-                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Zakaah Organization has been successfully Added.');</script>");
+                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Zakaah Organization has been successfully added.');</script>");
 
                             divZakaahOrgList.Visible = false;
-                            divAddUpdateZakaahOrg.Visible = true;
+                            divAddUpdateZakaahOrg.Visible = false;
                             ddOrgActive.Enabled = false;
 
                             txtOrgName.Text = string.Empty;
@@ -1031,13 +1068,12 @@ namespace Muslimeen.Content
                             txtOrgName.BorderColor = Color.Empty;
                             txtOrgContactNo.BorderColor = Color.Empty;
                             lblOrgError.Text = String.Empty;
+                            Form.Dispose();
 
-                            Response.Redirect(Request.Url.AbsoluteUri);
                         }
                         else
                         {
-                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Zakaah Organization has been successfully Added.');</script>");
-
+                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert(' Failed to add Zakaah Organization.');</script>");
                         }
                     }
 
@@ -1075,6 +1111,8 @@ namespace Muslimeen.Content
 
                         if (updateOrg == true)
                         {
+                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Zakaah Organization has been successfully Updated.');</script>");
+
                             //Refresh the List...
                             rptZakaahOrg.DataSource = db.BLL_GetOrganization();
                             rptZakaahOrg.DataBind();
@@ -1094,7 +1132,6 @@ namespace Muslimeen.Content
                             divZakaahOrgList.Visible = true;
                             divOrgOverlay.Visible = true;
 
-                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Zakaah Organization has been successfully Updated.');</script>");
                         }
                         else
                         {
@@ -1143,6 +1180,7 @@ namespace Muslimeen.Content
             txtOrgPhyAddress.Text = string.Empty;
             ddOrgActive.SelectedIndex = 0;
             fupOrgImage.Attributes.Clear();
+            Form.Dispose();
         }
 
         protected void btnUpdateNotice_Click(object sender, EventArgs e)
@@ -1198,8 +1236,8 @@ namespace Muslimeen.Content
 
                 txtNoticeTitle.Text = notice.NoticeTitle.ToString();
                 txtNoticeDesc.Text = notice.NoticeDescription.ToString();
-                txtNoticeDateCreated.Text = Convert.ToDateTime(notice.DateCreated).ToString("dd MM yyyy");
-                txtNoticeExpiryDate.Text = notice.DateExpiry.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                txtNoticeDateCreated.Text = Convert.ToDateTime(notice.DateCreated).ToString("dd MMM yyyy");
+                txtNoticeExpiryDate.Text = notice.DateExpiry.ToString("dd MMM yyyy", CultureInfo.InvariantCulture);
                 txtNoticeMemberID.Text = notice.MemberID.ToString();
                 ddNoticeActive.SelectedValue = notice.Active.ToString();
             }
@@ -1221,7 +1259,7 @@ namespace Muslimeen.Content
             txtNoticeExpiryDate.Text = string.Empty;
             txtNoticeMemberID.Text = string.Empty;
             ddNoticeActive.SelectedIndex = 1;
-            txtNoticeDateCreated.Text = DateTime.Now.Date.ToString("dd MM yyyy");
+            txtNoticeDateCreated.Text = DateTime.Now.Date.ToString("dd MMM yyyy");
             divNoticeList.Visible = false;
             divAddUpdateNotice.Visible = true;
             btnAddUpdateNotice.Text = "Add Notice";
@@ -1302,15 +1340,11 @@ namespace Muslimeen.Content
                             txtNoticeMemberID.Text = string.Empty;
                             ddNoticeActive.SelectedIndex = 0;
                             lblNoticeError.Text = String.Empty;
-
-                            Response.Redirect(Request.Url.AbsoluteUri);
                         }
                         else
                         {
                             Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert(' Failed to add the Notice, please try again.');</script>");
                         }
-
-
                     }
 
                 }
@@ -1396,7 +1430,7 @@ namespace Muslimeen.Content
                 else if (!(counterCalender[0].Val == "") || !(counterCalender[0].Val == null))
                 {
                     DateTime islamiceDate = Convert.ToDateTime(counterCalender[0].Val);
-                    txtCurCounterEndDate.Text = islamiceDate.ToString("dd MM yyyy");
+                    txtCurCounterEndDate.Text = islamiceDate.ToString("dd MMM yyyy");
                 }
 
                 if (counterCalender[3].Val != null || counterCalender[3].Val != "")
@@ -1446,13 +1480,14 @@ namespace Muslimeen.Content
                     DBHandler db = new DBHandler();
                     uspUpdateCountDown uspUpdateCountDown = new uspUpdateCountDown();
 
+                    //string[] endDate;
+                    //endDate = txtCounterEndDate.Text.ToString().Split('/');
 
-                    string[] endDate;
-                    endDate = txtCounterEndDate.Text.ToString().Split('/');
+                    //string endDate2 = endDate[2] + "-" + endDate[1] + "-" + endDate[0];
 
-                    string endDate2 = endDate[2] + "-" + endDate[1] + "-" + endDate[0];
+                    DateTime countDate = Convert.ToDateTime(txtCounterEndDate.Text.ToString());
 
-                    uspUpdateCountDown.CounterDate = endDate2;
+                    uspUpdateCountDown.CounterDate = countDate.ToString();
                     uspUpdateCountDown.CounterFinishTitle = txtCounterEndTitle.Text;
                     uspUpdateCountDown.CounterTitle = txtCounterTitle.Text;
 
@@ -1460,7 +1495,7 @@ namespace Muslimeen.Content
 
                     if (updateCOuntDown == true)
                     {
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Update unsuccessful.');</script>");
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Update successful.');</script>");
 
                         txtCounterEndTitle.BorderColor = Color.Empty;
                         txtCounterEndTitle.Text = String.Empty;
@@ -1468,10 +1503,12 @@ namespace Muslimeen.Content
                         txtCounterEndDate.Text = String.Empty;
                         txtCounterTitle.BorderColor = Color.Empty;
                         txtCounterTitle.Text = String.Empty;
+
+                        btnUpdateDateCounter_Click(sender, e);
                     }
                     else
                     {
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Update successful.');</script>");
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Update unsuccessful.');</script>");
                     }
                 }
             }
@@ -1485,7 +1522,6 @@ namespace Muslimeen.Content
         {
             try
             {
-                divCounterCalander.Visible = true;
                 int continueProcess = 0;
 
                 if (txtIslamicDate.Text == "" || txtIslamicDate.Text == null)
@@ -1507,6 +1543,8 @@ namespace Muslimeen.Content
                     {
                         txtIslamicDate.BackColor = Color.Empty;
                         Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Update successful.');</script>");
+                        divCounterCalander.Visible = true;
+                        btnUpdateDateCounter_Click(sender, e);
                     }
                     else
                     {
@@ -1795,11 +1833,11 @@ namespace Muslimeen.Content
                     break;
             }
 
-            lblAllMemberDOB.InnerText = member.MemberDOB.ToString("dd MM yyyy");
+            lblAllMemberDOB.InnerText = member.MemberDOB.ToString("dd MMM yyyy");
             lblAllEmail.InnerText = member.Email.ToString();
             lblAllContactNo.InnerText = member.ContactNo.ToString();
             lblAllMosque.InnerText = member.MosqueID.ToString();
-            lblAllActivationDate.InnerText = member.ActivationDate.ToString("dd MM yyyy");
+            lblAllActivationDate.InnerText = member.ActivationDate.ToString("dd MMM yyyy");
             ddAllctiveTypeID.SelectedValue = Convert.ToString(member.ActiveTypeID);
         }
 
@@ -1819,22 +1857,36 @@ namespace Muslimeen.Content
             updateMemberActiveStatus.MemberType = Convert.ToChar(member.MemberType);
             updateMemberActiveStatus.ActiveTypeID = Convert.ToChar(ddAllctiveTypeID.SelectedValue);
 
-            bool updateMember = dBHandler.BLL_UpdateMemberActiveStatus(updateMemberActiveStatus);
+            bool memberUpdated = dBHandler.BLL_UpdateMemberActiveStatus(updateMemberActiveStatus);
 
-            if (updateMember == true)
+            if (memberUpdated == true)
             {
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Member active status update successful.');</script>");
+
                 rptMemberList.DataSource = dBHandler.BLL_GetAllMembers();
                 rptMemberList.DataBind();
 
                 EmailService emailService = new EmailService();
 
-                emailService.DisableEnableMember(member.Email.ToString(), member.MemberID); //notify the member via email.
+                if (ddAllctiveTypeID.SelectedValue == "Y")
+                {
+                    emailService.DisableEnableMember(member.Email.ToString(), member.MemberID, "accept"); //notify the member via email.
+                }
+                else if (ddAllctiveTypeID.SelectedValue == "N")
+                {
+                    emailService.DisableEnableMember(member.Email.ToString(), member.MemberID, "reject"); //notify the member via email.
+                }
+                else if (ddAllctiveTypeID.SelectedValue == "T")
+                {
+                    emailService.DisableEnableMember(member.Email.ToString(), member.MemberID, "temp"); //notify the member via email.
+                }
 
                 divAlertPopup.Visible = true;
                 lblAlertError.InnerText = "Successfully updated member active status";
             }
             else
             {
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Member active status update failed.');</script>");
             }
         }
 
@@ -1987,6 +2039,10 @@ namespace Muslimeen.Content
 
             }
             catch (NullReferenceException)
+            {
+
+            }
+            catch
             {
 
             }
@@ -2204,8 +2260,6 @@ namespace Muslimeen.Content
         protected void btnRegAdmin_Click(object sender, EventArgs e)
         {
 
-            divAddAdmin.Visible = true;
-
             DBHandler db = new DBHandler();
 
             int continueProcess = 0;
@@ -2314,6 +2368,7 @@ namespace Muslimeen.Content
                 string encryptionPass = Convert.ToString(txtAdminUserName.Text);
                 Encryption encryption = new Encryption();
                 Member member = new Member();
+                EmailService emailService = new EmailService();
 
                 string encryptedString = encryption.Encrypt(encryptionPass, Convert.ToString(txtAdminPassword.Text));
 
@@ -2331,14 +2386,27 @@ namespace Muslimeen.Content
 
                 bool success = db.BLL_AddMember(member);
 
-                txtAdminUserName.Text = string.Empty;
-                txtAdminFName.Text = string.Empty;
-                txtAdminLName.Text = string.Empty;
-                txtAdminContactNo.Text = string.Empty;
-                txtAdminDOB.Text = string.Empty;
-                txtAdminEmail.Text = string.Empty;
-            }
+                if (success == true)
+                {
+                    emailService.AddAdmin(txtAdminUserName.Text.ToString(), txtAdminFName.Text.ToString() + " " + txtAdminLName.Text.ToString(), txtAdminEmail.Text.ToString(), txtAdminPassword.Text.ToString());
 
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Administrator registration successful.');</script>");
+
+                    txtAdminUserName.Text = string.Empty;
+                    txtAdminFName.Text = string.Empty;
+                    txtAdminLName.Text = string.Empty;
+                    txtAdminContactNo.Text = string.Empty;
+                    txtAdminDOB.Text = string.Empty;
+                    txtAdminEmail.Text = string.Empty;
+
+                    divAddAdmin.Visible = false;
+                    Form.Dispose();
+                }
+                else
+                {
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Administrator registration unsuccessful.');</script>");
+                }
+            }
         }
 
         protected void btnAdminRegCancel_Click(object sender, EventArgs e)
@@ -2350,8 +2418,7 @@ namespace Muslimeen.Content
             txtAdminDOB.Text = string.Empty;
             txtAdminEmail.Text = string.Empty;
 
-            divAddAdmin.Visible = true;
-
+            divAddAdmin.Visible = false;
         }
 
         protected void btnTodaysPrayerTime_Click(object sender, EventArgs e)
@@ -2377,8 +2444,6 @@ namespace Muslimeen.Content
                 lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
                 lblEishaAzaan.Text = prayertimes.EishaA.ToString();
                 lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
-
-
             }
             catch
             {

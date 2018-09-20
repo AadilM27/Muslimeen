@@ -7,8 +7,7 @@
 <head runat="server"><!-- Abdul-Hadi Bhat-->
         <meta charset="utf-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes"/>
-	
+		<meta name="viewport" content="width=device-width, initial-scale=0.0"/>
 		<link rel="icon" href="LogIn_Bootstrap/muslimeen.ico"/>
 	
 		<link href="LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
@@ -44,12 +43,15 @@
             <asp:button runat="server" CssClass="btn btn-primary btn-lg btn-block main-btn " ID="btnRegister" Text="Register" OnClick="btnRegister_Click"></asp:button>
             <p class="mt-3 mb-0" style="font-size:smaller;">Forgot your password ? <br /><asp:LinkButton CssClass=" font-weight-bold text-dark" ToolTip="Send new password to your email address" runat="server" ID="btnForgotPass" Text="Reset Password" OnClick="btnForgotPass_Click"></asp:LinkButton></p>
             <asp:Label CssClass="" runat="server" Text="OR" Style="font-size:smaller;"></asp:Label>
-            <p class="mt-1 mb-0" style="font-size:smaller;">Go back to <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="../Content/Default.aspx" Text="Home page"></asp:HyperLink></p>
+            <p class="mt-1 mb-0" style="font-size:smaller;">Go back to <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="Content/Default.aspx" Text="Home page"></asp:HyperLink></p>
             <div class=" mt-3 form-group col " style="text-align:center;">
                 <asp:Label CssClass="lblError" runat="server" ID="lblErrorPass"></asp:Label>
             </div>
                 <script src="js/Login.js"></script>
 		</form>
+        </div>
+        <div class="bottom-nav">
+            <span class=" bottom-nav-text" style="">©2018 NexTech</span>
         </div>
 	</body>
 </html>

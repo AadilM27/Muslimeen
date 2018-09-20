@@ -310,6 +310,24 @@ namespace Muslimeen.Content.Mosque {
         protected global::System.Web.UI.WebControls.Button btnAddEvent;
         
         /// <summary>
+        /// divAddEventOverlay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAddEventOverlay;
+        
+        /// <summary>
+        /// lblAddEventOverlay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAddEventOverlay;
+        
+        /// <summary>
         /// divManageEvent control.
         /// </summary>
         /// <remarks>

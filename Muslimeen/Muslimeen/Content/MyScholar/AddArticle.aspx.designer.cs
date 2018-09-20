@@ -535,6 +535,15 @@ namespace Muslimeen.Content.MyScholar {
         protected global::System.Web.UI.WebControls.TextBox txtHeading;
         
         /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
         /// txtContent control.
         /// </summary>
         /// <remarks>
@@ -542,7 +551,7 @@ namespace Muslimeen.Content.MyScholar {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtContent;
-        
+                
         /// <summary>
         /// btnSave control.
         /// </summary>

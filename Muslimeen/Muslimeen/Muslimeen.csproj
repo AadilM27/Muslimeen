@@ -120,6 +120,7 @@
     <Content Include="Content\HelpPage\icons\docs.png" />
     <Content Include="Content\HelpPage\icons\help.png" />
     <Content Include="Content\HelpPage\icons\lock.png" />
+    <Content Include="Content\Images\BackgroundImages\BlueMosque1.jpg" />
     <Content Include="Content\Images\FilledStar.gif" />
     <Content Include="Content\Images\ImageUnavailable.jpg" />
     <Content Include="Content\Images\Star.gif" />
@@ -134,7 +135,7 @@
     <Content Include="Content\Mosque\Mosque.aspx" />
     <Content Include="Content\Mosque\MosqueRep.aspx" />
     <Content Include="Content\Mosque\PrayerTimesJS.js" />
-    <Content Include="Content\Mosque\taqwa.png" />
+    <Content Include="Content\Mosque\Resubmission.js" />
     <Content Include="Content\MyAdmin.aspx" />
     <Content Include="Content\MyAdmin\css\MyAdmin.css" />
     <Content Include="Content\MyAdmin\icons\Loading.gif" />

@@ -20,8 +20,6 @@ namespace Muslimeen.Content.MyScholar
             DBHandler db = new DBHandler();
             List<CounterCalender> counterCalender = new List<CounterCalender>();
 
-            
-
             try
             {
                 divAddArticle.Visible = false;
@@ -257,34 +255,13 @@ namespace Muslimeen.Content.MyScholar
         protected void btnSave_Click(object sender, EventArgs e)
         {
             divAddArticle.Visible = true;
-            txtHeading.BorderColor = Color.Empty;
-            txtContent.BorderColor = Color.Empty;
-            drpTopics.BorderColor = Color.Empty;
 
             try
             {
                 DBHandler han = new DBHandler();
                 InsertArticle art = new InsertArticle();
-
-                if(drpTopics.SelectedValue.ToString() == "Select" && txtHeading.Text == null && txtContent.Text == null)
-                {
-                    drpTopics.BorderColor = Color.Red;
-                    txtHeading.BorderColor = Color.Red;
-                    txtHeading.BorderColor = Color.Red;
-                }
-                else if(drpTopics.SelectedValue.ToString() == "Select")
-                {
-                    drpTopics.BorderColor = Color.Red;
-                }
-                else if (txtHeading.Text == "" || txtHeading.Text == null)
-                {
-                    txtHeading.BorderColor = Color.Red;
-                }
-                else if (txtContent.Text == "" || txtContent.Text == null)
-                {
-                    txtHeading.BorderColor = Color.Red;
-                }
-                else
+                
+                if (drpTopics.SelectedValue.ToString() != "Select" && txtHeading.Text != "" && txtContent.Text != "")
                 {
                     art.DateCreated = Convert.ToDateTime(DateTime.Today);
                     art.Status = Convert.ToChar("P");
@@ -304,6 +281,33 @@ namespace Muslimeen.Content.MyScholar
 
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Added Article');</script>");
                     Response.Redirect("../MyScholar/AddArticle.aspx", true);
+                }
+                else
+                {
+                    if (drpTopics.SelectedValue.ToString() == "Select")
+                    {
+                        drpTopics.BorderColor = Color.Red;
+                    }
+                    else
+                    {
+                        drpTopics.BorderColor = Color.Empty;
+                    }
+                    if (txtHeading.Text == "")
+                    {
+                        txtHeading.BorderColor = Color.Red;
+                    }
+                    else
+                    {
+                        txtHeading.BorderColor = Color.Empty;
+                    }
+                    if (txtContent.Text == "")
+                    {
+                        txtContent.BorderColor = Color.Red;
+                    }
+                    else
+                    {
+                        txtContent.BorderColor = Color.Empty;
+                    }
                 }
             }
             catch
