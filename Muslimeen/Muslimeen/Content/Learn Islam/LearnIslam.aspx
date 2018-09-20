@@ -208,7 +208,7 @@
                                         <div class="col position-static font-italic">
                                             Date:
                                         <label class="m-0 font-italic mt-2 mr-2" runat="server" id="lblDate"></label>
-                                              <div style="position: static; padding-left: 1em; padding-right: 2em; padding-top: 0,1em;float:inherit" class="row" >
+                                              <div style="position: static; padding-left: 1em; padding-right: 2em; padding-top: 0,1em;float:inherit" class="row" id="countRating"  runat="server">
                                 <asp:Label runat="server" ID ="lblRatingCount" Font-Size="Large" Font-Bold="true" ForeColor="#256297"></asp:Label>
                                 </div>
                                         </div>
@@ -295,7 +295,7 @@
                                <a class="footerr-text" href="../Mosque/ListMosque.aspx">Mosques</a>
                            </li>
                            <li class="nav-item">
-                               <a class="footerr-text" href="../ListScholar">Scholars</a>
+                               <a class="footerr-text" href="../ListScholar.aspx">Scholars</a>
                            </li>
                            <li class="nav-item">
                                <a class="footerr-text" href="../Learn Islam/LearnIslam.aspx">Learn Islam</a>

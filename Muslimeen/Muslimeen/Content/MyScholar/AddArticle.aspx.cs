@@ -22,7 +22,6 @@ namespace Muslimeen.Content.MyScholar
 
             try
             {
-
                 divAddArticle.Visible = false;
                 divPendingArticles.Visible = false;
                 divRejectedArticles.Visible = false;

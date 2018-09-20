@@ -32,7 +32,7 @@ namespace Muslimeen.Content.Learn_Islam
 
                 DBHandler dBHandler = new DBHandler();
 
-                divNoSelected.Visible = false;
+                //divNoSelected.Visible = false;
                 divPendingArticles.Visible = true;
                 divRating.Visible = true;
 
@@ -56,18 +56,18 @@ namespace Muslimeen.Content.Learn_Islam
                 {
                     liMyMusbtn.Visible = false;
                     liMyMusDivi.Visible = false;
-
+                    Rating1.CurrentRating = 0;
                     divUserProfile.Visible = false;
                     Session.Clear();
+                    Rating1.ReadOnly = true;
                 }
-
+              
                 if (!IsPostBack)
                 {
                     //Link Article Source
                     repeatLink.DataSource = dBHandler.BLL_GetLearnArticle("Select", "Select");
                     repeatLink.DataBind();
                     List<uspGetScholarList> scholar = dBHandler.BLL_GetScholar();
-
 
                     drpScholar.Items.Add("Select");
                     foreach (uspGetScholarList sch in scholar)
@@ -198,6 +198,7 @@ namespace Muslimeen.Content.Learn_Islam
 
                 DBHandler han = new DBHandler();
                 uspGetSelectedLearnArticle pen = new uspGetSelectedLearnArticle();
+                uspRatingCount count = new uspRatingCount();
 
                 //Labels for Learn Article
                 pen = han.BLL_GetSelectedLearnArticle(int.Parse(art));
@@ -215,12 +216,11 @@ namespace Muslimeen.Content.Learn_Islam
 
                 string commentCount = CommentRepeater.Items.Count.ToString();
                 lblCommentCount.Text = "Comments: " + commentCount;
-                uspRatingCount count = new uspRatingCount();
-
                
-                lblRatingCount.Text = count.RatingCount.ToString();
-                lblRatingCount.Text = "Members rated: " +  han.BLL_RatingCount(int.Parse(art)).ToString();
-
+                 
+                lblRatingCount.Text = "Members rated: " + han.BLL_RatingCount(int.Parse(art)).ToString();
+                
+               
 
             }
             catch (NullReferenceException)
@@ -280,9 +280,25 @@ namespace Muslimeen.Content.Learn_Islam
                 table2.DefaultCell.HorizontalAlignment = 1;
                 table2.DefaultCell.VerticalAlignment = 1;
                 Paragraph date = new Paragraph("Date Printed: " + DateTime.Now.Date.ToString("dd MMM yyyy"), fontH2);
-                Paragraph extraPara = new Paragraph("Muslimeen Article", fontH2); //Change this to something meaningfull.
-                table2.AddCell(date);
-                table2.AddCell(extraPara);
+
+                if (Session["UserName"] != null)
+                {
+                    uspGetMember uspGetMember = new uspGetMember();
+                    DBHandler dBHandler = new DBHandler();
+
+                    uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
+
+                    Paragraph extraPara = new Paragraph("Printed By: " + uspGetMember.MemberLastName + ", " + uspGetMember.MemberName, fontH2); 
+                    table2.AddCell(date);
+                    table2.AddCell(extraPara);
+                }
+                else
+                {
+                    Paragraph extraPara = new Paragraph("Printed By: N/A", fontH2); 
+                    table2.AddCell(date);
+                    table2.AddCell(extraPara);
+                }
+                
 
 
                 iTextSharp.text.Font fontH1 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 24, iTextSharp.text.Font.BOLD);
@@ -319,7 +335,7 @@ namespace Muslimeen.Content.Learn_Islam
 
         protected void btn_Submit_Click(object sender, EventArgs e)
         {
-            txtComment.BorderColor = Color.Red;
+            txtComment.BorderColor = Color.Empty;
 
             try
             {
@@ -353,7 +369,7 @@ namespace Muslimeen.Content.Learn_Islam
                 }
                 else
                 {
-                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Please login to add comment.');</script>");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Please login to Comment');</script>");
                     txtComment.Text = string.Empty;
                     CommentRepeater.DataSource = han.BLL_GetComment(int.Parse(hdfArtID.Value));
                     CommentRepeater.DataBind();
@@ -480,26 +496,15 @@ namespace Muslimeen.Content.Learn_Islam
                         handler.BLL_UpdateRating(upRate);
                         Response.Redirect(Request.Url.AbsoluteUri);
                         divNoSelected.Visible = true;
-
-                    }
-
-
-
+                    }       
                 }
-              
-
                 divDisplayArticle.Visible = true;
                 divRating.Visible = true;
-
             }
             catch
             {
 
             }
-
-
-
-
         }
     }
 }
