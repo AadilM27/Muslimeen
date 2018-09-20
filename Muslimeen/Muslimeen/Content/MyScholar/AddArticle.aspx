@@ -291,19 +291,19 @@
                             <div class=" position-static p-1 lst-container">
                                 <div class="form-row">
                                     <div class="form-group col-xl-6 col-sm-6 col-6 mb-1">
-                                        <label class="col mb-0 p-0 position-static"><strong>Topic:</strong></label>
+                                        <label class="col mb-0 p-0 position-static"><strong>Topic*:</strong></label>
                                         <asp:DropDownList ID="drpTopics" runat="server" CssClass="form-control main-txtb" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" AutoPostBack="false"></asp:DropDownList>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-sm-12 col-12 mb-1">
-                                        <label class="col mb-0 p-0 position-static"><strong>Heading:</strong></label>
+                                        <label class="col mb-0 p-0 position-static"><strong>Heading*:</strong></label>
                                         <asp:TextBox CssClass="form-control"  Onblur="heading();" ID="txtHeading" runat="server" placeholder="Enter Heading"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-sm-12 mb-1">
-                                        <label class="col mb-0 p-0 position-static"><strong>Content:</strong></label><asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+                                        <label class="col mb-0 p-0 position-static"><strong>Content*:</strong></label><asp:Label ID="Label1" runat="server" Text=""></asp:Label>
                                         <asp:TextBox CssClass="form-control" onkeyup="count(this)" ID="txtContent" runat="server" Style="max-height:350px; min-height:350px;" TextMode="MultiLine"></asp:TextBox>
                                     </div>
                                 </div>
