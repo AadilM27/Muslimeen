@@ -126,17 +126,14 @@
                                         </HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:LinkButton ID="btnShow" CommandArgument='<%#Eval("MemberID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShow_Click">
-                                                    <div class="p-0 form-row m-0 position-static">
-                                                        <div class="col-auto position-static">
-                                                            <img src="MyAdmin/icons/PendingReg.png" class="" style="height:40px; width:35px;"/>
-                                                        </div>
+                                                    <div class="p-0 form-row m-0 position-static p-1">
                                                         <div class=" col-auto position-static p-0">
                                                             <div class="">
                                                                 <p style="font-size:small" class="p-0 m-0 text-truncate"><b>User&nbsp;Name: </b><%#Eval("MemberID")%><br/></p>
                                                             </div>
                                                                 <hr class=" mr-4 m-0 p-0"/>
                                                             <div class="">
-                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Registered: </b><%#Eval("ActivationDate")%></p>
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Registered: </b><%#Convert.ToDateTime(Eval("ActivationDate")).ToString("dd MM yyyy")%></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -160,17 +157,15 @@
                                         </HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:LinkButton ID="btnShowArt" CommandArgument='<%#Eval("ArticleID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShowArt_Click">
-                                                    <div class="p-0 form-row m-0 position-static">
-                                                        <div class="col-auto position-static">
-                                                            <img src="MyAdmin/icons/PendingReg.png" class="" style="height:40px; width:35px;"/>
-                                                        </div>
+                                                    <div class="p-0 form-row m-0 position-static p-1">
+                                      
                                                         <div class=" col-auto position-static p-0">
                                                             <div class="">
                                                                 <p style="font-size:small" class="p-0 m-0 text-truncate"><b>User&nbsp;Name: </b><%#Eval("ArticleTitle")%><br/></p>
                                                             </div>
                                                                 <hr class=" mr-4 m-0 p-0"/>
                                                             <div class="">
-                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Registered: </b><%#Eval("DateCreated")%></p>
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Registered: </b><%#Convert.ToDateTime(Eval("DateCreated")).ToString("dd MM yyyy")%></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -193,17 +188,14 @@
                                         </HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:LinkButton ID="btnShowRemoveAcceptArt" CommandArgument='<%#Eval("ArticleID") %>' CssClass="position-static lstBtn btn btn-block" runat="server" OnClick="btnShowRemoveAcceptArt_Click">
-                                                    <div class="p-0 form-row m-0 position-static">
-                                                        <div class="col-auto position-static">
-                                                            <img src="MyAdmin/icons/PendingReg.png" class="" style="height:40px; width:35px;"/>
-                                                        </div>
+                                                    <div class="p-0 form-row m-0 position-static p-1">
                                                         <div class=" col-auto position-static p-0">
                                                             <div class="">
                                                                 <p style="font-size:small" class="p-0 m-0 text-truncate"><b>User&nbsp;Name: </b><%#Eval("ArticleTitle")%><br/></p>
                                                             </div>
                                                                 <hr class=" mr-4 m-0 p-0"/>
                                                             <div class="">
-                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Registered: </b><%#Eval("DateCreated")%></p>
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Date Registered: </b><%#Convert.ToDateTime(Eval("DateCreated")).ToString("dd MM yyyy")%></p>
                                                             </div>
                                                         </div>
                                                     </div>
