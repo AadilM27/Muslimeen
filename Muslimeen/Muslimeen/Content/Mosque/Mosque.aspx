@@ -111,7 +111,7 @@
                         <asp:Button runat="server" ID="btnAddress" CssClass="pl-2 btn mb-1 taskBtn" Text="Mosque Location" OnClick="btnAddress_Click" />
                         <asp:Button runat="server" ID="btnPrayerTimes" CssClass="pl-2 btn mb-1 taskBtn" Text="Prayer Times" OnClick="btnPrayerTimes_Click" />
                         <button class="collapsible" style="background-color: #256297; width: 100%; position: static">To whom is Zakaah Applicable?</button>
-                 
+
 
 
                     </nav>

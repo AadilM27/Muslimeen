@@ -1083,6 +1083,7 @@ namespace Muslimeen.Content.MyModerator
 
         protected void btnListEvents_Click(object sender,EventArgs e)
         {
+
             try
             {
                 lblTaskHead.InnerText = btnListEvents.Text.ToString();
@@ -1165,14 +1166,8 @@ namespace Muslimeen.Content.MyModerator
                     }
                 }
             }
-            catch(FormatException)
-            {
-                lblEventError.Text = "Incorrect Format";
-            }
-            catch
-            {
-
-            }
+            catch { }
+        
         }
     }
 }

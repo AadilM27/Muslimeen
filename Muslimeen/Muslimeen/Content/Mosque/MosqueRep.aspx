@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </nav>
-            <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50); z-index:1000;">
+            <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50); z-index: 1000;">
                 <div class=" text-center">
                     <asp:Image runat="server" CssClass="mb-0 ml-0" src="../../Login/LogIn_Bootstrap/logo.png" Width="185" Height="110" />
                 </div>
@@ -121,49 +121,59 @@
                     <div class="row p-0 m-0 tab-content right-bottom-div p-1">
                         <div class="flex-nowrap w-50" runat="server" id="divAddEvent">
                             <!--Contains the List of items-->
-                            <div class=" head-div-2 p-2 mb-1 text-left">
-                                <p class="m-0">Add Event</p>
-                            </div>
-                            <div class="position-static p-1 lst-container">
-                                <div class="form-row">
-                                    <div class="form-group col-sm-12 mb-1">
-                                        <label class="col mb-0 p-0">Event Title*</label>
-                                        <asp:TextBox CssClass="form-control form-control-md col main-txtb" runat="server" ID="txtEventTitle"></asp:TextBox>
+                            <div class="row flex-nowrap m-0">
+                                <div class="col-9 position-static p-1 lst-container">
+                                    <div class=" head-div-2 p-2 mb-1 text-left">
+                                    <p class="m-0">Add Event</p>
+                                </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0">Event Title*</label>
+                                            <asp:TextBox CssClass="form-control form-control-md col main-txtb" runat="server" ID="txtEventTitle"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0">Event Date*</label>
+                                            <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtEventDate"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0">Event Start Time*</label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtEventStartTime"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0">Event End Time*</></label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtEventEndTime"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0">Event Speaker*</label>
+                                            <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtSpeaker"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1">
+                                            <label class="col mb-0 p-0">Event Description*</label>
+                                            <asp:TextBox TextMode="MultiLine" Style="min-height: 200px; max-height: 200px" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtEventDescription"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-sm-12 mb-1 text-center">
+                                            <asp:Button runat="server" ID="btnAddEvent" Text="Add Event" OnClick="btnAddEvent_Click" CssClass=" topnav btn btn-md btn-outline-light mr-2 mt-2" />
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-sm-12 mb-1">
-                                        <label class="col mb-0 p-0">Event Date*</label>
-                                        <asp:TextBox TextMode="Date" CssClass="form-control form-control-sm col main-txtb" runat="server" Format="yyyy/MM/dd" ID="txtEventDate"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-sm-12 mb-1">
-                                        <label class="col mb-0 p-0">Event Start Time*</label>
-                                        <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtEventStartTime"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-sm-12 mb-1">
-                                        <label class="col mb-0 p-0">Event End Time*</></label>
-                                        <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtEventEndTime"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-sm-12 mb-1">
-                                        <label class="col mb-0 p-0">Event Speaker*</label>
-                                        <asp:TextBox CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtSpeaker"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-sm-12 mb-1">
-                                        <label class="col mb-0 p-0">Event Description</label>
-                                        <asp:TextBox TextMode="MultiLine" Style="min-height: 200px; max-height: 200px" CssClass="form-control form-control-sm col main-txtb" runat="server" ID="txtEventDescription"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-sm-12 mb-1 text-center">
-                                        <asp:Button runat="server" ID="btnAddEvent" Text="Add Event" OnClick="btnAddEvent_Click" CssClass=" topnav btn btn-md btn-outline-light mr-2 mt-2" />
+                                <div class="col-3 col-sm-3 col-xl-4 text-nowrap" runat="server" id="divAddEventOverlay">
+                                    <div class="w-100 h-100 container text-center">
+                                        <div class=" container h-25 mb-3"></div>
+                                        <h6 class="card-title h-50 mt-5 pt-5">
+                                            <img class="figure-img mr-2" src="../MyAdmin/icons/outline_error_outline_black_18dp.png" /><label id="lblAddEventOverlay" runat="server"></label></h6>
+                                        <div class=" container h-25"></div>
                                     </div>
                                 </div>
                             </div>
@@ -629,5 +639,6 @@
         </div>
     </div>
     <script src="../Default/Default.js" type="text/javascript"></script>
+
 </body>
 </html>
