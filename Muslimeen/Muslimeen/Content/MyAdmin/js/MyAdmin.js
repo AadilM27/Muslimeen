@@ -201,16 +201,16 @@ function DropDown(div) {
     }
 }
 
-var isClicked = document.getElementById('isClicked').value;
-if (!isClicked.isEmpty) {
-    //add all div tags that you wish to keep displayed in left nav bar on load. 
-    var div1 = document.getElementById(isClicked);
-    div1.classList.remove("collapsing");
-}
+//var isClicked = document.getElementById('isClicked').value;
+//if (!isClicked.isEmpty) {
+//    //add all div tags that you wish to keep displayed in left nav bar on load. 
+//    var div1 = document.getElementById(isClicked);
+//    div1.classList.remove("collapsing");
+//}
 
-function Popup(divpop1) {
-    var divpop = document.getElementById(divpop1);
+function Popup() {
+    var divpop = document.getElementById("divAlertPopup");
     setTimeout(function Flash3() {
         divpop.style.display = "none";
-        }, 1000)
+    }, 800)
 }

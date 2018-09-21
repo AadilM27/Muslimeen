@@ -14,9 +14,8 @@
 </head>
     <body>
         <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
-        <input type="hidden" id="isClicked" />
-        <div id="divAlertPopup" runat="server" class="container-fluid p-2 w-100 bg-warning">
-                <label id="lblAlertError"  runat="server" ></label>
+        <div id="divAlertPopup" runat="server" class="container-fluid text-center p-2 m-0 w-100 alert alert-success visible">
+                <label class="h6" id="lblAlertError"  runat="server" ></label>
         </div>
         <form id="frmScholar" runat="server" class="">
             <header>
@@ -103,13 +102,11 @@
                             <asp:Button ID="btnAddNotice" CssClass="pl-2 btn taskBtn mb-1"   runat ="server" Text="Add new Notice" OnClick="btnAddNotice_Click" />
                                 <asp:Button runat="server" ID="btnUpdateNotice" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnUpdateNotice_Click" Text="Update a Notice" />
                             <asp:Button runat="server" ID="btnUpdateDateCounter" CssClass=" pl-2 btn taskBtn mb-1" OnClick="btnUpdateDateCounter_Click" Text="Update Date and Count Down" />
-                            <a class="pl-2 btn taskBtn mb-1" onclick="DropDown('divReports');">View Reports &#11167;</a>
-                                <div id="divReports" class="d-flex flex-column collapsing" runat="server">
+                            <a class="pl-2 btn taskBtn mb-1">View Reports &#11167;</a>
                                     <asp:Button runat="server" ID="btnReportViewMembers" CssClass="pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportViewMembers_Click" Text="All Member Details Reports" />
                                     <asp:Button runat="server" ID="btnReportViewActiveMembers" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportViewActiveMembers_Click" Text="All Active Members" />
                                     <asp:Button runat="server" ID="btnReportUnactiveMembers" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportUnactiveMembers_Click" Text="All Unactive Members" />                     
                                     <asp:Button runat="server" ID="btnReportAllMosques" CssClass=" pl-2 btn sub-taskBtn mb-1 " OnClick="btnReportAllMosques_Click" Text="All Mosques Details" />                     
-                                </div>
                         </nav>
                     </div>
                     <div class=" position-static basic-div-styling p-0 w-100 position-relative">
@@ -315,7 +312,7 @@
                                                             </div>
                                                                 <hr class=" mr-4 m-0 p-0"/>
                                                             <div class="">
-                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Year Established: </b><%# Convert.ToDateTime(Eval("YearEstablished")).ToString("dd MM yyyy") %></p>
+                                                                <p  style="font-size:smaller;" class="p-0 m-0 text-truncate"><b>Year Established: </b><%# Convert.ToDateTime(Eval("YearEstablished")).ToString("dd MMM yyyy") %></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -974,7 +971,7 @@
                                     <div class=" container h-25"></div>
                                 </div>
                             </div>
-                            <%-- Display Details of All Members --%>
+                            <%-- Display Details of All Members, Update Member active status --%>
                             <div runat="server" id="divMemberDetails" class=" col-6 col-xl-4 flex-nowrap p-0">
                                 <asp:HiddenField runat="server" ID="hdfAllMemberID" Value="" />
                                 <div class=" head-div-2 p-2 mb-0 text-left ">
@@ -1054,7 +1051,7 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer text-center position-static text-nowrap">
-                                        <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnUpdateAllMember" OnClientClick="Popup('divAlertPopup');" Text="Update Active Status" OnClick="btnUpdateAllMember_Click" />
+                                        <asp:Button CssClass=" topnav btn btn-sm btn-outline-light mr-2" runat="server" ID="btnUpdateAllMember" Text="Update Active Status" OnClick="btnUpdateAllMember_Click" />
                                         <asp:Button CssClass=" topnav btn btn-sm btn-outline-light" runat="server" ID="btnUpdateCancelAllMember" Text="Cancel" OnClick="btnUpdateCancelAllMember_Click" />
                                     </div>
                                 </div>

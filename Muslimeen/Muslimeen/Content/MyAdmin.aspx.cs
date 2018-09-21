@@ -27,7 +27,7 @@ namespace Muslimeen.Content
 
             try
             {
-                divAlertPopup.Visible = true;
+                divAlertPopup.Visible = false;
                 divListEvent.Visible = false;
                 divEventOverlay.Visible = false;
                 divDisplayEvents.Visible = false;
@@ -61,12 +61,6 @@ namespace Muslimeen.Content
                 divAddMod.Visible = false;
                 ddModQualification.Items.Clear();
                 ddModQualification.Dispose();
-
-                //Collapsing of the dropdown list...
-                if (IsPostBack)
-                {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>if(divReports.classList.contains('collapsing')){divReports.classList.remove('collapsing');} else{divReports.classList.add('collapsing');}</script>");
-                }
 
                 DBHandler dBHandler = new DBHandler();
                 DBHandler db = new DBHandler();
@@ -1843,6 +1837,7 @@ namespace Muslimeen.Content
 
         protected void btnUpdateAllMember_Click(object sender, EventArgs e)
         {
+            divAlertPopup.Visible = true;
             divAllMembersList.Visible = true;
             divMemberDetails.Visible = false;
             divMemberDetailsOverlay.Visible = true;
@@ -1850,6 +1845,7 @@ namespace Muslimeen.Content
             DBHandler dBHandler = new DBHandler();
             uspUpdateMemberActiveStatus updateMemberActiveStatus = new uspUpdateMemberActiveStatus();
             uspGetMember member = new uspGetMember();
+            EmailService emailService = new EmailService();
 
             member = dBHandler.BLL_GetMember(hdfAllMemberID.Value.ToString());
 
@@ -1861,12 +1857,8 @@ namespace Muslimeen.Content
 
             if (memberUpdated == true)
             {
-                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Member active status update successful.');</script>");
-
                 rptMemberList.DataSource = dBHandler.BLL_GetAllMembers();
                 rptMemberList.DataBind();
-
-                EmailService emailService = new EmailService();
 
                 if (ddAllctiveTypeID.SelectedValue == "Y")
                 {
@@ -1881,12 +1873,14 @@ namespace Muslimeen.Content
                     emailService.DisableEnableMember(member.Email.ToString(), member.MemberID, "temp"); //notify the member via email.
                 }
 
-                divAlertPopup.Visible = true;
                 lblAlertError.InnerText = "Successfully updated member active status";
+
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
+                    ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
             }
             else
             {
-                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Member active status update failed.');</script>");
+
             }
         }
 

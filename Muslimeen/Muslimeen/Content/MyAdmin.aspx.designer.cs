@@ -319,15 +319,6 @@ namespace Muslimeen.Content {
         protected global::System.Web.UI.WebControls.Button btnUpdateDateCounter;
         
         /// <summary>
-        /// divReports control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divReports;
-        
-        /// <summary>
         /// btnReportViewMembers control.
         /// </summary>
         /// <remarks>
