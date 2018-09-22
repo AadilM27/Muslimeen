@@ -22,7 +22,9 @@ namespace Muslimeen.Content.Mosque
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
+            divAlertPopup.Visible = false;
+            divInfo.Visible = false;
+            divDanger.Visible = false;
 
             DBHandler db = new DBHandler();
             List<CounterCalender> counterCalender = new List<CounterCalender>();
@@ -182,8 +184,13 @@ namespace Muslimeen.Content.Mosque
             time = db.BLL_GetSpecficDayPrayerTimes(Convert.ToInt32(Session["MosqueID"]), Calendar1.SelectedDate);
             if (time != null)
             {
+                divInfo.Visible = true;
+                lblInfo.InnerText = "Prayer with selected date contains prayer times. Update Prayer times or select another date";
 
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Prayer with selected date contains prayer times. Update Prayer times or select another date');</script>");
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MosqueRep", "var divpop = document.getElementById('divInfo');divpop.classList.add('visible2')" +
+                    ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 6000)", true);
+
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Prayer with selected date contains prayer times. Update Prayer times or select another date');</script>");
                 lblMessage.Text = "Update Prayer Times For ";
                 txtFajrA.Text = time.FajrA.ToString();
                 txtFajrJ.Text = time.FajrJ.ToString();
@@ -381,13 +388,20 @@ namespace Muslimeen.Content.Mosque
                                 }
                                 else if (count == 5)
                                 {
+                                    divAlertPopup.Visible = true;
+
                                     type.PrayerDate = Calendar1.SelectedDate;
                                     type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
                                     type.PrayerDescription = "Eisha";
                                     type.AdhaanTime = txtEishaA.Text.ToString();
                                     type.JamaatTime = txtEishaJ.Text.ToString();
                                     db.BLL_InsertPrayerType(type);
-                                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Added Prayer Times');</script>");
+                                   
+                                    lblAlertError.InnerText = "Successfully Added Prayer Times";
+
+                                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MosqueRep", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
+                                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+                                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Added Prayer Times');</script>");
                                     BtnAdd.Visible = false;
                                     BtnUpdate.Visible = false;
                                 }
@@ -475,7 +489,12 @@ namespace Muslimeen.Content.Mosque
 
             catch (Exception ex)
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Add Unsuccesfull+" + ex + "+');</script>");
+                divDanger.Visible = true;
+                lblDan.InnerText = "Add Unsuccesfull";
+
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MosqueRep", "var divpop = document.getElementById('divDanger');divpop.classList.add('visible2')" +
+                    ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Add Unsuccesfull+" + ex + "+');</script>");
 
             }
 
@@ -638,13 +657,21 @@ namespace Muslimeen.Content.Mosque
                                 }
                                 else if (count == 5)
                                 {
+                                    divAlertPopup.Visible = true;
+
                                     type.PrayerDate = Calendar1.SelectedDate;
                                     type.MosqueID = Convert.ToInt32(Session["MosqueID"]);
                                     type.PrayerDescription = "Eisha";
                                     type.AdhaanTime = txtEishaA.Text.ToString();
                                     type.JamaatTime = txtEishaJ.Text.ToString();
                                     db.BLL_UpdatePrayerType(type);
-                                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Updated Prayer Times');</script>");
+                                    
+                                    lblAlertError.InnerText = "Successfully Updated Prayer Times";
+
+                                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MosqueRep", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
+                                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
+                                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Updated Prayer Times');</script>");
                                 }
 
                                 count++;
@@ -721,7 +748,14 @@ namespace Muslimeen.Content.Mosque
             }
             catch
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Update Unsuccesfull');</script>");
+                divDanger.Visible = true;
+
+                lblDan.InnerText = "Update Unsuccesfull";
+
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MosqueRep", "var divpop = document.getElementById('divDanger');divpop.classList.add('visible2')" +
+                    ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Update Unsuccesfull');</script>");
             }
         }
         protected void btnAddEvent_Click(object sender, EventArgs e)
@@ -734,6 +768,7 @@ namespace Muslimeen.Content.Mosque
 
                     if (txtEventTitle.Text != "" && txtEventDescription.Text != "" && txtEventStartTime.Text != "" && txtEventEndTime.Text != "" && txtEventDate.Text != "" && txtSpeaker.Text != "")
                     {
+                        divAlertPopup.Visible = true;
                         divAddEventOverlay.Visible = false;
                         Event mosqueEvent = new Event();
                         mosqueEvent.EventTitle = txtEventTitle.Text.ToString();
@@ -757,6 +792,11 @@ namespace Muslimeen.Content.Mosque
                         txtEventEndTime.Text = "";
                         txtEventDate.Text = "";
                         txtSpeaker.Text = "";
+
+                        lblAlertError.InnerText = "Successfully Added an Event";
+
+                        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MosqueRep", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
+                            ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                     }
                     else
                     {
@@ -857,6 +897,7 @@ namespace Muslimeen.Content.Mosque
             {
                 if (txtUpdateEventDate.Text != "" && txtUpdateEventTitle.Text != "" && txtUpdateEventDescription.Text != "" && txtUpdateEventStartTime.Text != "" && txtUpdateEventEndTime.Text != "" && txtUpdateSpeaker.Text != "")
                 {
+                    divAlertPopup.Visible = true;
                     Event events = new Event();
                     events.EventTitle = txtUpdateEventTitle.Text.ToString();
                     events.EventDescription = txtUpdateEventDescription.Text.ToString();
@@ -869,6 +910,12 @@ namespace Muslimeen.Content.Mosque
                     db.BLL_UpdateEvent(events);
                     DateTime startDate = Convert.ToDateTime(txtStartDate.Text.ToString());
                     DateTime EndDate = Convert.ToDateTime(txtEndDate.Text.ToString());
+
+                    lblAlertError.InnerText = "Successfully Updated an Event";
+
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MosqueRep", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
+                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
                     if (startDate.Date <= EndDate.Date)
                     {
                         rptGetEvents.DataSource = db.Bll_GetMosqueEventsDateRange(int.Parse(Session["MosqueID"].ToString()), startDate, EndDate);
@@ -909,7 +956,14 @@ namespace Muslimeen.Content.Mosque
                 }
                 else
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Please Enter Required Fields');</script>");
+                    divDanger.Visible = true;
+
+                    lblDan.InnerText = "Please Enter Required Fields";
+
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MosqueRep", "var divpop = document.getElementById('divDanger');divpop.classList.add('visible2')" +
+                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Please Enter Required Fields');</script>");
                     if (txtUpdateEventTitle.Text == "")
                     {
                         txtUpdateEventTitle.BorderColor = Color.Red;
@@ -951,7 +1005,14 @@ namespace Muslimeen.Content.Mosque
             }
             catch
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Update Event Unsuccessfull');</script>");
+                divDanger.Visible = true;
+
+                lblDan.InnerText = "Update Event Unsuccessfull";
+
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MosqueRep", "var divpop = document.getElementById('divDanger');divpop.classList.add('visible2')" +
+                    ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Update Event Unsuccessfull');</script>");
                 divAddEvent.Visible = false;
                 divManageTimes.Visible = false;
                 divManageEvent.Visible = true;
@@ -966,10 +1027,18 @@ namespace Muslimeen.Content.Mosque
         {
             try
             {
+                divAlertPopup.Visible = true;
+
                 Event events = new Event();
                 events.EventID = Convert.ToInt32(Session["EventID"].ToString());
                 db.BLL_RemoveEvent(events);
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Removed Event');</script>");
+                
+                lblAlertError.InnerText = "Successfully Removed Event";
+
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MosqueRep", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
+                    ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Removed Event');</script>");
                 txtStartDate.Text = "";
                 txtEndDate.Text = "";
                 lblTaskHeader.InnerText = btnNavRemoveEvent.Text.ToString();
@@ -987,7 +1056,14 @@ namespace Muslimeen.Content.Mosque
             }
             catch
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Remove Event Unsucesfull');</script>");
+                divDanger.Visible = true;
+
+                lblDan.InnerText = "Remove Event Unsuccesfull";
+
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MosqueRep", "var divpop = document.getElementById('divDanger');divpop.classList.add('visible2')" +
+                    ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Remove Event Unsucesfull');</script>");
                 divAddEvent.Visible = false;
                 divManageTimes.Visible = false;
                 divManageEvent.Visible = true;

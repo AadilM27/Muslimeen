@@ -131,6 +131,7 @@
     <Content Include="Content\Mosque\css\MyMosque.css" />
     <Content Include="Content\Mosque\download.png" />
     <Content Include="Content\Images\MosqueImages\fuqara.png" />
+    <Content Include="Content\Mosque\js\MosqueRep.js" />
     <Content Include="Content\Mosque\ListMosque.aspx" />
     <Content Include="Content\Mosque\Mosque.aspx" />
     <Content Include="Content\Mosque\MosqueRep.aspx" />

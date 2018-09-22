@@ -13,9 +13,18 @@
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico" />
     <link href="css/MyMosque.css" rel="stylesheet" />
-
+    <script src="js/MosqueRep.js"></script>
 </head>
 <body>
+    <div id="divAlertPopup" runat="server" class="container-fluid text-center p-2 m-0 w-100 alert alert-success visible">
+        <label class="h6" id="lblAlertError" runat="server"></label>
+    </div>
+    <div id="divInfo" runat="server" class="container-fluid text-center p-2 m-0 w-100 alert alert-info visible">
+        <label class="h6" id="lblInfo" runat="server"></label>
+    </div>
+    <div id="divDanger" runat="server" class="container-fluid text-center p-2 m-0 w-100 alert alert-danger visible">
+        <label class="h6" id="lblDan" runat="server"></label>
+    </div>
     <form id="form1" runat="server">
         <header>
             <nav class="navFixed">
