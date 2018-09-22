@@ -22,6 +22,24 @@ namespace Muslimeen.Content.MyScholar {
         protected global::System.Web.UI.WebControls.HyperLink lnk1;
         
         /// <summary>
+        /// divAlertPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAlertPopup;
+        
+        /// <summary>
+        /// lblAlertError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAlertError;
+        
+        /// <summary>
         /// frmAddArticle control.
         /// </summary>
         /// <remarks>
@@ -544,6 +562,15 @@ namespace Muslimeen.Content.MyScholar {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
+        /// lblCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCount;
+        
+        /// <summary>
         /// txtContent control.
         /// </summary>
         /// <remarks>
@@ -551,7 +578,7 @@ namespace Muslimeen.Content.MyScholar {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtContent;
-                
+        
         /// <summary>
         /// btnSave control.
         /// </summary>

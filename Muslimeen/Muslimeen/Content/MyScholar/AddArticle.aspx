@@ -18,7 +18,7 @@
     <script type ="text/javascript">
         function count(txt)
         {
-            var lbl = document.getElementById("Label1");
+            var lbl = document.getElementById("lblCount");
             lbl.innerHTML = txt.value.length;
         }
     </script>
@@ -26,7 +26,9 @@
     </head>
 <body>
     <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
-
+    <div id="divAlertPopup" runat="server" class="container-fluid text-center p-2 m-0 w-100 alert alert-success visible">
+        <label class="h6" id="lblAlertError" runat="server"></label>
+    </div>
     <form id="frmAddArticle" runat="server" >
         <!--Header-->
         <header >
@@ -302,8 +304,8 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-sm-12 mb-1">
-                                        <label class="col mb-0 p-0 position-static"><strong>Content*:</strong></label><asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+                                    <div class="form-group col-sm-12 mb-1">                                       
+                                        <label class="col-6 ml-1 mb-0 p-0 position-static"><strong>Content*:</strong></label><asp:Label class="col-6 mb-0 p-0 position-static" ID="Label1" runat="server"><strong>Character Count: </strong></asp:Label><asp:Label ID="lblCount" runat="server"></asp:Label>                                        
                                         <asp:TextBox CssClass="form-control" onkeyup="count(this)" ID="txtContent" runat="server" Style="max-height:350px; min-height:350px;" TextMode="MultiLine"></asp:TextBox>
                                     </div>
                                 </div>

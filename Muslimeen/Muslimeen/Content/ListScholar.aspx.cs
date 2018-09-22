@@ -20,6 +20,7 @@ namespace Muslimeen.Content
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            divAlertPopup.Visible = false;
             divSchDetailsOverlay.Visible = true;
             divDisplaySch.Visible = false;
 
@@ -217,6 +218,7 @@ namespace Muslimeen.Content
         {
             try
             {
+                divAlertPopup.Visible = true;
                 DBHandler han = new DBHandler();
 
                 if (drpMosque.SelectedItem.ToString() != "All")
@@ -232,7 +234,10 @@ namespace Muslimeen.Content
 
                 if (rptViewPendingSch.Items.Count < 1)
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('No Scholars Assinged to this Mosque');</script>");
+                    lblAlertError.InnerText = "No Scholars Assinged to this Mosque";
+
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "ListScholar", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
+                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                 }
 
             }
@@ -246,6 +251,7 @@ namespace Muslimeen.Content
         {
             try
             {
+                divAlertPopup.Visible = true;
                 DBHandler han = new DBHandler();
 
                 if(drpQuali.SelectedItem.ToString() != "All")
@@ -261,7 +267,10 @@ namespace Muslimeen.Content
 
                 if (rptViewPendingSch.Items.Count < 1)
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('No scholars have the following qualification');</script>");
+                    lblAlertError.InnerText = "No scholars have the following qualification";
+
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "ListScholar", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
+                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                 }
             }
             catch
