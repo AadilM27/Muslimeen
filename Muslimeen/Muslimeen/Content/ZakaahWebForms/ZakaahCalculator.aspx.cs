@@ -27,7 +27,7 @@ namespace Muslimeen.Content.ZakaahWebForms
 
                 DBHandler dBHandler = new DBHandler();
 
-
+                divAlertPopup.Visible = false;
                 if (Session["UserName"] != null)
                 {
                     uspGetMember uspGetMember = new uspGetMember();
@@ -227,13 +227,17 @@ namespace Muslimeen.Content.ZakaahWebForms
         {
             try
             {
-                
+                divAlertPopup.Visible = true;
                 double eligible = 0;
                 if (txtAllDebts.Text == "" && (txtTotalAssets.Text != "" || txtTotalAssets.Text != null))
                 {
                     txtAllDebts.BorderColor = Color.Red;
                     txtAllDebts.ForeColor = Color.Red;
-                    LblRequire.Text = "*Field Required*";
+                    lblAlertError.InnerText = "Required Field missing***";
+
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyModerator", "var divpop = document.getElementById('divAlertPopup');divpop.style.display='block';" +
+                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
                     LblRequire.ForeColor = Color.Red;
                   
                 }
@@ -241,7 +245,11 @@ namespace Muslimeen.Content.ZakaahWebForms
                 {
                     txtTotalAssets.BorderColor = Color.Red;
                     txtTotalAssets.ForeColor = Color.Red;
-                    LblRequire1.Text = "*Field Required*";
+                    lblAlertError.InnerText = "Required Field Missing***";
+
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyModerator", "var divpop = document.getElementById('divAlertPopup');divpop.style.display='block';" +
+                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
                     LblRequire1.ForeColor = Color.Red;
                 }
                 else if (txtAllDebts.Text == "" && txtTotalAssets.Text == "")
