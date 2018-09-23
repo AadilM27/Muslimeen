@@ -22,6 +22,7 @@ namespace Muslimeen.Content.MyScholar
 
             try
             {
+                divAlertPopup.Visible = false;
                 divAddArticle.Visible = false;
                 divPendingArticles.Visible = false;
                 divRejectedArticles.Visible = false;
@@ -254,10 +255,9 @@ namespace Muslimeen.Content.MyScholar
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            divAddArticle.Visible = true;
-
             try
             {
+                divAlertPopup.Visible = true;
                 DBHandler han = new DBHandler();
                 InsertArticle art = new InsertArticle();
                 
@@ -277,10 +277,12 @@ namespace Muslimeen.Content.MyScholar
                     han.BLL_InsertArticle(art);
                     divAddArticle.Visible = true;
                     txtHeading.Text = string.Empty;
-                    txtContent.Text = string.Empty;
+                    txtContent.Text = string.Empty;                   
 
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Added Article');</script>");
-                    Response.Redirect("../MyScholar/AddArticle.aspx", true);
+                    lblAlertError.InnerText = "Article Successfully Added";
+
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "AddArticle", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
+                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);                   
                 }
                 else
                 {
@@ -391,24 +393,65 @@ namespace Muslimeen.Content.MyScholar
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
-        {            
-            UpdateArticle art = new UpdateArticle();
-            DBHandler han = new DBHandler();
+        {
+            try
+            {
+                divAlertPopup.Visible = true;
+                UpdateArticle art = new UpdateArticle();
+                DBHandler han = new DBHandler();
 
-            art.ArticleTitle = Convert.ToString(txtHeading.Text);
-            art.ArticleContent = Convert.ToString(txtContent.Text);
-            art.ArticleTopic = Convert.ToInt32(drpTopics.SelectedValue.ToString());
-            art.ArticleID = Convert.ToInt32(hfdRej.Value);
-            art.Status = Convert.ToChar("P");
-            art.Active = Convert.ToChar("T");
-            art.ScholarID = Convert.ToString(Session["UserName"]);
+                if (drpTopics.SelectedValue.ToString() != "Select" && txtHeading.Text != "" && txtContent.Text != "")
+                {
+                    art.ArticleTitle = Convert.ToString(txtHeading.Text);
+                    art.ArticleContent = Convert.ToString(txtContent.Text);
+                    art.ArticleTopic = Convert.ToInt32(drpTopics.SelectedValue.ToString());
+                    art.ArticleID = Convert.ToInt32(hfdRej.Value);
+                    art.Status = Convert.ToChar("P");
+                    art.Active = Convert.ToChar("T");
+                    art.ScholarID = Convert.ToString(Session["UserName"]);
 
-            han.BLL_UpdateArticle(art);
+                    han.BLL_UpdateArticle(art);
 
-            txtHeading.Text = string.Empty;
-            txtContent.Text = string.Empty;
+                    txtHeading.Text = string.Empty;
+                    txtContent.Text = string.Empty;
 
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Updated Article');</script>");
+                    lblAlertError.InnerText = "Article Successfully Updated";
+
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "AddArticle", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
+                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);                    
+                }
+                else
+                {
+                    if (drpTopics.SelectedValue.ToString() == "Select")
+                    {
+                        drpTopics.BorderColor = Color.Red;
+                    }
+                    else
+                    {
+                        drpTopics.BorderColor = Color.Empty;
+                    }
+                    if (txtHeading.Text == "")
+                    {
+                        txtHeading.BorderColor = Color.Red;
+                    }
+                    else
+                    {
+                        txtHeading.BorderColor = Color.Empty;
+                    }
+                    if (txtContent.Text == "")
+                    {
+                        txtContent.BorderColor = Color.Red;
+                    }
+                    else
+                    {
+                        txtContent.BorderColor = Color.Empty;
+                    }
+                }
+            }
+            catch
+            {
+
+            }
         }
 
         protected void btnMosqueEvents_Click(object sender, EventArgs e)

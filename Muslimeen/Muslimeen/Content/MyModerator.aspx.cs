@@ -62,6 +62,7 @@ namespace Muslimeen.Content.MyModerator
                 divEvent.Visible = false;
                 divListEventDetails.Visible = false;
                 divDisplaySalahTimetable.Visible = false;
+                divAlertPopup.Visible = false;
                 
 
 
@@ -412,6 +413,7 @@ namespace Muslimeen.Content.MyModerator
                 
                 if (Session["UserName"] != null)
                 {
+                    divAlertPopup.Visible = true;
                     DBHandler dBHandler = new DBHandler();
                     Moderater m = new Moderater();
                     AcceptArticle accept = new AcceptArticle();
@@ -425,7 +427,10 @@ namespace Muslimeen.Content.MyModerator
                    
                     if (dBHandler.BLL_AcceptArticle(accept))
                     {
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Article Accepted!')", true);
+                        lblAlertError.InnerText = "Article Approved";
+
+                        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyModerator", "var divpop = document.getElementById('divAlertPopup');divpop.style.display='block';" +
+                            ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                     }
 
                     divViewArt.Visible = true;
@@ -445,7 +450,7 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
-               
+                divAlertPopup.Visible = true;
                 if (txtRejectReason.Text.ToString() == "" || txtRejectReason == null)
                 {
                     lblRejection.Text = "Cannot reject an article without a reason!";
@@ -466,8 +471,15 @@ namespace Muslimeen.Content.MyModerator
                     reject.Active = 'N';
                     reject.ModeratorID = Session["UserName"].ToString();
 
-                    dBHandler.BLL_RejectArticle(reject);                
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Article Rejected!')", true);
+                    if(dBHandler.BLL_RejectArticle(reject))
+                    {
+                        lblAlertError.InnerText = "Article Rejected.";
+
+                        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyModerator", "var divpop = document.getElementById('divAlertPopup');divpop.style.display='block';" +
+                            ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
+                    }
+                   
                     lblRejection.Text = "";
                     txtRejectReason.Text = "";
                     txtRejectReason.BorderColor = System.Drawing.Color.Empty;
@@ -960,7 +972,7 @@ namespace Muslimeen.Content.MyModerator
         {
             try
             {
-
+                divAlertPopup.Visible = true;
                 if ( txtRemovalReason.Text.ToString() == "" || txtRemovalReason == null)
                 {
                     lblRemovalDisplay.Text = "Cannot remove an article without a reason!";
@@ -983,9 +995,17 @@ namespace Muslimeen.Content.MyModerator
 
                     if (dBHandler.BLL_updateRemoveArticle(remove))
                     {
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('This Article has been removed from Learn Islam')", true);
+                        lblAlertError.InnerText = "Successfully removed this article.";
+
+                        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyModerator", "var divpop = document.getElementById('divAlertPopup');divpop.style.display='block';" +
+                            ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
                     }
-                        lblRemovalDisplay.Text = "";
+                    else
+                    {
+
+                    }
+                    lblRemovalDisplay.Text = "";
                         txtRemovalReason.Text = "";
                         txtRemovalReason.BorderColor = System.Drawing.Color.Empty;
 

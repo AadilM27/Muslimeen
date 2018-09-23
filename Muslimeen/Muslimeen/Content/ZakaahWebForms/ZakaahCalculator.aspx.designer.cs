@@ -22,6 +22,24 @@ namespace Muslimeen.Content.ZakaahWebForms {
         protected global::System.Web.UI.WebControls.HyperLink lnk1;
         
         /// <summary>
+        /// divAlertPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAlertPopup;
+        
+        /// <summary>
+        /// lblAlertError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAlertError;
+        
+        /// <summary>
         /// frmScholar control.
         /// </summary>
         /// <remarks>
@@ -317,6 +335,15 @@ namespace Muslimeen.Content.ZakaahWebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAllDebts;
+        
+        /// <summary>
+        /// divRequire control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRequire;
         
         /// <summary>
         /// LblRequire1 control.

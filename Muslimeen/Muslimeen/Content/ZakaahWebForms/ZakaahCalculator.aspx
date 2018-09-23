@@ -31,6 +31,9 @@
 </head>
     <body>
        <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
+           <div id="divAlertPopup" runat="server" style="display:none;" class="container-fluid text-center p-2 m-0 w-100 alert alert-success visible">
+                <label class="h6" id="lblAlertError"  runat="server" ></label>
+        </div>
         <form id="frmScholar" runat="server" class=" ">   
             <header >
                 <nav class="navFixed">
@@ -191,7 +194,9 @@
                    <div style="float: right;">
                    <asp:Textbox ID="txtAllDebts" CssClass="form-control form-control-sm topnav   mr-2 "  runat="server" OnTextChanged="txtAllDebts_TextChanged" onKeyPress ="return onlyNumbers();"></asp:Textbox>
                        <br />
+                       <div runat="server" id="divRequire" style ="float:right">
                        <asp:Label ID="LblRequire1" runat="server" Text=""></asp:Label>
+                           </div>
                    </div>
 
                    </div>
@@ -313,5 +318,6 @@
             </div>
         <script src="../Default/Default.js"></script>
     </body>
+    <script src="../MyAdmin/js/MyAdmin.js"></script>
         <script src="../Default/Default.js"></script>
          </html>

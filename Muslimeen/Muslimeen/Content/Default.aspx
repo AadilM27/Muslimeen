@@ -133,12 +133,12 @@
                     </div>
 
                     <div class="mySlides">
-                        <q>Don't depend too much on anyone in this world becayse even your own shadow leaves you when you are in the dark.</q>
+                        <q>Don't depend too much on anyone in this world because even your own shadow leaves you when you are in the dark.</q>
                         <p class="author">– Ibn Taymiyyah (R.A)</p>
                     </div>
 
                     <div class="mySlides">
-                        <q>Know that the happiest people are those who are stringest in their love of God.</q>
+                        <q>Know that the happiest people are those who are strongest in their love of God.</q>
                         <p class="author">– Imaam Al-Ghazali</p>
                     </div>
                     <div class="mySlides">

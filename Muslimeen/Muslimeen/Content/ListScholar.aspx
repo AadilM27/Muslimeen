@@ -11,9 +11,13 @@
     <link rel="icon" href="../Login/LogIn_Bootstrap/muslimeen.ico"/>
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="Scholar/css/Scholar.css" rel="stylesheet" />
+    <script src="Scholar/js/ListScholar.js"></script>
 </head>
 <body>
     <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
+    <div id="divAlertPopup" runat="server" class="container-fluid text-center p-2 m-0 w-100 alert alert-info visible">
+        <label class="h6" id="lblAlertError" runat="server"></label>
+    </div>
     <form id="frmScholar" runat="server">
         <header >
                 <nav class="navFixed">

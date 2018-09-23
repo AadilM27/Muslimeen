@@ -135,6 +135,7 @@
     <Content Include="Content\Mosque\css\MyMosque.css" />
     <Content Include="Content\Mosque\download.png" />
     <Content Include="Content\Images\MosqueImages\fuqara.png" />
+    <Content Include="Content\Mosque\js\MosqueRep.js" />
     <Content Include="Content\Mosque\ListMosque.aspx" />
     <Content Include="Content\Mosque\Mosque.aspx" />
     <Content Include="Content\Mosque\MosqueRep.aspx" />
@@ -161,6 +162,7 @@
     <Content Include="Content\MyModerator\Adobe_PDF.png" />
     <Content Include="Content\MyModerator\css\MyModerator.css" />
     <Content Include="Content\MyModerator\images %287%29.jpeg" />
+    <Content Include="Content\MyModerator\js\MyModerator.js" />
     <Content Include="Content\MyScholar\AddArticle.aspx" />
     <Content Include="Content\MyScholar\css\MyScholar.css" />
     <Content Include="Content\MyScholar\js\AddArticle.js" />
@@ -169,6 +171,7 @@
     <Content Include="Content\ProfileEditer\js\ProfileEditer.js" />
     <Content Include="Content\ListScholar.aspx" />
     <Content Include="Content\Scholar\css\Scholar.css" />
+    <Content Include="Content\Scholar\js\ListScholar.js" />
     <Content Include="Content\ZakaahWebForms\Zakaah.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahCalculator.aspx" />
     <Content Include="Content\ZakaahWebForms\ZakaahGallery.aspx" />
@@ -1819,7 +1822,6 @@
     <Folder Include="Content\Error\css\" />
     <Folder Include="Content\Error\js\" />
     <Folder Include="Content\Images\ZakaahOrgImages\" />
-    <Folder Include="Content\MyModerator\js\" />
     <Folder Include="Content\Zakaah\js\" />
   </ItemGroup>
   <ItemGroup>

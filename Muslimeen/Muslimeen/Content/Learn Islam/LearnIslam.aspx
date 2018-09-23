@@ -40,6 +40,9 @@
 </head>
 <body style="background-color:white">
     <asp:HyperLink ID="lnk1" runat="server" src="../HelpPage.aspx"></asp:HyperLink>
+    <div id="divAlertPopup" runat="server" class="container-fluid text-center p-2 m-0 w-100 alert alert-danger visible">
+        <label class="h6" id="lblAlertError" runat="server"></label>
+    </div>
     <form id="frmLearnIslam" runat="server">
         <!--Header-->
         <header onload="RemoveView();" >
