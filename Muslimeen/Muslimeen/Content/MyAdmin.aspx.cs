@@ -27,7 +27,7 @@ namespace Muslimeen.Content
 
             try
             {
-                divAlertPopup.Visible = false;
+                //divAlertPopup.Visible = false;
                 divListEvent.Visible = false;
                 divEventOverlay.Visible = false;
                 divDisplayEvents.Visible = false;
@@ -306,19 +306,29 @@ namespace Muslimeen.Content
                         divDisplaySch.Visible = false;
                         divSchDetailsOverlay.Visible = true;
 
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Scholar Registration accepted.');</script>");
+                        lblAlertError.InnerText = "Scholar registration accepted.";
+
+                        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.style.display = 'block';" +
+                            ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
 
                         rptViewPendingSch.DataSource = db.BLL_GetAllPendingScholars();
                         rptViewPendingSch.DataBind();
                     }
                     else
                     {
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Scholar Registration rejected.');</script>");
+                        lblAlertError.InnerText = "Unable to accept registration, please try again.";
+
+                        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                            ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                     }
                 }
                 else
                 {
-                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Failed to perform action, please try again.');</script>");
+                    lblAlertError.InnerText = "Failed to perform action, please try again.";
+
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                       ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
                     divViewPendingSch.Visible = false;
                     divDisplaySch.Visible = false;
                     divSchDetails.Visible = false;
@@ -327,7 +337,7 @@ namespace Muslimeen.Content
             }
             catch
             {
-                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Failed to perform action, please try again.');</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Failed to perform action, please try again.');</script>");
             }
         }
 
@@ -353,14 +363,20 @@ namespace Muslimeen.Content
                     divDisplaySch.Visible = false;
                     divSchDetailsOverlay.Visible = true;
 
-                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Scholar registration rejected.');</script>");
+                    lblAlertError.InnerText = "Scholar registration rejected successfully.";
+
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.style.display = 'block';" +
+                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
 
                     rptViewPendingSch.DataSource = db.BLL_GetAllPendingScholars();
                     rptViewPendingSch.DataBind();
                 }
                 else
                 {
-                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Scholar registration rejection failed.');</script>");
+                    lblAlertError.InnerText = "Unable to reject scholar registration, please try again.";
+
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                     divViewPendingSch.Visible = false;
                     divDisplaySch.Visible = false;
                     divSchDetails.Visible = false;
@@ -368,7 +384,7 @@ namespace Muslimeen.Content
             }
             catch
             {
-                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Failed to perform action, please try again.');</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Failed to perform action, please try again.');</script>");
                 divViewPendingSch.Visible = false;
                 divDisplaySch.Visible = false;
                 divSchDetails.Visible = false;
@@ -639,7 +655,12 @@ namespace Muslimeen.Content
                     if (success == true)
                     {
                         emailService.AddMosque(txtUserName.Text.ToString(), (txtName.Text.ToString() + " " + txtLName.Text.ToString()), txtMosqueName.Text.ToString(), txtPassword.Text.ToString(), txtUserEmail.Text.ToString());
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Mosque has been succesfully added.');</script>");
+
+                        lblAlertError.InnerText = "Mosque registered successfully.";
+
+                        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.style.display = 'block';" +
+                            ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
                         divAddMosque.Visible = false;
                         divAddMosqueRep.Visible = false;
                         
@@ -662,11 +683,13 @@ namespace Muslimeen.Content
                         txtMosqueQuote.Text = string.Empty;
                         fupMosqueImage.Attributes.Clear();
 
-                        btnTodaysPrayerTime_Click(sender, e);
                     }
                     else
                     {
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Mosque registration was unsuccessful, please try again.');</script>");
+                        lblAlertError.InnerText = "Unable to register Mosque, please try again.";
+
+                        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                            ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                     }
                 }
                 else if (lblError.Text == "")
@@ -864,7 +887,10 @@ namespace Muslimeen.Content
                         EmailService email = new EmailService();
                         email.AddMod(txtModUserName.Text.ToString(), txtModFName.Text.ToString(), txtModEmail.Text.ToString(), txtModPassword.Text.ToString());
 
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Moderater registration was successful.');</script>");
+                        lblAlertError.InnerText = "Moderater registered successfully.";
+
+                        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.style.display = 'block';" +
+                            ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
 
                         txtModUserName.Text = string.Empty;
                         txtModFName.Text = string.Empty;
@@ -872,22 +898,24 @@ namespace Muslimeen.Content
                         txtModContactNo.Text = string.Empty;
                         txtModDOB.Text = string.Empty;
                         txtModEmail.Text = string.Empty;
+                        divAddMod.Visible = false;
+                        Form.Dispose();
                     }
                     else
                     {
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Moderater registration was unsuccessful, please try again.');</script>");
-                    }
+                        lblAlertError.InnerText = "Unable to register Moderater, please try again.";
 
-                }
-                else
-                {
-                    lblModError.Text = "Incomplete form.";
-                    lblModError.ForeColor = Color.Red;
+                        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                            ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+                    }
                 }
             }
             catch
             {
-                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Moderater registration was unsuccessful, please try again.');</script>");
+                lblAlertError.InnerText = "Unable to register Moderater, please try again.";
+
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                    ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
             }
         }
 
@@ -1047,7 +1075,10 @@ namespace Muslimeen.Content
 
                         if (OrgSuccess == true) //test
                         {
-                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Zakaah Organization has been successfully added.');</script>");
+                            lblAlertError.InnerText = "Organization added successfully.";
+
+                            this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.style.display = 'block';" +
+                                ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
 
                             divZakaahOrgList.Visible = false;
                             divAddUpdateZakaahOrg.Visible = false;
@@ -1067,7 +1098,10 @@ namespace Muslimeen.Content
                         }
                         else
                         {
-                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert(' Failed to add Zakaah Organization.');</script>");
+                            lblAlertError.InnerText = "Unable to add Zakaah Organization, please try again.";
+
+                            this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                                ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                         }
                     }
 
@@ -1105,7 +1139,10 @@ namespace Muslimeen.Content
 
                         if (updateOrg == true)
                         {
-                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Zakaah Organization has been successfully Updated.');</script>");
+                            lblAlertError.InnerText = "Organization updated successfully.";
+
+                            this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.style.display = 'block';" +
+                                ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
 
                             //Refresh the List...
                             rptZakaahOrg.DataSource = db.BLL_GetOrganization();
@@ -1129,7 +1166,10 @@ namespace Muslimeen.Content
                         }
                         else
                         {
-                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Zakaah Organization update failed, please try again.');</script>");
+                            lblAlertError.InnerText = "Organization updated failed, please try again.";
+
+                            this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                                ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                         }
 
                     }
@@ -1227,11 +1267,10 @@ namespace Muslimeen.Content
 
                 notice = db.BLL_GetSelectedNotice(Convert.ToInt32(noticeID));
 
-
                 txtNoticeTitle.Text = notice.NoticeTitle.ToString();
                 txtNoticeDesc.Text = notice.NoticeDescription.ToString();
                 txtNoticeDateCreated.Text = Convert.ToDateTime(notice.DateCreated).ToString("dd MMM yyyy");
-                txtNoticeExpiryDate.Text = notice.DateExpiry.ToString("dd MMM yyyy", CultureInfo.InvariantCulture);
+                txtNoticeExpiryDate.Text = notice.DateExpiry.ToString("dd MM yyyy", CultureInfo.InvariantCulture);
                 txtNoticeMemberID.Text = notice.MemberID.ToString();
                 ddNoticeActive.SelectedValue = notice.Active.ToString();
             }
@@ -1322,7 +1361,10 @@ namespace Muslimeen.Content
 
                         if (noticeAdd == true)
                         {
-                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Notice added.');</script>");
+                            lblAlertError.InnerText = "Notice added successfully.";
+
+                            this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.style.display = 'block';" +
+                                ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
 
                             txtNoticeTitle.Text = string.Empty;
                             txtNoticeTitle.BorderColor = Color.Empty;
@@ -1334,13 +1376,16 @@ namespace Muslimeen.Content
                             txtNoticeMemberID.Text = string.Empty;
                             ddNoticeActive.SelectedIndex = 0;
                             lblNoticeError.Text = String.Empty;
+                            divAddUpdateNotice.Visible = false;
                         }
                         else
                         {
-                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert(' Failed to add the Notice, please try again.');</script>");
+                            lblAlertError.InnerText = "Notice add failed, please try again.";
+
+                            this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                                ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                         }
                     }
-
                 }
                 else if (btnAddUpdateNotice.Text == "Update Notice")
                 {
@@ -1363,7 +1408,10 @@ namespace Muslimeen.Content
                             rptNotice.DataSource = db.BLL_GetAllNotices();
                             rptNotice.DataBind();
 
-                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Notice has been successfully add.');</script>");
+                            lblAlertError.InnerText = "Notice updated successfully.";
+
+                            this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.style.display = 'block';" +
+                                ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
 
                             txtNoticeTitle.Text = string.Empty;
                             txtNoticeTitle.BorderColor = Color.Empty;
@@ -1374,10 +1422,15 @@ namespace Muslimeen.Content
                             txtNoticeMemberID.Text = string.Empty;
                             ddNoticeActive.SelectedIndex = 0;
                             lblNoticeError.Text = String.Empty;
+                            divNoticeList.Visible = true;
+                            divAddUpdateNotice.Visible = false;
                         }
                         else
                         {
-                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert(' Failed to add the Notice, please try again.');</script>");
+                            lblAlertError.InnerText = "Notice update failed.";
+
+                            this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                                ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                         }
                     }
                 }
@@ -1441,6 +1494,10 @@ namespace Muslimeen.Content
                 divCounterCalander.Visible = true;
                 lblTaskHead.InnerText = btnUpdateDateCounter.Text;
             }
+            catch
+            {
+
+            }
         }
 
         protected void btnUpdateCounter_Click(object sender, EventArgs e)
@@ -1489,7 +1546,10 @@ namespace Muslimeen.Content
 
                     if (updateCOuntDown == true)
                     {
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Update successful.');</script>");
+                        lblAlertError.InnerText = "Count Down updated successfully.";
+
+                        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.style.display = 'block';" +
+                            ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
 
                         txtCounterEndTitle.BorderColor = Color.Empty;
                         txtCounterEndTitle.Text = String.Empty;
@@ -1502,7 +1562,10 @@ namespace Muslimeen.Content
                     }
                     else
                     {
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Update unsuccessful.');</script>");
+                        lblAlertError.InnerText = "Count Down update failed.";
+
+                        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                            ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                     }
                 }
             }
@@ -1536,13 +1599,19 @@ namespace Muslimeen.Content
                     if (islamicDate == true)
                     {
                         txtIslamicDate.BackColor = Color.Empty;
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Update successful.');</script>");
+                        lblAlertError.InnerText = "Islamic date adjusted successfully.";
+
+                        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.style.display = 'block';" +
+                            ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                         divCounterCalander.Visible = true;
                         btnUpdateDateCounter_Click(sender, e);
                     }
                     else
                     {
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Update unsuccessful.');</script>");
+                        lblAlertError.InnerText = "Notice update failed.";
+
+                        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                            ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                     }
                 }
 
@@ -1678,7 +1747,7 @@ namespace Muslimeen.Content
 
                         mosque.MosqueImage = ("Images/MosqueImages/" + txtUpdateMosqueName.Text.ToString() + "." + fileFormat.ToString());
                     }
-                    else
+                    else if(!fupUpdateMosqueImage.HasFile)
                     {
                         mosque.MosqueImage = fupUpdateMosqueImage.ToolTip.ToString();
                     }
@@ -1689,7 +1758,10 @@ namespace Muslimeen.Content
 
                     if (mosqueUpdate == true)
                     {
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Mosque update successful.');</script>");
+                        lblAlertError.InnerText = "Successfully Updated mosque.";
+
+                        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.style.display = 'block';" +
+                            ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
 
                         txtUpdateMosqueName.Text = string.Empty;
                         txtUpdateMosqueAddr.Text = string.Empty;
@@ -1702,7 +1774,10 @@ namespace Muslimeen.Content
                     }
                     else
                     {
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Mosque update Unsuccessful.');</script>");
+                        lblAlertError.InnerText = "Unable to update Mosque, please try again.";
+
+                        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                            ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                     }
                 }
 
@@ -1837,7 +1912,7 @@ namespace Muslimeen.Content
 
         protected void btnUpdateAllMember_Click(object sender, EventArgs e)
         {
-            divAlertPopup.Visible = true;
+            //divAlertPopup.Visible = true;
             divAllMembersList.Visible = true;
             divMemberDetails.Visible = false;
             divMemberDetailsOverlay.Visible = true;
@@ -1875,12 +1950,15 @@ namespace Muslimeen.Content
 
                 lblAlertError.InnerText = "Successfully updated member active status";
 
-                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.style.display = 'block';" +
                     ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
             }
             else
             {
+                lblAlertError.InnerText = "Unable to update member active status.";
 
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                   ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
             }
         }
 
@@ -2177,12 +2255,20 @@ namespace Muslimeen.Content
             }
             catch (NullReferenceException)
             {
-                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('There are no unactive members.');</script>");
+                lblAlertError.InnerText = "There are no unactive members.";
+
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                   ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
                 divAdminReports.Visible = false;
             }
             catch (ArgumentOutOfRangeException)
             {
-                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('There are no unactive members.');</script>");
+                lblAlertError.InnerText = "There are no unactive members.";
+
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                   ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+                divAdminReports.Visible = false;
                 divAdminReports.Visible = false;
             }
             //go through all rows and change the date format and and other chars.
@@ -2384,7 +2470,10 @@ namespace Muslimeen.Content
                 {
                     emailService.AddAdmin(txtAdminUserName.Text.ToString(), txtAdminFName.Text.ToString() + " " + txtAdminLName.Text.ToString(), txtAdminEmail.Text.ToString(), txtAdminPassword.Text.ToString());
 
-                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Administrator registration successful.');</script>");
+                    lblAlertError.InnerText = "Administrator registration successfully.";
+
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.style.display = 'block';" +
+                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
 
                     txtAdminUserName.Text = string.Empty;
                     txtAdminFName.Text = string.Empty;
@@ -2392,13 +2481,15 @@ namespace Muslimeen.Content
                     txtAdminContactNo.Text = string.Empty;
                     txtAdminDOB.Text = string.Empty;
                     txtAdminEmail.Text = string.Empty;
-
                     divAddAdmin.Visible = false;
                     Form.Dispose();
                 }
                 else
                 {
-                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Administrator registration unsuccessful.');</script>");
+                    lblAlertError.InnerText = "Administrator registration unsuccessfully.";
+
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                       ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                 }
             }
         }
@@ -2441,7 +2532,10 @@ namespace Muslimeen.Content
             }
             catch
             {
+                lblAlertError.InnerText = "Unable to display Todays Prayer times, please make sure you are assigned to a mosque";
 
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                      ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
             }
         }
 
@@ -2456,28 +2550,38 @@ namespace Muslimeen.Content
 
         protected void btnEventList_Click(object sender, EventArgs e) //display selected event
         {
-            divEvent.Visible = true;
-            divDisplaySalahTimetable.Visible = false;
-            lblTaskHead.InnerText = btnMosqueEvents.Text.ToString();
+            try
+            {
+                divEvent.Visible = true;
+                divDisplaySalahTimetable.Visible = false;
+                lblTaskHead.InnerText = btnMosqueEvents.Text.ToString();
 
-            LinkButton btn = (LinkButton)sender;
-            uspGetSpecificEvent events = new uspGetSpecificEvent();
-            DBHandler db = new DBHandler();
-            Session["EventID"] = btn.CommandArgument.ToString();
-            events = db.BLL_GetuspGetSpecificEvent(int.Parse(btn.CommandArgument.ToString()));
+                LinkButton btn = (LinkButton)sender;
+                uspGetSpecificEvent events = new uspGetSpecificEvent();
+                DBHandler db = new DBHandler();
+                Session["EventID"] = btn.CommandArgument.ToString();
+                events = db.BLL_GetuspGetSpecificEvent(int.Parse(btn.CommandArgument.ToString()));
 
-            lblEventTitle.InnerText = events.EventTitle.ToString();
-            lblEventDescription.InnerText = events.EventDescription.ToString();
-            lblSpeaker.InnerText = events.Speaker.ToString();
-            lblEventDate.InnerText = Convert.ToDateTime(events.EventDate).ToString("dd-MM-yyyy");
-            lblEventStartTime.InnerText = events.EventStartTime.ToString();
-            lblEventEndTime.InnerText = events.EventEndTime.ToString();
+                lblEventTitle.InnerText = events.EventTitle.ToString();
+                lblEventDescription.InnerText = events.EventDescription.ToString();
+                lblSpeaker.InnerText = events.Speaker.ToString();
+                lblEventDate.InnerText = Convert.ToDateTime(events.EventDate).ToString("dd-MM-yyyy");
+                lblEventStartTime.InnerText = events.EventStartTime.ToString();
+                lblEventEndTime.InnerText = events.EventEndTime.ToString();
 
-            divListEvent.Visible = true;
-            divListEventDetails.Visible = true;
-            divDisplayEvents.Visible = true;
-            divEvent.Visible = true;
-            divEventOverlay.Visible = false;
+                divListEvent.Visible = true;
+                divListEventDetails.Visible = true;
+                divDisplayEvents.Visible = true;
+                divEvent.Visible = true;
+                divEventOverlay.Visible = false;
+            }
+            catch
+            {
+                lblAlertError.InnerText = "Unable to display your mosque events, please make sure you are assigned to a mosque";
+
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                      ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+            }
         }
 
         protected void btnListEvents_Click(object sender, EventArgs e) //Show the list rpt.
@@ -2573,6 +2677,10 @@ namespace Muslimeen.Content
             }
             catch
             {
+                lblAlertError.InnerText = "Unable to display your mosque events, please make sure you are assigned to a mosque";
+
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                      ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
 
             }
 

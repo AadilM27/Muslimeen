@@ -6,7 +6,7 @@
 <head runat="server">
         <meta charset="utf-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=0.0"/>
 	
 		<link rel="icon" href="../Login/LogIn_Bootstrap/muslimeen.ico"/>
 	
@@ -68,8 +68,8 @@
                 <div class=" form-group col-sm-12 mt-1 mb-1">
                     <asp:TextBox runat="server"  CssClass="form-control" Onblur="VarifyPassword('btnRegister','lblErrorPass');" ID="txtRetypePass" type="password" placeholder="Retype Password*"></asp:TextBox>
                 </div>
-                <div style="text-align:left; padding-left:10px;" class=" form-group col-sm-12 mt-0 mb-0">
-                    <input type="checkbox" onclick="CheckPassword()" />Show Password
+                <div class="col-sm-12 mt-0 mb-0 text-left form-check-inline">
+                    <input type="checkbox" class=" form-check form-check-input mt-1 mb-1" onclick="CheckPassword()" /><label class=" small text-justify form-check-label">Show Password</label>
                 </div>
                 <div class="form-group col " style="text-align:center;">
                     <asp:Label CssClass="lblError" runat="server" ID="lblErrorPass"></asp:Label>
@@ -83,5 +83,8 @@
             <input type="hidden" id="hfdPassword" value=""/>
         </form>
      </div>
+    <div class="bottom-nav w-100">
+        <span class="bottom-nav-text" style="">©2018 NexTech</span>
+    </div>
 </body>
 </html>

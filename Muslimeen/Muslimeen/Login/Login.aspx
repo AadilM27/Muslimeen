@@ -32,7 +32,7 @@
                 <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" CssClass="form-control main-txtb" placeholder="Password"/>
 			</div>
 			<div class=" form-check mt-3 mb-3">
-                <asp:CheckBox runat="server" AutoPostBack="true" ID="chkRememberMe" CssClass="form-check-input position-static"/>
+                <asp:CheckBox runat="server" AutoPostBack="true" ID="chkRememberMe" CssClass="form-check-input position-static" OnCheckedChanged="chkRememberMe_CheckedChanged"/>
 				<asp:Label runat="server" CssClass="form-check-label" Text="Remember me">
 				</asp:Label>
 			</div>
@@ -43,7 +43,7 @@
             <asp:button runat="server" CssClass="btn btn-primary btn-lg btn-block main-btn " ID="btnRegister" Text="Register" OnClick="btnRegister_Click"></asp:button>
             <p class="mt-3 mb-0" style="font-size:smaller;">Forgot your password ? <br /><asp:LinkButton CssClass=" font-weight-bold text-dark" ToolTip="Send new password to your email address" runat="server" ID="btnForgotPass" Text="Reset Password" OnClick="btnForgotPass_Click"></asp:LinkButton></p>
             <asp:Label CssClass="" runat="server" Text="OR" Style="font-size:smaller;"></asp:Label>
-            <p class="mt-1 mb-0" style="font-size:smaller;">Go back to <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="Content/Default.aspx" Text="Home page"></asp:HyperLink></p>
+            <p class="mt-1 mb-0" style="font-size:smaller;">Go back to <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="../Content/Default.aspx" Text="Home page"></asp:HyperLink></p>
             <div class=" mt-3 form-group col " style="text-align:center;">
                 <asp:Label CssClass="lblError" runat="server" ID="lblErrorPass"></asp:Label>
             </div>

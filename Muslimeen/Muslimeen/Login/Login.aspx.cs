@@ -23,15 +23,19 @@ namespace Muslimeen.Login
 
                     HttpCookie httpCookie = Request.Cookies["RememberMe"];
 
-                    if (httpCookie != null)
+                    if (httpCookie.Name != null)
                     {
                         if (httpCookie["DoRemember"] == "Yes")
                         {
                             txtUserName.Text = Convert.ToString(httpCookie["UserName"]);
                             chkRememberMe.Checked = true;
                         }
+                        else if (httpCookie["DoRemember"] == "No")
+                        {
+                            chkRememberMe.Checked = false;
+                        }
                     }
-                    else
+                    else if (httpCookie.Name == null)
                     {
                         chkRememberMe.Checked = false;
                     }
@@ -141,8 +145,11 @@ namespace Muslimeen.Login
                     }
                     else if (!chkRememberMe.Checked)
                     {
-                        HttpCookie httpCookie = new HttpCookie("RememberMe"); //remove the cookie.
-                        httpCookie.Expires = DateTime.Now.AddYears(-1);
+                        HttpCookie httpCookie = new HttpCookie("RememberMe"); //create the cookie.
+
+                        httpCookie["UserName"] = Convert.ToString(txtUserName.Text.ToString());
+                        httpCookie["DoRemember"] = "No";
+                        httpCookie.Expires = DateTime.Now.AddYears(1);
                         Response.Cookies.Add(httpCookie);
                     }
                 }

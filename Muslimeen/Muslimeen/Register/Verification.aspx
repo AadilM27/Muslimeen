@@ -40,5 +40,8 @@
             <p class=" text-center" style="font-size:smaller;">Go back to the <asp:HyperLink CssClass=" font-weight-bold text-dark" runat="server" NavigateUrl="../Content/Default.aspx"  Text="Home page"></asp:HyperLink></p>
 		</form>
         </div>
+        <div class="bottom-nav">
+            <span class=" bottom-nav-text" style="">©2018 NexTech</span>
+        </div>
 	</body>
 </html>
