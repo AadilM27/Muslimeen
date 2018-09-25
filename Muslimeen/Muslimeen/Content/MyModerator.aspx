@@ -348,7 +348,7 @@
                                  <div class=" head-div-2 p-2 mb-0 ">
                                     <p class="m-0">Article Details:</p>
                                 </div>
-                                <div class="container" runat="server" id="div2" style="position:static;overflow-x:scroll;overflow-y:scroll; height:490px;">
+                                <div class="container" runat="server" id="div2" style="position:static;overflow-x:hidden;overflow-y:scroll; height:490px;">
                                 <div class="row mb-3 mt-2" style="position:static">
                                     <div class="col position-static">
                                         <label class="m-0 h2" runat="server" id="lblRemoveAcceptTitle"></label>
@@ -356,7 +356,7 @@
                                 </div>
                                 <div class="row mb-1 position-static">
                                     <div class="col position-static">
-                                        <label class="m-0" runat="server" id="lblRemoveAcceptContent"></label>
+                                        <textarea class="m-0 article-content" runat="server" id="lblRemoveAcceptContent"></textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-1 position-static">

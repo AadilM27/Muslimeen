@@ -10,7 +10,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.0" />
 
     <title>My Muslimeen</title>
     <link rel="icon" href="../Login/LogIn_Bootstrap/muslimeen.ico" />
@@ -189,7 +189,7 @@
 
                             
                     
-                    <%--m-0 col-lg-4 ml-lg-5  position:static;--%><div class="slideshow-container ml-5" style="width:300px">
+                    <div class="slideshow-container ml-5" style="width:300px">
                         <h2 style="background-color:#256297;color:white;text-align:center"> Salah Quotes</h2>
                     <div class="mySlides">
                       <q> And be steadfast in prayer; practise regular charity; and bow down your heads with those who bow down (in worship).</q>
@@ -211,7 +211,7 @@
 
                     
                         <!-- Dots/bullets/indicators -->
-                    <div class="dot-container" style= "position:static; width:300px"> <%--m-0 col-lg-4 ml-lg-5--%>
+                    <div class="dot-container" style= "position:static; width:300px">
                       <span class="dot" onclick="currentSlide(1)"></span> 
                       <span class="dot" onclick="currentSlide(2)"></span> 
                       <span class="dot" onclick="currentSlide(3)"></span> 
@@ -226,7 +226,7 @@
 
                         <!--view mosque events-->
 
-                             <div class=" row bg-light position-static ml-1 mr-1 flex-nowrap col-12 pl-0" runat="server" id="divDisplayEvents"><%--flex-nowrap w-100--%>
+                             <div class=" row bg-light position-static ml-1 mr-1 flex-nowrap col-12 pl-0" runat="server" id="divDisplayEvents">
                                 <div class="col-3 col-xl-4 p-0 mr-1">
                                     <div class=" head-div-2 p-2 mb-0 text-left ">
                                         <p class="m-0">Select Event Date Range</p>
@@ -342,7 +342,7 @@
 
                         <!--Notifications-->
                         <div runat="server" id="divDiplayNotifications" class="position-static dash-content p-0">
-                            <div class=" head-div-2 p-2 mb-0 ">
+                            <div class=" head-div-2 p-2 mb-0 ml-1 ">
                                     <p class="m-0">Notices</p>
                             </div>
                             <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
@@ -404,7 +404,7 @@
                         <!--articles-->
 
                         <div runat="server" id="divDisplayArticles" class=" text-nowrap position-static dash-content p-0">
-                            <div class=" head-div-2 p-2 mb-0 ">
+                            <div class=" head-div-2 p-2 mb-0 ml-1">
                                     <p class="m-0">Latest Articles</p>
                                 </div>
                             <div class="position-static p-1 lst-container" style="overflow-y:scroll;">
@@ -438,7 +438,7 @@
 
 
                                    
-                           <div class="container text-nowrap dash-content col-3" runat="server" id="divSchDetailsOverlay">
+                           <div class="container text-nowrap dash-content col-3 m-lg-5" runat="server" id="divSchDetailsOverlay">
                                 <div class="w-100 h-100 container text-center">
                                     <div class=" container h-25 mb-3"></div>
                                     <h6 class="card-title h-50 mt-5 pt-5"><img class="figure-img mr-2" src="MyAdmin/icons/outline_error_outline_black_18dp.png" />No selection was made </h6>
@@ -446,13 +446,13 @@
                                 </div>
                             </div>
 
-                        <div runat="server" id="divDisplayArt" class=" mb-auto position-static dash-content mw-100 align-self-center">
+                        <div runat="server" id="divDisplayArt" class=" mb-auto position-static dash-content mw-100 align-self-center" style="width:99%;overflow-x:hidden;max-height:490px">
                             
                             <asp:HiddenField runat="server" ID="hdfArticleID" Value="" />
                             <div class=" head-div-2 p-2 mb-0 ">
                                     <p class="m-0">Selected Article Details</p>
                                 </div>
-                            <div class="position-static p-1 lst-container m-2" style="overflow-y:scroll;">
+                            <div class="position-static p-1 lst-container m-2" style="">
                                 <div class="row mb-3 mt-2">
                                     <div class="col">
                                         <label class="m-0 h2" runat="server" id="lblArticleTitle"></label>
@@ -460,14 +460,10 @@
                                 </div>
                                 <div class="row mb-1 position-static">
                                     <div class="col position-static">
-                                        <label class="m-0" runat="server" id="lblArticleContent"></label>
+                                        <textarea class="m-0 article-content" runat="server" id="lblArticleContent"></textarea>
                                     </div>
                                 </div>
                                <div class="row mb-1 position-static">
-                                  <%--  <div class="col position-static font-italic text-left">
-                                        Author:
-                                        <label class="m-0 mt-2" runat="server" id="lblScholar"></label>
-                                    </div>--%>
                                     <div class="row mb-1 position-static text-right m-2">
                                         <div class="col position-static font-italic">
                                             Date:
@@ -483,7 +479,7 @@
                                 <div class="m-0 p-0 pt-2 pl-2">
                                     <a runat="server" id="lnkAdminPrintPDF" onserverclick="lnkAdminPrintPDF_ServerClick" style="width:15px; height:15px"><img src="../Content/MyMember/icons/Adobe_PDF.png" /><small>Download as PDF</small></a>
                                 <div id="divRating" runat="server" style="position: static; padding-left: 2em; padding-right: 2em; padding-top: 0,1em; float: right" class="row">
-                                        <p class="text-nowrap h5 mr-4">Rating:&nbsp<asp:ScriptManager ID="ScriptManager1" runat="server">
+                                        <p class="text-nowrap h5 mr-4"  style="font-size:large;color:#256297;font-weight:bold">Rating:&nbsp<asp:ScriptManager ID="ScriptManager1" runat="server">
                                         </asp:ScriptManager>
                                         <asp:UpdatePanel ID="updatepnl1" runat="server" class="pt-1">
                                             <ContentTemplate>
@@ -511,7 +507,7 @@
                                 </div>
                             </div>
                             <br />
-                                                        <hr class="p-0 m-1" />
+                            <hr class="p-0 m-1" />
                             <!--Comment-->
                             <div class="" >
                                 <div class="row p-0 m-0 ">

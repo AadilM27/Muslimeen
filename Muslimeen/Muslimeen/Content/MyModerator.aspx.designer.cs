@@ -667,7 +667,7 @@ namespace Muslimeen.Content.MyModerator {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblRemoveAcceptContent;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea lblRemoveAcceptContent;
         
         /// <summary>
         /// lblRemoveAcceptScholar control.
