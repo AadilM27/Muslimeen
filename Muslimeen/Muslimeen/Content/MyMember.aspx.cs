@@ -348,6 +348,16 @@ namespace Muslimeen.Content
                 rptNotifications.DataSource = dBHandler.BLL_GetNotifications(todaysDate, date);
                 rptNotifications.DataBind();
 
+            if (rptNotifications.Items.Count<=0)
+            {
+                divAlertPopup.Visible = true;
+
+                lblAlertError.InnerText = "There are no notifications for this week yet.";
+
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+            }
+
         }
 
         protected void btnArticles_Click(object sender, EventArgs e)
@@ -365,6 +375,16 @@ namespace Muslimeen.Content
 
             rptDisplayArticles.DataSource = dBHandler.BLL_ViewLatestArticles(dateToday,date);
             rptDisplayArticles.DataBind();
+
+            if (rptDisplayArticles.Items.Count<=0)
+            {
+                divAlertPopup.Visible = true;
+
+                lblAlertError.InnerText = "No articles were uploaded during this week.";
+
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+            }
 
 
         }
