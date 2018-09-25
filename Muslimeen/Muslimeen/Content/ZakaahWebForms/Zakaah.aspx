@@ -12,8 +12,7 @@
    <title>MyMuslimeen - Calculator</title>
      <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico" />
      <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="../Default/css/Default.css" rel="stylesheet" />
-    
+        <link href="../Zakaah/css/ProperZakaah.css" rel="stylesheet" />
       
         
        
@@ -110,12 +109,12 @@
                     <div class="container" style="margin-top:10px; position:static;">
                       <div class="row" style="position:static;right:50px">
                           <div class="col-lg-8" style="position:static;">
-                              <button id="btnWhatIsZakaah" class="collapsible" style="background-color:#256297;width:100%;position:static;color:white">What is Zakaah or Zakat?</button>
+                              <button id="btnWhatIsZakaah" class="collapsible h4" style="background-color:#256297;width:100%;position:static;color:white">What is Zakaah or Zakat?</button>
                     <div class="content2" style="background-color:white">
                         <br />
                         <asp:Label ID="LblWhatIsZakaah" runat="server" ></asp:Label>
                     </div>
-                    <button class="collapsible"  style="background-color:#256297;width:100%;position:static;color:white">Conditions of Zakaah</button>
+                    <button class="collapsible h4"  style="background-color:#256297;width:100%;position:static;color:white">Conditions of Zakaah</button>
                     <div class="content2" style="background-color:white">
                         <br />
                       <h2>Conditions of Zakat</h2>
@@ -124,27 +123,27 @@
                         <br />
                         <asp:Label ID="LblConditions" runat="server" Text=""></asp:Label>
                      </div>
-                    <button class="collapsible" style="background-color:#256297;width:100%;position:static;color:white" >Cautions of Zakaah</button>
+                    <button class="collapsible h4" style="background-color:#256297;width:100%;position:static;color:white" >Cautions of Zakaah</button>
                     <div class="content2"style="background-color:white" >
                         <br />
                         <asp:Label ID="LblCaution" runat="server" Text=""></asp:Label>
                                           </div>
-                    <button class="collapsible" style="background-color:#256297;width:100%;position:static;color:white" >To whom is Zakaah permissible?</button>
+                    <button class="collapsible h4" style="background-color:#256297;width:100%;position:static;color:white" >To whom is Zakaah permissible?</button>
                     <div class="content2"style="background-color:white" >
                         <br />
                         <asp:Label ID="LblPermissble" runat="server" Text=""></asp:Label>
                     </div>
-                     <button class="collapsible" style="background-color:#256297;width:100%;position:static;color:white" >Assets Of Zakaah</button>
+                     <button class="collapsible h4" style="background-color:#256297;width:100%;position:static;color:white" >Assets Of Zakaah</button>
                     <div class="content2" style="background-color:white">
                         <br />
                         <asp:Label ID="LblAssets" runat="server" Text=""></asp:Label>
                     </div>
-                     <button class="collapsible" style="background-color:#256297;width:100%;position:static;color:white" >To whom is Zakaah Applicable?</button>
+                     <button class="collapsible h4" style="background-color:#256297;width:100%;position:static;color:white" >To whom is Zakaah Applicable?</button>
                     <div class="content2" style="background-color:white">
                         <br />
                         <asp:Label ID="LblApplicable" runat="server" Text=""></asp:Label>
                     </div>
-                     <button class="collapsible" style="background-color:#256297;width:100%;position:static;color:white" >Calculation of Zakaah?</button>
+                     <button class="collapsible h4" style="background-color:#256297;width:100%;position:static;color:white" >Calculation of Zakaah?</button>
                     <div class="content2"style="background-color:white" >
                         <br />
                         <asp:Label ID="LblCalculations" runat="server" Text=""></asp:Label>
