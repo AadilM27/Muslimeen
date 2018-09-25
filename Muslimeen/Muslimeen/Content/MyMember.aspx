@@ -45,6 +45,9 @@
 </head>
 <body>
        <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink> 
+        <div id="divAlertPopup" runat="server" style="display:none;" class="container-fluid text-center p-2 m-0 w-100 alert alert-success visible">
+                <label class="h6" id="lblAlertError"  runat="server" ></label>
+         </div>
         <form id="frmScholar" runat="server" class=" ">   
             <header >
                 <nav class="navFixed">
@@ -127,14 +130,14 @@
                     <div runat="server" id="lblTaskHead" class=" head-div text-center p-2 mb-1">
                         <h4 class="p-0 m-0"></h4>
                     </div>
-                    <div class="row p-0 m-0 tab-content right-bottom-div p-1 flex-nowrap mr-5">
+                    <div class="row m-0 tab-content right-bottom-div flex-nowrap">
                         <div runat="server" id="divDisplaySalahTimetable" class="bg-light position-static col-12 p-3 divContainers flex-nowrap m-0 row">
                             <div style="display: flex;justify-content: center" class=" col-6 position-static basic-div-styling w-50">
-                             <table class="table" style="justify-content: center; width: 50%; height: 20%; align-self: center">
+                             <table class="table" style="justify-content: center; width: 55%; height: 20%; align-self: center">
                                 <tr>
                                     <td rowspan="2"; colspan="1"><asp:Image ID="icoPrayer" ImageUrl="Mosque/download.png" runat="server" Height="110px" Width="110px" /> </td>
                
-                                    <th colspan="2" class="text-uppercase m-0 font-weight-bold">Salah TimeTable</th>
+                                    <th colspan="2" class="text-uppercase m-0 font-weight-bold h4 align-middle" >Salah TimeTable</th>
                                 </tr>
                                 <tr>
                                     <th>AZAAN</th>
@@ -182,6 +185,8 @@
                             </table>  
                          </div>
 
+                         
+
                             
                     
                     <%--m-0 col-lg-4 ml-lg-5  position:static;--%><div class="slideshow-container ml-5" style="width:300px">
@@ -214,15 +219,6 @@
                         <script src="../Content/Zakaah/slideshow.js"></script>
                   
                         </div>
-
-                             <%--<div class="col-sm-3 col-xl-4 text-nowrap" runat="server" id="divNoSalaah">
-                                <div class="w-100 h-100 container text-center">
-                                    <div class=" container h-25 mb-3"></div>
-                                    <h6 class="card-title h-50 mt-5 pt-5">
-                                        <asp:Image runat="server" class="figure-img mr-2" ImageUrl="MyMember/icons/outline_error_outline_black_18dp.png" /><asp:Label ID="lblNoSalaah" runat="server">No salaah times were entered as yet.</asp:Label></h6>
-                                    <div class=" container h-25"></div>
-                                </div>
-                            </div>--%>
 
                     </div>
                          
