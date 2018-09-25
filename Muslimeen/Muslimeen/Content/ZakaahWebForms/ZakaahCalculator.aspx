@@ -12,8 +12,7 @@
      <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico" />
      
      <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-     <link href="../Default/css/Default.css" rel="stylesheet" />
-     
+     <link href="../Zakaah/css/ProperZakaah.css" rel="stylesheet" />
      <script src="../../Login/LogIn_Bootstrap/js/jquery-3.3.1.min.js"></script>
      <script language="JavaScript" type="text/javascript">
         function onlyNumbers(evt)

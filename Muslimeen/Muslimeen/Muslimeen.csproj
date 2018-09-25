@@ -176,6 +176,7 @@
     <Content Include="Content\ZakaahWebForms\ZakaahOrganizations.aspx" />
     <Content Include="Content\Zakaah\css\Gallery.css" />
     <Content Include="Content\Zakaah\css\newZakaah.css" />
+    <Content Include="Content\Zakaah\css\ProperZakaah.css" />
     <Content Include="Content\Zakaah\css\Slideshow.css" />
     <Content Include="Content\Zakaah\css\Zakaatcard.css" />
     <Content Include="Content\Zakaah\LanguageTranslator.js" />

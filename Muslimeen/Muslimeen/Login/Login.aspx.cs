@@ -51,7 +51,7 @@ namespace Muslimeen.Login
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Register/Register.aspx");
+            Response.Redirect("../Register/Register.aspx");
         }
 
         protected void btnLogIn_Click(object sender, EventArgs e)
