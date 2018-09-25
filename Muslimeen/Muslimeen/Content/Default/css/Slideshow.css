@@ -10,7 +10,7 @@ body {
 /* Slideshow container */
 .slideshow-container {
     position: static;
-    background-color: #cdd2d6;
+    background-color: rgba(136, 136, 136, 0.80);
 }
 
 /* Slides */
@@ -81,5 +81,9 @@ q {
 
 /* Add a blue color to the author */
 .author {
-    color: cornflowerblue;
+    color:mediumblue;
+}
+
+.quote{
+    color:#000000;
 }

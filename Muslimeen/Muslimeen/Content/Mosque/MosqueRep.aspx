@@ -49,7 +49,7 @@
                 </div>
                 <div class="row" runat="server" id="divUserProfile">
                     <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
-                        <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="../Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
+                        <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="../ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
                         </asp:HyperLink><asp:Image Style="height: 15px; width: 15px;" runat="server" ID="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="../Default/icons/EditProfile.png" />
                     </div>
                 </div>
@@ -601,7 +601,7 @@
                 <h6>Content</h6>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="footerr-text" href="Mosque.aspx">Mosques</a>
+                        <a class="footerr-text" href="ListMosque.aspx">Mosques</a>
                     </li>
                     <li class="nav-item">
                         <a class="footerr-text" href="../ListScholar.aspx">Scholars</a>

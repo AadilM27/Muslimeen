@@ -1,16 +1,20 @@
 ﻿/* Start coping from here to get heade and footer styling*/
 body {
-    background-color: #256297;
+    background-color: transparent;
     height: 100%;
     width:inherit;
     overflow-x:hidden;
     overflow-y:auto;
 }
 html {
-    width: auto;
+    height:100%;
+    background-image: url('../../Images/BackgroundImages/BlueMosque1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .frmDefault{
     width:unset;
+    background-color:transparent;
 }
 
 .navv {
@@ -40,7 +44,6 @@ html {
     background-color: #3F84C1;
     text-decoration:none;
     border-radius:2px;
-    
 }
 .navbar {
     background-color: white;
@@ -55,7 +58,7 @@ html {
 }
 
 .content{
-    background-color:white;
+    background-color:transparent;
 }
 
 .sticky {
@@ -96,7 +99,7 @@ html {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     width: 35px;
-    background-color: none;
+    background-color: white;
 }
 .search-box:focus.search-btn:hover {
     box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
@@ -181,8 +184,27 @@ html {
     font-size: 16px;
 }
 .countDown-div{
-    background-color:white;
+    background-color:transparent;
     position:static;
 }
 
+.clock-outter {
+    width: 160px;
+    height: 150px;
+}
+
+.clock-inner {
+    width: 110px;
+    height: 90px;
+    font-size: 50px;
+}
+
+.clock-labels{
+    font-size:20px;
+}
+
+.clock-title{
+    font-size:50px;
+    font-weight:bold;
+}
 /*End Coundown styling*/

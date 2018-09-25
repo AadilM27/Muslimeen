@@ -15,7 +15,7 @@
 </head>
 <body>
     <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
-    <div id="divAlertPopup" runat="server" class="container-fluid text-center p-2 m-0 w-100 alert alert-info visible">
+    <div id="divAlertPopup" runat="server" style="display: none;" class="container-fluid text-center p-2 m-0 w-100 alert alert-info visible">
         <label class="h6" id="lblAlertError" runat="server"></label>
     </div>
     <form id="frmScholar" runat="server">
@@ -212,7 +212,7 @@
                 <h6>Content</h6>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="footerr-text" href="Mosque/Mosque.aspx">Mosques</a>
+                        <a class="footerr-text" href="Mosque/ListMosque.aspx">Mosques</a>
                     </li>
                     <li class="nav-item">
                         <a class="footerr-text" href="ListScholar.aspx">Scholars</a>

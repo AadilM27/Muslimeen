@@ -11,8 +11,7 @@
     <title>MyMuslimeen - Home</title>
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico" />
-    <link href="../MyAdmin/css/MyAdmin.css" rel="stylesheet" />
-
+    <link href="css/MyMosque.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -110,11 +109,7 @@
                         <asp:Button runat="server" ID="btnEvents" CssClass="pl-2 btn mb-1 taskBtn" Text="Mosque Events" OnClick="btnEvents_Click" />
                         <asp:Button runat="server" ID="btnAddress" CssClass="pl-2 btn mb-1 taskBtn" Text="Mosque Location" OnClick="btnAddress_Click" />
                         <asp:Button runat="server" ID="btnPrayerTimes" CssClass="pl-2 btn mb-1 taskBtn" Text="Prayer Times" OnClick="btnPrayerTimes_Click" />
-                        <button class="collapsible" style="background-color: #256297; width: 100%; position: static">To whom is Zakaah Applicable?</button>
-
-
-
-                    </nav>
+ </nav>
                 </div>
                 <div class=" position-static basic-div-styling p-0  w-100">
                     <div runat="server" id="divTaskHead" class=" head-div text-center p-2 mb-1">
@@ -123,7 +118,7 @@
                     <div class="row p-0 m-0 tab-content right-bottom-div p-1">
                         <div class="col-12 bg-light position-static mt-2" runat="server" id="divDetails">
                             <div class="row">
-                                <div class="col-7">
+                                <div class="col-7" id="divDetail" runat="server">
                                     <div class=" head-div-2 p-2 mb-1 text-left">
                                         <p class="m-0">Mosque Details</p>
                                     </div>
@@ -188,7 +183,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-4" id="divTodayTimes" runat="server">
                                     <div class=" head-div-2 p-2 mb-1 text-left">
                                         <p class="m-0">Today's Prayer Times </p>
                                     </div>
@@ -478,7 +473,6 @@
                                                     <th>Jamaat</th>
                                                     <th>Azaan</th>
                                                     <th>Jamaat</th>
-
                                                 </tr>
                                             </thead>
                                             <tbody>

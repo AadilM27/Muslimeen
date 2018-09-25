@@ -1069,7 +1069,11 @@ namespace Muslimeen.Content.MyModerator
             }
             catch
             {
+                divAlertPopup.Visible = true;
+                lblAlertError.InnerText = "Unable to display todays prayer times, please make sure you are assigned to a mosque";
 
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                      ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
             }
         }
 

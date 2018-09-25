@@ -11,19 +11,21 @@
     <title>MyMuslimeen - Home</title>
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico" />
-    <link href="../Default/css/Default.css" rel="stylesheet" />
-
+    <link href="css/MyMosque.css" rel="stylesheet" />
 </head>
-<body style="background-color:white">
+<body style="background-color: white">
     <form id="form1" runat="server">
         <header>
             <nav class="navFixed">
                 <div class="row align-self-end">
-                        <ul class=" col-7 navbar-nav flex-row justify-content-start">
-                            <asp:HiddenField runat="server" ID="hdfAdjustDate" Value="" /> <!--Need to get value from DB let admin adjust this -->
-                            <li class="nav-item ml-4 mr-0 mb-0 pt-2"> <p class="IslamicDate mb-0" id="lstIslamicDate"></p></li>
-                            <script src="../Default/DatesEnglishHijri.js" type="text/javascript"></script>
-                        </ul>
+                    <ul class=" col-7 navbar-nav flex-row justify-content-start">
+                        <asp:HiddenField runat="server" ID="hdfAdjustDate" Value="" />
+                        <!--Need to get value from DB let admin adjust this -->
+                        <li class="nav-item ml-4 mr-0 mb-0 pt-2">
+                            <p class="IslamicDate mb-0" id="lstIslamicDate"></p>
+                        </li>
+                        <script src="../Default/DatesEnglishHijri.js" type="text/javascript"></script>
+                    </ul>
                     <ul class="col-5 navbar-nav flex-row justify-content-end">
                         <li class=" nav-item mr-2">
                             <asp:Button runat="server" Text="Login" ID="btnLogin" CssClass="topnav btn btn-sm btn-outline-light" OnClick="btnLogin_Click" />
@@ -41,7 +43,7 @@
                     </div>
                 </div>
             </nav>
-            <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50); z-index:1000;">
+            <div id="navbar" class="navbar navbar-expand flex-column navv flex-md-row" style="box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.50); z-index: 1000;">
                 <div class=" text-center">
                     <asp:Image runat="server" CssClass="mb-0 ml-0" src="../../Login/LogIn_Bootstrap/logo.png" Width="185" Height="110" />
                 </div>
@@ -81,28 +83,32 @@
                             <asp:Button runat="server" ID="btnAboutUs" Text="About us" CssClass="nav-item navText btn-link btn" OnClick="btnAboutUs_Click" />
                         </li>
                         <li class="NavDevider">|</li>
-                         <!--deviders-->
+                        <!--deviders-->
                         <li class="nav-item navbarText navbaritems">
-                        <asp:LinkButton ID="LnkHelp" runat="server"  OnClick="btnHelp_Click" CssClass="nav-item navText btn-link btn" ToolTip="How this page works" ><%--CssClass="nav-item navText btn-link btn"--%>
-                         Help    <asp:Image runat="server" ID="ImgHelp" ImageUrl="../MyMember/icons/helpIcon.png" style="height: 1.1em; width:1.1em;" /></asp:LinkButton>   
+                            <asp:LinkButton ID="LnkHelp" runat="server" OnClick="btnHelp_Click" CssClass="nav-item navText btn-link btn" ToolTip="How this page works">
+                                <%--CssClass="nav-item navText btn-link btn"--%>
+                         Help   
+                                <asp:Image runat="server" ID="ImgHelp" ImageUrl="../MyMember/icons/helpIcon.png" Style="height: 1.1em; width: 1.1em;" />
+                            </asp:LinkButton>
                         </li>
                     </ul>
                 </div>
             </div>
         </header>
-               <div class="container">
-                   <br />
-                <div style="text-align:center;background-color:#256297;color:white;">
-                    <h1 style="text-align: center;width:100%">List of Mosques</h1>
+        <div class="content" id="content">
+            <div class="container" style="width: 900px">
+                <br />
+                <div style="text-align: center; background-color: #256297; color: white;">
+                    <h1 style="text-align: center; width: 100%">List of Mosques</h1>
                 </div>
-                   <h4 style="text-align:center;background-color:#256297;color:white;margin-bottom:0px">Search Mosque:</h4>
-                <div class="jumbotron" style="height:50px" >
-                    
-                    <table style="width:100%;">
+                <h4 style="text-align: center; background-color: #256297; color: white; margin-bottom: 0px">Search Mosque:</h4>
+                <div class="jumbotron" style="height: 50px">
+
+                    <table style="width: 100%;">
                         <tr>
-                            <td style="width:55%;position:relative;bottom:50px;color:#256297;font-weight:bold">Mosque Suburb&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="ddlMosqueSuburb" runat="server" Height="60px" Width="250px" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
-                                 </asp:DropDownList></td>
-                            <td style="width:55%;position:relative;bottom:50px;color:#256297;font-weight:bold" >Mosque Type&nbsp;&nbsp;&nbsp;&nbsp;<asp:RadioButton ID="rdoHanafie" runat="server" Text="Hanafie" GroupName="MosqueType" AutoPostBack="True" OnCheckedChanged="rdoHanafie_CheckedChanged" />&nbsp
+                            <td style="width: 55%; position: relative; bottom: 50px; color: #256297; font-weight: bold">Mosque Suburb&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="ddlMosqueSuburb" runat="server" Height="60px" Width="250px" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                            </asp:DropDownList></td>
+                            <td style="width: 55%; position: relative; bottom: 50px; color: #256297; font-weight: bold">Mosque Type&nbsp;&nbsp;&nbsp;&nbsp;<asp:RadioButton ID="rdoHanafie" runat="server" Text="Hanafie" GroupName="MosqueType" AutoPostBack="True" OnCheckedChanged="rdoHanafie_CheckedChanged" />&nbsp
                                 <asp:RadioButton ID="rdoShafie" runat="server" Text="Shafie" GroupName="MosqueType" AutoPostBack="True" OnCheckedChanged="rdoShafie_CheckedChanged" />
                             </td>
                         </tr>
@@ -111,55 +117,51 @@
 
                 </div>
             </div>
-        
-        <asp:Repeater ID="rptGetMosques" runat="server">
-            <ItemTemplate>
-                <div class="container">
-                    <div class="jumbotron" style="height:300px" >
-                        <table border="0" class="table" style="color: gray">
-                            <tr>
-                                <td style="width: 200px">
-                                    <asp:Image ID="MosquePic" ImageUrl='<%# "../" + Eval("MosqueImage")%>' runat="server" Width="200px" Height="180px" /></td>
-                                <td>
-
-                                    <table  style="width: 100%; height: 100%;color:#256297;font-weight:bold;border:none">
-                                        <tr>
-                                            <th rowspan="2" style="font-size:22px;position:relative;bottom:61px;right:200px;border:none">
-                                                <asp:Label ID="lblName" runat="server" Text='<%#Eval("MosqueName")%>'></asp:Label></th>
-                                            <td colspan="2" >Mosque Type:
-                                            <asp:Label ID="lblmosqueType" runat="server" Text='<%#Eval("MosqueType")%>'></asp:Label></td>
-
-
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">Suburb:
-                                            <asp:Label ID="lblMosqueSuburb" runat="server" Text='<%#Eval("MosqueSuburb")%>'></asp:Label></td>
-                                            <td class="text-center" >
-
-                                                <asp:LinkButton ID="btnViewDetails" Text="View Mosque Details" CssClass="btn btn-info center" runat="server" OnClick="btnViewDetails_Click" EnableViewState="true" CommandArgument='<%#Eval("MosqueID")%>' style="background-color:#256297;color:white;"/>
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td colspan="2">Size:
-                                            <asp:Label ID="lblSize" runat="server" Text='<%#Eval("MosqueSize")%>'></asp:Label></td>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
+            <asp:Repeater ID="rptGetMosques" runat="server">
+                <ItemTemplate>
+                    <div class="container" style="width: 900px">
+                        <div class="position-static basic-div-styling p-0 form-group">
+                            <div class="head-div-2 p-2 mb-0 col">
+                                <h4 class="text-center">
+                                    <asp:Label ID="lblName" runat="server" Text='<%#Eval("MosqueName")%>'></asp:Label></th>
+                                </h4>
+                            </div>
+                            <div class="row">
+                                <div class="col-4 mb-2 mt-2">
+                                    <div id="image" class="ml-3">
+                                        <asp:Image ID="MosquePic" ImageUrl='<%# "../" + Eval("MosqueImage")%>' runat="server" Width="200px" Height="180px" />
+                                    </div>
+                                </div>
+                                <div class="col-4 mt-5">
+                                    <div id="mosqueType" class="row">
+                                        <h6>Mosque Type:&nbsp;</h6>
+                                        <asp:Label ID="lblmosqueType" runat="server" Text='<%#Eval("MosqueType")%>'></asp:Label>
+                                        </br>
+                                    </div>
+                                    <div id="mosqueSuburb" class="row">
+                                        <h6>Mosque Suburb:&nbsp;</h6>
+                                        <asp:Label ID="lblMosqueSuburb" runat="server" Text='<%#Eval("MosqueSuburb")%>'></asp:Label>
+                                        </br>
+                                    </div>
+                                    <div id="mosqueSize" class="row">
+                                        <h6>Mosque Size:&nbsp;</h6>
+                                        <asp:Label ID="lblSize" runat="server" Text='<%#Eval("MosqueSize")%>'></asp:Label>
+                                        </br>
+                                    </div>
+                                </div>
+                                <div class="col-4 mt-5 p-1">
+                                    <asp:LinkButton ID="btnViewDetails" Text="View Mosque Details" CssClass="btn btn-info center" runat="server" OnClick="btnViewDetails_Click" EnableViewState="true" CommandArgument='<%#Eval("MosqueID")%>' Style="background-color: #256297; color: white;" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </ItemTemplate>
 
-                </div>
-            </ItemTemplate>
-
-            <SeparatorTemplate>
-                <div class="divider" style="height: 1em"></div>
-            </SeparatorTemplate>
-        </asp:Repeater>
-
-
-
+                <SeparatorTemplate>
+                    <div class="divider" style="height: 1em"></div>
+                </SeparatorTemplate>
+            </asp:Repeater>
+        </div>
     </form>
     <div class="footerr">
         <!--End of content, start of footer-->

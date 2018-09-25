@@ -24,7 +24,7 @@ namespace Muslimeen.Content.Learn_Islam
         {
             try
             {
-                divAlertPopup.Visible = false;
+
 
                 DBHandler db = new DBHandler();
                 List<CounterCalender> counterCalender = new List<CounterCalender>();
@@ -34,9 +34,8 @@ namespace Muslimeen.Content.Learn_Islam
 
                 DBHandler dBHandler = new DBHandler();
 
-                //divNoSelected.Visible = false;
-                divPendingArticles.Visible = true;
-                divRating.Visible = true;
+      
+                
 
 
                 if (Session["UserName"] != null)
@@ -66,6 +65,9 @@ namespace Muslimeen.Content.Learn_Islam
               
                 if (!IsPostBack)
                 {
+                    divPendingArticles.Visible = true;
+                    divRating.Visible = true;
+                    divNoSelected.Visible = false;
                     //Link Article Source
                     repeatLink.DataSource = dBHandler.BLL_GetLearnArticle("Select", "Select");
                     repeatLink.DataBind();
@@ -340,7 +342,7 @@ namespace Muslimeen.Content.Learn_Islam
 
             try
             {
-                divAlertPopup.Visible = true;
+              
                 DBHandler han = new DBHandler();
                 Comment com = new Comment();
                 if (Session["UserName"] != null)
@@ -373,7 +375,7 @@ namespace Muslimeen.Content.Learn_Islam
                 {
                     lblAlertError.InnerText = "Please Login to Comment";
 
-                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "LearnIslam", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "LearnIslam", "var divpop = document.getElementById('divAlertPopup');divpop.style.display = 'block';" +
                         ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
 
                     txtComment.Text = string.Empty;
