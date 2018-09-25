@@ -19,102 +19,115 @@ namespace Muslimeen.Content.Mosque
         DBHandler db = new DBHandler();
         protected void Page_Load(object sender, EventArgs e)
         {
-            DBHandler db = new DBHandler();
-            List<CounterCalender> counterCalender = new List<CounterCalender>();
-
-            counterCalender = db.BLL_GetCounterCalender();
-            hdfAdjustDate.Value = counterCalender[3].Val.ToString();
-
-
-            if (Session["UserName"] != null)
-            {
-                uspGetMember uspGetMember = new uspGetMember();
-
-                uspGetMember = db.BLL_GetMember(Convert.ToString(Session["UserName"]));
-                hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
-                divUserProfile.Visible = true;
-
-                liMyMusbtn.Visible = true;
-                liMyMusDivi.Visible = true;
-
-                btnLogin.Text = "Log out";
-                btnRegister.Visible = false;
-
-            }
-            else if (Session["UserName"] == null)
-            {
-                liMyMusbtn.Visible = false;
-                liMyMusDivi.Visible = false;
-
-                divUserProfile.Visible = false;
-                Session.Clear();
-            }
-
-
             try
             {
+                DBHandler db = new DBHandler();
+                List<CounterCalender> counterCalender = new List<CounterCalender>();
 
-                Session["MosqueID"] = Request.QueryString["MosqueID"];
+                counterCalender = db.BLL_GetCounterCalender();
+                hdfAdjustDate.Value = counterCalender[3].Val.ToString();
 
-                rptGetEvents.DataSource = db.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
-                rptGetEvents.DataBind();
-                #region LoadAdd/UpdatePrayer
 
+                if (Session["UserName"] != null)
+                {
+                    uspGetMember uspGetMember = new uspGetMember();
+
+                    uspGetMember = db.BLL_GetMember(Convert.ToString(Session["UserName"]));
+                    hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
+                    divUserProfile.Visible = true;
+
+                    liMyMusbtn.Visible = true;
+                    liMyMusDivi.Visible = true;
+
+                    btnLogin.Text = "Log out";
+                    btnRegister.Visible = false;
+
+                }
+                else if (Session["UserName"] == null)
+                {
+                    liMyMusbtn.Visible = false;
+                    liMyMusDivi.Visible = false;
+
+                    divUserProfile.Visible = false;
+                    Session.Clear();
+                }
 
 
                 try
                 {
 
-                    DateTime date = DateTime.Today;
-                    uspGetSpecificDayPrayerTimes time = new uspGetSpecificDayPrayerTimes();
-                    time = db.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), date);
-                    lblFajrAzaan.Text = time.FajrA.ToString();
-                    lblFajrJamaat.Text = time.FajrJ.ToString();
-                    lblDhuhrAzaan.Text = time.DhuhrA.ToString();
-                    lblDhuhrJamaat.Text = time.DhuhrJ.ToString();
-                    lblAsrAzaan.Text = time.AsrA.ToString();
-                    lblAsrJamaat.Text = time.AsrJ.ToString();
-                    lblMagribAzaan.Text = time.MagribA.ToString();
-                    lblMagribJamaat.Text = time.MagribJ.ToString();
-                    lblEishaAzaan.Text = time.EishaA.ToString();
-                    lblEishaJamaat.Text = time.EishaJ.ToString();
+                    Session["MosqueID"] = Request.QueryString["MosqueID"];
+
+                    rptGetEvents.DataSource = db.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
+                    rptGetEvents.DataBind();
+                    #region LoadAdd/UpdatePrayer
+
+
+
+                    try
+                    {
+
+                        DateTime date = DateTime.Today;
+                        uspGetSpecificDayPrayerTimes time = new uspGetSpecificDayPrayerTimes();
+                        time = db.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), date);
+                        lblFajrAzaan.Text = time.FajrA.ToString();
+                        lblFajrJamaat.Text = time.FajrJ.ToString();
+                        lblDhuhrAzaan.Text = time.DhuhrA.ToString();
+                        lblDhuhrJamaat.Text = time.DhuhrJ.ToString();
+                        lblAsrAzaan.Text = time.AsrA.ToString();
+                        lblAsrJamaat.Text = time.AsrJ.ToString();
+                        lblMagribAzaan.Text = time.MagribA.ToString();
+                        lblMagribJamaat.Text = time.MagribJ.ToString();
+                        lblEishaAzaan.Text = time.EishaA.ToString();
+                        lblEishaJamaat.Text = time.EishaJ.ToString();
+                    }
+                    catch { }
+                    try
+                    {
+
+                        uspGetMosque mosque = new uspGetMosque();
+                        mosque = db.GetMosque(int.Parse(Session["MosqueID"].ToString()));
+                        Session["lblMosqueName"] = mosque.MosqueName.ToString();
+                        lblMosqueAddress.Text = mosque.MosqueStreet + " " + mosque.MosqueSuburb;
+                        Session["Address"] = lblMosqueAddress.Text.ToString();
+                        lblYearEstablished.Text = mosque.YearEstablished.ToString().Substring(0, 10);
+                        lblMosqueType.Text = mosque.MosqueType;
+                        lblMosqueSize.Text = mosque.MosqueSize;
+                        lblQuote.Text = "'" + mosque.MosqueQuote + "'";
+                        imgMosque.ImageUrl = "../" + mosque.MosqueImage;
+                        lblMembers.Text = mosque.MemberCount.ToString();
+                        uspGetMember member = new uspGetMember();
+                        member = db.BLL_GetMosqueRep(int.Parse(Session["MosqueID"].ToString()));
+                        lblMosqueRep.Text = member.MemberName.ToString() + " " + member.MemberLastName.ToString();
+                    }
+                    catch
+                    {
+
+                    }
+                    #endregion LoadAdd/UpdatePrayer
                 }
                 catch { }
-                try
+                if (!IsPostBack)
                 {
+                    divDetails.Visible = true;
+                    lblTaskHeader.InnerText = Session["lblMosqueName"].ToString();
+                    DateTime date = DateTime.Today;
 
-                    uspGetMosque mosque = new uspGetMosque();
-                    mosque = db.GetMosque(int.Parse(Session["MosqueID"].ToString()));
-                    Session["lblMosqueName"] = mosque.MosqueName.ToString();
-                    lblMosqueAddress.Text = mosque.MosqueStreet + " " + mosque.MosqueSuburb;
-                    Session["Address"] = lblMosqueAddress.Text.ToString();
-                    lblYearEstablished.Text = mosque.YearEstablished.ToString().Substring(0,10);
-                    lblMosqueType.Text = mosque.MosqueType;
-                    lblMosqueSize.Text = mosque.MosqueSize;
-                    lblQuote.Text = "'"+mosque.MosqueQuote+"'";
-                    imgMosque.ImageUrl = "../"+ mosque.MosqueImage;
-                    lblMembers.Text = mosque.MemberCount.ToString();
-                    uspGetMember member = new uspGetMember();
-                    member = db.BLL_GetMosqueRep(int.Parse(Session["MosqueID"].ToString()));
-                    lblMosqueRep.Text = member.MemberName.ToString() + " " + member.MemberLastName.ToString();
-                }
-                catch
-                {
+                    if (db.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), date) == null)
+                    {
+                        divTodayTimes.Visible = false;
+                    }
+                    else
+                        divTodayTimes.Visible = true;
+                    divEvent.Visible = false;
+                    divLocation.Visible = false;
+                    divPrayerTimes.Visible = false;
+                    divPrayerTable.Visible = false;
+                    divgrid.Visible = false;
 
                 }
-                #endregion LoadAdd/UpdatePrayer
             }
             catch { }
-            if (!IsPostBack)
-            {
-                divDetails.Visible = false;
-                divEvent.Visible = false;
-                divLocation.Visible = false;
-                divPrayerTimes.Visible = false;
-                divPrayerTable.Visible = false;
-                divgrid.Visible = false;
-
-            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -360,6 +373,13 @@ namespace Muslimeen.Content.Mosque
         {
             lblTaskHeader.InnerText = Session["lblMosqueName"].ToString();
             divDetails.Visible = true;
+            DateTime date = DateTime.Today;
+            if (db.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), date) == null)
+            {
+                divTodayTimes.Visible = false;
+            }
+            else
+                divTodayTimes.Visible = true;
             divEvent.Visible = false;
             divLocation.Visible = false;
             divPrayerTimes.Visible = false;
@@ -367,7 +387,7 @@ namespace Muslimeen.Content.Mosque
 
         protected void btnEvents_Click(object sender, EventArgs e)
         {
-            lblTaskHeader.InnerText = btnEvents.Text.ToString();
+            lblTaskHeader.InnerText = btnEvents.Text.ToString() + " For " + Session["lblMosqueName"].ToString();
             divDetails.Visible = false;
             divEvent.Visible = true;
             divLocation.Visible = false;
@@ -384,7 +404,7 @@ namespace Muslimeen.Content.Mosque
 
         protected void btnAddress_Click(object sender, EventArgs e)
         {
-            lblTaskHeader.InnerText = btnAddress.Text.ToString();
+            lblTaskHeader.InnerText = btnAddress.Text.ToString() + " For " + Session["lblMosqueName"].ToString();
             divDetails.Visible = false;
             divEvent.Visible = false;
             divLocation.Visible = true;
@@ -399,7 +419,7 @@ namespace Muslimeen.Content.Mosque
 
         protected void btnPrayerTimes_Click(object sender, EventArgs e)
         {
-            lblTaskHeader.InnerText = btnPrayerTimes.Text.ToString();
+            lblTaskHeader.InnerText = btnPrayerTimes.Text.ToString() + " For " + Session["lblMosqueName"].ToString();
             divDetails.Visible = false;
             divEvent.Visible = false;
             divLocation.Visible = false;
@@ -486,7 +506,7 @@ namespace Muslimeen.Content.Mosque
                 table2.DefaultCell.VerticalAlignment = 1;
                 Paragraph date = new Paragraph("Selected Date Range: " + Convert.ToDateTime(txtPrayerStartDate.Text).ToString("dd MMM yyyy") + " to " + Convert.ToDateTime(txtPrayerEndDate.Text).ToString("dd MMM yyyy"), fontH2);
                 Paragraph extraPara = new Paragraph("Date Created: " + DateTime.Now.Date.ToString("dd MMM yyyy"), fontH2);
-              
+
                 table2.AddCell(date);
                 table2.AddCell(extraPara);
 
@@ -496,7 +516,7 @@ namespace Muslimeen.Content.Mosque
                 table.DefaultCell.Padding = 20;
                 table.DefaultCell.HorizontalAlignment = 1;
                 table.DefaultCell.VerticalAlignment = 1;
-                Paragraph para = new Paragraph("Salah Time Table For "+Session["lblMosqueName"].ToString(), fontH1);
+                Paragraph para = new Paragraph("Salah Time Table For " + Session["lblMosqueName"].ToString(), fontH1);
                 table.AddCell(para);
 
                 pdfDocument.Open();
@@ -541,11 +561,11 @@ namespace Muslimeen.Content.Mosque
             lblEventDescription.InnerText = events.EventDescription;
             lblEventStartTime.InnerText = events.EventStartTime;
             lblEventEndTime.InnerText = events.EventEndTime;
-            lblEventDate.InnerText = events.EventDate.ToString().Substring(0,10);
+            lblEventDate.InnerText = events.EventDate.ToString().Substring(0, 10);
             lblSpeaker.InnerText = events.Speaker;
 
         }
 
-    
+
     }
 }

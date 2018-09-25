@@ -21,70 +21,82 @@ namespace Muslimeen.Content.Mosque
         DBHandler db = new DBHandler();
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            divAlertPopup.Visible = false;
-            divInfo.Visible = false;
-            divDanger.Visible = false;
-
-            DBHandler db = new DBHandler();
-            List<CounterCalender> counterCalender = new List<CounterCalender>();
-
-            counterCalender = db.BLL_GetCounterCalender();
-            hdfAdjustDate.Value = counterCalender[3].Val.ToString();
-
-
-
-            if (Session["UserName"] != null)
+            try
             {
-                uspGetMember uspGetMember = new uspGetMember();
 
-                uspGetMember = db.BLL_GetMember(Convert.ToString(Session["UserName"]));
-                Session["MosqueID"] = uspGetMember.MosqueID.ToString();
-                uspGetMosque mosque = new uspGetMosque();
-                mosque = db.GetMosque(int.Parse(Session["MosqueID"].ToString()));
-                Session["lblMosqueName"] = mosque.MosqueName.ToString();
+                divAlertPopup.Visible = false;
+                divInfo.Visible = false;
+                divDanger.Visible = false;
 
-                if (uspGetMember.MemberType == 'R')
+                DBHandler db = new DBHandler();
+                List<CounterCalender> counterCalender = new List<CounterCalender>();
+
+                counterCalender = db.BLL_GetCounterCalender();
+                hdfAdjustDate.Value = counterCalender[3].Val.ToString();
+
+
+
+                if (Session["UserName"] != null)
                 {
+                    uspGetMember uspGetMember = new uspGetMember();
 
-                    hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
-                    divUserProfile.Visible = true;
+                    uspGetMember = db.BLL_GetMember(Convert.ToString(Session["UserName"]));
+                    Session["MosqueID"] = uspGetMember.MosqueID.ToString();
+                    uspGetMosque mosque = new uspGetMosque();
+                    mosque = db.GetMosque(int.Parse(Session["MosqueID"].ToString()));
+                    Session["lblMosqueName"] = mosque.MosqueName.ToString();
 
-                    liMyMusbtn.Visible = true;
-                    liMyMusDivi.Visible = true;
+                    if (uspGetMember.MemberType == 'R')
+                    {
 
-                    btnLogin.Text = "Log out";
-                    btnRegister.Visible = false;
+                        hplUserProfile.Text = uspGetMember.MemberLastName + ", " + uspGetMember.MemberName;
+                        divUserProfile.Visible = true;
+
+                        liMyMusbtn.Visible = true;
+                        liMyMusDivi.Visible = true;
+
+                        btnLogin.Text = "Log out";
+                        btnRegister.Visible = false;
+                    }
+                    else
+                    {
+                        Response.Redirect("../Error.aspx");
+                    }
                 }
-                else
+                else if (Session["UserName"] == null)
                 {
-                    Response.Redirect("../Error.aspx");
+                    liMyMusbtn.Visible = false;
+                    liMyMusDivi.Visible = false;
+
+                    divUserProfile.Visible = false;
+                    Session.Clear();
+                    Response.Redirect("../../Login/Login.aspx");
+                }
+
+
+
+
+                if (!IsPostBack)
+                {
+                    divAddEvent.Visible = true;
+                    lblTaskHeader.InnerText = "Add Event";
+                    divAddEventOverlay.Visible = false;
+                    divManageTimes.Visible = false;
+                    divManageEvent.Visible = false;
+                    divPrayerTimes.Visible = false;
+                    Session["Event"] = "N";
+                    List<uspGetMosqueEvents> list = new List<uspGetMosqueEvents>();
+                    list = db.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
                 }
             }
-            else if (Session["UserName"] == null)
+            catch(ArgumentOutOfRangeException)
             {
-                liMyMusbtn.Visible = false;
-                liMyMusDivi.Visible = false;
-
-                divUserProfile.Visible = false;
-                Session.Clear();
-                Response.Redirect("../../Login/Login.aspx");
+                Response.Redirect("../Error.aspx");
             }
-
-
-
-
-            if (!IsPostBack)
+            catch
             {
-                divAddEvent.Visible = false;
-                divManageTimes.Visible = false;
-                divManageEvent.Visible = false;
-                divPrayerTimes.Visible = false;
-                Session["Event"] = "N";
-                List<uspGetMosqueEvents> list = new List<uspGetMosqueEvents>();
-                list = db.Bll_GetMosqueEvents(int.Parse(Session["MosqueID"].ToString()));
+
             }
-         
         }
         protected void btnLogin_Click(object sender, EventArgs e)
         {
@@ -190,7 +202,6 @@ namespace Muslimeen.Content.Mosque
                 this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MosqueRep", "var divpop = document.getElementById('divInfo');divpop.classList.add('visible2')" +
                     ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 6000)", true);
 
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Prayer with selected date contains prayer times. Update Prayer times or select another date');</script>");
                 lblMessage.Text = "Update Prayer Times For ";
                 txtFajrA.Text = time.FajrA.ToString();
                 txtFajrJ.Text = time.FajrJ.ToString();
@@ -766,7 +777,7 @@ namespace Muslimeen.Content.Mosque
                 if (Session["MosqueID"] != null)
                 {
 
-                    if (txtEventTitle.Text != "" && txtEventDescription.Text != "" && txtEventStartTime.Text != "" && txtEventEndTime.Text != "" && txtEventDate.Text != "" && txtSpeaker.Text != "")
+                    if (txtEventTitle.Text.Replace(" ", "") != "" && txtEventDescription.Text.Replace(" ", "") != "" && txtEventStartTime.Text.Replace(" ", "") != "" && txtEventEndTime.Text.Replace(" ", "") != "" && txtEventDate.Text.Replace(" ", "") != "" && txtSpeaker.Text.Replace(" ", "") != "")
                     {
                         divAlertPopup.Visible = true;
                         divAddEventOverlay.Visible = false;
@@ -802,37 +813,37 @@ namespace Muslimeen.Content.Mosque
                     {
                         divAddEventOverlay.Visible = true;
                         lblAddEventOverlay.InnerText = "Please Enter Required Fields";
-                        if (txtEventTitle.Text == "")
+                        if (txtEventTitle.Text.Replace(" ", "") == "")
                         {
                             txtEventTitle.BorderColor = Color.Red;
                         }
                         else
                             txtEventTitle.BorderColor = Color.Empty;
-                        if (txtEventDescription.Text == "")
+                        if (txtEventDescription.Text.Replace(" ", "") == "")
                         {
                             txtEventDescription.BorderColor = Color.Red;
                         }
                         else
                             txtEventDescription.BorderColor = Color.Empty;
-                        if (txtEventStartTime.Text == "")
+                        if (txtEventStartTime.Text.Replace(" ", "") == "")
                         {
                             txtEventStartTime.BorderColor = Color.Red;
                         }
                         else
                             txtEventStartTime.BorderColor = Color.Empty;
-                        if (txtEventEndTime.Text == "")
+                        if (txtEventEndTime.Text.Replace(" ", "") == "")
                         {
                             txtEventEndTime.BorderColor = Color.Red;
                         }
                         else
                             txtEventEndTime.BorderColor = Color.Empty;
-                        if (txtEventDate.Text == "")
+                        if (txtEventDate.Text.Replace(" ", "") == "")
                         {
                             txtEventDate.BorderColor = Color.Red;
                         }
                         else
                             txtEventDate.BorderColor = Color.Empty;
-                        if (txtSpeaker.Text == "")
+                        if (txtSpeaker.Text.Replace(" ", "") == "")
                         {
                             txtSpeaker.BorderColor = Color.Red;
                         }
@@ -1197,7 +1208,6 @@ namespace Muslimeen.Content.Mosque
             divPrayerTimes.Visible = false;
 
         }
-
         protected void btnNavSalahTimes_Click(object sender, EventArgs e)
         {
             lblTaskHeader.InnerText = btnNavSalahTimes.Text.ToString();
@@ -1216,7 +1226,6 @@ namespace Muslimeen.Content.Mosque
             txtPrayerStartDate.Text = "";
             txtPrayerEndDate.Text = "";
         }
-
         protected void btnListPrayer_Click(object sender, EventArgs e)
         {
             try

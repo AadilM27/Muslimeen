@@ -244,7 +244,7 @@
                        <h6>Content</h6>
                         <ul class="navbar-nav">
                            <li class="nav-item">
-                               <a class="footerr-text" href="Mosque.aspx">Mosques</a>
+                               <a class="footerr-text" href="Mosque/ListMosque.aspx">Mosques</a>
                            </li>
                            <li class="nav-item">
                                <a class="footerr-text" href="ListScholar.aspx">Scholars</a>
