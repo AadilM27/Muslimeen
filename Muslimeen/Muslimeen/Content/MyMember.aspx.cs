@@ -35,7 +35,7 @@ namespace Muslimeen.Content
                 liMyMusbtn.Visible = true;
                 liMyMusDivi.Visible = true;
                 divDisplayEvents.Visible = false;
-                divDisplaySalahTimetable.Visible = true;
+                divDisplaySalahTimetable.Visible = false;
                 divDiplayNotifications.Visible = false;
                 divDisplayArticles.Visible = false;
                 divNotices.Visible = false;
@@ -71,6 +71,7 @@ namespace Muslimeen.Content
 
                         btnLogin.Text = "Log out";
                         btnRegister.Visible = false;
+                        
                     }
                     else
                     {
@@ -433,7 +434,7 @@ namespace Muslimeen.Content
         }
         protected void lnkBack_ServerClick(object sender, EventArgs e)
         {
-            Response.Redirect(Request.Url.ToString());
+            btnArticles_Click(sender, e);
         }
         protected void lnkAdminPrintPDF_ServerClick(object sender, EventArgs e)
         {
@@ -442,7 +443,7 @@ namespace Muslimeen.Content
                 DBHandler han = new DBHandler();
                 //Title and Content will be in this table.
                 PdfPTable pdfTop = new PdfPTable(1);
-                //Author and Date will be in this table.
+                //Date will be in this table.
                 PdfPTable pdfBottom = new PdfPTable(2);
 
                 pdfTop.HorizontalAlignment = 0;
@@ -456,20 +457,18 @@ namespace Muslimeen.Content
                 PdfPCell pdfTitle = new PdfPCell(new Phrase(lblArticleTitle.InnerText, fontH3));
                 PdfPCell pdfContent = new PdfPCell(new Phrase(lblArticleContent.InnerText, content));
 
-                //PdfPCell pdfAuthor = new PdfPCell(new Phrase("Author: " + lblScholar.InnerText, content));
                 PdfPCell pdfDate = new PdfPCell(new Phrase("Date: " + lblDate.InnerText, content));
 
                 pdfTitle.HorizontalAlignment = 1;
                 pdfTitle.VerticalAlignment = 2;
                 pdfTitle.Padding = 10;
                 pdfContent.Padding = 10;
-                //pdfAuthor.Padding = 10;
                 pdfDate.Padding = 10;
                 pdfTitle.BackgroundColor = new BaseColor(grdAdminReports.RowStyle.BackColor);
                 pdfTop.AddCell(pdfTitle);
                 pdfTop.AddCell(pdfContent);
 
-                //pdfBottom.AddCell(pdfAuthor);
+              
                 pdfBottom.AddCell(pdfDate);
 
                 Document pdfDocument = new Document(new RectangleReadOnly(842, 595), 10f, -200f, 10f, 0f);
@@ -577,6 +576,8 @@ namespace Muslimeen.Content
             {
                 if (Session["UserName"] != null)
                 {
+                    btnArticles_Click(sender, e);
+
                     DBHandler han = new DBHandler();
                     Comment com = new Comment();
 
@@ -588,9 +589,13 @@ namespace Muslimeen.Content
 
                     han.BLL_AddComment(com);
 
-                    //divNoSelected.Visible = true;
-
                     txtComment.Text = string.Empty;
+
+                    lblAlertError.InnerText = "Comment successfully added";
+
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-danger');divpop.classList.add('alert-success');divpop.style.display = 'block';" +
+                ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
                 }
                 else
                 {

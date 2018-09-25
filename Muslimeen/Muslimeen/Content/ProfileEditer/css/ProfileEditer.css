@@ -1,5 +1,8 @@
 ﻿html {
     height: 100%;
+    background-image: url('thumb-1920-538103[1].jpg');
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 body {
@@ -9,7 +12,7 @@ body {
     align-items: center;
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: #256297;
+    background-color: transparent;
     height: 100%;
 }
 
@@ -41,14 +44,13 @@ body {
 
 .main-div {
     background-color: #ffffff;
+    border-radius: 1px;
     position: relative;
     text-align: center;
-    width:700px;
-    max-width: 704px;
+    width: 704px;
     margin: auto;
-    min-height: 220px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.45);
-    border-radius: 8px;
+    min-height: 520px;
+    box-shadow: 8px 10px 15px rgba(0, 0, 0, 0.7);
 }
 
 .main-btn {
