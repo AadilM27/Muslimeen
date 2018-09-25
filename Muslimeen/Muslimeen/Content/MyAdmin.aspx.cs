@@ -95,6 +95,11 @@ namespace Muslimeen.Content
                                 qual.QualificationID.ToString()));
                         }
 
+                        if(!IsPostBack)
+                        {
+                            btnTodaysPrayerTime_Click(sender, e);
+                        }
+
                     }
                     else
                     {
@@ -2532,8 +2537,8 @@ namespace Muslimeen.Content
             }
             catch
             {
-                lblAlertError.InnerText = "Unable to display Todays Prayer times, please make sure you are assigned to a mosque";
-
+                lblAlertError.InnerText = "Unable to display todays prayer times, please make sure you are assigned to a mosque";
+                
                 this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
                       ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
             }
