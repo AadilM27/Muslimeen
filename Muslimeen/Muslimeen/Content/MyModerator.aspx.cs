@@ -82,6 +82,10 @@ namespace Muslimeen.Content.MyModerator
                         btnLogin.Text = "Log out";
                         btnRegister.Visible = false;
 
+                        if(!IsPostBack)
+                        {
+                            btnTodaysPrayerTime_Click(sender, e);
+                        }
                     }
                     else
                     {
@@ -993,7 +997,7 @@ namespace Muslimeen.Content.MyModerator
                     remove.Active = 'N';
                     remove.ModeratorID = Session["UserName"].ToString();
 
-                    if (dBHandler.BLL_updateRemoveArticle(remove))
+                    if (dBHandler.BLL_updateRemoveArticle(remove))//if the article was updated successfully the page will display a success message to keep the user on track
                     {
                         lblAlertError.InnerText = "Successfully removed this article.";
 
@@ -1065,7 +1069,11 @@ namespace Muslimeen.Content.MyModerator
             }
             catch
             {
+                divAlertPopup.Visible = true;
+                lblAlertError.InnerText = "Unable to display todays prayer times, please make sure you are assigned to a mosque";
 
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                      ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
             }
         }
 

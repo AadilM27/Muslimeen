@@ -24,37 +24,35 @@ namespace Muslimeen.Content
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblTaskHead.InnerText = "Please select a task";
-
-            divListEventDetails.Visible = false;
-            divUserProfile.Visible = true;
-            liMyMusbtn.Visible = true;
-            liMyMusDivi.Visible = true;
-            divDisplayEvents.Visible = false;
-            divDisplaySalahTimetable.Visible = true;
-            divDiplayNotifications.Visible = false;
-            divDisplayArticles.Visible = false;
-            divNotices.Visible = false;
-            divDisplayArt.Visible = false;
-            divEvent.Visible = false;
-            divListEvent.Visible = false;
-            divSchDetailsOverlay.Visible = false;
-            divEventOverlay.Visible = false;
-            divimageError.Visible = false;
-            //divNoSalaah.Visible = false;
-
-            List<CounterCalender> counterCalender = new List<CounterCalender>();
-
-            counterCalender = dBHandler.BLL_GetCounterCalender();
-            hdfAdjustDate.Value = counterCalender[3].Val.ToString();
-            
-           
-
             try
             {
+
+
+                lblTaskHead.InnerText = "Please select a task";
+
+                divListEventDetails.Visible = false;
+                divUserProfile.Visible = true;
+                liMyMusbtn.Visible = true;
+                liMyMusDivi.Visible = true;
+                divDisplayEvents.Visible = false;
+                divDisplaySalahTimetable.Visible = true;
+                divDiplayNotifications.Visible = false;
+                divDisplayArticles.Visible = false;
+                divNotices.Visible = false;
+                divDisplayArt.Visible = false;
+                divEvent.Visible = false;
+                divListEvent.Visible = false;
+                divSchDetailsOverlay.Visible = false;
+                divEventOverlay.Visible = false;
+                divimageError.Visible = false;
+
                 DBHandler dBHandler = new DBHandler();
 
+                List<CounterCalender> counterCalender = new List<CounterCalender>();
 
+                counterCalender = dBHandler.BLL_GetCounterCalender();
+                hdfAdjustDate.Value = counterCalender[3].Val.ToString();
+            
                 if (Session["UserName"] != null)
                 {
 
@@ -80,29 +78,9 @@ namespace Muslimeen.Content
                     }
 
                     DateTime todaysDate = DateTime.Today;
-
-                    
-                    uspGetSpecificDayPrayerTimes prayertimes = new uspGetSpecificDayPrayerTimes();
-                    prayertimes = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), todaysDate);
-                    if (prayertimes != null)
+                    if (!IsPostBack)
                     {
-                        lblFajrAzaan.Text = prayertimes.FajrA.ToString();
-                        lblFajrJamaat.Text = prayertimes.FajrJ.ToString();
-                        lblDhuhrAzaan.Text = prayertimes.DhuhrA.ToString();
-                        lblDhuhrJamaat.Text = prayertimes.DhuhrJ.ToString();
-                        lblAsrAzaan.Text = prayertimes.AsrA.ToString();
-                        lblAsrJamaat.Text = prayertimes.AsrJ.ToString();
-                        lblMagribAzaan.Text = prayertimes.MagribA.ToString();
-                        lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
-                        lblEishaAzaan.Text = prayertimes.EishaA.ToString();
-                        lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
-                    }
-                    else if (prayertimes == null)
-                    {
-                        if (!IsPostBack)
-                        {
-                            Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('The Mosque you are assigned to has no available prayer times.');</script>");
-                        }
+                        btnTodaysPrayerTime_Click(sender, e);
                     }
                 }
                 else if (Session["UserName"] == null)
@@ -219,6 +197,7 @@ namespace Muslimeen.Content
         {
             try
             {
+                
                 divDisplaySalahTimetable.Visible = true;
                 lblTaskHead.InnerText = btnTodaysPrayerTimes.Text.ToString();
 
@@ -228,21 +207,28 @@ namespace Muslimeen.Content
                 uspGetSpecificDayPrayerTimes prayertimes = new uspGetSpecificDayPrayerTimes();
                 prayertimes = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), todaysDate);
 
-                lblFajrAzaan.Text = prayertimes.FajrA.ToString();
-                lblFajrJamaat.Text = prayertimes.FajrJ.ToString();
-                lblDhuhrAzaan.Text = prayertimes.DhuhrA.ToString();
-                lblDhuhrJamaat.Text = prayertimes.DhuhrJ.ToString();
-                lblAsrAzaan.Text = prayertimes.AsrA.ToString();
-                lblAsrJamaat.Text = prayertimes.AsrJ.ToString();
-                lblMagribAzaan.Text = prayertimes.MagribA.ToString();
-                lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
-                lblEishaAzaan.Text = prayertimes.EishaA.ToString();
-                lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
+                
+                    lblFajrAzaan.Text = prayertimes.FajrA.ToString();
+                    lblFajrJamaat.Text = prayertimes.FajrJ.ToString();
+                    lblDhuhrAzaan.Text = prayertimes.DhuhrA.ToString();
+                    lblDhuhrJamaat.Text = prayertimes.DhuhrJ.ToString();
+                    lblAsrAzaan.Text = prayertimes.AsrA.ToString();
+                    lblAsrJamaat.Text = prayertimes.AsrJ.ToString();
+                    lblMagribAzaan.Text = prayertimes.MagribA.ToString();
+                    lblMagribJamaat.Text = prayertimes.MagribJ.ToString();
+                    lblEishaAzaan.Text = prayertimes.EishaA.ToString();
+                    lblEishaJamaat.Text = prayertimes.EishaJ.ToString();
+              
             }
 
             catch
             {
-                //divNoSalaah.Visible = true;
+                divAlertPopup.Visible = true;
+
+                lblAlertError.InnerText = "No salaah times have been entered for today.";
+
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
             }
 
         }
