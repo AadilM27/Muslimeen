@@ -82,6 +82,10 @@ namespace Muslimeen.Content.MyModerator
                         btnLogin.Text = "Log out";
                         btnRegister.Visible = false;
 
+                        if(!IsPostBack)
+                        {
+                            btnTodaysPrayerTime_Click(sender, e);
+                        }
                     }
                     else
                     {
@@ -993,7 +997,7 @@ namespace Muslimeen.Content.MyModerator
                     remove.Active = 'N';
                     remove.ModeratorID = Session["UserName"].ToString();
 
-                    if (dBHandler.BLL_updateRemoveArticle(remove))
+                    if (dBHandler.BLL_updateRemoveArticle(remove))//if the article was updated successfully the page will display a success message to keep the user on track
                     {
                         lblAlertError.InnerText = "Successfully removed this article.";
 

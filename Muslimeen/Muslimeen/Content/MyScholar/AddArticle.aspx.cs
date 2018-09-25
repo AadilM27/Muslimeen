@@ -61,6 +61,10 @@ namespace Muslimeen.Content.MyScholar
 
                         btnLogin.Text = "Log out";
                         btnRegister.Visible = false;
+                        if(!IsPostBack)
+                        {
+                            btnTodaysPrayerTime_Click(sender, e);
+                        }
                     }
                     else
                     {
