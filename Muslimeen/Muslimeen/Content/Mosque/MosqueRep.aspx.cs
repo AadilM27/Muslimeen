@@ -246,7 +246,16 @@ namespace Muslimeen.Content.Mosque
                 if (txtFajrA.Text != "" && txtFajrJ.Text != "" && txtDhuhrA.Text != "" && txtDhuhrJ.Text != "" && txtAsrA.Text != "" && txtAsrJ.Text != "" && txtMagribA.Text != "" && txtMagribJ.Text != "" && txtEishaA.Text != "" && txtEishaJ.Text != "")
                 {
 
-
+                    txtFajrA.BorderColor = Color.Empty;
+                    txtFajrJ.BorderColor = Color.Empty;
+                    txtDhuhrA.BorderColor = Color.Empty;
+                    txtDhuhrJ.BorderColor = Color.Empty;
+                    txtAsrA.BorderColor = Color.Empty;
+                    txtAsrJ.BorderColor = Color.Empty;
+                    txtMagribA.BorderColor = Color.Empty;
+                    txtMagribJ.BorderColor = Color.Empty;
+                    txtEishaA.BorderColor = Color.Empty;
+                    txtEishaJ.BorderColor = Color.Empty;
                     bool valid = false;
                     int FajrA = Convert.ToInt32(txtFajrA.Text.ToString().Replace(":", string.Empty));
                     int FajrJ = Convert.ToInt32(txtFajrJ.Text.ToString().Replace(":", string.Empty));
