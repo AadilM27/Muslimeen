@@ -14,7 +14,7 @@
     <link href="../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="MyModerator/css/MyModerator.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-
+        <link href="Zakaah/css/Slideshow.css" rel="stylesheet" />
 </head>
     <body>
         <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
@@ -416,13 +416,12 @@
                                 </div>
                             </div>  
                             <!---divSalaahTimeTable-->
-                             <div runat="server" id="divDisplaySalahTimetable" class="bg-light position-static col p-3 divContainers">
-                            <div style="display: flex;justify-content: center" class=" position-static basic-div-styling w-50">
-                             <table class="table" style="justify-content: center; width: 50%; height: 20%; align-self: center">
+                              <div runat="server" id="divDisplaySalahTimetable" class="bg-light  position-static col-12 p-3 divContainers flex-nowrap m-0 row">
+                            <div style="display: flex;justify-content: center" class=" col-6 position-static basic-div-styling w-50">
+                             <table class="table" style="justify-content: center; width: 55%; height: 20%; align-self: center">
                                 <tr>
                                     <td rowspan="2"; colspan="1"><asp:Image ID="icoPrayer" ImageUrl="Mosque/download.png" runat="server" Height="110px" Width="110px" /> </td>
-               
-                                    <th colspan="2" class="text-uppercase m-0 font-weight-bold">Salah TimeTable</th>
+                                    <th colspan="2" class=" h4 text-uppercase m-0 align-middle font-weight-bold">Salah TimeTable</th>
                                 </tr>
                                 <tr>
                                     <th>AZAAN</th>
@@ -469,7 +468,48 @@
 
                             </table>  
                          </div>
-                           
+
+                            
+                    
+                    <%--m-0 col-lg-4 ml-lg-5  position:static;--%><div class="slideshow-container ml-5" style="width:300px">
+                        <h2 style="background-color:#256297;color:white;text-align:center"> Salah Quotes</h2>
+                    <div class="mySlides">
+                      <q> And be steadfast in prayer; practise regular charity; and bow down your heads with those who bow down (in worship).</q>
+                      <p class="author">- Quraan [2:43]</p>
+                    </div>
+
+                    <div class="mySlides">
+                      <q>As long as you are performing prayer, you are knocking at the door of Allah, and whoever is knocking at the door of Allah, Allah will open it for him. </q>
+                      <p class="author">- Ibn-Al-Qayyim</p>
+                    </div>
+
+                    <div class="mySlides">
+                      <q>And establish prayer and give zakah, and whatever good you put forward for yourselves – you will find it with Allah. Indeed, Allah of what you do, is Seeing.</q>
+                      <p class="author"> – al-Quran 2:110</p>
+                    </div>
+                         <!-- Next/prev buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">❮</a>
+                    <a class="next" onclick="plusSlides(1)">❯</a>
+
+                    
+                        <!-- Dots/bullets/indicators -->
+                    <div class="dot-container" style= "position:static; width:300px"> <%--m-0 col-lg-4 ml-lg-5--%>
+                      <span class="dot" onclick="currentSlide(1)"></span> 
+                      <span class="dot" onclick="currentSlide(2)"></span> 
+                      <span class="dot" onclick="currentSlide(3)"></span> 
+                    </div>
+                        <script src="Zakaah/slideshow.js"></script>
+                        </div>
+
+                             <%--<div class="col-sm-3 col-xl-4 text-nowrap" runat="server" id="divNoSalaah">
+                                <div class="w-100 h-100 container text-center">
+                                    <div class=" container h-25 mb-3"></div>
+                                    <h6 class="card-title h-50 mt-5 pt-5">
+                                        <asp:Image runat="server" class="figure-img mr-2" ImageUrl="MyMember/icons/outline_error_outline_black_18dp.png" /><asp:Label ID="lblNoSalaah" runat="server">No salaah times were entered as yet.</asp:Label></h6>
+                                    <div class=" container h-25"></div>
+                                </div>
+                            </div>--%>
+
                     </div>
                    <%-- View Events--%>
                             <div class=" row bg-light position-static ml-1 mr-1 flex-nowrap col-12 pl-0" runat="server" id="divDisplayEvents">
