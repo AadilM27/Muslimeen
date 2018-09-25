@@ -207,7 +207,10 @@ namespace Muslimeen.Content
 
                         if (editSuccess == true)
                         {
-                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Scripts", "<script>alert('Profile updated succesfully');</script>");
+                            lblAlertError.InnerText = "Profile Updated Successfully.";
+
+                            this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "ProfileUpdate", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-success');divpop.style.display = 'block';" +
+                                ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
 
                             EmailService emailService = new EmailService();
 
@@ -216,7 +219,10 @@ namespace Muslimeen.Content
                         }
                         else
                         {
-                            Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Profile updated unsuccesfully');</script>");
+                            lblAlertError.InnerText = "Profile Updated Unsuccessfully.";
+
+                            this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "ProfileUpdate", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-success');divpop.style.display = 'block';" +
+                                ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                         }
                     }
                 }

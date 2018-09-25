@@ -18,6 +18,9 @@
 
 		<link href="ProfileEditer/css/ProfileEditer.css" rel="stylesheet"/>
 </head>
+    <div id="divAlertPopup" runat="server" style="display:none; position:absolute; top:0;" class="container-fluid text-center p-2 m-0 w-100 alert alert-success visible">
+        <label class="h6" id="lblAlertError"  runat="server" ></label>
+    </div>
 <body class="text-center">
     <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
     <div class="main-div">

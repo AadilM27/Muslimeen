@@ -13,6 +13,24 @@ namespace Muslimeen.Content {
     public partial class ProfileEditer {
         
         /// <summary>
+        /// divAlertPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAlertPopup;
+        
+        /// <summary>
+        /// lblAlertError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAlertError;
+        
+        /// <summary>
         /// lnk1 control.
         /// </summary>
         /// <remarks>

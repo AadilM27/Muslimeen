@@ -495,7 +495,11 @@ namespace Muslimeen.Content.MyScholar
             }
             catch
             {
+                divAlertPopup.Visible = true;
+                lblAlertError.InnerText = "Unable to display todays prayer times, please make sure you are assigned to a mosque";
 
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "AddArticle", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
+                    ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
             }
         }
 
@@ -584,29 +588,40 @@ namespace Muslimeen.Content.MyScholar
 
         protected void btnEventList_Click(object sender, EventArgs e)
         {
-            divEvent.Visible = true;
-            divDisplaySalahTimetable.Visible = false;
-            lblTaskHead.InnerText = btnMosqueEvents.Text.ToString();
+            try
+            {
+                divEvent.Visible = true;
+                divDisplaySalahTimetable.Visible = false;
+                lblTaskHead.InnerText = btnMosqueEvents.Text.ToString();
 
-            LinkButton btn = (LinkButton)sender;
-            uspGetSpecificEvent events = new uspGetSpecificEvent();
-            DBHandler db = new DBHandler();
-            Session["EventID"] = btn.CommandArgument.ToString();
-            events = db.BLL_GetuspGetSpecificEvent(int.Parse(btn.CommandArgument.ToString()));
+                LinkButton btn = (LinkButton)sender;
+                uspGetSpecificEvent events = new uspGetSpecificEvent();
+                DBHandler db = new DBHandler();
+                Session["EventID"] = btn.CommandArgument.ToString();
+                events = db.BLL_GetuspGetSpecificEvent(int.Parse(btn.CommandArgument.ToString()));
 
-            lblEventTitle.InnerText = events.EventTitle.ToString();
-            lblEventDescription.InnerText = events.EventDescription.ToString();
-            lblSpeaker.InnerText = events.Speaker.ToString();
-            lblEventDate.InnerText = Convert.ToDateTime(events.EventDate).ToString("dd-MM-yyyy");
-            lblEventStartTime.InnerText = events.EventStartTime.ToString();
-            lblEventEndTime.InnerText = events.EventEndTime.ToString();
+                lblEventTitle.InnerText = events.EventTitle.ToString();
+                lblEventDescription.InnerText = events.EventDescription.ToString();
+                lblSpeaker.InnerText = events.Speaker.ToString();
+                lblEventDate.InnerText = Convert.ToDateTime(events.EventDate).ToString("dd-MM-yyyy");
+                lblEventStartTime.InnerText = events.EventStartTime.ToString();
+                lblEventEndTime.InnerText = events.EventEndTime.ToString();
 
-            divListEvent.Visible = true;
-            divListEventDetails.Visible = true;
-            divDisplayEvents.Visible = true;
-            divEvent.Visible = true;
-            divEventOverlay.Visible = false;
-            divEventDetails.Visible = true;
+                divListEvent.Visible = true;
+                divListEventDetails.Visible = true;
+                divDisplayEvents.Visible = true;
+                divEvent.Visible = true;
+                divEventOverlay.Visible = false;
+                divEventDetails.Visible = true;
+            }
+            catch
+            {
+                divAlertPopup.Visible = true;
+                lblAlertError.InnerText = "Unable to display Mosque events, please make sure you are assigned to a mosque";
+
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "AddArticle", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
+                    ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+            }
         }
     }
 }
