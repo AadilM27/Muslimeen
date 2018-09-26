@@ -26,8 +26,8 @@
     </head>
 <body>
     <asp:HyperLink ID="lnk1" runat="server" href="HelpPage.aspx"></asp:HyperLink>
-    <div id="divAlertPopup" runat="server" class="container-fluid text-center p-2 m-0 w-100 alert alert-success visible">
-        <label class="h6" id="lblAlertError" runat="server"></label>
+    <div id="divAlertPopup" runat="server" style="display:none;" class="container-fluid text-center p-2 m-0 w-100 alert alert-success visible">
+            <label class="h6" id="lblAlertError"  runat="server" ></label>
     </div>
     <form id="frmAddArticle" runat="server" >
         <!--Header-->
@@ -378,7 +378,8 @@
                                 </div>
                                 <div class="row mb-1 position-static">
                                     <div class="col position-static">
-                                        <label class="m-0" runat="server" id="lblContent"></label>
+                                        <%--<label class="m-0" runat="server" id="lblContent"></label>--%>
+                                        <textarea class="m-0 article-content" readonly="readonly" runat="server" id="lblContent" />
                                     </div>
                                 </div>
                                 <div class="row mb-1 position-static text-right">
@@ -446,7 +447,8 @@
                                 <div class="row mb-1 position-static">
                                     <div class="col-2 position-static"><b>Content:</b></div>
                                     <div class="col position-static">
-                                        <label class="m-0 flex-wrap" runat="server" id="lblRContent"></label>
+                                        <%--<label class="m-0 flex-wrap" runat="server" id="lblRContent"></label>--%>
+                                        <textarea class="m-0 article-content" readonly="readonly" runat="server" id="lblRContent" />
                                     </div>
                                 </div>
                                 <div class="row mb-1 position-static">
