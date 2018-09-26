@@ -43,7 +43,7 @@
                     <asp:TextBox CssClass="form-control col main-txtb" MaxLength="10" Onblur="NumbersOnly();" runat="server" ID="txtContactNum" placeholder="Contact Number"></asp:TextBox>
                 </div>
                 <div class="form-group col-sm-7 mb-1 mt-1">
-                    <asp:TextBox CssClass="form-control col main-txtb" runat="server" MaxLength="10" Onkeyup="AddDateChars();" ID="txtDOB" placeholder="dd/mm/yyyy*"></asp:TextBox>
+                    <asp:TextBox TextMode="Date" CssClass="form-control col main-txtb" runat="server" format="yyyy/MM/dd" ID="txtDOB" ></asp:TextBox>
                 </div>
             </div>
             <div class="form-row">
