@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.0"/>
 
 
-   <title>MyMuslimeen - Calculator</title>
+   <title>MyMuslimeen - Zakaah</title>
      <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico" />
      <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
         <link href="../Zakaah/css/ProperZakaah.css" rel="stylesheet" />
