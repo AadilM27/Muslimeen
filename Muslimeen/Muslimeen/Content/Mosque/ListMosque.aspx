@@ -102,19 +102,17 @@
                     <h1 style="text-align: center; width: 100%">List of Mosques</h1>
                 </div>
                 <h4 style="text-align: center; background-color: #256297; color: white; margin-bottom: 0px">Search Mosque:</h4>
-                <div class="jumbotron" style="height: 50px">
+                <div class="jumbotron" style="height: 30px">
 
                     <table style="width: 100%;">
                         <tr>
-                            <td style="width: 55%; position: relative; bottom: 50px; color: #256297; font-weight: bold">Mosque Suburb&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList ID="ddlMosqueSuburb" runat="server" Height="60px" Width="250px" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                            <td style="width: 55%; position: relative; bottom: 50px; color: #256297; font-weight: bold">Mosque Suburb&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList Width="180px" Height="30px" ID="ddlMosqueSuburb" runat="server"  AutoPostBack="True" CssClass="dropdown" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                             </asp:DropDownList></td>
                             <td style="width: 55%; position: relative; bottom: 50px; color: #256297; font-weight: bold">Mosque Type&nbsp;&nbsp;&nbsp;&nbsp;<asp:RadioButton ID="rdoHanafie" runat="server" Text="Hanafie" GroupName="MosqueType" AutoPostBack="True" OnCheckedChanged="rdoHanafie_CheckedChanged" />&nbsp
                                 <asp:RadioButton ID="rdoShafie" runat="server" Text="Shafie" GroupName="MosqueType" AutoPostBack="True" OnCheckedChanged="rdoShafie_CheckedChanged" />
                             </td>
                         </tr>
                     </table>
-
-
                 </div>
             </div>
             <asp:Repeater ID="rptGetMosques" runat="server">
