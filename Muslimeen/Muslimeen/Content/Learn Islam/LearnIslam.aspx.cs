@@ -369,6 +369,11 @@ namespace Muslimeen.Content.Learn_Islam
                     else
                     {
                         txtComment.BorderColor = Color.Red;
+
+                        lblAlertError.InnerText = "Comment Section left empty.";
+
+                        this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "LearnIslam", "var divpop = document.getElementById('divAlertPopup');divpop.style.display = 'block';" +
+                            ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                     }
                 }
                 else
