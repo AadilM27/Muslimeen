@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.0"/>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=0.0" />
 
     <title>MyMuslimeen - Home</title>
     <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -14,6 +14,9 @@
     <link href="css/MyMosque.css" rel="stylesheet" />
 </head>
 <body style="background-color: white">
+    <div id="divDanger" runat="server"  style="display: none;" class="container-fluid text-center p-2 m-0 w-100 alert alert-danger visible">
+        <label class="h6" id="lblDan" runat="server"></label>
+    </div>
     <form id="form1" runat="server">
         <header>
             <nav class="navFixed">
@@ -38,7 +41,7 @@
                 </div>
                 <div class="row" runat="server" id="divUserProfile">
                     <div class="col navbar-nav flex-row ml-4 mb-0 mt-0 pt-2 justify-content-end">
-                        <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="../Content/ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
+                        <asp:HyperLink ID="hplUserProfile" ToolTip="Edit user profile" runat="server" NavigateUrl="../ProfileEditer.aspx" CssClass="nav-item mb-0 mr-1 ml-1 user">
                         </asp:HyperLink><asp:Image Style="height: 15px; width: 15px;" runat="server" ID="imgEditProfile" CssClass="mt-1 mr-3" ImageUrl="../Default/icons/EditProfile.png" />
                     </div>
                 </div>
@@ -102,13 +105,13 @@
                     <h1 style="text-align: center; width: 100%">List of Mosques</h1>
                 </div>
                 <h4 style="text-align: center; background-color: #256297; color: white; margin-bottom: 0px">Search Mosque:</h4>
-                <div class="jumbotron" style="height: 30px">
+                <div class="jumbotron p-3" >
 
                     <table style="width: 100%;">
                         <tr>
-                            <td style="width: 55%; position: relative; bottom: 50px; color: #256297; font-weight: bold">Mosque Suburb&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList Width="180px" Height="30px" ID="ddlMosqueSuburb" runat="server"  AutoPostBack="True" CssClass="dropdown" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                            <td style="width: 55%; position: relative;  color: #256297; font-weight: bold">Mosque Suburb&nbsp;&nbsp;&nbsp;&nbsp;<asp:DropDownList Width="180px" Height="30px" ID="ddlMosqueSuburb" runat="server" AutoPostBack="True" CssClass="dropdown" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                             </asp:DropDownList></td>
-                            <td style="width: 55%; position: relative; bottom: 50px; color: #256297; font-weight: bold">Mosque Type&nbsp;&nbsp;&nbsp;&nbsp;<asp:RadioButton ID="rdoHanafie" runat="server" Text="Hanafie" GroupName="MosqueType" AutoPostBack="True" OnCheckedChanged="rdoHanafie_CheckedChanged" />&nbsp
+                            <td style="width: 55%; position: relative;  color: #256297; font-weight: bold">Mosque Type&nbsp;&nbsp;&nbsp;&nbsp;<asp:RadioButton ID="rdoHanafie" runat="server" Text="Hanafie" GroupName="MosqueType" AutoPostBack="True" OnCheckedChanged="rdoHanafie_CheckedChanged" />&nbsp
                                 <asp:RadioButton ID="rdoShafie" runat="server" Text="Shafie" GroupName="MosqueType" AutoPostBack="True" OnCheckedChanged="rdoShafie_CheckedChanged" />
                             </td>
                         </tr>

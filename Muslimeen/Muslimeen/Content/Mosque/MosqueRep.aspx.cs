@@ -421,7 +421,6 @@ namespace Muslimeen.Content.Mosque
 
                                     this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MosqueRep", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
                                         ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
-                                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Successfully Added Prayer Times');</script>");
                                     BtnAdd.Visible = false;
                                     BtnUpdate.Visible = false;
                                 }
@@ -514,7 +513,6 @@ namespace Muslimeen.Content.Mosque
 
                 this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MosqueRep", "var divpop = document.getElementById('divDanger');divpop.classList.add('visible2')" +
                     ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Add Unsuccesfull+" + ex + "+');</script>");
 
             }
 

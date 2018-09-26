@@ -70,6 +70,7 @@ namespace Muslimeen.Content.MyModerator
                 {
                     uspGetMember uspGetMember = new uspGetMember();
                     uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
+                    Session["MosqueID"] = uspGetMember.MosqueID.ToString();
 
                     if (uspGetMember.MemberType == 'O')
                     {

@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -95,7 +95,7 @@ namespace Muslimeen.Content
                                 qual.QualificationID.ToString()));
                         }
 
-                        if(!IsPostBack)
+                        if (!IsPostBack)
                         {
                             btnTodaysPrayerTime_Click(sender, e);
                         }
@@ -668,7 +668,7 @@ namespace Muslimeen.Content
 
                         divAddMosque.Visible = false;
                         divAddMosqueRep.Visible = false;
-                        
+
                         //Clear the textboxes.
                         txtUserName.Text = string.Empty;
                         txtName.Text = string.Empty;
@@ -1752,7 +1752,7 @@ namespace Muslimeen.Content
 
                         mosque.MosqueImage = ("Images/MosqueImages/" + txtUpdateMosqueName.Text.ToString() + "." + fileFormat.ToString());
                     }
-                    else if(!fupUpdateMosqueImage.HasFile)
+                    else if (!fupUpdateMosqueImage.HasFile)
                     {
                         mosque.MosqueImage = fupUpdateMosqueImage.ToolTip.ToString();
                     }
@@ -2242,7 +2242,7 @@ namespace Muslimeen.Content
             grdAdminReports.DataBind();
 
             try
-            { 
+            {
                 grdAdminReports.GridLines = GridLines.Both;
                 grdAdminReports.BorderColor = Color.Gray;
                 grdAdminReports.CellPadding = 8;
@@ -2301,7 +2301,7 @@ namespace Muslimeen.Content
             divAdminReports.Visible = true;
 
             DBHandler db = new DBHandler();
-            List <uspReportGetAllMosques> mosques = new List<uspReportGetAllMosques>();
+            List<uspReportGetAllMosques> mosques = new List<uspReportGetAllMosques>();
 
             lblAdminReportHeading.InnerText = "All Mosques Details Report";
 
@@ -2520,9 +2520,11 @@ namespace Muslimeen.Content
 
                 DBHandler dBHandler = new DBHandler();
                 DateTime todaysDate = DateTime.Today;
-
+                uspGetMember uspGetMember = new uspGetMember();
+                uspGetMember = dBHandler.BLL_GetMember(Convert.ToString(Session["UserName"]));
+                int mosque = Convert.ToInt32(uspGetMember.MosqueID.ToString());
                 uspGetSpecificDayPrayerTimes prayertimes = new uspGetSpecificDayPrayerTimes();
-                prayertimes = dBHandler.BLL_GetSpecficDayPrayerTimes(int.Parse(Session["MosqueID"].ToString()), todaysDate);
+                prayertimes = dBHandler.BLL_GetSpecficDayPrayerTimes(mosque, todaysDate);
 
                 lblFajrAzaan.Text = prayertimes.FajrA.ToString();
                 lblFajrJamaat.Text = prayertimes.FajrJ.ToString();
@@ -2538,7 +2540,7 @@ namespace Muslimeen.Content
             catch
             {
                 lblAlertError.InnerText = "Unable to display todays prayer times, please make sure you are assigned to a mosque";
-                
+
                 this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
                       ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
             }
@@ -2676,7 +2678,7 @@ namespace Muslimeen.Content
                     }
                 }
             }
-            catch(FormatException)
+            catch (FormatException)
             {
                 lblEventError.Text = "Start date or End date is incorrect.";
             }
@@ -2690,6 +2692,6 @@ namespace Muslimeen.Content
             }
 
         }
-        
+
     }
 }

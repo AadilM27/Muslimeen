@@ -87,16 +87,34 @@ namespace Muslimeen.Content.Mosque
                 rdoShafie.Checked = false;
                 rptGetMosques.DataSource = db.BLL_GetMosques(ddlMosqueSuburb.SelectedValue.ToString(), "Any");
                 rptGetMosques.DataBind();
+                if (rptGetMosques.Items.Count < 1)
+                {
+
+                    lblDan.InnerText = "No Mosques Found For Specific Search.";
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "ListMosque", "var divpop = document.getElementById('divDanger');divpop.style.display = 'block';" +
+                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+                }
+
+          
             }
-            catch { }
+            catch{ }
 
         }
         protected void rdoHanafie_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
+              
                 rptGetMosques.DataSource = db.BLL_GetMosques(ddlMosqueSuburb.SelectedValue.ToString(), "Hanafie");
                 rptGetMosques.DataBind();
+                if (rptGetMosques.Items.Count < 1)
+                {
+
+                    lblDan.InnerText = "No Mosques Found For Specific Search.";
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "ListMosque", "var divpop = document.getElementById('divDanger');divpop.style.display = 'block';" +
+                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+                }
+
             }
             catch { }
         }
@@ -105,10 +123,19 @@ namespace Muslimeen.Content.Mosque
         {
             try
             {
+               
                 rptGetMosques.DataSource = db.BLL_GetMosques(ddlMosqueSuburb.SelectedValue.ToString(), "Shaafie");
                 rptGetMosques.DataBind();
+                if (rptGetMosques.Items.Count < 1)
+                {
+
+                    lblDan.InnerText = "No Mosques Found For Specific Search.";
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "ListMosque", "var divpop = document.getElementById('divDanger');divpop.style.display = 'block';" +
+                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+                }
             }
             catch { }
+           
         }
         protected void btnLogin_Click(object sender, EventArgs e)
         {

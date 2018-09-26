@@ -118,7 +118,7 @@
                     <div class="row p-0 m-0 tab-content right-bottom-div p-1">
                         <div class="col-12 bg-light position-static mt-2" runat="server" id="divDetails">
                             <div class="row">
-                                <div class="col-7" id="divDetail" runat="server">
+                                <div class="col-8" id="divDetail" runat="server">
                                     <div class=" head-div-2 p-2 mb-1 text-left">
                                         <p class="m-0">Mosque Details</p>
                                     </div>
