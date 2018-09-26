@@ -49,4 +49,3 @@ C:\Users\s216387108\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeL
 C:\Users\Abdul-Hadi Bhat\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
 C:\Users\Aadil\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
 C:\Users\haani_000\Desktop\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojResolveAssemblyReference.cache
-C:\Users\Uthmaan Jappie\Documents\GitHub\Muslimeen\Muslimeen\TypeLib\obj\Debug\TypeLib.csprojAssemblyReference.cache

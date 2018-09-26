@@ -11,9 +11,9 @@
     <title>MyMuslimeen - Calculator</title>
      <link rel="icon" href="../../Login/LogIn_Bootstrap/muslimeen.ico" />
      <link href="../../Login/LogIn_Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-     <link href="../Default/css/Default.css" rel="stylesheet" />
+    
         <link href="../Zakaah/css/Gallery.css" rel="stylesheet" />
-       
+        <link href="../Zakaah/css/ProperZakaah.css" rel="stylesheet" />
 </head>
     <body style="background-color:white;">
         <asp:HyperLink ID="lnk1" runat="server" href="../HelpPage.aspx"></asp:HyperLink>
