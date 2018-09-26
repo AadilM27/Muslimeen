@@ -438,7 +438,7 @@ namespace Muslimeen.Content.MyModerator
                             ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                     }
 
-                    divViewArt.Visible = true;
+                    divViewArt.Visible = false;
                     divViewPendingArt.Visible = true;
                     rptViewPendingArticles.DataSource = dBHandler.BLL_GetPendingArticle();
                     rptViewPendingArticles.DataBind();
@@ -447,7 +447,7 @@ namespace Muslimeen.Content.MyModerator
             }
             catch
             {
-                throw;
+               
             }
         }
 
@@ -460,7 +460,7 @@ namespace Muslimeen.Content.MyModerator
                 {
                     lblRejection.Text = "Cannot reject an article without a reason!";
                     txtRejectReason.BorderColor = System.Drawing.Color.Red;
-
+                    divViewArt.Visible = true;
                 }
                 else
                 {
@@ -483,6 +483,7 @@ namespace Muslimeen.Content.MyModerator
                         this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyModerator", "var divpop = document.getElementById('divAlertPopup');divpop.style.display='block';" +
                             ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
 
+                        divViewArt.Visible = false;
                     }
                    
                     lblRejection.Text = "";
@@ -494,7 +495,7 @@ namespace Muslimeen.Content.MyModerator
 
                 }
 
-                divViewArt.Visible = true;
+              
                 divViewPendingArt.Visible = true;
             }
             catch
@@ -982,7 +983,7 @@ namespace Muslimeen.Content.MyModerator
                 {
                     lblRemovalDisplay.Text = "Cannot remove an article without a reason!";
                     txtRemovalReason.BorderColor = System.Drawing.Color.Red;
-
+                    divDisplayRemoveAcceptedArticles.Visible = true;
                 }
                 else
                 {
@@ -1004,7 +1005,7 @@ namespace Muslimeen.Content.MyModerator
 
                         this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyModerator", "var divpop = document.getElementById('divAlertPopup');divpop.style.display='block';" +
                             ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
-
+                        divDisplayRemoveAcceptedArticles.Visible = false;
                     }
                     else
                     {
@@ -1019,7 +1020,7 @@ namespace Muslimeen.Content.MyModerator
 
                 }
 
-                divDisplayRemoveAcceptedArticles.Visible = true;
+               
                 divViewRemoveAcceptedArticle.Visible = true;
             }
             catch(NullReferenceException)

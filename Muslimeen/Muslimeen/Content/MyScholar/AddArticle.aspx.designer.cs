@@ -667,7 +667,7 @@ namespace Muslimeen.Content.MyScholar {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblContent;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea lblContent;
         
         /// <summary>
         /// lblDate control.
@@ -748,7 +748,7 @@ namespace Muslimeen.Content.MyScholar {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblRContent;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea lblRContent;
         
         /// <summary>
         /// lblRDate control.

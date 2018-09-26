@@ -245,13 +245,23 @@ namespace Muslimeen.Register
                         };
 
                         dBHandler.BLL_AddScholarQualification(scholar);
+
+
+                        EmailService emailService = new EmailService();
+
+                        emailService.AutoEmailService(txtUserEmail.Text.ToString(),
+                            ddUsertype.SelectedItem.ToString(), "null", "Scholar Registration", "null", "null"); //Add server Verification.aspx address.
                     }
+                    else if (ddUsertype.SelectedValue == "M")
+                    {
+                       
+                     
 
-                    EmailService emailService = new EmailService();
+                        EmailService emailService = new EmailService();
 
-                    emailService.AutoEmailService(txtUserEmail.Text.ToString(),
-                        ddUsertype.SelectedItem.ToString(), "http://sict-iis.nmmu.ac.za/NEXTECH/Register/Verification.aspx", "Registration", "null", "null"); //Add server Verification.aspx address.
-
+                        emailService.AutoEmailService(txtUserEmail.Text.ToString(),
+                            ddUsertype.SelectedItem.ToString(), "http://sict-iis.nmmu.ac.za/NEXTECH/Register/Verification.aspx", "Registration", "null", "null"); //Add server Verification.aspx address.
+                    }
                     Response.Redirect("../Content/Default.aspx");
                 }
             }

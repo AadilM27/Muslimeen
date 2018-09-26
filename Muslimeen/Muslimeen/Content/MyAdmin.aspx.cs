@@ -27,7 +27,6 @@ namespace Muslimeen.Content
 
             try
             {
-                //divAlertPopup.Visible = false;
                 divListEvent.Visible = false;
                 divEventOverlay.Visible = false;
                 divDisplayEvents.Visible = false;
@@ -1917,7 +1916,6 @@ namespace Muslimeen.Content
 
         protected void btnUpdateAllMember_Click(object sender, EventArgs e)
         {
-            //divAlertPopup.Visible = true;
             divAllMembersList.Visible = true;
             divMemberDetails.Visible = false;
             divMemberDetailsOverlay.Visible = true;

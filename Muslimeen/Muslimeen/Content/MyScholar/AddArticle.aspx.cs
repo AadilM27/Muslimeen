@@ -22,7 +22,6 @@ namespace Muslimeen.Content.MyScholar
 
             try
             {
-                divAlertPopup.Visible = false;
                 divAddArticle.Visible = false;
                 divPendingArticles.Visible = false;
                 divRejectedArticles.Visible = false;
@@ -262,7 +261,6 @@ namespace Muslimeen.Content.MyScholar
         {
             try
             {
-                divAlertPopup.Visible = true;
                 DBHandler han = new DBHandler();
                 InsertArticle art = new InsertArticle();
                 
@@ -280,14 +278,19 @@ namespace Muslimeen.Content.MyScholar
                     art.ArticleContent = Convert.ToString(txtContent.Text);
 
                     han.BLL_InsertArticle(art);
-                    divAddArticle.Visible = true;
+                    btnPendingArticles_Click(sender, e);
                     txtHeading.Text = string.Empty;
-                    txtContent.Text = string.Empty;                   
+                    txtContent.Text = string.Empty;
 
-                    lblAlertError.InnerText = "Article Successfully Added";
+                    lblAlertError.InnerText = "Successfully added article";
 
-                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "AddArticle", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
-                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);                   
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.style.display = 'block';" +
+                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
+                    drpTopics.BorderColor = Color.Empty;
+                    txtHeading.BorderColor = Color.Empty;
+                    txtContent.BorderColor = Color.Empty;
+                    drpTopics.SelectedIndex = 0;
                 }
                 else
                 {
@@ -299,6 +302,7 @@ namespace Muslimeen.Content.MyScholar
                     {
                         drpTopics.BorderColor = Color.Empty;
                     }
+
                     if (txtHeading.Text == "")
                     {
                         txtHeading.BorderColor = Color.Red;
@@ -307,6 +311,7 @@ namespace Muslimeen.Content.MyScholar
                     {
                         txtHeading.BorderColor = Color.Empty;
                     }
+
                     if (txtContent.Text == "")
                     {
                         txtContent.BorderColor = Color.Red;
@@ -315,6 +320,13 @@ namespace Muslimeen.Content.MyScholar
                     {
                         txtContent.BorderColor = Color.Empty;
                     }
+
+                    divAddArticle.Visible = true;
+
+                    lblAlertError.InnerText = "Please fill in the required fields";
+
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                             ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
                 }
             }
             catch
@@ -377,7 +389,7 @@ namespace Muslimeen.Content.MyScholar
             }
             catch
             {
-                throw;
+
             }
         }
 
@@ -401,7 +413,6 @@ namespace Muslimeen.Content.MyScholar
         {
             try
             {
-                divAlertPopup.Visible = true;
                 UpdateArticle art = new UpdateArticle();
                 DBHandler han = new DBHandler();
 
@@ -416,14 +427,20 @@ namespace Muslimeen.Content.MyScholar
                     art.ScholarID = Convert.ToString(Session["UserName"]);
 
                     han.BLL_UpdateArticle(art);
-
+                    btnPendingArticles_Click(sender, e);
                     txtHeading.Text = string.Empty;
                     txtContent.Text = string.Empty;
 
-                    lblAlertError.InnerText = "Article Successfully Updated";
+                    lblAlertError.InnerText = "Successfully updated article.";
 
-                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "AddArticle", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
-                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);                    
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.style.display = 'block';" +
+                        ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
+                    drpTopics.BorderColor = Color.Empty;
+                    txtHeading.BorderColor = Color.Empty;
+                    txtContent.BorderColor = Color.Empty;
+                    drpTopics.SelectedIndex = 0;
+
                 }
                 else
                 {
@@ -451,6 +468,14 @@ namespace Muslimeen.Content.MyScholar
                     {
                         txtContent.BorderColor = Color.Empty;
                     }
+
+                    divAddArticle.Visible = true;
+
+                    lblAlertError.InnerText = "Please fill in the required fields";
+
+                    this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                             ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+
                 }
             }
             catch
@@ -496,11 +521,10 @@ namespace Muslimeen.Content.MyScholar
             }
             catch
             {
-                divAlertPopup.Visible = true;
                 lblAlertError.InnerText = "Unable to display todays prayer times, please make sure you are assigned to a mosque";
 
-                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "AddArticle", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
-                    ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                   ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
             }
         }
 
@@ -617,11 +641,10 @@ namespace Muslimeen.Content.MyScholar
             }
             catch
             {
-                divAlertPopup.Visible = true;
                 lblAlertError.InnerText = "Unable to display Mosque events, please make sure you are assigned to a mosque";
 
-                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "AddArticle", "var divpop = document.getElementById('divAlertPopup');divpop.classList.add('visible2')" +
-                    ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
+                this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "MyAdmin", "var divpop = document.getElementById('divAlertPopup');divpop.classList.remove('alert-success');divpop.classList.add('alert-danger');divpop.style.display = 'block';" +
+                   ";setTimeout(function Flash3() {divpop.style.display = 'none';}, 4000)", true);
             }
         }
     }

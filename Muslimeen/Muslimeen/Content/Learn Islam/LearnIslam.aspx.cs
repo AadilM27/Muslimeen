@@ -178,7 +178,7 @@ namespace Muslimeen.Content.Learn_Islam
             }
             else if (uspGetMember.MemberType == 'S')
             {
-                Response.Redirect("../AddArticle.aspx");
+                Response.Redirect("../MyScholar/AddArticle.aspx");
             }
             else if (uspGetMember.MemberType == 'R')
             {
