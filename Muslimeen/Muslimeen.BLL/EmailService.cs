@@ -63,6 +63,31 @@ namespace Muslimeen.BLL
                     smtp.Send(message);
 
                 }
+                else if (emailType == "Scholar Registration") // Send when user registers on Muslimee.
+                {
+                    message.Subject = "Scholar Registration";
+                    message.Body = String.Format(@"
+                                                <html lang=""en"" style=""height:100%"">    
+                                                    <body>
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
+                                                            <h1 style=""font-weight:bolder; font-size:25px;"">Welcome <br/> To <br/>Muslimeen</h1>
+                                                        </div>
+                                                        <div style=""background-color:#ffffff; text-align:center;"">
+                                                            <hr/>
+                                                            <h3>Congratulations you are now a {0} of Muslimeen.</h3><br/><br/><p>Please wait a while your registration is being verified...</p><br/>
+                                                            
+                                                        </div>
+                                                        <div style=""background-color:#256297; text-align:center; vertical-align:middle;"">
+                                                            <h2>Thank you</h2>
+                                                        </div>
+                                                    </body>
+                                                </html>
+                                                ", memberType);
+
+                    //Send email
+                    smtp.Send(message);
+
+                }
                 else if (emailType == "ProfileUpdate") // send when User Updates his profile.
                 {
                     string ComputerName = Environment.MachineName.ToString();
