@@ -126,6 +126,7 @@
     <Content Include="Content\Images\ImageUnavailable.jpg" />
     <Content Include="Content\Images\Star.gif" />
     <Content Include="Content\Images\WaitingStar.gif" />
+    <Content Include="Content\Images\ZakaahOrgImages\fuqara.png" />
     <Content Include="Content\Learn Islam\css\learnIslam.css" />
     <Content Include="Content\Learn Islam\js\LearnIslam.js" />
     <Content Include="Content\Learn Islam\LearnIslam.aspx" />
@@ -1819,7 +1820,6 @@
   <ItemGroup>
     <Folder Include="Content\Error\css\" />
     <Folder Include="Content\Error\js\" />
-    <Folder Include="Content\Images\ZakaahOrgImages\" />
     <Folder Include="Content\Zakaah\js\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
